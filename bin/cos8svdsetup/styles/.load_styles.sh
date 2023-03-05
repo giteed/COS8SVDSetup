@@ -1,5 +1,5 @@
 #!/bin/bash
 
 # --> Прочитать настройки из:
-. ~/bin/cos8svdsetup/styles/colored_unicode_characters.sh
-. ~/bin/cos8svdsetup/styles/terminal_colors.sh
+. ~/cos8svdsetup/bin/styles/colored_unicode_characters.sh
+. ~/cos8svdsetup/bin/styles/terminal_colors.sh
