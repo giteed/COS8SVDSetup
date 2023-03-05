@@ -4,6 +4,10 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
+# --> Прочитать настройки из:
+. ~/bin/cos8svdsetup/styles/.load_styles.sh
+. ~/bin/cos8svdsetup/functions/.load_function.sh
+ 
 
 function gh_install()
 {
