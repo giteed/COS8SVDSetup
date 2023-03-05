@@ -1,19 +1,9 @@
 #!/bin/bash
 
 # Source global definitions
-# --> Прочитать настройки из /etc/bashrc
+# --> Прочитать настройки из /root/.bashrc
 . ~/.bashrc
 
-# --> Прочитать настройки:
-. ~/bin/utility/.varfunc.sh &>/dev/null ;
-. ~/bin/utility/.css.sh &>/dev/null ;
-
-debug_message ;
-
-# --> Использовать ~/.bash_aliases
-. ~/.bash_aliases ;
-# --> Использовать . ~/bin/utility/.root (требует для скрипта права root)
-. ~/bin/utility/.root
 
 
 function GitHub_install()
@@ -73,4 +63,5 @@ GitHub_info_and_update ;
 echo ;
 echo -e "\n		$(green_star) GitHub reference";
 echo -e "		$(red_U0023) gh reference";
+
 exit 0 ; 
