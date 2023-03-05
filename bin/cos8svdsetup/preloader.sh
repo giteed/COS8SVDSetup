@@ -19,7 +19,7 @@ ttb=$(echo -e "
  " ) && lang_nix && bpn_p_lang ; ttb=""  ;
 
  sleep 1 ;
-	/root/bin/cos8svdsetup/utility/github.sh 2>/dev/null ;
+	/root/cos8svdsetup/bin/utility/github.sh 2>/dev/null ;
 }
 
 ( (gh) &>/dev/null || gh_install )
