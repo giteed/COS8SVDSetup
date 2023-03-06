@@ -9,7 +9,7 @@
 . ~/.COS8SVDSetup/bin/cos8svdsetup/functions/.load_function.sh
 
 echo ;
-debug_message ;
+
 
 ##
 # BASH menu script that checks:
