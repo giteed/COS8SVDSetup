@@ -13,8 +13,7 @@ function gh_install()
 {
 
 ttb=$(echo -e "
- ⎧ 
- | GitHub (gh) не установлен!
+ ⎧ GitHub (gh) не установлен!
  ⎩ # /root/bin/cos8svdsetup/utility/github.sh 2>/dev/null
  " ) && lang_nix && bpn_p_lang ; ttb=""  ;
 
