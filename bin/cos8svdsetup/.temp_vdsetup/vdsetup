@@ -1,0 +1,974 @@
+#!/bin/bash
+
+    # Source global definitions
+    # --> Прочитать настройки из /etc/bashrc
+    . /root/.bashrc &>/dev/null ;
+    # --> Прочитать настройки:
+    . /root/bin/utility/.debug_version_vdsetup.sh &>/dev/null ;
+    . /root/bin/utility/.css.sh &>/dev/null ;
+    . /root/bin/utility/.varfunc.sh &>/dev/null ;
+    
+    
+    debug_message ;
+    
+    # --> Прочитать функции:
+    
+    . /root/bin/utility/list_app_statusCH.sh &>/dev/null ;
+    . /root/bin/utility/.dnf-fix-help.sh  &>/dev/null ;
+    . /root/bin/utility/.dnf-update-upgrade.sh &>/dev/null ;
+    . /root/bin/utility/webmin_install.sh &>/dev/null ;
+    . /root/bin/utility/swap_edit.sh &>/dev/null ;
+    . /root/bin/utility/cockpit_Activate.sh &>/dev/null ;
+    . /root/bin/utility/gnome-shell-extentions.sh &>/dev/null ;
+    
+    
+    #. /root/bin/utility/reinstall_update_remove_vdsetup.sh &>/dev/null ;
+    
+    # --> Использовать /root/.bash_ali*
+    . /root/.bash_aliases &>/dev/null;
+    . /root/.bash_ali_hosts &>/dev/null;
+    
+    # --> Использовать . /root/bin/utility/.root (требует для скрипта права root)
+    . /root/bin/utility/.root &>/dev/null ;
+    
+    css ;
+    #echo ;
+    
+    # Функция cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
+    cash_var_sh_150_start_and_stop
+    
+    
+    # ФУНКЦИЯ: Проверка на наличие rpmfusion-free , enable powertools :
+    function rpmfusion-freeOK() 
+    # /etc/yum.repos.d/rpmfusion-free-updates.repo найден (cat нашел и открыл /etc/yum.repos.d/rpmfusion-free-updates.repo)
+    {
+        echo -e " ($( green_tick )) - rpmfusion-free${RED}  | $( green_OK ) ypr -rl" ;
+    }
+    
+    # ФУНКЦИЯ: # /etc/yum.repos.d/rpmfusion-free-updates.repo НЕ найден или пуст (cat получает пустое значение потому что /etc/yum.repos.d/rpmfusion-free-updates.repo нет или он пуст)
+    function rpmfusion-freeIN() 
+    {
+        echo -e "\n Установка rpmfusion, включение powertools, отключение pmfusion-nonfree-updates. " && dnf install --nogpgcheck https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm -y &>/dev/null && dnf config-manager --enable powertools && yum config-manager --disable rpmfusion-nonfree-updates &>/dev/null && echo -e "\n ${ELLOW}Установка rpmfusion REPO завершена${NC} \n" && echo -e " ($( green_tick )) - rpmfusion-free${RED}    | $( green_OK )" ;
+    }
+    
+    # ФУНКЦИЯ: # Проверить или установить pmfusion-free-updates.repo
+    function Rpmfusion-freeCH() 
+    {
+         [[ -z $( cat /etc/yum.repos.d/rpmfusion-free-updates.repo ) ]] 2>/dev/null && rpmfusion-freeIN || rpmfusion-freeOK ;
+    }
+
+
+  # ФУНКЦИЯ: Установка дополнительных пакетов
+  function epelIN_epel_repo_pack()
+  {
+ 
+    
+    ttb=$( echo -e "\n Установка дополнительных пакетов: epel-release, elrepo-release, kmod-wireguard, wireguard-tools, iptables, python3, ruby, npm, unzip, hstr, lsof, screen, tar, p7zip, mc, nano, whois, wget, curl, atop, htop, nethogs, bpytop, iftop, stacer, yum-utils, net-tools, network-scripts, git, dialog, mlocate qrencode, ncdu ranger tldr. \n" ) && bpn_p_lang ; echo ; echo ;
+    
+    dnf install git tar curl wget -y &>/dev/null ;
+    dnf install -y epel-release elrepo-release &>/dev/null ;
+    dnf install -y net-tools network-scripts &>/dev/null ;
+    dnf install -y dialog mlocate ncdu ranger tldr &>/dev/null ;
+    
+    ( ( yum install -y kmod-wireguard wireguard-tools iptables qrencode python3 ruby npm unzip hstr lsof screen p7zip mc nano whois atop htop nethogs bpytop iftop stacer yum-utils  -y ) 2>/dev/null ) && ( ( echo -e "\n Установка дополнительных пакетов завершена!" ) && ( echo -e " ($( green_tick )) - packages plus${RED}   | ${NC}посмотреть список пакетов в системе ypr -rl"  ) ) || ( ( echo -en " yum install epelIN_epel_repo_pack: " )  && ( error_MSG ; ) ) ;
+    
+    dnf install -y ncdu 2>/dev/null ;
+    dnf install -y @perl perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect 2>/dev/null ;
+    
+    
+    
+  }
+
+    # Проверка на наличие epel-release : Подготовка CentOS 8: "screen" "epel-release" "mc" "hstr" "nano" "wget" "tar" "p7zip" "htop", "atop" "yum-utils" "net-tools" "network-scripts" "git" "dialog" "mlocate" настройка ".screenrc" :
+    # О программе dialog https://habr.com/ru/post/104981/
+    # ФУНКЦИЯ: epel-release найден
+    function epelOK() 
+        { 
+            echo -e " ($( green_tick )) - epel-release${RED}    | $( green_OK ) ypr -rl" 
+        }
+    
+    # ФУНКЦИЯ: Устанавливаю epel-release + минимально необходимые пакеты
+    function epelIN() 
+     {   
+        # ФУНКЦИЯ: Установка epel-release
+        function epelIN_epel_repo()
+        {
+          ( echo -e " Установка epel-release. ${NC} \n" ) ;
+          ( ( ( yum install epel-release -y ) &>/dev/null ) || ( echo -en " yum install epel-release: " && error_MSG ; ) ) ;
+          
+          ( ( ( yum repolist | grep epel ) &>/dev/null ) && ( ( echo -e "\n Установка epel-release завершена!" ) && ( echo -e " ($( green_tick )) - epel-release${RED}    |${NC} посмотреть все репо ypr -rl"  ) ) ) || ( ( echo -e " epel repo: $( not_found_MSG )" ) && ( echo -en " функция установки epelIN_epel_repo " && error_MSG ; ) ) ;
+        }
+        
+        
+        # ФУНКЦИЯ: # Скрипт проверяет файл .screenrc на существование, а так же на присутствие в нем записи необходимой для работы колеса мышки в окне терминала. После добавления этой записи в .screenrc проматывать содержимое экрана в screen станет гораздо удобнее!
+        function epelIN_ch_screen()
+        {
+          ( echo -e \n" Проверяем файл /root/.screenrc на существование, а так же на присутствие\n в нем записи необходимой для работы колеса мышки в окне терминала.\n После добавления этой записи в .screenrc проматывать содержимое экрана\n в screen станет удобнее! \n" ) ;
+          
+          if 
+            [[ $(grep 'termcapinfo \* ti@:te@' /root/.screenrc| head -n 1) == 'termcapinfo * ti@:te@' ]] 2> /dev/null
+           then 
+            echo -e "${GREEN} Файл .screenrc уже настроен ${NC}..."
+           else 
+            touch /root/.screenrc && echo -e 'termcapinfo * ti@:te@' >> /root/.screenrc && echo -e ${NC} " Добавляем запись для ${RED}screen ${NC}..."
+          fi 
+          
+          
+        }
+        epelIN_epel_repo ;
+        epelIN_epel_repo_pack ;
+        epelIN_ch_screen ;
+     }
+    
+  
+  
+    # Проверка на наличие Rar / Unrar или установка
+    # ФУНКЦИЯ: выводит UnrarOK так как файл /usr/bin/unrar найден 
+    function UnrarOK() 
+    { 
+        echo -e " ($( green_tick )) - forensics-Unrar ${RED}|${NC} ($( green_tick )) " ; 
+    }
+
+
+    # ФУНКЦИЯ: файл /usr/bin/unrar НЕ найден установка forensics REPO и unrar
+    function UnrarIN() 
+    { 
+        ( echo -e " Установка forensics REPO, Unrar. \n" ;
+        mkdir -p /tmp/installer/rar && cd /tmp/installer/rar && wget https://forensics.cert.org/cert-forensics-tools-release-el8.rpm && rpm -Uvh cert-forensics-tools-release*rpm && yum-config-manager --enable forensics ) &>/dev/null ;
+        ( ( dnf install unrar -y ) &>/dev/null || ( ( echo -en " функция установки UnrarIN: " )  && ( error_MSG ; ) ) ) ;
+        ( cd /tmp/ && rm -rf /tmp/installer/rar ) &>/dev/null ;
+        
+        ( echo -en " " &&  (( unrar -v | grep UNRAR | awk ' { print $1, $2, $3 }' ) 2>/dev/null ) && ( echo -e "\n $( green_tick )${GREEN} Forensics REPO, Unrar установлены.${NC}\n") && ( echo -e " ($( green_tick )) - forensics-Unrar${RED} | $( green_OK ) ypr -rl " )) || ( ( echo -en " функция установки UnrarIN: " )  && ( error_MSG ; ) ) ;
+    }
+    
+
+
+   
+   # ФУНКЦИЯ: Выводит fzfOK и version так как fzf найден
+   function fzfOK2() 
+   { 
+      $( source /root/.bashrc ) ;
+      
+     ( echo -e "\n $( green_tick )${GREEN} fzf установлен.${NC}\n" ) ;
+     ( echo -e " ($( green_tick )) - fzf version    ${RED} |${NC} $(fzf --version) " ) || ( ( echo -en " функция установки fzf: " )  && ( error_MSG ; ) ) ;
+   }
+  
+  
+    # ФУНКЦИЯ: Выводит fzfOK и version так как fzf найден
+    function fzfOK() 
+    { 
+       $( source /root/.bashrc ) ;
+       
+      
+      ( echo -e " ($( green_tick )) - fzf version    ${RED} |${NC} $(fzf --version) " ) || ( ( echo -en " функция установки fzf: " )  && ( error_MSG ; ) ) ;
+    }
+    
+    
+    
+    # ФУНКЦИЯ: Установка fzf
+    function fzfIN() 
+    { 
+            echo -e "\n Установка fzf." 
+            
+            ( ( git clone --depth 1 https://github.com/junegunn/fzf.git /root/.fzf && /root/.fzf/install --all ) 2>/dev/null ) && ( echo -e "\n ${GREEN}Установка fzf завершена${NC}" && echo -e " ($( green_tick )) - fzf version ${RED}    |${NC} $($HOME/.fzf/bin/fzf --version)" && ( echo -e "\n Для обновления настроек введите:\n ${RED}#${NC} source ${CYAN}/root/.bashrc\n${NC}" ) ; ) || ( echo -en " Функция fzfIN завешилась с ошибкой: " && error_MSG ; ) ;
+            
+    }   
+    
+    # RipGrep (ripgrep repo + rg)
+    # ФУНКЦИЯ: Выводит ripgrepOK, так как команда rg -V была выполнена успешно
+    function ripgrepOK() 
+    {
+       echo -e " ($( green_tick )) - rg  epel-7  ${RED}    |${NC} $( rg -V 2>/dev/null | head -n 1 )" ;
+    }
+
+
+    # ФУНКЦИЯ: Установка carlwgeorge-ripgrep-epel-7.repo и ripgrep, так как выполнение команды rg -V завершилось неудачей!
+    function ripgrepIN()  
+    {
+       echo -e " Установка carlwgeorge repo & ripgrep. ${NC} " 
+        
+       (( yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo -y ) &>/dev/null )
+        
+       ((( yum install ripgrep -y ) &>/dev/null ) && ( echo -e "\n ($( green_tick )) ${GREEN}Установка carlwgeorge repo & ripgrep завершена${NC}" ) && ( echo -e " ($( green_tick )) - rg  epel-7  ${RED}    |${NC} $(rg -V | head -n 1)" ; )) || ( echo -en " Функция ripgrepIN завешилась с ошибкой: " && error_MSG ; ) ;
+        
+    }
+
+
+    # Nano (syntax):
+    # ФУНКЦИЯ: Выводит NanoSyntaxOK, так как cat нашел и открыл /root/.nanorc
+    function NanoSyntaxOK() 
+    {
+        echo -e " ($( green_tick )) - Nano syntax ${RED}    | $( green_OK )" ;
+    }
+
+
+    # ФУНКЦИЯ: Установка из дропбокса архива nano-syntax, так как cat получает пустое значение, потому что /root/.nanorc нет или он пуст
+    function NanoSyntaxIN() 
+    {
+            echo -e "\n Скачиваю / распаковываю и копирую содержимое архива nano-syntax.tar.gz в /usr/share/ \n Копирую /tmp/installer/nano-syntax/.nanorc в /root/${NC} \n" 
+            
+            ( ( ( mkdir -p /tmp/installer && cd /tmp/installer && wget https://www.dropbox.com/s/f6hceijljbprvny/nano-syntax.tar.gz &>/dev/null && tar -xzvf nano-syntax.tar.gz &>/dev/null && rm -f nano-syntax.tar.gz && cd /tmp/installer/nano-syntax/ && rm -rf /usr/share/nano/ && cp -r --force /tmp/installer/nano-syntax/nano/ /usr/share/ && cp -n /tmp/installer/nano-syntax/.nanorc /root/ ) && (echo -e "\n ${ELLOW}Настройка nano-syntax завершена${NC} " && echo -e " ($( green_tick )) - Nano syntax ${RED}    | $( green_OK )"  ; ) ) &>/dev/null ) || ( echo -en " Функция NanoSyntaxIN завешилась с ошибкой: " && error_MSG ; ) ;
+            
+    }
+
+    
+    # ФУНКЦИЯ: Выводит batmanOK, так как файл найден /usr/bin/batman
+    function batmanOK() 
+    { 
+        echo -e " ($( green_tick )) - extr/batman ${RED}    | $( green_OK ) " ; 
+    }
+
+    function bat_update() {
+       (echo -e "${green} Bat Update Now! $( /usr/bin/bat --version)" ) ; ( rm -rf /tmp/installer/* 2>/dev/null && rm /usr/bin/bat 2>/dev/null && mkdir -p /tmp/installer && cd /tmp/installer && wget -q https://www.dropbox.com/s/3hf7tjoth9chsej/bat && cp -a bat /usr/bin/ ) && ( chmod +x /usr/bin/bat && echo -e "${green} Bat Update Done $(/usr/bin/bat --version )${NC}"  ) || echo -e ${red}" Bat Update Error${NC}" ; 
+    }
+  
+  
+    # ФУНКЦИЯ: Установка carlwgeorge-ripgrep-epel-7.repo, bat-extr, ripgrep, так как файл /usr/bin/batman не найден 
+    function batmanIN() 
+    { 
+        echo -e "\n Скачиваю / устанавливаю /epel-7/carlwgeorge-ripgrep-epel-7.repo\n rg и bat/batman / man's /bat-extr.tar.gz + \"yum install ripgrep\" ${NC}" ; 
+        
+        (( mkdir -p /tmp/installer && cd /tmp/installer && wget https://www.dropbox.com/s/on1qpe7a885dvs0/bat-extr.tar.gz 2>/dev/null && tar -xzvf bat-extr.tar.gz 2>/dev/null && mv -f /tmp/installer/bat-extr/share/man/man1/* /usr/share/man/man1/ && rm -rf /tmp/installer/bat-extr/share && mv -f /tmp/installer/bat-extr/* /usr/bin/ && rm -rf /tmp/installer/bat-extr && rm -rf /tmp/installer/bat-extr.tar.gz && yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo -y 2>/dev/null && sudo yum install ripgrep -y ) 2>/dev/null ) && css && ( echo -e "\n ${GREEN}Установка bat/batman/ripgrep завершена.${NC}" && echo -e " ($( green_tick )) - bat version ${RED}    |${NC} $( bat --version )" && echo -e " ($( green_tick )) - version rg  ${RED}    |${NC} $( rg -V | head -n 1 )" ; ) || ( echo -en " Функция batmanIN завешилась с ошибкой: " && error_MSG ; ) ;
+        
+        
+        
+        
+    }
+
+  
+  
+   
+    # ФУНКЦИЯ: Проверка на наличие epel-release : Подготовка CentOS 8: "screen" "epel-release" "mc" "hstr" "nano" "wget" "tar" "p7zip" "htop", "atop" "yum-utils" "net-tools" "network-scripts" "git" "dialog" "mlocate" настройка ".screenrc" :
+    function Epel-plusCH()
+    {
+        [[ -z $( cat /etc/yum.repos.d/epel.repo ) ]] 2>/dev/null && epelIN || epelOK ;
+    }
+  
+  
+
+  
+    # ФУНКЦИЯ: Проверка на наличие Rar / Unrar или установка
+    function UnrarCH()
+    {
+        [[ -f /usr/bin/unrar ]] 2>/dev/null && UnrarOK || UnrarIN ;
+    }
+  
+   
+    
+    # ФУНКЦИЯ: Проверка или установка fzf (немного другой формат сообщения)
+    function FZFCH2()
+    {
+        [[ -f /root/.fzf/bin/fzf ]] 2>/dev/null && fzfOK2 || fzfIN ;
+    }
+  
+  
+    # ФУНКЦИЯ: Проверка или установка fzf
+    function FZFCH()
+    {
+        [[ -f /root/.fzf/bin/fzf ]] 2>/dev/null && fzfOK || fzfIN ;
+    }
+  
+  
+    # ФУНКЦИЯ: Проверка или установка RipGrep (ripgrep repo + rg)
+    function RipGrepCH()
+    {
+        [[ -z $(rg -V) ]] 2>/dev/null && ripgrepIN || ripgrepOK ;
+    }
+  
+  
+    # ФУНКЦИЯ: Проверка или Установка Nano (syntax)
+    function NanoSyntaxCH()
+    {
+        [[ -z $( cat /root/.nanorc ) ]] 2>/dev/null && NanoSyntaxIN || NanoSyntaxOK ;
+    }
+
+ 
+    # ФУНКЦИЯ: Проверка на существование batman или если его нет то установка bat/batman/ripgrep
+    function BatmanCH()
+    {
+        [[ -f /usr/bin/batman ]] 2>/dev/null && batmanOK || batmanIN ;
+    }
+  
+  
+    # ФУНКЦИЯ: # ffmpeg найден (показать версию ffmpeg)
+    function ffmpegOK() 
+    {   
+       # Если ffmpeg не найден то ошибки в 2>/dev/null и выводим " ffmpeg не найден", а если найден показываем его версию
+       function ffmpegversionOK()
+       {
+           echo -en " "
+           ( ( ffmpeg -version ) | grep "ffmpeg version" )  | bat --paging=never -l nix -p ;
+       }
+       
+       echo -e " Проверка установки ffmpeg:" ;
+       [[ -z $( ls /usr/bin/ffmpeg ) ]] 2>/dev/null && echo -e " ffmpeg $(not_found_MSG)" || ffmpegversionOK ;
+       
+    }
+  
+  
+    # ФУНКЦИЯ: Просмотр лога устанеовки ffmpeg
+    function ffmpegIN.log()
+    {
+        bat --paging=never -l nix -p /tmp/ffmpegIN.log 2>/dev/null || echo -en " ffmpegIN.log: $(not_found_MSG) \n"
+    }
+  
+  
+    # ФУНКЦИЯ: ffmpeg НЕ найден - проверка Rpmfusion repo и установка ffmpeg
+    function ffmpegIN()
+    {
+        echo -e " ffmpeg $(not_found_MSG) " ;
+        echo -e " Проверка/установка pmfusion-free-updates.repo"
+        Rpmfusion-freeCH ;
+        echo -e "\n ${GREEN}Установка ffmpeg${NC}"
+        
+        echo > /tmp/ffmpegIN.log ;
+        yum reinstall -y ffmpeg &>/tmp/ffmpegIN.log || yum install -y ffmpeg &>/tmp/ffmpegIN.log ;
+        
+    }
+  
+  
+    # ФУНКЦИЯ: Проверяем наличие, или делаем установку ffmpeg
+    function ffmpegCH() 
+    {
+        [[ -z $( ls /usr/bin/ffmpeg ) ]] 2>/dev/null && ffmpegIN || ffmpegOK ;
+    }
+    
+  
+    # ФУНКЦИЯ: Если Server_with_GUI не найден то ошибки в 2>/dev/null и выводим " Server_with_GUI не найден", а если найден показываем его версию
+       function Server_with_GUI-versionOK()
+       {
+           ttb=$(( gnome-shell --version) 2>/dev/null | grep "GNOME" ) && green_tick_en && bpn_p_lang || echo -e "$( not_found_MSG )"  ; 
+       }
+       
+    # ФУНКЦИЯ: Server_with_GUI найден (показать версию Server_with_GUI)
+    function Server_with_GUI_OK() 
+    { 
+       echo -en "\n Проверка установки \"Server with GUI\": " ;
+       [[ -z $(gnome-shell --version) ]] 2>/dev/null && echo -e " \"Server with GUI\" $(not_found_MSG)" || Server_with_GUI-versionOK ;
+    }
+  
+  
+    # ФУНКЦИЯ: Server_with_GUI НЕ найден - проверка epel-release repo и установка Server_with_GUI
+    function Server_with_GUI_IN()
+    {
+        #echo -e "\n \"Server_with_GUI\" $(not_found_MSG) " ;
+        #echo -e " Проверка/установка epel-release repo"
+        echo ;
+        epel_repo_Check_or_install ;
+        echo -e "\n ${GREEN}Установка/обновление: \"Server_with_GUI\", \"Fonts\"${NC}"
+        echo -e "\n \"Server with GUI\" \"Fonts\" устанавливается: $( ellow_tick )\n" && ( dnf groupinstall "Server with GUI" "Fonts" -y ) || ( echo -e "dnf groupinstall \"Server with GUI\" \"Fonts\" -y: $( red_crash )" ; ) ;
+        Server_with_GUI_OK ;
+    }
+  
+  
+    
+    function  Server_with_GUI_CH()
+    {
+     [[ -z $(gnome-shell --version) ]] 2>/dev/null && Server_with_GUI_IN || Server_with_GUI_OK ;
+    }
+    
+    
+   # ФУНКЦИЯ: Если tigervnc не найден то ошибки в 2>/dev/null и выводим " tigervnc не найден", а если найден показываем его версию
+   # ФУНКЦИЯ: Проверяем наличие, или делаем установку tigervnc-server
+   # https://tigervnc.org/doc/Xvnc.html
+   # https://tigervnc.org/
+   function tigervnc-versionOK()
+    {
+      
+      function vnc_list_info()
+      {
+         
+         
+         function vnc_print_ver()
+         {
+            function vnc_ver()
+            {
+              (( vncserver -version > /tmp/vncserver-version ) &>/dev/null ) ;
+            }
+            
+            function cat_vnc() {
+                 
+                 function echo_msg() {
+                     echo -e " Пароль VNC Не Установлен! Запустите: # vncserver Xvnc TigerVNC " > /tmp/vncserver-version
+                 }
+                 
+                function msg_passw() {
+  ttb=$(echo -e "
+ ⎧ Запустите: 
+ | # vncserver
+ ⎩ и установите пароль доступа к VNC!") && bpn_p_lang ;
+                
+                }
+                
+                (ttb=$(( ( cat /tmp/vncserver-version ) 2>/dev/null | grep "Xvnc TigerVNC"  ) | head -n 1 | awk '{print $1, $2, $3, $4, $5, $6, $7 }' ; ) && bpn_p_lang ;) 
+                
+                (if [[ $(cat /tmp/vncserver-version) == "Password:" ]] ; then msg_passw && echo_msg ; fi ;) &>/dev/null ;
+                if [[ $(cat /tmp/vncserver-version) == " Пароль VNC Не Установлен! Запустите: # vncserver Xvnc TigerVNC " ]] ; then msg_passw && rm /tmp/vncserver-version ; fi ;
+                
+            }
+            
+            [[ -z $( ls /tmp/vncserver-version ) ]] 2>/dev/null && vnc_ver && green_tick_en && cat_vnc || green_tick_en && cat_vnc ;
+          }
+          
+         vnc_msg() 
+         {
+            echo -e "\n $(black_U23A7)" ;
+            ((( vncserver -list ; ) | grep "(TigerVNC|sessions:|X DISPLAY|:)" ) 2>/dev/null ) ;
+            ( echo -e " $(ellow_1) vnc://$( mi ):5901/" ) ;
+            ( echo -e " $(ellow_1) vnc://$( ifconfig_real_ip ):5901/" ) ;
+            ( echo -e " $(ellow_1) Log file is /root/.vnc/$( hostname ):1.log" ) ; echo -e " $(black_U23A9)\n" ; echo -e " $(black_U23A7)" ; wport vnc; echo ; echo -e " $(black_U23A9)" ;
+         }
+         
+         
+         
+          vnc_print_ver ;
+          vnc_msg ;
+         
+      }   
+      
+        echo -en ""
+        (( [[ -z $( vncserver -list ) ]] 2>/dev/null ) && ( echo -e "$(not_found_MSG)" ; )) || vnc_list_info ;
+        
+    }
+    
+    # ФУНКЦИЯ: tigervnc найден (показать версию tigervnc)
+    function tigervncOK() 
+    {   
+       echo -e "\n${WHITE} Проверка установки tigervnc${NC}: " ;
+       
+       [[ -z $( ls /usr/bin/vncserver ) ]] 2>/dev/null && echo -e "\n tigervnc $(not_found_MSG)" || ( echo -en " " ; ( echo -en " " ; tigervnc-versionOK ;  ) ;)
+       
+    }
+
+ 
+    # ФУНКЦИЯ: tigervnc НЕ найден - проверка epel-release repo и установка tigervnc
+    function tigervncIN()
+    {
+        [[ -z $( vncserver -list ) ]] &>/dev/null && echo -e "\n tigervnc $(not_found_MSG)" || tigervncOK ;
+        echo -e " Проверка/установка epel-release repo" ;
+        epel_repo_Check_or_install ;
+        echo ;
+        echo -e "\n ${GREEN}Проверка установки: \"Server_with_GUI\", \"Fonts\"${NC}" ;
+        Server_with_GUI_CH ;
+        
+        # echo -e "\n ${GREEN}Установка tigervnc-server${NC}" ;
+        
+        # In order to install GNOME Tweak Tool in RHEL 8, first we need to enable 
+        # rhel-8-for-x86_64-appstream-rpms repo 
+        # subscription-manager repos --enable=rhel-8-for-x86_64-appstream-rpms
+        
+        ( (((( dnf install tigervnc-server tigervnc-server-module -y ) > /tmp/dnf-update.log ) ) 2>/dev/null 2>&1 & ) && ( echo -e "\n tigervnc-server устанавливается: $( ellow_tick )" ) || ( echo -e " 01: dnf install tigervnc-server tigervnc-server-module -y: $( red_crash )" ; ) ; ) && ( ( dnf install gnome-tweak-tool thunar gnome-tweaks -y && dnf install chrome-gnome-shell -y ; ) &>/dev/null & ) || ( echo -e " 02: dnf install tigervnc-server -y: $( red_crash )" ; )
+        
+        
+        echo -e "\n Добавляем сервис для tigervnc-server 10000/tcp и\n перезапускаем FirewallD " ; 
+        ( firewall-cmd --permanent --zone=public --add-service vnc-server &>/dev/null ) 2>/dev/null  ;
+        echo -en " FirewallD перезапускается... ${GREEN}" ; echo -en " $( firewall-cmd --reload ) " ; green_tick ;
+        
+        echo -e " ${ELLOW}\n FirewallD инфо: ${NC}(Открытые ports и services)${NC}\n" ;
+        ( firewall-cmd --list-all | rg "(services|ports)" | rg -v "(forward|source)"  2>/dev/null | bat --paging=never -l nix -p 2>/dev/null ; ) || ( firewall-cmd --list-all | grep -E "(services:|ports:)" | grep -v "(forward|source)" ;)
+        
+        echo -e "\n Запустите:\n $( red_U0023 ) /usr/bin/vncserver "
+        echo -e "\n ${NC}Установите пароль для tigervnc-server\n Придумайте пароль для доступа к рабочему\n столу Linux, через VNC,\n\n Введите пароль дважды и надежно сохраните\n Вы сможете сменить его в любое время позднее\n Просто сотрите старый /root/.vnс/passwd\n и запустите /usr/bin/vncserver\n Вам будет предложено создать новый пароль. \n Пожалуйста прочтите /usr/share/doc/tigervnc/HOWTO.md\n чтобы получить больше информации.\n ${NC}" ;
+        
+        ( vncserver -list ) 2>/dev/null || vncserver 2>/dev/null ;
+        echo ;
+        
+        echo -e " Выделите этот адрес в консоли и выберите\n из контекстного меню: \"Открыть URL\" "
+        echo -e "\n vnc://$( mi ; ):5901/"
+        
+        
+    }
+
+
+    # ФУНКЦИЯ: Проверяем наличие, или делаем установку ffmpeg tigervnc-server
+    function tigervnc-serverCH()
+    {
+        [[ -z $( vncserver -list ) ]] 2>/dev/null && tigervncIN || tigervncOK ;
+       
+    }
+    
+
+
+    # ФУНКЦИЯ: Проверка и установка пакетов, в случае отсутствия. Запускается с ключем -a | --all
+    function check-install-all() 
+    {
+        echo ;
+        # Проверка на наличие epel-release : Подготовка CentOS 8: "screen" "epel-release" "mc" "hstr" "nano" "wget" "tar" "p7zip" "htop", "atop" "yum-utils" "net-tools" "network-scripts" "git" "dialog" "mlocate" настройка ".screenrc" :
+        
+        #epelIN ;
+        Epel-plusCH ;
+        
+       
+        # Проверка на наличие Rar / Unrar или установка
+        UnrarCH ;
+       
+        # Проверка или установка fzf
+        FZFCH ;
+       
+        # Проверка или установка RipGrep (ripgrep repo + rg)
+        RipGrepCH ;
+       
+        # Проверить или установить pmfusion-free-updates.repo
+        Rpmfusion-freeCH ;
+       
+        # Проверка или Установка Nano (syntax)
+        NanoSyntaxCH ;
+       
+        # Проверка на существование batman или если его нет то установка bat/batman/ripgrep
+        BatmanCH ;
+        
+        # Вывод дополнительной информации:
+        echo ;
+        ffmpegOK ;
+        #cockpit_Activate ;
+        
+        webminOK ;
+        echo ;
+        Server_with_GUI_OK ;
+        echo ;
+        tigervncOK ;
+        echo ;
+    }
+    
+
+  
+  function locale()
+  {
+    echo -e "
+    LANGUAGE=en_US.utf8
+    LC_ALL=en_US.utf8
+    LANG=en_US.utf8
+    LC_TYPE=en_US.utf8
+     " > /etc/environment ;
+     echo -e "\n Исправлено ($( green_tick ))\n Перезапустите ssh сессию!\n"  ;
+     ( bat /etc/environment --paging=never -l nix -p ; ) 2>/dev/null || ( cat /etc/environment ; ) ;
+  }
+
+  function convert_to_sream()
+  {
+    # На странице https://www.centos.org/download/ описан вариант конвертации в Stream. 
+    # Converting from CentOS Linux 8 to CentOS Stream 8 
+    dnf --disablerepo '*' --enablerepo extras swap centos-linux-repos centos-stream-repos -y ;
+    echo ;
+    dnf distro-sync -y || dnf distro-sync -y --nobest
+  }
+  
+  
+  function vdsetup_help_a() 
+  {
+    
+    echo -e " $(black_U23A7   )" ;
+    echo -e " $(ellow_1       )  -----------------------------------------------------------------------------" ;
+    echo -e " $(blue_1        )                     ☆ Минимальная установка (Рекомендуется)" ;
+    echo -e " $(ellow_1       )  -----------------------------------------------------------------------------" ;
+    echo -e " $(white_1       )  vdsetup -a  Настройка нового VDS сервера, установка репозиториев:" ;
+    echo -e " $(blue_1        )              (epel-release, elrepo-release, forensics-Unrar, rpmfusion-free, " ;
+    echo -e " $(blue_1        )              forensics-Unrar и др.) Пакетов (fzf, ripgrep, bat," ;
+    echo -e " $(white_1       )              extr/batman ) для комфортной работы администратора." ;
+    echo -e " $(blue_1        )              Настройка Nano syntax, /root/.bashrc, /root/.bash_profile, " ;
+    echo -e " $(white_1       )              /root/.bash_aliases, и т.д." ;
+    echo -e " $(cyan_1        )" ;
+    echo -e " $(ellow_1       )              $(green_arrow) Установка минимальных компонентов скрипта: " ;
+    echo -e " $(white_1       )              $(red_U0023) vdsetup -a " ;
+    echo -e " $(ellow_1       )              $(green_arrow) Помощь по командам Vdsetup: " ;
+    echo -e " $(white_1       )              $(red_U0023) vdsetup -h " ;
+    echo -e " $(black_U23A9   )\n" ; 
+    #$0 -h ;
+  }
+
+  function vdsetup_help_CH
+  {
+      [[ -z $( cat /etc/yum.repos.d/epel.repo ) ]] 2>/dev/null && vdsetup_help_a ;
+  }
+  
+  
+  
+  
+  case $1 in
+
+      
+    h | -h | --help )
+        /root/bin/utility/vdsetup_help.sh ;
+       
+        ;;
+    "" )
+        vdsetup_help_CH || /root/bin/utility/vdsetup_help.sh ;
+       
+        ;;
+        
+        
+    dfr | -dfr | --dnf-fix-rev )   
+       # dnf_fix_revert ;
+       
+        ;;
+        
+    ver | -ver | --version )   
+    # Информация о версии скрипта VDSetup
+        ver ;
+       
+       ;;
+       
+    ds | -ds | --DebugStatus )  
+    # Cтатус "Debug"
+        ds ;
+       
+       ;;
+       
+      
+    dfc |  -dfc | --dnf-ch | --dnf-chk )
+        dnf_check ;
+        sleep 1 ;
+        $0 -h ;  
+        
+        ;;
+       
+    df |  -df | --dnf-fix )
+        dnf-fix 
+        (( tail -f --pid=$( echo -e "$( ps aux | grep "dnf" | grep -v grep | awk ' { print $2 } ' )" ) /tmp/dnf-fix.log | bat --paging=never -l nix -p ) 2>/dev/null ) || (( tail -f --pid=$( echo -e "$( ps aux | grep "dnf" | grep -v grep | awk ' { print $2 } ' )" ) /tmp/dnf-fix.log ) 2>/dev/null )
+        
+        #dnf-update.log.view ;
+        
+        ;;    
+        
+        
+    u | -u | up | -up | --update )
+    
+  ttb=$(echo -en "
+ ⎧ Обновление пакетов:
+ ⎩ # dnf update & upgrade
+ ") && lang=cr && bpn_p_lang ; ttb=""  ;
+        
+        echo -en "${RED}" ;
+        dnf clean all ; 
+        echo -en "${nc}" ;
+        dnf-update-y ; 
+        dnf-update.log.view ;
+        dnf-upgrade-y 
+        
+        ;;
+        
+        
+    cp | -cp | --cockpit )
+        cockpit_Activate ;
+        
+        ;;
+        
+        
+    loc | -loc | --locale )
+        locale ;
+        
+        ;;
+        
+        
+    a | -a | --all )
+        echo -e " CHECK & INSTALL ALL \n"
+        #dnf_check ;
+        css ;
+        check-install-all ;
+        epelIN_epel_repo_pack ;
+        
+        BatmanCH ;
+        
+        ;;
+        
+    a_r )
+        epelIN_epel_repo_pack ;
+        ;;
+        
+    bat_update | -bat_update | --bat_update )
+    bat_update ;
+        
+        ;;
+        
+    batmanIN )
+        echo -e " batmanIN \n"
+        batmanIN ;
+       
+        ;;
+        
+        
+    sw | -sw | --swap )
+        css ;
+        vnc-swap-CH 2>/dev/null ;
+        ( swap_edit ; ) || error_MSG ; 
+        
+        ;;
+        
+        
+    ali | -ali | --alias )
+        echo -e "type ali" 
+        ali ;
+       
+        ;;
+        
+        
+    wm | -wm | --webmin )
+        webminCH ;
+        
+        ;;
+        
+        
+    wm.l | -wm.l | --webmin_install.log )
+        webmin_install.log ;
+       
+        ;; 
+        
+        
+    ff | ffmpeg | -ff | --ffmpeg )
+        echo -e "\n Проверяем наличие, или делаем установку ffmpegg.\n" ;
+        ffmpegCH && echo -e " $( green_tick ) ${GREEN}ffmpegg установлен!${NC}\n\n Для просмоотра лога установки:\n $( red_U0023 ) "${0}" -ff.l\n $( red_U0023 ) "${0}" --ffmpegIN.log " || echo "error ${RED}ffmpeg-serversetup1${NC}" ;
+        
+        echo -e "\n Для получения справки:\n $( red_U0023 ) ffmpeg -h ${NC}\n $( red_U0023 ) man ffmpeg${NC}\n $( red_U0023 ) tldr ffmpeg${NC}"
+       
+        ;;
+        
+        
+    ng | -ng | -nginx | --nginx )
+        /root/bin/nginx_install/nginx-install ;
+        
+        ;;
+        
+        
+    ff.l | -ff.l | --ffmpegIN.log )
+        ffmpegIN.log ;
+        
+        ;;
+        
+        
+    rpm | -rpm | --rpm-qa-last )
+        echo -e "\n   Выход: q\n";
+        sleep 1 ;
+        css ; echo ;
+        ( rpm -qa --last &>/tmp/rpm-qa-last && bat -p -l nix /tmp/rpm-qa-last ) 2>/dev/null || ( cat /tmp/rpm-qa-last ) ;
+        echo -e "\n   Список сохранен в файл: " ;
+        echo -e "   $( red_U0023 ) cat /tmp/rpm-qa-last\n " ;
+        
+        ;;
+        
+        
+    l | -l | --list  )
+      list_app_statusCH ;
+      
+        ;;
+        
+        
+    vnc | -vnc | --vncser )
+        tigervnc-serverCH ;
+        vnc-swap-CH ;
+       
+        ;;
+        
+    vnc-remove | -vnc-remove )
+        dnf remove tigervnc-server -y ;
+        
+      ;;
+       
+        
+    ext | -ext | --extension )
+       
+       
+        [[ ( $(hostname) == 'survival.mc') ]] && ( echo -en "\n ${RED} Ахтунг! ${NC}\n\n  Оло, тормози это ${RED}$(hostname)${NC}\n\n  ") && ( error_exit_MSG ) || icons_themes_extentions ;
+       
+        ;;
+        
+        
+    reinstall_ext | -reinstall_ext | --reinstall_ext )
+        /root/bin/utility/gnome-shell-extentions.sh reinstall_ext ;
+        
+        ;;
+        
+        
+    reinstall_ico | -reinstall_ico | --reinstall_ico )
+        /root/bin/utility/gnome-shell-extentions.sh reinstall_ico ;
+        
+        ;;
+        
+        
+    reinstall_themes | -reinstall_themes | --reinstall_themes )
+        /root/bin/utility/gnome-shell-extentions.sh reinstall_themes ;
+       
+        ;;    
+       
+       
+    ee | -ee | --enable-ext | enable_extension | -enable_extension | --enable_extension )
+        /root/bin/utility/gnome-shell-extentions.sh enable_extension ;
+       
+        ;;    
+        
+    x | -x | --gnome )
+        Server_with_GUI_CH ;
+        dnf-update.log.view ;
+       
+        ;;
+        
+    xup | -xup | --gnome-up )
+        Server_with_GUI_IN
+        
+        ;;
+        
+        
+    ov | -ov | --OpenVPN )
+        /root/bin/utility/vdsetup-openvpn-install ;
+        
+        ;;
+        
+    wg | -wg | --WireGuard )
+    #echo -e 
+    #( /root/bin/utility/vdsetup-wireguard-install | bat --paging=never -l nix -p ) 2>/dev/null || ( /root/bin/utility/vdsetup-wireguard-install ) ; 
+        /root/bin/utility/vdsetup-wireguard-install ;
+       
+        ;;
+        
+    tor | -tor )
+        /root/bin/utility/tor_installer.sh ;
+        
+        ;;
+        
+    reload_cash | -reload_cash| --reload_cash)
+        /root/bin/utility/.cash_var.sh $2 ;
+        
+        ;;
+        
+        
+    wget-proxy-on | --wget-proxy-on )
+        /root/bin/utility/tor_installer.sh wgetrc_config_edit_now ;
+        
+        ;;
+        
+        
+    wget-proxy-off | --wget-proxy-off )
+        wgetrc_config_revert ;
+        
+        ;;
+        
+        
+    gh | -gh | --GitHub )
+        /root/bin/utility/github.sh ;
+        
+        ;;
+        
+    tr | transmission | -tr | --transmission )
+        /root/bin/utility/trans.sh $1 ;
+        
+        
+        ;; 
+        
+    tr_rm | -tr_rm | --transmission-remove )
+    /root/bin/utility/trans.sh --transmission-remove ;
+    
+    
+    ;; 
+        
+        
+    syn | -syn | sync | -sync | --Sync-Menu )
+        
+        /root/bin/utility/reinstall_update_remove_vdsetup.sh ;
+        
+        ;;
+        
+    man | -man | --manuals )
+        /root/bin/manuals_urls ;
+        
+        ;;
+        
+    wp | -wp | wordpress | --wordpress)
+        /root/bin/utility/wordpress-install.sh ;
+        
+        ;;    
+        
+    tor_check_ip | -tor_check_ip | --tor_check_ip )
+        tor_check_ip ;
+        
+        ;;      
+        
+        
+    unrar )
+        UnrarIN ;
+        
+        ;;
+        
+        
+    fzf )
+        FZFCH2 ;
+        
+        ;;
+        
+        
+    st| -st | --Stream )
+       
+        convert_to_sream ;
+       
+        ;;
+        
+        
+    sel | -sel | --selinux )
+        /root/bin/utility/selinux ;
+        
+        ;;
+        
+        
+    hn | -hn | --hostname )
+        /root/bin/utility/vdsetup-hostnamectl.sh ;
+        
+        ;;
+        
+        
+    ssh | -ssh | --ssh_port )
+        /root/bin/utility/ssh_port_ch.sh ;
+        
+        ;;
+        
+    --rpm_readme )
+    ~/bin/utility/help/rpm.readme cr ;
+       
+        ;;    
+    ad | -ad | anydesk | --anydesk )
+        /root/bin/utility/anydesk.sh
+        
+        ;;
+    --sudo_readme )
+    /root/bin/utility/help/sudo_wheel_readme ;
+       
+        ;;
+        
+    debugon | -d1 | d1 )
+    
+    function msg_d_on()
+    {
+      dsm_en ;
+      #echo -e "\n $(black_U23A7) $(green_star) Debug enabled" ;
+      #echo -e " $(black_U23A9) $(green_tick) run: $0 -d0 to disabled Debug.\n" ; 
+      
+    }
+        mkdir -p /root/temp/ ;
+        ( source /root/.bashrc ; echo 1 > /root/temp/.debug.txt ; ) && source /root/.bashrc && css && msg_d_on || echo error_msg_d_on ;
+        
+        ;;
+        
+    debugoff | -d0 | d0 )
+    
+    function msg_d_off()
+    {
+        dsm_dis ;
+      #echo -e "\n $(black_U23A7) $(green_star) Debug disabled" ;
+      #echo -e " $(black_U23A9) $(green_tick) run: $0 -d1 to enabled Debug.\n" ; 
+    }
+        mkdir -p /root/temp/ ;
+        ( source /root/.bashrc ; echo 0 > /root/temp/.debug.txt ; ) && source /root/.bashrc && css && msg_d_off || echo error_msg_d_off ;
+        
+        ;;
+        
+        
+        
+    *)
+       
+        /root/bin/utility/vdsetup_help.sh ; echo ;
+        ( ttb=$(echo -e " $1 - Нет такого ключа..." ) ) && lang="nix" && bpal_p_lang ;
+        ;;
+        
+  esac
+
+tor_port_ch ;
+
+exit 0
+

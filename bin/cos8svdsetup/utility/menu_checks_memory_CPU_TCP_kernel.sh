@@ -4,10 +4,6 @@
 # --> Прочитать настройки из /etc/bashrc
 . ~/.bashrc
 
-# --> Прочитать настройки из:
-. ~/.COS8SVDSetup/bin/cos8svdsetup/styles/.load_styles.sh
-. ~/.COS8SVDSetup/bin/cos8svdsetup/functions/.load_function.sh
-
 echo ;
 
 
