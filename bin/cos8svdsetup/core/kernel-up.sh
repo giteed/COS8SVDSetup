@@ -29,7 +29,7 @@
 	sudo grub2-mkconfig -o /boot/grub2/grub.cfg ;
 
 # Перезагрузим сервер:
-	# sudo reboot
+	sudo reboot
 
 # После перезагрузки, можно убедиться, что новое ядро было успешно установлено, выполнив команду:
 uname -r ;
