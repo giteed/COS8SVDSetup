@@ -5,8 +5,8 @@
 . /root/.bashrc
 
 # --> Прочитать настройки из:
-. ~/cos8svdsetup/bin/styles/.load_styles.sh
-. ~/cos8svdsetup/bin/functions/.load_function.sh
+. ~/.COS8SVDSetup/bin/cos8svdsetup/styles/.load_styles.sh
+. ~/.COS8SVDSetup/bin/cos8svdsetup/functions/.load_function.sh
  
 
 function gh_install()
@@ -19,7 +19,7 @@ ttb=$(echo -e "
  " ) && lang_nix && bpn_p_lang ; ttb=""  ;
 
  sleep 1 ;
-	/root/cos8svdsetup/bin/utility/github.sh 2>/dev/null ;
+	/root/.COS8SVDSetup/bin/cos8svdsetup/utility/github.sh 2>/dev/null ;
 }
 
 ( (gh) &>/dev/null || gh_install )

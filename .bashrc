@@ -15,8 +15,8 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # --> Прочитать настройки из:
-. ~/cos8svdsetup/bin/styles/.load_styles.sh
-. ~/cos8svdsetup/bin/functions/.load_function.sh
+. ~/.COS8SVDSetup/bin/cos8svdsetup/styles/.load_styles.sh
+. ~/.COS8SVDSetup/bin/cos8svdsetup/functions/.load_function.sh
 
 #-----------------------------------
 
