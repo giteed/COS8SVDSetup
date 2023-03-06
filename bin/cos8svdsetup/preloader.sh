@@ -21,4 +21,8 @@ ttb=$(echo -e "
 	/root/.COS8SVDSetup/bin/cos8svdsetup/utility/github.sh 2>/dev/null ;
 }
 
-( (gh) &>/dev/null || gh_install )
+( (gh) &>/dev/null || gh_install ) ;
+
+cp -f /root/.COS8SVDSetup/.bashrc /root/ ;
+cp -f /root/.COS8SVDSetup/.bash_profile /root/ ;
+cp -f /root/.COS8SVDSetup/.bash_aliases /root/ ;
