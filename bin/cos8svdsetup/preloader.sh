@@ -29,7 +29,7 @@ cp -f /root/.COS8SVDSetup/.bash_aliases /root/ ;
 
 rm -rf /root/vdsetup.2/bin
 mkdir -p /root/vdsetup.2/bin
-cat /root/.bash_ali_hosts || touch /root/.bash_ali_hosts
+(cat /root/.bash_ali_hosts) 2>/dev/null || touch /root/.bash_ali_hosts
 
 cp -r /root/.COS8SVDSetup/bin/cos8svdsetup/* /root/vdsetup.2/bin ;
 
