@@ -6,14 +6,14 @@ if [ -f ~/.bashrc ]; then
 fi
 
 # --> Прочитать настройки из:
-. ~/.COS8SVDSetup/bin/cos8svdsetup/styles/.load_styles.sh
-. ~/.COS8SVDSetup/bin/cos8svdsetup/functions/.load_function.sh
+. /root/vdsetup.2/bin/styles/.load_styles.sh
+. /root/vdsetup.2/bin/functions/.load_function.sh
 
 # --> Использовать ~/.bash_ali*
 . ~/.bash_aliases
 
-# --> Использовать . ~/.COS8SVDSetup/bin/cos8svdsetup/utility/.root (требует для скрипта права root)
-. ~/.COS8SVDSetup/bin/cos8svdsetup/utility/.root
+# --> Использовать . /root/vdsetup.2/bin/utility/.root (требует для скрипта права root)
+. /root/vdsetup.2/bin/utility/.root
 
 # User specific environment and startup programs
 #hip ; #. ~/bin/lastf ;

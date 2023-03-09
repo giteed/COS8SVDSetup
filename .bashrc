@@ -15,12 +15,12 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # --> Прочитать настройки из:
-. ~/.COS8SVDSetup/bin/cos8svdsetup/styles/.load_styles.sh
-. ~/.COS8SVDSetup/bin/cos8svdsetup/functions/.load_function.sh
+. /root/vdsetup.2/bin/styles/.load_styles.sh
+. /root/vdsetup.2/bin/functions/.load_function.sh
 
 #-----------------------------------
 
-chmod +x -R /root/bin/ ;
+chmod +x -R /root/vdsetup.2/bin ;
 #-----------------------------------
 
 
