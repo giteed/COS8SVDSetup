@@ -64,6 +64,7 @@ function preloader_not_completed() {
 ttb=$(echo -e " 
  ⎧ Preloader 
  ⎩ not completed!\n") && lang_nix && bpn_p_lang ; ttb=""  ;
+}
 
 preloader && preloader_completed || preloader_not_completed
 
@@ -71,7 +72,7 @@ preloader && preloader_completed || preloader_not_completed
 
 
 
-exit 0 ;
+exit 0 
 
 
 
