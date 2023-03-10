@@ -64,13 +64,13 @@ function preloader() {
 
 function preloader_completed() {
 	ttb=$(echo -e " 
- ⎧ Preloader 
+ ⎧ Preloader is
  ⎩ completed!\n") && lang_nix && bpn_p_lang ; ttb=""  ;
 }
 
 function preloader_not_completed() {
 ttb=$(echo -e " 
- ⎧ Preloader 
+ ⎧ Preloader is
  ⎩ not completed!\n") && lang_nix && bpn_p_lang ; ttb=""  ;
 }
 
