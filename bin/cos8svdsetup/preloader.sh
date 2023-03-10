@@ -66,11 +66,7 @@ ttb=$(echo -e "
  ⎩ not completed!\n") && lang_nix && bpn_p_lang ; ttb=""  ;
 }
 
-preloader && preloader_completed || preloader_not_completed
-
-
-
-
+( preloader && preloader_completed ) || preloader_not_completed
 
 exit 0 
 
