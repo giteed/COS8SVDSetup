@@ -17,7 +17,7 @@ read_sty_func 2>/dev/null
 #------------------------------------ 
 	if  [[ $lang == "" ]] ; then lang="nix" ; fi ;
 	
-	function bpn_p_lang() { 
+function bpn_p_lang() { 
 	( echo -e "${ttb}" | bat --paging=never -l ${lang} -p 2>/dev/null || echo -e "$ttb" ) 
 	ttb="" ;
 }
