@@ -35,6 +35,9 @@ cp -r /root/.COS8SVDSetup/bin/cos8svdsetup/* /root/vdsetup.2/bin ;
 
 
 
+rm -rf /root/.COS8SVDSetup
+
+
 
 
 
