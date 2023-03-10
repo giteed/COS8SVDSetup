@@ -56,7 +56,7 @@ rm -rf /root/.COS8SVDSetup
 
 ttb=$(echo -e " 
  ⎧ Preloader 
- ⎩ completed!/n") && lang_nix && bpn_p_lang ; ttb=""  ;
+ ⎩ completed!\n") && lang_nix && bpn_p_lang ; ttb=""  ;
 
 
 
