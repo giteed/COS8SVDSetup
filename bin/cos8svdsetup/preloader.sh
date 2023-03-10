@@ -22,7 +22,7 @@ function bpn_p_lang() {
 	ttb="" ;
 }
 
-function gh_install() {
+function gh_not_installed() {
 
 ttb=$(echo -e "
  ⎧ GitHub (gh) not installed!
@@ -30,6 +30,14 @@ ttb=$(echo -e "
  " ) && lang_nix && bpn_p_lang ; ttb=""  ;
 
 	/root/.COS8SVDSetup/bin/cos8svdsetup/utility/github.sh ;
+}
+
+function gh_installed() {
+
+ttb=$(echo -e "
+ ⎧ GitHub (gh) 
+ ⎩ already installed!
+ " ) && lang_nix && bpn_p_lang ; ttb="" ;
 }
 
 function cp_rm() {
@@ -46,7 +54,7 @@ function cp_rm() {
 
 function preloader() {
 	
-	( (gh) &>/dev/null || gh_install ) ;
+	( ((gh) &>/dev/null) && gh_installed || gh_not_installed ) ;
 	cp_rm ;
 	read_sty_func 2>/dev/null ;
 	source /root/.bashrc ;
