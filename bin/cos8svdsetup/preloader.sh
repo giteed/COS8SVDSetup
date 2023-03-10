@@ -5,9 +5,23 @@
 . /root/.bashrc
 
 # --> Прочитать настройки из:
-. /root/vdsetup.2/bin/styles/.load_styles.sh
-. /root/vdsetup.2/bin/functions/.load_function.sh
- 
+function read_sty_func() {
+	. /root/vdsetup.2/bin/styles/.load_styles.sh 2>/dev/null
+	. /root/vdsetup.2/bin/functions/.load_function.sh 2>/dev/null
+}
+
+read_sty_func 2>/dev/null
+
+   #------------------------------------
+   # bat / bat not installed
+   #------------------------------------ 
+   if  [[ $lang == "" ]] ; then lang="nix" ; fi ;
+   
+   function bpn_p_lang() {
+	  
+	 ( echo -e "${ttb}" | bat --paging=never -l ${lang} -p 2>/dev/null || echo -e "$ttb" ) 
+	  ttb="" ;
+	}
 
 function gh_install()
 {
@@ -18,7 +32,7 @@ ttb=$(echo -e "
  " ) && lang_nix && bpn_p_lang ; ttb=""  ;
 
  sleep 1 ;
-	/root/.COS8SVDSetup/bin/cos8svdsetup/utility/github.sh #2>/dev/null ;
+	/root/.COS8SVDSetup/bin/cos8svdsetup/utility/github.sh 2>/dev/null ;
 }
 
 ( (gh) &>/dev/null || gh_install ) ;
@@ -27,18 +41,22 @@ cp -f /root/.COS8SVDSetup/.bashrc /root/ ;
 cp -f /root/.COS8SVDSetup/.bash_profile /root/ ;
 cp -f /root/.COS8SVDSetup/.bash_aliases /root/ ;
 
-rm -rf /root/vdsetup.2/bin
-mkdir -p /root/vdsetup.2/bin
-(cat /root/.bash_ali_hosts) 2>/dev/null || touch /root/.bash_ali_hosts
+rm -rf /root/vdsetup.2/bin ;
+mkdir -p /root/vdsetup.2/bin ;
+(cat /root/.bash_ali_hosts) 2>/dev/null || touch /root/.bash_ali_hosts ;
 
 cp -r /root/.COS8SVDSetup/bin/cos8svdsetup/* /root/vdsetup.2/bin ;
 
+read_sty_func 2>/dev/null ;
+source /root/.bashrc
 
 
 rm -rf /root/.COS8SVDSetup
 
 
-
+ttb=$(echo -e " 
+ ⎧ Preloader 
+ ⎩ completed!/n") && lang_nix && bpn_p_lang ; ttb=""  ;
 
 
 
