@@ -45,13 +45,13 @@ function cp_rm() {
 }
 
 function preloader() {
-	(
+	
 	( (gh) &>/dev/null || gh_install ) ;
 	cp_rm ;
 	read_sty_func 2>/dev/null ;
 	source /root/.bashrc ;
 	rm -rf /root/.COS8SVDSetup ;
-	)
+	
 }
 
 function preloader_completed() {
