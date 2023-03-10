@@ -25,7 +25,7 @@ function bpn_p_lang() {
 function gh_not_installed() {
 
 ttb=$(echo -e "
- ⎧ GitHub (gh) not installed!
+ ⎧ GitHub (gh) is not installed!
  ⎩ # /root/bin/cos8svdsetup/utility/github.sh 2>/dev/null
  " ) && lang_nix && bpn_p_lang ; ttb=""  ;
 
@@ -35,7 +35,7 @@ ttb=$(echo -e "
 function gh_installed() {
 
 ttb=$(echo -e "
- ⎧ GitHub (gh) 
+ ⎧ GitHub (gh) is
  ⎩ already installed!
  " ) && lang_nix && bpn_p_lang ; ttb="" ;
 }
