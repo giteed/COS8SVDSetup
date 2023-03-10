@@ -12,51 +12,62 @@ function read_sty_func() {
 
 read_sty_func 2>/dev/null
 
-   #------------------------------------
-   # bat / bat not installed
-   #------------------------------------ 
-   if  [[ $lang == "" ]] ; then lang="nix" ; fi ;
-   
-   function bpn_p_lang() {
-	  
-	 ( echo -e "${ttb}" | bat --paging=never -l ${lang} -p 2>/dev/null || echo -e "$ttb" ) 
-	  ttb="" ;
-	}
+#------------------------------------
+# bat installed/not_installed
+#------------------------------------ 
+	if  [[ $lang == "" ]] ; then lang="nix" ; fi ;
+	
+	function bpn_p_lang() { 
+	( echo -e "${ttb}" | bat --paging=never -l ${lang} -p 2>/dev/null || echo -e "$ttb" ) 
+	ttb="" ;
+}
 
-function gh_install()
-{
+function gh_install() {
 
 ttb=$(echo -e "
  ⎧ GitHub (gh) not installed!
  ⎩ # /root/bin/cos8svdsetup/utility/github.sh 2>/dev/null
  " ) && lang_nix && bpn_p_lang ; ttb=""  ;
 
- sleep 1 ;
 	/root/.COS8SVDSetup/bin/cos8svdsetup/utility/github.sh ;
 }
 
-( (gh) &>/dev/null || gh_install ) ;
+function cp_rm() {
+	cp -f /root/.COS8SVDSetup/.bashrc /root/ ;
+	cp -f /root/.COS8SVDSetup/.bash_profile /root/ ;
+	cp -f /root/.COS8SVDSetup/.bash_aliases /root/ ;
+	
+	rm -rf /root/vdsetup.2/bin ;
+	mkdir -p /root/vdsetup.2/bin ;
+	(cat /root/.bash_ali_hosts) 2>/dev/null || touch /root/.bash_ali_hosts ;
+	
+	cp -r /root/.COS8SVDSetup/bin/cos8svdsetup/* /root/vdsetup.2/bin ;
+}
 
-cp -f /root/.COS8SVDSetup/.bashrc /root/ ;
-cp -f /root/.COS8SVDSetup/.bash_profile /root/ ;
-cp -f /root/.COS8SVDSetup/.bash_aliases /root/ ;
+function preloader() {
+	(
+	( (gh) &>/dev/null || gh_install ) ;
+	cp_rm ;
+	read_sty_func 2>/dev/null ;
+	source /root/.bashrc ;
+	rm -rf /root/.COS8SVDSetup ;
+	)
+}
 
-rm -rf /root/vdsetup.2/bin ;
-mkdir -p /root/vdsetup.2/bin ;
-(cat /root/.bash_ali_hosts) 2>/dev/null || touch /root/.bash_ali_hosts ;
-
-cp -r /root/.COS8SVDSetup/bin/cos8svdsetup/* /root/vdsetup.2/bin ;
-
-read_sty_func 2>/dev/null ;
-source /root/.bashrc
-
-
-rm -rf /root/.COS8SVDSetup
-
-
-ttb=$(echo -e " 
+function preloader_completed() {
+	ttb=$(echo -e " 
  ⎧ Preloader 
  ⎩ completed!\n") && lang_nix && bpn_p_lang ; ttb=""  ;
+}
+
+function preloader_not_completed() {
+ttb=$(echo -e " 
+ ⎧ Preloader 
+ ⎩ not completed!\n") && lang_nix && bpn_p_lang ; ttb=""  ;
+
+preloader && preloader_completed || preloader_not_completed
+
+
 
 
 

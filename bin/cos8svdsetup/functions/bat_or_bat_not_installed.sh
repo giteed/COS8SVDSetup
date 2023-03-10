@@ -2,21 +2,18 @@
 #!/bin/bash
 
 
-   #------------------------------------
-   # bat / bat not installed
-   #------------------------------------ 
    if  [[ $lang == "" ]] ; then lang="nix" ; fi ;
+
+   #------------------------------------
+   # bat installed/not_installed
+   #------------------------------------  
    
    function bpn_p_lang() {
 	  
 	 ( echo -e "${ttb}" | bat --paging=never -l ${lang} -p 2>/dev/null || echo -e "$ttb" ) 
 	  ttb="" ;
 	}
-	
-   
-   
-   if  [[ $lang == "" ]] ; then lang="nix" ; fi ;
-   
+
    function bpal_p_lang() {
 	 
 	 ( echo -e "${ttb}" | bat --paging=always -l ${lang} -p 2>/dev/null || echo -e "$ttb" ) 
