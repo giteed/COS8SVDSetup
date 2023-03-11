@@ -25,12 +25,12 @@ function swap_edit() {
 	
 	echo -en " $(white_1    ) $(green_n2). Форматирую файл под swap: " ;
 	(( mkswap /swap) &>/dev/null ; ) && green_tick || error_MSG  ;
-	sleep 1
+	
 	
 	echo -en " $(white_1    ) $(green_n3). Включаю swap без перезагрузки: " ;
 	(( swapon /swap ) &>/dev/null ) && green_tick || error_MSG ;
 	( chmod a+x /etc/rc.local ) ;
-	sleep 1
+	
 	
 	echo -e " $(white_1     ) $(green_n4). Устанавливаю:" ;
 	echo -en " $(white_1    )    chown root:root /swap , chmod 0600 /swap: " ; (( chown root:root /swap ) && ( chmod 0600 /swap )) && green_tick || error_MSG ;
@@ -59,13 +59,13 @@ function swap_edit() {
 	echo -e " $(black_1     )"
 	echo -e " $(ellow_1     )    Информация о swap: \n" ;
 	( swapon | bat --paging=never -l nix -p ; ) 2>/dev/null || swapon ;
-	sleep 1
+	
 	
 	echo -e "\n $(white_1   )  Информация о всей памяти системы:\n " ; ( free -h -t | bat  --paging=never -l meminfo -p ) 2>/dev/null || free -h -t | grep -E '(Mem|Swap|Total)' ;
-	sleep 1
+	
    
 	echo -en "\n $(white_1  )  Версия swapon: " ; ( swapon -V | bat --paging=never -l nix -p ; ) 2>/dev/null || swapon -V ;
-	sleep 1
+	
 	
 	echo -e " $(white_1     ) ${GREEN} Создание раздела виртуальной памяти  " ;
 	echo -en " $(white_1    ) ${RED} swap ${NC}размером: ${RED}${swp}${GREEN} MB: " ; green_tick ; 
@@ -88,7 +88,7 @@ function swap_CH_and_warn_msg() {
   echo -e "\n $(black_U23A7 ) " ;
   echo -e " $(ellow_1      )    Информация о swap: \n" ;
   ( swapon | bat --paging=never -l nix -p ; ) 2>/dev/null || swapon ;
-  sleep 1
+  
   echo -e "\n $(white_1     ) Для нормальной работы графического окружения "
   echo -e " $(white_1     ) рабочего стола Linux, имеет смысл назначить "
   echo -e " $(white_1     ) swap размером не менее 2 Гигабайт. "
@@ -106,7 +106,7 @@ function vnc-swap-CH() {
   }
   
   source /root/.bashrc ;
-  ( ls /usr/bin/vncserver ; lk /usr/bin/vncserver ) #&>/dev/null ; sleep 1 ;
+  ( ls /usr/bin/vncserver ; lk /usr/bin/vncserver ) #&>/dev/null ;  ;
   ( [[ -z $( vncserver -list ) ]] 2>/dev/null ) && vnc_not_found || swap_CH_and_warn_msg
   
 }
