@@ -17,7 +17,7 @@ function swap_edit() {
   
   press_enter_to_continue_or_any_key_to_cancel ;
   # press_enter_to_continue_or_any_key_to_cancel2  ;
-  
+exit 0  
   if swapoff -a ; 
 	then 
 	echo -e " $(black_U23A7 ) " ;
