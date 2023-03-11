@@ -55,14 +55,12 @@ function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
   }
    
  function press_enter() {
-       read -p "Press ENTER to continue $(echo -e $BLACK)(Ctrl+c to quit)" || read -p "Press ENTER to continue (Ctrl+c to quit)" ;
+# -->  Выводим сообщение для пользователя с подсказкой для отмены (Ctrl+C)
+       read -p "Press ENTER to continue $(echo -e $BLACK)(Ctrl+C to quit)" -n 1 -s -r || read -p "Press ENTER to continue (Ctrl+C to quit)" -n 1 -s -r ;
+       
+       # --> В этой команде опция -n 1 для того, чтобы ожидать только одно нажатие клавиши, опция -s указывает, что символы, вводимые пользователем, не будут отображаться на экране, а опция -p позволяет задать сообщение-приглашение для ввода. Например: Вводимый пользователем пароль будет сохранен в переменную password.
     }
 
-function press_enter2() {
-      # Выводим сообщение для пользователя с подсказкой для отмены (Ctrl+c)
-      read -p "Нажмите ENTER, чтобы продолжить (Ctrl+c для выхода)" -n 1 -r  || { echo -e "\nВыход." ; exit 1 ; }
-      echo ""
-    }
  
 #read -n1 -r -p " Нажмите любую кнопку..." 
 function press_enter_or_cancel() {
