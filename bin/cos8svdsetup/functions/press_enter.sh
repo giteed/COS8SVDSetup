@@ -64,7 +64,7 @@ function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
  
 #read -n1 -r -p " Нажмите любую кнопку..." 
 function press_enter_or_cancel() {
-       echo -en "                "$RED"# ${BLACK}PRESS ${NC}\"${ELLOW}ENTER${NC}\" ${green}to Continue ${NC}...\n\n${NC}     ${BLACK}... or ${NC}\"${cyan}any key${NC}\" ${GREEN}+ ${NC}\"${ellow}ENTER${NC}\" ${red}to Cancel.\n ${NC}"
+       echo -en "                "$RED"# ${BLACK}PRESS ${NC}\"${ELLOW}ENTER${NC}\" ${green}to Continue ${NC}...\n${NC}     ${BLACK}... or ${NC}\"${cyan}any key${NC}\" ${GREEN}+ ${NC}\"${ellow}ENTER${NC}\" ${red}to Cancel.\n ${NC}"
        read -p "" -n 1 -s -r key 
        
        if [[ "$key" == "" ]]
