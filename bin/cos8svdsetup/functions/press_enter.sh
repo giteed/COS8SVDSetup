@@ -65,7 +65,7 @@ function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
 #read -n1 -r -p " Нажмите любую кнопку..." 
 function press_enter_or_cancel() {
        echo -en "                "$RED"# ${BLACK}PRESS ${NC}\"${ELLOW}ENTER${NC}\" ${green}to Continue ${NC}...\n\n${NC}     ${BLACK}... or ${NC}\"${cyan}any key${NC}\" ${GREEN}+ ${NC}\"${ellow}ENTER${NC}\" ${red}to Cancel.\n ${NC}"
-       read yesno -n 1 -s -r
+       read -p yesno -n 1 -s -r
        
        if [[ "$yesno" == "" ]]
        then echo ; test ;
