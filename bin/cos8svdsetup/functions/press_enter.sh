@@ -1,22 +1,8 @@
 
 #!/bin/bash
 
-
-function press_enter_to_continue_or_any_key_to_cancel() {
-         echo -en "\n     " ; ttb=$(echo -e "Press 'ENTER' to continue or 'ESC' to cancel...  \n") && lang="nix" && bpn_p_lang ;
-         read -s answ ;
-      if 
-         [[ "$answ" == "" ]] 
-      then 
-         echo ;
-      else 
-         return;
-         
-      fi
-      
-   }
    
-function press_enter_to_continue_or_any_key_to_cancel2() {
+function press_enter_to_continue_or_any_key_to_cancel() {
 #  --> выводим пустую строку, чтобы сделать вывод более читабельным
        echo -en "\n     " 
 #  --> создаем переменную ttb для вывода сообщения пользователю
