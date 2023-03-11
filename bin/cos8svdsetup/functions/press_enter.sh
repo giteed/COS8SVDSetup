@@ -25,7 +25,7 @@ function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
 # --> выводим пустую строку, чтобы сделать вывод более читабельным
         echo -en "\n     " 
 # --> Запрашиваем у пользователя подтверждение нажатия клавиши
-        read -p "Press 'ENTER' to continue or 'ESC' or any other key to cancel..." -n 1 key
+        read -p "Press 'ENTER' to continue or 'ESC' or any other key to cancel..." -n 1 -s key
    
 # --> Проверяем, была ли нажата клавиша "Enter"
        if [[ $key == "" ]]; then
