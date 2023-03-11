@@ -1,7 +1,5 @@
 
 #!/bin/bash
-echo 123
-
 
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
@@ -105,11 +103,14 @@ function vnc-swap-CH() {
 	echo -e " $(black_U23A9 )\n" 
   }
   
-   #source ~/.bashrc ;
+  source /root/.bashrc ;
   ( ls /usr/bin/vncserver ; lk /usr/bin/vncserver ) #&>/dev/null ; sleep 1 ;
   ( [[ -z $( vncserver -list ) ]] 2>/dev/null ) && vnc_not_found || swap_CH_and_warn_msg
   
 }
+
+# --> запускаем функцию редактирования swap 
+swap_edit ;
 
 exit 0 ;
 
