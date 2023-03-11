@@ -11,10 +11,10 @@ function swap_edit() {
   echo -e " $(ellow_1       )    Информация о swap: \n" ;
   ( free -h -t | bat  --paging=never -l meminfo -p ) 2>/dev/null || free -h -t  ;
   echo -e "\n $(black_U23A9 ) \n" ;
-  echo eee
+  
   press_enter_to_continue_or_any_key_to_cancel ;
   # press_enter_to_continue_or_any_key_to_cancel2  ;
-exit 0  
+ 
   if swapoff -a ; 
 	then 
 	echo -e " $(black_U23A7 ) " ;
@@ -105,8 +105,8 @@ function vnc-swap-CH() {
 	echo -e " $(black_U23A9 )\n" 
   }
   
-   source ~/.bashrc ;
-  ( ls /usr/bin/vncserver ; lk /usr/bin/vncserver ) &>/dev/null ; sleep 1 ;
+   #source ~/.bashrc ;
+  ( ls /usr/bin/vncserver ; lk /usr/bin/vncserver ) #&>/dev/null ; sleep 1 ;
   ( [[ -z $( vncserver -list ) ]] 2>/dev/null ) && vnc_not_found || swap_CH_and_warn_msg
   
 }
