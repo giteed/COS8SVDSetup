@@ -61,22 +61,8 @@ function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
        # --> В этой команде опция -n 1 для того, чтобы ожидать только одно нажатие клавиши, опция -s указывает, что символы, вводимые пользователем, не будут отображаться на экране, а опция -p позволяет задать сообщение-приглашение для ввода. Например: Вводимый пользователем пароль будет сохранен в переменную password.
     }
 
- 
-#read -n1 -r -p " Нажмите любую кнопку..." 
-function press_enter_or_cancel() {
-       echo -en "                "$RED"# ${BLACK}PRESS ${NC}\"${ELLOW}ENTER${NC}\" ${green}to Continue ${NC}...\n${NC}     ${BLACK}... or ${NC}\"${cyan}any key${NC}\" ${GREEN}+ ${NC}\"${ellow}ENTER${NC}\" ${red}to Cancel!\n ${NC}"
-       read -p "" -n 1 -s -r key 
-       
-       if [[ "$key" == "" ]]
-       then echo ; test ;
-          echo -e ;
-       else 
-          exit 0 ;
-             
-       fi ;
-    }
 # --> функция: Ожидание нажатия клавиши "Enter" для продолжения работы программы
-function press_enter_or_cancel2() {
+function press_enter_or_cancel() {
         # Отображаем сообщение на экране терминала с инструкцией для пользователя
         echo -en "                ${RED}# ${BLACK}PRESS ${NC}\"${YELLOW}ENTER${NC}\" ${GREEN}to Continue ${NC}...\n${NC}     ${BLACK}... or ${NC}\"${cyan}any key${NC}\" ${GREEN}+ ${NC}\"${YELLOW}ENTER${NC}\" ${RED}to Cancel!\n${NC}"
         
