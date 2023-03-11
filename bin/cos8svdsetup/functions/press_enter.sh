@@ -1,23 +1,47 @@
 
 #!/bin/bash
 
-   
-function press_enter_to_continue_or_any_key_to_cancel() {
-#  --> выводим пустую строку, чтобы сделать вывод более читабельным
+# --> функция Нажмите 'ENTER' или любую другую клавишу, чтобы продолжить , или 'ESC'  для отмены...   
+function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
+# --> выводим пустую строку, чтобы сделать вывод более читабельным
        echo -en "\n     " 
-#  --> создаем переменную ttb для вывода сообщения пользователю
-       ttb=$(echo -e "Press 'ENTER' to continue or 'ESC' to cancel...  \n") && lang="nix" && bpn_p_lang ; 
-#  --> читаем один символ в переменную answ, без отображения ввода       
+# --> создаем переменную ttb для вывода сообщения пользователю
+       ttb=$(echo -e "Press 'ENTER' or any other key to continue, or 'ESC' to cancel...  \n") && lang="nix" && bpn_p_lang ; 
+# --> читаем один символ в переменную answ, без отображения ввода       
        read -s -n 1 answ 
-#  --> проверяем, является ли введенный символ ESC-кодом
+# --> проверяем, является ли введенный символ ESC-кодом
        if [[ "$answ" == $'\x1b' ]] ; then 
-#  --> если да, то завершаем выполнение программы exit 0
+# --> если да, то завершаем выполнение программы exit 0
            exit 0 ;
        else
-#  --> иначе, выводим пустую строку для удобства
+# --> иначе, выводим пустую строку для удобства
            echo 
        fi
    }
+   
+   
+# --> функция Нажмите 'ENTER', чтобы продолжить, или 'ESC' или любую другую клавишу для отмены...
+ function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
+# --> выводим пустую строку, чтобы сделать вывод более читабельным
+        echo -en "\n     " 
+# --> Запрашиваем у пользователя подтверждение нажатия клавиши
+        read -p "Press 'ENTER' to continue or 'ESC' or any other key to cancel..." -n 1 key
+   
+# --> Проверяем, была ли нажата клавиша "Enter"
+       if [[ $key == "" ]]; then
+         echo -e "\nContinue..."
+# --> Здесь можно продолжить выполнение скрипта
+       else
+# --> Проверяем, была ли нажата клавиша "ESC"
+         if [[ $key == $'\e' ]]; then
+           echo -e "\nCancel."
+           exit 0
+         else
+           echo -e "\nCancel."
+           exit 0
+         fi
+       fi
+  }
    
  function press_enter() {
        read -p "Press ENTER to continue $(echo -e $BLACK)(Ctrl+c to quit)" || read -p "Press ENTER to continue (Ctrl+c to quit)" ;
