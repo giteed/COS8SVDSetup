@@ -64,7 +64,7 @@ function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
  
 #read -n1 -r -p " Нажмите любую кнопку..." 
 function press_enter_or_cancel() {
-       echo -en "                "$RED"# ${BLACK}PRESS ${NC}\"${ELLOW}ENTER${NC}\" ${green}to Continue ${NC}...\n${NC}     ${BLACK}... or ${NC}\"${cyan}any key${NC}\" ${GREEN}+ ${NC}\"${ellow}ENTER${NC}\" ${red}to Cancel.\n ${NC}"
+       echo -en "                "$RED"# ${BLACK}PRESS ${NC}\"${ELLOW}ENTER${NC}\" ${green}to Continue ${NC}...\n${NC}     ${BLACK}... or ${NC}\"${cyan}any key${NC}\" ${GREEN}+ ${NC}\"${ellow}ENTER${NC}\" ${red}to Cancel!\n ${NC}"
        read -p "" -n 1 -s -r key 
        
        if [[ "$key" == "" ]]
@@ -75,6 +75,23 @@ function press_enter_or_cancel() {
              
        fi ;
     }
+
+function press_enter_or_cancel2() {
+        # Отображаем сообщение на экране терминала с инструкцией для пользователя
+        echo -en "                ${RED}# ${BLACK}PRESS ${NC}\"${YELLOW}ENTER${NC}\" ${GREEN}to Continue ${NC}...\n${NC}     ${BLACK}... or ${NC}\"${cyan}any key${NC}\" ${GREEN}+ ${NC}\"${YELLOW}ENTER${NC}\" ${RED}to Cancel!\n${NC}"
+        
+        # Ждем, пока пользователь нажмет клавишу
+        read -r -n 1 -s key 
+           
+        # Если пользователь нажал клавишу "Enter", то продолжаем работу программы
+        if [ -z "$key" ]
+        then 
+            echo ; 
+        else 
+            exit 0 ; # Если пользователь нажал любую другую клавишу, то завершаем программу
+        fi ;
+    }
+
     
     function press_anykey2() {
        #( read -n1 -r -p " $(echo -e $ELLOW)PRESS $(echo -e $NC)any key $(echo -e $ELLOW)to continue...$(echo -e "$NC \n")" ) ;
