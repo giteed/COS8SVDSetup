@@ -3,7 +3,9 @@
 
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
-
+  
+  echo 
+  
 function swap_edit() {
   echo -e " $(black_U23A7   ) " ;
   echo -e " $(ellow_1       )    Информация о swap: \n" ;
