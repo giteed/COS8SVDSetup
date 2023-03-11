@@ -1,6 +1,7 @@
-echo 123
 
 #!/bin/bash
+echo 123
+
 
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
