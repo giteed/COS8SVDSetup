@@ -43,7 +43,7 @@ function GitHub_install()
 	echo -e "\n   Проверка установки GitHub: " ;
 	echo -e " $(green_star) Если GitHub не установлен - будет произведена его установка " ;
 	echo -e " $(green_star) Если GitHub установлен - будет произведено обновление\n" ;
-	GitHubCH || echo -en " gh GitHub    : $(found_MSG) \n" && echo ; cat /etc/yum.repos.d/gh-cli.repo 2>/dev/null | grep name 2>/dev/null | bat --paging=never -l nix -p 2>/dev/null ; ww gh ; 
+	GitHubCH || echo -en " gh GitHub    : $(found_MSG) \n" && echo ; cat /etc/yum.repos.d/gh-cli.repo 2>/dev/null | grep name 2>/dev/null | bat --paging=never -l nix -p 2>/dev/null ; ww gh 2>/dev/null ; 
 	
 	function version_GH_bat()
 	{
