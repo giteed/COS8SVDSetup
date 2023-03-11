@@ -20,6 +20,7 @@ function swap_edit() {
 	echo -e " $(ellow_1     ) Укажите в мегабайтах размер "${RED}"SWAP"${NC}" файла, " ;
 	echo -en " $(ellow_1    ) $(green_arrow) который хотите создать${RED}:${NC} " ; read swp ;
 	echo -e " $(black_1     ) Пожалуйста подождите..."
+	echo -e " $(black_1     ) "
 	echo -en " $(white_1    ) $(green_n1). Создаю файл подкачки /swap "${GREEN}""${swp}""${NC}" MB: " ;
 	(( dd if=/dev/zero of=/swap bs=1M count="${swp}" ) &>/dev/null ; ) && green_tick || error_MSG ;
 	
