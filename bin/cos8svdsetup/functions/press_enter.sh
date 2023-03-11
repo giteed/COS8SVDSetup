@@ -29,15 +29,15 @@ function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
    
 # --> Проверяем, была ли нажата клавиша "Enter"
        if [[ $key == "" ]]; then
-         echo -en "\n     Continue...\n"
+          echo -e "\n     Continue...\n"
 # --> Здесь можно продолжить выполнение скрипта
        else
 # --> Проверяем, была ли нажата клавиша "ESC"
          if [[ $key == $'\e' ]]; then
-           echo -e "\n     Cancel!\n"
+           echo -e "\n\n     Cancel!\n"
            exit 0
          else
-           echo -e "\n     Cancel!\n"
+           echo -e "\n\n     Cancel!\n"
            exit 0
          fi
        fi
