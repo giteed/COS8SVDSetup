@@ -11,8 +11,8 @@ function press_enter_to_continue_or_any_key_to_cancel() {
        read -s -n 1 answ 
 #  --> проверяем, является ли введенный символ ESC-кодом
        if [[ "$answ" == $'\x1b' ]] ; then 
-#  --> если да, то завершаем выполнение программы return
-           return ;
+#  --> если да, то завершаем выполнение программы exit 0
+           exit 0 ;
        else
 #  --> иначе, выводим пустую строку для удобства
            echo 
