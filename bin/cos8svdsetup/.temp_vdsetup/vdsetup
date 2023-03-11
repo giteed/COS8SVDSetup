@@ -63,14 +63,14 @@
   {
  
     
-    ttb=$( echo -e "\n Установка дополнительных пакетов: epel-release, elrepo-release, kmod-wireguard, wireguard-tools, iptables, python3, ruby, npm, unzip, hstr, lsof, screen, tar, p7zip, mc, nano, whois, wget, curl, atop, htop, nethogs, bpytop, iftop, stacer, yum-utils, net-tools, network-scripts, git, dialog, mlocate qrencode, ncdu ranger tldr. \n" ) && bpn_p_lang ; echo ; echo ;
+    ttb=$( echo -e "\n Установка дополнительных пакетов: epel-release, elrepo-release, kmod-wireguard, wireguard-tools, iptables, python3, ruby, npm, unzip, hstr, lsof, screen, tar, p7zip, mc, nano, whois, wget, curl, atop, htop, nethogs, bpytop, iftop, stacer, yum-utils, net-tools, network-scripts, git, dialog, mlocate qrencode, ncdu, ranger, tldr, whois. \n" ) && bpn_p_lang ; echo ; echo ;
     
-    dnf install git tar curl wget -y &>/dev/null ;
+    dnf install git tar curl wget whois -y &>/dev/null ;
     dnf install -y epel-release elrepo-release &>/dev/null ;
     dnf install -y net-tools network-scripts &>/dev/null ;
     dnf install -y dialog mlocate ncdu ranger tldr &>/dev/null ;
     
-    ( ( yum install -y kmod-wireguard wireguard-tools iptables qrencode python3 ruby npm unzip hstr lsof screen p7zip mc nano whois atop htop nethogs bpytop iftop stacer yum-utils  -y ) 2>/dev/null ) && ( ( echo -e "\n Установка дополнительных пакетов завершена!" ) && ( echo -e " ($( green_tick )) - packages plus${RED}   | ${NC}посмотреть список пакетов в системе ypr -rl"  ) ) || ( ( echo -en " yum install epelIN_epel_repo_pack: " )  && ( error_MSG ; ) ) ;
+    ( ( yum install -y iptables qrencode python3 ruby npm unzip hstr lsof screen p7zip mc nano whois atop htop nethogs bpytop iftop stacer yum-utils  -y ) 2>/dev/null ) && ( ( echo -e "\n Установка дополнительных пакетов завершена!" ) && ( echo -e " ($( green_tick )) - packages plus${RED}   | ${NC}посмотреть список пакетов в системе ypr -rl"  ) ) || ( ( echo -en " yum install epelIN_epel_repo_pack: " )  && ( error_MSG ; ) ) ;
     
     dnf install -y ncdu 2>/dev/null ;
     dnf install -y @perl perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect 2>/dev/null ;
