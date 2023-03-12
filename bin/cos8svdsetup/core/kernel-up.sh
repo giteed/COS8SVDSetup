@@ -44,6 +44,8 @@ echo -en "
 	Нажмите Enter
 	# sudo reboot"
  
+    press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
+ 
  echo -e "	
 	Подождите, сервер перезагружается...
 	Перезайдите через минуту...
@@ -51,7 +53,7 @@ echo -en "
 	ядро было успешно установлено, выполнив команду:
 	# uname -r "
 	
-	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
+	
 	sudo reboot
 
  echo ;
