@@ -10,6 +10,7 @@
 #  --> Смотрим какое ядро используется в данный момент:
 	echo -en "\n Смотрим какое ядро используется в данный момент: "
 	uname -r ; echo ;
+	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 
 #  --> Первым шагом обновим все установленные пакеты:
 	sudo yum update -y ; echo ;
