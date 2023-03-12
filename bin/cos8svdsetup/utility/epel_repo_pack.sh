@@ -6,7 +6,13 @@
 
   function epel_repo_pack()
   {
-	ttb=$( echo -e "\n Установка дополнительных пакетов: epel-release, iptables, python3, ruby, npm, unzip, hstr, lsof, screen, tar, p7zip, mc, nano, whois, wget, curl, atop, htop, nethogs, bpytop, iftop, stacer, yum-utils, net-tools, network-scripts, git, dialog, mlocate qrencode, ncdu, ranger, tldr, whois, youtube-dl. \n" ) && bpn_p_lang ; echo ;
+	ttb=$( echo -e "\n Установка дополнительных пакетов: 
+	epel-release, iptables, python3, ruby, npm, unzip, 
+	hstr, lsof, screen, tar, p7zip, mc, nano, whois, 
+	wget, curl, atop, htop, nethogs, bpytop, iftop, 
+	stacer, yum-utils, net-tools, network-scripts, git, 
+	dialog, mlocate qrencode, ncdu, ranger, tldr, whois, 
+	youtube-dl. \n" ) && bpn_p_lang ; echo ;
 	
 	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 	
