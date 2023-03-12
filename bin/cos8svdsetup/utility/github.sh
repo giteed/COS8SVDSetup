@@ -39,10 +39,12 @@ function GitHub_info_and_update() {
 	echo -e " $(green_star) Если GitHub не установлен - будет произведена его установка " ;
 	echo -e " $(green_star) Если GitHub установлен - будет произведено обновление\n" ;
 	GitHubCH || echo -en " gh GitHub    : $(found_MSG) \n" && echo ; cat /etc/yum.repos.d/gh-cli.repo 2>/dev/null | grep name 2>/dev/null | bat --paging=never -l nix -p 2>/dev/null ; ww gh 2>/dev/null ; 
+
 # --> ФУНКЦИЯ: покажет версию при участии bat
 	function version_GH_bat() {
 		echo -en $(green_star) ; echo -e " GitHub version : $( gh --version 2>/dev/null || $(not_found_MSG) )" | bat --paging=never -l nix -p 2>/dev/null ;
 	}
+
 # --> ФУНКЦИЯ: покажет версию без участия bat	
 	function version_GH_NO_bat() {
 		echo -en $(green_star) ; echo -en " GitHub version : $( gh --version 2>/dev/null || $(not_found_MSG) )" ;
