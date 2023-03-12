@@ -4,11 +4,13 @@
 # --> Прочитать настройки из /root/.bashrc
 . ~/.bashrc
 
-
+# --> Иправляет ошибку "Failed to set locale, defaulting to C.UTF-8"
   function locale() {
 	echo -e "
-	Если вы хотите исправить ошибку для только вашей 
-	учетной записи введите команды приведенные ниже:
+	Если вы хотите исправить ошибку: 
+	\"Failed to set locale, defaulting to C.UTF-8\" 
+	для только вашей учетной записи введите 
+	команды приведенные ниже:
 	# echo \"export LC_ALL=en_US.utf-8\" >> ~/.bashrc
 	# echo \"export LANG=en_US.utf-8\" >> ~/.bashrc
 	# source ~/.bashrc
