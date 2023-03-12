@@ -19,7 +19,7 @@ function UnrarIN()
 	( ( dnf install unrar -y )  || ( ( echo -en " функция установки UnrarIN: " )  && ( error_MSG ; ) ) ) ;
 	( cd /tmp/ && rm -rf /tmp/installer/rar )  ;
 	
-	( echo -en " " &&  (( unrar -v | grep UNRAR | awk ' { print $1, $2, $3 }' ) 2>/dev/null ) && ( echo -e "\n $( green_tick )${GREEN} Forensics REPO, Unrar установлены.${NC}\n") && ( echo -e " ($( green_tick )) - forensics-Unrar${RED} | $( green_OK ) ypr -rl " )) || ( ( echo -en " функция установки UnrarIN: " )  && ( error_MSG ; ) ) ;
+	( echo -en " " &&  (( unrar -v | grep UNRAR | awk ' { print $1, $2, $3 }' ) 2>/dev/null ) && ( echo -e "\n $( green_tick )${GREEN} Forensics REPO, Unrar установлены.${NC}\n") && ( echo -e " ($( green_tick )) - forensics-Unrar${RED} | $( green_OK ) ypr -rl " )) && UnrarOK || ( ( echo -en " функция установки UnrarIN: " )  && ( error_MSG ; ) ) ;
 }
 
 UnrarIN
