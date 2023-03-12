@@ -35,8 +35,7 @@
 	sudo grub2-mkconfig -o /boot/grub2/grub.cfg ; echo ;
 
 
-echo -en " 
- Ядро до перезагрузки: "
+echo -en " Ядро до перезагрузки: "
  	uname -r ; echo ;
  
  echo -e "	Требуется перезагрузка сервера!
