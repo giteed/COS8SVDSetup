@@ -7,6 +7,7 @@
   function epel_repo_pack()
   {
 	ttb=$( echo -e "\n Установка дополнительных пакетов: 
+	
 	epel-release, iptables, python3, ruby, npm, unzip, 
 	hstr, lsof, screen, tar, p7zip, mc, nano, whois, 
 	wget, curl, atop, htop, nethogs, bpytop, iftop, 
