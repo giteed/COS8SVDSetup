@@ -5,3 +5,4 @@
 . /root/vdsetup.2/bin/functions/press_enter.sh
 . /root/vdsetup.2/bin/functions/ypr.sh
 . /root/vdsetup.2/bin/functions/ww.sh
+. /root/vdsetup.2/bin/functions/ip_other_info_func.sh
