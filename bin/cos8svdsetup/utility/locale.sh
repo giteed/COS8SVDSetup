@@ -15,6 +15,7 @@
 	# echo \"export LC_ALL=en_US.utf-8\" >> ~/.bashrc
 	# echo \"export LANG=en_US.utf-8\" >> ~/.bashrc
 	# source ~/.bashrc
+	
 	Если вы хотите исправить ошибку глобально для 
 	всех пользователей системы нажмите Enter
 	
