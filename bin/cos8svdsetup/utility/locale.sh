@@ -11,6 +11,7 @@
 	\"Failed to set locale, defaulting to C.UTF-8\" 
 	для только вашей учетной записи введите 
 	команды приведенные ниже:
+	
 	# echo \"export LC_ALL=en_US.utf-8\" >> ~/.bashrc
 	# echo \"export LANG=en_US.utf-8\" >> ~/.bashrc
 	# source ~/.bashrc
