@@ -48,4 +48,6 @@ alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 alias mkdir='mkdir -p'
 
+# yum
+alias ypr='GLIG_ASTRX_ON && ypr-f'
 
