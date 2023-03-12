@@ -28,7 +28,6 @@
 	dnf install -y unzip p7zip || ( error_MSG ; ) ; echo ;
 	dnf install -y screen qrencode || ( error_MSG ; ) ; echo ;
 	dnf install -y @perl perl perl-Net-SSLeay perl-Encode-Detect openssl || ( error_MSG ; ) ; echo ;
-	dnf install -y perl-IO-Tty || ( error_MSG ; ) ; echo ;
 	
 	echo -e "\n Установка дополнительных пакетов завершена!" 
 	echo -e " ($( green_tick )) - packages plus${RED}   | ${NC}посмотреть список пакетов в системе ypr -rl"   
