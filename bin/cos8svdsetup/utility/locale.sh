@@ -40,9 +40,9 @@ press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 	LANG=en_US.utf8
 	LC_TYPE=en_US.utf8
 	 " > /etc/environment ;
-	 echo -e "\n Исправлено ($( green_tick ))\n Перезапустите ssh сессию!\n"  ;
+	 echo -e "\n Исправлено! ($( green_tick ))\n Перезапустите ssh сессию или введите source ~/.bashrc\n"  ;
 	 ( bat /etc/environment --paging=never -l nix -p ; ) 2>/dev/null || ( cat /etc/environment ; ) ;
-	 source ~/.bashrc ;
+	 
   }
 
 locale ;
