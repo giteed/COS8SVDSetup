@@ -15,10 +15,6 @@
          function green_tick() { echo -e "${GREEN}✓${NC}" ; } ;
          function green_tick_en() { echo -en "$(green_tick) " ; } ;
          
-
-         
-         
-         
          function green_star() { echo -e "${GREEN}☆${NC}" ; } ;
          function red_star() { echo -e "${RED}☆${NC}" ; } ;
          
@@ -36,7 +32,6 @@
          function green_arrow() { echo -e "${green}⤑${NC}" ; } ;
          
          function green_OK() { echo -e "${green}OK${NC}" ; } ;
-         
          
          function green_1() { echo -e "${GREEN}|${NC}" ; } ;
          function white_1() { echo -e "${WHITE}|${NC}" ; } ;
@@ -76,7 +71,6 @@
          function red_n8() { echo -e "${RED}8${NC}" ; } ;
          function red_n9() { echo -e "${RED}9${NC}" ; } ;
          function red_n10() { echo -e "${RED}10${NC}" ; } ;
-         
          
 function green_star37()
    {

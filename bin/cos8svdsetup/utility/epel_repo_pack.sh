@@ -4,8 +4,6 @@
 # --> Прочитать настройки из /root/.bashrc
 . ~/.bashrc
 
-
-
   function epel_repo_pack()
   {
  
