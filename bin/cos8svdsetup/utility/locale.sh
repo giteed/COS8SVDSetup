@@ -34,7 +34,7 @@
 	"
 press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 
-	# создаю копию файла перед внесением изменений /etc/environment_$(date '+%Y-%m-%d_%H-%M-%S').bak
+	# --> создаю копию файла перед внесением изменений /etc/environment_$(date '+%Y-%m-%d_%H-%M-%S').bak
 	 sudo cp /etc/environment /etc/environment_$(date '+%Y-%m-%d_%H-%M-%S').bak
 	echo -e " Копия файла перед внесением изменений 
 	сделана в файл /etc/environment_$(date '+%Y-%m-%d_%H-%M-%S').bak"
