@@ -6,25 +6,30 @@
 
   function epel_repo_pack()
   {
- 
+	ttb=$( echo -e "\n Установка дополнительных пакетов: epel-release, iptables, python3, ruby, npm, unzip, hstr, lsof, screen, tar, p7zip, mc, nano, whois, wget, curl, atop, htop, nethogs, bpytop, iftop, stacer, yum-utils, net-tools, network-scripts, git, dialog, mlocate qrencode, ncdu, ranger, tldr, whois, youtube-dl. \n" ) && bpn_p_lang ; echo ;
 	
-	ttb=$( echo -e "\n Установка дополнительных пакетов: epel-release, iptables, python3, ruby, npm, unzip, hstr, lsof, screen, tar, p7zip, mc, nano, whois, wget, curl, atop, htop, nethogs, bpytop, iftop, stacer, yum-utils, net-tools, network-scripts, git, dialog, mlocate qrencode, ncdu, ranger, tldr, whois. \n" ) && bpn_p_lang ; echo ; echo ;
+	press_enter_to_continue_or_ESC_or_any_key_to_cancel
 	
-	dnf install git tar curl wget whois -y 
-	dnf install -y epel-release 
-	dnf install -y net-tools network-scripts 
-	dnf install -y dialog mlocate ncdu ranger tldr 
+	;
+	dnf install -y epel-release yum-utils npm || ( error_MSG ; ) ;
+	dnf install -y net-tools network-scripts iptables || ( error_MSG ; ) ;
+	dnf install -y dialog mlocate ncdu ranger tldr || ( error_MSG ; ) ;
+	dnf install -y youtube-dl || ( error_MSG ; ) ;
+	dnf install -y git tar curl wget || ( error_MSG ; ) 
+	dnf install -y whois || ( error_MSG ; ) ;
+	dnf install -y atop htop bpytop iftop stacer lsof nethogs  || ( error_MSG ; ) ;
+	dnf install -y python3 ruby  || ( error_MSG ; ) ;
+	dnf install -y mc nano hstr ncdu || ( error_MSG ; ) ;
+	dnf install -y unzip p7zip || ( error_MSG ; ) ;
+	dnf install -y screen qrencode || ( error_MSG ; ) ;
+	dnf install -y @perl perl perl-Net-SSLeay perl-Encode-Detect openssl || ( error_MSG ; ) ; 
+	dnf install -y perl-IO-Tty || ( error_MSG ; ) ;
 	
-	( ( yum install -y iptables qrencode python3 ruby npm unzip hstr lsof screen p7zip mc nano whois atop htop nethogs bpytop iftop stacer yum-utils  -y ) ) && ( ( echo -e "\n Установка дополнительных пакетов завершена!" ) && ( echo -e " ($( green_tick )) - packages plus${RED}   | ${NC}посмотреть список пакетов в системе ypr -rl"  ) ) || ( error_MSG ; ) ;
-	
-	dnf install -y ncdu ;
-	dnf install -y @perl perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect ;
-	
-	
+	echo -e "\n Установка дополнительных пакетов завершена!" 
+	echo -e " ($( green_tick )) - packages plus${RED}   | ${NC}посмотреть список пакетов в системе ypr -rl"   
 	
   }
-
-epel_repo_pack ;
-
+  
+  epel_repo_pack ;
 
 exit 0 ; 
