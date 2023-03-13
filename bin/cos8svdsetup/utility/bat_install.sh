@@ -15,8 +15,11 @@
  	BAT_VERSION="0.22.1"
  	BAT_FILENAME="bat-v${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz"
  	BAT_URL="https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/${BAT_FILENAME}"
- 	wget "${BAT_URL}"
- 	tar -xzf "${BAT_FILENAME}" -C /usr/local/bin/ --strip-components=1
+# --> Ввсе сообщения о процессе загрузки будут подавлены, кроме ошибок, если таковые возникнут.
+	wget --quiet "${BAT_URL}"
+ # --> Эта команда распакует архив из переменной BAT_FILENAME и сохранит файлы в каталоге /usr/local/bin/, пропуская первый уровень вложенности путей файлов с помощь флага --strip-components=1, при этом подавляя все сообщения о процессе распаковки.
+ # --> В команде "tar -xzf" -x означает извлечение содержимого, -z указывает на то, что архив является сжатым файлом формата gzip, а -f указывает на имя файла архива. -C /path/to/extract задает директорию, в которую будет производиться извлечение содержимого архива. В данном случае это /usr/local/bin/.
+ 	tar -xzf "${BAT_FILENAME}" --quiet -C /usr/local/bin/ --strip-components=1
  # --> Удаляет загруженный архив.
  	rm "${BAT_FILENAME}"
 # --> Выводит сообщение об успешном завершении установки.
