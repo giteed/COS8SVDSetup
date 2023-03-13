@@ -4,6 +4,48 @@
 # --> Прочитать настройки из /root/.bashrc
 . ~/.bashrc
 
+
+ function packages_plus() {
+	 dnf install -y epel-release yum-utils npm || ( error_MSG ; ) ; echo ;
+	 dnf install -y net-tools network-scripts iptables || ( error_MSG ; ) ; echo ;
+	 dnf install -y dialog mlocate ncdu ranger tldr || ( error_MSG ; ) ; echo ;
+	 dnf install -y youtube-dl ffmpeg || ( error_MSG ; ) ; echo ;
+	 dnf install -y git tar curl wget || ( error_MSG ; ) ; echo ;
+	 dnf install -y whois || ( error_MSG ; ) ; echo ;
+	 dnf install -y atop htop bpytop iftop stacer lsof nethogs  || ( error_MSG ; ) ; echo ;
+	 dnf install -y python3 ruby  || ( error_MSG ; ) ; echo ;
+	 dnf install -y mc nano hstr ncdu || ( error_MSG ; ) ; echo ;
+	 dnf install -y unzip p7zip || ( error_MSG ; ) ; echo ;
+	 dnf install -y screen qrencode || ( error_MSG ; ) ; echo ;
+	 dnf install -y @perl perl perl-Net-SSLeay perl-Encode-Detect openssl || ( error_MSG ; ) ; echo ;
+ }
+ 
+ function epel_repo_Check_or_install() {
+	  
+	  yum_epel=epel.repo
+	  
+	  function msg_in1() {
+		 ttb=$(echo -e " $yum_epel успешно установлен.") && lang="nix" && bpn_p_lang ;
+	  }
+	  
+	  function msg_in2() {
+		 ttb=$(echo -e " Ошибка установки. $yum_epel") && lang="nix" && bpn_p_lang ;
+	  }
+	  
+	  function msg_in3() {
+		 ttb=$(echo -e " $yum_epel уже был установлен.") && lang="nix" && bpn_p_lang ;
+	  }
+	  
+	  function msg_install_anyway() {
+		  press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
+		  packages_plus ;
+	  }
+	  
+	   [[ -z $(cat /etc/yum.repos.d/epel.repo 2>/dev/null) ]]  && ( dnf install epel-release 2>/dev/null && msg_in1 || msg_in2 ) || msg_in3 ;
+	   
+	   return ;
+   }
+
   function epel_repo_pack()
   {
 	ttb=$( echo -e "
@@ -17,21 +59,8 @@
  ⎩ youtube-dl, ffmpeg. \n" ) && bpn_p_lang ; echo ;
 	
 	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
-	function packages_plus() {
-		dnf install -y epel-release yum-utils npm || ( error_MSG ; ) ; echo ;
-		dnf install -y net-tools network-scripts iptables || ( error_MSG ; ) ; echo ;
-		dnf install -y dialog mlocate ncdu ranger tldr || ( error_MSG ; ) ; echo ;
-		dnf install -y youtube-dl ffmpeg || ( error_MSG ; ) ; echo ;
-		dnf install -y git tar curl wget || ( error_MSG ; ) ; echo ;
-		dnf install -y whois || ( error_MSG ; ) ; echo ;
-		dnf install -y atop htop bpytop iftop stacer lsof nethogs  || ( error_MSG ; ) ; echo ;
-		dnf install -y python3 ruby  || ( error_MSG ; ) ; echo ;
-		dnf install -y mc nano hstr ncdu || ( error_MSG ; ) ; echo ;
-		dnf install -y unzip p7zip || ( error_MSG ; ) ; echo ;
-		dnf install -y screen qrencode || ( error_MSG ; ) ; echo ;
-		dnf install -y @perl perl perl-Net-SSLeay perl-Encode-Detect openssl || ( error_MSG ; ) ; echo ;
-	}
-	# packages_plus ;
+
+	epel_repo_Check_or_install && msg_install_anyway || packages_plus ;
 	
 	echo -e "\n 
  ⎧ Установка дополнительных пакетов завершена!
