@@ -5,7 +5,7 @@
 . ~/.bashrc
 
 
- function packages_plus() {
+ function epel_repository_packages_install() {
 	 dnf install -y epel-release yum-utils npm || ( error_MSG ; ) ; echo ;
 	 dnf install -y net-tools network-scripts iptables || ( error_MSG ; ) ; echo ;
 	 dnf install -y dialog mlocate ncdu ranger tldr || ( error_MSG ; ) ; echo ;
@@ -20,10 +20,10 @@
 	 dnf install -y @perl perl perl-Net-SSLeay perl-Encode-Detect openssl || ( error_MSG ; ) ; echo ;
  }
  
- function epel_repo_Check_or_install() {
+ function epel_repository_packages_Check_or_install() {
 	  
 	  function msg_install_anyway() {
-	   ttb=$(echo -e "\n ⎧ По всей видимости, все программы из epel_repo_pack\n | уже были установлены. Нажмите Enter, если желаете\n ⎩ перепроверить установку, или ESC для выхода. ") && lang="nix" && bpn_p_lang ;
+	   ttb=$(echo -e "\n ⎧ По всей видимости, все программы из epel_repository_packages\n | уже были установлены. Нажмите Enter, если желаете\n ⎩ перепроверить установку, или ESC для выхода. ") && lang="nix" && bpn_p_lang ;
 	   press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 	   packages_plus ;
       }
@@ -47,7 +47,7 @@
 	   #return ;
    }
 
-  function epel_repo_pack()
+  function epel_repository_packages()
   {
 	ttb=$( echo -e "
  ⎧ Установка дополнительных пакетов: 
@@ -61,7 +61,7 @@
 	
 	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 
-	epel_repo_Check_or_install || packages_plus ;
+	epel_repository_packages_Check_or_install || epel_repository_packages_install ;
 	
 	echo -e " 
  ⎧ Установка дополнительных пакетов завершена!
@@ -70,7 +70,7 @@
 	
   }
   
-  epel_repo_pack ;
+  epel_repository_packages ;
 
 exit 0 ; 
 
