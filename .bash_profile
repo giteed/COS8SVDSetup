@@ -1,8 +1,8 @@
 # .bash_profile
 
 # Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+if [ -f /root/.bashrc ]; then
+	. /root/.bashrc
 fi
 
 # --> Прочитать настройки из:

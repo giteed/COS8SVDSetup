@@ -2,7 +2,7 @@
 
 # Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-. ~/.bashrc
+. /root/.bashrc
 
 
  function epel_repository_packages_install() {

@@ -2,7 +2,7 @@
 
 # Source global definitions
 # --> Прочитать настройки из /etc/bashrc
-. ~/.bashrc
+. /root/.bashrc
 
 echo ;
 

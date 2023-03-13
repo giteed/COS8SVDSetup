@@ -10,7 +10,7 @@
 
 # df -h , free -h , ip , who , type
 
-# clear , update ~/.bashrc , ls , cd , tree
+# clear , update /root/.bashrc , ls , cd , tree
 alias c='clear'
 alias l.='ls -lhd --color=auto .*'
 alias l..='ls -lhd --color=auto .* *'

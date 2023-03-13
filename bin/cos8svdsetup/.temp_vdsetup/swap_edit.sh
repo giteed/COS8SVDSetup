@@ -8,7 +8,7 @@
 
 # Source global definitions
 # --> Прочитать настройки из /etc/bashrc
-. ~/.bashrc
+. /root/.bashrc
 
 # --> Прочитать настройки:
 . ~/bin/utility/.varfunc.sh &>/dev/null ;
@@ -134,7 +134,7 @@ function vnc-swap-CH()
 	echo -e " $(black_U23A9 )\n" 
   }
   
-   source ~/.bashrc ;
+   source /root/.bashrc ;
   ( ls /usr/bin/vncserver ; lk /usr/bin/vncserver ) &>/dev/null ; sleep 1 ;
   ( [[ -z $( vncserver -list ) ]] 2>/dev/null ) && vnc_not_found || swap_CH_and_warn_msg
   

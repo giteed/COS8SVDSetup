@@ -2,7 +2,7 @@
 
 # Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-. ~/.bashrc
+. /root/.bashrc
 
 # --> Иправляет ошибку "Failed to set locale, defaulting to C.UTF-8"
   function locale() {
@@ -12,9 +12,9 @@
 	для только вашей учетной записи введите 
 	команды приведенные ниже:
 	
-	# echo \"export LC_ALL=en_US.utf-8\" >> ~/.bashrc
-	# echo \"export LANG=en_US.utf-8\" >> ~/.bashrc
-	# source ~/.bashrc
+	# echo \"export LC_ALL=en_US.utf-8\" >> /root/.bashrc
+	# echo \"export LANG=en_US.utf-8\" >> /root/.bashrc
+	# source /root/.bashrc
 	
 	Если вы хотите исправить ошибку глобально для 
 	всех пользователей системы нажмите Enter
@@ -56,7 +56,7 @@ press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 	LANG=en_US.utf8
 	LC_TYPE=en_US.utf8
 	 " > /etc/environment ;
-	 echo -e "\n Исправлено! ($( green_tick ))\n Перезапустите ssh сессию или введите source ~/.bashrc\n"  ;
+	 echo -e "\n Исправлено! ($( green_tick ))\n Перезапустите ssh сессию или введите source /root/.bashrc\n"  ;
 	 ( bat /etc/environment --paging=never -l nix -p ; ) 2>/dev/null || ( cat /etc/environment ; ) ;
 	 
   }
