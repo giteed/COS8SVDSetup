@@ -50,7 +50,7 @@
   function epel_repository_packages()
   {
 	ttb=$( echo -e "
- ⎧ Установка дополнительных пакетов: 
+ ⎧ Установка дополнительных пакетов \"Epel Repository Packages\": 
  | 
  | epel-release, iptables, python3, ruby, npm, unzip, 
  | hstr, lsof, screen, tar, p7zip, mc, nano, whois, 
