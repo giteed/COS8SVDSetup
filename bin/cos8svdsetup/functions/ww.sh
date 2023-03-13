@@ -1,8 +1,6 @@
 #!/bin/bash
 
-   # Поиск информации о программе. пример: ww hh
-   #function ww() { type -a $* | bat  --paging=never -l nix -p ; echo ; yum info $1 | bat -p --paging=never -l nix ; }
-   
+   # --> Поиск информации о программе сразу по 11 командам. пример: ww hh
    function ww() {
 	   
 	   function msg_ww() {
