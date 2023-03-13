@@ -4,6 +4,7 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
+echo ;
 
 # --> Функция автоматизирует установку bat на CentOS 8.
  function bat_install() {
