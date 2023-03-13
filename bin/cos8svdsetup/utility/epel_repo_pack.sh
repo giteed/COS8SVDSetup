@@ -63,7 +63,7 @@
 
 	epel_repo_Check_or_install || packages_plus ;
 	
-	echo -e "\n 
+	echo -e " 
  ⎧ Установка дополнительных пакетов завершена!
  ${GREEN}| ${NC}посмотреть список пакетов в системе # ypr -rl
  ⎩ Packages plus installed $(green_tick)"
