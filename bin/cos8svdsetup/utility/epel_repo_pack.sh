@@ -6,14 +6,14 @@
 
   function epel_repo_pack()
   {
-	ttb=$( echo -e "\n Установка дополнительных пакетов: 
-	
-	epel-release, iptables, python3, ruby, npm, unzip, 
-	hstr, lsof, screen, tar, p7zip, mc, nano, whois, 
-	wget, curl, atop, htop, nethogs, bpytop, iftop, 
-	stacer, yum-utils, net-tools, network-scripts, git, 
-	dialog, mlocate qrencode, ncdu, ranger, tldr, whois, 
-	youtube-dl, ffmpeg. \n" ) && bpn_p_lang ; echo ;
+	ttb=$( echo -e "\n ⎧ Установка дополнительных пакетов: 
+	| 
+	| epel-release, iptables, python3, ruby, npm, unzip, 
+	| hstr, lsof, screen, tar, p7zip, mc, nano, whois, 
+	| wget, curl, atop, htop, nethogs, bpytop, iftop, 
+	| stacer, yum-utils, net-tools, network-scripts, git, 
+	| dialog, mlocate qrencode, ncdu, ranger, tldr, whois, 
+	⎩ youtube-dl, ffmpeg. \n" ) && bpn_p_lang ; echo ;
 	
 	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 	
@@ -30,8 +30,8 @@
 	dnf install -y screen qrencode || ( error_MSG ; ) ; echo ;
 	dnf install -y @perl perl perl-Net-SSLeay perl-Encode-Detect openssl || ( error_MSG ; ) ; echo ;
 	
-	echo -e "\n Установка дополнительных пакетов завершена!" 
-	echo -e " ($( green_tick )) - packages plus${RED}   | ${NC}посмотреть список пакетов в системе ypr -rl"   
+	echo -e "\n ⎧ Установка дополнительных пакетов завершена!" 
+	echo -e " ( ⎩  $( green_tick )) - packages plus${RED}   | ${NC}посмотреть список пакетов в системе ypr -rl"   
 	
   }
   
