@@ -66,7 +66,7 @@
 	echo -e " 
  ⎧ Установка дополнительных пакетов завершена!
  ${GREEN}| ${NC}посмотреть список пакетов в системе # ypr -rl
- ⎩ Packages plus installed $(green_tick)"
+ ⎩ \"Epel Repository Packages\" installed $(green_tick)"
 	
   }
   
