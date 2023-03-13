@@ -6,7 +6,7 @@
 
   function epel_repo_pack()
   {
-	ttb=$( echo -e "\n
+	ttb=$( echo -e "
  ⎧ Установка дополнительных пакетов: 
  | 
  | epel-release, iptables, python3, ruby, npm, unzip, 
@@ -31,9 +31,10 @@
 	dnf install -y screen qrencode || ( error_MSG ; ) ; echo ;
 	dnf install -y @perl perl perl-Net-SSLeay perl-Encode-Detect openssl || ( error_MSG ; ) ; echo ;
 	
-	echo -e "\n ⎧ Установка дополнительных пакетов завершена!
-	${RED}   | ${NC}посмотреть список пакетов в системе # ypr -rl
-	⎩  $ green_tick - packages plus"
+	echo -e "\n 
+ ⎧ Установка дополнительных пакетов завершена!
+ ${RED}| ${NC}посмотреть список пакетов в системе # ypr -rl
+ ⎩  $(green_tick) - packages plus installed"
 	
   }
   
