@@ -2,7 +2,7 @@
 
 # Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-. ~/.bashrc
+. /root/.bashrc
 
 # --> Функция автоматизирует установку bat на CentOS 8.
  function bat_install() {
@@ -14,7 +14,7 @@
  yum install -y wget gcc make
  
  # --> Загружает и устанавливает bat, используя последнюю версию на момент написания скрипта (0.18.3). Для этого он скачивает архив с бинарными файлами bat с официального сайта, распаковывает его и копирует файл bat в директорию /usr/local/bin/.
- BAT_VERSION="0.18.3"
+ BAT_VERSION="0.22.1"
  BAT_FILENAME="bat-${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz"
  BAT_URL="https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/${BAT_FILENAME}"
  wget "${BAT_URL}"
@@ -26,7 +26,7 @@
 # --> Выводит сообщение об успешном завершении установки.
 	echo -e " 
   ⎧ $(green_tick) Установка bat ${BAT_VERSION} успешно завершена!
-  ⎩ ${GREEN}| ${NC}посмотреть список пакетов в системе # ypr -rl
+  ⎩ ${NC}посмотреть список пакетов в системе # ypr -rl
    "
  }
 bat_install ;
