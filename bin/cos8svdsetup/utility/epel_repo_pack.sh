@@ -22,6 +22,11 @@
  
  function epel_repo_Check_or_install() {
 	  
+	  function msg_install_anyway() {
+	   ttb=$(echo -e "\n ⎧ По всей видимости все программы из epel_repo_pack\n | уже установлены, нажмите Enter, если желаете\n ⎩ перепроверить установку, или ESC для выхода. ") && lang="nix" && bpn_p_lang ;
+	   press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
+	   packages_plus ;
+      }
 	  yum_epel=epel.repo
 	  function msg_in3() {
 		   ttb=$(echo -e " $yum_epel уже был установлен.") && lang="nix" && bpn_p_lang ;
@@ -36,11 +41,6 @@
 		 ttb=$(echo -e " Ошибка установки. $yum_epel") && lang="nix" && bpn_p_lang ;
 	  }
 	  
-	  function msg_install_anyway() {
-		  ttb=$(echo -e "\n ⎧ По всей видимости все программы из epel_repo_pack\n | уже установлены, нажмите Enter, если желаете\n ⎩ перепроверить установку, или ESC для выхода. ") && lang="nix" && bpn_p_lang ;
-		  press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
-		  packages_plus ;
-	  }
 	  
 	   [[ -z $(cat /etc/yum.repos.d/epel.repo 2>/dev/null) ]]  && ( dnf install epel-release 2>/dev/null && msg_in1 || msg_in2 ) || msg_in3 ;
 	   
@@ -61,7 +61,7 @@
 	
 	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 
-	epel_repo_Check_or_install && msg_install_anyway || packages_plus ;
+	epel_repo_Check_or_install || packages_plus ;
 	
 	echo -e "\n 
  ⎧ Установка дополнительных пакетов завершена!
