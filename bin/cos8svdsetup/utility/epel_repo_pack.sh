@@ -25,7 +25,7 @@
 	  function msg_install_anyway() {
 	   ttb=$(echo -e "\n ⎧ По всей видимости, все программы из epel_repository_packages\n | уже были установлены. Нажмите Enter, если желаете\n ⎩ перепроверить установку, или ESC для выхода. ") && lang="nix" && bpn_p_lang ;
 	   press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
-	   packages_plus ;
+	   epel_repository_packages_install ;
       }
 	  yum_epel=epel.repo
 	  function msg_in3() {
