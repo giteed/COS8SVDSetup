@@ -28,7 +28,7 @@
 
 
 # --> Если значение $1 на входе в скрипт равно "bat_install", то вызывается функция "bat_install" и происходит выход из скрипта с кодом 0. В противном случае, вызывается функция "bat_Check_or_install".
- if [ $1 == bat_install ]; then
+ if [ $1 == "bat_install" ]; then
 	  bat_install && exit 0;
  else
 # --> Функция "bat_Check_or_install" определена в загружаемых функциях из /root/vdsetup.2/bin/functions/check_or_install.sh которая проверяет или устанавливает проверяемые компоненты.	
