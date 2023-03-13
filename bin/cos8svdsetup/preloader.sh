@@ -4,6 +4,15 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
+# Определение функции run_as_root()
+function run_as_root() {
+	# Проверка, что скрипт запущен с правами суперпользователя (root)
+	if [[ "$EUID" -ne 0 ]]; then
+		# Вывод сообщения об ошибке на экран
+		echo "Error: Script must be run as root. $(error_exit_MSG)"
+	fi
+}
+
 # --> Прочитать настройки из:
 function read_sty_func() {
 # --> загрузить настройки стилей из указанного каталога

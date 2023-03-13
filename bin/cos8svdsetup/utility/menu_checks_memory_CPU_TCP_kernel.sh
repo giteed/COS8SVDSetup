@@ -6,7 +6,6 @@
 
 echo ;
 
-
 ##
 # BASH menu script that checks:
 #   - Memory usage
