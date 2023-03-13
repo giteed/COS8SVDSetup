@@ -6,3 +6,7 @@
 . /root/vdsetup.2/bin/functions/ypr.sh
 . /root/vdsetup.2/bin/functions/ww.sh
 . /root/vdsetup.2/bin/functions/ip_other_info_func.sh
+
+
+# --> Этот функция проверяет, запущен ли скрипт с правами суперпользователя (root) в Linux.
+#. /root/vdsetup.2/bin/functions/.root
