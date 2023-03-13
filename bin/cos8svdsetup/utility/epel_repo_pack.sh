@@ -33,7 +33,7 @@
 	
 	echo -e "\n ⎧ Установка дополнительных пакетов завершена!
 	${RED}   | ${NC}посмотреть список пакетов в системе # ypr -rl
-	⎩  $( green_tick - packages plus"
+	⎩  $ green_tick - packages plus"
 	
   }
   
