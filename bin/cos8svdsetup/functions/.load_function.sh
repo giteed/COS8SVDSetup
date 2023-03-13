@@ -11,7 +11,8 @@
 	. /root/vdsetup.2/bin/functions/ww.sh
 # --> Информация о ip адресах и некоторые другие информационные функции о системе.
 	. /root/vdsetup.2/bin/functions/ip_other_info_func.sh
-
+# --> клонирование из gh repo запуск /preloader.sh (в планах частичная синхронизация)
+	. /root/vdsetup.2/bin/functions/vsync.sh
 
 # --> Этот функция проверяет, запущен ли скрипт с правами суперпользователя (root) в Linux.
 #	. /root/vdsetup.2/bin/functions/run_as_root.sh
