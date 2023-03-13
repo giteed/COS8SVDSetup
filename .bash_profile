@@ -12,8 +12,8 @@ fi
 # --> Использовать ~/.bash_ali*
 . /root/.bash_aliases
 
-# --> Использовать . /root/vdsetup.2/bin/utility/run_as_root.sh (требует для скрипта права root)
-. /root/vdsetup.2/bin/utility/run_as_root.sh
+# --> Использовать . /root/vdsetup.2/bin/functions/run_as_root.sh (требует для скрипта права root)
+. /root/vdsetup.2/bin/functions/run_as_root.sh
 
 # User specific environment and startup programs
 #hip ; #. ~/bin/lastf ;
