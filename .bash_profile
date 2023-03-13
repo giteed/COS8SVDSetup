@@ -10,10 +10,10 @@ fi
 . /root/vdsetup.2/bin/functions/.load_function.sh
 
 # --> Использовать ~/.bash_ali*
-. ~/.bash_aliases
+. /root/.bash_aliases
 
-# --> Использовать . /root/vdsetup.2/bin/utility/.root (требует для скрипта права root)
-. /root/vdsetup.2/bin/utility/.root
+# --> Использовать . /root/vdsetup.2/bin/utility/run_as_root.sh (требует для скрипта права root)
+. /root/vdsetup.2/bin/utility/run_as_root.sh
 
 # User specific environment and startup programs
 #hip ; #. ~/bin/lastf ;
@@ -22,4 +22,4 @@ PATH=$PATH:$HOME/bin
 export PATH
 
 
-# source ~/.bash_profile
+# source /root/.bash_profile

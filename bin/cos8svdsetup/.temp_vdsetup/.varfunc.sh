@@ -1,36 +1,7 @@
 #!/bin/bash
 
 
-. /root/bin/utility/ypr.sh ;
-   
-   
 
-   function vsync()
-   {
-      /root/bin/utility/sync-no-msg.sh  ;
-   }
-
-   
-   function epel_repo_Check_or_install() {
-      
-      yum_epel=epel.repo
-      
-      function msg_in1() {
-         ttb=$(echo -e " $yum_epel успешно установлен.") && lang="nix" && bpn_p_lang ;
-      }
-      
-      function msg_in2() {
-         ttb=$(echo -e " Ошибка установки. $yum_epel") && lang="nix" && bpn_p_lang ;
-      }
-      
-      function msg_in3() {
-         ttb=$(echo -e " $yum_epel уже был установлен.") && lang="nix" && bpn_p_lang ;
-      }
-      
-      
-       [[ -z $( cat /etc/yum.repos.d/epel.repo ) ]] 2>/dev/null && ( yum install epel-release 2>/dev/null && msg_in1 || msg_in2 ) || msg_in3 ;
-       return ;
-   }
    
    
    function nginx_repo_Check_or_install() {
