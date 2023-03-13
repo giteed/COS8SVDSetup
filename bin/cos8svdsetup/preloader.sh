@@ -4,6 +4,8 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
+lang_x 2>/dev/null ;
+
 # Определение функции run_as_root()
 function run_as_root() {
 	# Проверка, что скрипт запущен с правами суперпользователя (root)

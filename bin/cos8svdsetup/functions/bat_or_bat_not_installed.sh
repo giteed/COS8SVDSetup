@@ -21,10 +21,10 @@
 	 ttb="" ;
 	}
    
-   #function lang_x() {
-   #   lang=$1 ;
-   #   if [[ $1 == "" ]] ; then lang=cr ; fi ;
-   #}
+   function lang_x() {
+      lang=$1 ;
+      if [[ $1 == "" ]] ; then lang=cr ; fi ;
+   }
    
    function lang_nix() {
 	  lang=nix
