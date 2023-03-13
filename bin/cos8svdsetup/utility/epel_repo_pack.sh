@@ -63,7 +63,7 @@ lang_x 2>/dev/null ;
 	
 	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 
-	epel_repository_packages_Check_or_install || epel_repository_packages_install ;
+	ttb=$(epel_repository_packages_Check_or_install) && bpn_p_lang || epel_repository_packages_install ;
 	
 	echo -e " 
  ⎧ Установка дополнительных пакетов завершена!
