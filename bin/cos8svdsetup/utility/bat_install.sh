@@ -11,7 +11,7 @@ echo ;
 # --> Проверяет наличие или устанавливает репозиторий EPEL, который содержит пакеты, не включенные в официальный репозиторий CentOS.
  	epel_repository_Check_or_install ;
 # --> Устанавливает необходимые зависимости: wget, gcc, make.
- 	dnf install -y wget gcc make
+ 	dnf install -y wget gcc make ;
 # --> Загружает и устанавливает bat, используя последнюю версию на момент написания скрипта (0.18.3). Для этого он скачивает архив с бинарными файлами bat с официального сайта, распаковывает его и копирует файл bat в директорию /usr/local/bin/.
  	BAT_VERSION="0.22.1"
  	BAT_FILENAME="bat-v${BAT_VERSION}-x86_64-unknown-linux-musl.tar.gz"
