@@ -43,8 +43,6 @@
 	  
 	  
 	   [[ -z $(cat /etc/yum.repos.d/epel.repo 2>/dev/null) ]]  && ( dnf install epel-release 2>/dev/null && msg_in1 || msg_in2 ) || msg_in3 ;
-	   
-	   #return ;
    }
 
   function epel_repository_packages()
