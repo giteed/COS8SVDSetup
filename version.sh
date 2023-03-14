@@ -1,10 +1,5 @@
 #!/bin/bash
 
-
-
-
-#!/bin/bash
-
 # Получаем текущую версию
 VERSION=$(grep 'VERSION=' script.sh | sed 's/VERSION=//')
 
