@@ -20,5 +20,4 @@ version="$date-$commit"
 # Выводим версию
 echo "Версия скрипта: $version"
 
-
 exit 0
