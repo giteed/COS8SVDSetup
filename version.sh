@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Source global definitions
-# --> Прочитать настройки из /root/.bashrc
-#. /root/.bashrc
-
-
-
 # Получаем номер последнего коммита
 commit=$(git rev-parse --short HEAD)
 
