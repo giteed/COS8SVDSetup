@@ -16,7 +16,7 @@
 	sed -i '' "s/VERSION=.*/VERSION=$VERSION/" version.sh
 
 # --> Обновляем номер версии в README.md
-	sed -i '' "s/version: [0-9]\+\.[0-9]\+\.[0-9]\+/version: $VERSION/" README.md
+	sed -i '' "s/Version: [0-9]\+\.[0-9]\+\.[0-9]\+/Version: $VERSION/" README.md
 
 # --> Обновляем номер коммита и дату в version.sh
 	sed -i '' "1i\
