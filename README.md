@@ -1,5 +1,5 @@
 # COS8SVDSetup 
-Version 
+Version 0.1.1026
 
 ![vdsetup_logo.png](/images/vdsetup_logo.png)
 ## Script for initial preparation of fresh VDS based on CentOS 8 Stream
