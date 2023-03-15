@@ -1,5 +1,5 @@
 # COS8SVDSetup 
-Version 0.1.0 Last commit: abc1234, 2023-03-15 10:30:00
+Version 0.1.1
 
 ![vdsetup_logo.png](/images/vdsetup_logo.png)
 ## Script for initial preparation of fresh VDS based on CentOS 8 Stream
