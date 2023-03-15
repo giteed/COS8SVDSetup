@@ -16,7 +16,7 @@ sed -i '' "s/Version.*/Version $VERSION/" README.md
 git add VERSION README.md
 
 # Делаем коммит с сообщением о версии
-#git commit -m "Bump version to $VERSION"
+git commit -m "Bump version to $VERSION"
 
 # Завершаем работу скрипта
 exit 0
