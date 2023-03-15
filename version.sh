@@ -1,28 +1,29 @@
 #!/bin/bash
 
-# Получаем текущую версию
-VERSION=$(grep 'VERSION=' script.sh | sed 's/VERSION=//')
+# --> Получаем номер последнего коммита
+	LAST_COMMIT=$(git rev-parse --short HEAD)
 
-# Увеличиваем номер версии
-VERSION=$(echo $VERSION | awk -F. '{$NF = $NF + 1;} 1' OFS=. )
+# --> Получаем текущую дату
+	DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
-# Обновляем номер версии в скрипте
-sed -i '' "s/VERSION=.*/VERSION=$VERSION/" script.sh
+# --> Получаем текущую версию
+	VERSION=$(grep 'VERSION=' script.sh | sed 's/VERSION=//')
 
-# Обновляем номер версии в README.md
-sed -i '' "s/version: [0-9]\+\.[0-9]\+\.[0-9]\+/version: $VERSION/" README.md
+# --> Увеличиваем номер версии
+	VERSION=$(echo $VERSION | awk -F. '{$NF = $NF + 1;} 1' OFS=. )
 
-exit 0
+# --> Обновляем номер версии в скрипте
+	sed -i '' "s/VERSION=.*/VERSION=$VERSION/" script.sh
 
-# Получаем номер последнего коммита
-commit=$(git rev-parse --short HEAD)
+# --> Обновляем номер версии в README.md
+	sed -i '' "s/version: [0-9]\+\.[0-9]\+\.[0-9]\+/version: $VERSION/" README.md
 
-# Получаем дату создания последнего коммита в формате ГГГГММДД
-date=$(git log -1 --format=%cd --date=format:%Y%m%d)
+# --> Обновляем номер коммита и дату в script.sh
+	sed -i '' "1i\
+# Version $VERSION, last commit: $LAST_COMMIT, $DATE" script.sh
 
-# Определяем версию
-version="$date-$commit"
+# --> Обновляем номер коммита и дату в README.md
+	sed -i '' "s/last commit: [0-9a-f]\+/last commit: $LAST_COMMIT, $DATE/" README.md
 
-# Выводим версию
-echo "Версия скрипта: $version"
+	exit 0
 
