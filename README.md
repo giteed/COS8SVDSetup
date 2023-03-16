@@ -37,3 +37,5 @@ vdsetup ;
 ```
   
 # Спасибо за проявленный интерес!
+Quick and easy, no need to flee -
+VDSetup's the way to glee!
