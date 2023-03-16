@@ -1,5 +1,5 @@
 # COS8SVDSetup 
-Version 0.1.3
+Version 0.1.4
 
 ![vdsetup_logo.png](/images/vdsetup_logo.png)
 ## Script for initial preparation of fresh VDS based on CentOS 8 Stream
@@ -13,7 +13,7 @@ cd /root/ ; (dnf -y install rsync rsync-daemon git mc); (echo); (git clone https
   если в папке: ```/root/.COS8SVDSetup```
   содержатся нужные вам файлы:
 
-- Удаление старой папки инсталлера и GitHub репо (если она уже была) /root/.COS8SVDSetup 
+- Удаление старой папки инсталлера и GitHub repo (если она уже была) /root/.COS8SVDSetup 
 
   ```rm -rf /root/.COS8SVDSetup ;``` (сделайте это вручную, если потребуется)
   
@@ -21,7 +21,7 @@ cd /root/ ; (dnf -y install rsync rsync-daemon git mc); (echo); (git clone https
 
   ```dnf -y install rsync rsync-daemon git mc ;```
 
-- Клонирование репо с GitHub в локальный repo:
+- Клонирование repo с GitHub в локальный repo:
 
   ```git clone https://github.com/giteed/COS8SVDSetup.git /root/.COS8SVDSetup ;```
 
@@ -29,7 +29,7 @@ cd /root/ ; (dnf -y install rsync rsync-daemon git mc); (echo); (git clone https
 
   ```/root/.COS8SVDSetup/bin/cos8svdsetup/preloader.sh ;```
 
-- Запуск скрипта VDSetup после установки preloader.sh:
+- Запустите скрипт VDSetup после установки preloader.sh:
 
    ```# vdsetup ;```
   
