@@ -1,5 +1,5 @@
 # COS8SVDSetup 
-Version 0.1.11
+Version 0.1.12
 
 ![vdsetup_logo.png](/images/vdsetup_logo.png)
 ## Script for initial preparation of fresh VDS based on CentOS 8 Stream
@@ -32,7 +32,8 @@ cd /root/ ; (dnf -y install rsync rsync-daemon git mc); (echo); (git clone https
 
 >  Запустите скрипт VDSetup после установки preloader.sh:
 
-   ```console
-    vdsetup ;```
+```console
+    vdsetup ;
+```
   
 + Спасибо за проявленный интерес!
