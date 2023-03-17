@@ -75,6 +75,7 @@ function cp_rm() {
 # --> скопировать файлы из указанного каталога в новый
 	cp -r /root/.COS8SVDSetup/bin/cos8svdsetup/* /root/vdsetup.2/bin ;
 	#cp -a /root/.COS8SVDSetup/bin/cos8svdsetup/. /root/vdsetup.2/bin ;
+	# --> перезагружаем файл настроек bash
 	source /root/.bashrc ;
 }
 
@@ -86,7 +87,7 @@ function preloader() {
 	cp_rm ;
 # --> вызвать функцию чтения настроек стилей и функций
 	read_sty_func 2>/dev/null ;
-# --> перезагружаем файл настроек bash
+
 	
 # --> удалить временные файлы
 	#rm -rf /root/.COS8SVDSetup ;	
