@@ -1,12 +1,12 @@
 # COS8SVDSetup 
-Version 0.1.21
+Version 0.1.22
 
 ![vdsetup_logo.png](/images/vdsetup_logo.png)
 ## Script for initial preparation of fresh VDS based on CentOS 8 Stream
 
 В начале :
 
-- Удалите вручную старую папку инсталлера и локальную папку GitHub repo (если она уже была) /root/.COS8SVDSetup 
+- Удалите вручную старую папку /root/.COS8SVDSetup (если она уже была)  
 
 ```rm -rf /root/.COS8SVDSetup ;``` 
 
