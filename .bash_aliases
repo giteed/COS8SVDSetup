@@ -51,3 +51,6 @@ alias mkdir='mkdir -p'
 # yum
 alias ypr='GLIG_ASTRX_ON && ypr-f'
 
+# 
+alias tsync='/root/test-lab/tsync.sh'
+
