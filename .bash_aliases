@@ -1,7 +1,7 @@
 # .bash_aliases
 
 # --> Использовать ~/.bash_ali_hosts
-#. ~/.bash_ali_hosts ;
+. ~/.bash_ali_hosts ;
 
 #-----------------------------------
 # User specific aliases and functions
