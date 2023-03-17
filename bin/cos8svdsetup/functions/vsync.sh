@@ -10,7 +10,7 @@
     
     function sync() {
         
-        cd /root/COS8SVDSetup ;
+        cd /root/COS8SVDSetup || return ;
         
         # сохранение изменений в стэш
         git status ;
