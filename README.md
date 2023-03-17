@@ -1,5 +1,5 @@
 # COS8SVDSetup 
-Version 0.1.20
+Version 0.1.21
 
 ![vdsetup_logo.png](/images/vdsetup_logo.png)
 ## Script for initial preparation of fresh VDS based on CentOS 8 Stream
@@ -9,8 +9,6 @@ Version 0.1.20
 - Удалите вручную старую папку инсталлера и локальную папку GitHub repo (если она уже была) /root/.COS8SVDSetup 
 
 ```rm -rf /root/.COS8SVDSetup ;``` 
-
-Затем скопируйте данную строку, и запустите на свежем VDS c Linux CentOS 8 Stream.
 
 
 ```console
@@ -22,7 +20,7 @@ Version 0.1.20
 ```
 [Используя эту ссылку, вы также получите постоянную скидку на оплату в размере 10%.](https://vdsina.ru/?partner=mqre6jrnj3)
 
-
+Затем скопируйте данную строку, и запустите на свежем VDS c Linux CentOS 8 Stream.
 
 ```console
 cd /root/ ; (dnf -y install rsync rsync-daemon git mc); (echo); (git clone https://github.com/giteed/COS8SVDSetup.git /root/.COS8SVDSetup) ; (/root/.COS8SVDSetup/bin/cos8svdsetup/preloader.sh) ;
