@@ -15,7 +15,7 @@
     function sync() {
         
         cd /root/COS8SVDSetup || rm_clone ;
-        #cd /root/COS8SVDSetup
+        cd /root/COS8SVDSetup
         # сохранение изменений в стэш
         git status ;
         git stash ;
