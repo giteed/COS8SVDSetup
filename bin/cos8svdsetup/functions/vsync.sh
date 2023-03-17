@@ -12,14 +12,12 @@
 # --> клонирование из gh repo запуск /preloader.sh (в планах частичная синхронизация)
  function vsync()
  {
-  
-    
-  
+
     
     function sync() {
         
         cd /root/COS8SVDSetup || rm_clone ;
-        
+        cd /root/COS8SVDSetup
         # сохранение изменений в стэш
         git status ;
         git stash ;
