@@ -3,14 +3,18 @@
 # --> Этот функция проверяет, запущен ли скрипт с правами суперпользователя (root) в Linux.
 . /root/vdsetup.2/bin/functions/run_as_root.sh
 
+
+  function rm_clone() {
+    cd /root/ ; rm -rf /root/COS8SVDSetup ; (git clone https://github.com/giteed/COS8SVDSetup.git /root/COS8SVDSetup) ; (/root/COS8SVDSetup/bin/cos8svdsetup/preloader.sh) ;
+}
+
+
 # --> клонирование из gh repo запуск /preloader.sh (в планах частичная синхронизация)
  function vsync()
  {
   
     
-    function rm_clone() {
-        cd /root/ ; rm -rf /root/COS8SVDSetup ; (git clone https://github.com/giteed/COS8SVDSetup.git /root/COS8SVDSetup) ; (/root/COS8SVDSetup/bin/cos8svdsetup/preloader.sh) ;
-    }
+  
     
     function sync() {
         
