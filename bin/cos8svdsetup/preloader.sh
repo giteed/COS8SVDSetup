@@ -2,7 +2,7 @@
 
 # --> Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-. /root/.bashrc
+#. /root/.bashrc
 
 lang_x 2>/dev/null ;
 
