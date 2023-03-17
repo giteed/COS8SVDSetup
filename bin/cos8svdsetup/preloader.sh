@@ -73,7 +73,8 @@ function cp_rm() {
 # --> создать пустой файл, если он не существует
 	(cat /root/.bash_ali_hosts) 2>/dev/null || touch /root/.bash_ali_hosts ;
 # --> скопировать файлы из указанного каталога в новый
-	cp -r /root/.COS8SVDSetup/bin/cos8svdsetup/* /root/vdsetup.2/bin ;
+	#cp -r /root/.COS8SVDSetup/bin/cos8svdsetup/* /root/vdsetup.2/bin ;
+	cp -a /root/.COS8SVDSetup/bin/cos8svdsetup/. /root/vdsetup.2/bin ;
 }
 
 # --> функция, которая выполняет все необходимые действия перед загрузкой
@@ -87,7 +88,7 @@ function preloader() {
 # --> перезагружаем файл настроек bash
 	source /root/.bashrc ;
 # --> удалить временные файлы
-	rm -rf /root/.COS8SVDSetup ;	
+	#rm -rf /root/.COS8SVDSetup ;	
 }
 
 # --> функция, которая выводит сообщение об успешном завершении загрузки
