@@ -15,8 +15,8 @@
  {
     function _vsync() {
         
-        cd /root/COS8SVDSetup || rm_clone && return ;
-        cd /root/COS8SVDSetup
+        [[ -n $(ls /root/COS8SVDSetup) ]] 2>/dev/null || (rm_clone && return) ;
+        cd /root/COS8SVDSetup ;
         # сохранение изменений в стэш
         git status ;
         git stash ;
