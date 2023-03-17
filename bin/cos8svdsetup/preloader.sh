@@ -49,7 +49,7 @@ ttb=$(echo -e "
  ⎩ # /root/bin/cos8svdsetup/utility/github.sh 2>/dev/null
  " ) && lang_nix && bpn_p_lang ; ttb=""  ;
 # --> вызвать установку gh
-	/root/.COS8SVDSetup/bin/cos8svdsetup/utility/github.sh ;
+	/root/COS8SVDSetup/bin/cos8svdsetup/utility/github.sh ;
 }
 
 # --> определить функцию для вывода сообщения об установленном gh
@@ -64,17 +64,17 @@ function gh_installed() {
 # --> определить функцию для копирования и удаления файлов
 function cp_rm() {
 # --> скопировать файлы конфигурации в корневой каталог
-	cp -f /root/.COS8SVDSetup/.bashrc /root/ ;
-	cp -f /root/.COS8SVDSetup/.bash_profile /root/ ;
-	cp -f /root/.COS8SVDSetup/.bash_aliases /root/ ;
+	cp -f /root/COS8SVDSetup/.bashrc /root/ ;
+	cp -f /root/COS8SVDSetup/.bash_profile /root/ ;
+	cp -f /root/COS8SVDSetup/.bash_aliases /root/ ;
 # --> удалить определенные каталоги и создать новый
 	rm -rf /root/vdsetup.2/bin ;
 	mkdir -p /root/vdsetup.2/bin ;
 # --> создать пустой файл, если он не существует
 	(cat /root/.bash_ali_hosts) 2>/dev/null || touch /root/.bash_ali_hosts ;
 # --> скопировать файлы из указанного каталога в новый
-	cp -r /root/.COS8SVDSetup/bin/cos8svdsetup/* /root/vdsetup.2/bin ;
-	#cp -a /root/.COS8SVDSetup/bin/cos8svdsetup/. /root/vdsetup.2/bin ;
+	cp -r /root/COS8SVDSetup/bin/cos8svdsetup/* /root/vdsetup.2/bin ;
+	#cp -a /root/COS8SVDSetup/bin/cos8svdsetup/. /root/vdsetup.2/bin ;
 }
 
 # --> функция, которая выполняет все необходимые действия перед загрузкой
@@ -88,7 +88,7 @@ function preloader() {
 # --> перезагружаем файл настроек bash
 	source /root/.bashrc ;
 # --> удалить временные файлы
-	#rm -rf /root/.COS8SVDSetup ;	
+	#rm -rf /root/COS8SVDSetup ;	
 }
 
 # --> функция, которая выводит сообщение об успешном завершении загрузки

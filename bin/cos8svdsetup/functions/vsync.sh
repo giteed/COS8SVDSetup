@@ -23,9 +23,9 @@
         gh repo sync --branch=main ;
         echo y | cp -a /root/COS8SVDSetup/bin/cos8svdsetup/. /root/vdsetup.2/bin #2>/dev/null
         # --> скопировать файлы конфигурации в корневой каталог
-        echo y | cp -f /root/.COS8SVDSetup/.bashrc /root/ ;
-        echo y | cp -f /root/.COS8SVDSetup/.bash_profile /root/ ;
-        echo y | cp -f /root/.COS8SVDSetup/.bash_aliases /root/ ;
+        echo y | cp -f /root/COS8SVDSetup/.bashrc /root/ ;
+        echo y | cp -f /root/COS8SVDSetup/.bash_profile /root/ ;
+        echo y | cp -f /root/COS8SVDSetup/.bash_aliases /root/ ;
         source /root/.bashrc
     }
     
