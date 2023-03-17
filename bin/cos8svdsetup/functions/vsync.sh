@@ -9,11 +9,14 @@
     gh config set -h github.com git_protocol ssh
     
     function sync() {
+        
+        cd /root/COS8SVDSetup ;
+        
         # сохранение изменений в стэш
         git status ; echo ;
         git stash ; echo ;
         
-        cd /root/COS8SVDSetup ;
+        
         gh repo sync --branch=main ;
         echo y | cp -a /root/COS8SVDSetup/bin/cos8svdsetup/. /root/vdsetup.2/bin #2>/dev/null
     }
