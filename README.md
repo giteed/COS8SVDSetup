@@ -1,5 +1,5 @@
 # COS8SVDSetup 
-Version 0.1.19
+Version 0.1.20
 
 ![vdsetup_logo.png](/images/vdsetup_logo.png)
 ## Script for initial preparation of fresh VDS based on CentOS 8 Stream
@@ -20,7 +20,7 @@ Version 0.1.19
 1 core / Процессор
 32 ТБ / Трафик
 ```
-[Используя нашу ссылку, вы также получите постоянную скидку на оплату в размере 10%.](https://vdsina.ru/?partner=mqre6jrnj3)
+[Используя эту ссылку, вы также получите постоянную скидку на оплату в размере 10%.](https://vdsina.ru/?partner=mqre6jrnj3)
 
 
 
