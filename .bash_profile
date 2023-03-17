@@ -7,7 +7,7 @@ fi
 
 
 # --> Использовать ~/.bash_ali*
-. /root/.bash_aliases
+sudo /root/.bash_aliases
 
 
 # User specific environment and startup programs

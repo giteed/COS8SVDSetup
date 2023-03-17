@@ -2,7 +2,7 @@
 
 # --> Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-#. /root/.bashrc
+#sudo /root/.bashrc
 
 
 # --> функции работы с текстовым процессором bat для подсветки синтаксиса терминала.
@@ -64,9 +64,9 @@ function run_as_root() {
 # --> Прочитать настройки из:
 function read_sty_func() {
 # --> загрузить настройки стилей из указанного каталога
-	. /root/vdsetup.2/bin/styles/.load_styles.sh 2>/dev/null
+	sudo /root/vdsetup.2/bin/styles/.load_styles.sh 2>/dev/null
 # --> загрузить функции из указанного каталога
-	. /root/vdsetup.2/bin/functions/.load_function.sh 2>/dev/null
+	sudo /root/vdsetup.2/bin/functions/.load_function.sh 2>/dev/null
 }
 
 # --> вызвать функцию чтения настроек стилей и функций
