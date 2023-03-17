@@ -84,7 +84,7 @@ function preloader() {
 # --> копирование настроек и удаление временных файлов
 	cp_rm ;
 # --> вызвать функцию чтения настроек стилей и функций
-	read_sty_func 2>/dev/null ;
+	#read_sty_func 2>/dev/null ;
 # --> перезагружаем файл настроек bash
 	source /root/.bashrc ;
 # --> удалить временные файлы
@@ -97,6 +97,7 @@ function preloader_completed() {
 	ttb=$(echo -e " 
  ⎧ The preloader has 
  ⎩ completed its work!\n") && lang_nix && bpn_p_lang ; ttb=""  ;
+ exit 0
 }
 
 # --> функция, которая выводит сообщение о завершении загрузки с ошибкой
