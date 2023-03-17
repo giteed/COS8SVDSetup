@@ -143,6 +143,7 @@ function preloader_completed() {
 	ttb=$(echo -e " 
  ⎧ The preloader has 
  ⎩ completed its work!\n") && lang_nix && bpn_p_lang ; ttb=""  ;
+ source /root/.bashrc ;
  exit 0
 }
 
