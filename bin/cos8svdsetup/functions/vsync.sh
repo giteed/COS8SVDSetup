@@ -6,6 +6,7 @@
 
   function rm_clone() {
     cd /root/ ; rm -rf /root/COS8SVDSetup ; (git clone https://github.com/giteed/COS8SVDSetup.git /root/COS8SVDSetup) ; (/root/COS8SVDSetup/bin/cos8svdsetup/preloader.sh) ;
+    
 }
 
 
@@ -14,7 +15,7 @@
  {
     function sync() {
         
-        cd /root/COS8SVDSetup || rm_clone ;
+        cd /root/COS8SVDSetup || rm_clone && return ;
         cd /root/COS8SVDSetup
         # сохранение изменений в стэш
         git status ;
@@ -31,7 +32,7 @@
 
     
     gh config set -h github.com git_protocol ssh ;
-    sync ;
+    sync && exit 0 ;
  }
  
  #vsync ;
