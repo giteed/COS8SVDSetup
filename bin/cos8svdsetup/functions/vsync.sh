@@ -31,7 +31,7 @@
 
     
     gh config set -h github.com git_protocol ssh ;
-    ( sync ) || (  )
+    sync ;
  }
  
  #vsync ;
