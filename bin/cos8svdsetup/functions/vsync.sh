@@ -10,7 +10,7 @@
     
     function sync() {
         cd /root/COS8SVDSetup ;
-        cd gh repo sync --branch=main ;
+        gh repo sync --branch=main ;
         echo y | cp -a /root/COS8SVDSetup/bin/cos8svdsetup/. /root/vdsetup.2/bin #2>/dev/null
     }
     
