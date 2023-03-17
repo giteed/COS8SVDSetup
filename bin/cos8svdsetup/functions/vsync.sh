@@ -32,7 +32,7 @@
 
     
     gh config set -h github.com git_protocol ssh ;
-    sync && exit 0 ;
+    sync #&& exit 0 ;
  }
  
  #vsync ;
