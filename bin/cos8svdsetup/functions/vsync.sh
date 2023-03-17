@@ -13,7 +13,7 @@
 # --> клонирование из gh repo запуск /preloader.sh (в планах частичная синхронизация)
  function vsync()
  {
-    function sync() {
+    function _vsync() {
         
         cd /root/COS8SVDSetup || rm_clone && return ;
         cd /root/COS8SVDSetup
@@ -32,7 +32,7 @@
 
     
     gh config set -h github.com git_protocol ssh ;
-    vsync #&& exit 0 ;
+    _vsync #&& exit 0 ;
  }
  
  #vsync ;
