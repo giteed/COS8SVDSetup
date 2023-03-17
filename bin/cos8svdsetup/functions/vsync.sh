@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --> Этот функция проверяет, запущен ли скрипт с правами суперпользователя (root) в Linux.
-. /root/vdsetup.2/bin/functions/run_as_root.sh
+#. /root/vdsetup.2/bin/functions/run_as_root.sh
 
 
   function rm_clone() {
