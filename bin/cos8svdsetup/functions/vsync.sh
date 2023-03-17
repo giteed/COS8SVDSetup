@@ -25,4 +25,4 @@
     sync #|| rm_clone
  }
  
- vsync ;
+ #vsync ;
