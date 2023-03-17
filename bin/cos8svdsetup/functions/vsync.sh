@@ -29,7 +29,7 @@
     }
     
     gh config set -h github.com git_protocol ssh ;
-    sync && echo sync OK || echo sync fail && rm_clone && echo rm_clone OK
+    sync && echo sync OK || echo sync_fail && rm_clone && echo rm_clone OK
  }
  
  #vsync ;
