@@ -17,6 +17,11 @@
         git stash ;
         gh repo sync --branch=main ;
         echo y | cp -a /root/COS8SVDSetup/bin/cos8svdsetup/. /root/vdsetup.2/bin #2>/dev/null
+        # --> скопировать файлы конфигурации в корневой каталог
+        cp -f /root/.COS8SVDSetup/.bashrc /root/ ;
+        cp -f /root/.COS8SVDSetup/.bash_profile /root/ ;
+        cp -f /root/.COS8SVDSetup/.bash_aliases /root/ ;
+        source /root/.bashrc
     }
     
     function rm_clone() {
@@ -24,7 +29,7 @@
     }
     
     gh config set -h github.com git_protocol ssh ;
-    sync && echo sync OK ||echo sync fail && rm_clone && echo rm_clone OK
+    sync && echo sync OK || echo sync fail && rm_clone && echo rm_clone OK
  }
  
  #vsync ;
