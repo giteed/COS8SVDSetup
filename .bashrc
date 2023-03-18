@@ -22,11 +22,11 @@ fi
 #-----------------------------------
 # --> Прочитать настройки из:
 # --> Первая команда загружает стили для командной строки, которые могут изменять цвет и форматирование текста в командной строке, чтобы сделать ее более удобочитаемой и удобной в использовании.
-sudo -E bash -c '. /root/vdsetup.2/bin/styles/.load_styles.sh'
+#sudo -E bash -c '. /root/vdsetup.2/bin/styles/.load_styles.sh'
 
 
 # --> Вторая команда загружает пользовательские функции, которые могут быть использованы в командной строке для автоматизации определенных задач, например, для создания сокращений для длинных команд или для выполнения сложных задач в несколько шагов.
-sudo -E bash -c '. /root/vdsetup.2/bin/functions/.load_function.sh'
+#sudo -E bash -c '. /root/vdsetup.2/bin/functions/.load_function.sh'
 
 # или вместе sudo -E bash -c '. /root/vdsetup.2/bin/styles/.load_styles.sh; . /root/vdsetup.2/bin/functions/.load_function.sh'
 
