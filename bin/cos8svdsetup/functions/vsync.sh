@@ -21,7 +21,7 @@
         git status ;
         git stash ;
         gh repo sync --branch=main ;
-        echo y | cp -a /root/COS8SVDSetup/bin/cos8svdsetup/. /root/vdsetup.2/bin #2>/dev/null
+        sudo cp -a /root/COS8SVDSetup/bin/cos8svdsetup/. /root/vdsetup.2/bin #2>/dev/null
         # --> скопировать файлы конфигурации в корневой каталог
         su 
         sudo cp -a /root/COS8SVDSetup/.bashrc /root/ ;
