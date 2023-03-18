@@ -27,6 +27,7 @@
         sudo cp -a /root/COS8SVDSetup/.bashrc /root/ ;
         sudo cp -a /root/COS8SVDSetup/.bash_profile /root/ ;
         sudo cp -a /root/COS8SVDSetup/.bash_aliases /root/ ;
+        cd ~
         source /root/.bashrc
     }
     
