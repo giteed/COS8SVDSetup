@@ -7,10 +7,10 @@
 # --> Этот ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
 #. /root/vdsetup.2/bin/functions/run_as_root.sh
 
-rm -rf /root/COS8SVDSetup
-rm -rf /root/vdsetup.2
-rm /root/.bashrc
-rm /root/.bash_aliases
-rm /root/.bash_profile
+sudo rm -rf /root/COS8SVDSetup
+sudo rm -rf /root/vdsetup.2
+sudo rm /root/.bashrc
+sudo rm /root/.bash_aliases
+sudo rm /root/.bash_profile
 
 exit 0 ; 
