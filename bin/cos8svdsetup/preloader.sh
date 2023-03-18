@@ -2,7 +2,7 @@
 
 # --> Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-#sudo /root/.bashrc
+. /root/.bashrc
 
 
 # --> функции работы с текстовым процессором bat для подсветки синтаксиса терминала.
