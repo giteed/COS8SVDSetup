@@ -23,7 +23,7 @@
         gh repo sync --branch=main ;
         sudo cp -a /root/COS8SVDSetup/bin/cos8svdsetup/. /root/vdsetup.2/bin #2>/dev/null
         # --> скопировать файлы конфигурации в корневой каталог
-        su 
+        
         sudo cp -a /root/COS8SVDSetup/.bashrc /root/ ;
         sudo cp -a /root/COS8SVDSetup/.bash_profile /root/ ;
         sudo cp -a /root/COS8SVDSetup/.bash_aliases /root/ ;
