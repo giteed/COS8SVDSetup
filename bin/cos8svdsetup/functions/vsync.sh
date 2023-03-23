@@ -37,6 +37,8 @@ function vsync() {
         sudo cp -a /root/COS8SVDSetup/.bashrc /root/ ;
         sudo cp -a /root/COS8SVDSetup/.bash_profile /root/ ;
         sudo cp -a /root/COS8SVDSetup/.bash_aliases /root/ ;
+# --> копируем VERSION в /root/vdsetup.2/bin/
+        sudo cp -a /root/COS8SVDSetup/VERSION /root/vdsetup.2/bin/ ;
         cd ~
 # --> Наконец, запускается .bashrc для применения изменений
         source /root/.bashrc
