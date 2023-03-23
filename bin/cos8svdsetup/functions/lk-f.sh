@@ -1,41 +1,29 @@
 #!/bin/bash
 
-   # --> Поиск информации о программе сразу по 11 командам. пример: ww hh
-   function ww() {
-	   
-	   function msg_ww() {
-		 
-	 ttb=$(echo -e "
- ⎧ Чтобы получить информацию сразу по 11 командам: 
- | type -all [имя], yum info [имя],
- | yum provides [имя], yum search [имя], 
- | yum repolist [имя] rpm -qa [имя],
- | which -a [имя], whatis [имя], whereis [имя],
- | locate [имя], tldr [имя].
- | используйте: 
- | # ww [имя_программы] или [имя_скрипта] или [имя_функции]
- |
- ⎩ Пример: # ww perl или [nginx], [ww], [ff], [htop].
-   ") && lang=cr && bpn_p_lang ;
+   # Листинг файлов/папок и их цифровых прав доступа:
+function lk-f() 
+{ 
+   # Convert KB To MB using Bash
+   # https://stackoverflow.com/questions/19059944/convert-kb-to-mb-using-bash	
+   # man numfmt
    
-   }  
+   if [ "$1" == "" ]; 
+      then 
+      GLIG_ASTRX_OF ;
+      echo -e "\n Пустой запрос "$cyan""lk""$NC" покажет все,\n кроме скрытых файлов и папок\n путь:"$ELLOW""$(pwd)""$NC"\n"
+      stat -c '%a:%A %U %G %s %n' . .. * | numfmt --header --field 4 --from=iec --to=si | column -t | bat  --paging=never -l java -p ;
+      return; 
+   fi
    
-	if [[ $1 == "" ]] ; then msg_ww && return ; fi ;
-	
-   ( ttb=$(echo -e "
- ⎧ Просмотр информации о типе команды $1: 
- ⎩ # type -a $1") && lang=cr && lang=cr && bpn_p_lang ; )
-	echo ; ttb=$(type -a $*) && lang=bash && bpn_p_lang 2>/dev/null ; echo ;
-	
-	ttb=$(echo -e "
- ⎧ Просмотр информации о пакете rpm: 
- ⎩ # rpm -qa $1") && lang=cr && bpn_p_lang ;
-	echo ; ttb=$(rpm -qa $*) && lang=cr  && bpn_p_lang 2>/dev/null ; echo ;
-	
-	ttb=$(echo -e "
- ⎧ Просмотр информации по 9 командам: 
- ⎩ # ypr -a $1") && lang=cr && bpn_p_lang ;
-	echo ; ttb=$(ypr -a $1) && lang=cr && bpn_p_lang ; echo ;
-	tldr $1 ; echo ;
-   }
+   if [ "$1" == "." ]; 
+      then 
+      GLIG_ASTRX_OF ;
+      echo -e "\n Запрос "$cyan""lk""$NC" c $NC\""$RED"."$NC"\" покажет все,\n включая cкрытые файлы и папки\n путь:"$ELLOW""$(pwd)""$NC"\n"
+      stat -c '%a:%A %U %G %s %n' .* ** | numfmt --header --field 4 --from=iec --to=si | column -t | bat  --paging=never -l java -p ;
+      return; 
+   fi
    
+      GLIG_ASTRX_OF ;
+      echo -e "\n Вы можете выводить файлы и папки,\n используя маску. Пример: "$RED"# "$cyan"lk "$RED"*"$NC"e"$RED"*"$NC"\n путь:"$ELLOW""$(pwd)""$NC" \n"
+      stat -c '%a:%A %U %G %s %n' $* | numfmt --header --field 4 --from=iec --to=si | column -t | bat  --paging=never -l java -p ;
+}
