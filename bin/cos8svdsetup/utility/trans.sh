@@ -330,7 +330,7 @@ ttb=$(echo -en "
  | 
  | # dnf install epel-release ;
  | # dnf -y update (самостоятельно)
- ⎩$(epel_repo_Check_or_install)") && lang_nix && bpn_p_lang ;
+ ⎩$(epel_repository_Check_or_install)") && lang_nix && bpn_p_lang ;
  
 
 ttb=$(echo -e " 
