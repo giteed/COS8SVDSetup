@@ -16,7 +16,7 @@ lang_x 2>/dev/null ;
 	 dnf install -y youtube-dl ffmpeg || ( error_MSG ; ) ; echo ;
 	 dnf install -y git tar curl wget || ( error_MSG ; ) ; echo ;
 	 dnf install -y whois || ( error_MSG ; ) ; echo ;
-	 dnf install -y atop htop bpytop iftop stacer lsof nethogs  || ( error_MSG ; ) ; echo ;
+	 dnf install -y atop htop bpytop iftop stacer lsof nethogs ripgrep || ( error_MSG ; ) ; echo ;
 	 dnf install -y python3 ruby  || ( error_MSG ; ) ; echo ;
 	 dnf install -y mc nano hstr ncdu || ( error_MSG ; ) ; echo ;
 	 dnf install -y unzip p7zip || ( error_MSG ; ) ; echo ;
