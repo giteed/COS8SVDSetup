@@ -4,11 +4,6 @@
 # --> Прочитать настройки из /etc/bashrc
 . /root/.bashrc
 
-# --> Прочитать настройки:
-. /root/bin/utility/.varfunc.sh &>/dev/null ;
-. /root/bin/utility/.css.sh &>/dev/null 
-
-debug_message ;
 
  function check_old_if_0() {
 	 # Если значения пустые назначить из файла если он есть предыдущие логин и пароль.
@@ -240,7 +235,7 @@ ttb=$(echo -e "\n ⎧
  | # systemctl restart transmission-daemon") && lang="nix" && bpn_p_lang ; echo ;
 
    systemctl_restart_transmission_daemon ;
-echo -e "\n ⎩" ; sleep 1 ; css ;
+echo -e "\n ⎩" ; sleep 1 ;
 	}
  
 	
@@ -318,7 +313,7 @@ function remove_tr() {
 
    if [[ "$1" == "--transmission-remove" ]] ; then remove_tr ; exit 0 ; fi ;
    
-   check_Transmission_already_installed ; css ;
+   check_Transmission_already_installed ;
 
 
 ttb=$(echo -en "
@@ -358,7 +353,7 @@ ttb=$(echo -e "
  | # systemctl stop   transmission-daemon ;") && lang="nix" && bpn_p_lang ;
 
  systemctl_start_enable_stop_transmission_daemon ;
- echo -e "" ; css ;
+ echo -e "" ; 
  
 
 
@@ -382,7 +377,7 @@ function press_enter_to_change_login_password() {
 		function change_or_no() {
 			ttb=$(echo -en "\n	Хотите автоматически сконфигурировать settings.json\n	и назначить новые Login и Password для Web интерфейса?") && lang="nix" && echo -en "" ; bpn_p_lang ;
 			read -rp "	[y/n]: " -e -i y change 
-			if [[ "$change" == "y" ]] ; then css ; change_login_password ; else css ; json_hand_edit ; fi ;
+			if [[ "$change" == "y" ]] ; then change_login_password ; else json_hand_edit ; fi ;
 			}
 			
 			change_or_no ;
@@ -396,7 +391,7 @@ function end_install_transmission() {
 	
 
 	check_old_if_0 ;
-	sleep 1 ; css ;
+	sleep 1 ;
 	
  
  ttb=$(echo -e "
@@ -415,7 +410,7 @@ function end_install_transmission() {
  
  open_port_and_services_firewall ;
  
- echo ; press_anykey ; css ;
+ echo ; press_anykey ;
  ttb=$(echo -e "
     	Клиент Transmission доступен по HTTP. ") && lang="nix" && bpn_p_lang ;
    
