@@ -73,6 +73,20 @@ lang_x 2>/dev/null ;
   }
   
   epel_repository_packages ;
+  
+  # ФУНКЦИЯ: Установка fzf
+   function fzfIN() 
+   { 
+		   echo -e " Установка fzf." 
+		   
+		   ( ( git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all ) ) && ( echo -e " ${GREEN}Установка fzf завершена${NC}" && echo -e " ($( green_tick )) - fzf version ${RED}    |${NC} $($HOME/.fzf/bin/fzf --version)" && ( echo -e "\n Для обновления настроек введите:\n ${RED}#${NC} source ${CYAN}~/.bashrc\n${NC}" ) ; ) || ( echo -en " Функция fzfIN завешилась с ошибкой: " && error_MSG ; ) ;
+		   # &>/dev/null 
+   }  
+  
+  
+  # Проверка на наличие fzf или установка fzf
+   ( [[ -z $(fzf --version) ]] ) &>/dev/null  && fzfIN || ( echo -e "fzf version $(fzf --version)" );
+
 
 exit 0 ; 
 
