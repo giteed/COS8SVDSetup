@@ -85,7 +85,7 @@ lang_x 2>/dev/null ;
   
   
   # Проверка на наличие fzf или установка fzf
-   ( [[ -z $(fzf --version) ]] ) &>/dev/null  && fzfIN || ( echo -e "fzf version $(fzf --version)" );
+   ( [[ -z $(fzf --version) ]] ) &>/dev/null  && fzfIN || ( echo -e "\n   fzf version $(fzf --version)" );
 
 
 exit 0 ; 
