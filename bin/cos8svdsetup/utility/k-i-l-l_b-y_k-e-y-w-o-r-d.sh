@@ -158,7 +158,7 @@ kill_snippet
 
 
 
-press_enter_to_continue_or_any_key_to_cancel
+press_enter_to_continue_or_ESC_or_any_key_to_cancel
 
 
 exit 0 ; 

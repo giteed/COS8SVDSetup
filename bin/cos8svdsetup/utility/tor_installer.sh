@@ -53,7 +53,7 @@ echo ;
 		
 		echo -e " $(black_U23A9 ) \n" ;
 		
-		press_enter_to_continue_or_any_key_to_cancel ;
+		press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 		
 		cp /etc/wgetrc /etc/wgetrc_old ;
 		echo "http_proxy = http://localhost:8118" >> /etc/wgetrc ;
@@ -92,7 +92,7 @@ echo ;
 		
 		
 		
-		#press_enter_to_continue_or_any_key_to_cancel ;
+		#press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 		
 		
 		OK_privoxy_config_edit_now_MSG ;
@@ -135,7 +135,7 @@ echo ;
 		yum install -y epel-release &>/dev/null ;
 		echo -e " $(green_1     )  2. Установка: ${GREEN}TOR${NC} и Privoxy" ;
 		
-		press_enter_to_continue_or_any_key_to_cancel ; 
+		press_enter_to_continue_or_ESC_or_any_key_to_cancel ; 
 		
 		yum install -y tor privoxy &>/dev/null ;
 		
@@ -147,7 +147,7 @@ echo ;
 		
 		echo -e "\n $(black_U23A9 ) \n" ;
 		
-		press_enter_to_continue_or_any_key_to_cancel ; 
+		press_enter_to_continue_or_ESC_or_any_key_to_cancel ; 
 		
 		sleep 1 ; 
 		$0 $1 ;
@@ -263,7 +263,7 @@ echo ;
 		echo -e " $(white_1     ) $(red_U0023) curl ${red}2ip.ua\n ${red}" ;
 		curl 2ip.ua ;
 		echo -e " $(black_U23A9 ) \n" ;
-		press_enter_to_continue_or_any_key_to_cancel ; 
+		press_enter_to_continue_or_ESC_or_any_key_to_cancel ; 
 		echo -e " $(black_U23A7 ) " ;
 		echo -e " $(ellow_1     ) Несколько примеров использования " ;
 		echo -e " $(ellow_1     ) wget, cyrl, через TOR Socks5: " ;
@@ -288,7 +288,7 @@ echo ;
 		echo -e " $(white_1     ) $(red_U0023) curl ${green}--socks5 127.0.0.1:${tor_port}${NC} http://site.com/ " ;
 		echo -en " $(ellow_1     ) (будет виден ip TOR): ${green}"
 		curl --socks5 127.0.0.1:${tor_port} http://2ip.ru ;
-		press_enter_to_continue_or_any_key_to_cancel ; 
+		press_enter_to_continue_or_ESC_or_any_key_to_cancel ; 
 		echo -e " $(white_1     ) "
 		echo -e " $(ellow_1     ) Скачиваем ссылки curl'ом без TOR подключения" ;
 		echo -e " $(white_1     ) $(red_U0023) curl ${red} http://site.com/ " ;

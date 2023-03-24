@@ -29,7 +29,7 @@ function swap_edit()
   ( free -h -t | bat  --paging=never -l meminfo -p ) 2>/dev/null || free -h -t  ;
   echo -e "\n $(black_U23A9 ) \n" ;
   
-  press_enter_to_continue_or_any_key_to_cancel ;
+  press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
   
   if swapoff -a ; 
 	then 
