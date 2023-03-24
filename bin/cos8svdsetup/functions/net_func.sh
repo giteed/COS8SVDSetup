@@ -28,7 +28,7 @@
   }
 
   function lastf() {
-          /root/vdsetup.2/bin/utility/lastf.sh ;
+          /root/vdsetup.2/bin/utility/lastf.sh $1 ;
     }
 
 
