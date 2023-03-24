@@ -20,7 +20,7 @@ function remove_vdsetup() {
 ttb=$(echo -e " 
  ⎧ 
  | A complete removal of VDSetup will be performed:
- | Installed packages using VDSetup, -
+ | Installed packages using VDSetup script, -
  | WILL NOT BE REMOVED!
  |
  | Commands will be executed:
@@ -37,8 +37,8 @@ ttb=$(echo -e "
  
 ttb=$(echo -e " 
  ⎧  
- | VDSetup removed! 
- | To reinstall, type: 
+ | VDSetup script removed successfully! 
+ | To reinstall VDSetup, type: 
  | # vsync
  | or:
  | # cd /root/ ; (dnf -y install rsync rsync-daemon git mc);
