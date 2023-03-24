@@ -27,7 +27,12 @@
         /root/vdsetup.2/bin/utility/file_to_light_server_start_stop.sh status ;
   }
 
+  function lastf() {
+          /root/vdsetup.2/bin/utility/lastf.sh ;
+    }
 
+
+  
 
 
    function open_port_and_services_firewall() {

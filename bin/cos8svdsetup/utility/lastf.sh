@@ -29,12 +29,12 @@
 case $1 in
 -h | --help )
 # Справка
-	echo -e ""${cyan}"\n"${cyan}"***"${NC}" Справка /root/vdsetup.2/bin/utility/lastf.sh "${cyan}"***"${NC}" "
-	echo -e ""${cyan}"\n Использование:"${NC}" /root/vdsetup.2/bin/utility/lastf.sh [username][ip][Day][Month][etc] " ;
-	echo -e ""${cyan}"  пример:"${NC}" /root/vdsetup.2/bin/utility/lastf.sh "$mi" "${cyan}" (поиск по ip адресу или по "${NC}"ip.маске.*"${cyan}")"${NC}"" ;
-	echo -e ""${cyan}"     или:"${NC}" /root/vdsetup.2/bin/utility/lastf.sh "$Month" "$(whoami)" "${cyan}"(поиск по Месяцу и UserName)"${NC}"" ;
-	echo -e ""${cyan}"     или:"${NC}" /root/vdsetup.2/bin/utility/lastf.sh "$Day" "$Month" "${cyan}"(поиск по Дню и Месяцу)"${NC}"" ;
-	echo -e ""${cyan}"     или:"${NC}" /root/vdsetup.2/bin/utility/lastf.sh "$Month" \"("$im"|boot|pts)\" $Day "${cyan}"(использование сдвоенной переменной)"${NC}"" ;
+	echo -e ""${cyan}"\n"${cyan}"***"${NC}" Справка lastf "${cyan}"***"${NC}" "
+	echo -e ""${cyan}"\n Использование:"${NC}" lastf [username][ip][Day][Month][etc] " ;
+	echo -e ""${cyan}"  пример:"${NC}" lastf "$mi" "${cyan}" (поиск по ip адресу или по "${NC}"ip.маске.*"${cyan}")"${NC}"" ;
+	echo -e ""${cyan}"     или:"${NC}" lastf "$Month" "$(whoami)" "${cyan}"(поиск по Месяцу и UserName)"${NC}"" ;
+	echo -e ""${cyan}"     или:"${NC}" lastf "$Day" "$Month" "${cyan}"(поиск по Дню и Месяцу)"${NC}"" ;
+	echo -e ""${cyan}"     или:"${NC}" lastf "$Month" \"("$im"|boot|pts)\" $Day "${cyan}"(использование сдвоенной переменной)"${NC}"" ;
 	echo -e ""${cyan}"     или:"${NC}"     [с ключем -a] "${cyan}"(поиск по всем записям и выбор только одной)"${NC}"" ;
 	echo -e ""${cyan}"     или:"${NC}"     [с ключем --all или -all или --a ]"${cyan}" (листинг всех записей)"${NC}"" ;
 	echo -e ""${cyan}"     или:"${NC}"     [используйте до 7 ключевых слов в запросе для сортировок]"${NC}"" ;
@@ -54,7 +54,7 @@ case $1 in
 
 '' )
 # Если небыло запроса
-	echo -e ""${cyan}"\n***"${NC}" Выборка /root/vdsetup.2/bin/utility/lastf.sh из всех записей за сегодня: "${cyan}""$Data""${NC}" "$DMY" "${cyan}"***"${NC}"\n"
+	echo -e ""${cyan}"\n***"${NC}" Выборка lastf из всех записей за сегодня: "${cyan}""$Data""${NC}" "$DMY" "${cyan}"***"${NC}"\n"
 	( last -i | rg "$Month" | rg "$Day" | rg "$Data" | bat -p --paging=never -l nix ) 2>/dev/null || last -i | grep "$Month" | grep "$Day" | grep "$Data" ;
 ;;
 
