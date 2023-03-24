@@ -21,7 +21,7 @@ ttb=$(echo -e "
  ⎧ 
  | A complete removal of VDSetup will be performed:
  | Installed using VDSetup will not be deleted!
- ⎩" ) && lang_cr && bpn_p_lang ; 
+ ⎩" ) && lang_nix && bpn_p_lang ; 
  
  press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
  
