@@ -9,7 +9,7 @@
 
 # dnf install git tar curl wget -y ;
 
- (( [[ -z $(git --version )  ]] ) &>/dev/null && echo -e "Now install dnf install git curl wget, please wait..." && ( ( dnf install tar git curl wget -y ) 2>/dev/null ) && source ~/.bashrc ) || ( echo -e "git version $(git --version)" ) ;
+ (( [[ -z $(git --version )  ]] ) &>/dev/null && echo -e "Now install dnf install git curl wget, please wait..." && ( ( dnf install tar git curl wget -y ) 2>/dev/null ) && source ~/.bashrc ) ;
 
 
 case $1 in
