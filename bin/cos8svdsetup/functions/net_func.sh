@@ -1,5 +1,21 @@
 #!/bin/bash
 
+# Функция определяет port на котором работает ТОР, и назначает переменную tor_port которая потом используется
+# другими функциями vdsetup.
+function tor_port_ch() {
+   lang_nix
+    for test in 9150 9050 ''; do
+        { >/dev/tcp/127.0.0.1/$test; } 2>/dev/null && { tor_port="$test"; break; }
+        [ -z "$test" ] && ttb=$(echo -e "\n ⎧ ! Нет открытого Tor порта (9150 9050).\n ⎩ # systemctl start tor\n") && bpn_p_lang ;
+    done
+}
+tor_port_ch &>/dev/null ;
+
+
+function tor_check_ip() {
+   tor_port_ch ;
+   /root/vdsetup.2/bin/utility/tor_check.sh ;
+}
 
 
 
