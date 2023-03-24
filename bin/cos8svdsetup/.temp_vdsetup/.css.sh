@@ -7,7 +7,7 @@
    
    
    function reload_cash() {
-       /root/bin/utility/.cash_var.sh $1
+       /root/vdsetup.2/bin/utility/.cash_var.sh $1
    }
    
 
@@ -156,7 +156,7 @@ function cash_var_sh_150() {
       
        up_sec=$(cat /tmp/up_sec.txt)
        
-       ( /root/bin/utility/.cash_var.sh $up_sec & ) &>/dev/null || ( /root/bin/utility/.cash_var.sh 151 & ) &>/dev/null 
+       ( /root/vdsetup.2/bin/utility/.cash_var.sh $up_sec & ) &>/dev/null || ( /root/vdsetup.2/bin/utility/.cash_var.sh 151 & ) &>/dev/null 
        return ;
    }
 

@@ -17,6 +17,80 @@ function tor_check_ip() {
    /root/vdsetup.2/bin/utility/tor_check.sh ;
 }
 
+   # Функция возвращает бекап файл /etc/wgetrc_old на прежнее место /etc/wgetrc (отключает использование прокси ТОР http://localhost:8118 ) "
+function wgetrc_config_revert() {
+   
+   function revert_MSG() {
+      echo -e " $(black_U23A7 ) " ;
+      echo -e " $(ellow_1     ) Отключить TOR Socks5 proxy для wget ${red}?${NC}" ;
+      echo -e " $(white_1     ) "
+      echo -e " $(ellow_1     ) wget будет настроен без TOR ${red}!${NC}" ;
+      
+      echo -e " $(ellow_1     ) Оригинал /etc/wgetrc будет заменен  " ;
+      echo -e " $(ellow_1     ) сохраненным бекапом: /etc/wgetrc_old"
+      echo -e " $(white_1     ) "
+      echo -e " $(ellow_1     ) Вы можете в любой момент вернуть это обратно." ;
+      echo -e " $(white_1     ) "
+      echo -e " $(ellow_1     ) Включить или выключить для wget эти настройки: "
+      echo -e " $(ellow_1     ) ${green}Включить${NC} : $(red_U0023) vdsetup ${green}wget-proxy-on${NC}"
+      echo -e " $(ellow_1     ) ${red}Выключить${NC}: $(red_U0023) vdsetup ${red}wget-proxy-off${NC}"
+      echo -e " $(black_U23A9 ) \n" ;
+   }
+   
+   function not_found_wgetrc_old_MSG() {
+       echo -e "\n ${not_found_MSG} Файл /etc/wgetrc_old не существует!"
+   }
+   
+   
+ if [[ -z /etc/wgetrc_old ]] ; then not_found_wgetrc_old_MSG ; else revert_MSG ; fi ;
+   
+   
+   press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
+   
+   
+   function OK_wgetrc_old() {
+      echo -e " $(black_U23A7 ) " ;
+      echo -e " $(ellow_1     ) $(green_tick) Оригинал /etc/wgetrc заменен  " ;
+      echo -e " $(ellow_1     ) сохраненным бекапом: /etc/wgetrc_old"
+      echo -e " $(white_1     ) "
+      echo -e " $(ellow_1     ) ${green}Включить${green} TOR Socks5 proxy${NC} для wget :"
+      echo -e " $(ellow_1     ) $(red_U0023) vdsetup ${green}wget-proxy-on${NC}"
+      echo -e " $(black_U23A9 ) \n" ;
+   }
+   
+   cp -a /etc/wgetrc_old /etc/wgetrc && OK_wgetrc_old || not_found_wgetrc_old_MSG ;
+   
+}
+
+function tor-restart() {
+    /root/vdsetup.2/bin/utility/tor_installer.sh tor-restart
+    
+}
+
+function tor-stop() {
+    toriptables2.py -i ;
+    toriptables2.py -f ;
+    systemctl stop tor ;
+    ttb=$(echo -e "\n Tor is now stopped\n") && bpn_p_lang ;
+}
+
+tcurl() {
+   curl -x "socks5://127.0.0.1:${tsport}" \
+   -A "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0" \
+   -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8" \
+   -H "Accept-Language: en-US,en;q=0.5" \
+   -H "Accept-Encoding: gzip, deflate" \
+   -H "Connection: keep-alive" \
+   -H "Upgrade-Insecure-Requests: 1" \
+   -H "Expect:" --compressed "$@"
+}
+
+toriptables2.py() {
+   /root/vdsetup.2/bin/utility/tor-for-all-sys-app.sh $1 ;
+}
+
+
+
 
 
  function start_http_server() {

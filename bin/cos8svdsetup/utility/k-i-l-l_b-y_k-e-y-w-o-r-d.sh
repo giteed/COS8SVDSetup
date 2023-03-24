@@ -5,8 +5,8 @@
 . /root/.bashrc
 
 # --> Прочитать настройки:
-. /root/bin/utility/.varfunc.sh &>/dev/null ;
-. /root/bin/utility/.css.sh &>/dev/null 
+. /root/vdsetup.2/bin/utility/.varfunc.sh &>/dev/null ;
+. /root/vdsetup.2/bin/utility/.css.sh &>/dev/null 
 
 # https://losst.pro/kak-ubit-protsess-linux?ysclid=lay4xo7gzk993626029
 debug_message ;

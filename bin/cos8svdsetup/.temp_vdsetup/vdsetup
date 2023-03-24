@@ -4,32 +4,32 @@
     # --> Прочитать настройки из /etc/bashrc
     . /root/.bashrc &>/dev/null ;
     # --> Прочитать настройки:
-    . /root/bin/utility/.debug_version_vdsetup.sh &>/dev/null ;
-    . /root/bin/utility/.css.sh &>/dev/null ;
-    . /root/bin/utility/.varfunc.sh &>/dev/null ;
+    . /root/vdsetup.2/bin/utility/.debug_version_vdsetup.sh &>/dev/null ;
+    . /root/vdsetup.2/bin/utility/.css.sh &>/dev/null ;
+    . /root/vdsetup.2/bin/utility/.varfunc.sh &>/dev/null ;
     
     
     debug_message ;
     
     # --> Прочитать функции:
     
-    . /root/bin/utility/list_app_statusCH.sh &>/dev/null ;
-    . /root/bin/utility/.dnf-fix-help.sh  &>/dev/null ;
-    . /root/bin/utility/.dnf-update-upgrade.sh &>/dev/null ;
-    . /root/bin/utility/webmin_install.sh &>/dev/null ;
-    . /root/bin/utility/swap_edit.sh &>/dev/null ;
-    . /root/bin/utility/cockpit_Activate.sh &>/dev/null ;
-    . /root/bin/utility/gnome-shell-extentions.sh &>/dev/null ;
+    . /root/vdsetup.2/bin/utility/list_app_statusCH.sh &>/dev/null ;
+    . /root/vdsetup.2/bin/utility/.dnf-fix-help.sh  &>/dev/null ;
+    . /root/vdsetup.2/bin/utility/.dnf-update-upgrade.sh &>/dev/null ;
+    . /root/vdsetup.2/bin/utility/webmin_install.sh &>/dev/null ;
+    . /root/vdsetup.2/bin/utility/swap_edit.sh &>/dev/null ;
+    . /root/vdsetup.2/bin/utility/cockpit_Activate.sh &>/dev/null ;
+    . /root/vdsetup.2/bin/utility/gnome-shell-extentions.sh &>/dev/null ;
     
     
-    #. /root/bin/utility/reinstall_update_remove_vdsetup.sh &>/dev/null ;
+    #. /root/vdsetup.2/bin/utility/reinstall_update_remove_vdsetup.sh &>/dev/null ;
     
     # --> Использовать /root/.bash_ali*
     . /root/.bash_aliases &>/dev/null;
     . /root/.bash_ali_hosts &>/dev/null;
     
-    # --> Использовать . /root/bin/utility/.root (требует для скрипта права root)
-    . /root/bin/utility/.root &>/dev/null ;
+    # --> Использовать . /root/vdsetup.2/bin/utility/.root (требует для скрипта права root)
+    . /root/vdsetup.2/bin/utility/.root &>/dev/null ;
     
     css ;
     #echo ;
@@ -549,11 +549,11 @@
 
       
     h | -h | --help )
-        /root/bin/utility/vdsetup_help.sh ;
+        /root/vdsetup.2/bin/utility/vdsetup_help.sh ;
        
         ;;
     "" )
-        vdsetup_help_CH || /root/bin/utility/vdsetup_help.sh ;
+        vdsetup_help_CH || /root/vdsetup.2/bin/utility/vdsetup_help.sh ;
        
         ;;
         
@@ -734,25 +734,25 @@
         
         
     reinstall_ext | -reinstall_ext | --reinstall_ext )
-        /root/bin/utility/gnome-shell-extentions.sh reinstall_ext ;
+        /root/vdsetup.2/bin/utility/gnome-shell-extentions.sh reinstall_ext ;
         
         ;;
         
         
     reinstall_ico | -reinstall_ico | --reinstall_ico )
-        /root/bin/utility/gnome-shell-extentions.sh reinstall_ico ;
+        /root/vdsetup.2/bin/utility/gnome-shell-extentions.sh reinstall_ico ;
         
         ;;
         
         
     reinstall_themes | -reinstall_themes | --reinstall_themes )
-        /root/bin/utility/gnome-shell-extentions.sh reinstall_themes ;
+        /root/vdsetup.2/bin/utility/gnome-shell-extentions.sh reinstall_themes ;
        
         ;;    
        
        
     ee | -ee | --enable-ext | enable_extension | -enable_extension | --enable_extension )
-        /root/bin/utility/gnome-shell-extentions.sh enable_extension ;
+        /root/vdsetup.2/bin/utility/gnome-shell-extentions.sh enable_extension ;
        
         ;;    
         
@@ -769,30 +769,30 @@
         
         
     ov | -ov | --OpenVPN )
-        /root/bin/utility/vdsetup-openvpn-install ;
+        /root/vdsetup.2/bin/utility/vdsetup-openvpn-install ;
         
         ;;
         
     wg | -wg | --WireGuard )
     #echo -e 
-    #( /root/bin/utility/vdsetup-wireguard-install | bat --paging=never -l nix -p ) 2>/dev/null || ( /root/bin/utility/vdsetup-wireguard-install ) ; 
-        /root/bin/utility/vdsetup-wireguard-install ;
+    #( /root/vdsetup.2/bin/utility/vdsetup-wireguard-install | bat --paging=never -l nix -p ) 2>/dev/null || ( /root/vdsetup.2/bin/utility/vdsetup-wireguard-install ) ; 
+        /root/vdsetup.2/bin/utility/vdsetup-wireguard-install ;
        
         ;;
         
     tor | -tor )
-        /root/bin/utility/tor_installer.sh ;
+        /root/vdsetup.2/bin/utility/tor_installer.sh ;
         
         ;;
         
     reload_cash | -reload_cash| --reload_cash)
-        /root/bin/utility/.cash_var.sh $2 ;
+        /root/vdsetup.2/bin/utility/.cash_var.sh $2 ;
         
         ;;
         
         
     wget-proxy-on | --wget-proxy-on )
-        /root/bin/utility/tor_installer.sh wgetrc_config_edit_now ;
+        /root/vdsetup.2/bin/utility/tor_installer.sh wgetrc_config_edit_now ;
         
         ;;
         
@@ -804,18 +804,18 @@
         
         
     gh | -gh | --GitHub )
-        /root/bin/utility/github.sh ;
+        /root/vdsetup.2/bin/utility/github.sh ;
         
         ;;
         
     tr | transmission | -tr | --transmission )
-        /root/bin/utility/trans.sh $1 ;
+        /root/vdsetup.2/bin/utility/trans.sh $1 ;
         
         
         ;; 
         
     tr_rm | -tr_rm | --transmission-remove )
-    /root/bin/utility/trans.sh --transmission-remove ;
+    /root/vdsetup.2/bin/utility/trans.sh --transmission-remove ;
     
     
     ;; 
@@ -823,7 +823,7 @@
         
     syn | -syn | sync | -sync | --Sync-Menu )
         
-        /root/bin/utility/reinstall_update_remove_vdsetup.sh ;
+        /root/vdsetup.2/bin/utility/reinstall_update_remove_vdsetup.sh ;
         
         ;;
         
@@ -833,7 +833,7 @@
         ;;
         
     wp | -wp | wordpress | --wordpress)
-        /root/bin/utility/wordpress-install.sh ;
+        /root/vdsetup.2/bin/utility/wordpress-install.sh ;
         
         ;;    
         
@@ -863,19 +863,19 @@
         
         
     sel | -sel | --selinux )
-        /root/bin/utility/selinux ;
+        /root/vdsetup.2/bin/utility/selinux ;
         
         ;;
         
         
     hn | -hn | --hostname )
-        /root/bin/utility/vdsetup-hostnamectl.sh ;
+        /root/vdsetup.2/bin/utility/vdsetup-hostnamectl.sh ;
         
         ;;
         
         
     ssh | -ssh | --ssh_port )
-        /root/bin/utility/ssh_port_ch.sh ;
+        /root/vdsetup.2/bin/utility/ssh_port_ch.sh ;
         
         ;;
         
@@ -884,11 +884,11 @@
        
         ;;    
     ad | -ad | anydesk | --anydesk )
-        /root/bin/utility/anydesk.sh
+        /root/vdsetup.2/bin/utility/anydesk.sh
         
         ;;
     --sudo_readme )
-    /root/bin/utility/help/sudo_wheel_readme ;
+    /root/vdsetup.2/bin/utility/help/sudo_wheel_readme ;
        
         ;;
         
@@ -923,7 +923,7 @@
         
     *)
        
-        /root/bin/utility/vdsetup_help.sh ; echo ;
+        /root/vdsetup.2/bin/utility/vdsetup_help.sh ; echo ;
         ( ttb=$(echo -e " $1 - Нет такого ключа..." ) ) && lang="nix" && bpal_p_lang ;
         ;;
         
