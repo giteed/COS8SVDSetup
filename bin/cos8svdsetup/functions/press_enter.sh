@@ -12,7 +12,7 @@ function press_enter_or_any_key_to_continue_or_ESC_to_cancel() {
 # --> проверяем, является ли введенный символ ESC-кодом
        if [[ "$answ" == $'\x1b' ]] ; then 
 # --> если да, то завершаем выполнение программы exit 0
-           echo -e "\n\n     Cancel!\n"
+           echo -e "\n     Cancel!\n"
            exit 0 ;
        else
 # --> иначе, выводим пустую строку для удобства и Continue...
