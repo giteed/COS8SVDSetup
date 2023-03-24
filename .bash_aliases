@@ -53,6 +53,6 @@ alias ypr='GLIG_ASTRX_ON && ypr-f'
 
 # 
 alias tsync='/root/test-lab/tsync.sh'
-alias dell='sudo /root/vdsetup.2/bin/utility/del.sh'
+alias rm_vdsetup='sudo /root/vdsetup.2/bin/utility/rm_vdsetup.sh'
 
 
