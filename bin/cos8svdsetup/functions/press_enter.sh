@@ -38,10 +38,10 @@ function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
        else
 # --> Проверяем, была ли нажата клавиша "ESC"
          if [[ $key == $'\e' ]]; then
-           echo -e "\n\n     Cancel!\n"
+           echo -e "\n     Cancel!\n"
            exit 0
          else
-           echo -e "\n\n     Cancel!\n"
+           echo -e "\n     Cancel!\n"
            exit 0
          fi
        fi
