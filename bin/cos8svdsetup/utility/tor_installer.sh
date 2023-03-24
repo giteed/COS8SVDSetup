@@ -4,8 +4,6 @@
 # --> Прочитать настройки из /etc/bashrc
 . /root/.bashrc
 
-echo ;
-
 
 			
 	function wget_ch_OK_MSG() {
