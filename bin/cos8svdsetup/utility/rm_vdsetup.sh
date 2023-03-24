@@ -36,8 +36,6 @@ ttb=$(echo -e "
  
 ttb=$(echo -e " 
  ⎧  
-
- |
  | VDSetup removed! To reinstall, enter: # vsync
  | or:
  | # cd /root/ ; (dnf -y install rsync rsync-daemon git mc);
