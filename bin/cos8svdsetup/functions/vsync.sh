@@ -28,8 +28,8 @@ function vsync() {
 # --> переходим в директорию репозитория
         cd /root/COS8SVDSetup ;
 # --> сохраняем изменения в stash
-        git status ;
-        git stash ;
+        #git status ;
+        #git stash ;
 # --> синхронизируем репозиторий с GitHub
         gh repo sync --branch=main ;
 # --> Копирование файлов из репозитория в /root/vdsetup.2/bin
