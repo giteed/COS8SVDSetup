@@ -18,8 +18,7 @@ sudo rm /root/.bash_profile
 ttb=$(echo -e " 
  ⎧ 
  | Будет выполнено полное удаление VDSetup:
- | Установленное с помощью VDSetup
- | удалено не будет!
+ | Установленное с помощью VDSetup удалено не будет!
  ⎩" ) && lang_cr && bpn_p_lang ; 
  
  press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
