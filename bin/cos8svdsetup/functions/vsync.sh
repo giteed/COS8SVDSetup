@@ -44,7 +44,7 @@ function vsync() {
 # --> Наконец, запускается .bashrc для применения изменений
         source /root/.bashrc
         
-        ttb=$(echo -e "  VDSetup $(cat /root/vdsetup.2/bin/VERSION)\n\n  If you need to completely remove\n  and reinstall vdsetup from GitHub. type: # rm_clone \n  If you need to completely remove vdsetup, type: # dell ") && lang_cr ; bpn_p_lang ; 
+        ttb=$(echo -e "  VDSetup $(cat /root/vdsetup.2/bin/VERSION)\n\n  If you need to completely remove\n  and reinstall vdsetup from GitHub, type: # rm_clone \n If you only need to remove vdsetup, type: # rm_vdsetup ") && lang_cr ; bpn_p_lang ; 
         echo ========================================================================== ;
     }
 # --> Включение SSH протокола для работы с репозиторием
