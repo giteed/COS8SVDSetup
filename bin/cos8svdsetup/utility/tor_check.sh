@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Source global definitions
-# --> Прочитать настройки из /etc/bashrc
+# --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
 echo ;

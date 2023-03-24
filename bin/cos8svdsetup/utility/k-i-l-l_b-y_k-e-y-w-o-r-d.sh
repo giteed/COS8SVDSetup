@@ -1,15 +1,12 @@
 #!/bin/bash
 
 # Source global definitions
-# --> Прочитать настройки из /etc/bashrc
+# --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-# --> Прочитать настройки:
-. /root/vdsetup.2/bin/utility/.varfunc.sh &>/dev/null ;
-. /root/vdsetup.2/bin/utility/.css.sh &>/dev/null 
 
 # https://losst.pro/kak-ubit-protsess-linux?ysclid=lay4xo7gzk993626029
-debug_message ;
+
 
 
 

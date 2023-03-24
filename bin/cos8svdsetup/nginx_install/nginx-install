@@ -1,19 +1,12 @@
 #!/bin/bash
 
 ## Source global definitions
-# --> Прочитать настройки из /etc/bashrc
+# --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
-# --> Прочитать настройки:
-. ~/bin/utility/.varfunc.sh &>/dev/null ;
-. ~/bin/utility/.css.sh &>/dev/null ;
+
 
 echo ;
-debug_message ;
 
-# --> Использовать ~/.bash_aliases
-. ~/.bash_aliases ;
-# --> Использовать . ~/bin/utility/.root (требует для скрипта права root)
-. ~/bin/utility/.root
 
 
 	# ФУНКЦИЯ: Проверка установки nginx (/usr/sbin/nginx) и если не найден - пишет "не найден"
