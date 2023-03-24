@@ -46,7 +46,7 @@ lang_x 2>/dev/null ;
 	  }
 	  
 	  
-	   [[ -z $(cat /etc/yum.repos.d/epel.repo 2>/dev/null) ]]  && ( dnf install epel-release 2>/dev/null && msg_in1 || msg_in2 ) || msg_in3 ;
+	   [[ -z $(cat /etc/yum.repos.d/epel.repo 2>/dev/null) ]]  && ( dnf install -y epel-release 2>/dev/null && msg_in1 || msg_in2 ) || msg_in3 ;
    }
 
   function epel_repository_packages()
@@ -63,7 +63,7 @@ lang_x 2>/dev/null ;
 	
 	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 
-	ttb=$(epel_repository_packages_Check_or_install) && bpn_p_lang || epel_repository_packages_install ;
+	epel_repository_packages_Check_or_install || epel_repository_packages_install ;
 	
 	echo -e " 
  ⎧ Установка дополнительных пакетов завершена!
