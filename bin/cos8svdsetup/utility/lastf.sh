@@ -9,7 +9,7 @@
 
 # dnf install git tar curl wget -y ;
 
- (( [[ ! -z $(git --version )  ]] ) &>/dev/null && echo -e "Now install dnf install git curl wget, please wait..." && ( ( dnf install tar git curl wget -y ) 2>/dev/null ) && source ~/.bashrc ) || ( echo -e "git version $(git --version)" ) &>/dev/null ;
+ (( [[ -z $(git --version )  ]] ) &>/dev/null && echo -e "Now install dnf install git curl wget, please wait..." && ( ( dnf install tar git curl wget -y ) 2>/dev/null ) && source ~/.bashrc ) || ( echo -e "git version $(git --version)" ) &>/dev/null ;
 
 	# ФУНКЦИЯ: Установка fzf
  function fzfIN() 
