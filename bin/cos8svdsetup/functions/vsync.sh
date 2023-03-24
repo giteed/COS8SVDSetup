@@ -43,6 +43,8 @@ function vsync() {
         cd ~
 # --> Наконец, запускается .bashrc для применения изменений
         source /root/.bashrc
+        
+        ttb=$(echo -e " $(cat /root/vdsetup.2/bin/VERSION)") && bpn_p_lang ; 
         echo ===================================================== ;
     }
 # --> Включение SSH протокола для работы с репозиторием
