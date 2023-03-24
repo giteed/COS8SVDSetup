@@ -20,7 +20,8 @@ function remove_vdsetup() {
 ttb=$(echo -e " 
  ⎧ 
  | A complete removal of VDSetup will be performed:
- | Installed using VDSetup will not be deleted!
+ | Installed packages using VDSetup, -
+ | WILL NOT BE REMOVED!
  |
  | Commands will be executed:
  | # rm -rf /root/COS8SVDSetup
@@ -36,7 +37,9 @@ ttb=$(echo -e "
  
 ttb=$(echo -e " 
  ⎧  
- | VDSetup removed! To reinstall, enter: # vsync
+ | VDSetup removed! 
+ | To reinstall, type: 
+ | # vsync
  | or:
  | # cd /root/ ; (dnf -y install rsync rsync-daemon git mc);
  | # git clone https://github.com/giteed/COS8SVDSetup.git /root/COS8SVDSetup ; 
