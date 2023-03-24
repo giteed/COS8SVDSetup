@@ -29,11 +29,11 @@ ttb=$(echo -e "
  
 ttb=$(echo -e " 
  ⎧  
- | # sudo rm -rf /root/COS8SVDSetup
- | # sudo rm -rf /root/vdsetup.2
- | # sudo rm /root/.bashrc
- | # sudo rm /root/.bash_aliases
- | # udo rm /root/.bash_profile
+ | # rm -rf /root/COS8SVDSetup
+ | # rm -rf /root/vdsetup.2
+ | # rm /root/.bashrc
+ | # rm /root/.bash_aliases
+ | # rm /root/.bash_profile
  |
  | VDSetup removed! To reinstall, enter: # vsync
  | or:
