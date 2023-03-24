@@ -20,7 +20,7 @@ ttb=$(echo -e "
  | Будет выполнено полное удаление VDSetup:
  | Установленное с помощью VDSetup
  | удалено не будет!
- ⎩" ) && bpn_p_lang ; 
+ ⎩" ) && lang_cr && bpn_p_lang ; 
  
  press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
  
@@ -31,9 +31,11 @@ ttb=$(echo -e "
  | # sudo rm /root/.bashrc
  | # sudo rm /root/.bash_aliases
  | # udo rm /root/.bash_profile
- | VDSetup удален! Для повторной установки введите:
+ |
+ | VDSetup удален! Для повторной установки введите: # vsync
+ | или:
  | # cd /root/ ; (dnf -y install rsync rsync-daemon git mc); (echo); (git clone https://github.com/giteed/COS8SVDSetup.git /root/COS8SVDSetup) ; (/root/COS8SVDSetup/bin/cos8svdsetup/preloader.sh) ;
- ⎩" ) && bpn_p_lang ; 
+ ⎩" ) && lang_cr && bpn_p_lang ; 
 
 
 
