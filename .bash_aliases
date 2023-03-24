@@ -9,6 +9,12 @@
 #-----------------------------------
 
 # df -h , free -h , ip , who , type
+alias df='echo -e '' && df -kTh | bat  --paging=never -l nix -p'
+alias mem='echo -e '' && free -h -t | bat  --paging=never -l meminfo -p'
+alias pwd='echo -e '' && pwd | bat  --paging=never -l c -p'
+alias myip='wget -qO- icanhazip.com'
+alias mi='echo -e '' && wget -qO- icanhazip.com | bat  --paging=never -l c -p'
+alias lip='lip-f'
 
 # clear , update /root/.bashrc , ls , cd , tree
 alias c='clear'
