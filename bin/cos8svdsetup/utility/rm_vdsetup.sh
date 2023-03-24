@@ -38,7 +38,7 @@ ttb=$(echo -e "
 ttb=$(echo -e " 
  ⎧  
  | VDSetup script removed successfully! 
- | To reinstall VDSetup, type: 
+ | To reinstall VDSetup script, type: 
  | # vsync
  | or:
  | # cd /root/ ; (dnf -y install rsync rsync-daemon git mc);
