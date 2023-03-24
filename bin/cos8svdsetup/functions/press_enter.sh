@@ -29,7 +29,7 @@ function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
          ttb=$(echo -e "Press 'ENTER' to continue or 'ESC' or any other key to cancel...") && lang="nix" && bpn_p_lang ; 
 
 # --> Запрашиваем у пользователя подтверждение нажатия клавиши
-        read -p -n 1 -s key
+        read -n 1 -s key
    
 # --> Проверяем, была ли нажата клавиша "Enter"
        if [[ $key == "" ]]; then
