@@ -3,7 +3,7 @@
 # Source global definitions
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
-
+echo ;
 
  function check_old_if_0() {
 	 # Если значения пустые назначить из файла если он есть предыдущие логин и пароль.
