@@ -21,6 +21,13 @@ ttb=$(echo -e "
  ⎧ 
  | A complete removal of VDSetup will be performed:
  | Installed using VDSetup will not be deleted!
+ |
+ | Commands will be executed:
+ | # rm -rf /root/COS8SVDSetup
+ | # rm -rf /root/vdsetup.2
+ | # rm /root/.bashrc
+ | # rm /root/.bash_aliases
+ | # rm /root/.bash_profile
  ⎩" ) && lang_cr && bpn_p_lang ; 
  
  press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
@@ -29,11 +36,7 @@ ttb=$(echo -e "
  
 ttb=$(echo -e " 
  ⎧  
- | # rm -rf /root/COS8SVDSetup
- | # rm -rf /root/vdsetup.2
- | # rm /root/.bashrc
- | # rm /root/.bash_aliases
- | # rm /root/.bash_profile
+
  |
  | VDSetup removed! To reinstall, enter: # vsync
  | or:
