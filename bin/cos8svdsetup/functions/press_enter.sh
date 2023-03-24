@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # --> функция Нажмите 'ENTER' или любую другую клавишу, чтобы продолжить , или 'ESC'  для отмены...   
-function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
+function press_enter_or_any_key_to_continue_or_ESC_to_cancel() {
 # --> выводим пустую строку, чтобы сделать вывод более читабельным
        echo -en "\n     " 
 # --> создаем переменную ttb для вывода сообщения пользователю
@@ -12,10 +12,11 @@ function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
 # --> проверяем, является ли введенный символ ESC-кодом
        if [[ "$answ" == $'\x1b' ]] ; then 
 # --> если да, то завершаем выполнение программы exit 0
+           echo -e "\n\n     Cancel!\n"
            exit 0 ;
        else
-# --> иначе, выводим пустую строку для удобства
-           echo 
+# --> иначе, выводим пустую строку для удобства и Continue...
+           echo -e "\n     Continue...\n"
        fi
    }
 
@@ -24,8 +25,11 @@ function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
 function press_enter_to_continue_or_ESC_or_any_key_to_cancel() {
 # --> выводим пустую строку, чтобы сделать вывод более читабельным
         echo -en "\n     " 
+# --> создаем переменную ttb для вывода сообщения пользователю
+         ttb=$(echo -e "Press 'ENTER' to continue or 'ESC' or any other key to cancel...") && lang="nix" && bpn_p_lang ; 
+
 # --> Запрашиваем у пользователя подтверждение нажатия клавиши
-        read -p "Press 'ENTER' to continue or 'ESC' or any other key to cancel..." -n 1 -s key
+        read -p -n 1 -s key
    
 # --> Проверяем, была ли нажата клавиша "Enter"
        if [[ $key == "" ]]; then
