@@ -21,12 +21,12 @@ ttb=$(echo -e "
  ⎧ 
  | A complete removal of VDSetup will be performed:
  | Installed using VDSetup will not be deleted!
- ⎩" ) && lang_nix && bpn_p_lang ; 
+ ⎩" ) && lang_cr && bpn_p_lang ; 
  
  press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
  
  remove_vdsetup ;
-  
+ 
 ttb=$(echo -e " 
  ⎧  
  | # sudo rm -rf /root/COS8SVDSetup
@@ -36,8 +36,10 @@ ttb=$(echo -e "
  | # udo rm /root/.bash_profile
  |
  | VDSetup removed! To reinstall, enter: # vsync
- | или:
- | # cd /root/ ; (dnf -y install rsync rsync-daemon git mc); (echo); (git clone https://github.com/giteed/COS8SVDSetup.git /root/COS8SVDSetup) ; (/root/COS8SVDSetup/bin/cos8svdsetup/preloader.sh) ;
+ | or:
+ | # cd /root/ ; (dnf -y install rsync rsync-daemon git mc);
+ | # git clone https://github.com/giteed/COS8SVDSetup.git /root/COS8SVDSetup ; 
+ | # /root/COS8SVDSetup/bin/cos8svdsetup/preloader.sh ;
  ⎩" ) && lang_cr && bpn_p_lang ; 
 
 
