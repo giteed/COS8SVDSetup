@@ -4,27 +4,27 @@
 
 
  function start_http_server() {
-     /root/bin/utility/file_to_http_start_stop.sh start ;
+     /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh start ;
   }
  
  function stop_http_server() {
-     /root/bin/utility/file_to_http_start_stop.sh stop ;
+     /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh stop ;
   }
   
   function status_http_server() {
-      /root/bin/utility/file_to_http_start_stop.sh status ;
+      /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh status ;
    }
  
  function start_light_server() {
-      /root/bin/utility/file_to_light_server_start_stop.sh start ;
+      /root/vdsetup.2/bin/utility/file_to_light_server_start_stop.sh start ;
   }
   
   function stop_light_server() {
-      /root/bin/utility/file_to_light_server_start_stop.sh stop ;
+      /root/vdsetup.2/bin/utility/file_to_light_server_start_stop.sh stop ;
   }
   
   function status_light_server() {
-        /root/bin/utility/file_to_light_server_start_stop.sh status ;
+        /root/vdsetup.2/bin/utility/file_to_light_server_start_stop.sh status ;
   }
 
 
