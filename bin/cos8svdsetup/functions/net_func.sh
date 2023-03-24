@@ -106,3 +106,16 @@ function wport() {
 }
 
 
+
+
+   
+function lip-f() # local address
+{
+   echo -e "\n"$green""internal"$NC":" " ;
+   ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
+   echo -e "$cyan""\nexternal"$NC":" ;
+   myip ;
+   
+   echo -e "\n"$green""Privoxy TOR Socks5 127.0.0.1:9050"$NC":" " ;
+   curl --socks5 127.0.0.1:9050 http://2ip.ua
+}
