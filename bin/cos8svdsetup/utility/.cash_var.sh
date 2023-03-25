@@ -4,7 +4,7 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-debug_stat=0
+debug_stat=1
 
 # НЕ_СТИРАТЬ # echo -en "\n Отладка:  НЕ показывать дебаг сообщения. " && debug_msg=0 ; 
 if [[ $debug_stat == '0' ]] ; 
