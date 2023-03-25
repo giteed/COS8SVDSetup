@@ -6,25 +6,6 @@
 
 lang_cr ;
 
-#echo -en "\n${CYAN} " ; ( systemctl status cash_var.service | grep " active " | awk '/active/  { print $2, $3 }' ) ; echo -e "${NC}" 
-#) && bpn_p_lang ; ttb="" ;
-
-function check_var_for_update() {
-# Функция vsync_15 в screen обновляет VDSetup.
-	   function vsync15() {
-			echo ; auto_update_status ;
-			
-			source /root/.bashrc &>/dev/null ;
-			source /root/.bash_profile &>/dev/null ;
-			sudo /root/vdsetup.2/bin/utility/gh-ss.sh ;
-		   
-		   exit 0 ;
-		}
-	
-	vsync15
-
-	exit 0 ;
-}
 
 
 function update_cash() {

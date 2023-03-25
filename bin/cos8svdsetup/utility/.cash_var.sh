@@ -4,10 +4,11 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
+debug_stat=0
 
 # НЕ_СТИРАТЬ # echo -en "\n Отладка:  НЕ показывать дебаг сообщения. " && debug_msg=0 ; 
-#if [[ $debug_stat == '0' ]] ; 
-#then test clear ; css ; 
+if [[ $debug_stat == '0' ]] ; 
+then test ; 
 
 
 
@@ -23,9 +24,7 @@ function msg15() {
 	
 	ttb=$(echo -e "\n Сначала удалите старый сервис # remove_unit_stop_cashing\n" ; echo ;) && bpn_p_lang  ; ttb="" ;
 	ttb=$(echo -e "\n Затем запустите # reload_cash\n" ; echo ;) && bpn_p_lang  ; ttb="" ;
-	
-	auto_update_status ;
-	
+
 return ; } ; msg15=(msg15)
 
 
@@ -217,7 +216,7 @@ return ; } ; msg32=(msg32)
 
 
 
- #fi ; 
+ fi ; 
 
 echo -e "$debug_msg \n"
  	
