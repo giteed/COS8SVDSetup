@@ -9,13 +9,16 @@
 
 function remove_vdsetup() {
 	# --> Полное удаление VDSetup (не удаляет того, что было установлено скриптом)
-	sudo rm -rf /root/COS8SVDSetup
-	sudo rm -rf /root/vdsetup.2
-	sudo rm /root/.bashrc
-	sudo rm /root/.bash_aliases
-	sudo rm /root/.bash_profile
+	sudo rm -rf /root/COS8SVDSetup ;
+	sudo rm -rf /root/vdsetup.2 ;
+	sudo rm /root/.bashrc ;
+	sudo rm /root/.bash_aliases ;
+	sudo rm /root/.bash_profile ;
     remove_unit_stop_cashing ;
-    rm /root/.login_password_Transmission.txt
+    rm /root/.login_password_Transmission.txt ;
+    rm /tmp/up_sec.txt ;
+    rm /tmp/ip_tmp.txt ;
+    rm /tmp/tor_ip ;
 }
 
 
