@@ -6,6 +6,8 @@
 
 echo ;
 
+# Функция cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
+cash_var_sh_150_start_and_stop ;
 
 function flush_iptables_rules () {
 	iptables -F && iptables -t nat -F ; 

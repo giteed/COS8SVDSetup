@@ -4,6 +4,8 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
+# Функция cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
+cash_var_sh_150_start_and_stop ;
 
 			
 	function wget_ch_OK_MSG() {
