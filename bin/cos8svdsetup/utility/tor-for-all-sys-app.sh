@@ -7,12 +7,13 @@
 
 echo ;
 
+debug_stat=0 # дебаг выключен, чтобы включить измените на 1
 
 # Функция cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
 cash_var_sh_150_start_and_stop
 
 if [[ $debug_stat == '0' ]] ; 
-then css ;
+then test ;
 
 
 
