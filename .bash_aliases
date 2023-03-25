@@ -22,7 +22,9 @@ alias ifc='ifconfig | bat -p --paging=never -l conf'
 
 # clear , update /root/.bashrc , ls , cd , tree
 alias urc='source /root/.bashrc'
-alias vcc='vsync && source /root/.bashrc && clear && clear && ttb=$(echo -e "  VDSetup $(cat /root/vdsetup.2/bin/VERSION)\n") && lang_cr ; bpn_p_lang'
+
+alias vcc='vsync && source /root/.bashrc && clear && clear && ttb=$(echo -e "\n VDSetup $(cat /root/vdsetup.2/bin/VERSION)\n") && lang_cr ; bpn_p_lang'
+
 alias c='clear'
 alias l.='ls -lhd --color=auto .*'
 alias l..='ls -lhd --color=auto .* *'
