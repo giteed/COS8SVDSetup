@@ -8,7 +8,7 @@ echo ;
 
 
 # Функция sleep_kill останавливает через 10 (600 сек) минут после последней активнисти пользователя скрипта VDSetup, юнит обновления кеша ip адреса Tor и версии VDSetup.
-# /root/bin/utility/.cash_var.sh ;
+# /root/vdsetup.2/bin/utility/.cash_var.sh ;
 
 # Юнит автоматически запускается снова на обновление раз в 150 секунд (2,5 мин) при запуске vdsetup, vdsetup tor, и др страницах на которые вставлена функция cash_var_sh_150_start_and_stop 
 

@@ -1,15 +1,10 @@
 #!/bin/bash
 
 # Source global definitions
-# --> Прочитать настройки из /etc/bashrc
+# --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-# --> Прочитать настройки:
-. /root/bin/utility/.varfunc.sh &>/dev/null ;
-. /root/bin/utility/.css.sh &>/dev/null 
 
-
-debug_message ;
 lang=nix ;
 
 #echo -en "\n${CYAN} " ; ( systemctl status cash_var.service | grep " active " | awk '/active/  { print $2, $3 }' ) ; echo -e "${NC}" 
@@ -24,7 +19,7 @@ function check_var_for_update() {
 			
 			source /root/.bashrc &>/dev/null ;
 			source /root/.bash_profile &>/dev/null ;
-			sudo /root/bin/utility/gh-ss.sh ;
+			sudo /root/vdsetup.2/bin/utility/gh-ss.sh ;
 		   
 		   exit 0 ;
 		   # killall -s KILL .sleep_kill.sh &>/dev/null & 

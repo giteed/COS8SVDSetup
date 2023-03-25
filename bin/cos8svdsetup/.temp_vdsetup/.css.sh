@@ -6,9 +6,7 @@
    #------------------------------------
    
    
-   function reload_cash() {
-       /root/vdsetup.2/bin/utility/.cash_var.sh $1
-   }
+
    
 
    
@@ -40,13 +38,7 @@
     echo -e " $(black_U23A9    ) \n" ;
    }
    
-   function auto_update_status() {
-      # Показать статус автоматических обновлений:
-      #cash_var_sh_150_start_and_stop ;
-      [ $( cat /tmp/autoupdate_vdsetup.txt ) == "on" ] && auto_update_on || auto_update_off ;
-      
-      return ;
-   }
+
    
 
    

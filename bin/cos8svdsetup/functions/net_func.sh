@@ -1,6 +1,8 @@
 #!/bin/bash
 
-
+   function reload_cash() {
+    /root/vdsetup.2/bin/utility/.cash_var.sh $1
+}
 
 
    function auto_update_status() {
