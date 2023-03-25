@@ -47,7 +47,7 @@ function vsync() {
         urc ;
         
         ttb=$(echo -e "  VDSetup $(cat /root/vdsetup.2/bin/VERSION)\n\n  If you need to completely remove,\n  and reinstall vdsetup from GitHub,  type: # rm_clone \n  If you only need to remove vdsetup, type: # rm_vdsetup \n  ( Alias 'urc' ) For update .bashrc, type: # source /root/.bashrc") && lang_cr ; bpn_p_lang ; 
-        echo ========================================================================== ;
+        echo .......................................................................... ;
     }
 # --> Включение SSH протокола для работы с репозиторием
     gh config set -h github.com git_protocol ssh ;
