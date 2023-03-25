@@ -54,7 +54,17 @@
      fi
    }
    
-   
+   function fbr() # Поиск и переключение репозитариев .git
+   # в начале необходимо перейти репо в папке .git или .github 
+   # (ссылка на статью: https://habr.com/ru/company/wrike/blog/344770/)
+   # должен быть установлен fzf (brew install fzf)
+   {
+     local branches branch
+     branches=$(git branch --all | grep -v HEAD) &&
+     branch=$(echo "$branches" |
+            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+     git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+   }
    
    # Если ali используется без аргументов == "" то просто alias, если ali с аргументами != "", то подставляются они после alias "$Val2"
    function ali() # alias | bat
