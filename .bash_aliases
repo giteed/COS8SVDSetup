@@ -21,6 +21,7 @@ alias ifc='ifconfig | bat -p --paging=never -l conf'
 
 
 # clear , update /root/.bashrc , ls , cd , tree
+alias urc='source /root/.bashrc'
 alias c='clear'
 alias l.='ls -lhd --color=auto .*'
 alias l..='ls -lhd --color=auto .* *'
