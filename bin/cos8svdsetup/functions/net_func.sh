@@ -3,7 +3,13 @@
 
 
 
-
+   function auto_update_status() {
+   # Показать статус автоматических обновлений:
+   #cash_var_sh_150_start_and_stop ;
+   [ $( cat /tmp/autoupdate_vdsetup.txt ) == "on" ] && auto_update_on || auto_update_off ;
+   
+   return ;
+}
 
  # Функция cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
 function cash_var_sh_150_start_and_stop() {
