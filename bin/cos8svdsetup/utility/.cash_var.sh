@@ -4,6 +4,9 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
+lang_def=lang_cr
+
+
 debug_stat=1
 
 # НЕ_СТИРАТЬ # echo -en "\n Отладка:  НЕ показывать дебаг сообщения. " && debug_msg=0 ; 
