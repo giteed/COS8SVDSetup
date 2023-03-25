@@ -276,7 +276,7 @@ function start_msg() {
 	
 	echo -e "\n $(black_U23A7 ) " ;
 	echo -en " $(white_1     ) " && ttb=$( echo -e " Укажите время в секундах, как часто обновлять ") && lang="nix" && bpn_p_lang ;
-	echo -en " $(white_1     ) " && ttb=$( echo -e " ip адрес tor и версию vdsetup на актуальность?") && lang="nix" && bpn_p_lang ;
+	echo -en " $(white_1     ) " && ttb=$( echo -e " ip адрес tor на актуальность?") && lang="nix" && bpn_p_lang ;
 	echo -en " $(white_1     ) " && ttb=$( echo -e " Обновление будет происходить в фоновом режиме.") && lang="nix" && bpn_p_lang ;
 	echo -en " $(white_1     ) " && ttb=$( echo -e " (интервал от 120 до 299 сек. или up, rm.)") && lang="nix" && bpn_p_lang ;
 	echo -en " $(red_1       )  : ${green}" ; read up_sec 
@@ -334,7 +334,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/cash_var.service ;
 	
 	
 	
- 	( ttb=$(echo -e "\n Service cash_var.service Enabled\n Update Tor Ip and vdsetup version every $up_sec seconds.\n To change update time run: # $0" ) && lang_nix && bpn_p_lang && lang_def ) || ttb=$(echo -e " $OUTPUT_systemctl") && bpn_p_lang && lang="" && lang_def ;
+ 	( ttb=$(echo -e "\n Service cash_var.service Enabled\n Update Tor Ip every $up_sec seconds.\n To change update time run: # $0" ) && lang_nix && bpn_p_lang && lang_def ) || ttb=$(echo -e " $OUTPUT_systemctl") && bpn_p_lang && lang="" && lang_def ;
 	
 	 lang_def ;
 	
@@ -365,7 +365,7 @@ function Up_OR_Remove() {
 			
 			*) 
 			preload_check ;
-			([[ $1 == ?(-)+([[:digit:]]) ]] && ttb=$(echo -e "\n Вы установили обновление файла кеша ip Tor и версии vdsetup через каждые $1 сек.\n Оптимальное время обновления не чаще 1 раза в 120 сек. ") && lang_nix && bpn_p_lang  && up_sec=$1 && if_then && lang_def &&  unit_cash_var_create_and_start || ttb=$(echo -e "\n \"$1\"  Не правильный ввод, будет установлено значение по умолчанию в 125 секунд!\n") && lang_nix && bpn_p_lang  ; up_sec=125 ; lang_def && unit_cash_var_create_and_start $up_sec ) ; lang_def ; exit ;;
+			([[ $1 == ?(-)+([[:digit:]]) ]] && ttb=$(echo -e "\n Вы установили обновление файла кеша ip Tor через каждые $1 сек.\n Оптимальное время обновления не чаще 1 раза в 120 сек. ") && lang_nix && bpn_p_lang  && up_sec=$1 && if_then && lang_def &&  unit_cash_var_create_and_start || ttb=$(echo -e "\n \"$1\"  Не правильный ввод, будет установлено значение по умолчанию в 125 секунд!\n") && lang_nix && bpn_p_lang  ; up_sec=125 ; lang_def && unit_cash_var_create_and_start $up_sec ) ; lang_def ; exit ;;
 			
 			
 		    
