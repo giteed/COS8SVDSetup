@@ -14,6 +14,8 @@ function remove_vdsetup() {
 	sudo rm /root/.bashrc
 	sudo rm /root/.bash_aliases
 	sudo rm /root/.bash_profile
+    remove_unit_stop_cashing ;
+    rm /root/.login_password_Transmission.txt
 }
 
 
