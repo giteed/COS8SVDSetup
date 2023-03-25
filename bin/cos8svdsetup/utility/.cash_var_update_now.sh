@@ -16,10 +16,7 @@ function update_cash() {
 	(curl -s --socks5 127.0.0.1:${tor_port} icanhazip.com) >/tmp/tor_ip ;
 	sleep 1 ;
 	ttb=$(echo -e " New tor ip  : $(cat /tmp/tor_ip) ") && bpn_p_lang ; ttb="" ;
-	
-	check_var_for_update ;
 
-	sleep 1 ;
 	return 
 }
 
