@@ -4,7 +4,10 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-lang_def=lang_cr
+function lang_def() {
+	lang_cr
+}
+
 
 
 debug_stat=1
