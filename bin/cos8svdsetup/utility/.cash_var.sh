@@ -4,11 +4,6 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-function lang_def() {
-	lang_cr
-}
-
-
 
 debug_stat=1
 
@@ -40,7 +35,7 @@ function lang_def() {
 	lang=nix ;
 }
 
-#else # НЕ_СТИРАТЬ # echo -en "\n Отладка: Показывать дебаг сообщения. " ;
+else # НЕ_СТИРАТЬ # echo -en "\n Отладка: Показывать дебаг сообщения. " ;
 
 
 
