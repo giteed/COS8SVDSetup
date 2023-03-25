@@ -61,3 +61,44 @@ function bat_Check_or_install() {
         ( [[ -n $(type /usr/local/bin/bat 2>/dev/null) ]] && msg_in3 || /root/vdsetup.2/bin/utility/bat_install.sh bat_install && msg_in1 ) || msg_in2 ;
       
 }
+
+
+
+
+   
+   function nginx_repo_Check_or_install() {
+       
+       yum_nginx=nginx.repo
+       
+       function msg_in1() {
+          ttb=$(echo -e " $yum_nginx успешно установлен.") && lang="nix" && bpn_p_lang ;
+       }
+       
+       function msg_in2() {
+          ttb=$(echo -e " Ошибка установки. $yum_nginx") && lang="nix" && bpn_p_lang ;
+       }
+       
+       function msg_in3() {
+          ttb=$(echo -e " $yum_nginx уже был установлен.") && lang="nix" && bpn_p_lang ;
+       }
+       
+       
+        [[ -z $( cat /etc/yum.repos.d/nginx.repo ) ]] 2>/dev/null && ( vdsetup --nginx && msg_in1 || msg_in2 ) || msg_in3 ;
+        return ;
+    }
+   
+
+   function ramfetch_install() {
+     /root/vdsetup.2/bin/utility/ramfetch.sh install
+   }
+   
+   function ramfetch_remove() {
+     /root/vdsetup.2/bin/utility/ramfetch.sh remove
+   }
+
+
+    function snap_install() {
+      /root/vdsetup.2/bin/utility/snap_install.sh ;
+    }
+
+

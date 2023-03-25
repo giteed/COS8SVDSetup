@@ -1,5 +1,43 @@
 #!/bin/bash
 
+
+
+
+
+
+ # Функция cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
+function cash_var_sh_150_start_and_stop() {
+     ( cash_var_sh_150 ) &>/dev/null 
+     
+     ps ax | awk '/[s]leep_kill/ { print $1 }' | xargs kill &>/dev/null 
+     pkill -f "sleep_kill" &>/dev/null
+     screen -wipe &>/dev/null 
+     # ps ax | awk '/[s]nippet/ { print $1 }' | xargs kill (тоже рабочий вариант вместо snippet имя скрипта или программы)
+    ( /usr/bin/screen -dmS sleep_kill /bin/bash /root/vdsetup.2/bin/utility/.sleep_kill.sh ) &>/dev/null ; 
+    return ;
+    # killall -s KILL .sleep_kill.sh &>/dev/null & 
+    # tldr screen ; echo ;
+    # echo screen -r ;
+    # echo screen -ls ;
+ }
+
+# Функция удаляет юнит кеширования ip адреса Тора и версии vdsetup
+# 
+function remove_unit_stop_cashing() {
+   ${msg9} ;
+   
+   systemctl disable cash_var.service &>/dev/null || ttb=$(echo -e "\n Error disable Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
+   systemctl stop cash_var.service &>/dev/null ||  ttb=$(echo -e "\n Error stop Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
+   rm /etc/systemd/system/cash_var.service &>/dev/null || ttb=$(echo -e "\n Error remove Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
+   systemctl daemon-reload &>/dev/null ||  ttb=$(echo -e "\n Error daemon-reload \n") && bpn_p_lang  ;
+ 
+   ttb=$(echo -e "\n Unit /etc/systemd/system/cash_var.service removed \n") && bpn_p_lang  ;
+   #systemctl status cash_var.service 2>/dev/null;
+   return ;
+}
+
+
+
 # Функция определяет port на котором работает ТОР, и назначает переменную tor_port которая потом используется
 # другими функциями vdsetup.
 function tor_port_ch() {
@@ -201,9 +239,6 @@ function wport() {
 }
 
 
-
-
-   
 function lip-f() # local address
 {
    echo -e "\n"$green""internal"$NC":" " ;

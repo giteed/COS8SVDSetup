@@ -37,10 +37,23 @@
    echo -e ""
    }
    
-   
+   # Убить процесс по неточному совадению
    function gkill() {
       /root/vdsetup.2/bin/utility/k-i-l-l_b-y_k-e-y-w-o-r-d.sh ;
    }
+   
+   # Убить процесс по неточному совадению - должен быть установлен fzf (brew install fzf)
+   function fkill() 
+   {
+     local pid
+     pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+   
+     if [ "x$pid" != "x" ]
+     then
+      echo $pid | xargs kill -${1:-9}
+     fi
+   }
+   
    
    
    # Если ali используется без аргументов == "" то просто alias, если ali с аргументами != "", то подставляются они после alias "$Val2"
