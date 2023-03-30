@@ -230,13 +230,13 @@
 			if [[ "$nginxconfyes" == "yes" ]]
 				then 
 				
-				echo -e "\n ${NC}	1. Создаю backup старого nginx.conf : " ;
-				( cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf_old_$D_$T ) 2>/dev/null || echo -e "	| /etc/nginx/nginx.conf    : $( not_found_MSG ) (Невозможно создать backup - файл не существует)" ;
-				echo -e "	| $( red_U0023 ) cat /etc/nginx/nginx.conf_old_$D_$T ${NC}" ;
-				echo -e "\n	2. Создаю новый файл конфигурации /etc/nginx/nginx.conf : $( green_tick ) " ;
+				echo -e "\n ${NC}1. Создаю backup старого nginx.conf : " ;
+				( cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf_old_$D_$T ) 2>/dev/null || echo -e " | /etc/nginx/nginx.conf    : $( not_found_MSG ) (Невозможно создать backup - файл не существует)" ;
+				echo -e " | $( red_U0023 ) cat /etc/nginx/nginx.conf_old_$D_$T ${NC}" ;
+				echo -e "\n	${NC}2. Создаю новый файл конфигурации /etc/nginx/nginx.conf : $( green_tick ) " ;
 				cat . /root/vdsetup.2/bin/nginx_install/nginx_conf > /etc/nginx/nginx.conf ;
 				mkdir -p /var/cache/nginx/client_temp ;
-				#echo ;
+				
 				ngc.CH ;
 				
 				help ;
