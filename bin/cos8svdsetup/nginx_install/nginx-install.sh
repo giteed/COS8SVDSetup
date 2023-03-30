@@ -31,10 +31,11 @@ echo ;
 			( curl http://$(ifconfig_real_ip)/ ) &>/dev/null && echo -e "$( green_tick ) ${GREEN}Online${NC}" || echo -e "$( red_cross ) ${RED}Failed to connect${NC}" ;
 		}
 		
-		
+		echo -e "${GREEN} .........................................................................." ;
 		echo -en "\n	${CYAN}Адрес Web сервера nginx:${NC} " ; curlCH
 		
 		httpCH ; 
+		echo -e "${GREEN} .........................................................................." ;
 		echo ;
 	}
 	
@@ -171,8 +172,6 @@ echo ;
 			echo > /tmp/nginx_install.log ;
 				( (yum reinstall -y nginx --disablerepo=* --enablerepo=nginx-mainline &>/tmp/nginx_install.log && echo -e "	| Переустановка nginx завершена $(ellow_tick)\n") || (yum install -y nginx --disablerepo=* --enablerepo=nginx-mainline &>/tmp/nginx_install.log && echo -e "	| Установка nginx завершена $(green_tick)\n") ) || echo -e "\n    $(error_MSG) | function nginx_install, try dnf clean packages" ;
 				
-				#( (dnf reinstall -y nginx &>/tmp/nginx_install.log && echo -e "  $(ellow_tick) Переустановка nginx завершена\n") || (dnf install -y nginx &>/tmp/nginx_install.log && echo -e "  $(green_tick) Установка nginx завершена\n") ) || echo -e "\n    $(error_MSG) function nginx_install, try dnf clean packages" ;
-				
 			
 			echo -e " 3. Добавляем nginx в автозагрузку\n" ; 
 			
@@ -281,11 +280,8 @@ echo ;
 				ngc.c | -ngc.c | --ngc.check )
 				ngc.CH ;
 				;;
-				# Запуск программы без параметров выдаст "нет ключа" а затем запустит программу повторно с ключем -ng 
+				# Запуск программы без параметров запустит программу повторно с ключем -ng 
 				*)
-				# comment 
-				#( echo " $1 - Нет такого ключа..." | bat --paging=never -l nix -p ; ) 2>/dev/null || ( echo " $1 - Нет такого ключа..." ) ;
-				# sleep 1 ;
 				
 				$0 -ng || $0 -h ;	
 				;;
