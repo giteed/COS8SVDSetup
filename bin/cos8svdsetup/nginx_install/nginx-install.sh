@@ -169,7 +169,7 @@ echo ;
 			echo -e "\n${CYAN}	| После установки nginx запустится автоматически${NC}" ; 
 			echo -e "\n${GREEN}	| Пожалуйста подождите...${NC}" ;
 			echo > /tmp/nginx_install.log ;
-				( (yum reinstall -y nginx --disablerepo=* --enablerepo=nginx-mainline &>/tmp/nginx_install.log && echo -e "  $(ellow_tick) | Переустановка nginx завершена\n") || (yum install -y nginx --disablerepo=* --enablerepo=nginx-mainline &>/tmp/nginx_install.log && echo -e "  $(green_tick) | Установка nginx завершена\n") ) || echo -e "\n    $(error_MSG) | function nginx_install, try dnf clean packages" ;
+				( (yum reinstall -y nginx --disablerepo=* --enablerepo=nginx-mainline &>/tmp/nginx_install.log && echo -e "	$(ellow_tick) | Переустановка nginx завершена\n") || (yum install -y nginx --disablerepo=* --enablerepo=nginx-mainline &>/tmp/nginx_install.log && echo -e "	$(green_tick) | Установка nginx завершена\n") ) || echo -e "\n    $(error_MSG) | function nginx_install, try dnf clean packages" ;
 				
 				#( (dnf reinstall -y nginx &>/tmp/nginx_install.log && echo -e "  $(ellow_tick) Переустановка nginx завершена\n") || (dnf install -y nginx &>/tmp/nginx_install.log && echo -e "  $(green_tick) Установка nginx завершена\n") ) || echo -e "\n    $(error_MSG) function nginx_install, try dnf clean packages" ;
 				
