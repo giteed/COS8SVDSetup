@@ -1,15 +1,5 @@
 #!/bin/bash
 
-   
-   #------------------------------------
-   # баннер
-   #------------------------------------
-   
-   
-
-   
-
-   
    function auto_update_on() {
       # Включить  автоматические обновления:
       new_V=$(cat /tmp/.ver.txt)
@@ -162,28 +152,6 @@ function css()
    
    
 
-      
-      # ФУНКЦИЯ: Мой ip
-      function mi() { wget -qO- icanhazip.com ; } ;
-      # ФУНКЦИЯ: User
-      function im() { whoami ; } ;
-      
-
-   function msg_done() {
-      echo -e "\n${green}  ✓ Done ${nc}"
-   }
-   
-   function vcc() {
-       vsync;c;c;
-   }
-   
-
-   
-   #------------------------------------
-   # my ip
-   #------------------------------------ 
-
-function myip() { echo -e "$( wget -qO- icanhazip.com )" ; }
 
 
   

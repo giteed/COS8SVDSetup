@@ -1,5 +1,13 @@
 #!/bin/bash
 
+
+
+
+
+
+function myip() { echo -e "$( wget -qO- icanhazip.com )" ; }
+
+
    function reload_cash() {
     /root/vdsetup.2/bin/utility/.cash_var.sh $1
 }
