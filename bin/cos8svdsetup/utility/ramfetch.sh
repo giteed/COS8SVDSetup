@@ -27,7 +27,7 @@ ttb=$(echo -e "
  ⎩ # rm -rf ramfetch/ 
  " ) && bpn_p_lang ; ttb=""  ;
  
-     install_ramfetch && msg_done ;
+     ( install_ramfetch  ) && msg_done || error_MSG ;
      
 ttb=$(echo -e "
  ⎧ ramfetch успешно установлен!
@@ -48,7 +48,7 @@ ttb=$(echo -e "
  |
  ⎩ # rm -rf /usr/local/bin/ramfetch " ) && bpn_p_lang ; ttb=""  ;
 
-      remove_ramfetch && msg_done ;
+      ( remove_ramfetch ) && msg_done || error_MSG ;
  
   ttb=$(echo -e "
  ⎧ ramfetch полностью удален!
