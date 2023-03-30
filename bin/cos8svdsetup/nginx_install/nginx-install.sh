@@ -220,11 +220,11 @@
 			{
 				
 				echo -e -n "\n	
-		${RED}|${nc} Заменить текущий конфиг файл /etc/nginx/nginx.conf "${GREEN}"на преднастроенный"${NC}"?\n
-		${RED}|${nc} Если нет, "${RED}"Enter"${NC}" 
-		${RED}|${nc} Eсли да, введите: "${GREEN}"yes"$NC"
+	${RED}|${nc} Заменить текущий конфиг файл /etc/nginx/nginx.conf "${GREEN}"на преднастроенный"${NC}"?\n
+	${RED}|${nc} Если нет, "${RED}"Enter"${NC}" 
+	${RED}|${nc} Eсли да, введите: "${GREEN}"yes"$NC"
 				
-		["$RED"$(im)"$NC"@"$GRAY""$(hostname)""$NC"] "$NC"<<< "$RED"# "$NC""$GREEN""
+	["$RED"$(im)"$NC"@"$GRAY""$(hostname)""$NC"] "$NC"<<< "$RED"# "$NC""$GREEN""
 				read nginxconfyes
 				
 			if [[ "$nginxconfyes" == "yes" ]]
