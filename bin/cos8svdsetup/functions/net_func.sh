@@ -7,7 +7,7 @@
 #alias pwd='echo -e '' && pwd | bat  --paging=never -l c -p'
 
 function df(){
-  'echo -e '' && df -kTh | bat  --paging=never -l nix -p || echo -e '' && df -kTh'
+  echo -e "" && df -kTh | bat  --paging=never -l nix -p || echo -e "" && df -kTh ;
 }
 
 # ФУНКЦИЯ: Мой ip
