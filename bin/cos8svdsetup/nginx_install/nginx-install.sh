@@ -219,7 +219,7 @@
 		function nginx_addConfig_nginx.conf() 
 			{
 				
-				echo -e -n "\n	
+				echo -e -n "	
  ${RED}|${nc} Заменить текущий конфиг файл /etc/nginx/nginx.conf "${GREEN}"на преднастроенный"${NC}"?\n
  ${RED}|${nc} Если нет, "${RED}"Enter"${NC}" 
  ${RED}|${nc} Eсли да, введите: "${GREEN}"yes"$NC"
