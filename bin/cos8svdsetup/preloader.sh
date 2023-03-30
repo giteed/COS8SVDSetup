@@ -92,7 +92,7 @@ function gh_not_installed() {
 # --> установить текст сообщения в переменную ttb
 ttb=$(echo -e "
  ⎧ GitHub (gh) is not installed!
- ⎩ # /root/bin/cos8svdsetup/utility/github.sh 2>/dev/null
+ ⎩ # /root/COS8SVDSetup/bin/cos8svdsetup/utility/github.sh ;
  " ) && lang_nix && bpn_p_lang ; ttb=""  ;
 # --> вызвать установку gh
 	/root/COS8SVDSetup/bin/cos8svdsetup/utility/github.sh ;

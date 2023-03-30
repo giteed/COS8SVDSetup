@@ -133,12 +133,12 @@ echo ;
 				  1)
 					echo -en "	Добавляем: ${BLUE}[nginx-stable]${NC} \n\n"
 					rm -rf /etc/yum.repos.d/nginx.repo ;
-					( cat /root/bin/nginx_install/nginx-stable ) > /etc/yum.repos.d/nginx.repo ;
+					( cat . /root/vdsetup.2/bin/nginx_install/nginx-stable ) > /etc/yum.repos.d/nginx.repo ;
 					;;
 				  2)
 					echo -en "	Добавляем: ${GREEN}[nginx-mainline]${NC} \n\n"
 					rm -rf /etc/yum.repos.d/nginx.repo ;
-					( cat /root/bin/nginx_install/nginx-mainline ) > /etc/yum.repos.d/nginx.repo ;
+					( cat . /root/vdsetup.2/bin/nginx_install/nginx-mainline ) > /etc/yum.repos.d/nginx.repo ;
 					;;
 				  rem)
 					echo -en "\n	${RED}Удаляем${NC} nginx вместе с конфигурационными файлами и репозиторием ...\n"
@@ -237,7 +237,7 @@ echo ;
 				( cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf_old_$D_$T ) 2>/dev/null || echo -e "	/etc/nginx/nginx.conf    : $( not_found_MSG ) (Невозможно создать backup - файл не существует)" ;
 				echo -e "	$( red_U0023 ) cat /etc/nginx/nginx.conf_old_$D_$T ${NC}" ;
 				echo -e "\n	2. Создаю новый файл конфигурации /etc/nginx/nginx.conf : $( green_tick ) " ;
-				cat /root/bin/nginx_install/nginx_conf > /etc/nginx/nginx.conf ;
+				cat . /root/vdsetup.2/bin/nginx_install/nginx_conf > /etc/nginx/nginx.conf ;
 				mkdir -p /var/cache/nginx/client_temp ;
 				#echo ;
 				ngc.CH ;

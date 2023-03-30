@@ -12,11 +12,10 @@
 alias df='echo -e '' && df -kTh | bat  --paging=never -l nix -p'
 alias mem='echo -e '' && free -h -t | bat  --paging=never -l meminfo -p'
 alias pwd='echo -e '' && pwd | bat  --paging=never -l c -p'
-#alias mi='echo -e '' && wget -qO- icanhazip.com | bat  --paging=never -l c -p'
+
 alias lip='lip-f'
 alias who='echo -e '' &&  who -H | bat  --paging=never -l c -p && echo -e "\n $( red_U0023 ) bat /etc/passwd (cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p)" && cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p'
 alias ifc='ifconfig | bat -p --paging=never -l conf'
-
 
 
 # clear , update /root/.bashrc , ls , cd , tree

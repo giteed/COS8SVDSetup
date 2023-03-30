@@ -1,9 +1,8 @@
 #! /bin/bash
 # This script changes the ssh port for logins on CentOS 5 and 6
 
-# Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-. ~/.bashrc
+. /root/.bashrc
 
 sshPort=$((grep "Port" /etc/ssh/sshd_config) | head -n 1 );
 echo -e "${NC}	----------------------------------------"

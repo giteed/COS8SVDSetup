@@ -685,7 +685,7 @@
         
         
     ng | -ng | -nginx | --nginx )
-        /root/bin/nginx_install/nginx-install ;
+        . /root/vdsetup.2/bin/nginx_install/nginx-install ;
         
         ;;
         
@@ -828,7 +828,7 @@
         ;;
         
     man | -man | --manuals )
-        /root/bin/manuals_urls ;
+        . /root/vdsetup.2/bin/manuals_urls ;
         
         ;;
         
