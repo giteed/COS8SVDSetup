@@ -95,7 +95,7 @@ echo ;
 	${RED}|${nc} Если нет, "${RED}"Enter"${NC}" 
 	${GREEN}|${nc} Eсли да, введите: "${GREEN}"yes"$NC"
 			
-		["$RED" "$(im)""$NC"@"$GRAY"""$(hostname)" ""$NC"] "$NC"<<< "$RED"# "$NC""$GREEN""
+	["$RED" "$(im)""$NC"@"$GRAY"""$(hostname)" ""$NC"] "$NC"<<< "$RED"# "$NC""$GREEN""
 			read nginxyes
 			
 		if [[ "$nginxyes" == "yes" ]]
