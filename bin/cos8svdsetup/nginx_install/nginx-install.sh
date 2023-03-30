@@ -133,7 +133,7 @@ echo ;
 				  1)
 					echo -en "	Добавляем: ${BLUE}[nginx-stable]${NC} \n\n"
 					rm -rf /etc/yum.repos.d/nginx.repo ;
-					( cat . /root/vdsetup.2/bin/nginx_install/nginx-stable ) > /etc/yum.repos.d/nginx.repo ;
+					( cat /root/vdsetup.2/bin/nginx_install/nginx-stable ) > /etc/yum.repos.d/nginx.repo ;
 					;;
 				  2)
 					echo -en "	Добавляем: ${GREEN}[nginx-mainline]${NC} \n\n"
