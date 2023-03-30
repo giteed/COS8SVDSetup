@@ -5,7 +5,9 @@
 
 
 
-function myip() { echo -e "$( wget -qO- icanhazip.com )" ; }
+function myip() { 
+  echo -e $(mi) | bat -p -l cr || echo -e $(mi) ; 
+}
 
 
    function reload_cash() {
