@@ -78,7 +78,7 @@ echo ;
 		echo -en "	- ${nc}Посмотреть /etc/nginx/nginx.conf : ${NC} .... " ;
 		echo -e "$( red_U0023 ) $0 -ngc.l ${ELLOW}" ;
 		echo -en "	- ${nc}Проверить nginx.conf : ${NC} ................ " ;
-		echo -e "$( red_U0023 ) $0 -ngc.c ${NC}" ;
+		echo -e "$( red_U0023 ) $0 -ngc.c ${ELLOW}" ;
 		echo -en "	- ${nc}Перезагрузить конфигурацию nginx: ${ELLOW}...... " ;
 		echo -e "$( red_U0023 ) nginx -s reload ${ELLOW}" ;
 		echo -en "	- ${nc}Переустановить nginx:${NC} .................. " ;
