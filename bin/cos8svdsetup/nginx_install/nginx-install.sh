@@ -12,7 +12,7 @@ echo ;
 	# ФУНКЦИЯ: Проверка установки nginx (/usr/sbin/nginx) и если не найден - пишет "не найден"
 	function nginxCH()
 	{
-		echo -e -n "	Проверяем наличие устанвки nginx " ; sleep 1 ; echo -e -n "." ; sleep 1 ; echo -e ".."
+		echo -e -n "	${ELLOW}|${nc} Проверяем наличие устанвки nginx " ; sleep 1 ; echo -e -n "." ; sleep 1 ; echo -e ".."
 		([[ -z $( ls /usr/sbin/nginx  ) ]] 2>/dev/null && echo -e "	/usr/sbin/nginx    : $( not_found_MSG ) ") || echo -e "	/usr/sbin/nginx    : $( found_MSG ) " ;
 		#sleep 1 ;
 	}
@@ -91,9 +91,9 @@ echo ;
 	# ФУНКЦИЯ: Установка nginx
 	function nginx_install_reinstall() 
 		{
-			echo -e -n "	Установить/переустановить "${GREEN}"nginx"${NC}"?\n
-		Если нет, "${ELLOW}"Enter"${NC}" 
-		Eсли да, введите: "${GREEN}"yes"$NC"
+			echo -e -n "	${ELLOW}|${nc} Установить/переустановить "${GREEN}"nginx"${NC}"?\n
+		${RED}|${nc} Если нет, "${ELLOW}"Enter"${NC}" 
+		${GREEN}|${nc} Eсли да, введите: "${GREEN}"yes"$NC"
 			
 		["$RED" "$(im)""$NC"@"$GRAY"""$(hostname)" ""$NC"] "$NC"<<< "$RED"# "$NC""$GREEN""
 			read nginxyes
