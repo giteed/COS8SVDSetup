@@ -65,7 +65,7 @@ echo ;
 		status_nginx.service ;
 		echo ;
 		echo -en "	- ${cyan}Посмотреть лог установки nginx: ${NC}........ " ;
-		echo -e "$( red_U0023 ) $0 -ng.l ${NC}" ;
+		echo -e "$( red_U0023 ) $0 -ng.log ${NC}" ;
 		echo -en "	- ${cyan}Проверить открытые порты: ${NC}.............. " ;
 		echo -e "$( red_U0023 ) firewall-cmd --list-all ${NC}" ;
 		echo -en "	- ${cyan}Проверить, статус nginx:${NC} ............... " ;
@@ -252,7 +252,7 @@ echo ;
 		
 		case $1 in
 				# Просмотр лога установки nginx
-				ng.l | -ng.l | --nginx_install.log )
+				ng.log | -ng.log | --nginx_install.log )
 				nginx_install.log ;
 				;; 
 				
