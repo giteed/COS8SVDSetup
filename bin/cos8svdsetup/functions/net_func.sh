@@ -3,7 +3,7 @@
 
 # Команда pwd (от англ. "print working directory") 
 # в Linux используется для отображения текущей рабочей директории.
-function pwd() { ( echo -e '' && pwd | bat  --paging=never -l c -p ) || ( echo -e '' && pwd )
+function pwd() { ( echo -e '' && pwd | bat  --paging=never -l c -p ) || ( echo -e '' && pwd ) }
 
 
 # Функция информация о памяти системы
