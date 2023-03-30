@@ -8,7 +8,7 @@ echo ;
 
 
 function install_ramfetch() {
-    cd /root/temp/ ; git clone https://github.com/gentoo-btw/ramfetch ; cp ramfetch/ramfetch /usr/local/bin/ ; chmod +x /usr/local/bin/ramfetch ; rm -rf ramfetch/ ;
+    cd /root/temp/ ; gh repo clone https://github.com/gentoo-btw/ramfetch ; cp ramfetch/ramfetch /usr/local/bin/ ; chmod +x /usr/local/bin/ramfetch ; rm -rf ramfetch/ ;
 }
 
 function remove_ramfetch() {
@@ -21,7 +21,7 @@ function install() {
 ttb=$(echo -e "
  ⎧ Устанавливаем ramfetch (GitHub):
  |
- | # cd /root/temp/ ; git clone https://github.com/gentoo-btw/ramfetch 
+ | # cd /root/temp/ ; gh repo clone https://github.com/gentoo-btw/ramfetch 
  | # cp ramfetch/ramfetch /usr/local/bin/ 
  | # chmod +x /usr/local/bin/ramfetch 
  ⎩ # rm -rf ramfetch/ 
