@@ -52,8 +52,7 @@ echo ;
 		
 		function nginxs() { systemctl status -n0 nginx.service &>/tmp/status_nginx.service ; } ; nginxs ; 
 		( systemctl status -n0 nginx.service &>/dev/null && systemctl status -n0 nginx.service || cat /tmp/status_nginx.service | bat -l conf -p ) &>/dev/null  || systemctl status -n0 nginx.service ;
-		
-		#( cat /tmp/nginx_http_ip | bat --paging=never -l nix -p ; ) 2>/dev/null || ( cat /tmp/nginx_http_ip ) ;
+
 	}
 	
 	
@@ -65,7 +64,7 @@ echo ;
 		status_nginx.service ;
 		echo ;
 		echo -en "	- ${cyan}Посмотреть лог установки nginx: ${NC}........ " ;
-		echo -e "$( red_U0023 ) $0 -ng.log ${NC}" ;
+		echo -e "$( red_U0023 ) $0 -ngi.log ${NC}" ;
 		echo -en "	- ${cyan}Проверить открытые порты: ${NC}.............. " ;
 		echo -e "$( red_U0023 ) firewall-cmd --list-all ${NC}" ;
 		echo -en "	- ${cyan}Проверить, статус nginx:${NC} ............... " ;
@@ -252,7 +251,7 @@ echo ;
 		
 		case $1 in
 				# Просмотр лога установки nginx
-				ng.log | -ng.log | --nginx_install.log )
+				ngi.log | -ngi.log | --nginx_install.log )
 				nginx_install.log ;
 				;; 
 				

@@ -1,5 +1,11 @@
 #!/bin/bash
 
+
+function http() {
+    ( cat /tmp/nginx_http_ip | bat --paging=never -l nix -p ; ) 2>/dev/null || ( cat /tmp/nginx_http_ip )
+}
+
+
 # Функция информация о памяти системы
 function mem() { ( echo && free -h -t ) | ( bat  --paging=never -l meminfo -p ) || ( echo -e '' && free -h -t ) }
 
