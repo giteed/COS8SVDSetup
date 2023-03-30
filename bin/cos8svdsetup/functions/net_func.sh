@@ -1,11 +1,18 @@
 #!/bin/bash
 
 
+# Команда pwd (от англ. "print working directory") 
+# в Linux используется для отображения текущей рабочей директории.
+function pwd() { ( echo -e '' && pwd | bat  --paging=never -l c -p ) || ( echo -e '' && pwd )
 
-#alias mem='echo -e '' && free -h -t | bat  --paging=never -l meminfo -p'
-#alias pwd='echo -e '' && pwd | bat  --paging=never -l c -p'
 
+# Функция информация о памяти системы
+function mem() { ( echo -e '' && free -h -t ) | ( bat  --paging=never -l meminfo -p ) || ( echo -e '' && free -h -t ) }
+
+
+# Функция информации о доступном дисковом пространстве на файловой системе
 function df() {  (echo && /usr/bin/df -kTh | bat --paging=never -l nix -p) || (echo && /usr/bin/df -kTh) }
+
 
 # ФУНКЦИЯ: Мой ip
   function mi() { wget -qO- icanhazip.com ; } ;
