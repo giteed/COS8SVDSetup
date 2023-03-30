@@ -1,7 +1,8 @@
 #!/bin/bash
 
 function ypr() {
-	
+	ypr-f ;
+}	
 
 # --> Поиск программы/файла локально и в repository по 7 командам
    function ypr-f() 
@@ -139,4 +140,3 @@ function ypr() {
 	 esac 
 	 unset red_prgrm
   }
-}
