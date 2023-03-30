@@ -25,7 +25,7 @@ ttb=$(echo -e "
  | # ln -s /var/lib/snapd/snap /snap
  ⎩ # snap install core; sudo snap refresh core
  " ) && bpn_p_lang ; ttb=""  ;
-      epel_repo_Check_or_install && msg_done ;
+      epel_repository_Check_or_install && msg_done ;
       dnf -y install snapd && msg_done ;
       systemctl unmask snapd.service && msg_done ;
       systemctl enable snapd.socket --now && msg_done ;

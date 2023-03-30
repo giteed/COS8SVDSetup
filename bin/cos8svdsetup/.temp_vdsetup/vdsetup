@@ -329,7 +329,7 @@
         #echo -e "\n \"Server_with_GUI\" $(not_found_MSG) " ;
         #echo -e " Проверка/установка epel-release repo"
         echo ;
-        epel_repo_Check_or_install ;
+        epel_repository_Check_or_install ;
         echo -e "\n ${GREEN}Установка/обновление: \"Server_with_GUI\", \"Fonts\"${NC}"
         echo -e "\n \"Server with GUI\" \"Fonts\" устанавливается: $( ellow_tick )\n" && ( dnf groupinstall "Server with GUI" "Fonts" -y ) || ( echo -e "dnf groupinstall \"Server with GUI\" \"Fonts\" -y: $( red_crash )" ; ) ;
         Server_with_GUI_OK ;
@@ -421,7 +421,7 @@
     {
         [[ -z $( vncserver -list ) ]] &>/dev/null && echo -e "\n tigervnc $(not_found_MSG)" || tigervncOK ;
         echo -e " Проверка/установка epel-release repo" ;
-        epel_repo_Check_or_install ;
+        epel_repository_Check_or_install ;
         echo ;
         echo -e "\n ${GREEN}Проверка установки: \"Server_with_GUI\", \"Fonts\"${NC}" ;
         Server_with_GUI_CH ;
