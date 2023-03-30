@@ -276,7 +276,7 @@ function wport() {
 }
 
 
-function ifc() { ( ifconfig | bat -p --paging=never -l conf ) || ifconfig }
+function ifc() { ( echo -e "" && ifconfig | bat -p --paging=never -l conf ) || ( echo -e "" && ifconfig ) }
 
 # local address
 function lip-f() {
