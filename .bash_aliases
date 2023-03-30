@@ -12,8 +12,8 @@
 
 
 alias lip='lip-f'
-alias who='echo -e '' &&  who -H | bat  --paging=never -l c -p && echo -e "\n $( red_U0023 ) bat /etc/passwd (cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p)" && cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p'
-alias ifc='ifconfig | bat -p --paging=never -l conf'
+alias who='echo -e '' &&  who -H | bat  --paging=never -l c -p && echo -e "\n $( red_U0023 ) bat /etc/passwd (cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p)\n" && cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p'
+
 
 
 # clear , update /root/.bashrc , ls , cd , tree
@@ -61,7 +61,7 @@ alias mkdir='mkdir -p'
 # yum
 alias ypr='GLIG_ASTRX_ON && ypr-f'
 
-# 
+# test-labz sync & rm vdsetup
 alias tsync='/root/test-lab/tsync.sh'
 alias rm_vdsetup='/root/vdsetup.2/bin/utility/rm_vdsetup.sh'
 
