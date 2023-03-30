@@ -12,7 +12,7 @@ echo ;
 	# ФУНКЦИЯ: Проверка установки nginx (/usr/sbin/nginx) и если не найден - пишет "не найден"
 	function nginxCH()
 	{
-		echo -e -n "	${ELLOW}|${nc} Проверяем наличие устанвки nginx " ; sleep 1 ; echo -e -n "." ; sleep 1 ; echo -e ".."
+		echo -e "	${ELLOW}|${nc} Проверяем наличие устанвки nginx " ; echo -e -n "." ; sleep 1 ; echo -e ".."
 		([[ -z $( ls /usr/sbin/nginx  ) ]] 2>/dev/null && echo -e "	${ELLOW}|${red} /usr/sbin/nginx    : $( not_found_MSG ) ") || echo -e "	${ELLOW}|${green} /usr/sbin/nginx    : $( found_MSG ) " ;
 		#sleep 1 ;
 	}
