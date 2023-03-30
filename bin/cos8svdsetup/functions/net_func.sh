@@ -1,9 +1,5 @@
 #!/bin/bash
 
-
-
-
-
 # Функция информация о памяти системы
 function mem() { ( echo && free -h -t ) | ( bat  --paging=never -l meminfo -p ) || ( echo -e '' && free -h -t ) }
 
