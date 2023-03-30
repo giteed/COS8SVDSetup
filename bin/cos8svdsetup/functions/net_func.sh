@@ -2,7 +2,6 @@
 
 
 
-#alias df='echo -e '' && df -kTh | bat  --paging=never -l nix -p'
 #alias mem='echo -e '' && free -h -t | bat  --paging=never -l meminfo -p'
 #alias pwd='echo -e '' && pwd | bat  --paging=never -l c -p'
 
