@@ -4,7 +4,7 @@
 
 
 
-
+# Функция myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
 function myip() { 
   echo -e $(mi) | bat -p -l cr || echo -e $(mi) ; 
 }

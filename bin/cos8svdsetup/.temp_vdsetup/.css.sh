@@ -43,16 +43,7 @@
       echo -e "${green}$(Version_vdsetup) $(red_U0023) vdsetup sync" ;
       
    }
-   
-   #new_V=$(cat /tmp/.ver.txt)
-   #current_V=$(cat /root/.ver.txt)
-   
-   #function new_V() {
-   #   $(cat /tmp/.ver.txt)
-   #}
-   #function current_V() {
-   #   $(cat /root/.ver.txt)
-   #}
+
    
    function Version_vdsetup_Ver_RED_or_GREEN()
    {
@@ -82,21 +73,6 @@
         ver_CH_GH ;
         return ;
         
-        
-         
-         
-         
-       #  if [ ${new_V} != ${current_V} ] 
-       #  then 
-       #     echo -e "$(GREEN_VER)" 
-       #  else 
-       #     echo -e "$(RED_VER)" 
-       #  
-       #  fi 
-         
-      
-      
-     # if  ( '$(new_V)' != '$(current_V)' ) &>/dev/null ; then echo -e "$(GREEN_VER)" ; else echo -e "$(RED_VER)" ; fi ;
    
 }
    
