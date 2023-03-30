@@ -138,7 +138,7 @@ echo ;
 				  2)
 					echo -en "	Добавляем: ${GREEN}[nginx-mainline]${NC} \n\n"
 					rm -rf /etc/yum.repos.d/nginx.repo ;
-					( cat . /root/vdsetup.2/bin/nginx_install/nginx-mainline ) > /etc/yum.repos.d/nginx.repo ;
+					( cat /root/vdsetup.2/bin/nginx_install/nginx-mainline ) > /etc/yum.repos.d/nginx.repo ;
 					;;
 				  rem)
 					echo -en "\n	${RED}Удаляем${NC} nginx вместе с конфигурационными файлами и репозиторием ...\n"
