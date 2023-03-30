@@ -38,7 +38,7 @@
    }
    
    # Убить процесс по неточному совадению
-   function gkill() {
+   function kkill() {
       /root/vdsetup.2/bin/utility/k-i-l-l_b-y_k-e-y-w-o-r-d.sh ;
    }
    

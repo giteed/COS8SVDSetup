@@ -266,7 +266,7 @@ function wport() {
    echo -e "\n${cyan}*** ${green}Top 10 CPU ${RED}***$NC"; ttb=$(ps auxf | sort -nr -k 3 | head -10 ) && lang=bash && bpn_p_lang ;
    echo -en "\n${cyan}*** ${green}FILE SYSTEM ${RED}***$NC"; df; 
    
-   ttb=$(echo -e "\n # ps ax | awk '/[s]nippet/ { print $1 }' | xargs kill\n Убить процесс по имени ")&& lang=bash && bpn_p_lang ;
+   ttb=$(echo -e "\n # ps ax | awk '/[s]nippet/ { print $1 }' | xargs kill\n Убить процесс по имени, или # kkill  ")&& lang=bash && bpn_p_lang ;
 }
 
 
