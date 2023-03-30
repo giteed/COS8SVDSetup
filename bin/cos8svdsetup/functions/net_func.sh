@@ -5,7 +5,7 @@
 #alias mem='echo -e '' && free -h -t | bat  --paging=never -l meminfo -p'
 #alias pwd='echo -e '' && pwd | bat  --paging=never -l c -p'
 
-function df(){
+function df() {
   echo && df -kTh | bat -l nix -p ||  echo && df -kTh ;
 }
 
