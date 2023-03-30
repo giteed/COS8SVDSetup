@@ -5,7 +5,7 @@
 }
 
 
- # Функция cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
+# Функция cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
 function cash_var_sh_150_start_and_stop() {
      ( cash_var_sh_150 ) &>/dev/null 
      
@@ -17,8 +17,7 @@ function cash_var_sh_150_start_and_stop() {
     return ;
  }
 
-# Функция удаляет юнит кеширования ip адреса Тора и версии vdsetup
-# 
+# Функция удаляет юнит кеширования ip адреса Тора и версии vdsetup 
 function remove_unit_stop_cashing() {
    ${msg9} ;
    
@@ -31,7 +30,6 @@ function remove_unit_stop_cashing() {
    #systemctl status cash_var.service 2>/dev/null;
    return ;
 }
-
 
 
 # Функция определяет port на котором работает ТОР, и назначает переменную tor_port которая потом используется
@@ -51,7 +49,8 @@ function tor_check_ip() {
    /root/vdsetup.2/bin/utility/tor_check.sh ;
 }
 
-   # Функция возвращает бекап файл /etc/wgetrc_old на прежнее место /etc/wgetrc (отключает использование прокси ТОР http://localhost:8118 ) "
+
+# Функция возвращает бекап файл /etc/wgetrc_old на прежнее место /etc/wgetrc (отключает использование прокси ТОР http://localhost:8118 ) "
 function wgetrc_config_revert() {
    
    function revert_MSG() {
@@ -76,10 +75,10 @@ function wgetrc_config_revert() {
    }
    
    
- if [[ -z /etc/wgetrc_old ]] ; then not_found_wgetrc_old_MSG ; else revert_MSG ; fi ;
+      if [[ -z /etc/wgetrc_old ]] ; then not_found_wgetrc_old_MSG ; else revert_MSG ; fi ;
    
    
-   press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
+      press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
    
    
    function OK_wgetrc_old() {
@@ -92,7 +91,7 @@ function wgetrc_config_revert() {
       echo -e " $(black_U23A9 ) \n" ;
    }
    
-   cp -a /etc/wgetrc_old /etc/wgetrc && OK_wgetrc_old || not_found_wgetrc_old_MSG ;
+      cp -a /etc/wgetrc_old /etc/wgetrc && OK_wgetrc_old || not_found_wgetrc_old_MSG ;
    
 }
 
@@ -124,14 +123,23 @@ toriptables2.py() {
 }
 
 
+# ФУНКЦИЯ: Мой ip
+  function mi() { wget -qO- icanhazip.com ; } ;
+
+# ФУНКЦИЯ: User
+  function im() { whoami ; } ;
+ 
+
+  function msg_done() {
+   echo -e "\n${green}  ✓ Done ${nc}"
+ }
 
 
-
- function start_http_server() {
+  function start_http_server() {
      /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh start ;
   }
  
- function stop_http_server() {
+  function stop_http_server() {
      /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh stop ;
   }
   
@@ -139,7 +147,7 @@ toriptables2.py() {
       /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh status ;
    }
  
- function start_light_server() {
+  function start_light_server() {
       /root/vdsetup.2/bin/utility/file_to_light_server_start_stop.sh start ;
   }
   
@@ -151,29 +159,29 @@ toriptables2.py() {
         /root/vdsetup.2/bin/utility/file_to_light_server_start_stop.sh status ;
   }
 
-  function lastf() {
+# 
+function lastf() {
           /root/vdsetup.2/bin/utility/lastf.sh $1 ;
     }
 
 
-  
-
-
-   function open_port_and_services_firewall() {
+# 
+function open_port_and_services_firewall() {
     ttb=$(echo -e " \n  FirewallD инфо: (Открытые ports и services)\n" ;) && lang="passwd" && bpn_p_lang ;
     ttb=$( firewall-cmd --list-all | rg "(services|ports)" | rg -v "(forward|source)"  2>/dev/null ) && lang="passwd" && bpn_p_lang ;
 }
 
 
-
-
-   function fw_i()
+#
+function fw_i()
 {
    echo -e " ${ELLOW}\n	FirewallD инфо: ${NC}(Открытые ports и services)${NC}" ;
    echo -e "	$(green_tick) $(red_U0023) firewall-cmd --list-all\n" ;
    ( firewall-cmd --list-all | rg "(services|ports)" | rg -v "(forward|source)"  2>/dev/null | bat --paging=never -l nix -p 2>/dev/null ; ) || ( firewall-cmd --list-all | grep -E "(services:|ports:)" | grep -v "(forward|source)" ;)
 }
 
+
+#
 function netstat_i ()
 {
    echo -e "\n	$(green_tick) $(red_U0023) netstat -tupln | grep ssh" ;
@@ -183,7 +191,7 @@ function netstat_i ()
 
 
 
-   
+# 
 function TopRAM25()
    {
       
@@ -195,11 +203,13 @@ function TopRAM25()
       | awk '{$1/=1024;printf "%.0fMB\t",$1}{print $2}'
    }
 
+#
 function t25r()
 {
    TopRAM25 | bat -p -l c
 }
 
+# 
 function wport() {
    
    function netstat_tulanp_nogrep() {
@@ -223,9 +233,9 @@ function wport() {
     netstat_tulanp $1 ;
 }
 
-
-   function memc() # Показать первые 10 прожорливых процессов CPU/RAM
-{ 
+# Показать первые 10 прожорливых процессов CPU/RAM
+   function memc() { 
+     
    echo -en "\n${cyan}*** ${green}MEMORY RAM/SWAP ${RED}***$NC"; mem; echo -e "\n"${cyan}*** ${green}Top 25 RAM ${RED}"***$NC"; t25r ;
    echo -e "\n${cyan}*** ${green}Top 10 RAM ${RED}***$NC"; ttb=$(ps auxf | sort -nr -k 4 | head -10 ) && lang=bash && bpn_p_lang ;
    echo -e "\n${cyan}*** ${green}Top 10 CPU ${RED}***$NC"; ttb=$(ps auxf | sort -nr -k 3 | head -10 ) && lang=bash && bpn_p_lang ;
@@ -234,9 +244,9 @@ function wport() {
    ttb=$(echo -e "\n # ps ax | awk '/[s]nippet/ { print $1 }' | xargs kill\n Убить процесс по имени ")&& lang=bash && bpn_p_lang ;
 }
 
-
-function lip-f() # local address
-{
+# local address
+function lip-f() {
+  
    echo -e "\n"$green""internal"$NC":" " ;
    ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
    echo -e "$cyan""\nexternal"$NC":" ;
@@ -244,4 +254,5 @@ function lip-f() # local address
    
    echo -e "\n"$green""Privoxy TOR Socks5 127.0.0.1:9050"$NC":" " ;
    curl --socks5 127.0.0.1:9050 http://2ip.ua
+   
 }
