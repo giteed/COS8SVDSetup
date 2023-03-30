@@ -8,20 +8,19 @@
 # unalias name - удалить алиас
 #-----------------------------------
 
-# df -h , free -h , ip , who , type
-# Команда pwd (от англ. "print working directory") 
-# в Linux используется для отображения текущей рабочей директории.
+### df -h , free -h , ip , who , type
+### Команда pwd (от англ. "print working directory") 
+### в Linux используется для отображения текущей рабочей директории.
+
 alias pwd='( echo && pwd | bat  --paging=never -l c -p ) || ( echo && pwd )'
 alias lip='lip-f'
 alias who='echo -e '' &&  who -H | bat  --paging=never -l c -p && echo -e "\n $( red_U0023 ) bat /etc/passwd && (cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p)\n" && cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p'
 
 
+### clear , update /root/.bashrc , ls , cd , tree
 
-# clear , update /root/.bashrc , ls , cd , tree
 alias urc='source /root/.bashrc'
-
 alias vcc='vsync && sleep 2 && source /root/.bashrc && clear && clear && ttb=$(echo -e "\n VDSetup $(cat /root/vdsetup.2/bin/VERSION) # vsync - for update\n") && lang_cr ; bpn_p_lang'
-
 alias c='clear'
 alias l.='ls -lhd --color=auto .*'
 alias l..='ls -lhd --color=auto .* *'
@@ -33,7 +32,9 @@ alias lk='GLIG_ASTRX_OF && lk-f'
 alias ..='cd ..'
 alias path='echo -e ${PATH//:/\\n}'
 
-# grep , wget
+
+### grep , wget
+
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -45,25 +46,32 @@ alias zfgrep='zfgrep --color=auto'
 alias zgrep='zgrep --color=auto'
 alias wget='wget -c'
 
-# cp , mv , mc , rm , mkdir
+
+### cp , mv , mc , rm , mkdir
+
 alias cp='cp -i'
 alias mv='mv -i'
 alias mc='. /usr/libexec/mc/mc-wrapper.sh'
 
-# Не удалять корень и предупреждать об удалении файлов
+### Не удалять корень и предупреждать об удалении файлов
+
 alias rm='rm -I --preserve-root'
 
-# Защита от изменения прав для /
+
+### Защита от изменения прав для /
+
 alias chown='chown --preserve-root'
 alias chmod='chmod --preserve-root'
 alias chgrp='chgrp --preserve-root'
 alias mkdir='mkdir -p'
 
-# yum
+### yum
+
 alias ypr='GLIG_ASTRX_ON && ypr-f'
 
-# test-labz sync & rm vdsetup
+
+### test-labz sync & rm vdsetup
+
 alias tsync='/root/test-lab/tsync.sh'
 alias rm_vdsetup='/root/vdsetup.2/bin/utility/rm_vdsetup.sh'
-
 
