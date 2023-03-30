@@ -139,4 +139,6 @@
   [[ -z $( ls /usr/bin/webmin ) ]] 2>/dev/null && webminIN || webminOK ;
  }
  
+ webminCH ;
+ 
  exit 0 ;
