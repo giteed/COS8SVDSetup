@@ -105,13 +105,13 @@
 
  ⎧ 6. Открываем порт для Webmin 10000/tcp и перезапускаем FirewallD
  ⎩ FirewallD перезапускается... " ) && lang="nix" && bpn_p_lang ; 
- echo -e "\n   ${green} $(firewall-cmd --reload) ${nc}" ;
+ 
  echo ;
 
  firewall-cmd --zone=public --permanent --add-service=http &>>/tmp/webmin_install.log ;
  firewall-cmd --zone=public --permanent --add-service=https &>>/tmp/webmin_install.log ;
  firewall-cmd --permanent --zone=public --add-port=10000/tcp &>>/tmp/webmin_install.log ;
- 
+ echo -e "\n   ${green} $(firewall-cmd --reload) ${nc}" ;
  
  webmininfo ;
  
