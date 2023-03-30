@@ -285,7 +285,7 @@ echo ;
 				# comment 
 				( echo " $1 - Нет такого ключа..." | bat --paging=never -l nix -p ; ) 2>/dev/null || ( echo " $1 - Нет такого ключа..." ) ;
 				# sleep 1 ;
-				css ;
+				
 				$0 -ng || $0 -h ;	
 				;;
 				
