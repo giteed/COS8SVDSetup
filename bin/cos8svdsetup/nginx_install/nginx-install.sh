@@ -132,28 +132,28 @@ echo ;
 					case $ng_1_2 in
 					
 				  1)
-					echo -en "	| Добавляем: ${BLUE}[nginx-stable]${NC} \n\n"
+					echo -e "\n | Добавляем: ${BLUE}[nginx-stable]${NC} \n\n"
 					rm -rf /etc/yum.repos.d/nginx.repo ;
 					( cat /root/vdsetup.2/bin/nginx_install/nginx-stable ) > /etc/yum.repos.d/nginx.repo ;
 					;;
 				  2)
-					echo -en "	| Добавляем: ${GREEN}[nginx-mainline]${NC} \n\n"
+					echo -e "\n | Добавляем: ${GREEN}[nginx-mainline]${NC} \n\n"
 					rm -rf /etc/yum.repos.d/nginx.repo ;
 					( cat /root/vdsetup.2/bin/nginx_install/nginx-mainline ) > /etc/yum.repos.d/nginx.repo ;
 					;;
 				  rem)
-					echo -en "\n	| ${RED}Удаляем${NC} nginx вместе с конфигурационными файлами и репозиторием ...\n"
+					echo -e "\n	| ${RED}Удаляем${NC} nginx вместе с конфигурационными файлами и репозиторием ...\n"
 					echo ;
 					dnf remove nginx -y;
-					echo -e "\n 	| ${RED}Nginx удален вместе с конфигурационными файлами и репозиторием!${NC}\n" ;
+					echo -e "\n | ${RED}Nginx удален вместе с конфигурационными файлами и репозиторием!${NC}\n" ;
 					case_1_2 ;
 					;;
 				  q)
-					echo -en "	| ${ELLOW}Отмена установки${NC} nginx\n"
+					echo -e " | ${ELLOW}Отмена установки${NC} nginx\n"
 					exit ;
 					;;
 				  *)
-					echo -en "\n	| Такого варианта нет... \n" 
+					echo -e "\n | Такого варианта нет... \n" 
 					case_1_2 ;
 					;;
 				esac
