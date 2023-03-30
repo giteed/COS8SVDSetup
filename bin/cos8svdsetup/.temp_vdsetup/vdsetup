@@ -96,7 +96,7 @@
           ( echo -e " Установка epel-release. ${NC} \n" ) ;
           ( ( ( yum install epel-release -y ) &>/dev/null ) || ( echo -en " yum install epel-release: " && error_MSG ; ) ) ;
           
-          ( ( ( yum repolist | grep epel ) &>/dev/null ) && ( ( echo -e "\n Установка epel-release завершена!" ) && ( echo -e " ($( green_tick )) - epel-release${RED}    |${NC} посмотреть все репо ypr -rl"  ) ) ) || ( ( echo -e " epel repo: $( not_found_MSG )" ) && ( echo -en " функция установки epelIN_epel_repo " && error_MSG ; ) ) ;
+          ( ( ( yum repolist | grep epel ) &>/dev/null ) && ( ( echo -e "\n Установка epel-release завершена!" ) && ( echo -e " ($( green_tick )) - epel-release${RED}    |${NC} посмотреть все repository ypr -rl"  ) ) ) || ( ( echo -e " epel repo: $( not_found_MSG )" ) && ( echo -en " функция установки epelIN_epel_repo " && error_MSG ; ) ) ;
         }
         
         

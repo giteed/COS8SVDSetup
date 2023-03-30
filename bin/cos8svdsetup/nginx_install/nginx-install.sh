@@ -106,7 +106,7 @@ echo ;
 			{
 			
 	ttb=$(echo -e "	
-	⎧ Какой из репо nginx добавить для установки, 
+	⎧ Какой из repository nginx добавить для установки, 
 	⎩ [nginx-stable] или [nginx-mainline]? 
 	
 	⎧ - Чтобы добавить [nginx-stable] .... введите: 1 
@@ -123,7 +123,7 @@ echo ;
 	⎩ (Процесс будет завершен без каких-либо изменений)
 	 
 	⎧ - Удалить и переустановить nginx ...  введите: rem
-	⎩ (Полное удаление nginx с конфигами и репо а зетем переустановка)\n")&& lang=cr && bpn_p_lang ; echo ;
+	⎩ (Полное удаление nginx с конфигами и repository а затем переустановка)\n")&& lang=cr && bpn_p_lang ; echo ;
 	
 	echo -en "	Сделайте выбор: "
 					read ng_1_2
@@ -132,28 +132,28 @@ echo ;
 					case $ng_1_2 in
 					
 				  1)
-					echo -en "	Добавляем: ${BLUE}[nginx-stable]${NC} \n\n"
+					echo -en "	| Добавляем: ${BLUE}[nginx-stable]${NC} \n\n"
 					rm -rf /etc/yum.repos.d/nginx.repo ;
 					( cat /root/vdsetup.2/bin/nginx_install/nginx-stable ) > /etc/yum.repos.d/nginx.repo ;
 					;;
 				  2)
-					echo -en "	Добавляем: ${GREEN}[nginx-mainline]${NC} \n\n"
+					echo -en "	| Добавляем: ${GREEN}[nginx-mainline]${NC} \n\n"
 					rm -rf /etc/yum.repos.d/nginx.repo ;
 					( cat /root/vdsetup.2/bin/nginx_install/nginx-mainline ) > /etc/yum.repos.d/nginx.repo ;
 					;;
 				  rem)
-					echo -en "\n	${RED}Удаляем${NC} nginx вместе с конфигурационными файлами и репозиторием ...\n"
+					echo -en "\n	| ${RED}Удаляем${NC} nginx вместе с конфигурационными файлами и репозиторием ...\n"
 					echo ;
 					dnf remove nginx -y;
-					echo -e "\n 	${RED}Nginx удален вместе с конфигурационными файлами и репозиторием!${NC}\n" ;
+					echo -e "\n 	| ${RED}Nginx удален вместе с конфигурационными файлами и репозиторием!${NC}\n" ;
 					case_1_2 ;
 					;;
 				  q)
-					echo -en "	${ELLOW}Отмена установки${NC} nginx\n"
+					echo -en "	| ${ELLOW}Отмена установки${NC} nginx\n"
 					exit ;
 					;;
 				  *)
-					echo -en "\n	Такого варианта нет... \n" 
+					echo -en "\n	| Такого варианта нет... \n" 
 					case_1_2 ;
 					;;
 				esac
@@ -166,10 +166,10 @@ echo ;
 				
 			echo -e " 2. Устанавливаем nginx" ;
 			
-			echo -e "    (${CYAN}После установки nginx запустится автоматически${NC})" ; 
-			echo -e "\n${GREEN}    Пожалуйста подождите...${NC}" ;
+			echo -e "    (${CYAN}| После установки nginx запустится автоматически${NC})" ; 
+			echo -e "\n${GREEN}    | Пожалуйста подождите...${NC}" ;
 			echo > /tmp/nginx_install.log ;
-				( (yum reinstall -y nginx --disablerepo=* --enablerepo=nginx-mainline &>/tmp/nginx_install.log && echo -e "  $(ellow_tick) Переустановка nginx завершена\n") || (yum install -y nginx --disablerepo=* --enablerepo=nginx-mainline &>/tmp/nginx_install.log && echo -e "  $(green_tick) Установка nginx завершена\n") ) || echo -e "\n    $(error_MSG) function nginx_install, try dnf clean packages" ;
+				( (yum reinstall -y nginx --disablerepo=* --enablerepo=nginx-mainline &>/tmp/nginx_install.log && echo -e "  $(ellow_tick) | Переустановка nginx завершена\n") || (yum install -y nginx --disablerepo=* --enablerepo=nginx-mainline &>/tmp/nginx_install.log && echo -e "  $(green_tick) | Установка nginx завершена\n") ) || echo -e "\n    $(error_MSG) | function nginx_install, try dnf clean packages" ;
 				
 				#( (dnf reinstall -y nginx &>/tmp/nginx_install.log && echo -e "  $(ellow_tick) Переустановка nginx завершена\n") || (dnf install -y nginx &>/tmp/nginx_install.log && echo -e "  $(green_tick) Установка nginx завершена\n") ) || echo -e "\n    $(error_MSG) function nginx_install, try dnf clean packages" ;
 				
@@ -200,23 +200,23 @@ echo ;
 		# ФУНКЦИЯ: Проверка файла конфигурации /etc/nginx/nginx.conf
 		function ngc.CH() 
 		{
-			echo -e "\n	Выполняется проверка файла конфигурации /etc/nginx/nginx.conf :" ;
-			echo -e "	$( red_U0023 ) nginx -t ${NC} (Смотрите вывод с результатами проверки ниже)\n " ;
+			echo -e "\n	| Выполняется проверка файла конфигурации /etc/nginx/nginx.conf :" ;
+			echo -e "	| $( red_U0023 ) nginx -t ${NC} (Смотрите вывод с результатами проверки ниже)\n " ;
 			function nginxt() { nginx -t &>/tmp/nginx_nginxt.log ; } ; nginxt ; 
 			cat /tmp/nginx_nginxt.log | bat --paging=never -l v || nginx -t ;
 			echo ;
-			echo -e "	$( red_U0023 ) nginx -s reload ${NC} (Перезагрузить конфигурацию nginx)\n " ;
+			echo -e "	| $( red_U0023 ) nginx -s reload ${NC} (Перезагрузить конфигурацию nginx)\n " ;
 			
 		}
 		
 		# ФУНКЦИЯ: Просмотр файла конфигурации /etc/nginx/nginx.conf
 		function ngc.list() 
 		{
-			echo -e "\n	Выполняется просмотр файла конфигурации /etc/nginx/nginx.conf :" ;
-			echo -e "	$( red_U0023 ) cat /etc/nginx/nginx.conf ${NC} " ;
+			echo -e "\n	| Выполняется просмотр файла конфигурации /etc/nginx/nginx.conf :" ;
+			echo -e "	| $( red_U0023 ) cat /etc/nginx/nginx.conf ${NC} " ;
 			echo ;
 			(( cat /etc/nginx/nginx.conf | bat --paging=never -l conf ; ) 2>/dev/null || ( cat /etc/nginx/nginx.conf ) ) ;
-			echo -e "	$( red_U0023 ) nano /etc/nginx/nginx.conf ${NC} (редактировать файл)\n " ;
+			echo -e "	| $( red_U0023 ) nano /etc/nginx/nginx.conf ${NC} (редактировать файл)\n " ;
 			ngc.CH ;
 		}
 		
@@ -224,9 +224,9 @@ echo ;
 		function nginx_addConfig_nginx.conf() 
 			{
 				
-				echo -e -n "\n	Заменить текущий конфиг файл /etc/nginx/nginx.conf "${GREEN}"на преднастроенный"${NC}"?\n
-			Если нет, "${ELLOW}"Enter"${NC}" 
-			Eсли да, введите: "${GREEN}"yes"$NC"
+				echo -e -n "\n	| Заменить текущий конфиг файл /etc/nginx/nginx.conf "${GREEN}"на преднастроенный"${NC}"?\n
+			| Если нет, "${ELLOW}"Enter"${NC}" 
+			| Eсли да, введите: "${GREEN}"yes"$NC"
 				
 			["$RED"$(im)"$NC"@"$GRAY""$(hostname)""$NC"] "$NC"<<< "$RED"# "$NC""$GREEN""
 				read nginxconfyes
@@ -235,8 +235,8 @@ echo ;
 				then 
 				
 				echo -e "\n ${NC}	1. Создаю backup старого nginx.conf : " ;
-				( cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf_old_$D_$T ) 2>/dev/null || echo -e "	/etc/nginx/nginx.conf    : $( not_found_MSG ) (Невозможно создать backup - файл не существует)" ;
-				echo -e "	$( red_U0023 ) cat /etc/nginx/nginx.conf_old_$D_$T ${NC}" ;
+				( cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf_old_$D_$T ) 2>/dev/null || echo -e "	| /etc/nginx/nginx.conf    : $( not_found_MSG ) (Невозможно создать backup - файл не существует)" ;
+				echo -e "	| $( red_U0023 ) cat /etc/nginx/nginx.conf_old_$D_$T ${NC}" ;
 				echo -e "\n	2. Создаю новый файл конфигурации /etc/nginx/nginx.conf : $( green_tick ) " ;
 				cat . /root/vdsetup.2/bin/nginx_install/nginx_conf > /etc/nginx/nginx.conf ;
 				mkdir -p /var/cache/nginx/client_temp ;
@@ -244,7 +244,7 @@ echo ;
 				ngc.CH ;
 				
 				help ;
-				echo -e "\n	$( red_U0023 ) nginx -s reload  (${RED}Перезагрузите конфигурацию nginx!${NC})\n "
+				echo -e "\n	| $( red_U0023 ) nginx -s reload  (${RED}Перезагрузите конфигурацию nginx!${NC})\n "
 				else ngc.list ; $0 -h ;
 			fi	
 		}
@@ -284,7 +284,7 @@ echo ;
 				# Запуск программы без параметров выдаст "нет ключа" а затем запустит программу повторно с ключем -ng 
 				*)
 				# comment 
-				( echo " $1 - Нет такого ключа..." | bat --paging=never -l nix -p ; ) 2>/dev/null || ( echo " $1 - Нет такого ключа..." ) ;
+				#( echo " $1 - Нет такого ключа..." | bat --paging=never -l nix -p ; ) 2>/dev/null || ( echo " $1 - Нет такого ключа..." ) ;
 				# sleep 1 ;
 				
 				$0 -ng || $0 -h ;	

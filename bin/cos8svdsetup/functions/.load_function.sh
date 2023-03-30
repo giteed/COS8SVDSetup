@@ -5,7 +5,7 @@
 	. /root/vdsetup.2/bin/functions/bat_or_bat_not_installed.sh
 # --> Этот код, запрашивает пользователя подтверждение для продолжения.
 	. /root/vdsetup.2/bin/functions/press_enter.sh
-# --> Поиск программы/файла локально и в репо по 7 командам.
+# --> Поиск программы/файла локально и в repository по 7 командам.
 	. /root/vdsetup.2/bin/functions/ypr.sh
 # --> Поиск информации о программе сразу по 11 командам.
 	. /root/vdsetup.2/bin/functions/ww.sh

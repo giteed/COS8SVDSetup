@@ -55,7 +55,7 @@
    }
    
    function fbr() # Поиск и переключение репозитариев .git
-   # в начале необходимо перейти репо в папке .git или .github 
+   # в начале необходимо перейти repository в папке .git или .github 
    # (ссылка на статью: https://habr.com/ru/company/wrike/blog/344770/)
    # должен быть установлен fzf (brew install fzf)
    {
