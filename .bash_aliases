@@ -9,8 +9,9 @@
 #-----------------------------------
 
 # df -h , free -h , ip , who , type
-
-
+# Команда pwd (от англ. "print working directory") 
+# в Linux используется для отображения текущей рабочей директории.
+alias pwd='( echo && pwd | bat  --paging=never -l c -p ) || ( echo && pwd )'
 alias lip='lip-f'
 alias who='echo -e '' &&  who -H | bat  --paging=never -l c -p && echo -e "\n $( red_U0023 ) bat /etc/passwd (cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p)\n" && cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p'
 
