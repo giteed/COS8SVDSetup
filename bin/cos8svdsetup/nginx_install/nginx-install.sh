@@ -92,7 +92,7 @@ echo ;
 	function nginx_install_reinstall() 
 		{
 	echo -e -n "	${ELLOW}|${nc} Установить/переустановить "${GREEN}"nginx"${NC}"?\n
-	${RED}|${nc} Если нет, "${ELLOW}"Enter"${NC}" 
+	${RED}|${nc} Если нет, "${RED}"Enter"${NC}" 
 	${GREEN}|${nc} Eсли да, введите: "${GREEN}"yes"$NC"
 			
 		["$RED" "$(im)""$NC"@"$GRAY"""$(hostname)" ""$NC"] "$NC"<<< "$RED"# "$NC""$GREEN""
