@@ -6,9 +6,9 @@
 #alias mem='echo -e '' && free -h -t | bat  --paging=never -l meminfo -p'
 #alias pwd='echo -e '' && pwd | bat  --paging=never -l c -p'
 
-#function df(){
-#  $(echo -e "" && df -kTh) | bat  --paging=never -l nix -p || echo -e "" && df -kTh ;
-#}
+function df(){
+  echo && df -kTh | bat -l nix -p ||  echo && df -kTh ;
+}
 
 # ФУНКЦИЯ: Мой ip
   function mi() { wget -qO- icanhazip.com ; } ;
