@@ -13,7 +13,7 @@ echo ;
 	function nginxCH()
 	{
 		echo -e -n "	${ELLOW}|${nc} Проверяем наличие устанвки nginx " ; sleep 1 ; echo -e -n "." ; sleep 1 ; echo -e ".."
-		([[ -z $( ls /usr/sbin/nginx  ) ]] 2>/dev/null && echo -e "	/usr/sbin/nginx    : $( not_found_MSG ) ") || echo -e "	/usr/sbin/nginx    : $( found_MSG ) " ;
+		([[ -z $( ls /usr/sbin/nginx  ) ]] 2>/dev/null && echo -e " 	/usr/sbin/nginx    : $( not_found_MSG ) ") || echo -e " 	/usr/sbin/nginx    : $( found_MSG ) " ;
 		#sleep 1 ;
 	}
 	
