@@ -1,12 +1,13 @@
 #!/bin/bash
 
 
-
 # ФУНКЦИЯ: Мой ip
   function mi() { wget -qO- icanhazip.com ; } ;
 
+
 # ФУНКЦИЯ: User
   function im() { whoami ; } ;
+
 
 # Функция myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
 function myip() { 
@@ -29,6 +30,7 @@ function cash_var_sh_150_start_and_stop() {
     ( /usr/bin/screen -dmS sleep_kill /bin/bash /root/vdsetup.2/bin/utility/.sleep_kill.sh ) &>/dev/null ; 
     return ;
  }
+
 
 # Функция удаляет юнит кеширования ip адреса Тора и версии vdsetup 
 function remove_unit_stop_cashing() {
@@ -108,10 +110,12 @@ function wgetrc_config_revert() {
    
 }
 
+
 function tor-restart() {
     /root/vdsetup.2/bin/utility/tor_installer.sh tor-restart
     
 }
+
 
 function tor-stop() {
     toriptables2.py -i ;
@@ -119,6 +123,7 @@ function tor-stop() {
     systemctl stop tor ;
     ttb=$(echo -e "\n Tor is now stopped\n") && bpn_p_lang ;
 }
+
 
 tcurl() {
    curl -x "socks5://127.0.0.1:${tsport}" \
@@ -130,6 +135,7 @@ tcurl() {
    -H "Upgrade-Insecure-Requests: 1" \
    -H "Expect:" --compressed "$@"
 }
+
 
 toriptables2.py() {
    /root/vdsetup.2/bin/utility/tor-for-all-sys-app.sh $1 ;
@@ -145,21 +151,26 @@ toriptables2.py() {
      /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh start ;
   }
  
+ 
   function stop_http_server() {
      /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh stop ;
   }
+ 
   
   function status_http_server() {
       /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh status ;
    }
  
+ 
   function start_light_server() {
       /root/vdsetup.2/bin/utility/file_to_light_server_start_stop.sh start ;
   }
+ 
   
   function stop_light_server() {
       /root/vdsetup.2/bin/utility/file_to_light_server_start_stop.sh stop ;
   }
+ 
   
   function status_light_server() {
         /root/vdsetup.2/bin/utility/file_to_light_server_start_stop.sh status ;
@@ -195,8 +206,6 @@ function netstat_i ()
 }
 
 
-
-
 # 
 function TopRAM25()
    {
@@ -209,11 +218,13 @@ function TopRAM25()
       | awk '{$1/=1024;printf "%.0fMB\t",$1}{print $2}'
    }
 
+
 #
 function t25r()
 {
    TopRAM25 | bat -p -l c
 }
+
 
 # 
 function wport() {
@@ -239,6 +250,7 @@ function wport() {
     netstat_tulanp $1 ;
 }
 
+
 # Показать первые 10 прожорливых процессов CPU/RAM
    function memc() { 
      
@@ -249,6 +261,7 @@ function wport() {
    
    ttb=$(echo -e "\n # ps ax | awk '/[s]nippet/ { print $1 }' | xargs kill\n Убить процесс по имени ")&& lang=bash && bpn_p_lang ;
 }
+
 
 # local address
 function lip-f() {
