@@ -2,13 +2,16 @@
 
 
 
+# ФУНКЦИЯ: Мой ip
+  function mi() { wget -qO- icanhazip.com ; } ;
 
+# ФУНКЦИЯ: User
+  function im() { whoami ; } ;
 
 # Функция myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
 function myip() { 
   echo -e $(mi) | bat -p -l cr || echo -e $(mi) ; 
 }
-
 
    function reload_cash() {
     /root/vdsetup.2/bin/utility/.cash_var.sh $1
@@ -131,13 +134,6 @@ tcurl() {
 toriptables2.py() {
    /root/vdsetup.2/bin/utility/tor-for-all-sys-app.sh $1 ;
 }
-
-
-# ФУНКЦИЯ: Мой ip
-  function mi() { wget -qO- icanhazip.com ; } ;
-
-# ФУНКЦИЯ: User
-  function im() { whoami ; } ;
  
 
   function msg_done() {
