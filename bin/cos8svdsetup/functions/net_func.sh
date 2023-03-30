@@ -11,7 +11,7 @@ function mem() { ( echo -e '' && free -h -t ) | ( bat  --paging=never -l meminfo
 
 
 # Функция информации о доступном дисковом пространстве на файловой системе
-function df() {  (echo && /usr/bin/df -kTh | bat --paging=never -l nix -p) || (echo && /usr/bin/df -kTh) }
+function df() {  ( echo && /usr/bin/df -kTh | bat --paging=never -l nix -p ) || ( echo && /usr/bin/df -kTh ) }
 
 
 # ФУНКЦИЯ: Мой ip
