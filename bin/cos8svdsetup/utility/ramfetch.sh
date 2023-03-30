@@ -8,7 +8,7 @@ echo ;
 
 
 function install_ramfetch() {
-    cd /root/temp/ ; gh repo clone https://github.com/gentoo-btw/ramfetch ; cp ramfetch/ramfetch /usr/local/bin/ ; chmod +x /usr/local/bin/ramfetch ; rm -rf ramfetch/ ;
+    cd /root/temp/ ; gh repo clone https://github.com/WhoseTheNerd/ramfetch.git ; cp ramfetch/ramfetch /usr/local/bin/ ; chmod +x /usr/local/bin/ramfetch ; rm -rf ramfetch/ ;
 }
 
 function remove_ramfetch() {
@@ -21,7 +21,7 @@ function install() {
 ttb=$(echo -e "
  ⎧ Устанавливаем ramfetch (GitHub):
  |
- | # cd /root/temp/ ; gh repo clone https://github.com/gentoo-btw/ramfetch 
+ | # cd /root/temp/ ; gh repo clone https://github.com/WhoseTheNerd/ramfetch.git 
  | # cp ramfetch/ramfetch /usr/local/bin/ 
  | # chmod +x /usr/local/bin/ramfetch 
  ⎩ # rm -rf ramfetch/ 
@@ -32,7 +32,7 @@ ttb=$(echo -e "
 ttb=$(echo -e "
  ⎧ ramfetch успешно установлен!
  |
- | https://github.com/gentoo-btw/ramfetch
+ | https://github.com/WhoseTheNerd/ramfetch.git
  ⎩ # ramfetch
  " ) && bpn_p_lang ; ttb=""  ;
  
@@ -52,7 +52,7 @@ ttb=$(echo -e "
  
   ttb=$(echo -e "
  ⎧ ramfetch полностью удален!
- ⎩ https://github.com/gentoo-btw/ramfetch
+ ⎩ https://github.com/WhoseTheNerd/ramfetch.git
   " ) && bpn_p_lang ; ttb=""  ; 
   
   exit 0 ;
