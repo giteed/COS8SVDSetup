@@ -41,7 +41,7 @@
    function vpn-f() # Connect to VPN - help
    {
       echo -e  "\n ${cyan}vpn${CYAN}u ${NC}- start   unit: ${cyan}systemctl start ${NC}Connect_to_VPN-155.service" ;
-      echo -e  " ${cyan}vpn${CYAN}s ${NC}- show  status: ${cyan}systemctl status ${NC}Connect_to_VPN-155.service" ;
+      echo -e  " ${cyan}vpn${CYAN}s ${NC}- show  status: ${cyan}systemctl status -n0 ${NC}Connect_to_VPN-155.service" ;
       echo -e  " ${cyan}vpn${CYAN}d ${NC}- deactivating: ${cyan}systemctl stop ${NC}Connect_to_VPN-155.service" ; 
    }
    
@@ -55,9 +55,9 @@
    
    function vpns() # Status connections VPN-155
    { 
-      echo -e  "\n ${cyan}vpn${CYAN}s ${NC}- show status: ${cyan}systemctl status ${NC}Connect_to_VPN-155.service" ;
+      echo -e  "\n ${cyan}vpn${CYAN}s ${NC}- show status: ${cyan}systemctl status -n0 ${NC}Connect_to_VPN-155.service" ;
       echo -e "${CYAN}\n $(myip)" && echo -e "${NC}" 
-      systemctl status Connect_to_VPN-155.service ; 
+      systemctl status -n0 Connect_to_VPN-155.service ; 
    }
    
    function vpnd() # Stop unit VPN-155

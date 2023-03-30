@@ -48,8 +48,8 @@ echo ;
 	function status_nginx.service() 
 	{
 		
-		function nginxs() { systemctl status nginx.service &>/tmp/status_nginx.service ; } ; nginxs ; 
-		( systemctl status nginx.service &>/dev/null && systemctl status nginx.service || cat /tmp/status_nginx.service | bat -l conf -p ) &>/dev/null  || systemctl status nginx.service ;
+		function nginxs() { systemctl status -n0 nginx.service &>/tmp/status_nginx.service ; } ; nginxs ; 
+		( systemctl status -n0 nginx.service &>/dev/null && systemctl status -n0 nginx.service || cat /tmp/status_nginx.service | bat -l conf -p ) &>/dev/null  || systemctl status -n0 nginx.service ;
 		
 		#( cat /tmp/nginx_http_ip | bat --paging=never -l nix -p ; ) 2>/dev/null || ( cat /tmp/nginx_http_ip ) ;
 	}
@@ -67,7 +67,7 @@ echo ;
 		echo -en "	- ${cyan}Проверить открытые порты: ${NC}.............. " ;
 		echo -e "$( red_U0023 ) firewall-cmd --list-all ${NC}" ;
 		echo -en "	- ${cyan}Проверить, статус nginx:${NC} ............... " ;
-		echo -e "$( red_U0023 ) systemctl status nginx.service ${NC}" ;
+		echo -e "$( red_U0023 ) systemctl status -n0 nginx.service ${NC}" ;
 		echo -en "	- ${cyan}Добавить nginx в автозагрузку:${NC} ......... " ;
 		echo -e "$( red_U0023 ) systemctl enable nginx.service ${NC}" ;
 		echo -en "	- ${cyan}Удалить nginx из автозагрузки:${NC} ......... " ;
@@ -182,7 +182,7 @@ echo ;
 			firewall-cmd --reload &>>/tmp/nginx_install.log ;
 			firewall-cmd --list-all &>>/tmp/nginx_install.log ;
 			echo -en "	" ; ww nginx ;
-			echo ; systemctl status nginx.service ;
+			echo ; systemctl status -n0 nginx.service ;
 			help ;
 			echo -en "\n	- ${cyan}Вы можете заменить ${NC}nginx.conf ${cyan}преднастроенным конфигурационным файлом:${NC}\n " ;
 			echo -e "	$( red_U0023 ) $0 -ngconf ${NC}\n" ;

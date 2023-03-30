@@ -24,7 +24,7 @@ update_cash ;
 
 # https://habr.com/ru/company/southbridge/blog/255845/
 
-#echo -en "${GREEN} " ; ( systemctl status cash_var.service | grep " active " | awk '/active/ { print $2 }' ) ; echo -e "${NC}\n" 
+#echo -en "${GREEN} " ; ( systemctl status -n0 cash_var.service | grep " active " | awk '/active/ { print $2 }' ) ; echo -e "${NC}\n" 
 
 
 exit 0 ; 

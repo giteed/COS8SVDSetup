@@ -224,7 +224,7 @@ return ;
 	
 	function systemctl_restart_transmission_daemon() {
 		systemctl restart transmission-daemon || systemctl start transmission-daemon  ;
-		systemctl status transmission-daemon ;
+		systemctl status -n0 transmission-daemon ;
 	}
 	
 	function systemctl_restart_transmission_daemon_msg() {

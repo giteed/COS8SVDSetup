@@ -49,7 +49,7 @@ function remove_unit_stop_cashing() {
    systemctl daemon-reload &>/dev/null ||  ttb=$(echo -e "\n Error daemon-reload \n") && bpn_p_lang  ;
  
    ttb=$(echo -e "\n Unit /etc/systemd/system/cash_var.service removed \n") && bpn_p_lang  ;
-   #systemctl status cash_var.service 2>/dev/null;
+   #systemctl status -n0 cash_var.service 2>/dev/null;
    return ;
 }
 
