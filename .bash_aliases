@@ -14,7 +14,7 @@
 
 alias pwd='( echo && pwd | bat  --paging=never -l c -p ) || ( echo && pwd )'
 alias lip='lip-f'
-alias who='echo -e '' &&  who -H | bat  --paging=never -l c -p && wport ssh && echo -e "\n $( red_U0023 ) bat /etc/passwd && (cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p)\n" && cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p && ( ttb=$( echo -e "\n ⎧ Убить Процесс по PID: \n ⎩ Справка: # killl -h" ) && lang="nix" && bpn_p_lang) ;'
+alias who='echo -e '' &&  who -H | bat  --paging=never -l c -p && wport ssh && echo -e "\n && ( ttb=$( echo -e "\n ⎧ Убить Процесс по PID: \n ⎩ Справка: # killl -h" ) && lang="nix" && bpn_p_lang) ;'
 
 
 ### clear , update /root/.bashrc , ls , cd , tree
