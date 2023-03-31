@@ -16,7 +16,7 @@ function ssh_auth_login() {
 		  # путь к файлу логов
 		  LOG_FILE="/var/log/secure"   
 		  # строка, которая указывает на вход по SSH (успешный или неуспешный)
-		  LOGIN_PATTERN="(Accepted publickey|Failed password)"  
+		  LOGIN_PATTERN="(Accepted publickey|Accepted password|Failed password)"  
 		  
 		  # Открыть лог-файл в "tail" в режиме follow и прочитать каждую новую строку
 		  tail -f $LOG_FILE | while read line
@@ -33,7 +33,6 @@ function ssh_auth_login() {
 			 else
 				 status="${red}Неверный пароль!${nc}"
 			 fi
-
 			 
 			  # Вывести сообщение в консоль (можно изменить на что-то другое, например, отправку электронной почты)
 			  echo -e "\n | $(date '+%Y-%m-%d %T') \n ${red}|${nc} Обнаружен вход по SSH: ($status)\n ${red}|${nc} User: $user / ip: $ip " | socat - unix-connect:/tmp/mysocket.sock ;
