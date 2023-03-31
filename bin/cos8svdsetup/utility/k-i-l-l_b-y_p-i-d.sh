@@ -10,7 +10,7 @@
 
 if [ "$#" -ne 1 ]; then
 	function msg() {
-		(echo -en "\n${red} ⎧ Введите PID процесса,\n ⎩ который вы хотите убить${nc}: ${green}" )  ;
+		(echo -en "\n ⎧ Введите ${ELLOW}PID${nc} процесса,\n ⎩ который ${red}хотите убить${nc}: ${green}" )  ;
 	}
 	
 	echo -en "$(msg)" ; read pid
@@ -23,7 +23,7 @@ fi
 if ps -p "$pid" > /dev/null; then
 	ttb=$(echo -e "\n Убиваем процесс с PID $pid") && lang="nix" && bpn_p_lang 
 	# Отправляем сигнал SIGTERM процессу с указанным PID
-	(kill "$pid" &>/dev/null) && echo -e "\n Process with PID $pid Killed" || echo -e "\n Process with PID $pid is not running"
+	(kill "$pid") &>/dev/null && echo -e "\n Process with PID $pid Killed" || echo -e "\n Process with PID $pid is not running"
 else
 	ttb=$(echo -e "\n Процесс с PID $pid не запущен") && lang="nix" && bpn_p_lang ;
 fi
