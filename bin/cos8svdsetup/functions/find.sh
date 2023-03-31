@@ -105,7 +105,27 @@ function etc_passwd_all() {
       
    }
    
-   
+
+function ssh_auth_login() {
+      
+      LOG_FILE="/var/log/auth.log"   # путь к файлу логов
+      LOGIN_PATTERN="Accepted publickey"  # строка, которая указывает на успешный вход по SSH
+      
+      # Открыть лог-файл в "tail" в режиме follow и прочитать каждую новую строку
+      tail -f $LOG_FILE | while read line
+      do
+        # Если строка содержит указанную подстроку, то вывести сообщение в консоль
+        if [[ "$line" == *"$LOGIN_PATTERN"* ]]; then
+          # Извлечь имя пользователя и IP-адрес из строки лога
+          user=$(echo "$line" | awk '{print $9}')
+          ip=$(echo "$line" | awk '{print $11}')
+      
+          # Вывести сообщение в консоль (можно изменить на что-то другое, например, отправку электронной почты)
+          echo "Обнаружен вход по SSH: $user $ip"
+        fi
+      done
+
+   }
    
    
    function fbr() # Поиск и переключение репозитариев .git
