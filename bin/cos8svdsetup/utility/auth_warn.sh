@@ -35,7 +35,7 @@ function ssh_auth_login() {
 			  fi
 			 
 			  # Вывести сообщение в консоль (можно изменить на что-то другое, например, отправку электронной почты)
-			  echo -e "\n ${red}|${nc} Обнаружен вход по SSH: ($status)\n ${red}|${nc} User: $user / ip: $ip "
+			  echo -e "\n | $D $T \n ${red}|${nc} Обнаружен вход по SSH: ($status)\n ${red}|${nc} User: $user / ip: $ip "
 			fi
 		  done
 	  }
