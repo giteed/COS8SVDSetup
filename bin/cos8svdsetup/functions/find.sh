@@ -54,6 +54,15 @@
      fi
    }
    
+   
+   function pkill() {
+       /root/vdsetup.2/bin/utility/k-i-l-l_b-y_p-i-d.sh
+   }
+   
+   
+   
+   
+   
    function fbr() # Поиск и переключение репозитариев .git
    # в начале необходимо перейти repository в папке .git или .github 
    # (ссылка на статью: https://habr.com/ru/company/wrike/blog/344770/)
