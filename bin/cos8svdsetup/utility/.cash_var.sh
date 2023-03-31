@@ -225,16 +225,16 @@ echo -e "$debug_msg \n"
 	  
 	 function check_cash_var_service_grep_activating() {
 			
-			((systemctl status -n0 cash_var.service | grep activating ;) && ${msg16} && ${msg14} && ${msg17} &&  exit 0 ; ) || ${msg18} ;
+			((systemctl status --no-pager cash_var.service | grep activating ;) && ${msg16} && ${msg14} && ${msg17} &&  exit 0 ; ) || ${msg18} ;
 	  }
 	 
 	 function check_cash_var_service_grep_active() {
 			
-			((systemctl status -n0 cash_var.service | grep active ;) && ${msg19} && ${msg14} && ${msg20} && exit 0 ; ) || ${msg21} ;
+			((systemctl status --no-pager cash_var.service | grep active ;) && ${msg19} && ${msg14} && ${msg20} && exit 0 ; ) || ${msg21} ;
 		}
 	 function check_cash_var_service_grep_inactive() {
 			
-			((systemctl status -n0 cash_var.service | grep inactive ;) && ${msg22} && ${msg13} && echo && (systemctl start cash_var.service ;) && ${msg23} && exit 0 ) || ${msg24} ;
+			((systemctl status --no-pager cash_var.service | grep inactive ;) && ${msg22} && ${msg13} && echo && (systemctl start cash_var.service ;) && ${msg23} && exit 0 ) || ${msg24} ;
 	 }
 		 
 	  function file_cash_var_service() {

@@ -45,9 +45,9 @@
 	# ФУНКЦИЯ: Просмотр статуса status_nginx.service
 	function status_nginx.service() 
 	{
-		
-		function nginxs() { systemctl status -n0 nginx.service &>/tmp/status_nginx.service ; } ; nginxs ; 
-		( systemctl status -n0 nginx.service &>/dev/null && systemctl status -n0 nginx.service || cat /tmp/status_nginx.service | bat -l conf -p ) &>/dev/null  || systemctl status -n0 nginx.service ;
+		# systemctl status -n0 --no-pager nginx.service
+		function nginxs() { systemctl status --no-pager nginx.service &>/tmp/status_nginx.service ; } ; nginxs ; 
+		( systemctl status --no-pager nginx.service &>/dev/null && systemctl status --no-pager nginx.service || cat /tmp/status_nginx.service | bat -l conf -p ) &>/dev/null  || systemctl status --no-pager nginx.service ;
 
 	}
 	
@@ -64,7 +64,7 @@
 		echo -en "	- ${nc}Проверить открытые порты: ${NC}.............. " ;
 		echo -e "$( red_U0023 ) firewall-cmd --list-all ${ELLOW}" ;
 		echo -en "	- ${nc}Проверить, статус nginx:${NC} ............... " ;
-		echo -e "$( red_U0023 ) systemctl status -n0 nginx.service ${GREEN}" ;
+		echo -e "$( red_U0023 ) systemctl status --no-pager nginx.service ${GREEN}" ;
 		echo -en "	- ${nc}Добавить nginx в автозагрузку:${NC} ......... " ;
 		echo -e "$( red_U0023 ) systemctl enable nginx.service ${RED}" ;
 		echo -en "	- ${nc}Удалить nginx из автозагрузки:${NC} ......... " ;
