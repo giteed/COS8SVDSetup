@@ -340,7 +340,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/cash_var.service ;
 	
 	systemctl daemon-reload ;
 	systemctl restart cash_var.service || systemctl start cash_var.service ; echo ;
-	systemctl status -n0 cash_var.service ;
+	systemctl status --no-pager cash_var.service ;
 	 
 	exit ;
 } ;
@@ -350,7 +350,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/cash_var.service ;
 
 function help_Up_OR_Remove() {
 	echo -en "" ;
-	ttb=$(echo -e " # $0 с ключами:   \n up | update | -up | --update - принудительно обновить \n rm | remove | -rm | --remove - удалить юнит и выключить кеширование	\n # systemctl status -n0 cash_var.service - статус юнита.\n") && lang_nix && bpn_p_lang ;
+	ttb=$(echo -e " # $0 с ключами:   \n up | update | -up | --update - принудительно обновить \n rm | remove | -rm | --remove - удалить юнит и выключить кеширование	\n # systemctl status --no-pager cash_var.service - статус юнита.\n") && lang_nix && bpn_p_lang ;
 }
 
 function Up_OR_Remove() {
@@ -397,7 +397,7 @@ fi
 
 
 
-[[ -n /etc/systemd/system/cash_var.service ]] &>/dev/null && lang_def && systemctl status -n0 cash_var.service 2>/dev/null || lang_def ; unit_cash_var_create_and_start ;
+[[ -n /etc/systemd/system/cash_var.service ]] &>/dev/null && lang_def && systemctl status --no-pager cash_var.service 2>/dev/null || lang_def ; unit_cash_var_create_and_start ;
 
 
 # ttb=$(echo -e "Вы выбрали:") && lang="nix" && bpn_p_lang ;

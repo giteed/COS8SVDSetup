@@ -181,7 +181,7 @@
 		echo -e ${RED}systemctl restart wg-quick@wg0*${NC};
 		systemctl restart wg-quick@wg0*
 		echo -e ${RED}systemctl status --no-pager wg-quick@wg0*${NC};
-		systemctl status -n0 wg-quick@wg0*
+		systemctl status --no-pager wg-quick@wg0*
 		echo -e ${RED}firewall-cmd --permanent --list-all${NC};
 		ttb=$(firewall-cmd --permanent --list-all ) && lang=nix && bpn_p_lang  ; echo ;
 		echo -e ${RED}systemctl stop tor.service${NC};
@@ -197,9 +197,9 @@
 		systemctl start privoxy ;
 		#systemctl restart privoxy ;
 		echo -e ${RED}systemctl status --no-pager privoxy${NC}; echo ;
-		systemctl status -n0 privoxy ; 
+		systemctl status --no-pager privoxy ; 
 		echo -e ${RED}systemctl status --no-pager tor.service${NC};
-		systemctl status -n0 tor.service ; echo ;
+		systemctl status --no-pager tor.service ; echo ;
 		#tor -f /etc/tor/torrc ; 
 		echo -e ${RED}privoxy${NC};
 		ttb=$(journalctl -u privoxy | tail -n 50) && lang=log && bpn_p_lang  ; echo ; 
