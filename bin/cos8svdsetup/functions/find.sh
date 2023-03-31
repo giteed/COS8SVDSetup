@@ -61,15 +61,9 @@
    
    # Функция: просмотр /etc/passwd
    function etc_passwd() {
-      ttb=$(echo -e " 
- ⎧ Сейчас в системе исключая: 
- ⎩ nologin shutdown sync false halt
- " ) && lang=help && bpn_p_lang ; 
-    
-    (cat /etc/passwd | rg -v nologin | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p) ;
       
       function help_etc_passwd() {
-      ttb=$(echo -e " 
+         ttb=$(echo -e " 
  ⎧ Файл /etc/passwd в Linux содержит информацию о 
  | пользователях системы, включая их имена, домашние 
  | директории, пароли (зашифрованные), UID 
@@ -78,25 +72,33 @@
  | дополнительные сведения. Этот файл используется 
  | системой для проверки учетных записей пользователей 
  | и для определения их привилегий.
- |      
+ |
  | Когда пользователь входит в систему, система смотрит 
  | в файл /etc/passwd, чтобы найти соответствующую 
  | учетную запись пользователя, и использует информацию 
  | из этого файла для настройки среды пользователя, 
  | задания начальной директории и других параметров.
- |      
+ |
  | Обычно, файл /etc/passwd доступен только для чтения 
  | для всех пользователей на системе, чтобы обеспечить 
  | безопасность и защитить конфиденциальную информацию 
  | пользователей. Чтобы изменить содержимое этого 
  ⎩ файла, нужно иметь права суперпользователя (root)") && lang=help && bpn_p_lang ;
-
+    
+    }
+      
+      ttb=$(echo -e " 
+ ⎧ Сейчас в системе исключая: 
+ ⎩ nologin shutdown sync false halt
+ " ) && lang=help && bpn_p_lang ; 
+    
+    (cat /etc/passwd | rg -v nologin | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p) ;
       
        ttb=$(echo -e " 
  ⎧ Посмотреть /etc/passwd: # etc_passwd 
  ⎩ Справка о /etc/passwd:  # etc_passwd -h" ) && lang=help && bpn_p_lang ;
       
-      }
+      
    }
    
    
