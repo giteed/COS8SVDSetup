@@ -14,7 +14,7 @@
 
 alias pwd='( echo && pwd | bat  --paging=never -l c -p ) || ( echo && pwd )'
 alias lip='lip-f'
-alias who='echo -e "" &&  who -H | bat  --paging=never -l c -p && wport ssh && echo -e "\n" && ( ttb=$( echo -e "\n ⎧ Убить Процесс по PID: \n ⎩ Справка: # killl -h" ) && lang="nix" && bpn_p_lang)'
+alias who='echo -e "" &&  who -H | bat  --paging=never -l c -p && wport ssh && echo -e "\n" && ( ttb=$( echo -e "\n ⎧ Убить Процесс по PID: \n ⎩ Справка: # killl -h" ) && lang="nix" && bpn_p_lang'
 
 
 ### clear , update /root/.bashrc , ls , cd , tree
