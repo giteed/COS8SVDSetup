@@ -401,7 +401,7 @@ fi
 
 
 # ttb=$(echo -e "Вы выбрали:") && lang="nix" && bpn_p_lang ;
-ttb=$(echo -e "\n # systemctl status -n0 cash_var.service\n   view status\n ") && lang_def && bpn_p_lang ; 
+ttb=$(echo -e "\n # systemctl status --no-pager cash_var.service\n   view status\n ") && lang_def && bpn_p_lang ; 
 
 
 

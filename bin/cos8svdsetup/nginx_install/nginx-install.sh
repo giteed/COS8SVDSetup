@@ -178,7 +178,7 @@
 			firewall-cmd --reload &>>/tmp/nginx_install.log ;
 			firewall-cmd --list-all &>>/tmp/nginx_install.log ;
 			echo -en "	" ; ww nginx ;
-			echo ; systemctl status -n0 nginx.service ;
+			echo ; systemctl status --no-pager nginx.service ;
 			help ;
 			echo -en "\n	- ${cyan}Вы можете заменить ${NC}nginx.conf ${cyan}преднастроенным конфигурационным файлом:${NC}\n " ;
 			echo -e "	$( red_U0023 ) $0 -ngconf ${NC}\n" ;

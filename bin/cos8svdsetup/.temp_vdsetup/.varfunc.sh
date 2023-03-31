@@ -57,7 +57,7 @@
    { 
       echo -e  "\n ${cyan}vpn${CYAN}s ${NC}- show status: ${cyan}systemctl status --no-pager ${NC}Connect_to_VPN-155.service" ;
       echo -e "${CYAN}\n $(myip)" && echo -e "${NC}" 
-      systemctl status -n0 Connect_to_VPN-155.service ; 
+      systemctl status --no-pager Connect_to_VPN-155.service ; 
    }
    
    function vpnd() # Stop unit VPN-155
