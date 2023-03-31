@@ -5,7 +5,7 @@
 . /root/.bashrc
 
 # --> Этот ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
-. /root/vdsetup.2/bin/functions/run_as_root.sh
+#. /root/vdsetup.2/bin/functions/run_as_root.sh
 
 
 # Только для CentOs 8 - ВКЛЮЧЕНО для ВСЕХ попыток авторизаций (secure_auth_OK_and_fail)
