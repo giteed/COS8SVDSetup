@@ -96,7 +96,7 @@ function etc_passwd_all() {
  ⎩ nologin, shutdown, sync, false, halt):
  " ) && lang=cr && bpn_p_lang ; 
     
-    (cat /etc/passwd | rg -v nologin | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p) ;
+    (cat /etc/passwd | rg -v nologin | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd) ;
       
        ttb=$(echo -e " 
  ⎧ Посмотреть /etc/passwd: # etc_passwd_all
