@@ -94,13 +94,13 @@ function etc_passwd_all() {
       ttb=$(echo -e " 
  ⎧ Сейчас в системе исключая: 
  ⎩ nologin shutdown sync false halt
- " ) && lang=help && bpn_p_lang ; 
+ " ) && lang=nix && bpn_p_lang ; 
     
     (cat /etc/passwd | rg -v nologin | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p) ;
       
        ttb=$(echo -e " 
  ⎧ Посмотреть /etc/passwd: # etc_passwd_all
- ⎩ Справка  о /etc/passwd: # etc_passwd_help" ) && lang=help && bpn_p_lang ;
+ ⎩ Справка  о /etc/passwd: # etc_passwd_help" ) && lang=nix && bpn_p_lang ;
       
       
    }
