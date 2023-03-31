@@ -59,10 +59,8 @@
        /root/vdsetup.2/bin/utility/k-i-l-l_b-y_p-i-d.sh $1 ;
    }
    
-   # Функция: просмотр /etc/passwd
-   function etc_passwd() {
-      
-      function help_etc_passwd() {
+
+   function etc_passwd_help() {
          ttb=$(echo -e " 
  ⎧ Файл /etc/passwd в Linux содержит информацию о 
  | пользователях системы, включая их имена, домашние 
@@ -85,8 +83,14 @@
  | пользователей. Чтобы изменить содержимое этого 
  ⎩ файла, нужно иметь права суперпользователя (root)") && lang=help && bpn_p_lang ;
     
-    }
-      
+}
+
+function etc_passwd_all() {
+    (cat /etc/passwd | bat -l passwd ) ;
+}
+   
+   # Функция: просмотр /etc/passwd
+   function etc_passwd() {      
       ttb=$(echo -e " 
  ⎧ Сейчас в системе исключая: 
  ⎩ nologin shutdown sync false halt
@@ -95,8 +99,8 @@
     (cat /etc/passwd | rg -v nologin | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p) ;
       
        ttb=$(echo -e " 
- ⎧ Посмотреть /etc/passwd: # etc_passwd 
- ⎩ Справка о /etc/passwd:  # etc_passwd -h" ) && lang=help && bpn_p_lang ;
+ ⎧ Посмотреть /etc/passwd: # etc_passwd_all
+ ⎩ Справка  о /etc/passwd: # etc_passwd_help" ) && lang=help && bpn_p_lang ;
       
       
    }
