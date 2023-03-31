@@ -56,7 +56,7 @@
    
    
    function killl() {
-       /root/vdsetup.2/bin/utility/k-i-l-l_b-y_p-i-d.sh ;
+       /root/vdsetup.2/bin/utility/k-i-l-l_b-y_p-i-d.sh $1 ;
    }
    
    

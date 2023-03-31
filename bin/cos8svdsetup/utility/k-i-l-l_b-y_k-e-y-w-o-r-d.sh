@@ -89,8 +89,6 @@ function kill_snippet() {
 	function pidof_snippet_ch() {
 		
 		function pidof_snippet_kill() {
-			#echo pidof ;
-			#echo ;
 			( pidof ${snippet} | awk '{ print $1 }' | xargs kill ) && bl_pidof=$blink && msgok 
 		}
 		
@@ -102,8 +100,7 @@ function kill_snippet() {
 	function ps_ax_grep_ch() {
 		
 		function ps_ax_grep_kill() {
-			#echo grep ;
-			#echo ;
+			
 			(( ps ax | grep ${snippet} | grep -v grep | grep -v "xargs kill" | awk '{ print $1 }' | xargs kill ) && bl_grep=$blink && msgok );
 		}
 		echo ;
