@@ -10,7 +10,7 @@
 
 if [ "$#" -ne 1 ]; then
 	function msg() {
-		(echo -en "\n${red} Введите PID процесса,\n который вы хотите убить${nc}: ${green}" )  ;
+		(echo -en "\n${red} ⎧ Введите PID процесса,\n ⎩ который вы хотите убить${nc}: ${green}" )  ;
 	}
 	
 	echo -en "$(msg)" ; read pid
