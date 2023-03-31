@@ -67,7 +67,7 @@ function ssh_auth_login() {
 	  return ;
 	  
    }
-
+ssh_auth_login
 
 
 exit 0 ; 
