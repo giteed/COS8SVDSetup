@@ -9,7 +9,7 @@
 # Если PID не указан в аргументах, пользователь будет спрошен о его вводе
 
 if [ "$#" -ne 1 ]; then
-	echo "Enter PID of the process you want to kill:"
+	ttb=$(echo -en "\n Введите PID процесса, который вы хотите убить: )" && lang="nix" && bpn_p_lang 
 	read pid
 else
 	pid="$1"
@@ -17,12 +17,28 @@ fi
 
 # Проверяем существование процесса с указанным PID
 if ps -p "$pid" > /dev/null; then
-	echo "Killing process with PID $pid"
+	ttb=$(echo -e "\n Убиваем процесс с PID $pid") && lang="nix" && bpn_p_lang ;
 	# Отправляем сигнал SIGTERM процессу с указанным PID
 	kill "$pid"
 else
-	echo "Process with PID $pid is not running"
+	ttb=$(echo -e "\n Процесс с PID $pid не запущен") && lang="nix" && bpn_p_lang ;
 fi
+
+ttb=$(echo -e " 
+Для завершения процесса с определенным 
+именем можно использовать следующую 
+команду: # pkill имя_процесса
+Например: # pkill firefox
+
+Если нужно завершить несколько процессов с одним 
+именем, можно использовать опцию -f для указания 
+полного имени процесса: pkill -f имя_процесса
+Например: # pkill -f firefox
+
+Можно использовать опцию -u для завершения 
+процессов, запущенных от указанного 
+пользователя: # pkill -u имя_пользователя имя_процесса
+Например: # pkill -u john firefox " ) && lang="nix" && bpn_p_lang ;
 
 
 
