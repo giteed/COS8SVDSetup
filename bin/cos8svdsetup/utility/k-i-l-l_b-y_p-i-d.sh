@@ -25,7 +25,7 @@ if ps -p "$pid" > /dev/null; then
 	# Отправляем сигнал SIGTERM процессу с указанным PID
 	(kill "$pid") &>/dev/null && echo -e "\n Process with PID $pid Killed" || echo -e "\n Process with PID $pid is not running"
 else
-	ttb=$(echo -e "\n Процесс с PID $pid не запущен") && lang="nix" && bpn_p_lang ;
+	ttb=$(echo -e "\n Процесс с PID $pid не сушествует") && lang="nix" && bpn_p_lang ;
 fi
 
 
