@@ -26,13 +26,15 @@ function ssh_auth_login() {
 			  # Извлечь имя пользователя и IP-адрес из строки лога
 			  user=$(echo "$line" | awk '{print $9}')
 			  ip=$(echo "$line" | awk '{print $11}')
+			  67
+			  prich=$(echo "$line" | awk '{print $6,$7}')
 			 
 			  # Определить, был ли вход успешным или нет
 			 if [[ "$line" == *"Accepted publickey"* || "$line" == *"Accepted password"* ]]; then
 				 status="${green}Успешный вход!${nc}"
 				 echo $line
 			 else
-				 status="${red}Неверный пароль!${nc}"
+				 status="${red}$prich!${nc}"
 				 echo $line
 			 fi
 			 
