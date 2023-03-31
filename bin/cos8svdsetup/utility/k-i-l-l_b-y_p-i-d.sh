@@ -17,7 +17,7 @@ fi
 
 # Проверяем существование процесса с указанным PID
 if ps -p "$pid" > /dev/null; then
-	ttb=$(echo -e "\n Убиваем процесс с PID $pid") && lang="nix" && bpn_p_lang ;
+	ttb=$(echo -e "\n Убиваем процесс с PID $pid") && lang="nix" && bpn_p_lang 
 	# Отправляем сигнал SIGTERM процессу с указанным PID
 	kill "$pid"
 else
