@@ -51,7 +51,7 @@ ttb=$(echo -e "
 if [[ $1 == "-h" ]] ; then kill_help && exit ; fi ; 
 if [ "$#" -ne 1 ]; then
 	function msg() {
-		(echo -en "\n ⎧ Введите ${ELLOW}PID${nc} процесса,\n ⎩ который ${red}хотите убить${nc}: ${green}" )  ;
+		(echo -en "\n ⎧ Введите ${ELLOW}PID${nc} процесса,\n ⎩ который ${red}хотите убить${nc}: ${ellow}" )  ;
 	}
 	
 	echo -en "$(msg)" ; read pid
