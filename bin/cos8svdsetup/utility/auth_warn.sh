@@ -28,14 +28,14 @@ function ssh_auth_login() {
 			  ip=$(echo "$line" | awk '{print $11}')
 			 
 			  # Определить, был ли вход успешным или нет
-			  if [[ "$line" == *"Accepted publickey"* ]]; then
+			  if [[ "$line" == *"Accepted publickey"*|*"Accepted password"* ]]; then
 				status="${green}Успешный вход!${nc}"
 			  else
 				status="${red}Неверный пароль!${nc}"
 			  fi
 			 
 			  # Вывести сообщение в консоль (можно изменить на что-то другое, например, отправку электронной почты)
-			  echo -e "\n | $(date '+%Y-%m-%d %T') \n ${red}|${nc} Обнаружен вход по SSH: ($status)\n ${red}|${nc} User: $user / ip: $ip "
+			  echo -e "\n | $(date '+%Y-%m-%d %T') \n ${red}|${nc} Обнаружен вход по SSH: ($status)\n ${red}|${nc} User: $user / ip: $ip " | socat - unix-connect:/tmp/mysocket.sock ;
 			fi
 		  done
 	  }
