@@ -31,7 +31,7 @@ function ssh_auth_login() {
 			 
 			  # Определить, был ли вход успешным или нет
 			 if [[ "$line" == *"Accepted publickey"* || "$line" == *"Accepted password"* ]]; then
-				 status="${green}Успешный вход!${nc}"
+				 status="${green}$prich!${nc}"
 				 echo $line
 			 else
 				 status="${red}$prich!${nc}"
