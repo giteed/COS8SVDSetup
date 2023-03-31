@@ -63,11 +63,11 @@ function ssh_auth_login() {
 	  done
 		  
 	  }
-	  
+	  secure_auth_OK_and_fail ;
 	  return ;
 	  
    }
 
-secure_auth_OK_and_fail ;
+
 
 exit 0 ; 
