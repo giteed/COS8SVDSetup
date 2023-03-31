@@ -9,7 +9,8 @@
 # Если PID не указан в аргументах, пользователь будет спрошен о его вводе
 
 if [ "$#" -ne 1 ]; then
-	ttb=$(echo -en "\n Введите PID процесса, который вы хотите убить: ") && lang="nix" && bpn_p_lang 
+	msg=$(ttb=$(echo -en "\n Введите PID процесса, который вы хотите убить: ") && lang="nix" && bpn_p_lang)
+	echo -e $msg 
 	read pid
 else
 	pid="$1"
