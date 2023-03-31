@@ -162,6 +162,7 @@ function ssh_auth_login() {
       }
       
       secure_auth_OK_and_fail ;
+      return ;
       
    }
    
