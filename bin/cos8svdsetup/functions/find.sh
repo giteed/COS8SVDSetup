@@ -126,13 +126,13 @@ function ssh_auth_login() {
              
               # Определить, был ли вход успешным или нет
               if [[ "$line" == *"Accepted publickey"* ]]; then
-                status="${green} Успешный вход!${nc}"
+                status="${green}Успешный вход!${nc}"
               else
-                status="${red} Попытка входа с неверным паролем!${nc}"
+                status="${red}Попытка входа с неверным паролем!${nc}"
               fi
              
               # Вывести сообщение в консоль (можно изменить на что-то другое, например, отправку электронной почты)
-              echo -e " Обнаружен вход по SSH: $user : $ip ($status)"
+              echo -e "\n ${red}|${nc} Обнаружен вход по SSH:\n ${red}|${nc} User: $user / ip: $ip ($status)"
             fi
           done
       }
