@@ -105,7 +105,7 @@ function etc_passwd_all() {
       
    }
    
-# Только для CentOs 8 ВКЛЮЧЕНО для всех попыток авторизаций (secure_auth_OK_and_fail)
+# Только для CentOs 8 - ВКЛЮЧЕНО для всех попыток авторизаций (secure_auth_OK_and_fail)
 function ssh_auth_login() {
       # Только для CentOs 8 для всех попыток авторизаций 
       function secure_auth_OK_and_fail() {
@@ -126,19 +126,19 @@ function ssh_auth_login() {
              
               # Определить, был ли вход успешным или нет
               if [[ "$line" == *"Accepted publickey"* ]]; then
-                status="успешный вход"
+                status="${green} Успешный вход!${nc}"
               else
-                status="попытка входа с неверным паролем"
+                status="${red} Попытка входа с неверным паролем!${nc}"
               fi
              
               # Вывести сообщение в консоль (можно изменить на что-то другое, например, отправку электронной почты)
-              echo "Обнаружен вход по SSH: $user $ip ($status)"
+              echo -e " Обнаружен вход по SSH: $user : $ip ($status)"
             fi
           done
       }
       
       
-      # Только для CentOs 8 и только для успешных авторизаций (можно ВКЛЮЧИТЬ вместо secure_auth_OK_and_fail)
+      # Только для CentOs 8 и ТОЛЬКО для УСПЕШНЫХ авторизаций ( secure_auth_OK можно ВКЛЮЧИТЬ вместо secure_auth_OK_and_fail)
       function secure_auth_OK() {
       # путь к файлу логов
       LOG_FILE="/var/log/secure"   
@@ -155,7 +155,7 @@ function ssh_auth_login() {
           ip=$(echo "$line" | awk '{print $11}')
       
           # Вывести сообщение в консоль (можно изменить на что-то другое, например, отправку электронной почты)
-          echo "Обнаружен вход по SSH: $user $ip"
+          echo -e " Обнаружен успешный вход по SSH: $user : $ip"
         fi
       done
           
