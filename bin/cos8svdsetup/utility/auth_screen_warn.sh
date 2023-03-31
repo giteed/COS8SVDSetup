@@ -12,7 +12,7 @@
 #while true; do echo "test"; sleep 10; done
 
 sudo socat unix-listen:/tmp/mysocket.sock,fork -& 
-sudo -u root /root/vdsetup.2/bin/utility/auth_warn.sh | sudo socat - unix-connect:/tmp/mysocket.sock ;
+sudo -u root /root/vdsetup.2/bin/utility/auth_warn.sh | sudo socat - unix-connect:/tmp/mysocket.sock 
 
 
 
