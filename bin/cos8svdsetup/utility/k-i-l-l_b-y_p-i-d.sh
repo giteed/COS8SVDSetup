@@ -9,8 +9,11 @@
 # Если PID не указан в аргументах, пользователь будет спрошен о его вводе
 
 if [ "$#" -ne 1 ]; then
-	msg=$(ttb=$(echo -en "\n Введите PID процесса, который вы хотите убить: ") && lang="nix" && bpn_p_lang)
-	echo -e $msg 
+	function msg() {
+		(echo -en " Введите PID процесса, который вы хотите убить: " && echo -en "" )  ;
+	}
+	
+	echo -en "$(msg)" ; read pid
 	read pid
 else
 	pid="$1"
@@ -24,6 +27,16 @@ if ps -p "$pid" > /dev/null; then
 else
 	ttb=$(echo -e "\n Процесс с PID $pid не запущен") && lang="nix" && bpn_p_lang ;
 fi
+
+
+
+ 
+
+
+
+
+
+
 
 ttb=$(echo -e " 
  ⎧ Для завершения процесса с определенным 
