@@ -59,6 +59,11 @@
        /root/vdsetup.2/bin/utility/k-i-l-l_b-y_p-i-d.sh $1 ;
    }
    
+   # Функция: просмотр /etc/passwd
+   function bat_or_cat_etc_passwd() {
+      
+      echo -e " $( red_U0023 ) bat /etc/passwd && (cat /etc/passwd | rg -v nologin | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p)\n" && cat /etc/passwd | rg -v "nologin" | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p )
+   }
    
    
    
