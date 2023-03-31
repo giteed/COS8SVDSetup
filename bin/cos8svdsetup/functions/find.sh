@@ -107,8 +107,10 @@ function etc_passwd_all() {
    
 
 function ssh_auth_login() {
+   
+      #!/bin/bash
       
-      LOG_FILE="/var/log/auth.log"   # путь к файлу логов
+      LOG_FILE="/var/log/secure"   # путь к файлу логов
       LOGIN_PATTERN="Accepted publickey"  # строка, которая указывает на успешный вход по SSH
       
       # Открыть лог-файл в "tail" в режиме follow и прочитать каждую новую строку
@@ -124,7 +126,6 @@ function ssh_auth_login() {
           echo "Обнаружен вход по SSH: $user $ip"
         fi
       done
-
    }
    
    
