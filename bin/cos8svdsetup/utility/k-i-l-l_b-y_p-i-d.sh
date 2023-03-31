@@ -48,7 +48,7 @@ ttb=$(echo -e "
 
 # Это скрипт для убийства процесса по PID
 # Если PID не указан в аргументах, пользователь будет спрошен о его вводе
-if [ $1="-h" ]; then kill_help && exit ; fi ; 
+if [ $1=="-h" ]; then kill_help && exit ; fi ; 
 if [ "$#" -ne 1 ]; then
 	function msg() {
 		(echo -en "\n ⎧ Введите ${ELLOW}PID${nc} процесса,\n ⎩ который ${red}хотите убить${nc}: ${green}" )  ;
