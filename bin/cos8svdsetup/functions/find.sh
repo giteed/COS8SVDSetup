@@ -92,8 +92,8 @@ function etc_passwd_all() {
    # Функция: просмотр /etc/passwd
    function etc_passwd() {      
       ttb=$(echo -e " 
- ⎧ Сейчас в системе исключая: 
- ⎩ nologin, shutdown, sync, false, halt
+ ⎧ Сейчас в системе работают, (исключая 
+ ⎩ nologin, shutdown, sync, false, halt):
  " ) && lang=cr && bpn_p_lang ; 
     
     (cat /etc/passwd | rg -v nologin | rg -v shutdown | rg -v sync | rg -v false | rg -v halt | bat -l passwd -p) ;
