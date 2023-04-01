@@ -11,7 +11,7 @@ lang_x 2>/dev/null ;
 
  function epel_repository_packages_install() {
 	 dnf install -y epel-release yum-utils npm || ( error_MSG ; ) ; echo ;
-	 dnf install -y net-tools network-scripts iptables || ( error_MSG ; ) ; echo ;
+	 dnf install -y net-tools network-scripts iptables socat || ( error_MSG ; ) ; echo ;
 	 dnf install -y dialog mlocate ncdu ranger tldr || ( error_MSG ; ) ; echo ;
 	 dnf install -y youtube-dl ffmpeg || ( error_MSG ; ) ; echo ;
 	 dnf install -y git tar curl wget || ( error_MSG ; ) ; echo ;
@@ -22,6 +22,7 @@ lang_x 2>/dev/null ;
 	 dnf install -y unzip p7zip || ( error_MSG ; ) ; echo ;
 	 dnf install -y screen qrencode || ( error_MSG ; ) ; echo ;
 	 dnf install -y @perl perl perl-Net-SSLeay perl-Encode-Detect openssl || ( error_MSG ; ) ; echo ;
+	 
  }
  
  function epel_repository_packages_Check_or_install() {

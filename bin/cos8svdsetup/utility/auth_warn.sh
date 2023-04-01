@@ -12,7 +12,7 @@
 function ssh_auth_login() {
 	  # Только для CentOs 8 для всех попыток авторизаций 
 	  function secure_auth_OK_and_fail() {
-		  
+		  # tail -f /var/log/secure просмотр лога вручную.
 		  # путь к файлу логов
 		  LOG_FILE="/var/log/secure"   
 		  # строка, которая указывает на вход по SSH (успешный или неуспешный)
