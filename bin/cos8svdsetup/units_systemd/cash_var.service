@@ -1,0 +1,12 @@
+[Unit]
+Description=Poll something each 222 second
+
+[Service]
+Type=simple
+ExecStart=/root/vdsetup.2/bin/utility/.cash_var_update_now.sh
+Restart=always
+RestartSec=222
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target
