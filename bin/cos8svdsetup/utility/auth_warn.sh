@@ -16,7 +16,7 @@ function ssh_auth_login() {
 		  # путь к файлу логов
 		  LOG_FILE="/var/log/secure"   
 		  # строка, которая указывает на вход по SSH (успешный или неуспешный)
-		  LOGIN_PATTERN="(Accepted publickey|Accepted password|Failed password)"  
+		  LOGIN_PATTERN="(Accepted publickey|Accepted password|Failed password|Failed publickey|Invalid user|User not known|Permission denied|User not known)"  
 		  
 		  # Открыть лог-файл в "tail" в режиме follow и прочитать каждую новую строку
 		  tail -f $LOG_FILE | while read line
