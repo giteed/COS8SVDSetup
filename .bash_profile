@@ -12,6 +12,8 @@ if [ -f /root/.bash_aliases ]; then
 	. /root/.bash_aliases
 fi
 
+socat unix-listen:/tmp/mysocket.sock,fork - &
+
 # User specific environment and startup programs
 # --> Настройки окружения и запуск пользовательских программ
 PATH=$PATH:$HOME/bin
