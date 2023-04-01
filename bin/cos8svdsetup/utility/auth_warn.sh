@@ -26,15 +26,16 @@ function ssh_auth_login() {
 			  # Извлечь имя пользователя и IP-адрес из строки лога
 			  user=$(echo "$line" | awk '{print $9}')
 			  ip=$(echo "$line" | awk '{print $11}')
-			  67
-			  prich=$(echo "$line" | awk '{print $6,$7}')
+			  # Эта команда использует утилиту awk для выборки 6 и 7 полей из строки $line, и результат сохраняется в переменной $reason. в этих полях может быть: Accepted publickey, Accepted password, Failed password и т.д.
+			  reason=$(echo "$line" | awk '{print $6,$7}')
 			 
 			  # Определить, был ли вход успешным или нет
 			 if [[ "$line" == *"Accepted publickey"* || "$line" == *"Accepted password"* ]]; then
-				 status="${green}$prich!${nc}"
+			 # 
+				 status="${green}$reason!${nc}"
 				 echo $line
 			 else
-				 status="${red}$prich!${nc}"
+				 status="${red}$reason!${nc}"
 				 echo $line
 			 fi
 			 
