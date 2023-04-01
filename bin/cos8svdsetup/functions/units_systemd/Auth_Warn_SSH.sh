@@ -8,6 +8,6 @@
 #. /root/vdsetup.2/bin/functions/run_as_root.sh
 
 
-sudo /root/vdsetup.2/bin/utility/auth_warn.sh
+sudo -u root /root/vdsetup.2/bin/utility/auth_warn.sh
 
 
