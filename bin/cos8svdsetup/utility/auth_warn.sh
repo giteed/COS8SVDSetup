@@ -32,15 +32,15 @@ function ssh_auth_login() {
 			  # Определить, был ли вход успешным или нет
 			 if [[ "$line" == *"Accepted publickey"* || "$line" == *"Accepted password"* ]]; then
 			 # 
-				 status="${green}$reason!${nc}"
+				 status="${green}$reason${nc}"
 				 echo $line
 			 else
-				 status="${red}$reason!${nc}"
+				 status="${red}$reason${nc}"
 				 echo $line
 			 fi
 			 
 			  # Вывести сообщение в консоль (можно изменить на что-то другое, например, отправку электронной почты)
-			  echo -e "\n | $(date '+%Y-%m-%d %T') \n ${red}|${nc} Обнаружен вход по SSH: ($status)\n ${red}|${nc} User: $user / ip: $ip " | socat - unix-connect:/tmp/mysocket.sock ;
+			  (echo -e "\n | $(date '+%Y-%m-%d %T') \n ${red}|${nc} Обнаружен вход по SSH: ($status)\n ${red}|${nc} User: $user / ip: $ip ") | socat - unix-connect:/tmp/mysocket.sock ;
 			fi
 		  done
 	  }
