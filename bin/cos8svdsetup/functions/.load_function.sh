@@ -17,10 +17,13 @@
 	. /root/vdsetup.2/bin/functions/check_or_install.sh
  # Листинг файлов/папок и их цифровых прав доступа:
 	. /root/vdsetup.2/bin/functions/lk-f.sh
-# Поиски
+#  --> Поиски
 	. /root/vdsetup.2/bin/functions/find.sh
-# net_func
+#  --> net_func
 	. /root/vdsetup.2/bin/functions/net_func.sh
+#  --> Sockets
+	. /root/vdsetup.2/bin/functions/.sockets.sh
+
 
 # --> Этот ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
 #	. /root/vdsetup.2/bin/functions/run_as_root.sh

@@ -12,7 +12,13 @@ if [ -f /root/.bash_aliases ]; then
 	. /root/.bash_aliases
 fi
 
-socat unix-listen:/tmp/mysocket.sock,fork - &
+# Проверка на существование ssh_auth_log_unix.sock и если его нет, он будет создан.
+# Сокет предназначен для обмена со скриптом auth_warn.sh который информирует о попытках входа по SSH на данной машине.
+run_socket__ssh_auth_log_unix.sock ;
+
+
+
+
 
 # User specific environment and startup programs
 # --> Настройки окружения и запуск пользовательских программ
