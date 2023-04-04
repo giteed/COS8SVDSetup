@@ -60,7 +60,7 @@ return ; } ; msg2=(msg2)
 
 function msg3() {
 	ttb=$(echo -e "\n function update_cash IN 3 !!!  \n ") && bpn_p_lang ;
-	ttb=$(echo -e "	bash /root/vdsetup.2/bin/utility/.cash_var_update_now.sh ;\n") && lang_nix && bpn_p_lang ; 
+	ttb=$(echo -e "	bash /root/vdsetup.2/bin/utility/tor/.cash_var_update_now.sh ;\n") && lang_nix && bpn_p_lang ; 
 	ttb=$(echo -e "\n Updating now! \n") && lang_nix && bpn_p_lang ;
 return ; } ; msg3=(msg3)
 
@@ -293,7 +293,7 @@ function start_msg() {
 function update_cash() {
 		 lang_def ; ${msg3} ;
 		
-		/root/vdsetup.2/bin/utility/.cash_var_update_now.sh ;
+		/root/vdsetup.2/bin/utility/tor/.cash_var_update_now.sh ;
 		
 		
 	exit 1 ; 
@@ -318,7 +318,7 @@ Description=Poll something each $up_sec second
 
 [Service]
 Type=simple
-ExecStart=/root/vdsetup.2/bin/utility/.cash_var_update_now.sh
+ExecStart=/root/vdsetup.2/bin/utility/tor/.cash_var_update_now.sh
 Restart=always
 RestartSec=$up_sec
 StartLimitInterval=0

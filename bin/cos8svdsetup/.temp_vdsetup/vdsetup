@@ -16,7 +16,7 @@
     . /root/vdsetup.2/bin/utility/list_app_statusCH.sh &>/dev/null ;
     . /root/vdsetup.2/bin/utility/.dnf-fix-help.sh  &>/dev/null ;
     . /root/vdsetup.2/bin/utility/.dnf-update-upgrade.sh &>/dev/null ;
-    . /root/vdsetup.2/bin/utility/webmin_install.sh &>/dev/null ;
+    . /root/vdsetup.2/bin/utility/install/webmin_install.sh &>/dev/null ;
     . /root/vdsetup.2/bin/utility/swap_edit.sh &>/dev/null ;
     . /root/vdsetup.2/bin/utility/cockpit_Activate.sh &>/dev/null ;
     . /root/vdsetup.2/bin/utility/gnome-shell-extentions.sh &>/dev/null ;
@@ -781,7 +781,7 @@
         ;;
         
     tor | -tor )
-        /root/vdsetup.2/bin/utility/tor_installer.sh ;
+        /root/vdsetup.2/bin/utility/tor/tor_installer.sh ;
         
         ;;
         
@@ -792,7 +792,7 @@
         
         
     wget-proxy-on | --wget-proxy-on )
-        /root/vdsetup.2/bin/utility/tor_installer.sh wgetrc_config_edit_now ;
+        /root/vdsetup.2/bin/utility/tor/tor_installer.sh wgetrc_config_edit_now ;
         
         ;;
         
@@ -804,18 +804,18 @@
         
         
     gh | -gh | --GitHub )
-        /root/vdsetup.2/bin/utility/github.sh ;
+        /root/vdsetup.2/bin/utility/install/github.sh ;
         
         ;;
         
     tr | transmission | -tr | --transmission )
-        /root/vdsetup.2/bin/utility/trans.sh $1 ;
+        /root/vdsetup.2/bin/utility/install/trans.sh $1 ;
         
         
         ;; 
         
     tr_rm | -tr_rm | --transmission-remove )
-    /root/vdsetup.2/bin/utility/trans.sh --transmission-remove ;
+    /root/vdsetup.2/bin/utility/install/trans.sh --transmission-remove ;
     
     
     ;; 

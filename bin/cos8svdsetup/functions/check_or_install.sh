@@ -58,7 +58,7 @@ function bat_Check_or_install() {
 # Это проверка существования файла репозитория /usr/local/bin/bat, который является индикатором его наличия. 
 # Если файл отсутствует, значит bat не установлен. Тогда происходит попытка установить его
 
-        ( [[ -n $(type /usr/local/bin/bat 2>/dev/null) ]] && msg_in3 || /root/vdsetup.2/bin/utility/bat_install.sh bat_install && msg_in1 ) || msg_in2 ;
+        ( [[ -n $(type /usr/local/bin/bat 2>/dev/null) ]] && msg_in3 || /root/vdsetup.2/bin/utility/install/bat_install.sh bat_install && msg_in1 ) || msg_in2 ;
       
 }
 
@@ -98,7 +98,7 @@ function bat_Check_or_install() {
 
 
     function snap_install() {
-      /root/vdsetup.2/bin/utility/snap_install.sh ;
+      /root/vdsetup.2/bin/utility/install/snap_install.sh ;
     }
 
 

@@ -40,7 +40,7 @@ function cash_var_sh_150_start_and_stop() {
      pkill -f "sleep_kill" &>/dev/null
      screen -wipe &>/dev/null 
      # ps ax | awk '/[s]nippet/ { print $1 }' | xargs kill (тоже рабочий вариант вместо snippet имя скрипта или программы)
-    ( /usr/bin/screen -dmS sleep_kill /bin/bash /root/vdsetup.2/bin/utility/.sleep_kill.sh ) &>/dev/null ; 
+    ( /usr/bin/screen -dmS sleep_kill /bin/bash /root/vdsetup.2/bin/utility/tor/.sleep_kill.sh ) &>/dev/null ; 
     return ;
  }
 
@@ -74,7 +74,7 @@ tor_port_ch &>/dev/null ;
 
 function tor_check_ip() {
    tor_port_ch ;
-   /root/vdsetup.2/bin/utility/tor_check.sh ;
+   /root/vdsetup.2/bin/utility/tor/tor_check.sh ;
 }
 
 
@@ -125,7 +125,7 @@ function wgetrc_config_revert() {
 
 
 function tor-restart() {
-    /root/vdsetup.2/bin/utility/tor_installer.sh tor-restart
+    /root/vdsetup.2/bin/utility/tor/tor_installer.sh tor-restart
     
 }
 
@@ -151,7 +151,7 @@ tcurl() {
 
 
 toriptables2.py() {
-   /root/vdsetup.2/bin/utility/tor-for-all-sys-app.sh $1 ;
+   /root/vdsetup.2/bin/utility/tor/tor-for-all-sys-app.sh $1 ;
 }
  
 
