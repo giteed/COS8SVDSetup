@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=forking
 User=root
-ExecStart=/usr/bin/screen -dmS auth_warn_ssh /root/vdsetup.2/bin/utility/auth_warn.sh
+ExecStart=/usr/bin/screen -dmS auth_warn_ssh /root/vdsetup.2/bin/utility/auth/ssh/auth_warn.sh
 ExecStop=/usr/bin/screen -S auth_warn_ssh -X quit
 
 [Install]
