@@ -18,7 +18,7 @@ else
    cp /root/vdsetup.2/bin/units_systemd/Auth_Warn_SSH.service /etc/systemd/system/Auth_Warn_SSH.service
    systemctl daemon-reload
    systemctl enable Auth_Warn_SSH.service
-   systemctl start Auth_Warn_SSH.service
+   systemctl start Auth_Warn_SSH.service || systemctl restart Auth_Warn_SSH.service
 fi
 
 }
