@@ -40,7 +40,7 @@ function ssh_auth_login() {
 			 fi
 			 
 			  # Вывести сообщение в консоль (можно изменить на что-то другое, например, отправку электронной почты) В данном примере сообщение выводится с помощью socat через unix-connect:/tmp/ssh_auth_log_unix.sock соббщение будет выводиться в первую открытую ssh сессию на VDS, так как в ~/.bash_profile у пользователя root добавлена ссылка на функцию "run_socket__ssh_auth_log_unix.sock" в файле файл .sockets.sh в которой находятся функции запуска прослушивания unix-listen:/tmp/ssh_auth_log_unix.sock
-			  (echo -e "\n | $(date '+%Y-%m-%d %T') \n ${red}|${nc} Обнаружен вход по SSH: ($status)\n ${red}|${nc} User: $user / ip: $ip ") | sudo socat - unix-connect:/tmp/ssh_auth_log_unix.sock ;
+			  (echo -e "\n | $(date '+%Y-%m-%d %T') \n\n ${red}|${nc} Обнаружен вход по SSH: ($status)\n ${red}|${nc} User: $user / ip: $ip ") | sudo socat - unix-connect:/tmp/ssh_auth_log_unix.sock ;
 			fi
 		  done
 	  }

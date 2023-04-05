@@ -16,7 +16,10 @@ fi
 # Сокет предназначен для обмена со скриптом auth_warn.sh который информирует о попытках входа по SSH на данной машине. 
 # tail -f /var/log/secure просмотр лога вручную.
 run_socket__ssh_auth_log_unix.sock 2>/dev/null ;
-check_unit_Auth_Warn_SSH_service &>/dev/null ;
+# Проверка на существование Unit /etc/systemd/system/Auth_Warn_SSH.service
+# Еслии файла нет то создаст и запустит его auth_warn_ssh
+# Посмотреть работу /root/vdsetup.2/bin/utility/auth/ssh/auth_warn.sh - screen -r auth_warn_ssh
+check_unit_Auth_Warn_SSH_service 2>/dev/null ;
 
 
 
