@@ -92,9 +92,9 @@
 	${GREEN}|${nc} Eсли да, введите: "${GREEN}"yes"$NC"
 			
 	["$RED" "$(im)""$NC"@"$GRAY"""$(hostname)" ""$NC"] "$NC"<<< "$RED"# "$NC""$GREEN""
-			read -e -i yes nginxyes
+			read nginxyes
 			
-		if [[ "$nginxyes" == "yes" ]]
+		if [[ "$nginxyes" == "y|Y" ]]
 			then 
 			echo -e "\n Приступаем к установке и настройке nginx, FirewallD\n ${NC}" ;
 			echo -e " 1. Выберите что вам нужно сделать ... " ;
