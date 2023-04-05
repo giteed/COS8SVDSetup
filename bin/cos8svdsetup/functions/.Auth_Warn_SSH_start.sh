@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# Source global definitions
-# --> Прочитать настройки из /root/.bashrc
-#. /root/.bashrc
-
-# --> Этот ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
-#. /root/vdsetup.2/bin/functions/run_as_root.sh
-
-
-
-
 function check_unit_Auth_Warn_SSH_service() {
 
   function Create_enable_start_sevice() {
@@ -24,7 +14,7 @@ function check_unit_Auth_Warn_SSH_service() {
 
 }
 
-check_unit_Auth_Warn_SSH_service ;
-sudo -u root /root/vdsetup.2/bin/utility/auth/ssh/auth_warn.sh ;
+
+
 
 

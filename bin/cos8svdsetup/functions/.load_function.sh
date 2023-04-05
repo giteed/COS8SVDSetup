@@ -23,6 +23,8 @@
 	. /root/vdsetup.2/bin/functions/net_func.sh
 #  --> Sockets
 	. /root/vdsetup.2/bin/functions/.sockets.sh
+	#  --> Auth_Warn_SSH_start (предупреждения о входах по SSH)
+	. /root/vdsetup.2/bin/functions/.Auth_Warn_SSH_start.sh
 
 
 # --> Этот ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
