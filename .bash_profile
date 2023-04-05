@@ -15,7 +15,7 @@ fi
 # Проверка на существование ssh_auth_log_unix.sock и если его нет, он будет создан.
 # Сокет предназначен для обмена со скриптом auth_warn.sh который информирует о попытках входа по SSH на данной машине. 
 # tail -f /var/log/secure просмотр лога вручную.
-run_socket__ssh_auth_log_unix.sock &>/dev/null ;
+run_socket__ssh_auth_log_unix.sock 2>/dev/null ;
 check_unit_Auth_Warn_SSH_service &>/dev/null ;
 
 
