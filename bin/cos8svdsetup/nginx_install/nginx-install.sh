@@ -150,14 +150,14 @@
 					rm -rf /etc/yum.repos.d/nginx.repo ;
 					( cat /root/vdsetup.2/bin/nginx_install/nginx-mainline ) > /etc/yum.repos.d/nginx.repo ;
 					;;
-				  r|R)
+				  r | R)
 					echo -e "\n	| ${RED}Удаляем${NC} nginx вместе с конфигурационными файлами и репозиторием ...\n"
 					echo ;
 					dnf remove nginx -y;
 					echo -e "\n 	| ${RED}Nginx удален вместе с конфигурационными файлами и репозиторием!${NC}\n" ;
 					case_1_2 ;
 					;;
-				  q|Q)
+				  q | Q)
 					echo -e "\n 	| ${ELLOW}Отмена установки${NC} nginx\n"
 					exit ;
 					;;
