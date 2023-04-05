@@ -92,7 +92,7 @@
 	${GREEN}|${nc} Eсли да, введите: "${GREEN}"yes"$NC"
 			
 	["$RED" "$(im)""$NC"@"$GRAY"""$(hostname)" ""$NC"] "$NC"<<< "$RED"# "$NC""$GREEN""
-			read nginxyes
+			read -p -e -i yes nginxyes
 			
 		if [[ "$nginxyes" == "yes" ]]
 			then 
@@ -139,7 +139,7 @@
 	⎩ (Полное удаление nginx с конфигами и repository а затем переустановка)\n")&& lang=cr && bpn_p_lang ; echo ;
 	
 	echo -en "	Сделайте выбор: "
-					read -p -e -i yes ng_1_2
+					read ng_1_2
 					
 					echo -n ""
 					case $ng_1_2 in
