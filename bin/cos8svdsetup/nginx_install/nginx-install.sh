@@ -8,7 +8,7 @@
 	# ФУНКЦИЯ: Проверка установки nginx (/usr/sbin/nginx) и если не найден - пишет "не найден"
 	function nginxCH()
 	{
-		echo -e -n "\n	${ELLOW}|${nc} Проверяем наличие устанвки nginx " ; sleep 1 ; echo -e -n "." ; sleep 1 ; echo -e ".."
+		echo -e -n "\n	${ELLOW}|${nc} Проверяем наличие устанвки nginx " ; sleep 1 ; echo -e -n "." ; echo -e ".."
 		([[ -z $( ls /usr/sbin/nginx  ) ]] 2>/dev/null && echo -e "	${ELLOW}|${red} /usr/sbin/nginx    : $( not_found_MSG ) ") || echo -e "	${ELLOW}|${green} /usr/sbin/nginx    : $( found_MSG ) " ;
 		#sleep 1 ;
 	}
@@ -103,23 +103,35 @@
 			{
 			
 	ttb=$(echo -e "	
-	⎧ Какой из repository nginx добавить для установки, 
-	⎩ [nginx-stable] или [nginx-mainline]? 
+ ⎧ Какой из repository nginx добавить для установки, 
+ ⎩ [nginx-stable] или [nginx-mainline]? 
+ 
+ ⎧ - Чтобы добавить [nginx-stable] .... введите: 1 
+ | (Если вы хотите стабильную версию, то используйте репозиторий 
+ | [nginx-stable], тогда конфигурация дефолтного хоста будет 
+ ⎩ в основном конфиге: /etc/nginx/nginx.conf)
+ 
+ ⎧ - Чтобы добавить [nginx-mainline] .. введите: 2 (более новые версии)
+ | (Если установить nginx из официального репозитория  
+ | [nginx-mainline], то конфигурация дефолтного хоста будет 
+ ⎩ в отдельном конфиге: /etc/nginx/conf.d/default.conf)
 	
-	⎧ - Чтобы добавить [nginx-stable] .... введите: 1 
-	| (Если вы хотите стабильную версию, то используйте репозиторий 
-	| [nginx-stable], тогда конфигурация дефолтного хоста будет 
-	⎩ в основном конфиге: /etc/nginx/nginx.conf)
-	
-	⎧ - Чтобы добавить [nginx-mainline] .. введите: 2 (рекомендуется)
-	| (Если установить nginx из официального репозитория  
-	| [nginx-mainline], то конфигурация дефолтного хоста будет 
-	⎩ в отдельном конфиге: /etc/nginx/conf.d/default.conf)
+ | Оба репозитория [nginx-stable] и [nginx-mainline] для CentOS 8 Stream 
+ | содержат файл конфигурации /etc/nginx/nginx.conf с настройками 
+ | по умолчанию для всех серверов и локаций. Репозиторий [nginx-mainline] 
+ | также предлагает директорию /etc/nginx/conf.d/ для дополнительных 
+ | конфигурационных файлов серверов и локаций, которые будут автоматически
+ | включены в основной файл конфигурации /etc/nginx/nginx.conf через 
+ | директиву "include /etc/nginx/conf.d/*.conf;". 
+ |
+ | Если вы установите Nginx из репозитория [nginx-mainline] и создадите 
+ | файл конфигурации /etc/nginx/conf.d/default.conf, он автоматически 
+ | будет включен в основной файл конфигурации /etc/nginx/nginx.conf.
 	 
-	⎧ - Отмена установки nginx ...........  введите: q 
+	⎧ - Отмена установки nginx ...........  введите: Q(q) 
 	⎩ (Процесс будет завершен без каких-либо изменений)
 	 
-	⎧ - Удалить и переустановить nginx ...  введите: rem
+	⎧ - Удалить и переустановить nginx ...  введите: R(r)
 	⎩ (Полное удаление nginx с конфигами и repository а затем переустановка)\n")&& lang=cr && bpn_p_lang ; echo ;
 	
 	echo -en "	Сделайте выбор: "
@@ -138,14 +150,14 @@
 					rm -rf /etc/yum.repos.d/nginx.repo ;
 					( cat /root/vdsetup.2/bin/nginx_install/nginx-mainline ) > /etc/yum.repos.d/nginx.repo ;
 					;;
-				  rem)
+				  r|R)
 					echo -e "\n	| ${RED}Удаляем${NC} nginx вместе с конфигурационными файлами и репозиторием ...\n"
 					echo ;
 					dnf remove nginx -y;
 					echo -e "\n 	| ${RED}Nginx удален вместе с конфигурационными файлами и репозиторием!${NC}\n" ;
 					case_1_2 ;
 					;;
-				  q)
+				  q|Q)
 					echo -e "\n 	| ${ELLOW}Отмена установки${NC} nginx\n"
 					exit ;
 					;;
