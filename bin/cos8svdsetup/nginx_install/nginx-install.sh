@@ -144,10 +144,10 @@
 	⎧ - Удалить и переустановить nginx ...  введите: 'R'/r
 	⎩ (Полное удаление nginx с конфигами и repository а затем переустановка)\n")&& lang=cr && bpn_p_lang ; echo ;
 	
-	echo -en "	Сделайте выбор: "
+	echo -en "	Сделайте выбор: ${green}"
 					read ng_1_2
 					
-					echo -n ""
+					echo -n "${nc}"
 					case $ng_1_2 in
 					
 				  1)
