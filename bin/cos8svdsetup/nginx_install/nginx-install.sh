@@ -92,7 +92,7 @@
 	${GREEN}|${nc} Eсли да, введите: "${GREEN}"yes"$NC"
 			
 	["$RED" "$(im)""$NC"@"$GRAY"""$(hostname)" ""$NC"] "$NC"<<< "$RED"# "$NC""$GREEN""
-			read -i nginxyes
+			read nginxyes
 		
 		# можно так:	
 		#if [[ "$nginxyes" == "y" || "$nginxyes" == "Y" || "$nginxyes" == "Yes"]]
