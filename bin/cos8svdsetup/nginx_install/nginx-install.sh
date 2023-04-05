@@ -94,7 +94,7 @@
 	["$RED" "$(im)""$NC"@"$GRAY"""$(hostname)" ""$NC"] "$NC"<<< "$RED"# "$NC""$GREEN""
 			read nginxyes
 			
-		if [[ "$nginxyes" == "y|Y" ]]
+		if [[ "$nginxyes" == "(y|Y)" ]]
 			then 
 			echo -e "\n Приступаем к установке и настройке nginx, FirewallD\n ${NC}" ;
 			echo -e " 1. Выберите что вам нужно сделать ... " ;
