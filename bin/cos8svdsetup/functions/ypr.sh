@@ -45,6 +45,9 @@ function ypr() {
  | Будет искать используя все эти программы.
  ⎩ ypr с ключом -h или --help Выводит эту справку. ") && lang=cr && bpn_p_lang ;	 
 
+   ttb=$(echo -e "   
+ ⎧ Получить больше информации о репозитории с: \$pkg_name
+ ⎩ https://pkgs.org/download/\$pkg_name") && lang=cr && bpn_p_lang ;
 
 	 ;;
 	 
