@@ -63,7 +63,6 @@ function ypr() {
 	 echo -en "   "
 	 echo -en "$2" 
 	 echo -e "\n "
-	 type -all $2 
 	 which -a $2 
 	 
 	 ttb=$(echo -e "   
@@ -71,15 +70,26 @@ function ypr() {
  | в переменой окружения \$PATH
  | type - Показывает значение искомой команды или алиаса. 
  ⎩ # type $2") && lang=cr && bpn_p_lang ;
+ 
+ 	 type -all $2 
 	 
-	 type -all $2 
-
-	 echo -e " \n\n whereis - Ведет поиск в системных каталогах."
-	 echo -e " # whereis $2\n"
+	 ttb=$(echo -e "    
+ ⎧ whereis - Ведет поиск в системных каталогах.
+ ⎩ # whereis $2") && lang=cr && bpn_p_lang ;	 
+	 echo -e " \n"
 	 whereis $2 
-	 echo -e "\n locate - Ведет поиск файлов/папок, по базе данных на\n этом сервере, совпадающих с: "$red_prgrm" "
-	 echo -e " # locate "$2": \n"
+	 
+	 ttb=$(echo -e "   
+ ⎧ locate - Ведет поиск файлов/папок, по базе данных на
+ | этом сервере, совпадающих с: "$red_prgrm"
+ ⎩ # locate "$2": ") && lang=cr && bpn_p_lang ;	 
+
+	 ttb=$(echo -e "   
+
 	 stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | head -n 25 | rg "/$2") ) 2>/dev/null | column -t ;
+	") && lang=cr && bpn_p_lang ;	 
+	
+	
 	 echo -e "\n ypr с ключом -a или --all - Выводит только 25 первых\n результатов поиска файлов/папок совпадающих с: "$red_prgrm"\n  \n Используйте: # ypr с ключом -l" "$red_prgrm или ypr с ключом --locate" "$red_prgrm\n Для вывода всего списка совпадений в locate."
 	 
 	 echo -e "\n\n *** Репозитории предоставляющие программу: "$red_prgrm" ***\n"
