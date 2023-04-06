@@ -11,7 +11,7 @@ function ypr() {
 	 
 	 '*' | '.'| h | -h | --h | -help | --help | help | hel | he | -hel | --hel | -he | --he | '')
 	 
-	 ttb=$(echo -e "\n | ypr - Совмещающает в себе для удобства\n | набор следующих программ и утилит: ") && lang=cr && bpn_p_lang ;
+	 ttb=$(echo -e "\n | ypr - Совмещает в себе для удобства\n | набор следующих программ и утилит: ") && lang=cr && bpn_p_lang ;
 	 
 	 ttb=$(echo -e "   
  ⎧ yum provides - Ищет программные пакеты
