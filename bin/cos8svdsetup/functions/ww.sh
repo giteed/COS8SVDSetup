@@ -21,6 +21,11 @@
    }  
    
 	if [[ $1 == "" ]] ; then msg_ww && return ; fi ;
+
+   ttb=$(echo -e "
+ ⎧ Просмотр информации dnf search: 
+ ⎩ # dnf search $1") && lang=cr && bpn_p_lang ;
+   echo ; ttb=$(dnf search $1) && lang=cr && bpn_p_lang ; echo ;
 	
    ( ttb=$(echo -e "
  ⎧ Просмотр информации о типе команды $1: 
@@ -37,10 +42,7 @@
  ⎩ # ypr -a $1") && lang=cr && bpn_p_lang ;
 	echo ; ttb=$(ypr -a $1) && lang=cr && bpn_p_lang ; echo ;
 
-   ttb=$(echo -e "
- ⎧ Просмотр информации по 9 командам: 
- ⎩ # dnf search $1") && lang=cr && bpn_p_lang ;
-    echo ; ttb=$(dnf search $1) && lang=cr && bpn_p_lang ; echo ;	
+	
    
    
    
