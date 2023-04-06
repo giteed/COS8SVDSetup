@@ -65,11 +65,7 @@ function ypr() {
 	 echo -e "\n "
 	 which -a $2 
 	 
-	 ttb=$(echo -e "   
- ⎧ type - В отличие от which, НЕ осуществляет сразу поиск
- | в переменой окружения \$PATH
- | type - Показывает значение искомой команды или алиаса. 
- ⎩ # type $2") && lang=cr && bpn_p_lang ;
+
  
  	 type -all $2 
 	 
@@ -98,8 +94,12 @@ function ypr() {
 	 yum provides $2 ;
 	 echo
 	 yum info $2 ;
-	 unset red_prgrm
-	 
+
+	 ttb=$(echo -e "   
+ ⎧ type - В отличие от which, НЕ осуществляет сразу поиск
+ | в переменой окружения \$PATH
+ | type - Показывает значение искомой команды или алиаса. 
+ ⎩ # type $2") && lang=cr && bpn_p_lang ;	 
 	 ;;
 	 
 	 -p | --p | --provides | -s | --s | --search | -i | --i | --info )
