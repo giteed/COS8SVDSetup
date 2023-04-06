@@ -63,6 +63,7 @@ function ypr() {
 	 echo -en "   "
 	 echo -en "$2" 
 	 echo -e "\n "
+	 type -all $2 
 	 which -a $2 
 	 
 	 ttb=$(echo -e "   
