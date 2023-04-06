@@ -11,7 +11,7 @@ lang_x 2>/dev/null ;
 
  function epel_repository_packages_install() {
 	 dnf install -y epel-release yum-utils npm || ( error_MSG ; ) ; echo ;
-	 dnf install -y net-tools bind-utils network-scripts iptables socat || ( error_MSG ; ) ; echo ;
+	 dnf install -y net-tools bind-utils network-scripts iptables socat dnstracer || ( error_MSG ; ) ; echo ;
 	 dnf install -y dialog mlocate ncdu ranger tldr || ( error_MSG ; ) ; echo ;
 	 dnf install -y youtube-dl ffmpeg || ( error_MSG ; ) ; echo ;
 	 dnf install -y git tar curl wget || ( error_MSG ; ) ; echo ;
