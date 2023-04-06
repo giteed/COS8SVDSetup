@@ -62,14 +62,17 @@ function ypr() {
  
 	 echo -en "   "
 	 echo -en "$2" 
-	 
-	 
 	 echo -e "\n "
 	 which -a $2 
-	 echo -e "\n\n type - В отличие от which, НЕ осуществляет сразу поиск\n в переменой окружения \$PATH"
-	 echo -e " type - Показывает значение искомой команды или алиаса." 
-	 echo -e " # type $2\n"
+	 
+	 ttb=$(echo -e "   
+ ⎧ type - В отличие от which, НЕ осуществляет сразу поиск
+ | в переменой окружения \$PATH
+ | type - Показывает значение искомой команды или алиаса. 
+ ⎩ # type $2") && lang=cr && bpn_p_lang ;
+	 
 	 type -all $2 
+
 	 echo -e " \n\n whereis - Ведет поиск в системных каталогах."
 	 echo -e " # whereis $2\n"
 	 whereis $2 
