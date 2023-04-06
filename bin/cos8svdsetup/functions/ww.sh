@@ -44,5 +44,10 @@
    echo ; ttb=$(dnf search $1) && lang=cr && bpn_p_lang ; echo ;
    
    tldr $1 ; echo ;
+   ttb=$(echo -e "   
+ ⎧ Получить больше информации 
+ ⎩ о репозитории с: $1"
+   echo ; ttb=$(echo -e " https://pkgs.org/download/$1") && lang=cr && bpn_p_lang ; echo ;
+      
    }
    
