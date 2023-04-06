@@ -53,10 +53,17 @@ function ypr() {
 	 
 	 -a | -al | -all | --a | --al | --all)
 	 red_prgrm=("$2")
-	 echo -e "\n *** Локальное расположение: "$red_prgrm" ***\n"
-	 echo -e " which - Находит исполняемые файлы(x), алиасы,\n функции, в переменой окружения \$PATH"
-	 echo -en " # which "
+	 
+	 ttb=$(echo -e "   
+ ⎧ *** Локальное расположение: "$red_prgrm" ***
+ | which - Находит исполняемые файлы(x), алиасы,
+ | функции, в переменой окружения \$PATH 
+ ⎩ # which ") && lang=cr && bpn_p_lang ;
+ 
+	 echo -en "   "
 	 echo -en "$2" 
+	 
+	 
 	 echo -e "\n "
 	 which -a $2 
 	 echo -e "\n\n type - В отличие от which, НЕ осуществляет сразу поиск\n в переменой окружения \$PATH"
