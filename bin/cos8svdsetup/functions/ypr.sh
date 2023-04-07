@@ -78,17 +78,22 @@ function ypr() {
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
  | этом сервере, совпадающих с: "$red_prgrm"
- ⎩ # locate "$2": ") && lang=cr && bpn_p_lang ;	 
+ ⎩ # locate "$2": ") && lang=cr && bpn_p_lang ;	 echo ;
 
  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | head -n 25 | rg "/$2") ) 2>/dev/null | column -t ;)
 	") && lang=cr && bpn_p_lang ;	 
 	
+	 ttb=$(echo -e "   
+ ⎧ ypr с ключом -a или --all - Выводит только 25 первых
+ | результатов поиска файлов/папок совпадающих с: "$red_prgrm"
+ | Для вывода всего списка совпадений в locate:
+ ⎩ Используйте: # ypr с ключом -l" "$red_prgrm или ypr с ключом --locate" "$red_prgrm ") && lang=cr && bpn_p_lang ;	 echo ;
 	
-	 echo -e "\n ypr с ключом -a или --all - Выводит только 25 первых\n результатов поиска файлов/папок совпадающих с: "$red_prgrm"\n  \n Используйте: # ypr с ключом -l" "$red_prgrm или ypr с ключом --locate" "$red_prgrm\n Для вывода всего списка совпадений в locate."
-	 
-	 echo -e "\n\n *** Репозитории предоставляющие программу: "$red_prgrm" ***\n"
-	 echo -e $(whatis $2) 2>/dev/null ;
-	 echo -e
+	 ttb=$(echo -e "    
+ ⎧ *** Репозитории предоставляющие программу: "$red_prgrm" ***
+ ⎩ $(whatis $2 2>/dev/null) \n ") && lang=cr && bpn_p_lang ;
+ 
+
 	 yum provides $2 ;
 	 echo
 	 yum info $2 ;
