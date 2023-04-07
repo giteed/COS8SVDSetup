@@ -62,7 +62,7 @@ _more ;
 
 
 function _provides() {
-	_s2 ;
+	
 	
 	 ttb=$(echo -e "    
  ⎧ *** Репозитории предоставляющие программу: "$2" ***
@@ -176,7 +176,7 @@ _locate ;
 	 ;;
 	 
 	 p | -p | --provides )
-	 
+	 _s2 ;
 	 _provides ;
 	 ;;
 	 
