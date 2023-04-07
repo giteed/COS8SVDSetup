@@ -175,7 +175,7 @@ _locate ;
 	 
 	 -a | -al | -all | --a | --al | --all)
 	 red_prgrm=("$2")
-	 _which $1;
+	 _which $red_prgrm;
 	 
 	 echo -e "\n\n type - В отличие от which, НЕ осуществляет сразу поиск\n в переменой окружения \$PATH"
 	 echo -e " type - Показывает значение искомой команды или алиаса." 
