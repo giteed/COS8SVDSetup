@@ -155,9 +155,9 @@ ttb=$(echo -e "
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
  | этом сервере, совпадающих с: "$red_prgrm"
- ⎩ # locate "$2":\n ") && lang=cr && bpn_p_lang ;	 echo ;
+ ⎩ # locate "$2": ") && lang=cr && bpn_p_lang ;
 	 ttb=$(echo -e "  
- $(echo -e $(whatis $2 2>/dev/null ;))\n") && lang=cr && bpn_p_lang ;
+ $(echo -e $(whatis $2 2>/dev/null ;))\n") && lang=cr && bpn_p_lang ; echo ;
 
  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | rg "/$2") ) 2>/dev/null | column -t ;)
 	 ") && lang=cr && bpn_p_lang ;	
