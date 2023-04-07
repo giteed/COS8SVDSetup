@@ -63,7 +63,7 @@ function _provides() {
   $(yum provides $arg_2 ;)
   $(yum search $arg_2 ;)
   $(yum info $arg_2 ;)
- ") && lang=nix && bpn_p_lang ;	
+ ") && lang=log && bpn_p_lang ;	
 
  _more ;
 
