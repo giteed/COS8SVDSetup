@@ -54,11 +54,10 @@ function _provides() {
 		
 		arg_2=("$1")
 		
-		if [[ $arg_2 == "" ]] ; then arg_2=test && echo -e "укажите что требуется найти (теперь arg_2=test)"; fi ;
+		if [[ $arg_2 == "" ]] ; then arg_2=test && echo -e "укажите что требуется найти (теперь arg_2=test)" && return ; fi ;
 		echo -e "arg_2 - $arg_2";
 		echo -e "\$1 - $1";
-	
-
+		
 	 ttb=$(echo -e "    
  ⎧ *** Репозитории предоставляющие программу: "$arg_2" ***
  | yum provides - Ищет программные пакеты
