@@ -61,9 +61,9 @@ function ypr() {
  ⎩ # which ") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "    
-	 echo -en "   "
+	 $(echo -en "   ")
 	 $(echo -en "$2" )
-	 echo -e "\n "
+	 $(echo -e "\n ")
 	 $(which -a $2 )
  	 $(type -all $2 )
 	  ") && lang=cr && bpn_p_lang ;
