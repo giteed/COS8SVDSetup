@@ -70,7 +70,7 @@ ttb=$(echo -en "
  ⎩ # whereis $2") && lang=cr && bpn_p_lang ;	 
 
 ttb=$(echo -e " 
-	 $(whereis $2)\n") && lang=cr && bpn_p_lang ; 
+ $(whereis $2)\n") && lang=cr && bpn_p_lang ; 
 	 
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
@@ -152,13 +152,16 @@ ttb=$(echo -e "
 	 
 	 -l | --l | --locate)
 	 red_prgrm=("$2")
-	 echo -e "\n *** Локальное расположение: "$2" ***\n"
-	 echo -e " locate - Выводит полный список результов поиска файлов/папок,\n по базе данных на этом сервере, совпадающих с: "$red_prgrm"\n "
-	 echo -en " "
-	 echo -e $(whatis $2) 2>/dev/null ;
-	 echo
-	 echo -e " # locate "$2": "
-	 stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | rg "/$2") ) 2>/dev/null | column -t ;
+	 ttb=$(echo -e "   
+ ⎧ locate - Ведет поиск файлов/папок, по базе данных на
+ | этом сервере, совпадающих с: "$red_prgrm"
+ ⎩ # locate "$2": "\n) && lang=cr && bpn_p_lang ;	 echo ;
+	 ttb=$(echo -e "  
+ $(echo -e $(whatis $2 2>/dev/null ;) "\n) && lang=cr && bpn_p_lang ;
+
+ ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | rg "/$2") ) 2>/dev/null | column -t ;)
+	 ") && lang=cr && bpn_p_lang ;	
+
 	 unset red_prgrm
 	 ;;
 	 
