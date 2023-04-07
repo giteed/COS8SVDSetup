@@ -58,11 +58,11 @@ function ypr() {
  ⎧ *** Локальное расположение: "$red_prgrm" ***
  | which - Находит исполняемые файлы(x), алиасы,
  | функции, в переменой окружения \$PATH 
- ⎩ # which ") && lang=cr && bpn_p_lang ;
+ ⎩ # which $2") && lang=cr && bpn_p_lang ;
 
-ttb=$(echo -en " $(echo -en "$2" )
-$(which -a $2 )
-$(type -all $2 ) ") && lang=cr && bpn_p_lang ;
+ttb=$(echo -en "
+ $(which -a $2 )\n
+ $(type -all $2 )\n ") && lang=cr && bpn_p_lang ;
 	  
 	 
 	 ttb=$(echo -e "    
