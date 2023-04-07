@@ -175,7 +175,12 @@ _locate ;
 	 
 	 -a | -al | -all | --a | --al | --all)
 	 red_prgrm=("$2")
-	 _which ;
+	 echo -e "\n *** Локальное расположение: "$red_prgrm" ***\n"
+	 echo -e " which - Находит исполняемые файлы(x), алиасы,\n функции, в переменой окружения \$PATH"
+	 echo -en " # which "
+	 echo -en "$2" 
+	 echo -e "\n "
+	 which -a $2 
 	 
 	 echo -e "\n\n type - В отличие от which, НЕ осуществляет сразу поиск\n в переменой окружения \$PATH"
 	 echo -e " type - Показывает значение искомой команды или алиаса." 
