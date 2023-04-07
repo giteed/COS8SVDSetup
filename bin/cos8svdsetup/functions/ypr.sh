@@ -4,13 +4,8 @@ arg1=$1
 arg2=$2
 
 function _s2() {
-	if [[ $2 == "" ]] ; then arg2=test echo укажите что требуется найти ; fi ;
+	if [[ $2 == "" ]] ; then arg2=test && echo укажите что требуется найти (теперь arg2=test); fi ;
 }
-
-function ypr() {
-	ypr-f $1 $2;
-}	
-
 
 
 
@@ -166,7 +161,7 @@ _locate ;
 # --> Поиск программы/файла локально и в repository по 7 командам
    function ypr-f() 
   {
-	 case $1 in
+	 case $arg1 in
 	 
 	 '*' | '.'| h | -h  | --help | help | '')
 	 
