@@ -68,8 +68,9 @@ ttb=$(echo -en "
 	 ttb=$(echo -e "    
  ⎧ whereis - Ведет поиск в системных каталогах.
  ⎩ # whereis $2") && lang=cr && bpn_p_lang ;	 
-	 echo -e " \n"
-	 whereis $2 
+
+ttb=$(echo -e " 
+	 $(whereis $2)\n") && lang=cr && bpn_p_lang ; 
 	 
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
