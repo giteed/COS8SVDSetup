@@ -1,12 +1,7 @@
 #!/bin/bash
 
 
-function ypr() {
-	arg1=$1
-	arg2=$2
-	if [[ $2 == "" ]] ; then arg2=test echo укажите что требуется найти ; fi ;
-	ypr-f $arg1 $arg2 ;
-}	
+
 
 function _s2() {
 	
@@ -231,5 +226,13 @@ _locate ;
 	 
 	 ;;
 	 esac 
+	 
+	 
+	 function ypr() {
+		 arg1=$1
+		 arg2=$2
+		 if [[ $2 == "" ]] ; then arg2=test echo укажите что требуется найти ; fi ;
+		 ypr-f $arg1 $arg2 ;
+	 }	
 	 
   }
