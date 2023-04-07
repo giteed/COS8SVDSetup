@@ -2,12 +2,15 @@
 
 
 function ypr() {
-	ypr-f ;
+	arg1=$1
+	arg2=$2
+	ypr-f $arg1 $arg2 ;
 }	
 
 function _s2() {
-	if [[ $2 == "" ]] ; then echo укажите что требуется найти ; fi ;
-	exit 0;
+	if [[ $2 == "" ]] ; then arg2=test echo укажите что требуется найти ; fi ;
+	
+
 }
 
 
@@ -65,16 +68,16 @@ function _provides() {
 	
 	
 	 ttb=$(echo -e "    
- ⎧ *** Репозитории предоставляющие программу: "$2" ***
+ ⎧ *** Репозитории предоставляющие программу: "$arg2" ***
  | yum provides - Ищет программные пакеты
  | овпадающие с запросом, в установленных на этом
  | сервере репозитариях пакетного менеджера yum/dnf
- ⎩ $(whatis $2 2>/dev/null) \n ") && lang=cr && bpn_p_lang ;
+ ⎩ $(whatis $arg2 2>/dev/null) \n ") && lang=cr && bpn_p_lang ;
 	  
  ttb=$(echo -e "  
-  $(yum provides $2 ;)
-  $(yum search $2 ;)
-  $(yum info $2 ;)
+  $(yum provides $arg2 ;)
+  $(yum search $arg2 ;)
+  $(yum info $arg2 ;)
  ") && lang=nix && bpn_p_lang ;	
 
  _more ;
@@ -85,14 +88,14 @@ function _provides() {
 
 function _which() {
 	 ttb=$(echo -e "   
- ⎧ *** Локальное расположение: "$2" ***
+ ⎧ *** Локальное расположение: "$arg2" ***
  | which - Находит исполняемые файлы(x), алиасы,
  | функции, в переменой окружения \$PATH 
- ⎩ # which $2") && lang=cr && bpn_p_lang ;
+ ⎩ # which $arg2") && lang=cr && bpn_p_lang ;
 
 ttb=$(echo -en "
- $(which -a $2 )\n
- $(type -all $2 )\n ") && lang=cr && bpn_p_lang ;
+ $(which -a $arg2 )\n
+ $(type -all $arg2 )\n ") && lang=cr && bpn_p_lang ;
 
 
 	 }
@@ -104,10 +107,10 @@ function _type() {
  ⎧ type - В отличие от which, НЕ осуществляет сразу поиск
  | в переменой окружения \$PATH
  | type - Показывает значение искомой команды или алиаса. 
- ⎩ # type $2") && lang=cr && bpn_p_lang ;	
+ ⎩ # type $arg2") && lang=cr && bpn_p_lang ;	
  
  ttb=$(echo -e "  
-	 $(type $2 ;)
+	 $(type $arg2 ;)
 	") && lang=nix && bpn_p_lang ;	
 	
 	 }
@@ -116,10 +119,10 @@ function _whereis() {
 
 	 ttb=$(echo -e "    
  ⎧ whereis - Ведет поиск в системных каталогах.
- ⎩ # whereis $2") && lang=cr && bpn_p_lang ;	 
+ ⎩ # whereis $arg2") && lang=cr && bpn_p_lang ;	 
 
 ttb=$(echo -e " 
- $(whereis $2)\n") && lang=cr && bpn_p_lang ; 
+ $(whereis $arg2)\n") && lang=cr && bpn_p_lang ; 
  
 	 }
 
@@ -128,10 +131,10 @@ function _locate() {
 
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
- | этом сервере, совпадающих с: "$2"
- ⎩ # locate "$2": ") && lang=cr && bpn_p_lang ;	 echo ;
+ | этом сервере, совпадающих с: "$arg2"
+ ⎩ # locate "$arg2": ") && lang=cr && bpn_p_lang ;	 echo ;
 
- ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | rg "/$2") ) 2>/dev/null | column -t ;)
+ ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg2") | (rg "/$arg2" | rg "/$arg2") ) 2>/dev/null | column -t ;)
 	") && lang=cr && bpn_p_lang ;	
 
 	 }
@@ -147,11 +150,11 @@ _locate ;
 
 	 ttb=$(echo -e "   
  ⎧ ypr с ключом -a или --all - Выводит только 25 первых
- | результатов поиска файлов/папок совпадающих с: "$2"
+ | результатов поиска файлов/папок совпадающих с: "$arg2"
  | Для вывода всего списка совпадений в locate:
- ⎩ Используйте: # ypr с ключом -l" "$2 или ypr с ключом --locate" "$2 ") && lang=cr && bpn_p_lang ;	 echo ;
+ ⎩ Используйте: # ypr с ключом -l" "$arg2 или ypr с ключом --locate" "$arg2 ") && lang=cr && bpn_p_lang ;	 echo ;
 
- ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | head -n 25 | rg "/$2") ) 2>/dev/null | column -t ;)
+ ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg2") | (rg "/$arg2" | head -n 25 | rg "/$arg2") ) 2>/dev/null | column -t ;)
  ") && lang=cr && bpn_p_lang ;
 
  _more ;
@@ -163,7 +166,7 @@ _locate ;
 # --> Поиск программы/файла локально и в repository по 7 командам
    function ypr-f() 
   {
-	 case $1 in
+	 case $arg1 in
 	 
 	 '*' | '.'| h | -h  | --help | help | '')
 	 
@@ -197,12 +200,12 @@ _locate ;
 
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
- | этом сервере, совпадающих с: "$2"
- ⎩ # locate "$2": ") && lang=cr && bpn_p_lang ;
+ | этом сервере, совпадающих с: "$arg2"
+ ⎩ # locate "$arg2": ") && lang=cr && bpn_p_lang ;
 	 ttb=$(echo -e "  
- $(echo -e $(whatis $2 2>/dev/null ;))\n") && lang=cr && bpn_p_lang ; echo ;
+ $(echo -e $(whatis $arg2 2>/dev/null ;))\n") && lang=cr && bpn_p_lang ; echo ;
 
- ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | rg "/$2") ) 2>/dev/null | column -t ;)
+ ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg2") | (rg "/$arg2" | rg "/$arg2") ) 2>/dev/null | column -t ;)
 	 ") && lang=cr && bpn_p_lang ;	
 	 
 	 
