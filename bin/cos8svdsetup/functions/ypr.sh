@@ -73,15 +73,16 @@ function _provides() {
 
 
 function _which() {
+	red_prgrm=("$2")
 	 ttb=$(echo -e "   
- ⎧ *** Локальное расположение: "$arg2" ***
+ ⎧ *** Локальное расположение: "$red_prgrm" ***
  | which - Находит исполняемые файлы(x), алиасы,
  | функции, в переменой окружения \$PATH 
- ⎩ # which $arg2") && lang=cr && bpn_p_lang ;
+ ⎩ # which $2") && lang=cr && bpn_p_lang ;
 
 ttb=$(echo -en "
- $(which -a $arg2 )\n
- $(type -all $arg2 )\n ") && lang=cr && bpn_p_lang ;
+ $(which -a $2 )\n
+ $(type -all $2 )\n ") && lang=cr && bpn_p_lang ;
 
 
 	 }
@@ -174,12 +175,8 @@ _locate ;
 	 
 	 -a | -al | -all | --a | --al | --all)
 	 red_prgrm=("$2")
-	 echo -e "\n *** Локальное расположение: "$red_prgrm" ***\n"
-	 echo -e " which - Находит исполняемые файлы(x), алиасы,\n функции, в переменой окружения \$PATH"
-	 echo -en " # which "
-	 echo -en "$2" 
-	 echo -e "\n "
-	 which -a $2 
+	 _which ;
+	 
 	 echo -e "\n\n type - В отличие от which, НЕ осуществляет сразу поиск\n в переменой окружения \$PATH"
 	 echo -e " type - Показывает значение искомой команды или алиаса." 
 	 echo -e " # type $2\n"
