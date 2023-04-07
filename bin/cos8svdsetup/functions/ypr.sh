@@ -122,6 +122,9 @@ ttb=$(echo -e "
 
 function _locate() {
 	arg_2=("$1")
+	
+	if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти!\n ⎩ Например: ypr -p nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
+	
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
  | этом сервере, совпадающих с: "$arg_2"
