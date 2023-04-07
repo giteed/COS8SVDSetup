@@ -61,9 +61,14 @@ function _provides() {
 	  
  ttb=$(echo -e "  
   $(yum provides $arg_2 ;)
-  $(yum search $arg_2 ;)
   $(yum info $arg_2 ;)
- ") && lang=log && bpn_p_lang ;	
+  
+  | Попробуйте искать командой: 
+  | # yum search $arg_2
+  
+ ") && lang=cr && bpn_p_lang ;	
+
+
 
  _more ;
 
