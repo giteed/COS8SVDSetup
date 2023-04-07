@@ -54,7 +54,7 @@ function _provides() {
 		
      arg_2=("$1")
 		
-     if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти\n ⎩ Например: ypr -p nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
+     if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти!\n ⎩ Например: ypr -p nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
 		
 	 ttb=$(echo -e "    
  ⎧ *** Репозитории предоставляющие программу: "$arg_2" ***
