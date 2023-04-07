@@ -161,7 +161,22 @@ _locate $arg_2;
 
 
 
-
+function _repo_list() {
+	
+	arg_2=("$2")
+	
+	ttb=$(echo -e "   
+	 *** REPO List:  ***\n"
+	 yum repolist\n по базе данных на этом сервере\n "
+	 
+	 $(yum repolist) 2>/dev/null ;
+	 
+	 $(GLIG_ASTRX_OF)
+	 Содержимое папки /etc/yum.repos.d/
+	 $(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)
+	 
+	 ") && lang=cr && bpn_p_lang ;
+}
 
 
 
@@ -184,6 +199,7 @@ _locate $arg_2;
 	 
 	 ;;
 	 
+	 
 	 -a | -al | -all | --a | --al | --all)
 	 
 	 arg_2=("$2")
@@ -201,6 +217,7 @@ _locate $arg_2;
 	 
 	 ;;
 	 
+	 
 	 -w | --w | --which)
 	 
 	 arg_2=("$2")
@@ -208,6 +225,7 @@ _locate $arg_2;
 	  unset arg_2 
 	 
 	 ;;
+	 
 	 
 	 -t | --t | --type)
 	 
@@ -217,6 +235,7 @@ _locate $arg_2;
 	 
 	 ;;
 	 
+	 
 	 -e | --e | --whereis)
 	 
 	 arg_2=("$2")
@@ -224,6 +243,7 @@ _locate $arg_2;
 	  unset arg_2 
 	 
 	 ;;
+	 
 	 
 	 -l | --l | --locate)
 	 
@@ -235,16 +255,11 @@ _locate $arg_2;
 	 
 	 
 	 -rl | --list | -list | --rl)
+	 
 	 arg_2=("$2")
-	 echo -e "\n *** REPO List:  ***\n"
-	 echo -e " yum repolist\n по базе данных на этом сервере\n "
-	 echo -en " "
-	 yum repolist 2>/dev/null ;
-	 echo
-	 GLIG_ASTRX_OF ;
-	 echo -e "Содержимое папки /etc/yum.repos.d/\n"
-	 stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;
+	 _repo_list
 	 unset arg_2
+	 
 	 ;;
 	 
 	 
