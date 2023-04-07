@@ -232,7 +232,7 @@ _locate ;
 		 arg1=$1
 		 arg2=$2
 		 if [[ $2 == "" ]] ; then arg2=test echo укажите что требуется найти ; fi ;
-		 ypr-f $arg1 $arg2 ;
+		 ypr-f ;
 	 }	
 	 
   }
