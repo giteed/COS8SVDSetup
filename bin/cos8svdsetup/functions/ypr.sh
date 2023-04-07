@@ -52,11 +52,9 @@ _more ;
 
 function _provides() {
 		
-		arg_2=("$1")
+     arg_2=("$1")
 		
-		if [[ $arg_2 == "" ]] ; then arg_2=test && echo -e "укажите что требуется найти (теперь arg_2=test)" && return ; fi ;
-		echo -e "arg_2 - $arg_2";
-		echo -e "\$1 - $1";
+     if [[ $arg_2 == "" ]] ; then echo -e " Укажите вторым аргументом, что требуется найти" && return ; fi ;
 		
 	 ttb=$(echo -e "    
  ⎧ *** Репозитории предоставляющие программу: "$arg_2" ***
