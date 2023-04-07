@@ -126,7 +126,8 @@ function _locate() {
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
  | этом сервере, совпадающих с: "$arg_2"
  ⎩ # locate "$arg_2": ") && lang=cr && bpn_p_lang ;	 echo ;
- 	echo -e $(whatis $2) 2>/dev/null ;
+ 
+ ttb=$(echo -e "$(whatis $2) 2>/dev/null ") && lang=cr && bpn_p_lang ;
 	 
  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) 2>/dev/null | column -t ;)
 	") && lang=cr && bpn_p_lang ;	
