@@ -1,16 +1,5 @@
 #!/bin/bash
 
-arg1=$1
-arg2=$2
-
-#function _s2() {
-	if [[ $2 == "" ]] ; then arg2=test && echo -e "укажите что требуется найти (теперь arg2=test)"; fi ;
-	echo -e "arg2 - $arg2";
-	echo -e "\$2 - $2";
-#}
-
-
-
 function _more() {
 
    ttb=$(echo -e "   
@@ -160,57 +149,117 @@ _locate ;
 
 
 
-# --> Поиск программы/файла локально и в repository по 7 командам
-   function ypr-f() 
+
+
+
+
+
+
+
+
+
+
+
+
+
+   function ypr-f() # Поиск программы/файла локально и в репо
   {
-	 case $arg1 in
+	 case $1 in
 	 
-	 '*' | '.'| h | -h  | --help | help | '')
+	 '*' | '.'| h | -h | --h | -help | --help | help | hel | he | -hel | --hel | -he | --he | '')
 	 
-	 _help ;
-	 ;;
-	 
-	 a | -a | --all)
-	 
-	 _all ;
-	 ;;
-	 
-	 p | -p | --provides )
-	 _s2 ;
-	 _provides ;
-	 ;;
-	 
-	 w | -w | --which)
-	 _which ;
-	 ;;
-	 
-	 t | -t | --type)
-	 _type ;	
+	 _help
 	 
 	 ;;
 	 
-	 e | -e | --whereis)
-	 _whereis ;
+	 -a | -al | -all | --a | --al | --all)
+	 red_prgrm=("$2")
+	 echo -e "\n *** Локальное расположение: "$red_prgrm" ***\n"
+	 echo -e " which - Находит исполняемые файлы(x), алиасы,\n функции, в переменой окружения \$PATH"
+	 echo -en " # which "
+	 echo -en "$2" 
+	 echo -e "\n "
+	 which -a $2 
+	 echo -e "\n\n type - В отличие от which, НЕ осуществляет сразу поиск\n в переменой окружения \$PATH"
+	 echo -e " type - Показывает значение искомой команды или алиаса." 
+	 echo -e " # type $2\n"
+	 type -all $2 
+	 echo -e " \n\n whereis - Ведет поиск в системных каталогах."
+	 echo -e " # whereis $2\n"
+	 whereis $2 
+	 echo -e "\n locate - Ведет поиск файлов/папок, по базе данных на\n этом сервере, совпадающих с: "$red_prgrm" "
+	 echo -e " # locate "$2": \n"
+	 stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | head -n 25 | rg "/$2") ) 2>/dev/null | column -t ;
+	 echo -e "\n ypr с ключом -a или --all - Выводит только 25 первых\n результатов поиска файлов/папок совпадающих с: "$red_prgrm"\n  \n Используйте: # ypr с ключом -l" "$red_prgrm или ypr с ключом --locate" "$red_prgrm\n Для вывода всего списка совпадений в locate."
+	 
+	 echo -e "\n\n *** Репозитории предоставляющие программу: "$red_prgrm" ***\n"
+	 echo -e $(whatis $2) 2>/dev/null ;
+	 echo -e
+	 yum provides $2 ;
+	 echo
+	 yum info $2 ;
+	 unset red_prgrm
+	 
 	 ;;
 	 
-	 l | -l | --locate)
-
-	 ttb=$(echo -e "   
- ⎧ locate - Ведет поиск файлов/папок, по базе данных на
- | этом сервере, совпадающих с: "$arg2"
- ⎩ # locate "$arg2": ") && lang=cr && bpn_p_lang ;
-	 ttb=$(echo -e "  
- $(echo -e $(whatis $arg2 2>/dev/null ;))\n") && lang=cr && bpn_p_lang ; echo ;
-
- ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg2") | (rg "/$arg2" | rg "/$arg2") ) 2>/dev/null | column -t ;)
-	 ") && lang=cr && bpn_p_lang ;	
+	 -p | --p | --provides | -s | --s | --search | -i | --i | --info )
+	 echo -e "\n *** Репозитории предоставляющие программу: "$2" ***\n" ;
+	 echo -e " yum provides - Ищет программные пакеты\n совпадающие с запросом, в установленных на этом\n сервере репозитариях пакетного менеджера yum/dnf\n "
+	 echo -en " "
+	 echo -e $(whatis $2) 2>/dev/null ;
+	 echo
+	 yum provides $2 ;
+	 echo 
+	 yum search $2 ;
+	 echo
+	 yum info $2 ;
+	 ;;
 	 
+	 -w | --w | --which)
+	 echo -e "\n *** Локальное расположение: "$2" ***\n"
+	 echo -e " which - Находит исполняемые файлы(x), алиасы, функции, в переменой окружения \$PATH\n"
+	 echo -en " "
+	 echo -e $(whatis $2) 2>/dev/null ;
+	 echo
+	 echo -en  " # which "
+	 echo -en "$2": 
+	 which -a $2  ;
+	 ;;
 	 
+	 -t | --t | --type)
+	 echo -e "\n type - В отличие от which, НЕ осуществляет сразу поиск в переменой окружения \$PATH"
+	 echo -e " type - Показывает значение искомой команды или алиаса.\n" 
+	 echo -en " "
+	 echo -e $(whatis $2) 2>/dev/null ;
+	 echo
+	 echo -en " # type "
+	 type -all $2 
+	 ;;
+	 
+	 -e | --e | --whereis)
+	 echo -e " \n whereis - Выводит результаты поиска в системных каталогах.\n"
+	 echo -en " "
+	 echo -e $(whatis $2) 2>/dev/null ;
+	 echo
+	 echo -en " # whereis "
+	 whereis $2 
+	 ;;
+	 
+	 -l | --l | --locate)
+	 red_prgrm=("$2")
+	 echo -e "\n *** Локальное расположение: "$2" ***\n"
+	 echo -e " locate - Выводит полный список результов поиска файлов/папок,\n по базе данных на этом сервере, совпадающих с: "$red_prgrm"\n "
+	 echo -en " "
+	 echo -e $(whatis $2) 2>/dev/null ;
+	 echo
+	 echo -e " # locate "$2": "
+	 stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | rg "/$2") ) 2>/dev/null | column -t ;
+	 unset red_prgrm
 	 ;;
 	 
 	 
 	 -rl | --list | -list | --rl)
-
+	 red_prgrm=("$2")
 	 echo -e "\n *** REPO List:  ***\n"
 	 echo -e " yum repolist\n по базе данных на этом сервере\n "
 	 echo -en " "
@@ -219,7 +268,7 @@ _locate ;
 	 GLIG_ASTRX_OF ;
 	 echo -e "Содержимое папки /etc/yum.repos.d/\n"
 	 stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;
-	 
+	 unset red_prgrm
 	 ;;
 	 
 	 
@@ -227,5 +276,5 @@ _locate ;
 	 
 	 ;;
 	 esac 
-	 
+	 unset red_prgrm
   }
