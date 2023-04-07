@@ -158,35 +158,35 @@ _locate ;
   {
 	 case $1 in
 	 
-	 '*' | '.'| h | -h | --h | -help | --help | help | hel | he | -hel | --hel | -he | --he | '')
+	 '*' | '.'| h | -h  | --help | help | '')
 	 
 	 _help ;
 	 ;;
 	 
-	 -a | -al | -all | --a | --al | --all)
+	 a | -a | --all)
 	 
 	 _all ;
 	 ;;
 	 
-	 -p | --p | --provides | -s | --s | --search | -i | --i | --info )
+	 p | -p | --provides )
 	 
 	 _provides ;
 	 ;;
 	 
-	 -w | --w | --which)
+	 w | -w | --which)
 	 _which ;
 	 ;;
 	 
-	 -t | --t | --type)
+	 t | -t | --type)
 	 _type ;	
 	 
 	 ;;
 	 
-	 -e | --e | --whereis)
+	 e | -e | --whereis)
 	 _whereis ;
 	 ;;
 	 
-	 -l | --l | --locate)
+	 l | -l | --locate)
 
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
