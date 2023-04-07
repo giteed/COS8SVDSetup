@@ -77,6 +77,9 @@ function _provides() {
 
 function _which() {
 	arg_2=("$1")
+	
+	 if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти!\n ⎩ Например: ypr -wh nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
+	 	
 	 ttb=$(echo -e "   
  ⎧ *** Локальное расположение: "$arg_2" ***
  | which - Находит исполняемые файлы(x), алиасы,
