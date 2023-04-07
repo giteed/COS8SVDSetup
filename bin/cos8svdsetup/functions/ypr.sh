@@ -5,7 +5,8 @@ arg2=$2
 
 #function _s2() {
 	if [[ $2 == "" ]] ; then arg2=test && echo -e "укажите что требуется найти (теперь arg2=test)"; fi ;
-	echo -e "$arg2";
+	echo -e "arg2 - $arg2";
+	echo -e "\$2 - $2";
 #}
 
 
