@@ -100,9 +100,9 @@ function ypr() {
  ⎩ # type $2") && lang=cr && bpn_p_lang ;	
  
  ttb=$(echo -e "  
-	 yum provides $2 ;
+	 $(yum provides $2 ;)
 	 echo
-	 yum info $2 ;
+	 $(yum info $2 ;)
 	") && lang=cr && bpn_p_lang ;	
 	
 	 unset red_prgrm
