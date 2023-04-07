@@ -166,10 +166,10 @@ function _repo_list() {
 	arg_2=("$2")
 	
 	ttb=$(echo -e "   
-	 *** REPO List:  ***\n"
-	 yum repolist\n по базе данных на этом сервере\n "
+	 *** REPO List:  ***\n
+	 yum repolist\n по базе данных на этом сервере
 	 
-	 $(yum repolist) 2>/dev/null ;
+	 $(yum repolist 2>/dev/null ) 
 	 
 	 $(GLIG_ASTRX_OF)
 	 Содержимое папки /etc/yum.repos.d/
