@@ -166,14 +166,15 @@ function _repo_list() {
 	arg_2=("$2")
 	GLIG_ASTRX_OF
 	ttb=$(echo -e "   
-	 *** REPO List:  ***
-	 yum repolist
-	 по базе данных на этом сервере
+ ⎧ *** REPO List:  ***
+ | # yum repolist
+ ⎩ по базе данных на этом сервере
 	 
 	 $(yum repolist) 
-	 Содержимое папки /etc/yum.repos.d/
+ 
+ | Содержимое папки /etc/yum.repos.d/
 	 
-	 $(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)
+$(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)
 	 ") && lang=cr && bpn_p_lang ;
 	 
 	 GLIG_ASTRX_ON ;
