@@ -182,16 +182,10 @@ _locate $arg_2;
 	 ;;
 	 
 	 -p | --p | --provides | -s | --s | --search | -i | --i | --info )
-	 echo -e "\n *** Репозитории предоставляющие программу: "$2" ***\n" ;
-	 echo -e " yum provides - Ищет программные пакеты\n совпадающие с запросом, в установленных на этом\n сервере репозитариях пакетного менеджера yum/dnf\n "
-	 echo -en " "
-	 echo -e $(whatis $2) 2>/dev/null ;
-	 echo
-	 yum provides $2 ;
-	 echo 
-	 yum search $2 ;
-	 echo
-	 yum info $2 ;
+	 arg_2=("$2")
+	  _provides $arg_2;
+	 
+	 unset arg_2 
 	 ;;
 	 
 	 -w | --w | --which)
