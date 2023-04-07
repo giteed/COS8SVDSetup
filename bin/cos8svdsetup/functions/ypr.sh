@@ -73,16 +73,16 @@ function _provides() {
 
 
 function _which() {
-	red_prgrm=("$2")
+	red_prgrm=("$1")
 	 ttb=$(echo -e "   
  ⎧ *** Локальное расположение: "$red_prgrm" ***
  | which - Находит исполняемые файлы(x), алиасы,
  | функции, в переменой окружения \$PATH 
- ⎩ # which $2") && lang=cr && bpn_p_lang ;
+ ⎩ # which $1") && lang=cr && bpn_p_lang ;
 
 ttb=$(echo -en "
- $(which -a $2 )\n
- $(type -all $2 )\n ") && lang=cr && bpn_p_lang ;
+ $(which -a $1 )\n
+ $(type -all $1 )\n ") && lang=cr && bpn_p_lang ;
 
 
 	 }
