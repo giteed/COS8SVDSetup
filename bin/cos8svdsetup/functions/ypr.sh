@@ -93,16 +93,21 @@ function ypr() {
  ⎧ *** Репозитории предоставляющие программу: "$red_prgrm" ***
  ⎩ $(whatis $2 2>/dev/null) \n ") && lang=cr && bpn_p_lang ;
  
-
-	 yum provides $2 ;
-	 echo
-	 yum info $2 ;
-	 unset red_prgrm
 	 ttb=$(echo -e "   
  ⎧ type - В отличие от which, НЕ осуществляет сразу поиск
  | в переменой окружения \$PATH
  | type - Показывает значение искомой команды или алиаса. 
- ⎩ # type $2") && lang=cr && bpn_p_lang ;	 
+ ⎩ # type $2") && lang=cr && bpn_p_lang ;	
+ 
+ ttb=$(echo -e "  
+	 yum provides $2 ;
+	 echo
+	 yum info $2 ;
+	") && lang=cr && bpn_p_lang ;	
+	
+	 unset red_prgrm
+ 
+
 	 ;;
 	 
 	 -p | --p | --provides | -s | --s | --search | -i | --i | --info )
