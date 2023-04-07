@@ -5,6 +5,7 @@ function ypr() {
 	ypr-f ;
 }	
 
+if [[ $2 == "" ]] ; then echo укажите что требуется найти ; fi ;
 
 function _more() {
 
