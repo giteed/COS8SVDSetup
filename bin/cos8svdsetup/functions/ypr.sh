@@ -60,12 +60,9 @@ function ypr() {
  | функции, в переменой окружения \$PATH 
  ⎩ # which ") && lang=cr && bpn_p_lang ;
 
-	 ttb=$(echo -en "
-	 $(echo -en "$2" )
-	 $(echo -e "\n ")
-	 $(which -a $2 )
- 	 $(type -all $2 )
-	  ") && lang=cr && bpn_p_lang ;
+ttb=$(echo -en " $(echo -en "$2" )
+$(which -a $2 )
+$(type -all $2 ) ") && lang=cr && bpn_p_lang ;
 	  
 	 
 	 ttb=$(echo -e "    
