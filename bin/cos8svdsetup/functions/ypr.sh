@@ -1,11 +1,10 @@
 #!/bin/bash
 
+arg1=$1
+arg2=$2
 
 function _s2() {
 	if [[ $2 == "" ]] ; then arg2=test echo укажите что требуется найти ; fi ;
-	arg1=$1
-	arg2=$2
-
 }
 
 function ypr() {
