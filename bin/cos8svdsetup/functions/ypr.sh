@@ -128,12 +128,12 @@ function _locate() {
 
 
 function _all() {
-
-_provides ;
-_which ;
-_type ;	
-_whereis ;
-_locate ;
+arg_2=("$1")
+_provides $arg_2 ;
+_which $arg_2;
+_type $arg_2;	
+_whereis $arg_2;
+_locate $arg_2;
 
 	 ttb=$(echo -e "   
  ⎧ ypr с ключом -a или --all - Выводит только 25 первых
