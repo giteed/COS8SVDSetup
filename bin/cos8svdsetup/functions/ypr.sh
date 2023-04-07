@@ -53,13 +53,11 @@ _more ;
 function _provides() {
 	
 	
-	function _s2() {
+
 		if [[ $1 == "" ]] ; then arg_2=test && echo -e "укажите что требуется найти (теперь arg_2=test)"; fi ;
 		echo -e "arg2 - $arg_2";
 		echo -e "\$1 - $1";
-	}
-	
-	_s2 ;
+
 	
 	
 	arg_2=("$1")
