@@ -51,6 +51,17 @@ _more ;
 
 
 function _provides() {
+	
+	
+	function _s2() {
+		if [[ $1 == "" ]] ; then arg_2=test && echo -e "укажите что требуется найти (теперь arg_2=test)"; fi ;
+		echo -e "arg2 - $arg_2";
+		echo -e "\$1 - $1";
+	}
+	
+	_s2 ;
+	
+	
 	arg_2=("$1")
 	 ttb=$(echo -e "    
  ⎧ *** Репозитории предоставляющие программу: "$arg_2" ***
@@ -65,13 +76,10 @@ function _provides() {
   
   | Попробуйте искать командой: 
   | # yum search $arg_2
-  
  ") && lang=cr && bpn_p_lang ;	
-
-
-
- _more ;
-
+ 
+	 _more ;
+	 
 	 }
 
 
