@@ -126,7 +126,8 @@ function _locate() {
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
  | этом сервере, совпадающих с: "$arg_2"
  ⎩ # locate "$arg_2": ") && lang=cr && bpn_p_lang ;	 echo ;
-
+ 	echo -e $(whatis $2) 2>/dev/null ;
+	 
  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) 2>/dev/null | column -t ;)
 	") && lang=cr && bpn_p_lang ;	
 
@@ -180,60 +181,52 @@ _locate $arg_2;
 	 ;;
 	 
 	 -a | -al | -all | --a | --al | --all)
+	 
 	 arg_2=("$2")
 	 _all $arg_2;
-
 	 unset arg_2
 	 
 	 ;;
 	 
+	 
 	 -p | --p | --provides | -s | --s | --search | -i | --i | --info )
+	 
 	 arg_2=("$2")
 	  _provides $arg_2;
-	 
 	 unset arg_2 
+	 
 	 ;;
 	 
 	 -w | --w | --which)
-	 echo -e "\n *** Локальное расположение: "$2" ***\n"
-	 echo -e " which - Находит исполняемые файлы(x), алиасы, функции, в переменой окружения \$PATH\n"
-	 echo -en " "
-	 echo -e $(whatis $2) 2>/dev/null ;
-	 echo
-	 echo -en  " # which "
-	 echo -en "$2": 
-	 which -a $2  ;
+	 
+	 arg_2=("$2")
+	   _which $arg_2;
+	  unset arg_2 
+	 
 	 ;;
 	 
 	 -t | --t | --type)
-	 echo -e "\n type - В отличие от which, НЕ осуществляет сразу поиск в переменой окружения \$PATH"
-	 echo -e " type - Показывает значение искомой команды или алиаса.\n" 
-	 echo -en " "
-	 echo -e $(whatis $2) 2>/dev/null ;
-	 echo
-	 echo -en " # type "
-	 type -all $2 
+	 
+	 arg_2=("$2")
+	  _type $arg_2;
+	  unset arg_2 
+	 
 	 ;;
 	 
 	 -e | --e | --whereis)
-	 echo -e " \n whereis - Выводит результаты поиска в системных каталогах.\n"
-	 echo -en " "
-	 echo -e $(whatis $2) 2>/dev/null ;
-	 echo
-	 echo -en " # whereis "
-	 whereis $2 
+	 
+	 arg_2=("$2")
+	  _whereis $arg_2;
+	  unset arg_2 
+	 
 	 ;;
 	 
 	 -l | --l | --locate)
+	 
 	 arg_2=("$2")
-	 echo -e "\n *** Локальное расположение: "$2" ***\n"
-	 echo -e " locate - Выводит полный список результов поиска файлов/папок,\n по базе данных на этом сервере, совпадающих с: "$arg_2"\n "
-	 echo -en " "
-	 echo -e $(whatis $2) 2>/dev/null ;
-	 echo
-	 echo -e " # locate "$2": "
-	 stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | rg "/$2") ) 2>/dev/null | column -t ;
-	 unset arg_2
+	  _locate $arg_2;
+	  unset arg_2 
+	  
 	 ;;
 	 
 	 
