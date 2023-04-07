@@ -22,7 +22,7 @@ function _help() {
  ⎧ which - Находит исполняемые файлы(x), алиасы,
  | функции, в переменой окружения \$PATH
  | сервере репозитариях пакетного менеджера yum/dnf
- ⎩ Использование: ypr с ключом -w или --which ") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: ypr с ключом -wh или --which ") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ type - В отличие от which, type НЕ осуществляет
@@ -32,7 +32,7 @@ function _help() {
 
 	 ttb=$(echo -e "   
  ⎧ whereis - Ведет поиск в системных каталогах.
- ⎩ Использование: ypr с ключом -e или --whereis") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: ypr с ключом -ws или --whereis") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов и папок, по базе данных,
@@ -209,7 +209,7 @@ function ypr-f() {
 	 ;;
 	 
 	 
-	 -w | --w | --which)
+	 -wh | --wh | --which)
 	 
 	 arg_2=("$2")
 	 _which $arg_2;
@@ -227,7 +227,7 @@ function ypr-f() {
 	 ;;
 	 
 	 
-	 -e | --e | --whereis)
+	 ws | -ws | --whereis)
 	 
 	 arg_2=("$2")
 	 _whereis $arg_2;
@@ -236,7 +236,7 @@ function ypr-f() {
 	 ;;
 	 
 	 
-	 -l | --l | --locate)
+	 l | -l | --locate)
 	 
 	 arg_2=("$2")
 	 _locate $arg_2;
@@ -245,7 +245,7 @@ function ypr-f() {
 	 ;;
 	 
 	 
-	 -rl | --list | -list | --rl)
+	 -rl | --repo)
 	 
 	 arg_2=("$2")
 	 _repo_list
