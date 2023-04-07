@@ -59,15 +59,15 @@ function ypr() {
  | which - Находит исполняемые файлы(x), алиасы,
  | функции, в переменой окружения \$PATH 
  ⎩ # which ") && lang=cr && bpn_p_lang ;
- 
-	 echo -en "   "
-	 echo -en "$2" 
-	 echo -e "\n "
-	 which -a $2 
-	 
 
- 
- 	 type -all $2 
+	 ttb=$(echo -e "    
+	 echo -en "   "
+	 $(echo -en "$2" )
+	 echo -e "\n "
+	 $(which -a $2 )
+ 	 $(type -all $2 )
+	  ") && lang=cr && bpn_p_lang ;
+	  
 	 
 	 ttb=$(echo -e "    
  ⎧ whereis - Ведет поиск в системных каталогах.
@@ -103,7 +103,7 @@ function ypr() {
 	 $(yum provides $2 ;)
 	 echo
 	 $(yum info $2 ;)
-	") && lang=cr && bpn_p_lang ;	
+	") && lang=nix && bpn_p_lang ;	
 	
 	 unset red_prgrm
  
