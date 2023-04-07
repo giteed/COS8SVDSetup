@@ -8,7 +8,7 @@ function _s2() {
 }
 
 function ypr() {
-	ypr-f ;
+	ypr-f $1 $2;
 }	
 
 
