@@ -6,7 +6,7 @@ function ypr() {
 }	
 
 function _s2() {
-	if [[ $2 == "" ]] ; then echo укажите что требуется найти && return ; fi ;
+	if [[ $2 == "" ]] ; then echo укажите что требуется найти ; fi ;
 	exit 0;
 }
 
