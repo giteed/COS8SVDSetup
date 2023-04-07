@@ -8,6 +8,7 @@ function _more() {
  
 }
 
+
 function _help() {
 	 ttb=$(echo -e "\n | ypr - Совмещает в себе для удобства\n | набор следующих программ и утилит: ") && lang=cr && bpn_p_lang ;
 	 
@@ -43,11 +44,9 @@ function _help() {
  | Будет искать используя все эти программы.
  ⎩ ypr с ключом -h или --help Выводит эту справку. ") && lang=cr && bpn_p_lang ;	 
 
-_more ;
+ 	_more ;
 	
 }
-
-
 
 
 function _provides() {
@@ -73,8 +72,7 @@ function _provides() {
  
 	 _more ;
 	 
-	 }
-
+}
 
 
 function _which() {
@@ -89,8 +87,7 @@ ttb=$(echo -en "
  $(which -a $1 )\n
  $(type -all $1 )\n ") && lang=cr && bpn_p_lang ;
 
-
-	 }
+}
 
 
 function _type() {
@@ -106,7 +103,8 @@ function _type() {
 	 $(type $arg_2 ;)
 	") && lang=nix && bpn_p_lang ;	
 	
-	 }
+}
+
 
 function _whereis() {
 	arg_2=("$1")
@@ -117,7 +115,7 @@ function _whereis() {
 ttb=$(echo -e " 
  $(whereis $arg_2)\n") && lang=cr && bpn_p_lang ; 
  
-	 }
+}
 
 
 function _locate() {
@@ -135,16 +133,16 @@ function _locate() {
  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) 2>/dev/null | column -t ;)
 	") && lang=cr && bpn_p_lang ;	
 
-	 }
+}
 
 
 function _all() {
 arg_2=("$1")
-_provides $arg_2 ;
-_which $arg_2;
-_type $arg_2;	
-_whereis $arg_2;
-_locate $arg_2;
+	_provides $arg_2 ;
+	_which $arg_2;
+	_type $arg_2;	
+	_whereis $arg_2;
+	_locate $arg_2;
 
 	 ttb=$(echo -e "   
  ⎧ ypr с ключом -a или --all - Выводит только 25 первых
@@ -155,7 +153,7 @@ _locate $arg_2;
  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)
  ") && lang=cr && bpn_p_lang ;
 
- _more ;
+ 	_more ;
 
 }
 
@@ -181,17 +179,9 @@ $(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)
 }
 
 
-
-
-
-
-
-
-
-
-
-   function ypr-f() # Поиск программы/файла локально и в репо
-  {
+# Поиск программы/файла локально и в репо 
+function ypr-f() {
+	   
 	 case $1 in
 	 
 	 '*' | '.'| h | -h | --h | -help | --help | help | hel | he | -hel | --hel | -he | --he | '')
@@ -213,7 +203,7 @@ $(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)
 	 -p | --p | --provides | -s | --s | --search | -i | --i | --info )
 	 
 	 arg_2=("$2")
-	  _provides $arg_2;
+	 _provides $arg_2;
 	 unset arg_2 
 	 
 	 ;;
@@ -222,8 +212,8 @@ $(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)
 	 -w | --w | --which)
 	 
 	 arg_2=("$2")
-	   _which $arg_2;
-	  unset arg_2 
+	 _which $arg_2;
+	 unset arg_2 
 	 
 	 ;;
 	 
@@ -231,8 +221,8 @@ $(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)
 	 -t | --t | --type)
 	 
 	 arg_2=("$2")
-	  _type $arg_2;
-	  unset arg_2 
+	 _type $arg_2;
+	 unset arg_2 
 	 
 	 ;;
 	 
@@ -240,8 +230,8 @@ $(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)
 	 -e | --e | --whereis)
 	 
 	 arg_2=("$2")
-	  _whereis $arg_2;
-	  unset arg_2 
+	 _whereis $arg_2;
+	 unset arg_2 
 	 
 	 ;;
 	 
@@ -249,8 +239,8 @@ $(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)
 	 -l | --l | --locate)
 	 
 	 arg_2=("$2")
-	  _locate $arg_2;
-	  unset arg_2 
+	 _locate $arg_2;
+	 unset arg_2 
 	  
 	 ;;
 	 
@@ -267,6 +257,9 @@ $(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)
 	 *)
 	 
 	 ;;
+	 
+	 
 	 esac 
+	 
 	 unset arg_2
   }
