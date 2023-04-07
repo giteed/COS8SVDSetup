@@ -67,7 +67,7 @@ alias mkdir='mkdir -p'
 
 ### yum
 
-alias ypr='GLIG_ASTRX_ON && ypr-f'
+alias ypr='GLIG_ASTRX_ON && ypr-f $1 $2'
 
 
 ### test-labz sync & rm vdsetup
