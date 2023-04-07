@@ -166,16 +166,18 @@ function _repo_list() {
 	arg_2=("$2")
 	
 	ttb=$(echo -e "   
-	 *** REPO List:  ***\n
-	 yum repolist\n по базе данных на этом сервере
+	 *** REPO List:  ***
+	 yum repolist
+	 по базе данных на этом сервере
 	 
-	 $(yum repolist 2>/dev/null ) 
+	 $(yum repolist) 
 	 
 	 $(GLIG_ASTRX_OF)
 	 Содержимое папки /etc/yum.repos.d/
-	 $(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)
+	 
 	 
 	 ") && lang=cr && bpn_p_lang ;
+	 stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;
 }
 
 
