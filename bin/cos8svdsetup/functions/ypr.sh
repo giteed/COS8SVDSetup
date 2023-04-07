@@ -5,7 +5,11 @@ function ypr() {
 	ypr-f ;
 }	
 
-if [[ $2 == "" ]] ; then echo укажите что требуется найти ; fi ;
+function _s2() {
+	if [[ $2 == "" ]] ; then echo укажите что требуется найти ; fi ;
+	exit ;
+}
+
 
 function _more() {
 
@@ -58,6 +62,8 @@ _more ;
 
 
 function _provides() {
+	_s2 ;
+	
 	 ttb=$(echo -e "    
  ⎧ *** Репозитории предоставляющие программу: "$2" ***
  | yum provides - Ищет программные пакеты
