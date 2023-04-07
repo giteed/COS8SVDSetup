@@ -80,9 +80,8 @@ function ypr() {
  | этом сервере, совпадающих с: "$red_prgrm"
  ⎩ # locate "$2": ") && lang=cr && bpn_p_lang ;	 
 
-	 ttb=$(echo -e "   
-
-	 stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | head -n 25 | rg "/$2") ) 2>/dev/null | column -t ;
+ ttb=$(echo -e " 
+	 $(stat -c '%a:%A %U %G %n' $( (locate "/$2") | (rg "/$2" | head -n 25 | rg "/$2") ) 2>/dev/null | column -t ;)
 	") && lang=cr && bpn_p_lang ;	 
 	
 	
@@ -94,7 +93,7 @@ function ypr() {
 	 yum provides $2 ;
 	 echo
 	 yum info $2 ;
-
+	 unset red_prgrm
 	 ttb=$(echo -e "   
  ⎧ type - В отличие от which, НЕ осуществляет сразу поиск
  | в переменой окружения \$PATH
