@@ -29,28 +29,28 @@ function _help() {
  ⎧ yum provides - Ищет программные пакеты
  | совпадающие с запросом, в установленных на этом
  | сервере репозитариях пакетного менеджера yum/dnf
- ⎩ Использование: # ypr с ключом -p или --provides ") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: ypr с ключом -p или --provides ") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ which - Находит исполняемые файлы(x), алиасы,
  | функции, в переменой окружения \$PATH
  | сервере репозитариях пакетного менеджера yum/dnf
- ⎩ Использование: # ypr с ключом -w или --which ") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: ypr с ключом -w или --which ") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ type - В отличие от which, type НЕ осуществляет
  | сразу поиск в переменой окружения \$PATH
  | type показывает  значение искомой команды или алиаса.
- ⎩ Использование: # ypr с ключом -t или --type") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: ypr с ключом -t или --type") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ whereis - Ведет поиск в системных каталогах.
- ⎩ Использование: # ypr с ключом -e или --whereis") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: ypr с ключом -e или --whereis") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов и папок, по базе данных,
  | от / совпадающих с ключевым словом.
- ⎩ Использование: # ypr с ключом -l или --locate ") && lang=cr && bpn_p_lang ;	 
+ ⎩ Использование: ypr с ключом -l или --locate ") && lang=cr && bpn_p_lang ;	 
 
 	 ttb=$(echo -e "   
  ⎧ ypr с ключом -a или --all или запрос без -ключа
@@ -166,7 +166,7 @@ _locate ;
 # --> Поиск программы/файла локально и в repository по 7 командам
    function ypr-f() 
   {
-	 case $arg1 in
+	 case $1 in
 	 
 	 '*' | '.'| h | -h  | --help | help | '')
 	 
