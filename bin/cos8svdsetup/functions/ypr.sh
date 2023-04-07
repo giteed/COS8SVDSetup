@@ -3,10 +3,10 @@
 arg1=$1
 arg2=$2
 
-function _s2() {
+#function _s2() {
 	if [[ $2 == "" ]] ; then arg2=test && echo -e "укажите что требуется найти (теперь arg2=test)"; fi ;
 	echo -e "$arg2";
-}
+#}
 
 
 
