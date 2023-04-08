@@ -89,7 +89,7 @@ function bat_Check_or_install() {
     # ФУНКЦИЯ: Установка из дропбокса архива nano-syntax, так как cat получает пустое значение, потому что /root/.nanorc нет или он пуст
    function NanoSyntaxIN() 
    {
-           ttb=$(echo -e "\n ⎧ Скачиваю / распаковываю и копирую содержимое архива:\n | nano-syntax.tar.gz в /usr/share/ \n | Копирую /tmp/installer/nano-syntax/.nanorc в:\n ⎩ /root/ \n") && lang="nix" && bpn_p_lang ;
+           ttb=$(echo -e "\n ⎧ Скачиваю / распаковываю и копирую содержимое архива:\n | nano-syntax.tar.gz в /usr/share/ \n | Копирую /tmp/installer/nano-syntax/.nanorc в: \n ⎩ /root/ \n") && lang="nix" && bpn_p_lang ;
            
             ( ( mkdir -p /tmp/installer && cd /tmp/installer && wget https://www.dropbox.com/s/f6hceijljbprvny/nano-syntax.tar.gz &>/dev/null && tar -xzvf nano-syntax.tar.gz &>/dev/null && rm -f nano-syntax.tar.gz && cd /tmp/installer/nano-syntax/ && rm -rf /usr/share/nano/ && cp -r --force /tmp/installer/nano-syntax/nano/ /usr/share/ && cp -n /tmp/installer/nano-syntax/.nanorc /root/ ) && ttb=$(echo -e "\n ⎧ Настройка nano-syntax завершена\n ⎩ ($( green_tick )) - Nano syntax $( green_OK )") && lang=help && bpn_p_lang ) || ttb=$(echo -en "\n Функция NanoSyntaxIN завешилась с ошибкой: " && error_MSG ; ) && lang=help && bpn_p_lang ;
            
