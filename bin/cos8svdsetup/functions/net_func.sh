@@ -7,14 +7,11 @@ function http() {
 
 
 # Функция информация о памяти системы
-function mem() { ( echo && free -h -t ) | ( bat  --paging=never -l meminfo -p 2>/dev/null ) || ( echo -e '' && free -h -t ) }
+function mem() { ttb=$( echo -e "\n $( free -h -t )" && lang=meminfo && bpn_p_lang ; }
 
 
 # Функция информации о доступном дисковом пространстве на файловой системе
-function df() {  
-  ttb=$( echo -e "\n $(/usr/bin/df -kTh)") && lang_cr && bpn_p_lang ;
-    
-   }
+function df() { ttb=$( echo -e "\n $(/usr/bin/df -kTh)") && lang_cr && bpn_p_lang ; }
 
 
 # ФУНКЦИЯ: Мой ip
