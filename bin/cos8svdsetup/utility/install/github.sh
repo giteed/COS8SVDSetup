@@ -4,8 +4,6 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-lang_x 2>/dev/null ;
-
 # --> Загрузка функции из этого файла проверяет, запущен ли скрипт с правами суперпользователя (root) в Linux.
 . /root/vdsetup.2/bin/functions/run_as_root.sh 2>/dev/null ;
 
@@ -39,10 +37,10 @@ function GitHub_install_NO_bat() {
 
 # --> ФУНКЦИЯ: Проверка установки GitHub и если не найден - пишет "не найден", если найден обновит sudo yum update gh -y и покажет версию
 function GitHub_info_and_update() {
-	echo -e "\n   Проверка установки GitHub: " ;
+	echo -e "\n Проверка установки GitHub: " ;
 	echo -e " $(green_star) Если GitHub не установлен - будет произведена его установка " ;
 	echo -e " $(green_star) Если GitHub установлен - будет произведено обновление\n" ;
-	GitHubCH || echo -en " gh GitHub    : $(found_MSG) \n" && echo ; cat /etc/yum.repos.d/gh-cli.repo 2>/dev/null | grep name 2>/dev/null | bat --paging=never -l nix -p 2>/dev/null ; ww gh 2>/dev/null ; 
+	GitHubCH || echo -en " gh GitHub    : $(found_MSG) \n" && echo ; cat /etc/yum.repos.d/gh-cli.repo 2>/dev/null | grep name 2>/dev/null | bat --paging=never -l nix -p 2>/dev/null ;  
 
 # --> ФУНКЦИЯ: покажет версию при участии bat
 	function version_GH_bat() {
@@ -60,7 +58,7 @@ function GitHub_info_and_update() {
 # --> запустит ФУНКЦИЮ Проверка установки GitHub
 GitHub_info_and_update ; 
 echo ;
-echo -e "\n		$(green_star) GitHub reference";
-echo -e "		$(red_U0023) gh reference";
+echo -e "\n	$(green_star) GitHub reference";
+echo -e "	$(red_U0023) gh reference";
 
 exit 0 ; 

@@ -83,6 +83,9 @@ lang_x 2>/dev/null ;
    ch_screen ;
 # Функция: проверяет или устанавливает Nano (syntax)
    NanoSyntaxCH ;
+# Проверка на наличие Rar / Unrar или установка   
+ unrar.sh
+ 
 
 exit 0 ; 
 
