@@ -1,5 +1,5 @@
 # COS8SVDSetup 
-Version 2.1.642
+Version 2.1.643
 
 ![vdsetup_logo.png](/images/vdsetup_logo.png)
 ## Script for initial preparation of fresh VDS based on CentOS 8 Stream
@@ -23,7 +23,7 @@ Version 2.1.642
 Затем скопируйте данную строку, и запустите на свежем VDS c Linux CentOS 8 Stream.
 
 ```console
-cd /root/ ; (dnf -y install rsync rsync-daemon git mc); (echo); (git clone https://github.com/giteed/COS8SVDSetup.git /root/COS8SVDSetup) ; (/root/COS8SVDSetup/bin/cos8svdsetup/preloader.sh) ;
+cd /root/ ; (dnf -y install rsync rsync-daemon git); (echo); (git clone https://github.com/giteed/COS8SVDSetup.git /root/COS8SVDSetup) ; (/root/COS8SVDSetup/bin/cos8svdsetup/preloader.sh) ;
 ```
 
 
