@@ -9,7 +9,7 @@ echo ;
 
 
 function install_ramfetch() {
-    cd ~/temp/ ; git clone https://github.com/giteed/ramfetch.git ; cp ramfetch/ramfetch /usr/local/bin/ ; chmod +x /usr/local/bin/ramfetch ; rm -rf ramfetch/ ;
+    mkdir -p ~/temp/ ; cd ~/temp/ ; git clone https://github.com/giteed/ramfetch.git ; cp ramfetch/ramfetch /usr/local/bin/ ; chmod +x /usr/local/bin/ramfetch ; rm -rf ramfetch/ ;
 }
 
 function remove_ramfetch() {
@@ -22,7 +22,7 @@ function install() {
     
 ttb=$(echo -e "
  ⎧ Устанавливаем ramfetch (GitHub):
- |
+ | # mkdir -p ~/temp/
  | # cd ~/temp/ ; git clone https://github.com/giteed/ramfetch.git
  | # cp ramfetch/ramfetch /usr/local/bin/ 
  | # chmod +x /usr/local/bin/ramfetch 
