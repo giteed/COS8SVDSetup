@@ -26,7 +26,7 @@ function epel_repository_Check_or_install() {
       
 # Это проверка существования файла репозитория /etc/yum.repos.d/epel.repo, который является индикатором его наличия. 
 # Если файл отсутствует, значит репозиторий не установлен. Тогда происходит попытка установить его
-      [[ -z $(cat /etc/yum.repos.d/epel.repo 2>/dev/null) ]] && ( dnf -y install epel-release 2>/dev/null && msg_in1 || msg_in2 ) || msg_in3 ;
+      [[ -z $(cat /etc/yum.repos.d/epel.repo 2>/dev/null) ]] && ( dnf -y install epel-release tar 2>/dev/null && msg_in1 || msg_in2 ) || msg_in3 ;
       
 }
 

@@ -19,14 +19,14 @@ function GitHub_install() {
 function GitHub_install_bat() {
 		sudo dnf install -y 'dnf-command(config-manager)' | bat --paging=never -l nix -p 2>/dev/null ;
 		sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo | bat --paging=never -l nix -p 2>/dev/null ;
-		sudo dnf install -y gh | bat --paging=never -l nix -p 2>/dev/null ;
+		sudo dnf install -y gh tar | bat --paging=never -l nix -p 2>/dev/null ;
 	}
 	
 # --> Функция: проверка обновление или установка gitHub без участия bat	
 function GitHub_install_NO_bat() {
 		sudo dnf install -y 'dnf-command(config-manager)' ;
 		sudo dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo ;
-		sudo dnf install -y gh ;
+		sudo dnf install -y gh tar 2>/dev/null ;
 	}
 	GitHub_install_bat || GitHub_install_NO_bat ;
 }
