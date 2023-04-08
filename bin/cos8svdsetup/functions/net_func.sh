@@ -2,16 +2,16 @@
 
 
 function http() {
-    ( cat /tmp/nginx_http_ip | bat --paging=never -l nix -p ; ) 2>/dev/null || ( cat /tmp/nginx_http_ip )
+    ( cat /tmp/nginx_http_ip | bat --paging=never -l nix -p 2>/dev/null ) || ( cat /tmp/nginx_http_ip )
 }
 
 
 # Функция информация о памяти системы
-function mem() { ( echo && free -h -t ) | ( bat  --paging=never -l meminfo -p ) 2>/dev/null  || ( echo -e '' && free -h -t ) }
+function mem() { ( echo && free -h -t ) | ( bat  --paging=never -l meminfo -p 2>/dev/null ) || ( echo -e '' && free -h -t ) }
 
 
 # Функция информации о доступном дисковом пространстве на файловой системе
-function df() {  ( echo && /usr/bin/df -kTh | bat --paging=never -l nix -p ) 2>/dev/null || ( echo && /usr/bin/df -kTh ) }
+function df() {  ( echo && /usr/bin/df -kTh | bat --paging=never -l nix -p 2>/dev/null ) || ( echo && /usr/bin/df -kTh ) }
 
 
 # ФУНКЦИЯ: Мой ip
