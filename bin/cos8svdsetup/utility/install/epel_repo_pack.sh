@@ -78,9 +78,9 @@ lang_x 2>/dev/null ;
   # ФУНКЦИЯ: Установка fzf
    function fzfIN() 
    { 
-		   ttb=$(echo -e "\n ⎧  Установка fzf. ") && lang=nix && bpn_p_lang ;
+		   ttb=$(echo -e "\n |  Установка fzf. ") && lang=nix && bpn_p_lang ;
 		   
-		   ( ( git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all ) ) && ( echo -e " | ${GREEN}Установка fzf завершена${NC}" && echo -e " | ($( green_tick )) - fzf version $($HOME/.fzf/bin/fzf --version)" && ( echo -e " | Для обновления настроек введите:\n ⎩ ${RED}#${NC} source ${CYAN}~/.bashrc\n${NC}" ) ; ) || ttb=$(echo -en " | Функция fzfIN завешилась с ошибкой: " && error_MSG ) && lang=help && bpn_p_lang ;
+		   ( ( git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all ) ) && ( echo -e "\n ⎧ ${GREEN}Установка fzf завершена${NC}" && echo -e " | ($( green_tick )) - fzf version $($HOME/.fzf/bin/fzf --version)" && ( echo -e " | Для обновления настроек введите:\n ⎩ ${RED}#${NC} source ${CYAN}~/.bashrc\n${NC}" ) ) || ttb=$(echo -en " | Функция fzfIN завешилась с ошибкой: " && error_MSG ) && lang=help && bpn_p_lang ;
 		   # &>/dev/null 
    }  
   
