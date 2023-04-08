@@ -112,7 +112,7 @@ function fzfIN() {
 
 # Проверка на наличие fzf или установка fzf     
 function fzfCH() {
-    ( [[ -z $(fzf --version) ]] ) &>/dev/null  && fzfIN || ttb=$(echo -e "\n | fzf version $(fzf --version") && lang=cr && bpn_p_lang );
+    (( [[ -z $(fzf --version) ]] ) &>/dev/null  && fzfIN || ttb=$(echo -e "\n | fzf version $(fzf --version") && lang=cr && bpn_p_lang );
  }
 
 
