@@ -1,39 +1,7 @@
 #!/bin/bash
 
-    # Source global definitions
-    # --> Прочитать настройки из /etc/bashrc
-    . /root/.bashrc &>/dev/null ;
-    # --> Прочитать настройки:
-    . /root/vdsetup.2/bin/utility/.debug_version_vdsetup.sh &>/dev/null ;
-    . /root/vdsetup.2/bin/utility/.css.sh &>/dev/null ;
-    . /root/vdsetup.2/bin/utility/.varfunc.sh &>/dev/null ;
-    
-    
-    debug_message ;
-    
-    # --> Прочитать функции:
-    
-    . /root/vdsetup.2/bin/utility/list_app_statusCH.sh &>/dev/null ;
-    . /root/vdsetup.2/bin/utility/.dnf-fix-help.sh  &>/dev/null ;
-    . /root/vdsetup.2/bin/utility/.dnf-update-upgrade.sh &>/dev/null ;
-    . /root/vdsetup.2/bin/utility/install/webmin_install.sh &>/dev/null ;
-    . /root/vdsetup.2/bin/utility/swap_edit.sh &>/dev/null ;
-    . /root/vdsetup.2/bin/utility/cockpit_Activate.sh &>/dev/null ;
-    . /root/vdsetup.2/bin/utility/gnome-shell-extentions.sh &>/dev/null ;
-    
-    
-    #. /root/vdsetup.2/bin/utility/reinstall_update_remove_vdsetup.sh &>/dev/null ;
-    
-    # --> Использовать /root/.bash_ali*
-    . /root/.bash_aliases &>/dev/null;
-    . /root/.bash_ali_hosts &>/dev/null;
-    
-    # --> Использовать . /root/vdsetup.2/bin/utility/.root (требует для скрипта права root)
-    . /root/vdsetup.2/bin/utility/.root &>/dev/null ;
-    
-    css ;
-    #echo ;
-    
+
+
     # Функция cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
     cash_var_sh_150_start_and_stop
     
@@ -58,85 +26,7 @@
     }
 
 
-  # ФУНКЦИЯ: Установка дополнительных пакетов
-  function epelIN_epel_repo_pack()
-  {
- 
-    
-    ttb=$( echo -e "\n Установка дополнительных пакетов: epel-release, elrepo-release, kmod-wireguard, wireguard-tools, iptables, python3, ruby, npm, unzip, hstr, lsof, screen, tar, p7zip, mc, nano, whois, wget, curl, atop, htop, nethogs, bpytop, iftop, stacer, yum-utils, net-tools, network-scripts, git, dialog, mlocate qrencode, ncdu, ranger, tldr, whois. \n" ) && bpn_p_lang ; echo ; echo ;
-    
-    dnf install git tar curl wget whois -y &>/dev/null ;
-    dnf install -y epel-release elrepo-release &>/dev/null ;
-    dnf install -y net-tools network-scripts &>/dev/null ;
-    dnf install -y dialog mlocate ncdu ranger tldr &>/dev/null ;
-    
-    ( ( yum install -y iptables qrencode python3 ruby npm unzip hstr lsof screen p7zip mc nano whois atop htop nethogs bpytop iftop stacer yum-utils  -y ) 2>/dev/null ) && ( ( echo -e "\n Установка дополнительных пакетов завершена!" ) && ( echo -e " ($( green_tick )) - packages plus${RED}   | ${NC}посмотреть список пакетов в системе ypr -rl"  ) ) || ( ( echo -en " yum install epelIN_epel_repo_pack: " )  && ( error_MSG ; ) ) ;
-    
-    dnf install -y ncdu 2>/dev/null ;
-    dnf install -y @perl perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect 2>/dev/null ;
-    
-    
-    
-  }
 
-    # Проверка на наличие epel-release : Подготовка CentOS 8: "screen" "epel-release" "mc" "hstr" "nano" "wget" "tar" "p7zip" "htop", "atop" "yum-utils" "net-tools" "network-scripts" "git" "dialog" "mlocate" настройка ".screenrc" :
-    # О программе dialog https://habr.com/ru/post/104981/
-    # ФУНКЦИЯ: epel-release найден
-    function epelOK() 
-        { 
-            echo -e " ($( green_tick )) - epel-release${RED}    | $( green_OK ) ypr -rl" 
-        }
-    
-    # ФУНКЦИЯ: Устанавливаю epel-release + минимально необходимые пакеты
-    function epelIN() 
-     {   
-        # ФУНКЦИЯ: Установка epel-release
-        function epelIN_epel_repo()
-        {
-          ( echo -e " Установка epel-release. ${NC} \n" ) ;
-          ( ( ( yum install epel-release -y ) &>/dev/null ) || ( echo -en " yum install epel-release: " && error_MSG ; ) ) ;
-          
-          ( ( ( yum repolist | grep epel ) &>/dev/null ) && ( ( echo -e "\n Установка epel-release завершена!" ) && ( echo -e " ($( green_tick )) - epel-release${RED}    |${NC} посмотреть все repository ypr -rl"  ) ) ) || ( ( echo -e " epel repo: $( not_found_MSG )" ) && ( echo -en " функция установки epelIN_epel_repo " && error_MSG ; ) ) ;
-        }
-        
-        
-        epelIN_epel_repo ;
-        epelIN_epel_repo_pack ;
-     }
-    
-  
-
-   
-   # ФУНКЦИЯ: Выводит fzfOK и version так как fzf найден
-   function fzfOK2() 
-   { 
-      $( source /root/.bashrc ) ;
-      
-     ( echo -e "\n $( green_tick )${GREEN} fzf установлен.${NC}\n" ) ;
-     ( echo -e " ($( green_tick )) - fzf version    ${RED} |${NC} $(fzf --version) " ) || ( ( echo -en " функция установки fzf: " )  && ( error_MSG ; ) ) ;
-   }
-  
-  
-    # ФУНКЦИЯ: Выводит fzfOK и version так как fzf найден
-    function fzfOK() 
-    { 
-       $( source /root/.bashrc ) ;
-       
-      
-      ( echo -e " ($( green_tick )) - fzf version    ${RED} |${NC} $(fzf --version) " ) || ( ( echo -en " функция установки fzf: " )  && ( error_MSG ; ) ) ;
-    }
-    
-    
-    
-    # ФУНКЦИЯ: Установка fzf
-    function fzfIN() 
-    { 
-            echo -e "\n Установка fzf." 
-            
-            ( ( git clone --depth 1 https://github.com/junegunn/fzf.git /root/.fzf && /root/.fzf/install --all ) 2>/dev/null ) && ( echo -e "\n ${GREEN}Установка fzf завершена${NC}" && echo -e " ($( green_tick )) - fzf version ${RED}    |${NC} $($HOME/.fzf/bin/fzf --version)" && ( echo -e "\n Для обновления настроек введите:\n ${RED}#${NC} source ${CYAN}/root/.bashrc\n${NC}" ) ; ) || ( echo -en " Функция fzfIN завешилась с ошибкой: " && error_MSG ; ) ;
-            
-    }   
-    
     # RipGrep (ripgrep repo + rg)
     # ФУНКЦИЯ: Выводит ripgrepOK, так как команда rg -V была выполнена успешно
     function ripgrepOK() 
@@ -185,36 +75,8 @@
         
     }
 
-  
-  
-   
-    # ФУНКЦИЯ: Проверка на наличие epel-release : Подготовка CentOS 8: "screen" "epel-release" "mc" "hstr" "nano" "wget" "tar" "p7zip" "htop", "atop" "yum-utils" "net-tools" "network-scripts" "git" "dialog" "mlocate" настройка ".screenrc" :
-    function Epel-plusCH()
-    {
-        [[ -z $( cat /etc/yum.repos.d/epel.repo ) ]] 2>/dev/null && epelIN || epelOK ;
-    }
-  
-  
 
-  
 
-  
-   
-    
-    # ФУНКЦИЯ: Проверка или установка fzf (немного другой формат сообщения)
-    function FZFCH2()
-    {
-        [[ -f /root/.fzf/bin/fzf ]] 2>/dev/null && fzfOK2 || fzfIN ;
-    }
-  
-  
-    # ФУНКЦИЯ: Проверка или установка fzf
-    function FZFCH()
-    {
-        [[ -f /root/.fzf/bin/fzf ]] 2>/dev/null && fzfOK || fzfIN ;
-    }
-  
-  
     # ФУНКЦИЯ: Проверка или установка RipGrep (ripgrep repo + rg)
     function RipGrepCH()
     {
@@ -434,27 +296,14 @@
     # ФУНКЦИЯ: Проверка и установка пакетов, в случае отсутствия. Запускается с ключем -a | --all
     function check-install-all() 
     {
-        echo ;
-        # Проверка на наличие epel-release : Подготовка CentOS 8: "screen" "epel-release" "mc" "hstr" "nano" "wget" "tar" "p7zip" "htop", "atop" "yum-utils" "net-tools" "network-scripts" "git" "dialog" "mlocate" настройка ".screenrc" :
         
-        #epelIN ;
-        Epel-plusCH ;
-        
-       
-        # Проверка на наличие Rar / Unrar или установка
-        UnrarCH ;
-       
-        # Проверка или установка fzf
-        FZFCH ;
-       
+
         # Проверка или установка RipGrep (ripgrep repo + rg)
         RipGrepCH ;
        
         # Проверить или установить pmfusion-free-updates.repo
         Rpmfusion-freeCH ;
-       
-        # Проверка или Установка Nano (syntax)
-        NanoSyntaxCH ;
+
        
         # Проверка на существование batman или если его нет то установка bat/batman/ripgrep
         BatmanCH ;
@@ -598,10 +447,7 @@
         BatmanCH ;
         
         ;;
-        
-    a_r )
-        epelIN_epel_repo_pack ;
-        ;;
+
         
     bat_update | -bat_update | --bat_update )
     bat_update ;
