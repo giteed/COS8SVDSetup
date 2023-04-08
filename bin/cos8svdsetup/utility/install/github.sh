@@ -7,7 +7,7 @@
 lang_x 2>/dev/null ;
 
 # --> Загрузка функции из этого файла проверяет, запущен ли скрипт с правами суперпользователя (root) в Linux.
-. /root/vdsetup.2/bin/functions/run_as_root.sh
+. /root/vdsetup.2/bin/functions/run_as_root.sh 2>/dev/null ;
 
 # --> Функция: проверка обновление или установка gitHub 
 function GitHub_install() {

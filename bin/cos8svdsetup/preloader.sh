@@ -95,7 +95,7 @@ ttb=$(echo -e "
  ⎩ # /root/COS8SVDSetup/bin/cos8svdsetup/utility/install/github.sh ;
  " ) && lang_nix && bpn_p_lang ; ttb=""  ;
 # --> вызвать установку gh
-	/root/COS8SVDSetup/bin/cos8svdsetup/utility/install/github.sh ;
+	/root/COS8SVDSetup/bin/cos8svdsetup/utility/install/github.sh 2>/dev/null ;
 }
 
 # --> определить функцию для вывода сообщения об установленном gh
@@ -141,7 +141,7 @@ function preloader_completed() {
 # --> выводим сообщение о успешном завершении работы и очищаем переменную $ttb
 	ttb=$(echo -e " 
  ⎧ The preloader has 
- ⎩ completed its work!\n") && lang_nix && bpn_p_lang ; ttb=""  ;
+ ⎩ completed its work!\n") && lang_nix && bpn_p_lang ; ttb=""  ; echo ;
  source /root/.bashrc ;
  exit 0
 }
@@ -151,7 +151,7 @@ function preloader_not_completed() {
 # --> выводим сообщение о неуспешном завершении работы и очищаем переменную $ttb
 	ttb=$(echo -e " 
  ⎧ The Preloader completed!
- ⎩ with an error!\n") && lang_nix && bpn_p_lang ; ttb=""  ;
+ ⎩ with an error!\n") && lang_nix && bpn_p_lang ; ttb=""  ; echo ;
 }
 
 # --> вызываем функцию preloader и проверяем ее результат, если успешно - вызываем preloader_completed, иначе - preloader_not_completed
