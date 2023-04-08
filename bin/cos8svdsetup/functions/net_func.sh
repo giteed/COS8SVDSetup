@@ -12,7 +12,7 @@ function mem() { ( echo && free -h -t ) | ( bat  --paging=never -l meminfo -p 2>
 
 # Функция информации о доступном дисковом пространстве на файловой системе
 function df() {  
-  ttb=$( echo -e "$(/usr/bin/df -kTh)") && lang_cr && bpn_p_lang ;
+  ttb=$( echo -e "\n testing $(/usr/bin/df -kTh)") && lang_cr && bpn_p_lang ;
     
    }
 
