@@ -2,7 +2,7 @@
 
 
 function http() {
-    ( cat /tmp/nginx_http_ip | bat --paging=never -l nix -p 2>/dev/null ) || ( cat /tmp/nginx_http_ip )
+    ttb=$( echo -e "\n $( cat /tmp/nginx_http_ip 2>/dev/null ") && lang=meminfo && bpn_p_lang ;
 }
 
 
