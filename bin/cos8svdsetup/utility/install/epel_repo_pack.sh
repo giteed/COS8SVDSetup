@@ -73,22 +73,31 @@ lang_x 2>/dev/null ;
 	
   }
 
- # Проверка или установка epel-release repo и пакетов для 
- # первоначальной настройки и удобства работы на сервере
+# Проверка или установка epel-release repo и пакетов для 
+# первоначальной настройки и удобства работы на сервере
   epel_repository_packages ;
-  
+
+# Bat подсветка синтаксиса кода
+   /root/vdsetup.2/bin/utility/install/bat_install.sh ;
+
+# Webmin
+   /root/vdsetup.2/bin/utility/install/webmin_install.sh ;
+
 # Проверка на наличие fzf или установка fzf
    fzfCH ;
+
 # Функция: проверяет файл .screenrc на существование
    ch_screen ;
+
 # Функция: проверяет или устанавливает Nano (syntax)
    NanoSyntaxCH ;
+
 # Проверка на наличие Rar / Unrar или установка   
-   /root/vdsetup.2/bin/utility/install/unrar.sh
+   /root/vdsetup.2/bin/utility/install/unrar.sh ;
+
 # Installing snapd
    snap_install ;
-   
-   s
+
 
 exit 0 ; 
 
