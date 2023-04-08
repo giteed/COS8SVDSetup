@@ -51,7 +51,7 @@ alias wget='wget -c'
 
 alias cp='cp -i'
 alias mv='mv -i'
-alias mc='. /usr/libexec/mc/mc-wrapper.sh'
+#alias mc='. /usr/libexec/mc/mc-wrapper.sh'
 
 ### Не удалять корень и предупреждать об удалении файлов
 
