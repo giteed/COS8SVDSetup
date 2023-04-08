@@ -87,6 +87,8 @@ lang_x 2>/dev/null ;
    /root/vdsetup.2/bin/utility/install/unrar.sh
 # Installing snapd
    snap_install ;
+   
+   s
 
 exit 0 ; 
 
