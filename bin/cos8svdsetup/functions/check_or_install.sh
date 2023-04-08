@@ -65,16 +65,15 @@ function bat_Check_or_install() {
 
 # Функция: Скрипт проверяет файл .screenrc на существование, а так же на присутствие в нем записи необходимой для работы колеса мышки в окне терминала. После добавления этой записи в .screenrc проматывать содержимое экрана в screen станет гораздо удобнее.
   function ch_screen() {
-    ( echo -e \n" Проверяем файл /root/.screenrc на существование, а так же на присутствие\n в нем записи необходимой для работы колеса мышки в окне терминала.\n После добавления этой записи в .screenrc проматывать содержимое экрана\n в screen станет удобнее! \n" ) ;
+    ttb=$(echo -e "\n ⎧ Проверяем файл /root/.screenrc на существование, а так же на присутствие\n | в нем записи необходимой для работы колеса мышки в окне терминала.\n | После добавления этой записи в .screenrc проматывать содержимое экрана\n ⎩ в screen станет удобнее! \n" ) && lang="cr" && bpn_p_lang ; ;
     
     if 
-      [[ $(grep 'termcapinfo \* ti@:te@' /root/.screenrc| head -n 1) == 'termcapinfo * ti@:te@' ]] 2> /dev/null
+      [[ $(grep 'termcapinfo \* ti@:te@' /root/.screenrc | head -n 1) == 'termcapinfo * ti@:te@' ]] 2> /dev/null
      then 
-      echo -e "${GREEN} Файл .screenrc уже настроен ${NC}..."
+      ttb=$(echo -e "\n | Файл .screenrc уже настроен ") && lang="cr" && bpn_p_lang ;
      else 
-      touch /root/.screenrc && echo -e 'termcapinfo * ti@:te@' >> /root/.screenrc && echo -e ${NC} " Добавляем запись для ${RED}screen ${NC}..."
+      touch /root/.screenrc && echo -e 'termcapinfo * ti@:te@' >> /root/.screenrc && ttb=$(echo -e "\n | Добавляем запись для screen ...") && lang="cr" && bpn_p_lang ;
     fi 
-    
     
   }
 
