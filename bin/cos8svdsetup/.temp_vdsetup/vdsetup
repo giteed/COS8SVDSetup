@@ -157,22 +157,9 @@
     }
 
 
-    # Nano (syntax):
-    # ФУНКЦИЯ: Выводит NanoSyntaxOK, так как cat нашел и открыл /root/.nanorc
-    function NanoSyntaxOK() 
-    {
-        echo -e " ($( green_tick )) - Nano syntax ${RED}    | $( green_OK )" ;
-    }
 
 
-    # ФУНКЦИЯ: Установка из дропбокса архива nano-syntax, так как cat получает пустое значение, потому что /root/.nanorc нет или он пуст
-    function NanoSyntaxIN() 
-    {
-            echo -e "\n Скачиваю / распаковываю и копирую содержимое архива nano-syntax.tar.gz в /usr/share/ \n Копирую /tmp/installer/nano-syntax/.nanorc в /root/${NC} \n" 
-            
-            ( ( ( mkdir -p /tmp/installer && cd /tmp/installer && wget https://www.dropbox.com/s/f6hceijljbprvny/nano-syntax.tar.gz &>/dev/null && tar -xzvf nano-syntax.tar.gz &>/dev/null && rm -f nano-syntax.tar.gz && cd /tmp/installer/nano-syntax/ && rm -rf /usr/share/nano/ && cp -r --force /tmp/installer/nano-syntax/nano/ /usr/share/ && cp -n /tmp/installer/nano-syntax/.nanorc /root/ ) && (echo -e "\n ${ELLOW}Настройка nano-syntax завершена${NC} " && echo -e " ($( green_tick )) - Nano syntax ${RED}    | $( green_OK )"  ; ) ) &>/dev/null ) || ( echo -en " Функция NanoSyntaxIN завешилась с ошибкой: " && error_MSG ; ) ;
-            
-    }
+
 
     
     # ФУНКЦИЯ: Выводит batmanOK, так как файл найден /usr/bin/batman
@@ -235,11 +222,7 @@
     }
   
   
-    # ФУНКЦИЯ: Проверка или Установка Nano (syntax)
-    function NanoSyntaxCH()
-    {
-        [[ -z $( cat /root/.nanorc ) ]] 2>/dev/null && NanoSyntaxIN || NanoSyntaxOK ;
-    }
+
 
  
     # ФУНКЦИЯ: Проверка на существование batman или если его нет то установка bat/batman/ripgrep
