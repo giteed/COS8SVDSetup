@@ -7,11 +7,11 @@ function http() {
 
 
 # Функция информация о памяти системы
-function mem() { ( echo && free -h -t ) | ( bat  --paging=never -l meminfo -p ) || ( echo -e '' && free -h -t ) }
+function mem() { ( echo && free -h -t ) | ( bat  --paging=never -l meminfo -p ) 2>/dev/null  || ( echo -e '' && free -h -t ) }
 
 
 # Функция информации о доступном дисковом пространстве на файловой системе
-function df() {  ( echo && /usr/bin/df -kTh | bat --paging=never -l nix -p ) || ( echo && /usr/bin/df -kTh ) }
+function df() {  ( echo && /usr/bin/df -kTh | bat --paging=never -l nix -p ) 2>/dev/null || ( echo && /usr/bin/df -kTh ) }
 
 
 # ФУНКЦИЯ: Мой ip
@@ -24,7 +24,7 @@ function df() {  ( echo && /usr/bin/df -kTh | bat --paging=never -l nix -p ) || 
 
 # Функция myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
 function myip() { 
-  echo -e $(mi) | bat -p -l cr || echo -e $(mi) ; 
+  (echo -e $(mi) | bat -p -l cr)  2>/dev/null || echo -e $(mi) ; 
 }
 
    function reload_cash() {
