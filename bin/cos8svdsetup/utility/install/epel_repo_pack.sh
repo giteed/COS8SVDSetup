@@ -84,8 +84,9 @@ lang_x 2>/dev/null ;
 # Функция: проверяет или устанавливает Nano (syntax)
    NanoSyntaxCH ;
 # Проверка на наличие Rar / Unrar или установка   
- unrar.sh
- 
+   /root/vdsetup.2/bin/utility/install/unrar.sh
+# Installing snapd
+   snap_install ;
 
 exit 0 ; 
 

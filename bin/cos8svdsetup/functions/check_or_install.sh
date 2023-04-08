@@ -139,11 +139,11 @@ function nginx_repo_Check_or_install() {
    
 
 function ramfetch_install() {
-     /root/vdsetup.2/bin/utility/ramfetch.sh install ;
+     /root/vdsetup.2/bin/utility/install/ramfetch.sh install ;
 }
    
 function ramfetch_remove() {
-     /root/vdsetup.2/bin/utility/ramfetch.sh remove ;
+     /root/vdsetup.2/bin/utility/install/ramfetch.sh remove ;
 }
 
 function snap_install() {

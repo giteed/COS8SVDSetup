@@ -47,4 +47,5 @@ ttb=$(echo -e "
  ⎩ # exit  (или обновите сессию # source ~/.bashrc)
  
   " ) && bpn_p_lang ; ttb=""  ; 
+  
   exit 0;
