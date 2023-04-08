@@ -4,7 +4,7 @@ function _more() {
 
    ttb=$(echo -e "   
  ⎧ Получить больше информации о репозитории с: \$pkg_name
- ⎩ https://pkgs.org/download/\$pkg_name") && lang=cr && bpn_p_lang ;
+ ⎩ https://pkgs.org/download/\$pkg_name") && lang=cr && bpn_p_lang ; echo ;
  
 }
 
