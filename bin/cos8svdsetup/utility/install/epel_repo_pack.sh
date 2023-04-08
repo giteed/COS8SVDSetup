@@ -69,7 +69,7 @@ lang_x 2>/dev/null ;
 	echo -e " 
  ⎧ Установка дополнительных пакетов завершена!
  ${GREEN}| ${NC}Посмотреть список repo в системе # ypr -rl
- ⎩ \"Epel Repository Packages\" installed $(green_tick)"
+ ⎩ \"Epel Repository Packages\" installed $(green_tick)\n"
 	
   }
   
@@ -87,6 +87,9 @@ lang_x 2>/dev/null ;
   
   # Проверка на наличие fzf или установка fzf
    ( [[ -z $(fzf --version) ]] ) &>/dev/null  && fzfIN || ( echo -e "\n   fzf version $(fzf --version)" );
+   
+   # Функция: проверяет файл .screenrc на существование
+   ch_screen ;
 
 
 exit 0 ; 

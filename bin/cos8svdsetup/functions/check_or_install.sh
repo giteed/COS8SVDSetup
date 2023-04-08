@@ -63,9 +63,23 @@ function bat_Check_or_install() {
 }
 
 
+# Функция: Скрипт проверяет файл .screenrc на существование, а так же на присутствие в нем записи необходимой для работы колеса мышки в окне терминала. После добавления этой записи в .screenrc проматывать содержимое экрана в screen станет гораздо удобнее.
+  function ch_screen()
+  {
+    ( echo -e \n" Проверяем файл /root/.screenrc на существование, а так же на присутствие\n в нем записи необходимой для работы колеса мышки в окне терминала.\n После добавления этой записи в .screenrc проматывать содержимое экрана\n в screen станет удобнее! \n" ) ;
+    
+    if 
+      [[ $(grep 'termcapinfo \* ti@:te@' /root/.screenrc| head -n 1) == 'termcapinfo * ti@:te@' ]] 2> /dev/null
+     then 
+      echo -e "${GREEN} Файл .screenrc уже настроен ${NC}..."
+     else 
+      touch /root/.screenrc && echo -e 'termcapinfo * ti@:te@' >> /root/.screenrc && echo -e ${NC} " Добавляем запись для ${RED}screen ${NC}..."
+    fi 
+    
+    
+  }
 
 
-   
    function nginx_repo_Check_or_install() {
        
        yum_nginx=nginx.repo
