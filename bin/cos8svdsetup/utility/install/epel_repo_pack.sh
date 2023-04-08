@@ -78,19 +78,20 @@ lang_x 2>/dev/null ;
   # ФУНКЦИЯ: Установка fzf
    function fzfIN() 
    { 
-		   echo -e " Установка fzf." 
+		   ttb=$(echo -e "\n ⎧  Установка fzf. ") && lang=nix && bpn_p_lang ;
 		   
-		   ( ( git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all ) ) && ( echo -e " ${GREEN}Установка fzf завершена${NC}" && echo -e " ($( green_tick )) - fzf version ${RED}    |${NC} $($HOME/.fzf/bin/fzf --version)" && ( echo -e "\n Для обновления настроек введите:\n ${RED}#${NC} source ${CYAN}~/.bashrc\n${NC}" ) ; ) || ( echo -en " Функция fzfIN завешилась с ошибкой: " && error_MSG ; ) ;
+		   ( ( git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all ) ) && ( echo -e " | ${GREEN}Установка fzf завершена${NC}" && echo -e " | ($( green_tick )) - fzf version $($HOME/.fzf/bin/fzf --version)" && ( echo -e " | Для обновления настроек введите:\n ⎩ ${RED}#${NC} source ${CYAN}~/.bashrc\n${NC}" ) ; ) || ttb=$(echo -en " | Функция fzfIN завешилась с ошибкой: " && error_MSG ) && lang=help && bpn_p_lang ;
 		   # &>/dev/null 
    }  
   
   
   # Проверка на наличие fzf или установка fzf
-   ( [[ -z $(fzf --version) ]] ) &>/dev/null  && fzfIN || ( echo -e "\n   fzf version $(fzf --version)" );
+   ( [[ -z $(fzf --version) ]] ) &>/dev/null  && fzfIN || ttb=$(echo -e "\n | fzf version $(fzf --version") && lang=cr && bpn_p_lang );
    
    # Функция: проверяет файл .screenrc на существование
    ch_screen ;
-
+  # Функция: проверяет или устанавливает Nano (syntax)
+   NanoSyntaxCH ;
 
 exit 0 ; 
 
