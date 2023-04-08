@@ -7,7 +7,7 @@ function http() {
 
 
 # Функция информация о памяти системы
-function mem() { ttb=$( echo -e "\n $( free -h -t )" && lang=meminfo && bpn_p_lang ; }
+function mem() { ttb=$( echo -e "\n $( free -h -t )") && lang=meminfo && bpn_p_lang ; }
 
 
 # Функция информации о доступном дисковом пространстве на файловой системе
