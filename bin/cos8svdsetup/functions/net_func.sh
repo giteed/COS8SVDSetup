@@ -1,9 +1,7 @@
 #!/bin/bash
 
 
-function http() {
-    ttb=$( echo -e "\n $( cat /tmp/nginx_http_ip 2>/dev/null ") && lang=meminfo && bpn_p_lang ;
-}
+function http() { ttb=$( echo -e "\n $( cat /tmp/nginx_http_ip 2>/dev/null )") && lang=meminfo && bpn_p_lang ; }
 
 
 # Функция информация о памяти системы
@@ -24,7 +22,7 @@ function df() { ttb=$( echo -e "\n $(/usr/bin/df -kTh)") && lang_cr && bpn_p_lan
 
 # Функция myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
 function myip() { 
-  (echo -e $(mi) | bat -p -l cr)  2>/dev/null || echo -e $(mi) ; 
+  ttb=$( echo -e "$(echo -e $(mi) 2>/dev/null)") && lang_cr && bpn_p_lang ; 
 }
 
    function reload_cash() {
@@ -50,9 +48,9 @@ function remove_unit_stop_cashing() {
    ${msg9} ;
    
    systemctl disable cash_var.service &>/dev/null || ttb=$(echo -e "\n Error disable Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
-   systemctl stop cash_var.service &>/dev/null ||  ttb=$(echo -e "\n Error stop Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
+   systemctl stop cash_var.service &>/dev/null || ttb=$(echo -e "\n Error stop Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
    rm /etc/systemd/system/cash_var.service &>/dev/null || ttb=$(echo -e "\n Error remove Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
-   systemctl daemon-reload &>/dev/null ||  ttb=$(echo -e "\n Error daemon-reload \n") && bpn_p_lang  ;
+   systemctl daemon-reload &>/dev/null || ttb=$(echo -e "\n Error daemon-reload \n") && bpn_p_lang  ;
  
    ttb=$(echo -e "\n Unit /etc/systemd/system/cash_var.service removed \n") && bpn_p_lang  ;
    #systemctl status -n0 cash_var.service 2>/dev/null;
