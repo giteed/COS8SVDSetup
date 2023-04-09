@@ -9,6 +9,7 @@ function _more() {
 }
 
 
+# '*' | '.'| h | -h | --help | help | '')
 function _help() {
 	 ttb=$(echo -e "\n | ypr - Совмещает в себе для удобства\n | набор следующих программ и утилит: ") && lang=cr && bpn_p_lang ;
 	 
@@ -48,7 +49,8 @@ function _help() {
 	
 }
 
-# ypr -p | --provides)
+
+# ypr p | -p | --provides)
 function _provides() {
 		
      arg_2=("$1")
@@ -73,7 +75,8 @@ function _provides() {
 	 
 }
 
-# ypr -wh | --wh | --which)
+
+# ypr wh | -wh | --which)
 function _which() {
 	arg_2=("$1")
 	
@@ -90,6 +93,7 @@ function _which() {
 }
 
 
+# t | -t | --type)
 function _type() {
 	arg_2=("$1")
 	 ttb=$(echo -e "   
@@ -103,6 +107,7 @@ function _type() {
 }
 
 
+# wh | -wh | --which)
 function _whereis() {
 	arg_2=("$1")
 	 ttb=$(echo -e "    
@@ -114,6 +119,7 @@ function _whereis() {
 }
 
 
+# l | -l | --locate)
 function _locate() {
 	arg_2=("$1")
 	
@@ -131,6 +137,7 @@ function _locate() {
 }
 
 
+# a | -a | --all)
 function _all() {
 	arg_2=("$1")
 	_provides $arg_2 ;
@@ -153,7 +160,7 @@ function _all() {
 }
 
 
-
+# -rl | --repo)
 function _repo_list() {	
 	arg_2=("$2")
 	GLIG_ASTRX_OF
@@ -184,7 +191,7 @@ function ypr-f() {
 	 ;;
 	 
 	 
-	 -a | -al | -all | --all)
+	 a | -a | --all)
 	 
 	 arg_2=("$2")
 	 _all $arg_2;
@@ -193,7 +200,7 @@ function ypr-f() {
 	 ;;
 	 
 	 
-	 -p | --provides)
+	 p | -p | --provides)
 	 
 	 arg_2=("$2")
 	 _provides $arg_2;
@@ -202,7 +209,7 @@ function ypr-f() {
 	 ;;
 	 
 	 
-	 -wh | --wh | --which)
+	 wh | -wh | --which)
 	 
 	 arg_2=("$2")
 	 _which $arg_2;
@@ -211,7 +218,7 @@ function ypr-f() {
 	 ;;
 	 
 	 
-	 -t | --t | --type)
+	 t | -t | --type)
 	 
 	 arg_2=("$2")
 	 _type $arg_2;
