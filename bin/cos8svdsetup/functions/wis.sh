@@ -70,11 +70,11 @@ function _provides() {
  | yum provides - Ищет программные пакеты
  | овпадающие с запросом, в установленных на этом
  | сервере репозитариях пакетного менеджера yum/dnf
- ⎩ "$(whatis $arg_2 | column -t | tr -s ' ' )" ") 2>/dev/null && lang=cr && bpn_p_lang ;
+ ⎩ ")  && lang=cr && bpn_p_lang ;
 
   ttb=$(echo -e "  
-  $(yum provides $arg_2)
-  $(yum info $arg_2)");
+  $(yum provides $arg_2 2>/dev/null ) 
+  $(yum info $arg_2 2>/dev/null )");
  
 	 _more $arg_2 ;
 	 
