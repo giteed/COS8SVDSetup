@@ -101,9 +101,7 @@ function _type() {
  | type - Показывает значение искомой команды или алиаса. 
  ⎩ # type $arg_2") && lang=cr && bpn_p_lang ;	
  
- ttb=$(echo -e "  
- 	
-	 $(type $arg_2 ;)
+ ttb=$(echo -e "\n $(type $arg_2 ;)
 	") && lang=nix && bpn_p_lang ;	
 	
 }
@@ -115,8 +113,7 @@ function _whereis() {
  ⎧ whereis - Ведет поиск в системных каталогах.
  ⎩ # whereis $arg_2") && lang=cr && bpn_p_lang ;	 
 
-ttb=$(echo -e " 
- $(whereis $arg_2)\n") && lang=cr && bpn_p_lang ; 
+ttb=$(echo -e "\n $(whereis $arg_2)\n") && lang=cr && bpn_p_lang ; 
  
 }
 
@@ -131,10 +128,9 @@ function _locate() {
  | этом сервере, совпадающих с: "$arg_2"
  ⎩ # locate "$arg_2": ") && lang=cr && bpn_p_lang ;	 echo ;
  
- ttb=$(echo -e "$(whatis $arg_2)\n" 2>/dev/null ) && lang=cr && bpn_p_lang ;
+ ttb=$(echo -e "\n $(whatis $arg_2)\n" 2>/dev/null ) && lang=cr && bpn_p_lang ;
 	 
- ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) 2>/dev/null | column -t ;)
-	") && lang=cr && bpn_p_lang ;	
+ ttb=$(echo -e "\n $(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) 2>/dev/null | column -t ;)\n") && lang=cr && bpn_p_lang ;	
 
 }
 
@@ -187,14 +183,14 @@ function ypr-f() {
 	   
 	 case $1 in
 	 
-	 '*' | '.'| h | -h | --h | -help | --help | help | hel | he | -hel | --hel | -he | --he | '')
+	 '*' | '.'| h | -h | --help | help | '')
 	 
 	 _help
 	 
 	 ;;
 	 
 	 
-	 -a | -al | -all | --a | --al | --all)
+	 -a | -al | -all | --all)
 	 
 	 arg_2=("$2")
 	 _all $arg_2;
@@ -203,7 +199,7 @@ function ypr-f() {
 	 ;;
 	 
 	 
-	 -p | --p | --provides | -s | --s | --search | -i | --i | --info )
+	 -p | --provides)
 	 
 	 arg_2=("$2")
 	 _provides $arg_2;
