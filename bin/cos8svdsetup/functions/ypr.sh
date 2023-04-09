@@ -62,7 +62,7 @@ function _provides() {
  | сервере репозитариях пакетного менеджера yum/dnf
  ⎩ $(whatis $arg_2 2>/dev/null)") && lang=cr && bpn_p_lang ;
 	  
- ttb=$(echo -e "  
+  ttb=$(echo -e "  
   $(yum provides $arg_2 ;)
   $(yum info $arg_2 ;)
   
@@ -85,7 +85,7 @@ function _which() {
  | функции, в переменой окружения \$PATH 
  ⎩ # which $1") && lang=cr && bpn_p_lang ;
  echo ;
-ttb=$(echo -en "$(which -a $1 )\n") && lang=cr && bpn_p_lang ;
+ ttb=$(echo -en "$(which -a $1 )\n") && lang=cr && bpn_p_lang ;
 
 }
 
@@ -97,8 +97,8 @@ function _type() {
  | в переменой окружения \$PATH
  | type - Показывает значение искомой команды или алиаса. 
  ⎩ # type -all $arg_2") && lang=cr && bpn_p_lang ;	
- 
- ttb=$(echo -e "\n$(type -all $arg_2 ;)") && lang=nix && bpn_p_lang ;	
+ echo ;
+ ttb=$(echo -e "$(type -all $arg_2 ;)") && lang=nix && bpn_p_lang ;	
 	
 }
 
@@ -108,8 +108,8 @@ function _whereis() {
 	 ttb=$(echo -e "    
  ⎧ whereis - Ведет поиск в системных каталогах.
  ⎩ # whereis $arg_2") && lang=cr && bpn_p_lang ;	 
-
-ttb=$(echo -e "\n $(whereis $arg_2)\n") && lang=cr && bpn_p_lang ; 
+ echo ;
+ ttb=$(echo -e "$(whereis $arg_2)\n") && lang=cr && bpn_p_lang ; 
  
 }
 
@@ -123,16 +123,16 @@ function _locate() {
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
  | этом сервере, совпадающих с: "$arg_2"
  ⎩ # locate "$arg_2" ") && lang=cr && bpn_p_lang ;	
- echo ;
- ttb=$(echo -e "$(whatis $arg_2)" 2>/dev/null ) && lang=cr && bpn_p_lang ;
+  echo ;
+  ttb=$(echo -e "$(whatis $arg_2)" 2>/dev/null ) && lang=cr && bpn_p_lang ;
 	 
- ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) 2>/dev/null | column -t ;)\n") && lang=cr && bpn_p_lang ;	
+  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) 2>/dev/null | column -t ;)\n") && lang=cr && bpn_p_lang ;	
 
 }
 
 
 function _all() {
-arg_2=("$1")
+	arg_2=("$1")
 	_provides $arg_2 ;
 	_which $arg_2;
 	_type $arg_2;	
@@ -145,9 +145,8 @@ arg_2=("$1")
  | Для вывода всего списка совпадений в locate:
  | Используйте: # ypr с ключом -l" "$arg_2 
  ⎩ или ypr с ключом --locate" "$arg_2 ") && lang=cr && bpn_p_lang ;	 echo ;
-
- ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)
- ") && lang=cr && bpn_p_lang ;
+  echo ;
+  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)") && lang=cr && bpn_p_lang ;
 
  	_more ;
 
@@ -155,8 +154,7 @@ arg_2=("$1")
 
 
 
-function _repo_list() {
-	
+function _repo_list() {	
 	arg_2=("$2")
 	GLIG_ASTRX_OF
 	ttb=$(echo -e "   
@@ -168,8 +166,7 @@ function _repo_list() {
  
  | Содержимое папки /etc/yum.repos.d/
 	 
-$(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)
-	 ") && lang=cr && bpn_p_lang ;
+$(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)") && lang=cr && bpn_p_lang ;
 	 
 	 GLIG_ASTRX_ON ;
 }
