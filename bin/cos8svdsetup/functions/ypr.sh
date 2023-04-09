@@ -66,7 +66,7 @@ function _provides() {
 	  
   ttb=$(echo -e "  
   $(yum provides $arg_2 ;)
-  $(yum info $arg_2 ;)"
+  $(yum info $arg_2" ;)
  
 	 _more $arg_2 ;
 	 
