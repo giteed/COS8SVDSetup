@@ -67,8 +67,7 @@ function _provides() {
   $(yum info $arg_2 ;)
   
   | Попробуйте искать командой: 
-  | # yum search $arg_2
- ") && lang=cr && bpn_p_lang ;	
+  | # yum search $arg_2") && lang=cr && bpn_p_lang ;	
  
 	 _more ;
 	 
