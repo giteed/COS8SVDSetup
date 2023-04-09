@@ -8,7 +8,7 @@ function http() { ttb=$( echo -e "\n $( cat /tmp/nginx_http_ip 2>/dev/null )") &
 function mem() { 
   ramfetch 2>/dev/null ;
   ttb=$( echo -e "\n $( free -h -t )") && lang=meminfo && bpn_p_lang ;
-  ttb=$( echo -e " # free -h -t") && lang=meminfo && bpn_p_lang ; 
+  ttb=$( echo -e "\n # free -h -t\n") && lang=cr && bpn_p_lang ; 
 }
 
 
