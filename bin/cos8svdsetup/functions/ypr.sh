@@ -132,7 +132,7 @@ function _locate() {
   echo ;
   ttb=$(echo -e "$(whatis $arg_2)" 2>/dev/null ) && lang=cr && bpn_p_lang ;
 	 
-  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) 2>/dev/null | column -t ;)\n") && lang=cr && bpn_p_lang ;	
+  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) 2>/dev/null | column -t ;)\n") && lang=cr && bpal_p_lang;	
 
 }
 
