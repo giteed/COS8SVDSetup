@@ -1,11 +1,14 @@
 #!/bin/bash
 
+
+
 function _more() {
-   pkg_name=("$2")
+   pkg_name=("$1")
    ttb=$(echo -e "   
  ⎧ Получить больше информации о репозитории с: $pkg_name
  ⎩ https://pkgs.org/download/$pkg_name") && lang=cr && bpn_p_lang ; echo ;
- 
+  
+  unset arg_2 
 }
 
 
@@ -45,7 +48,7 @@ function _help() {
  | Будет искать используя все эти программы.
  ⎩ ypr -h или --help Выводит эту справку. ") && lang=cr && bpn_p_lang ;	 
 
- 	_more ;
+ 	_more $arg_2 ;
 	
 }
 
@@ -71,7 +74,7 @@ function _provides() {
   | Попробуйте искать командой: 
   | # yum search $arg_2") && lang=cr && bpn_p_lang ;	
  
-	 _more ;
+	 _more $arg_2 ;
 	 
 }
 
@@ -172,7 +175,7 @@ function _all() {
   echo ;
   ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)") && lang=cr && bpn_p_lang ;
 
- 	_more ;
+ 	_more $arg_2 ;
 	_repo_list ;
 
 }
