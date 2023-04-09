@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function _more() {
-   pkg_name=("$1")
+   pkg_name=("$2")
    ttb=$(echo -e "   
  ⎧ Получить больше информации о репозитории с: $pkg_name
  ⎩ https://pkgs.org/download/$pkg_name") && lang=cr && bpn_p_lang ; echo ;
