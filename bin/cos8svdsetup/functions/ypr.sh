@@ -126,7 +126,7 @@ function _locate() {
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
  | этом сервере, совпадающих с: "$arg_2"
- ⎩ # locate "$arg_2": ") && lang=cr && bpn_p_lang ;	 echo ;
+ ⎩ # locate "$arg_2": ") && lang=cr && bpn_p_lang ;	
  
  ttb=$(echo -e "\n $(whatis $arg_2)\n" 2>/dev/null ) && lang=cr && bpn_p_lang ;
 	 
