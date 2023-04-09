@@ -6,16 +6,14 @@
 	   function msg_ww() {
 		 
 	 ttb=$(echo -e "
- ⎧ Чтобы получить информацию сразу по 11 командам: 
- | type -all [имя], yum info [имя],
- | yum provides [имя], yum search [имя], 
- | rpm -qa [имя], which -a [имя],
- |  whatis [имя], whereis [имя],
- | locate [имя], tldr [имя] yum repolist
- | используйте: 
- | # ww [имя_программы] или [имя_скрипта] или [имя_функции]
- |
- ⎩ Пример: # ww perl или [nginx], [ww], [ff], [htop].
+ ⎧ Чтобы получить информацию сразу по 4 командам: 
+ | type -all [имя],  rpm -qa [имя]
+ |  which -a [имя],  whereis [имя]
+ | используйте: # ww [имя_программы] 
+ | или:         # ww [имя_скрипта] 
+ | или:         # ww [имя_функции]
+ | Пример:      # ww htop
+ ⎩ или:         # ww mc
    ") && lang=cr && bpn_p_lang ;
    
    }  
@@ -31,17 +29,17 @@
 	ttb=$(echo -e "
  ⎧ Просмотр информации о пакете rpm: 
  ⎩ # rpm -qa $1") && lang=cr && bpn_p_lang ;
-	echo ; ttb=$(rpm -qa $*) && lang=cr  && bpn_p_lang 2>/dev/null ; echo ;
-	
-	ttb=$(echo -e "
- ⎧ Просмотр информации по 9 командам: 
- ⎩ # ypr -a $1") && lang=cr && bpn_p_lang ;
-	echo ; ttb=$(ypr -a $1) && lang=cr && bpn_p_lang ; echo ;
+	echo ; ttb=$(rpm -qa $*) && lang=b  && bpn_p_lang 2>/dev/null ; echo ;
+   
+   ttb=$(echo -e "
+ ⎧ Просмотр информации по which -a: 
+ ⎩ # which -a $1") && lang=cr && bpn_p_lang ;
+      echo ; ttb=$(which -a $*) && lang=cr  && bpn_p_lang 2>/dev/null ; echo ;
 
    ttb=$(echo -e "
- ⎧ Просмотр информации dnf search: 
- ⎩ # dnf search $1") && lang=cr && bpn_p_lang ;
-   echo ; ttb=$(dnf search $1) && lang=cr && bpn_p_lang ; echo ;
+ ⎧ Просмотр информации по which -a: 
+ ⎩ # whereis $1") && lang=cr && bpn_p_lang ;
+      echo ; ttb=$(whereis $*) && lang=cr  && bpn_p_lang 2>/dev/null ; echo ;	
    
    tldr $1 ; echo ;
    ttb=$(echo -e "   
