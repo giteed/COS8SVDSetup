@@ -144,7 +144,6 @@ function _all() {
 	_which $arg_2;
 	_type $arg_2;	
 	_whereis $arg_2;
-	_locate $arg_2;
 
 	 ttb=$(echo -e "   
  ⎧ ypr -a или --all - Выводит только 25 первых
