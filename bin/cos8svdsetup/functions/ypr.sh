@@ -192,10 +192,7 @@ function _all() {
 	ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (yum search "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)") && lang=cr && bpn_p_lang ;
 
 
-
-
-
- 	_more $arg_2 ;
+ 	_more #$arg_2 ;
 	_repo_list ;
 
 }
