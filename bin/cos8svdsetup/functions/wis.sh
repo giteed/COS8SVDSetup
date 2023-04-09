@@ -144,6 +144,27 @@ function _locate() {
 }
 
 
+# s | -s | --search)
+function _search() {
+	arg_2=("$1")
+	
+	if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти!\n ⎩ Например: wis -s nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
+	
+	 ttb=$(echo -e "   
+ ⎧ search - Ведет поиск файлов/папок, по базе данных на
+ | этом сервере, совпадающих с: "$arg_2"
+ ⎩ # search "$arg_2" ") && lang=cr && bpn_p_lang ;	
+  echo ;
+  ttb=$(echo -e "$(search $arg_2 | column -t | tr -s ' ' )" 2>/dev/null ) && lang=cr && bpn_p_lang ;
+	 
+  ttb=$(echo -e "$(yum search "$arg_2") ") && lang=d && bpal_p_lang ;
+
+}
+
+
+
+
+
 # -rl | --repo)
 function _repo_list() {	
 	GLIG_ASTRX_OF
