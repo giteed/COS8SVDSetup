@@ -75,6 +75,14 @@ function _provides() {
 	 
 }
 
+# s | -s | --search)
+function _search() {
+	arg_2=("$1")	
+	echo ;
+	ttb=$(echo -e "$(yum search $arg_2)\n") && lang=cr && bpal_p_lang ;
+}
+
+
 
 # ypr wh | -wh | --which)
 function _which() {
@@ -165,12 +173,27 @@ function _all() {
 
 	 ttb=$(echo -e "   
  ⎧ ypr -a или --all - Выводит только 25 первых
- | результатов поиска файлов/папок совпадающих с: "$arg_2"
+ | результатов поиска --locate файлов/папок совпадающих с: "$arg_2"
  | Для вывода всего списка совпадений в locate:
  | Использование: ypr -l" "$arg_2 
  ⎩ или: ypr --locate" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
   echo ;
   ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)") && lang=cr && bpn_p_lang ;
+
+  echo ;
+
+	 ttb=$(echo -e "   
+  ⎧ ypr -a или --all - Выводит только 25 первых
+  | результатов поиска yum search с: "$arg_2"
+  | Для вывода всего списка совпадений в yum search:
+  | Использование: ypr -s" "$arg_2 
+  ⎩ или: ypr --search" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
+	echo ;
+	ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (yum search "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)") && lang=cr && bpn_p_lang ;
+
+
+
+
 
  	_more $arg_2 ;
 	_repo_list ;
@@ -184,72 +207,55 @@ function ypr-f() {
 	 case $1 in
 	 
 	 '*' | '.'| h | -h | --help | help | '')
-	 
 	 _help
-	 
 	 ;;
 	 
 	 
 	 a | -a | --all)
-	 
 	 arg_2=("$2")
 	 _all $arg_2;
-	 unset arg_2
-	 
 	 ;;
 	 
 	 
 	 p | -p | --provides)
-	 
 	 arg_2=("$2")
 	 _provides $arg_2;
+	 ;;
 	 
 	 
+	 s | -s | --search)
+	 arg_2=("$2")
+	 _search $arg_2;
 	 ;;
 	 
 	 
 	 wh | -wh | --which)
-	 
 	 arg_2=("$2")
 	 _which $arg_2;
-	 
-	 
 	 ;;
 	 
 	 
 	 t | -t | --type)
-	 
 	 arg_2=("$2")
 	 _type $arg_2;
-	 
-	 
 	 ;;
 	 
 	 
 	 ws | -ws | --whereis)
-	 
 	 arg_2=("$2")
 	 _whereis $arg_2;
-	 
-	 
 	 ;;
 	 
 	 
 	 l | -l | --locate)
-	 
 	 arg_2=("$2")
 	 _locate $arg_2;
-	 
-	  
 	 ;;
 	 
 	 
 	 -rl | --repo)
-	 
 	 arg_2=("$2")
 	 _repo_list
-	 unset arg_2
-	 
 	 ;;
 	 
 	 
