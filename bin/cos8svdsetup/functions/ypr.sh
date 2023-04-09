@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function _more() {
-
+   pkg_name=("$1")
    ttb=$(echo -e "   
  ⎧ Получить больше информации о репозитории с: \$pkg_name
  ⎩ https://pkgs.org/download/\$pkg_name") && lang=cr && bpn_p_lang ; echo ;
@@ -162,7 +162,6 @@ function _all() {
 	_which $arg_2;
 	_type $arg_2;	
 	_whereis $arg_2;
-	_repo_list ;
 
 	 ttb=$(echo -e "   
  ⎧ ypr -a или --all - Выводит только 25 первых
@@ -174,6 +173,7 @@ function _all() {
   ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)") && lang=cr && bpn_p_lang ;
 
  	_more ;
+	_repo_list ;
 
 }
 
