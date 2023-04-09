@@ -4,7 +4,7 @@ function _more() {
    pkg_name=("$1")
    ttb=$(echo -e "   
  ⎧ Получить больше информации о репозитории с: $pkg_name
- ⎩ https://pkgs.org/download/$pkg_name") && lang=cr && bpn_p_lang ; echo ;
+ ⎩ https://pkgs.org/download/$pkg_name") && lang=d && bpn_p_lang ; echo ;
  
 }
 
@@ -67,9 +67,6 @@ function _provides() {
   ttb=$(echo -e "  
   $(yum provides $arg_2 ;)
   $(yum info $arg_2 ;)
-  
-  | Попробуйте еще искать $arg_2 командой: 
-  | # yum search $arg_2") && lang=cr && bpn_p_lang ;	
  
 	 _more $arg_2 ;
 	 
@@ -79,7 +76,7 @@ function _provides() {
 function _search() {
 	arg_2=("$1")	
 	echo ;
-	ttb=$(echo -e "$(yum search "$arg_2") \n") && lang=css && bpal_p_lang ;
+	ttb=$(echo -e "$(yum search "$arg_2") \n") && lang=d && bpal_p_lang ;
 }
 
 
@@ -189,7 +186,7 @@ function _all() {
   | Использование: ypr -s" "$arg_2 
   ⎩ или: ypr --search" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
 	echo ;
-	ttb=$(echo -e "$(yum search "$arg_2" | head -n 25) ") && lang=css && bpn_p_lang ;
+	ttb=$(echo -e "$(yum search "$arg_2" | head -n 25) ") && lang=d && bpn_p_lang ;
 
 
  	_more $arg_2 ;
