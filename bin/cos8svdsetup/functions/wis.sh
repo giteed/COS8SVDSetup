@@ -41,6 +41,12 @@ function _help() {
  ⎩ Использование: wis -l или --locate ") && lang=cr && bpn_p_lang ;	 
 
 	 ttb=$(echo -e "   
+ ⎧ yum search позволяет искать пакеты по ключевым
+ | словам в именах пакетов, описаниях
+ | с и дополнительных метаданных.
+ ⎩ Использование: wis -s или --search ") && lang=cr && bpn_p_lang ;	
+
+	 ttb=$(echo -e "   
  ⎧ wis -a или --all или запрос без -ключа
  | Будет искать используя все эти программы.
  | wis -h или --help Выводит эту справку. 
@@ -72,13 +78,6 @@ function _provides() {
  
 	 _more $arg_2 ;
 	 
-}
-
-# s | -s | --search)
-function _search() {
-	arg_2=("$1")	
-	echo ;
-	ttb=$(echo -e "$(yum search "$arg_2") \n") && lang=d && bpal_p_lang ;
 }
 
 
@@ -151,17 +150,16 @@ function _search() {
 	if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти!\n ⎩ Например: wis -s nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
 	
 	 ttb=$(echo -e "   
- ⎧ search - В отличие от утилиты locate, которая
- | ищет файлы по "$arg_2" (их именам) в базе данных,
- | search ищет файлы на основе текстового содержимого,
- | используя базу данных mlocate.
- ⎩ # search "$arg_2" ") && lang=cr && bpn_p_lang ;	
+ ⎧ yum search позволяет искать пакеты по ключевым
+ | словам в именах пакетов, описаниях
+ | с и дополнительных метаданных.
+ ⎩ # yum search "$arg_2" ") && lang=cr && bpn_p_lang ;	
   echo ;
-  ttb=$(echo -e "$( search "$arg_2") ") && lang=d && bpal_p_lang ;
+  ttb=$(echo -e "$( yum search "*/$arg_2")\n ") && lang=d && bpal_p_lang ;
 
 }
 
-
+ 
    
 
 
