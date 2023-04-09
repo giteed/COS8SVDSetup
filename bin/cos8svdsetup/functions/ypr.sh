@@ -98,8 +98,7 @@ function _type() {
  | type - Показывает значение искомой команды или алиаса. 
  ⎩ # type -all $arg_2") && lang=cr && bpn_p_lang ;	
  
- ttb=$(echo -e "\n $(type -all $arg_2 ;)
-	") && lang=nix && bpn_p_lang ;	
+ ttb=$(echo -e "\n$(type -all $arg_2 ;)") && lang=nix && bpn_p_lang ;	
 	
 }
 
