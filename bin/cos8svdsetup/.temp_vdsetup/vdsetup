@@ -10,7 +10,7 @@
     function rpmfusion-freeOK() 
     # /etc/yum.repos.d/rpmfusion-free-updates.repo найден (cat нашел и открыл /etc/yum.repos.d/rpmfusion-free-updates.repo)
     {
-        echo -e " ($( green_tick )) - rpmfusion-free${RED}  | $( green_OK ) ypr -rl" ;
+        echo -e " ($( green_tick )) - rpmfusion-free${RED}  | $( green_OK ) wis -rl" ;
     }
     
     # ФУНКЦИЯ: # /etc/yum.repos.d/rpmfusion-free-updates.repo НЕ найден или пуст (cat получает пустое значение потому что /etc/yum.repos.d/rpmfusion-free-updates.repo нет или он пуст)

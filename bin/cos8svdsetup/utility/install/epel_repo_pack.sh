@@ -68,7 +68,7 @@ lang_x 2>/dev/null ;
 	
 	echo -e " 
  ⎧ Установка дополнительных пакетов завершена!
- ${GREEN}| ${NC}Посмотреть список repo в системе # ypr -rl
+ ${GREEN}| ${NC}Посмотреть список repo в системе # wis -rl
  ⎩ \"Epel Repository Packages\" installed $(green_tick)\n"
 	
   }

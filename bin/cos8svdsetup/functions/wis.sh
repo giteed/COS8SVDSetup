@@ -11,51 +11,51 @@ function _more() {
 
 # '*' | '.'| h | -h | --help | help | '')
 function _help() {
-	 ttb=$(echo -e "\n | ypr - Совмещает в себе для удобства\n | набор следующих программ и утилит: ") && lang=cr && bpn_p_lang ;
+	 ttb=$(echo -e "\n | wis - Совмещает в себе для удобства\n | набор следующих программ и утилит: ") && lang=cr && bpn_p_lang ;
 	 
 	 ttb=$(echo -e "   
  ⎧ yum provides - Ищет программные пакеты
  | совпадающие с запросом, в установленных на этом
  | сервере репозитариях пакетного менеджера yum/dnf
- ⎩ Использование: ypr -p или --provides ") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: wis -p или --provides ") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ which - Находит исполняемые файлы(x), алиасы,
  | функции, в переменой окружения \$PATH
  | сервере репозитариях пакетного менеджера yum/dnf
- ⎩ Использование: ypr -wh или --which ") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: wis -wh или --which ") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ type - В отличие от which, type НЕ осуществляет
  | сразу поиск в переменой окружения \$PATH
  | type показывает  значение искомой команды или алиаса.
- ⎩ Использование: ypr -t или --type") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: wis -t или --type") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ whereis - Ведет поиск в системных каталогах.
- ⎩ Использование: ypr -ws или --whereis") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: wis -ws или --whereis") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов и папок, по базе данных,
  | от / совпадающих с ключевым словом.
- ⎩ Использование: ypr -l или --locate ") && lang=cr && bpn_p_lang ;	 
+ ⎩ Использование: wis -l или --locate ") && lang=cr && bpn_p_lang ;	 
 
 	 ttb=$(echo -e "   
- ⎧ ypr -a или --all или запрос без -ключа
+ ⎧ wis -a или --all или запрос без -ключа
  | Будет искать используя все эти программы.
- ⎩ ypr -h или --help Выводит эту справку. ") && lang=cr && bpn_p_lang ;	 
+ ⎩ wis -h или --help Выводит эту справку. ") && lang=cr && bpn_p_lang ;	 
 
  	_more $arg_2 ;
 	
 }
 
 
-# ypr p | -p | --provides)
+# wis p | -p | --provides)
 function _provides() {
 		
      arg_2=("$1")
 		
-     if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти!\n ⎩ Например: ypr -p nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
+     if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти!\n ⎩ Например: wis -p nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
 		
 	 ttb=$(echo -e "    
  ⎧ *** Репозитории предоставляющие программу: "$arg_2" ***
@@ -81,11 +81,11 @@ function _search() {
 
 
 
-# ypr wh | -wh | --which)
+# wis wh | -wh | --which)
 function _which() {
 	arg_2=("$1")
 	
-	 if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти!\n ⎩ Например: ypr -wh nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
+	 if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти!\n ⎩ Например: wis -wh nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
 	 	
 	 ttb=$(echo -e "   
  ⎧ *** Локальное расположение: "$arg_2" ***
@@ -128,7 +128,7 @@ function _whereis() {
 function _locate() {
 	arg_2=("$1")
 	
-	if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти!\n ⎩ Например: ypr -l nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
+	if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти!\n ⎩ Например: wis -l nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
 	
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
@@ -169,22 +169,22 @@ function _all() {
 	_whereis $arg_2;
 
 	 ttb=$(echo -e "   
- ⎧ ypr -a или --all - Выводит только 25 первых
+ ⎧ wis -a или --all - Выводит только 25 первых
  | результатов поиска --locate файлов/папок совпадающих с: "$arg_2"
  | Для вывода всего списка совпадений в locate:
- | Использование: ypr -l" "$arg_2 
- ⎩ или: ypr --locate" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
+ | Использование: wis -l" "$arg_2 
+ ⎩ или: wis --locate" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
   echo ;
   ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)") && lang=cr && bpn_p_lang ;
 
   echo ;
 
 	 ttb=$(echo -e "   
-  ⎧ ypr -a или --all - Выводит только 25 первых
+  ⎧ wis -a или --all - Выводит только 25 первых
   | результатов поиска yum search с: "$arg_2"
   | Для вывода всего списка совпадений в yum search:
-  | Использование: ypr -s" "$arg_2 
-  ⎩ или: ypr --search" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
+  | Использование: wis -s" "$arg_2 
+  ⎩ или: wis --search" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
 	echo ;
 	ttb=$(echo -e "$(yum search "$arg_2" | head -n 25) ") && lang=d && bpn_p_lang ;
 
@@ -196,7 +196,7 @@ function _all() {
 
 
 # Поиск программы/файла локально и в репо 
-function ypr-f() {
+function wis-f() {
 	   
 	 case $1 in
 	 
