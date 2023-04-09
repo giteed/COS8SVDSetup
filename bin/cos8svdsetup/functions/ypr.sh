@@ -65,8 +65,8 @@ function _provides() {
  ⎩ $(whatis $arg_2 2>/dev/null)") && lang=cr && bpn_p_lang ;
 	  
   ttb=$(echo -e "  
-  $(yum provides $arg_2 ;)
-  $(yum info $arg_2" ;)
+  $(yum provides $arg_2)
+  $(yum info $arg_2)");
  
 	 _more $arg_2 ;
 	 
