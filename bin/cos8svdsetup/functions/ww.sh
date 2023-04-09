@@ -45,7 +45,7 @@
    
    tldr $1 2>/dev/null; echo ;
    ttb=$(echo -e "   
- ⎧ Получить больше информации о репозитории с: $1
+ ⎧ Получить больше информации о пакете: $1
  ⎩ https://pkgs.org/download/$1") && lang=cr && bpn_p_lang ; echo ;
 
       

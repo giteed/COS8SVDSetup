@@ -3,7 +3,7 @@
 function _more() {
    pkg_name=("$1")
    ttb=$(echo -e "   
- ⎧ Получить больше информации о репозитории с: $pkg_name
+ ⎧ Получить больше информации о пакете: $pkg_name
  ⎩ https://pkgs.org/download/$pkg_name") && lang=d && bpn_p_lang ; echo ;
  
 }
@@ -43,7 +43,9 @@ function _help() {
 	 ttb=$(echo -e "   
  ⎧ wis -a или --all или запрос без -ключа
  | Будет искать используя все эти программы.
- ⎩ wis -h или --help Выводит эту справку. ") && lang=cr && bpn_p_lang ;	 
+ | wis -h или --help Выводит эту справку. 
+ :
+ ⎩ Попробуйте:  # ww [имя]") && lang=cr && bpn_p_lang ;	 
 
  	_more $arg_2 ;
 	
