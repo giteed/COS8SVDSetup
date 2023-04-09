@@ -85,7 +85,7 @@ function _which() {
  | функции, в переменой окружения \$PATH 
  ⎩ # which $1") && lang=cr && bpn_p_lang ;
  echo ;
-ttb=$(echo -en "$(which -a $1 )\n\n$(type -all $1 )") && lang=cr && bpn_p_lang ;
+ttb=$(echo -en "$(which -a $1 )\n") && lang=cr && bpn_p_lang ;
 
 }
 
@@ -96,9 +96,9 @@ function _type() {
  ⎧ type - В отличие от which, НЕ осуществляет сразу поиск
  | в переменой окружения \$PATH
  | type - Показывает значение искомой команды или алиаса. 
- ⎩ # type $arg_2") && lang=cr && bpn_p_lang ;	
+ ⎩ # type -all $arg_2") && lang=cr && bpn_p_lang ;	
  
- ttb=$(echo -e "\n $(type $arg_2 ;)
+ ttb=$(echo -e "\n $(type -all $arg_2 ;)
 	") && lang=nix && bpn_p_lang ;	
 	
 }
