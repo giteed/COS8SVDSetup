@@ -62,8 +62,8 @@ function _provides() {
  | yum provides - Ищет программные пакеты
  | овпадающие с запросом, в установленных на этом
  | сервере репозитариях пакетного менеджера yum/dnf
- ⎩ $(whatis $arg_2 | column -t 2>/dev/null)") && lang=cr && bpn_p_lang ;
-	  
+ ⎩ $(whatis $arg_2 | column -t | tr -s ' ' 2>/dev/null)") && lang=cr && bpn_p_lang ;
+
   ttb=$(echo -e "  
   $(yum provides $arg_2)
   $(yum info $arg_2)");
@@ -135,7 +135,7 @@ function _locate() {
  | этом сервере, совпадающих с: "$arg_2"
  ⎩ # locate "$arg_2" ") && lang=cr && bpn_p_lang ;	
   echo ;
-  ttb=$(echo -e "$(whatis $arg_2)" 2>/dev/null ) && lang=cr && bpn_p_lang ;
+  ttb=$(echo -e "$(whatis $arg_2 | column -t | tr -s ' ' )" 2>/dev/null ) && lang=cr && bpn_p_lang ;
 	 
   ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) 2>/dev/null | column -t ;)\n") && lang=cr && bpal_p_lang;	
 
