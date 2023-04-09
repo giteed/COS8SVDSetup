@@ -76,7 +76,7 @@ function _provides() {
 
   ttb=$(echo -e "  
   $(yum provides $arg_2 2>/dev/null ) 
-  $(yum info $arg_2 2>/dev/null )") && lang=cr && bpn_p_lang ;
+  $(yum info $arg_2 2>/dev/null )") && lang=nix && bpn_p_lang ;
  
 	 _more $arg_2 ;
 	 
