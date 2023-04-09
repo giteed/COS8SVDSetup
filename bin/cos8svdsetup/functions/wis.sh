@@ -157,8 +157,6 @@ function _search() {
  | используя базу данных mlocate.
  ⎩ # search "$arg_2" ") && lang=cr && bpn_p_lang ;	
   echo ;
-  ttb=$(echo -e "$(search $arg_2 | column -t | tr -s ' ' )" 2>/dev/null ) && lang=cr && bpn_p_lang ;
-	 
   ttb=$(echo -e "$( search "$arg_2") ") && lang=d && bpal_p_lang ;
 
 }
