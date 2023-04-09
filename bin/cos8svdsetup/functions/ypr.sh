@@ -79,7 +79,7 @@ function _provides() {
 function _search() {
 	arg_2=("$1")	
 	echo ;
-	ttb=$(echo -e "$(yum search $arg_2)\n") && lang=cr && bpal_p_lang ;
+	ttb=$(echo -e "$(yum search "$arg_2") \n") && lang=css && bpal_p_lang ;
 }
 
 
@@ -189,10 +189,10 @@ function _all() {
   | Использование: ypr -s" "$arg_2 
   ⎩ или: ypr --search" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
 	echo ;
-	ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (yum search "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)") && lang=cr && bpn_p_lang ;
+	ttb=$(echo -e "$(yum search "$arg_2" | head -n 25) ") && lang=css && bpn_p_lang ;
 
 
- 	_more #$arg_2 ;
+ 	_more $arg_2 ;
 	_repo_list ;
 
 }
