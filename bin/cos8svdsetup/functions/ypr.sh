@@ -14,7 +14,7 @@ function _more() {
   echo -e  "4) $2"
   echo -e  "5) $3"
   
-  unset arg_2 
+  
 }
 
 
@@ -212,7 +212,7 @@ function ypr-f() {
 	 
 	 arg_2=("$2")
 	 _provides $arg_2;
-	 unset arg_2 
+	 
 	 
 	 ;;
 	 
@@ -221,7 +221,7 @@ function ypr-f() {
 	 
 	 arg_2=("$2")
 	 _which $arg_2;
-	 unset arg_2 
+	 
 	 
 	 ;;
 	 
@@ -230,7 +230,7 @@ function ypr-f() {
 	 
 	 arg_2=("$2")
 	 _type $arg_2;
-	 unset arg_2 
+	 
 	 
 	 ;;
 	 
@@ -239,7 +239,7 @@ function ypr-f() {
 	 
 	 arg_2=("$2")
 	 _whereis $arg_2;
-	 unset arg_2 
+	 
 	 
 	 ;;
 	 
@@ -248,7 +248,7 @@ function ypr-f() {
 	 
 	 arg_2=("$2")
 	 _locate $arg_2;
-	 unset arg_2 
+	 
 	  
 	 ;;
 	 
