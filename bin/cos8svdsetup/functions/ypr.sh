@@ -151,7 +151,7 @@ function _all() {
  | результатов поиска файлов/папок совпадающих с: "$arg_2"
  | Для вывода всего списка совпадений в locate:
  | Используйте: # ypr с ключом -l" "$arg_2 
- ⎩ или ypr с ключом --locate" "$arg_2 ") && lang=help && bpn_p_lang ;	 echo ;
+ ⎩ или ypr с ключом --locate" "$arg_2 ") && lang=log && bpn_p_lang ;	 echo ;
   echo ;
   ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)") && lang=cr && bpn_p_lang ;
 
