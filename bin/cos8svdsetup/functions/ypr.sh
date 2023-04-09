@@ -48,7 +48,7 @@ function _help() {
 	
 }
 
-
+# ypr -p | --provides)
 function _provides() {
 		
      arg_2=("$1")
@@ -73,7 +73,7 @@ function _provides() {
 	 
 }
 
-
+# ypr -wh | --wh | --which)
 function _which() {
 	arg_2=("$1")
 	
