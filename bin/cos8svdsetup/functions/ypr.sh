@@ -85,9 +85,7 @@ function _which() {
  | функции, в переменой окружения \$PATH 
  ⎩ # which $1") && lang=cr && bpn_p_lang ;
 
-ttb=$(echo -en "
- $(which -a $1 )\n
- $(type -all $1 )\n ") && lang=cr && bpn_p_lang ;
+ttb=$(echo -en "$(which -a $1 )\n$(type -all $1 )") && lang=cr && bpn_p_lang ;
 
 }
 
