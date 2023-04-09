@@ -5,7 +5,10 @@ function http() { ttb=$( echo -e "\n $( cat /tmp/nginx_http_ip 2>/dev/null )") &
 
 
 # Функция информация о памяти системы
-function mem() { ttb=$( echo -e "\n $( free -h -t )") && lang=meminfo && bpn_p_lang ; }
+function mem() { 
+  ramfetch 2>/dev/null ;
+  ttb=$( echo -e "\n $( free -h -t )") && lang=meminfo && bpn_p_lang ; 
+}
 
 
 # Функция информации о доступном дисковом пространстве на файловой системе
