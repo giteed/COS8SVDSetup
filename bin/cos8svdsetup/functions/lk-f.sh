@@ -10,7 +10,7 @@ function lk-f()
    if [ "$1" == "" ]; 
       then 
       GLIG_ASTRX_OF ;
-      ttb=$(echo -e "\n Пустой запрос "lk" покажет все,\n кроме скрытых файлов и папок\n путь:"$(pwd)"\n") && lang=cr && bpn_p_lang ;
+      ttb=$(echo -e "\n Пустой запрос "lk" покажет все,\n кроме скрытых файлов и папок\n путь:$(pwd)\n") && lang=cr && bpn_p_lang ;
       ttb=$( stat -c '%a:%A %U %G %s %n' . .. * | numfmt --header --field 4 --from=iec --to=si | column -t ) && lang=java && bpn_p_lang ;
       return; 
    fi
@@ -18,13 +18,13 @@ function lk-f()
    if [ "$1" == "." ]; 
       then 
       GLIG_ASTRX_OF ;
-      ttb=$(echo -e "\n Запрос "lk" c \".\" покажет все,\n включая cкрытые файлы и папки\n путь:"$(pwd)"\n") && lang=cr && bpn_p_lang ;
+      ttb=$(echo -e "\n Запрос "lk" c \".\" покажет все,\n включая cкрытые файлы и папки\n путь:$(pwd)\n") && lang=cr && bpn_p_lang ;
       ttb=$( stat -c '%a:%A %U %G %s %n' .* ** | numfmt --header --field 4 --from=iec --to=si | column -t ) && lang=java && bpn_p_lang ;
       return; 
    fi
    
       GLIG_ASTRX_OF ;
-      ttb=$(echo -e "\n Вы можете выводить файлы и папки,\n используя маску. Пример: # lk *e*\n путь:"$(pwd)" \n") && lang=cr && bpn_p_lang ;
+      ttb=$(echo -e "\n Вы можете выводить файлы и папки,\n используя маску. Пример: # lk *e*\n путь:$(pwd) \n") && lang=cr && bpn_p_lang ;
       ttb=$( stat -c '%a:%A %U %G %s %n' $* | numfmt --header --field 4 --from=iec --to=si | column -t ) && lang=java && bpn_p_lang ;
 }
 
