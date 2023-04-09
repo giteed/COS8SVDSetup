@@ -41,7 +41,7 @@
  ⎩ # whereis $1") && lang=cr && bpn_p_lang ;
       echo ; ttb=$(whereis $*) && lang=cr  && bpn_p_lang 2>/dev/null ; echo ;	
    
-   tldr $1 ; echo ;
+   tldr $1 2>/dev/null; echo ;
    ttb=$(echo -e "   
  ⎧ Получить больше информации о репозитории с: $1
  ⎩ https://pkgs.org/download/$1") && lang=cr && bpn_p_lang ; echo ;
