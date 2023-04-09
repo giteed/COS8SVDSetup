@@ -135,7 +135,7 @@ function _locate() {
  | этом сервере, совпадающих с: "$arg_2"
  ⎩ # locate "$arg_2" ") && lang=cr && bpn_p_lang ;	
   echo ;
-  (ttb=$(echo -e "$(whatis $arg_2 | column -t | tr -s ' ' )"  ) && lang=cr && bpn_p_lang) 2>/dev/null ;
+  (ttb=$(echo -e "$(whatis $arg_2 | column -t | tr -s ' ' )"  ) 2>/dev/null && lang=cr && bpn_p_lang) 2>/dev/null ;
 	 
   ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) | column -t ;)\n") && lang=cr && bpal_p_lang;	
 
