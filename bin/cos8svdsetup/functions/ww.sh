@@ -29,7 +29,7 @@
 	ttb=$(echo -e "
  ⎧ Просмотр информации о пакете rpm: 
  ⎩ # rpm -qa $1") && lang=cr && bpn_p_lang ;
-	echo ; ttb=$(rpm -qa $*) && lang=b  && bpn_p_lang 2>/dev/null ; echo ;
+	echo ; ttb=$(rpm -qa $*) && lang=cr  && bpn_p_lang 2>/dev/null ; echo ;
    
    ttb=$(echo -e "
  ⎧ Просмотр информации по which -a: 
