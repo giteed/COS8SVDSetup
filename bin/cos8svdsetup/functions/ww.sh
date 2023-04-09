@@ -9,9 +9,9 @@
  ⎧ Чтобы получить информацию сразу по 11 командам: 
  | type -all [имя], yum info [имя],
  | yum provides [имя], yum search [имя], 
- | yum repolist [имя] rpm -qa [имя],
- | which -a [имя], whatis [имя], whereis [имя],
- | locate [имя], tldr [имя].
+ | rpm -qa [имя], which -a [имя],
+ |  whatis [имя], whereis [имя],
+ | locate [имя], tldr [имя] yum repolist
  | используйте: 
  | # ww [имя_программы] или [имя_скрипта] или [имя_функции]
  |
