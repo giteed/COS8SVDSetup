@@ -8,6 +8,12 @@ function _more() {
  ⎧ Получить больше информации о репозитории с: $pkg_name
  ⎩ https://pkgs.org/download/$pkg_name") && lang=cr && bpn_p_lang ; echo ;
   
+  echo 1) $pkg_name
+  echo 2) $arg_2
+  echo 3) $1
+  echo 4) $2
+  echo 5) $3
+  
   unset arg_2 
 }
 
