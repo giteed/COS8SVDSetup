@@ -126,7 +126,7 @@ function _locate() {
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов/папок, по базе данных на
  | этом сервере, совпадающих с: "$arg_2"
- ⎩ # locate "$arg_2": ") && lang=cr && bpn_p_lang ;	
+ ⎩ # locate "$arg_2" ") && lang=cr && bpn_p_lang ;	
  echo ;
  ttb=$(echo -e "$(whatis $arg_2)" 2>/dev/null ) && lang=cr && bpn_p_lang ;
 	 
@@ -147,7 +147,8 @@ arg_2=("$1")
  ⎧ ypr с ключом -a или --all - Выводит только 25 первых
  | результатов поиска файлов/папок совпадающих с: "$arg_2"
  | Для вывода всего списка совпадений в locate:
- ⎩ Используйте: # ypr с ключом -l" "$arg_2 или ypr с ключом --locate" "$arg_2 ") && lang=cr && bpn_p_lang ;	 echo ;
+ | Используйте: # ypr с ключом -l" "$arg_2 
+ ⎩ или ypr с ключом --locate" "$arg_2 ") && lang=cr && bpn_p_lang ;	 echo ;
 
  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)
  ") && lang=cr && bpn_p_lang ;
