@@ -72,9 +72,11 @@ function _provides() {
  | сервере репозитариях пакетного менеджера yum/dnf
  ⎩ ")  && lang=cr && bpn_p_lang ;
 
+  (ttb=$(echo -e "$(whatis $arg_2 | column -t | tr -s ' ' )"  ) 2>/dev/null && lang=cr && bpn_p_lang) 2>/dev/null ;
+
   ttb=$(echo -e "  
   $(yum provides $arg_2 2>/dev/null ) 
-  $(yum info $arg_2 2>/dev/null )") && lang=cr && bpn_p_lang ;
+  $(yum info $arg_2 2>/dev/null )") && lang=b && bpn_p_lang ;
  
 	 _more $arg_2 ;
 	 
