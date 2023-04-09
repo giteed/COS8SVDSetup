@@ -1,20 +1,11 @@
 #!/bin/bash
 
-
-
 function _more() {
    pkg_name=("$1")
    ttb=$(echo -e "   
  ⎧ Получить больше информации о репозитории с: $pkg_name
  ⎩ https://pkgs.org/download/$pkg_name") && lang=cr && bpn_p_lang ; echo ;
-  
-  echo -e  "1) $pkg_name"
-  echo -e  "2) $arg_2"
-  echo -e  "3) $1"
-  echo -e  "4) $2"
-  echo -e  "5) $3"
-  
-  
+ 
 }
 
 
