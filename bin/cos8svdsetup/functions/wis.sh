@@ -81,7 +81,6 @@ function _provides() {
 }
 
 
-
 # wis wh | -wh | --which)
 function _which() {
 	arg_2=("$1")
