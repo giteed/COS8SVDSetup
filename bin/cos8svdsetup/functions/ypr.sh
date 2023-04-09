@@ -137,31 +137,8 @@ function _locate() {
 }
 
 
-# a | -a | --all)
-function _all() {
-	arg_2=("$1")
-	_provides $arg_2 ;
-	_which $arg_2;
-	_type $arg_2;	
-	_whereis $arg_2;
-
-	 ttb=$(echo -e "   
- ⎧ ypr -a или --all - Выводит только 25 первых
- | результатов поиска файлов/папок совпадающих с: "$arg_2"
- | Для вывода всего списка совпадений в locate:
- | Использование: ypr -l" "$arg_2 
- ⎩ или: ypr --locate" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
-  echo ;
-  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)") && lang=cr && bpn_p_lang ;
-
- 	_more ;
-
-}
-
-
 # -rl | --repo)
 function _repo_list() {	
-	arg_2=("$2")
 	GLIG_ASTRX_OF
 	ttb=$(echo -e "   
  ⎧ *** REPO List:  ***
@@ -175,6 +152,29 @@ function _repo_list() {
 $(stat -c '%a:%A %U %G %n' /etc/yum.repos.d/* | column -t ;)") && lang=cr && bpn_p_lang ;
 	 
 	 GLIG_ASTRX_ON ;
+}
+
+
+# a | -a | --all)
+function _all() {
+	arg_2=("$1")
+	_provides $arg_2 ;
+	_which $arg_2;
+	_type $arg_2;	
+	_whereis $arg_2;
+	_repo_list ;
+
+	 ttb=$(echo -e "   
+ ⎧ ypr -a или --all - Выводит только 25 первых
+ | результатов поиска файлов/папок совпадающих с: "$arg_2"
+ | Для вывода всего списка совпадений в locate:
+ | Использование: ypr -l" "$arg_2 
+ ⎩ или: ypr --locate" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
+  echo ;
+  ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)") && lang=cr && bpn_p_lang ;
+
+ 	_more ;
+
 }
 
 
