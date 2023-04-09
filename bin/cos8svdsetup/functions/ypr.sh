@@ -84,7 +84,7 @@ function _which() {
  | which - Находит исполняемые файлы(x), алиасы,
  | функции, в переменой окружения \$PATH 
  ⎩ # which $1") && lang=cr && bpn_p_lang ;
-
+ echo ;
 ttb=$(echo -en "$(which -a $1 )\n$(type -all $1 )") && lang=cr && bpn_p_lang ;
 
 }
