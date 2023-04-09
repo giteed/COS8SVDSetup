@@ -17,33 +17,33 @@ function _help() {
  ⎧ yum provides - Ищет программные пакеты
  | совпадающие с запросом, в установленных на этом
  | сервере репозитариях пакетного менеджера yum/dnf
- ⎩ Использование: ypr с ключом -p или --provides ") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: ypr -p или --provides ") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ which - Находит исполняемые файлы(x), алиасы,
  | функции, в переменой окружения \$PATH
  | сервере репозитариях пакетного менеджера yum/dnf
- ⎩ Использование: ypr с ключом -wh или --which ") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: ypr -wh или --which ") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ type - В отличие от which, type НЕ осуществляет
  | сразу поиск в переменой окружения \$PATH
  | type показывает  значение искомой команды или алиаса.
- ⎩ Использование: ypr с ключом -t или --type") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: ypr -t или --type") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ whereis - Ведет поиск в системных каталогах.
- ⎩ Использование: ypr с ключом -ws или --whereis") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: ypr -ws или --whereis") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов и папок, по базе данных,
  | от / совпадающих с ключевым словом.
- ⎩ Использование: ypr с ключом -l или --locate ") && lang=cr && bpn_p_lang ;	 
+ ⎩ Использование: ypr -l или --locate ") && lang=cr && bpn_p_lang ;	 
 
 	 ttb=$(echo -e "   
- ⎧ ypr с ключом -a или --all или запрос без -ключа
+ ⎧ ypr -a или --all или запрос без -ключа
  | Будет искать используя все эти программы.
- ⎩ ypr с ключом -h или --help Выводит эту справку. ") && lang=cr && bpn_p_lang ;	 
+ ⎩ ypr -h или --help Выводит эту справку. ") && lang=cr && bpn_p_lang ;	 
 
  	_more ;
 	
@@ -147,11 +147,11 @@ function _all() {
 	_locate $arg_2;
 
 	 ttb=$(echo -e "   
- ⎧ ypr с ключом -a или --all - Выводит только 25 первых
+ ⎧ ypr -a или --all - Выводит только 25 первых
  | результатов поиска файлов/папок совпадающих с: "$arg_2"
  | Для вывода всего списка совпадений в locate:
- | Используйте: # ypr с ключом -l" "$arg_2 
- ⎩ или ypr с ключом --locate" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
+ | Использование: ypr -l" "$arg_2 
+ ⎩ или: ypr --locate" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
   echo ;
   ttb=$(echo -e "$(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | head -n 25 | rg "/$arg_2") ) 2>/dev/null | column -t ;)") && lang=cr && bpn_p_lang ;
 
