@@ -11,7 +11,7 @@ function _more() {
 
 # '*' | '.'| h | -h | --help | help | '')
 function _help() {
-	 ttb=$(echo -e "\n | wis -a \$keyword Совмещает в себе для удобства\n | набор следующих программ и утилит: ") && lang=nix && bpn_p_lang ;
+	 ttb=$(echo -e "\n | wis -a [имя_файла] Совмещает в себе для удобства\n | набор следующих программ и утилит: ") && lang=nix && bpn_p_lang ;
 	 
 	 ttb=$(echo -e "   
  ⎧ yum provides - Ищет программные пакеты
