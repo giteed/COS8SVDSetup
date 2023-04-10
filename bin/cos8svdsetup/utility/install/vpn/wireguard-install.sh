@@ -23,7 +23,7 @@ function core_up() {
 }
 
 function core_ch() {
-	echo ; uname -r | grep -qE '^4\.' && echo -e " Версия ядра "$(uname -r)" не поддерживает Wireguard\n Перед установкой Wireguard вам нужно обновить ядро Linux CentOS." && core_up || echo -e " Версия ядра "$(uname -r)" \n Обновление ядра linux не требуется.\n Переходим к установке Wireguard.\n"
+	echo ; uname -r | grep -qE '^4\.' && echo -e " Версия ядра "$(uname -r)" не поддерживает WireGuard\n Перед установкой WireGuard вам нужно обновить ядро Linux CentOS." && core_up || echo -e " Версия ядра "$(uname -r)" \n Обновление ядра linux не требуется.\n Переходим к установке WireGuard.\n"
 }
 
 
