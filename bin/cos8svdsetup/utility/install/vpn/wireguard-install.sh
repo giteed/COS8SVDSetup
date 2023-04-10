@@ -16,7 +16,14 @@
 
 # --> Этот ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
 . /root/vdsetup.2/bin/functions/run_as_root.sh ;
-echo ;
+
+function core_up() {
+	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
+	/root/vdsetup.2/bin/utility/system/core/kernel-up.sh ;
+}
+
+echo ; uname -r | grep -qE '^4\.' && echo -e " Версия ядра "$(uname -r)" не поддерживает Wireguard\n Перед установкой Wireguard вам нужно обновить ядро Linux CentOS." && core_up || echo -e " Версия ядра "$(uname -r)" \n Обновление ядра linux не требуется.\n Переходим к установке Wireguard.\n"
+
 
 
 RED='\033[0;31m'
