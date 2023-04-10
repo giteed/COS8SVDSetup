@@ -100,12 +100,15 @@ function kill_help() {
  | - После этого выбранная задача будет перемещена на 
  ⎩ передний план, и ее вывод будет отображаться в терминале.
  
-  |  Убить процесс по ключевому так-же слову можно командой:
-  |  # ps ax | awk '/[n]ame/ { print $1 }' | xargs kill
-  |  # pidof name | awk '{ print $1 }' | xargs kill
-  |  # ps ax | grep <name> | grep -v grep | awk '{print $1}' | xargs kill
- 
  " ) && lang="cr" && bpn_p_lang ;
+ 
+ ttb=$(echo -e " 
+ ⎧  Убить процесс по ключевому так-же слову можно командой:
+ |  # ps ax | awk '/[n]ame/ { print $1 }' | xargs kill
+ |  # pidof name | awk '{ print $1 }' | xargs kill
+ ⎩  # ps ax | grep <name> | grep -v grep | awk '{print $1}' | xargs kill
+ 
+ " ) && lang=b && bpn_p_lang ;
 }  
 
 # Убить процесс по неточному совадению

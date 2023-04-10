@@ -8,8 +8,6 @@
 # https://losst.pro/kak-ubit-protsess-linux?ysclid=lay4xo7gzk993626029
 
 
-
-
 function msg1() {
 	(echo -e "\n $(black_U23A7 ) " ;)
 }
@@ -109,7 +107,6 @@ function kill_snippet() {
 	}
 	
 	
-	
 	if [[ "$snippet" == '' ]] ; then exit ; fi ;
 
 	pidof_snippet_ch && exit 0;
@@ -121,63 +118,10 @@ function kill_snippet() {
 }
 
 
-
-kill_snippet
-
-echo -e "${red}\n exit 0${nc};\n" 
-
-#if [[ "$1" == '' ]] ; then kill_snippet ;
-#else kill_snippet $1 ; fi ;
+	kill_snippet
+	
+	echo -e "${red}\n exit 0${nc};\n" 
+	
 
 
-
-
-exit 0
-
-
-
-
-
-
-
-
-
-
-
-if [[ "$1" != '' ]] ; 
-then  snippet=$1 ; kill_snippet ;
-fi 
-
-kill_snippet
-
-
-
-press_enter_to_continue_or_ESC_or_any_key_to_cancel
-
-
-exit 0 ; 
-
-
-&& green_tick_en && ttb=$
-
-&& lang="nix" && bpn_p_lang
-
-
-echo -e "${TOR_or_REAL_IP_MSG}" ;
-
-echo -e "\n $(black_U23A7 ) " ;
-echo -e " $(white_1     ) "
-echo -e " $(red_1       ) "
-echo -e " $(blue_1      ) "
-echo -e " $(cyan_1      ) "
-echo -e " $(purple_1    ) "
-echo -e " $(purple_U23A6) "
-echo -e " $(black_1     ) "
-echo -e " $(white_1     ) "
-echo -e " $(ellow_1     ) " ;
-echo -e " $(green_1     ) "
-echo -e " $(green_U23A6 ) "
-echo -e " $(white_1     ) $(red_U0023) " ;
-echo -e " $(white_1     )  " ;
-echo -e " $(black_U23A9 ) \n" ;
-echo ;
+	exit 0
