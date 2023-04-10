@@ -284,7 +284,7 @@
     echo -e " $(white_1        ) нажать Enter, если вы согласны с ними." ;
     echo -e " $(black_U23A9    )\n" ;
     
-    press_enter ;
+    press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
     
     
     function a_a()
