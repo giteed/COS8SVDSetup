@@ -375,7 +375,7 @@
     echo -e " $(black_U23A9    )\n" ;
     #read -n1 -r -p " Нажмите любую кнопку..." 
     
-    press_anykey ;
+    press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
     
     
     
