@@ -523,6 +523,7 @@ initialCheck
 # Check if WireGuard is already installed and load params
 if [[ -e /etc/wireguard/params ]]; then
 	source /etc/wireguard/params
+	core_ch ;
 	manageMenu
 else
 	installWireGuard
