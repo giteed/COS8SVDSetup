@@ -108,7 +108,7 @@ function kill_help() {
  |  # pidof name | awk '{ print $1 }' | xargs kill
  ⎩  # ps ax | grep <name> | grep -v grep | awk '{print $1}' | xargs kill
  
- " ) && lang=b && bpn_p_lang ;
+ " ) && lang=d && bpn_p_lang ;
 }  
 
 # Убить процесс по неточному совадению
