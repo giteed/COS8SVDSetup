@@ -108,10 +108,9 @@ function _which() {
 	 if [[ $arg_2 == "" ]] ; then ttb=$(echo -e "\n ⎧ Укажите вторым аргументом, что требуется найти!\n ⎩ Например: wis -wh nginx \n") && lang=cr && bpn_p_lang && return ; fi ;
 	 	
 	 ttb=$(echo -e "   
- ⎧ *** Локальное расположение:  
- | "$arg_2" which - Находит   
- | исполняемые файлы(x),
- | алиасы, функции, в 
+ ⎧ Локальное расположение: "$arg_2"
+ | which - Находит исполняемые
+ | файлы(x), алиасы, функции, в
  | переменой окружения \$PATH 
  :
  ⎩ # which $1") && lang=cr && bpn_p_lang ;
@@ -189,7 +188,7 @@ function _search() {
  :
  ⎩ # yum search "$arg_2" ") && lang=cr && bpn_p_lang ;	
   echo ;
-  ttb=$(echo -e "$( yum search "*/$arg_2")\n ") && lang=d && bpal_p_lang ;
+  ttb=$(echo -e "$( yum search "$arg_2")\n ") && lang=d && bpal_p_lang ;
 
 }
 
