@@ -18,6 +18,7 @@ function _help() {
  | совпадающие с запросом, в установленных 
  | на этом сервере репозитариях пакетного 
  | менеджера yum/dnf.
+ :
  ⎩ Использование: wis -p или --provides ") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
@@ -25,6 +26,7 @@ function _help() {
  | алиасы, функции, в переменой окружения 
  | \$PATH на сервере репозиториях пакетного 
  | менеджера yum/dnf
+ :
  ⎩ Использование: wis -wh или --which ") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
@@ -32,6 +34,7 @@ function _help() {
  | осуществляет сразу поиск в переменой 
  | окружения \$PATH. type показывает
  | значение искомой команды или алиаса.
+ :
  ⎩ Использование: wis -t или --type") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
@@ -40,18 +43,21 @@ function _help() {
  | исходных кодов и страниц руководства
  | (man-страниц) заданной команды 
  | в заданных директориях.
+ :
  ⎩ Использование: wis -ws или --whereis") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов и папок, 
  | по базе данных, от / совпадающих 
  | с ключевым словом.
+ :
  ⎩ Использование: wis -l или --locate ") && lang=cr && bpn_p_lang ;	 
 
 	 ttb=$(echo -e "   
  ⎧ yum search позволяет искать пакеты по 
  | ключевым словам в именах пакетов, 
  | описаниях и дополнительных метаданных.
+ :
  ⎩ Использование: wis -s или --search ") && lang=cr && bpn_p_lang ;	
 
 	 ttb=$(echo -e "   
@@ -80,7 +86,9 @@ function _provides() {
  | пакеты cовпадающие с запросом,
  | в установленных на этом
  | сервере репозитариях пакетного 
- ⎩ менеджера yum/dnf ")  && lang=cr && bpn_p_lang ;
+ | менеджера yum/dnf
+ :
+ ⎩ # yum provides $arg_2 ")  && lang=cr && bpn_p_lang ;
 
   (ttb=$(echo -e "\n  $(whatis $arg_2 | column -t | tr -s ' ' )"  ) 2>/dev/null && lang=cr && bpn_p_lang) 2>/dev/null ;
 
@@ -105,6 +113,7 @@ function _which() {
  | исполняемые файлы(x),
  | алиасы, функции, в 
  | переменой окружения \$PATH 
+ :
  ⎩ # which $1") && lang=cr && bpn_p_lang ;
  echo ;
  ttb=$(echo -en "$(which -a $1 )\n") && lang=cr && bpn_p_lang ;
@@ -121,6 +130,7 @@ function _type() {
  | в переменой окружения \$PATH.  
  | type - Показывает значение 
  | искомой команды или алиаса. 
+ :
  ⎩ # type -all $arg_2") && lang=cr && bpn_p_lang ;	
  echo ;
  ttb=$(echo -e "$(type -all $arg_2 ;)") && lang=nix && bpn_p_lang ;	
@@ -137,6 +147,7 @@ function _whereis() {
  | исходных кодов и страниц 
  | руководства (man-страниц) заданной 
  | команды в заданных директориях.
+ :
  ⎩ # whereis "$arg_2" ") && lang=cr && bpn_p_lang ;	 
  echo ;
  ttb=$(echo -e "$(whereis $arg_2)\n") && lang=cr && bpn_p_lang ; 
@@ -154,6 +165,7 @@ function _locate() {
  ⎧ locate - Ведет поиск файлов/папок, 
  | по базе данных на этом сервере,
  | совпадающих с: "$arg_2"
+ :
  ⎩ # locate "$arg_2" ") && lang=cr && bpn_p_lang ;	
   echo ;
   (ttb=$(echo -e "$(whatis $arg_2 | column -t | tr -s ' ' )"  ) 2>/dev/null && lang=cr && bpn_p_lang) 2>/dev/null ;
@@ -174,6 +186,7 @@ function _search() {
  | пакеты по ключевым словам в 
  | именах, пакетов описаниях и 
  | дополнительных метаданных.
+ :
  ⎩ # yum search "$arg_2" ") && lang=cr && bpn_p_lang ;	
   echo ;
   ttb=$(echo -e "$( yum search "*/$arg_2")\n ") && lang=d && bpal_p_lang ;
@@ -188,9 +201,11 @@ function _search() {
 function _repo_list() {	
 	GLIG_ASTRX_OF
 	ttb=$(echo -e "   
- ⎧ *** REPO List:  ***
- | # yum repolist по базе
- ⎩ данных на этом сервере
+ ⎧ *** REPO List: ***
+ | репозитории установленные
+ | на этом сервере.
+ :
+ ⎩ # yum repolist
 	 
 	 $(yum repolist) 
  
@@ -217,6 +232,7 @@ function _all() {
  | --locate файлов/папок совпадающих 
  | с: "$arg_2". Для вывода всего 
  | списка совпадений в locate: 
+ :
  | Использование: wis -l" "$arg_2 
  ⎩ или: wis --locate" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
   echo ;
@@ -230,6 +246,7 @@ function _all() {
   | yum search совпадающих с: "$arg_2" 
   | Для вывода всего списка совпадений 
   | в yum search:
+  :
   | Использование: wis -s" "$arg_2 
   ⎩ или: wis --search" "$arg_2 ") && lang=bash && bpn_p_lang ;	 echo ;
 	echo ;
