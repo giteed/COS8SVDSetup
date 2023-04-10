@@ -22,7 +22,10 @@ function core_up() {
 	/root/vdsetup.2/bin/utility/system/core/kernel-up.sh ;
 }
 
-echo ; uname -r | grep -qE '^4\.' && echo -e " Версия ядра "$(uname -r)" не поддерживает Wireguard\n Перед установкой Wireguard вам нужно обновить ядро Linux CentOS." && core_up || echo -e " Версия ядра "$(uname -r)" \n Обновление ядра linux не требуется.\n Переходим к установке Wireguard.\n"
+function core_ch() {
+	echo ; uname -r | grep -qE '^4\.' && echo -e " Версия ядра "$(uname -r)" не поддерживает Wireguard\n Перед установкой Wireguard вам нужно обновить ядро Linux CentOS." && core_up || echo -e " Версия ядра "$(uname -r)" \n Обновление ядра linux не требуется.\n Переходим к установке Wireguard.\n"
+}
+
 
 
 
@@ -146,6 +149,8 @@ function installQuestions() {
 }
 
 function installWireGuard() {
+	# Check Linux core
+	core_ch ;
 	# Run setup questions first
 	installQuestions
 
