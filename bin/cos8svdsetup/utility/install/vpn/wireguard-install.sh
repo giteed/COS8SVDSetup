@@ -30,7 +30,7 @@ function core_ch() {
 	
 	function core_grubby_fix() {
 		
-	(ls -l /boot/vmlinuz-* | grep -Po "(?<=vmlinuz-)[^-]+(-\S+)?") | grep -q -- "-6" && echo -e " "$(uname -r)" found\n " || exit 1;
+	(ls -l /boot/vmlinuz-* | grep -Po "(?<=vmlinuz-)[^-]+(-\S+)?") | grep -q -- "-6" && echo -e " "$(uname -r)" found\n " || return 1;
 	
 ttb=$(echo -e " 
 
