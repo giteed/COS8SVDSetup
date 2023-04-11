@@ -138,10 +138,12 @@ function preloader() {
 function preloader_completed() {
 # --> выводим сообщение о успешном завершении работы и очищаем переменную $ttb
 	ttb=$(echo -e " 
- ⎧ The preloader has 
- ⎩ completed its work!\n") && lang_nix && bpn_p_lang ; ttb=""  ; echo ;
- source /root/.bashrc ;
- exit 0
+ ⎧ The preloader has completed its work!
+ | Enter the command:
+ ⎩ # source /root/.bashrc\n") && lang_nix && bpn_p_lang ; ttb=""  ; echo ;
+  
+  source /root/.bashrc ;
+  exit 0
 }
 
 # --> функция, которая выводит сообщение о завершении загрузки с ошибкой
