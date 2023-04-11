@@ -594,7 +594,7 @@
         ;;
         
     tor | -tor )
-        /root/vdsetup.2/bin/utility/tor/tor_installer.sh ;
+        /root/vdsetup.2/bin/utility/install/tor/tor_installer.sh ;
         
         ;;
         
@@ -605,7 +605,7 @@
         
         
     wget-proxy-on | --wget-proxy-on )
-        /root/vdsetup.2/bin/utility/tor/tor_installer.sh wgetrc_config_edit_now ;
+        /root/vdsetup.2/bin/utility/install/tor/tor_installer.sh wgetrc_config_edit_now ;
         
         ;;
         

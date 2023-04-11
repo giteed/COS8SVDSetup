@@ -219,6 +219,7 @@
 		firewall-cmd --complete-reload ;
 		systemctl restart firewalld.service ;
 		systemctl restart network.service ; echo ;
+		systemctl restart NetworkManager.service ; echo ;
 		ttb=$(firewall-cmd --permanent --list-all) && bpn_p_lang  ; echo ;
 		(systemctl enable tor.service) ;
 		(systemctl enable privoxy);
