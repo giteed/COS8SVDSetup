@@ -16,8 +16,8 @@ ttb=$(echo -e "
    Или введите позднее: core_grubby_help\n
    " ) && lang=d && bpn_p_lang ; ttb="" ;
    
-   press_enter ;
-
+ 
+ 	press_anykey ;
 	
 	ttb=$(echo -e " 
  ⎧ Чтобы переключить загрузку ядра на более свежее выполните 
