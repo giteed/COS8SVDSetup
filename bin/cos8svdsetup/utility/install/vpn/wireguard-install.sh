@@ -30,9 +30,12 @@ function core_ch() {
 	
 	function core_grubby_fix() {
 		
-	ls -l /boot/vmlinuz-* | grep -q -- "-6" && echo -e " "$(uname -r)" found" || exit ;
+	(ls -l /boot/vmlinuz-* | grep -Po "(?<=vmlinuz-)[^-]+(-\S+)?") | grep -q -- "-6" && echo -e " "$(uname -r)" found\n " || exit 0;
 	
 ttb=$(echo -e " 
+
+	"$(ls -l /boot/vmlinuz-* | grep -Po "(?<=vmlinuz-)[^-]+(-\S+)?")"
+	
  ⎧ Если ядро уже обновлялось и WireGuard уже был установлен и работал нормально,
  | а теперь перестал, возможно, что загрузка системы снова переключилась 
  ⎩ на старое ядро "$(uname -r)" ?!
