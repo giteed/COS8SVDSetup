@@ -35,7 +35,10 @@ ttb=$(echo -e "
  ⎩ на старое ядро "$(uname -r)" ?!
  
    Введите чтобы получить помощь: core_grubby_help" ) && lang_nix && bpn_p_lang ; ttb="" ;
-}
+   
+   ls -l /boot/vmlinuz-* | grep -q -- "-6" && echo 6 found || echo "String -6 was not found."
+
+   }
 	
 	echo ; uname -r | grep -qE '^4\.' && echo -e " Версия ядра "$(uname -r)" не поддерживает WireGuard\n Перед установкой WireGuard вам нужно обновить ядро Linux CentOS." && core_up || core_grubby_fix ;
 	
