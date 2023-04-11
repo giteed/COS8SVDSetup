@@ -17,7 +17,7 @@ function core_up() {
 
 
 # Выводим описание вывода uname -r
-echo -e " Output of 'uname -r':"
+echo -en " Output of 'uname -r': "
 
 # Выводим результат команды uname -r
 uname -r
