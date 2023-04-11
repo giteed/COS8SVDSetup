@@ -1,7 +1,5 @@
 #!/bin/bash
 
-lang_x 2>/dev/null ;
-
 # Source global definitions
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc

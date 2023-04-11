@@ -65,7 +65,7 @@ https://itisgood.ru/2020/05/07/kak-izmenit-defoltnoe-jadro-zagruzka-so-starogo-j
 загрузка со старого ядра с использованием индекса
 1. Перечислите доступные имена файлов ядра, доступные в вашей системе:
 
-# ls -l /boot/vmlinuz-*
+$ ls -l /boot/vmlinuz-*
 -rwxr-xr-x. 1 root root 7872864 Apr 26  2019 /boot/vmlinuz-0-rescue-d026443091424a74948f9f62d2adb9b5
 -rwxr-xr-x. 1 root root 7868768 Jun 19  2019 /boot/vmlinuz-0-rescue-ec2b9a54dc859388d7bc348e87df5332
 -rwxr-xr-x. 1 root root 8106848 Nov 11 13:07 /boot/vmlinuz-4.18.0-147.0.3.el8_1.x86_64
@@ -73,14 +73,14 @@ https://itisgood.ru/2020/05/07/kak-izmenit-defoltnoe-jadro-zagruzka-so-starogo-j
 -rwxr-xr-x. 1 root root 7881056 Jul 26  2019 /boot/vmlinuz-4.18.0-80.7.2.el8_0.x86_64
 2. Для просмотра индекса любого из перечисленных выше ядер:
 
-# grubby --info [kernel-filename] | grep index
+$ grubby --info [kernel-filename] | grep index
 Например:
 
-# grubby --info /boot/vmlinuz-4.18.0-80.11.2.el8_0.x86_64 | grep index
+$ grubby --info /boot/vmlinuz-4.18.0-80.11.2.el8_0.x86_64 | grep index
 index=1
 3. Теперь, когда вы знаете индекс ядра, с которого хотите загрузиться, используйте команду:
 
-# grubby --set-default-index=[kernel-entry-index]
+$  grubby --set-default-index=[kernel-entry-index]
 Например:
 
-# grubby --set-default-index=1
+$  grubby --set-default-index=1
