@@ -150,4 +150,6 @@ function snap_install() {
       /root/vdsetup.2/bin/utility/install/snap_install.sh ;
 }
 
-
+function core_ch_for_WireGuard() {
+      /root/vdsetup.2/bin/utility/install/vpn/core_ch_for_WireGuard.sh ;
+}
