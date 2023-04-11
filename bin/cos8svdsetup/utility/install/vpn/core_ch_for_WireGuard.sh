@@ -48,7 +48,7 @@ else
   fi
 fi
 
-
+echo -e " All OK\n"
 
 exit 0
 
