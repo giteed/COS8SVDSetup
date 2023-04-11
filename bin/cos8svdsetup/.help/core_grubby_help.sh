@@ -3,9 +3,10 @@
 function core_grubby_help() {
 	
 	
+	ttb=$(echo -e " Список доступных в системе ядер: " ) && lang=d && bpn_p_lang ; ttb="" ;
+	ls -l /boot/vmlinuz-* | grep -Po "(?<=vmlinuz-)[^-]+(-\S+)?"
+	
 ttb=$(echo -e " 
-
-	"$(ls -l /boot/vmlinuz-* | grep -Po "(?<=vmlinuz-)[^-]+(-\S+)?")"
 	
  ⎧ Если ядро уже обновлялось и WireGuard уже был установлен и работал нормально,
  | а теперь перестал, возможно, что загрузка системы снова переключилась 
@@ -15,12 +16,8 @@ ttb=$(echo -e "
    Или ESC и введите позднее: core_grubby_help\n
    " ) && lang=d && bpn_p_lang ; ttb="" ;
    
-   press_enter_or_any_key_to_continue_or_ESC_to_cancel	
-	
-	
+   press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 
-ttb=$(echo -e " Список доступных в системе ядер: " ) && lang=d && bpn_p_lang ; ttb="" ;
-	ls -l /boot/vmlinuz-* | grep -Po "(?<=vmlinuz-)[^-]+(-\S+)?"
 	
 	ttb=$(echo -e " 
  ⎧ Чтобы переключить загрузку ядра на более свежее выполните 
