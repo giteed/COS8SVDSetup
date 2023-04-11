@@ -21,12 +21,25 @@
 
 
 function core_up() {
+
 	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 	/root/vdsetup.2/bin/utility/system/core/kernel-up.sh ;
 }
 
 function core_ch() {
-	echo ; uname -r | grep -qE '^4\.' && echo -e " Версия ядра "$(uname -r)" не поддерживает WireGuard\n Перед установкой WireGuard вам нужно обновить ядро Linux CentOS." && core_up || core_grubby_help ;
+	
+	function core_grubby_fix() {
+ttb=$(echo -e " 
+ ⎧ Если ядро уже обновлялось и WireGuard уже был установлен и работал нормально,
+ | а теперь перестал, возможно, что загрузка системы снова переключилась 
+ ⎩ на старое ядро "$(uname -r)" ?!
+ 
+   Введите чтобы получить помощь: core_grubby_help" ) && lang_nix && bpn_p_lang ; ttb="" ;
+}
+	
+	echo ; uname -r | grep -qE '^4\.' && echo -e " Версия ядра "$(uname -r)" не поддерживает WireGuard\n Перед установкой WireGuard вам нужно обновить ядро Linux CentOS." && core_up || core_grubby_fix ;
+	
+	
 }
 
 
