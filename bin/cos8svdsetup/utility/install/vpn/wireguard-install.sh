@@ -29,6 +29,9 @@ function core_up() {
 function core_ch() {
 	
 	function core_grubby_fix() {
+		
+	ls -l /boot/vmlinuz-* | grep -q -- "-6" && echo -e " "$(uname -r)" found" || return ;
+	
 ttb=$(echo -e " 
  ⎧ Если ядро уже обновлялось и WireGuard уже был установлен и работал нормально,
  | а теперь перестал, возможно, что загрузка системы снова переключилась 
@@ -36,7 +39,7 @@ ttb=$(echo -e "
  
    Введите чтобы получить помощь: core_grubby_help" ) && lang_nix && bpn_p_lang ; ttb="" ;
    
-   ls -l /boot/vmlinuz-* | grep -q -- "-6" && echo 6 found || echo "String -6 was not found."
+   
 
    }
 	
