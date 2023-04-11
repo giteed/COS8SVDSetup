@@ -3,7 +3,7 @@
 function core_grubby_help() {
 	
 	
-	ttb=$(echo -e "\n Список доступных в системе ядер: " ) && lang=d && bpn_p_lang ; ttb="" ;
+	ttb=$(echo -e "\n Список доступных в системе ядер: \n" ) && lang=d && bpn_p_lang ; ttb="" ;
 	ls -l /boot/vmlinuz-* | grep -Po "(?<=vmlinuz-)[^-]+(-\S+)?"
 	
 ttb=$(echo -e " 
