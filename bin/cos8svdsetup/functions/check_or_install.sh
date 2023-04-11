@@ -72,7 +72,7 @@ function ch_screen() {
   if 
     [[ $(grep 'termcapinfo \* ti@:te@' /root/.screenrc | head -n 1) == 'termcapinfo * ti@:te@' ]] 2> /dev/null
     then 
-     ttb=$(echo -e "\n | Файл .screenrc уже настроен ") && lang=cr && bpn_p_lang ;
+     ttb=$(echo -e "\n | Файл .screenrc уже настроен ") && lang=cr && bpn_p_lang ; echo ;
      else 
      touch /root/.screenrc && echo -e 'termcapinfo * ti@:te@' >> /root/.screenrc && ttb=$(echo -e "\n | Добавляем запись для screen ...") && lang=cr && bpn_p_lang ;
     fi 
