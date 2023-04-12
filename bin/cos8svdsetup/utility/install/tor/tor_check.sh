@@ -140,6 +140,7 @@ function flush_rules_or_start_tor() {
 	check_self_ifconfig ;
 	check_self_connect ;
 	check_tor_connect ;
+	tor_check_ip_wget ;
 
 exit 0 ;
 
