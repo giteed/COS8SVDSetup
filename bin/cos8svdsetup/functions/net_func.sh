@@ -24,6 +24,20 @@ function df() { ttb=$( echo -e "\n $(/usr/bin/df -kTh)") && lang_cr && bpn_p_lan
   function im() { whoami ; } ;
 
 
+function tor_check_ip_wget() {
+      ttb="$(
+        С ВКЛюченным прокси socks5
+        # wget -qO- --proxy=on http://ipinfo.io/ip
+        "$(wget -qO- --proxy=on http://ipinfo.io/ip)"
+        С ВЫКЛюченным прокси socks5
+        # wget -qO- --proxy=off http://ipinfo.io/ip
+        "$(wget -qO- --proxy=off http://ipinfo.io/ip)"
+      )" && lang=nix && bpn_p_lang ;
+  }
+
+
+
+
 # Функция myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
 function myip() { 
   ttb=$( echo -e "$(echo -e $(mi) 2>/dev/null)") && lang_cr && bpn_p_lang ; 

@@ -8,18 +8,35 @@
 . /root/vdsetup.2/bin/functions/run_as_root.sh
 
  function epel_repository_packages_install() {
-	 dnf install -y epel-release yum-utils npm || ( error_MSG ; ) ; echo ;
-	 dnf install -y net-tools bind-utils network-scripts iptables socat dnstracer || ( error_MSG ; ) ; echo ;
-	 dnf install -y dialog mlocate ncdu ranger tldr || ( error_MSG ; ) ; echo ;
-	 dnf install -y youtube-dl ffmpeg || ( error_MSG ; ) ; echo ;
-	 dnf install -y git tar curl wget || ( error_MSG ; ) ; echo ;
-	 dnf install -y whois || ( error_MSG ; ) ; echo ;
-	 dnf install -y atop htop bpytop iftop stacer lsof nethogs ripgrep || ( error_MSG ; ) ; echo ;
-	 dnf install -y python3 ruby  || ( error_MSG ; ) ; echo ;
-	 dnf install -y mc nano hstr ncdu || ( error_MSG ; ) ; echo ;
-	 dnf install -y unzip p7zip || ( error_MSG ; ) ; echo ;
-	 dnf install -y screen qrencode || ( error_MSG ; ) ; echo ;
-	 dnf install -y @perl perl perl-Net-SSLeay perl-Encode-Detect openssl || ( error_MSG ; ) ; echo ;
+	 
+	 function wireguard_tools() {
+		 
+			# (Вы можете установить WireGuard вручную. Вы можете загрузить исходный код с https://www.wireguard.com/install/, затем распаковать и скомпилировать его в соответствии с инструкциями на странице загрузки.)
+			
+			# Включить репозиторий PowerTools
+			sudo dnf config-manager --enable powertools
+			# Установите ключ GPG для репозитория ELRepo:
+			sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+			# Установите репозиторий ELRepo:
+			sudo rpm -Uvh https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
+			sudo dnf install kernel-ml wireguard-tools
+	    }
+	 
+	 wireguard_tools ;
+	 
+	 sudo dnf install -y epel-release yum-utils npm || ( error_MSG ; ) ; echo ;
+	 sudo dnf install kmod-wireguard-ml wireguard-tools
+	 sudo dnf install -y net-tools bind-utils network-scripts iptables socat dnstracer || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y dialog mlocate ncdu ranger tldr || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y youtube-dl ffmpeg || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y git tar curl wget || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y whois || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y atop htop bpytop iftop stacer lsof nethogs ripgrep || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y python3 ruby  || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y mc nano hstr ncdu || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y unzip p7zip || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y screen qrencode || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y @perl perl perl-Net-SSLeay perl-Encode-Detect openssl || ( error_MSG ; ) ; echo ;
 	 
  }
  
@@ -45,7 +62,7 @@
 	  }
 	  
 	  
-	   [[ -z $(cat /etc/yum.repos.d/epel.repo 2>/dev/null) ]]  && ( dnf install -y epel-release 2>/dev/null && msg_in1 || msg_in2 ) || msg_in3 ;
+	   [[ -z $(cat /etc/yum.repos.d/epel.repo 2>/dev/null) ]]  && ( sudo dnf install -y epel-release 2>/dev/null && msg_in1 || msg_in2 ) || msg_in3 ;
    }
 
   function epel_repository_packages()

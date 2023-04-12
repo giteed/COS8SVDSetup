@@ -131,17 +131,22 @@
 		echo -e " $(green_1     )  1. установка РЕПО: ${GREEN}epel-release${NC}" ;
 		
 		yum install -y epel-release &>/dev/null ;
-		echo -e " $(green_1     )  2. Установка: ${GREEN}TOR${NC} и Privoxy" ;
+		echo -e " $(green_1     )  2. Установка: ${GREEN}TOR${NC}, privoxy, proxychains-ng" ;
 		
 		press_enter_to_continue_or_ESC_or_any_key_to_cancel ; 
 		
-		yum install -y tor privoxy &>/dev/null ;
+		yum install -y tor privoxy proxychains-ng ;#&>/dev/null ;
 		
 		wgetrc_CH ;
 		privoxy_config_CH ;
 		
 		tor_add_to_auto_load_and_firewall_MSG ;
 		tor_add_to_auto_load_and_firewall ;
+		
+		# проверить TOR соединение и ip  
+		# curl --socks5 127.0.0.1:9050 https://check.torproject.org/ | grep -i 'congratulations\|sorry'
+		# wget -qO- --proxy=on http://ipinfo.io/ip
+		# wget -qO- --proxy=off http://ipinfo.io/ip
 		
 		echo -e "\n $(black_U23A9 ) \n" ;
 		
@@ -338,7 +343,7 @@
 
 
 
-
+Чтобы проверить, работает ли Tor на вашем сервере по протоколу SOCKS5, вы можете запустить команду curl --socks5 127.0.0.1:9050 https://check.torproject.org/ и посмотреть на вывод. Если вы получите ответ с "Congratulations" и увидите сообщение о том, что вы используете Tor, значит Tor работает по протоколу SOCKS5 на 127.0.0.1:9050.
 
 
 
