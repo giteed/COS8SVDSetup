@@ -266,6 +266,8 @@
 		echo -e "\n $(white_1       ) $(red_U0023) curl ${green}--socks5 127.0.0.1:9050${NC} http://2ip.ua \n${green}" ;
 		curl --socks5 127.0.0.1:${tor_port} 2ip.ua ;
 		
+		tor_check_ip_wget
+		
 		echo -e "\n $(ellow_1     ) Ваш реальный ip адрес провайдера: "
 		echo -e " $(white_1     ) $(red_U0023) curl ${red}2ip.ua\n ${red}" ;
 		curl 2ip.ua ;
