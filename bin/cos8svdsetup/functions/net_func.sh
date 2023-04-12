@@ -33,7 +33,7 @@ function tor_check_ip_wget() {
         С ВЫКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
         # wget -qO- --proxy=off http://ipinfo.io/ip
         "$(wget -qO- --proxy=off http://ipinfo.io/ip)"
-      ")" && lang=d && bpn_p_lang ;
+      ")" && lang=c && bpn_p_lang ;
   }
 
 
