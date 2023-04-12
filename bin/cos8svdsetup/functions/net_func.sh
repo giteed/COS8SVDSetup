@@ -26,14 +26,14 @@ function df() { ttb=$( echo -e "\n $(/usr/bin/df -kTh)") && lang_cr && bpn_p_lan
 
 function tor_check_ip_wget() {
       ttb="$( echo -e "
-        С ВКЛюченным прокси socks5 127.0.0.1:"${tor_port}"
+        С ВКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
         # wget -qO- --proxy=on http://ipinfo.io/ip
         "$(wget -qO- --proxy=on http://ipinfo.io/ip)"
         
-        С ВЫКЛюченным прокси socks5 127.0.0.1:"${tor_port}"
+        С ВЫКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
         # wget -qO- --proxy=off http://ipinfo.io/ip
         "$(wget -qO- --proxy=off http://ipinfo.io/ip)"
-      ")" && lang=nix && bpn_p_lang ;
+      ")" && lang=d && bpn_p_lang ;
   }
 
 
