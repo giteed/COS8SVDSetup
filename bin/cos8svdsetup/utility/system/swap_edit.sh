@@ -15,13 +15,8 @@
   
 function swap_edit() {
 	
-
 	# Получить размер текущего SWAP-файла
-# CURRENT_SWAP_SIZE=$( [[ -f /swap* ]] && echo -e ""$(free -h -t | awk '/^Swap:/ { print $2 }' | sed 's/Gi//')" GB")
-# if [[ -f /swap* ]]; then CURRENT_SWAP_SIZE=$(free -h -t | awk '/^Swap:/ { print $2 }' | sed 's/Gi//')GB; fi
-CURRENT_SWAP_SIZE=$(test -f /swap* && free -h -t | awk '/^Swap:/ { print $2 }' | sed 's/Gi//') || echo "0 GB"
-
-
+	CURRENT_SWAP_SIZE=$(test -f /swap* && free -h -t | awk '/^Swap:/ { print $2 }' ) || echo "0 GB"
 	
   echo -e " $(black_U23A7   ) " ;
   echo -e " $(ellow_1       )    Информация о swap: $CURRENT_SWAP_SIZE \n" ;
