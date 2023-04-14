@@ -18,8 +18,8 @@ function swap_edit() {
 	# Получить размер текущего SWAP-файла
 	CURRENT_SWAP_SIZE=$(test -f /swap* && free -h -t | awk '/^Swap:/ { print $2 }' ) || echo "0 GB"
 	
-  echo -e " $(black_U23A7   ) " ;
-  echo -en " $(ellow_1       )    Информация о swap: $CURRENT_SWAP_SIZE \n" ;
+  echo -e " $(black_U23A7   )	Информация о swap: $CURRENT_SWAP_SIZE" ;
+  echo -en " $(ellow_1       )" ;
   ( free -h -t | bat  --paging=never -l meminfo -p ) 2>/dev/null || free -h -t  ; echo -en ""
   echo -e "\n $(black_U23A9 ) \n" ;
   
