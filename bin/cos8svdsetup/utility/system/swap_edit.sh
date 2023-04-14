@@ -72,7 +72,7 @@ function swap_edit() {
 	echo -en " $(white_1    ) $(green_n6). Создаю новый файл /etc/rc.local: " ;
 	( echo_create_rc.local ; ) && green_tick || error_MSG ;
 	echo -e " $(black_1     )"
-	echo -e " $(ellow_1     )    Информация о swap: $CURRENT_SWAP_SIZE \n" ;
+	echo -e " $(ellow_1     )    Информация о swap: ${green}$CURRENT_SWAP_SIZE${nc} \n" ;
 	( swapon | bat --paging=never -l nix -p ; ) 2>/dev/null || swapon ;
 	
 	
