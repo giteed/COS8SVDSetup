@@ -21,7 +21,7 @@ function swap_edit() {
   echo -e " $(black_U23A7   )	Информация о swap: $CURRENT_SWAP_SIZE" ;
   echo -en " $(ellow_1       )\n" ;
   ( free -h -t | bat  --paging=never -l meminfo -p ) 2>/dev/null || free -h -t  ; echo -en ""
-  echo -e "\n $(black_U23A9 ) \n" ;
+  echo -e "\n $(black_U23A9 )" ;
   
   
   press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
