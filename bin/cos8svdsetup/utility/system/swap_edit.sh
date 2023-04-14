@@ -17,7 +17,7 @@ function swap_edit() {
 	
 
 	# Получить размер текущего SWAP-файла
-	CURRENT_SWAP_SIZE=$( [ -f /swapfile ] && echo -e ""$(free -h -t | awk '/^Swap:/ { print $2 }' | sed 's/Gi//')" GB")
+	CURRENT_SWAP_SIZE=$( [ -f /swap*] && echo -e ""$(free -h -t | awk '/^Swap:/ { print $2 }' | sed 's/Gi//')" GB")
 
 
 	
