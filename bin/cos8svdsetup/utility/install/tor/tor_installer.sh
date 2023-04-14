@@ -266,8 +266,7 @@
 		echo -e "\n $(white_1       ) $(red_U0023) curl ${green}--socks5 127.0.0.1:9050${NC} http://2ip.ua \n${green}" ;
 		curl --socks5 127.0.0.1:${tor_port} 2ip.ua ;
 		
-		echo ;
-		tor_check_ip_wget
+		
 		
 		echo -e "\n $(ellow_1     ) Ваш реальный ip адрес провайдера: "
 		echo -e " $(white_1     ) $(red_U0023) curl ${red}2ip.ua\n ${red}" ;
@@ -321,6 +320,9 @@
 		
 		echo -e " $(black_U23A9 ) \n" ;
 		
+		echo ;
+		tor_check_ip_wget
+		
 	}
 	
 	function tor_CH() { if [[ -e /usr/bin/tor ]] ; then tor_already_installed_MSG ; else tor_install_now ; fi ; } ; 
@@ -335,6 +337,14 @@
 	
 	
 	tor_CH ;
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 		exit 0 ;

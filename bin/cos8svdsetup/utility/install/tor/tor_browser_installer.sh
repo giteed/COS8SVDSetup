@@ -6,10 +6,13 @@
 
 
 # --> Этот ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
-. /root/vdsetup.2/bin/functions/run_as_root.sh
+. /root/vdsetup.2/bin/functions/run_as_root.sh ;
 
-	css ;
-	ttb=$(echo -e "
+
+    echo ;
+
+
+    ttb=$(echo -e "
  ⎧ Protect yourself against tracking,
  | surveillance, and censorship.
  | Get Tor Browser for Linux Cent OS 8.
@@ -23,11 +26,15 @@ mkdir -p /root/myapp
 mv tor-browser/ /root/myapp
 cp /root/myapp/tor-browser/
 
+
     exit 0 ;
 
 
+
+
+
 mv tor-browser/ /root/Desktop
-cp tor-browser/start-tor-browser.desktop /root/Desktop
+cp tor-browser/start-tor-browser.desktop /root/Deskto
 85 строка кода файла /root/tor-browser/tor-browser/Browser/start-tor-browser
 команда запуска /root/tor-browser/tor-browser/Browser/start-tor-browser
 

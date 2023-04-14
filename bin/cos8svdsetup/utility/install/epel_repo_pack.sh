@@ -96,7 +96,7 @@
    /root/vdsetup.2/bin/utility/install/bat_install.sh ;
 
 # Webmin
-   /root/vdsetup.2/bin/utility/install/webmin_install.sh ;
+   /root/vdsetup.2/bin/utility/install/web-panels/webmin_install.sh ;
 
 # Проверка на наличие fzf или установка fzf
    fzfCH ;

@@ -26,6 +26,15 @@ function df() { ttb=$( echo -e "\n $(/usr/bin/df -kTh)") && lang_cr && bpn_p_lan
 
 function tor_check_ip_wget() {
       ttb="$( echo -e "
+  БЕЗ указания прокси socks5 127.0.0.1:"${tor_port}"
+  # wget -qO- http://ipinfo.io/ip
+  "$(wget -qO- http://ipinfo.io/ip)"
+  Если ip БЕЗ прокси такой-же как и с включенным 
+  прокси значит wget настроен по умолчанию для работы 
+  через socks5 127.0.0.1:"${tor_port}"
+  Вы можете отключить это в файле /etc/wgetrc или:
+  
+      
   С ВКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
   # wget -qO- --proxy=on http://ipinfo.io/ip
   "$(wget -qO- --proxy=on http://ipinfo.io/ip)"
