@@ -24,7 +24,8 @@
 	. /root/vdsetup.2/bin/functions/find.sh
 #  --> net_func
 	. /root/vdsetup.2/bin/functions/net_func.sh
-
+#  --> delay таймеры
+	. /root/vdsetup.2/bin/functions/delay.sh
 
 
 
