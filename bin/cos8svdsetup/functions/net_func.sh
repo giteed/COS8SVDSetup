@@ -274,9 +274,9 @@ function fw_i_r() {
 function netstat_i () {
     
    function netstat-tupln() {
-       
+       echo ;
        ( netstat -tupln | grep ssh ) | bat -l nix -p 2>/dev/null || ( netstat -tupln | grep ssh ) ;
-       echo -e "\n	# netstat -tupln | grep ssh" ;
+       echo -e "\n# netstat -tupln | grep ssh" ;
    }
    ttb=$(netstat-tupln) && lang="cr" && bpn_p_lang ;
 }
