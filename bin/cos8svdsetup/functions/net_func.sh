@@ -17,14 +17,16 @@ function df() { ttb=$( echo -e "\n $(/usr/bin/df -kTh)") && lang_cr && bpn_p_lan
 
 
 # ФУНКЦИЯ: Мой ip
-  function mi() { wget -qO- icanhazip.com ; } ;
+function mi() { wget -qO- icanhazip.com ; } ;
 
 
 # ФУНКЦИЯ: User
-  function im() { whoami ; } ;
+function im() { whoami ; } ;
 
 
+# 
 function tor_check_ip_wget() {
+     
       ttb="$( echo -e "
   БЕЗ указания прокси socks5 127.0.0.1:"${tor_port}"
   # wget -qO- http://ipinfo.io/ip
@@ -44,15 +46,18 @@ function tor_check_ip_wget() {
   "$(wget -qO- --proxy=off http://ipinfo.io/ip)"
   ")" && lang=cr && bpn_p_lang ;
    
-  }
+}
   
 
 # Функция myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
 function myip() { 
+   
   ttb=$( echo -e "$(echo -e $(mi) 2>/dev/null)") && lang_cr && bpn_p_lang ; 
 }
 
-   function reload_cash() {
+
+# 
+function reload_cash() {
     /root/vdsetup.2/bin/utility/.cash_var.sh $1
 }
 
@@ -66,8 +71,8 @@ function cash_var_sh_150_start_and_stop() {
      screen -wipe &>/dev/null 
      # ps ax | awk '/[s]nippet/ { print $1 }' | xargs kill (тоже рабочий вариант вместо snippet имя скрипта или программы)
     ( /usr/bin/screen -dmS sleep_kill /bin/bash /root/vdsetup.2/bin/utility/install/tor/.sleep_kill.sh ) &>/dev/null ; 
-    return ;
- }
+    return ; 
+}
 
 
 # Функция удаляет юнит кеширования ip адреса Тора и версии vdsetup 
@@ -97,6 +102,7 @@ function tor_port_ch() {
 tor_port_ch &>/dev/null ;
 
 
+# Проверка работы TOR и определение ip
 function tor_check_ip() {
    tor_port_ch ;
    /root/vdsetup.2/bin/utility/install/tor/tor_check.sh ;
@@ -149,12 +155,14 @@ function wgetrc_config_revert() {
 }
 
 
+# Обращение к функции в скрипте tor_installer.sh Перезапускает TOR Wireguard privoxy и тд (переделать)
 function tor-restart() {
     /root/vdsetup.2/bin/utility/install/tor/tor_installer.sh tor-restart
     
 }
 
 
+# Обращение к toriptables2.py очистка маршрутов iptables остановка tor
 function tor-stop() {
     toriptables2.py -i ;
     toriptables2.py -f ;
@@ -163,6 +171,7 @@ function tor-stop() {
 }
 
 
+# Curl через TOR иммитирует работу браузера в TOR
 tcurl() {
    curl -x "socks5://127.0.0.1:${tsport}" \
    -A "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0" \
@@ -175,15 +184,11 @@ tcurl() {
 }
 
 
-toriptables2.py() {
+# Вызов toriptables2.py, включение TOR для сети всего сервера
+function toriptables2.py() {
    /root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh $1 ;
 }
  
-
-  function msg_done() {
-   echo -e "\n${green}  ✓ Done ${nc}"
- }
-
 
   function start_http_server() {
      /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh start ;
@@ -215,13 +220,13 @@ toriptables2.py() {
   }
 
 # 
-function lastf() {
+  function lastf() {
           /root/vdsetup.2/bin/utility/lastf.sh $1 ;
     }
 
 
-# 
-function open_port_and_services_firewall() {
+  # 
+  function open_port_and_services_firewall() {
    function services-ports() {
      echo -e "\n  firewalld services, ports: \n" ;
      echo -e "$( sudo firewall-cmd --list-all | grep -E "(services:|ports:)" | grep -v "(forward|source)" ;)"
@@ -247,8 +252,9 @@ function fw_i()
    ttb=$(services-ports) && lang="cr" && bpn_p_lang ;
 }
 
-function fw_i_r()
-{
+# 
+function fw_i_r() {
+  
    function get-all-rules() {
        echo -e "\n  firewalld services, ports, rules: \n" ;
        echo -e "$( sudo firewall-cmd --list-all | grep -E "(services:|ports:)" | grep -v "(forward|source)" ;)"
@@ -263,8 +269,8 @@ function fw_i_r()
 }
 
 #
-function netstat_i ()
-{
+function netstat_i () {
+  
    echo -e "\n	$(green_tick) $(red_U0023) netstat -tupln | grep ssh" ;
    ( netstat -tupln | grep ssh ) | bat -l nix -p 2>/dev/null || ( netstat -tupln | grep ssh ) ;
 }
@@ -316,7 +322,7 @@ function wport() {
 
 
 # Показать первые 10 прожорливых процессов CPU/RAM
-   function memc() { 
+function memc() { 
      
    echo -en "\n${cyan}*** ${green}MEMORY RAM/SWAP ${RED}***$NC"; mem; echo -e "\n"${cyan}*** ${green}Top 25 RAM ${RED}"***$NC"; t25r ;
    echo -e "\n${cyan}*** ${green}Top 10 RAM ${RED}***$NC"; ttb=$(ps auxf | sort -nr -k 4 | head -10 ) && lang=bash && bpn_p_lang ;
