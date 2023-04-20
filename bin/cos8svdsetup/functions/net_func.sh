@@ -180,10 +180,11 @@ function tor-restart() {
 
 # Функция: Обращение к toriptables2.py очистка маршрутов iptables остановка tor
 function tor-stop() {
-    toriptables2.py -i ;
+    #toriptables2.py -i ;
     toriptables2.py -f ;
-    systemctl stop tor ;
+    systemctl stop tor.service ;
     ttb=$(echo -e "\n Tor is now stopped\n") && bpn_p_lang ;
+    tor_check_ip ;
 }
 
 
