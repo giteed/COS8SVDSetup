@@ -35,3 +35,28 @@ function delay_0-4_5-3() {
     delay_1-5_5-5() {
     sleep $(echo "1.5+$(bc -l <<< "scale=1; $RANDOM/32767*(5.5-1.5)")" | bc -l)
 }
+
+
+# таймер выполнения работы скрипта start
+function tstart() {
+    # Засекаем начало работы скрипта
+    START_TIME=$(date +%s)
+}
+
+# таймер выполнения работы скрипта end
+function tend() {
+    # Засекаем Время Конца работы скрипта
+    END_TIME=$(date +%s)
+    DIFF=$(( $END_TIME - $START_TIME ))
+    echo -e "\n	Выполнение заняло $DIFF секунд."
+}
+
+
+
+
+
+
+
+
+
+  
