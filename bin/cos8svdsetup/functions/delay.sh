@@ -43,6 +43,12 @@ function tstart() {
     START_TIME=$(date +%s)
 }
 
+#  Таймер выполнения работы функции внутри скрипта start
+function  tstart_f() {
+    # Засекаем начало работы скрипта
+    START_TIME_f=$(date +%s)
+}
+
 # Таймер выполнения работы скрипта end
 function tend() {
     # Засекаем Время Конца работы скрипта
@@ -70,3 +76,15 @@ function tendl() {
     fi
 }
 
+# Таймер выполнения работы функции в скрипте end с логикой сек/мин_сек
+function tendl_f() {
+    END_TIME_f=$(date +%s)
+    DIFF_f=$(( $END_TIME_f - $START_TIME_f ))
+    MINUTES_f=$(( $DIFF_f / 60 ))
+    SECONDS_f=$(( $DIFF_f % 60 ))
+    if [ $MINUTES_f -eq 0 ]; then
+        ttb=$(echo -e "\n Выполнение функции заняло $SECONDS_f секунд(ы).") && lang=cr && bpn_p_lang ;
+    else
+        ttb=$(echo -e "\n Выполнение функции заняло $MINUTES_f минут(ы) и $SECONDS_f секунд(ы).") && lang=cr && bpn_p_lang ;
+    fi
+}
