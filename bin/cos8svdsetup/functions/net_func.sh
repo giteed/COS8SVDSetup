@@ -230,10 +230,14 @@ function open_port_and_services_firewall() {
 #
 function fw_i()
 {
-   echo -e " ${ELLOW}\n	FirewallD инфо: ${NC}(Открытые ports и services)${NC}" ;
-   echo -e "	$(green_tick) $(red_U0023) firewall-cmd --list-all\n" ;
-   ( firewall-cmd --list-all | rg "(services|ports)" | rg -v "(forward|source)"  2>/dev/null | bat --paging=never -l nix -p 2>/dev/null ; ) || ( firewall-cmd --list-all | grep -E "(services:|ports:)" | grep -v "(forward|source)" ;)
    
+   function services-ports() {
+       echo -e " \n	FirewallD services, ports:" ;
+       echo -e " # sudo firewall-cmd --direct --get-all-rules && sudo firewall-cmd --list-all\n" ;
+       echo -e "$( firewall-cmd --list-all | grep -E "(services:|ports:)" | grep -v "(forward|source)" ;)"
+   }
+   
+   ttb=$(services-ports) && lang="cr" && bpn_p_lang ;
 }
 
 function fw_i_r()
