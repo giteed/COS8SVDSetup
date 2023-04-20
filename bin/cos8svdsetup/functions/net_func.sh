@@ -282,17 +282,20 @@ function netstat_i () {
 }
 
 
-# 
+# Выводит ТОП 25 процессов занимающих RAM
 function TopRAM25()
    {
-      
-         echo -e " "
-         ps axo rss,comm,pid \
-      | awk '{ proc_list[$2]++; proc_list[$2 "," 1] += $1; } \
-         END { for (proc in proc_list) { printf("%d\t%s\n", \
-         proc_list[proc "," 1],proc); }}' | sort -n | tail -n 25 | sort -rn \
-      | awk '{$1/=1024;printf "%.0fMB\t",$1}{print $2}'
-   }
+     function top() {
+       echo -e " "
+       ps axo rss,comm,pid \
+       | awk '{ proc_list[$2]++; proc_list[$2 "," 1] += $1; } \
+       END { for (proc in proc_list) { printf("%d\t%s\n", \
+       proc_list[proc "," 1],proc); }}' | sort -n | tail -n 25 | sort -rn \
+       | awk '{$1/=1024;printf "%.0fMB\t",$1}{print $2}'
+     }
+    
+    ttb=$(top) && lang="cr" && bpn_p_lang ;
+}
 
 
 #
