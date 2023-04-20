@@ -1,10 +1,10 @@
 #!/bin/bash
 
-
+# Функция: Информация о вебсервере nginx
 function http() { ttb=$( echo -e "\n $( cat /tmp/nginx_http_ip 2>/dev/null )") && lang=meminfo && bpn_p_lang ; }
 
 
-# Очистка ( полная, включая промотку вверх ) экрана терминала 
+# Функция: Очистка ( полная, включая промотку вверх ) экрана терминала 
 function cv() { (clear && clear) }
 
 
@@ -12,7 +12,7 @@ function cv() { (clear && clear) }
 function c() { (clear) }
 
 
-# Функция информация о памяти системы
+# Функция: информация о памяти системы
 function mem() { 
   ramfetch 2>/dev/null ;
   ttb=$( echo -e "\n $( free -h -t )") && lang=meminfo && bpn_p_lang ;
@@ -20,19 +20,19 @@ function mem() {
 }
 
 
-# Функция информации о доступном дисковом пространстве на файловой системе
+# Функция: информации о доступном дисковом пространстве на файловой системе
 function df() { ttb=$( echo -e "\n $(/usr/bin/df -kTh)") && lang_cr && bpn_p_lang ; }
 
 
-# ФУНКЦИЯ: Мой ip
+# Функция: Мой ip
 function mi() { wget -qO- icanhazip.com ; } ;
 
 
-# ФУНКЦИЯ: User
+# Функция: User
 function im() { whoami ; } ;
 
 
-# Проверяет работает ли TOR в связке с wget
+# Функция: Проверяет работает ли TOR в связке с wget
 function tor_check_ip_wget() {
      
       ttb="$( echo -e "
@@ -57,20 +57,20 @@ function tor_check_ip_wget() {
 }
   
 
-# Функция myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
+# Функция: myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
 function myip() { 
    
   ttb=$( echo -e "$(echo -e $(mi) 2>/dev/null)") && lang_cr && bpn_p_lang ; 
 }
 
 
-# Кеширует ip адрес TOR
+# Функция: Кеширует ip адрес TOR
 function reload_cash() {
     /root/vdsetup.2/bin/utility/.cash_var.sh $1
 }
 
 
-# Функция cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
+# Функция: cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
 function cash_var_sh_150_start_and_stop() {
      ( cash_var_sh_150 ) &>/dev/null 
      
@@ -83,7 +83,7 @@ function cash_var_sh_150_start_and_stop() {
 }
 
 
-# Функция удаляет юнит кеширования ip адреса Тора и версии vdsetup 
+# Функция: удаляет юнит кеширования ip адреса Тора и версии vdsetup 
 function remove_unit_stop_cashing() {
    ${msg9} ;
    
@@ -98,7 +98,7 @@ function remove_unit_stop_cashing() {
 }
 
 
-# Функция определяет port на котором работает ТОР, и назначает переменную tor_port которая потом используется
+# Функция: определяет port на котором работает ТОР, и назначает переменную tor_port которая потом используется
 # другими функциями vdsetup.
 function tor_port_ch() {
    lang_nix
@@ -110,14 +110,14 @@ function tor_port_ch() {
 tor_port_ch &>/dev/null ;
 
 
-# Проверка работы TOR и определение ip
+# Функция: Проверка работы TOR и определение ip
 function tor_check_ip() {
    tor_port_ch ;
    /root/vdsetup.2/bin/utility/install/tor/tor_check.sh ;
 }
 
 
-# Функция возвращает бекап файл /etc/wgetrc_old на прежнее место /etc/wgetrc (отключает использование прокси ТОР http://localhost:8118 ) "
+# Функция: возвращает бекап файл /etc/wgetrc_old на прежнее место /etc/wgetrc (отключает использование прокси ТОР http://localhost:8118 ) "
 function wgetrc_config_revert() {
    
    function revert_MSG() {
@@ -163,14 +163,14 @@ function wgetrc_config_revert() {
 }
 
 
-# Обращение к функции в скрипте tor_installer.sh Перезапускает TOR Wireguard privoxy и тд (переделать)
+# Функция: Обращение к функции в скрипте tor_installer.sh Перезапускает TOR Wireguard privoxy и тд (переделать)
 function tor-restart() {
     /root/vdsetup.2/bin/utility/install/tor/tor_installer.sh tor-restart
     
 }
 
 
-# Обращение к toriptables2.py очистка маршрутов iptables остановка tor
+# Функция: Обращение к toriptables2.py очистка маршрутов iptables остановка tor
 function tor-stop() {
     toriptables2.py -i ;
     toriptables2.py -f ;
@@ -179,7 +179,7 @@ function tor-stop() {
 }
 
 
-# Curl через TOR иммитирует работу браузера в TOR
+# Функция: Curl через TOR иммитирует работу браузера в TOR
 tcurl() {
    curl -x "socks5://127.0.0.1:${tsport}" \
    -A "Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0" \
@@ -192,55 +192,55 @@ tcurl() {
 }
 
 
-# Вызов toriptables2.py, включение TOR для сети всего сервера
+# Функция: Вызов toriptables2.py, включение TOR для сети всего сервера
 function toriptables2.py() {
      /root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh $1 ;
 }
 
  
-# Запускает http Node_js сервер
+# Функция: Запускает http Node_js сервер
 function start_http_server() {
      /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh start ;
 }
 
  
-# Останавливает http Node_js сервер
+# Функция: Останавливает http Node_js сервер
 function stop_http_server() {
      /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh stop ;
 }
 
  
-# показывает статус http Node_js сервера
+# Функция: показывает статус http Node_js сервера
 function status_http_server() {
      /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh status ;
 }
 
  
-# Запускает http light Node_js сервер
+# Функция: Запускает http light Node_js сервер
   function start_light_server() {
      /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh start ;
 }
 
  
-# Останавливает http light Node_js сервер
+# Функция: Останавливает http light Node_js сервер
   function stop_light_server() {
      /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh stop ;
 }
 
  
-# показывает статус http light Node_js сервера
+# Функция: Показывает статус http light Node_js сервера
 function status_light_server() {
      /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh status ;
 }
 
 
-# 
+# Функция: 
 function lastf() {
      /root/vdsetup.2/bin/utility/lastf.sh $1 ;
 }
 
 
-# Показывает открытые порты и сервисы на firewalld (окрашивает текст lang="passwd")
+# Функция: Показывает открытые порты и сервисы на firewalld (окрашивает текст lang="passwd")
 function open_port_and_services_firewall() {
    function services-ports() {
      echo -e "\n  firewalld services, ports: \n" ;
@@ -253,7 +253,7 @@ function open_port_and_services_firewall() {
 }
 
 
-# Показывает открытые порты и сервисы на firewalld (окрашивает текст lang="cr")
+# Функция: Показывает открытые порты и сервисы на firewalld (окрашивает текст lang="cr")
 function fw_i()
 {
    
@@ -268,7 +268,7 @@ function fw_i()
 }
 
 
-# Показывает открытые порты и сервисы и правила на firewalld (окрашивает текст lang="cr") 
+# Функция: Показывает открытые порты и сервисы и правила на firewalld (окрашивает текст lang="cr") 
 function fw_i_r() {
    
    function get-all-rules() {
@@ -285,7 +285,7 @@ function fw_i_r() {
 }
 
 
-# Вывод от команды netstat -tupln | grep ssh
+# Функция: Вывод от команды netstat -tupln | grep ssh
 function netstat_i () {
     
    function netstat-tupln() {
@@ -297,7 +297,7 @@ function netstat_i () {
 }
 
 
-# Выводит ТОП 25 процессов занимающих RAM (окрашивает текст lang="nix") 
+# Функция: Выводит ТОП 25 процессов занимающих RAM (окрашивает текст lang="nix") 
 function TopRAM25() {
    
     function top() {
@@ -313,11 +313,11 @@ function TopRAM25() {
 }
 
 
-# Выводит ТОП 25 процессов занимающих RAM (окрашивает текст lang="c") 
+# Функция: Выводит ТОП 25 процессов занимающих RAM (окрашивает текст lang="c") 
 function t25r() { TopRAM25 | bat -p -l c }
 
 
-# 
+# Функция: 
 function wport() {
    
    function netstat_tulanp_nogrep() {
@@ -342,7 +342,7 @@ function wport() {
 }
 
 
-# Показать первые 10 прожорливых процессов CPU/RAM
+# Функция: Показывает первые 10 прожорливых процессов CPU/RAM
 function memc() { 
      
    echo -en "\n${cyan}*** ${green}MEMORY RAM/SWAP ${RED}***$NC"; mem; echo -e "\n"${cyan}*** ${green}Top 25 RAM ${RED}"***$NC"; t25r ;
@@ -354,9 +354,11 @@ function memc() {
 }
 
 
+# Функция: 
 function ifc() { ( echo -e "" && ifconfig | bat -p --paging=never -l conf ) || ( echo -e "" && ifconfig ) }
 
-# local address
+
+# Функция: local address
 function lip-f() {
    
    echo -e "\n"$green""internal"$NC":" " ;
