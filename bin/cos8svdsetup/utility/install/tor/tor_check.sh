@@ -16,7 +16,7 @@ function flush_iptables_rules () {
 }
 
 function msg_systemctl_start_tor() {
-	systemctl start tor ; 
+	systemctl start tor.service ; 
 	ttb=$(echo -e "\n ⎧ # systemctl start tor\n ⎩ TOR Socks5 127.0.0.1:9050 Включен!\n") ; 
 	bpn_p_lang ;
 }
