@@ -16,6 +16,10 @@ function c() { (clear) }
 function network_restart() { (/etc/init.d/network restart) }
 
 
+# tor restart && status
+function tor_restart_status() { (systemctl restart tor.service && systemctl status tor.service) }
+
+
 # Функция: информация о памяти системы
 function mem() { 
   ramfetch 2>/dev/null ;
