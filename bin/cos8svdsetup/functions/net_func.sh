@@ -7,6 +7,10 @@ function http() { ttb=$( echo -e "\n $( cat /tmp/nginx_http_ip 2>/dev/null )") &
 # Очистка ( полная, включая промотку вверх ) экрана терминала 
 function cv() { (clear && clear) }
 
+
+# Очистка ( не полная, не включая промотку вверх ) экрана терминала 
+function c() { (clear) }
+
 # Функция информация о памяти системы
 function mem() { 
   ramfetch 2>/dev/null ;
