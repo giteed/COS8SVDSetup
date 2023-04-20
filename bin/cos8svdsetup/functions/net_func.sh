@@ -252,9 +252,9 @@ function fw_i_r()
    function get-all-rules() {
        echo -e "\n  firewalld services, ports, rules: \n" ;
        echo -e "$( sudo firewall-cmd --list-all | grep -E "(services:|ports:)" | grep -v "(forward|source)" ;)"
-       echo ;
-       echo -e "$( sudo firewall-cmd --direct --get-all-rules ;)"
        echo "\n  rules:\n";
+       echo -e "$( sudo firewall-cmd --direct --get-all-rules ;)"
+       echo ;
        echo -e " # sudo firewall-cmd --direct --get-all-rules && sudo firewall-cmd --list-all\n" ;
        
    }
