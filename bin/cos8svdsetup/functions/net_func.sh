@@ -294,7 +294,7 @@ function TopRAM25()
        | awk '{$1/=1024;printf "%.0f MB\t",$1}{print $2}'
      }
     
-    ttb=$(top) && lang="nix" && bpn_p_lang ;
+    ttb=$(top) && lang="d" && bpn_p_lang ;
 }
 
 
