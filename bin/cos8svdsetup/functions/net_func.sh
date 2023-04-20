@@ -24,7 +24,7 @@ function mi() { wget -qO- icanhazip.com ; } ;
 function im() { whoami ; } ;
 
 
-# 
+# Проверяет работает ли TOR в связке с wget
 function tor_check_ip_wget() {
      
       ttb="$( echo -e "
@@ -56,7 +56,7 @@ function myip() {
 }
 
 
-# 
+# Кеширует ip адрес TOR
 function reload_cash() {
     /root/vdsetup.2/bin/utility/.cash_var.sh $1
 }
@@ -186,59 +186,59 @@ tcurl() {
 
 # Вызов toriptables2.py, включение TOR для сети всего сервера
 function toriptables2.py() {
-   /root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh $1 ;
+     /root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh $1 ;
 }
  
-
-  function start_http_server() {
-     /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh start ;
-  }
+# Запускает http Node_js сервер
+function start_http_server() {
+     /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh start ;
+}
  
+# Останавливает http Node_js сервер
+function stop_http_server() {
+     /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh stop ;
+}
  
-  function stop_http_server() {
-     /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh stop ;
-  }
+# показывает статус http Node_js сервера
+function status_http_server() {
+     /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh status ;
+}
  
-  
-  function status_http_server() {
-      /root/vdsetup.2/bin/utility/file_to_http_start_stop.sh status ;
-   }
- 
- 
+# Запускает http light Node_js сервер
   function start_light_server() {
-      /root/vdsetup.2/bin/utility/file_to_light_server_start_stop.sh start ;
-  }
+     /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh start ;
+}
  
-  
+# Останавливает http light Node_js сервер
   function stop_light_server() {
-      /root/vdsetup.2/bin/utility/file_to_light_server_start_stop.sh stop ;
-  }
+     /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh stop ;
+}
  
-  
-  function status_light_server() {
-        /root/vdsetup.2/bin/utility/file_to_light_server_start_stop.sh status ;
-  }
+# показывает статус http light Node_js сервера
+function status_light_server() {
+     /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh status ;
+}
 
 # 
-  function lastf() {
-          /root/vdsetup.2/bin/utility/lastf.sh $1 ;
-    }
+function lastf() {
+     /root/vdsetup.2/bin/utility/lastf.sh $1 ;
+}
 
 
-  # 
-  function open_port_and_services_firewall() {
+# Показывает открытые порты и сервисы на firewalld (окрашивает текст lang="passwd")
+function open_port_and_services_firewall() {
    function services-ports() {
      echo -e "\n  firewalld services, ports: \n" ;
      echo -e "$( sudo firewall-cmd --list-all | grep -E "(services:|ports:)" | grep -v "(forward|source)" ;)"
      echo ;
      echo -e " # sudo firewall-cmd --list-all\n" ;
      ttb=$(services-ports) && lang="passwd" && bpn_p_lang ;
- }
+     }
 
 }
 
 
-#
+# Показывает открытые порты и сервисы на firewalld (окрашивает текст lang="cr")
 function fw_i()
 {
    
@@ -252,9 +252,10 @@ function fw_i()
    ttb=$(services-ports) && lang="cr" && bpn_p_lang ;
 }
 
-# 
+
+# Показывает открытые порты и сервисы и правила на firewalld (окрашивает текст lang="cr") 
 function fw_i_r() {
-  
+   
    function get-all-rules() {
        echo -e "\n  firewalld services, ports, rules: \n" ;
        echo -e "$( sudo firewall-cmd --list-all | grep -E "(services:|ports:)" | grep -v "(forward|source)" ;)"
@@ -268,11 +269,16 @@ function fw_i_r() {
    ttb=$(get-all-rules) && lang="cr" && bpn_p_lang ;
 }
 
-#
+
+# Вывод от команды netstat -tupln | grep ssh
 function netstat_i () {
-  
-   echo -e "\n	$(green_tick) $(red_U0023) netstat -tupln | grep ssh" ;
-   ( netstat -tupln | grep ssh ) | bat -l nix -p 2>/dev/null || ( netstat -tupln | grep ssh ) ;
+    
+   function netstat-tupln() {
+       
+       ( netstat -tupln | grep ssh ) | bat -l nix -p 2>/dev/null || ( netstat -tupln | grep ssh ) ;
+       echo -e "\n	# netstat -tupln | grep ssh" ;
+   }
+   ttb=$(netstat-tupln) && lang="cr" && bpn_p_lang ;
 }
 
 
