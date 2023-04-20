@@ -16,8 +16,8 @@ function c() { (clear) }
 function network_restart() { (/etc/init.d/network restart) }
 
 
-# tor restart && status
-function tor_restart_status() { (systemctl restart tor.service && systemctl status tor.service) }
+# tor restart && status && tor_check_ip
+function tor_restart_status() { (systemctl restart tor.service && systemctl status tor.service && tor_check_ip) }
 
 
 # Функция: информация о памяти системы
