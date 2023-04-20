@@ -11,6 +11,7 @@ function cv() { (clear && clear) }
 # Очистка ( не полная, не включая промотку вверх ) экрана терминала 
 function c() { (clear) }
 
+
 # Функция информация о памяти системы
 function mem() { 
   ramfetch 2>/dev/null ;
@@ -195,36 +196,43 @@ tcurl() {
 function toriptables2.py() {
      /root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh $1 ;
 }
+
  
 # Запускает http Node_js сервер
 function start_http_server() {
      /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh start ;
 }
+
  
 # Останавливает http Node_js сервер
 function stop_http_server() {
      /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh stop ;
 }
+
  
 # показывает статус http Node_js сервера
 function status_http_server() {
      /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh status ;
 }
+
  
 # Запускает http light Node_js сервер
   function start_light_server() {
      /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh start ;
 }
+
  
 # Останавливает http light Node_js сервер
   function stop_light_server() {
      /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh stop ;
 }
+
  
 # показывает статус http light Node_js сервера
 function status_light_server() {
      /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh status ;
 }
+
 
 # 
 function lastf() {
