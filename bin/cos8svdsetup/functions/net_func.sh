@@ -277,22 +277,22 @@ function netstat_i () {
        echo ;
        ( netstat -tupln | grep ssh ) | bat -l nix -p 2>/dev/null || ( netstat -tupln | grep ssh ) ;
        echo -e "\n # netstat -tupln | grep ssh" ;
-   }
+    }
    ttb=$(netstat-tupln) && lang="cr" && bpn_p_lang ;
 }
 
 
 # Выводит ТОП 25 процессов занимающих RAM (окрашивает текст lang="nix") 
-function TopRAM25()
-   {
-     function top() {
+function TopRAM25() {
+   
+    function top() {
        echo -e " "
        ps axo rss,comm,pid \
        | awk '{ proc_list[$2]++; proc_list[$2 "," 1] += $1; } \
        END { for (proc in proc_list) { printf("%d\t%s\n", \
        proc_list[proc "," 1],proc); }}' | sort -n | tail -n 25 | sort -rn \
        | awk '{$1/=1024;printf "%.0f MB\t",$1}{print $2}'
-     }
+    }
     
     ttb=$(top) && lang="nix" && bpn_p_lang ;
 }
@@ -307,17 +307,17 @@ function wport() {
    
    function netstat_tulanp_nogrep() {
       ( echo -e "\n${green}$(netstat -tulanp | head --lines 2 | grep -v "Active Internet" )${NC}\n" ; netstat -tulanp | grep -v "Active Internet" | grep -v " Foreign Address" |  bat --paging=never -l nix -p ) || ( echo -e "\n${green}$(netstat -tulanp | head --lines 2 | grep -v "Active Internet" )${NC}\n" ; netstat -tulanp | grep -v "Active Internet" | grep -v " Foreign Address" ) ;
-   }
+    }
    
    function netstat_tulanp() {
       
       ( echo -e "\n${green}$(netstat -tulanp | head --lines 2 | grep -v "Active Internet" )${NC}\n" ; netstat -tulanp | rg "$1" | bat --paging=never -l nix -p ) || ( echo -e "\n${green}$(netstat -tulanp | head --lines 2 | grep -v "Active Internet" )${NC}\n" ; netstat -tulanp | rg $1 ) ;
-   }
+    }
    
    function help_wport() {
        echo -e "\n ${green}This function print${NC}:\n  netstat -tulanp | grep \"\$1\"\n\n ${green}Usage${NC}:\n  wport \"keyword\" or \":port\"\n  wport all or \"${red}.${NC}\"\n  wport :22\n  wport :80\n  wport tcp\n  wport udp\n  wport LISTEN\n  wport ESTABLISHED\n  wport 127.0.0.1 "
        # Usage: grep [OPTION]... PATTERN [FILE]...
-   }
+    }
     if [[ $1 == "" ]] ; then help_wport && return ; fi ;
     if [[ $1 == "all" ]] ; then netstat_tulanp_nogrep && return ; fi ;
     if [[ $1 == "." ]] ; then netstat_tulanp_nogrep && return ; fi ;
@@ -343,7 +343,7 @@ function ifc() { ( echo -e "" && ifconfig | bat -p --paging=never -l conf ) || (
 
 # local address
 function lip-f() {
-  
+   
    echo -e "\n"$green""internal"$NC":" " ;
    ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
    echo -e "$cyan""\nexternal"$NC":" ;
