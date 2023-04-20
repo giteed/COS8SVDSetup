@@ -291,7 +291,7 @@ function TopRAM25()
        | awk '{ proc_list[$2]++; proc_list[$2 "," 1] += $1; } \
        END { for (proc in proc_list) { printf("%d\t%s\n", \
        proc_list[proc "," 1],proc); }}' | sort -n | tail -n 25 | sort -rn \
-       | awk '{$1/=1024;printf "%.0fMB\t",$1}{print $2}'
+       | awk '{$1/=1024;printf "%.0f MB\t",$1}{print $2}'
      }
     
     ttb=$(top) && lang="nix" && bpn_p_lang ;
