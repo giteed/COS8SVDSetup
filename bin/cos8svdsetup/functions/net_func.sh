@@ -4,6 +4,9 @@
 function http() { ttb=$( echo -e "\n $( cat /tmp/nginx_http_ip 2>/dev/null )") && lang=meminfo && bpn_p_lang ; }
 
 
+# Очистка ( полная ) экрана терминала
+function cv() { c&&c }
+
 # Функция информация о памяти системы
 function mem() { 
   ramfetch 2>/dev/null ;
