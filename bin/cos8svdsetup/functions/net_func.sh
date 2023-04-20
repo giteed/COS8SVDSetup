@@ -282,7 +282,7 @@ function netstat_i () {
 }
 
 
-# Выводит ТОП 25 процессов занимающих RAM
+# Выводит ТОП 25 процессов занимающих RAM (окрашивает текст lang="nix") 
 function TopRAM25()
    {
      function top() {
@@ -298,11 +298,8 @@ function TopRAM25()
 }
 
 
-#
-function t25r()
-{
-   TopRAM25 | bat -p -l c
-}
+# Выводит ТОП 25 процессов занимающих RAM (окрашивает текст lang="c") 
+function t25r() { TopRAM25 | bat -p -l c }
 
 
 # 
