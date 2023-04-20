@@ -12,6 +12,10 @@ function cv() { (clear && clear) }
 function c() { (clear) }
 
 
+# network restart  
+function network_restart() { (/etc/init.d/network restart) }
+
+
 # Функция: информация о памяти системы
 function mem() { 
   ramfetch 2>/dev/null ;
