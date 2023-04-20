@@ -17,9 +17,9 @@ function delay_msg_1-5_5-3() {
     local duration=$(awk "BEGIN {srand(); print ($max-$min)*rand()+$min}")
     sleep $duration
     if (( $(echo "$duration < 3.5" | bc -l) )); then
-      echo "\n Duration is less than 3.5 seconds"
+      ttb=$(echo "\n Duration is less than 3.5 seconds") && lang=cr && bpn_p_lang ;
     else
-      echo "\n Duration is greater than or equal to 3.5 seconds"
+      ttb=$(echo "\n Duration is greater than or equal to 3.5 seconds") && lang=cr && bpn_p_lang ;
     fi
 }
 
@@ -48,7 +48,7 @@ function tend() {
     # Засекаем Время Конца работы скрипта
     END_TIME=$(date +%s)
     DIFF=$(( $END_TIME - $START_TIME ))
-    echo -e "\n	Выполнение заняло $DIFF секунд."
+    ttb=$(echo -e "\n	Выполнение заняло $DIFF секунд.") && lang=cr && bpn_p_lang ;
 }
 
 # Таймер выполнения работы скрипта end с логикой сек/мин_сек
@@ -64,9 +64,9 @@ function tendl() {
     MINUTES=$(( $DIFF / 60 ))
     SECONDS=$(( $DIFF % 60 ))
     if [ $MINUTES -eq 0 ]; then
-        echo -e "\n Выполнение заняло $SECONDS секунд."
+        ttb=$(echo -e "\n Выполнение заняло $SECONDS секунд(ы).") && lang=cr && bpn_p_lang ;
     else
-        echo -e "\n Выполнение заняло $MINUTES минут(ы) и $SECONDS секунд(ы)."
+        ttb=$(echo -e "\n Выполнение заняло $MINUTES минут(ы) и $SECONDS секунд(ы).") && lang=cr && bpn_p_lang ;
     fi
 }
 
