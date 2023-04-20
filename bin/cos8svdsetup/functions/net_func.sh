@@ -232,7 +232,7 @@ function fw_i()
 {
    
    function services-ports() {
-       echo -e " \nFirewallD services, ports:" ;
+       echo -e "\n FirewallD services, ports:" ;
        echo -e " # sudo firewall-cmd --direct --get-all-rules && sudo firewall-cmd --list-all\n" ;
        echo -e "$( firewall-cmd --list-all | grep -E "(services:|ports:)" | grep -v "(forward|source)" ;)"
    }
@@ -243,7 +243,7 @@ function fw_i()
 function fw_i_r()
 {
    function get-all-rules() {
-       echo -e " \nFirewallD services, ports, rules: " ;
+       echo -e "\n FirewallD services, ports, rules: " ;
        echo -e " # sudo firewall-cmd --direct --get-all-rules && sudo firewall-cmd --list-all\n" ;
        echo -e "$( firewall-cmd --list-all | grep -E "(services:|ports:)" | grep -v "(forward|source)" ;)"
        echo ;
