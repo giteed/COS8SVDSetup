@@ -27,7 +27,7 @@ function check_ip() {
         echo "Не удалось получить IP-адрес, перезапускаю TOR..."
         tor_restart_status ;
     else
-        echo -e "\n TOR IP-адрес: $ip\n" ; tor_check_ip_wget
+        echo -e "\n  TOR IP-адрес: $ip" ; tor_check_ip_wget
     fi
 }
 
