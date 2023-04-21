@@ -62,10 +62,11 @@ function tor_check_ip_wget() {
   БЕЗ указания прокси socks5 127.0.0.1:"${tor_port}"
   # wget -qO- http://ipinfo.io/ip
   "$(wget -qO- http://ipinfo.io/ip)"
+  
   Если ip БЕЗ прокси такой-же как и с включенным 
   прокси значит wget настроен по умолчанию для работы 
   через socks5 127.0.0.1:"${tor_port}"
-  Вы можете отключить это в файле /etc/wgetrc или:
+  Вы можете отключить это в файле /etc/wgetrc
   
       
   С ВКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
@@ -78,6 +79,33 @@ function tor_check_ip_wget() {
   ")" && lang=cr && bpn_p_lang ;
    
 }
+  
+  
+function check_socks5_proxy() {
+    local proxy_address="127.0.0.1:${tor_port}"
+    local url="http://example.com"
+    local curl_opts=(
+        "--socks5"
+        "${proxy_address}"
+        "--max-time"
+        "10"
+        "--silent"
+        "--output"
+        "/dev/null"
+        "--write-out"
+        "%{http_code}"
+        "${url}"
+    )
+
+    local http_code=$(curl "${curl_opts[@]}")
+    if [[ "$http_code" == "200" ]]; then
+        echo "SOCKS5 proxy $proxy_address is working"
+    else
+        echo "SOCKS5 proxy $proxy_address is not working, HTTP code: $http_code"
+    fi
+}
+
+  
   
 
 # Функция: myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
