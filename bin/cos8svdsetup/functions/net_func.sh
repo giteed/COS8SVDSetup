@@ -20,6 +20,21 @@ function network_restart() { (/etc/init.d/network restart) }
 function tor_restart_status() { (systemctl restart tor.service && systemctl status tor.service && tor_check_ip) }
 
 
+# Функция, которая проверяет, удалось ли получить IP-адрес с помощью wget и выводит соответствующее сообщение.
+function check_ip() {
+    local ip=$(wget -qO- --proxy=on http://ipinfo.io/ip)
+    if [ -z "$ip" ]; then
+        echo "Не удалось получить IP-адрес, перезапускаю TOR..."
+        tor_restart_status ;
+    else
+        echo "IP-адрес: $ip"
+    fi
+}
+
+# Вызываем функцию для проверки IP-адреса.
+#check_ip
+
+
 # Функция: информация о памяти системы
 function mem() { 
   ramfetch 2>/dev/null ;
