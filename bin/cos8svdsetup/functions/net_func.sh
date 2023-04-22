@@ -109,7 +109,7 @@ function check_socks5_proxy() {
   
 function test_tor() {
     # Получаем случайный onion адрес
-    onion_addr=$(curl -s https://onion.danwin1210.me/)
+    onion_addr=$(curl -s http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion/)
     
     # Проверяем доступность onion адреса через Tor
     if curl --socks5 "127.0.0.1:${tor_port}" -s "$onion_addr" | grep "site_title" >/dev/null; then
