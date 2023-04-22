@@ -109,11 +109,12 @@ function check_socks5_proxy() {
   
 function test_tor() {
    
-    # Получаем случайный onion адрес
+    # Получаем .torproject.org onion адрес
     onion_addr="http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion/"
     
     echo -e "\n Проверяем доступность .onion адреса через Tor\n curl --socks5-hostname "127.0.0.1:${tor_port}" -s "\$onion_addr" "
     if curl --socks5-hostname "127.0.0.1:${tor_port}" -s "$onion_addr" | grep -m 1 -E "Browse Privately" &>/dev/null ; then
+        echo -en " " curl -s socks5h://127.0.0.1:"${tor_port}" https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/  //g'
         echo -e " Tor Socks5 работает нормально!\n Сайт в зоне .onion получен через Socks5 успешно.\n You Browse Privately!"
     else
         echo -e " Tor Socks5 не работает!\n Перезапустить: # tor_restart_status"
