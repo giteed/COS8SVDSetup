@@ -77,7 +77,7 @@ function check_self_connect() {
 		
 		ttb=$(echo -e " Ваш ip \"Напрямую\": $ip_tmp\n | не соответствует полученному\n | от \"ifconfig\" ip : $(ifconfig_real_ip)\n |\n | Скорее всего, анонимайзер или прокси включены\n ⎩ и роутинг соединений проходит сейчас через них. ") && bpn_p_lang && ${msg_local} ;
 		
-		ttb=$(echo -e "\n ⎧ Откл/Включить роутинг всех соединений через Tor:\n | # toriptables2.py -h\n ⎩ (Или вручную отключитесь от Proxy/VPN)\n\n ⎧ Ваш ip \"Напрямую\": $ip_tmp\n | проверялся через:") && bpn_p_lang ; 
+		ttb=$(echo -e "\n ⎧ Откл/Включить роутинг всех соединений через Tor:\n ⎩ # toriptables2.py -h\n\n ⎧ Ваш ip \"Напрямую\": $ip_tmp\n | проверялся через:") && bpn_p_lang ; 
 	}
 	
 	function msg_yes() {
