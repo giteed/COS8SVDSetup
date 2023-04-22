@@ -130,6 +130,7 @@ function check_tor() {
             curl -s --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations'
         else
             echo "Соединение не происходит через Tor."
+            curl -s --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations'
         fi
     else
         echo "Tor Socks5 не работает."
