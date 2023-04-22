@@ -123,7 +123,7 @@ function test_tor() {
         fi
     }
     
-    ttb=$(test_tor _test_tor) && lang=cr && bpn_p_lang ;
+    (ttb=$(test_tor _test_tor) && lang=cr && bpn_p_lang ;) return
   }
 
 
