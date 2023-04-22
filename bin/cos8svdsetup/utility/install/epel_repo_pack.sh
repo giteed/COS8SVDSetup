@@ -22,13 +22,17 @@
 			sudo dnf install kernel-ml wireguard-tools
 	    }
 	 
-	 wireguard_tools ;
+		function ffmpeg_install() {
+			sudo dnf install https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-8.noarch.rpm
+			sudo dnf install https://mirrors.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-8.noarch.rpm
+			sudo dnf install -y ffmpeg ffmpeg-devel youtube-dl || ( error_MSG ; ) ; echo ;
+			return ;
+		}	
+	 
 	 
 	 sudo dnf install -y epel-release yum-utils npm || ( error_MSG ; ) ; echo ;
-	 sudo dnf install kmod-wireguard-ml wireguard-tools
 	 sudo dnf install -y net-tools bind-utils network-scripts iptables socat dnstracer || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y dialog mlocate ncdu ranger tldr || ( error_MSG ; ) ; echo ;
-	 sudo dnf install -y youtube-dl ffmpeg || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y git tar curl wget || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y whois || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y atop htop bpytop iftop stacer lsof nethogs ripgrep || ( error_MSG ; ) ; echo ;
@@ -38,12 +42,14 @@
 	 sudo dnf install -y screen qrencode || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y @perl perl perl-Net-SSLeay perl-Encode-Detect openssl || ( error_MSG ; ) ; echo ;
 	 
+	 wireguard_tools ;
+	 
  }
  
  function epel_repository_packages_Check_or_install() {
 	  
 	  function msg_install_anyway() {
-	   ttb=$(echo -e "\n ⎧ По всей видимости, все программы из epel_repository_packages\n | уже были установлены. Нажмите Enter, если желаете\n ⎩ перепроверить установку, или ESC для выхода. ") && lang="nix" && bpn_p_lang ;
+	   ttb=$(echo -e "\n ⎧ Возможно, что некоторые пакеты уже были установлены.\n ⎩  Нажмите Enter, если желаете перепроверить их установку, или ESC для выхода. ") && lang="nix" && bpn_p_lang ;
 	   press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 	   epel_repository_packages_install ;
       }
@@ -68,11 +74,11 @@
   function epel_repository_packages()
   {
 	ttb=$( echo -e "
- ⎧ Установка дополнительных пакетов \"Epel Repository Packages\": 
+ ⎧ Установка дополнительных пакетов:: 
  | 
  | epel-release, iptables, python3, ruby, npm, unzip, 
- | hstr, lsof, screen, tar, p7zip, mc, nano, whois, 
- | wget, curl, atop, htop, nethogs, bpytop, iftop, 
+ | hstr, lsof, screen, tar, p7zip, mc, nano, whois, Webmin,
+ | wget, curl, atop, htop, nethogs, bpytop, iftop, bat,
  | stacer, yum-utils, net-tools, network-scripts, git, 
  | dialog, mlocate qrencode, ncdu, ranger, tldr, whois, 
  ⎩ youtube-dl, ffmpeg. \n" ) && bpn_p_lang ; echo ;
@@ -112,6 +118,14 @@
 
 # Installing snapd
    snap_install ;
+
+# ДОПОЛНИТЕЛЬНЫЕ ПАКЕТЫ:
+
+# Installing ffmpeg, youtube-dl   
+#  epel_repository_packages_install ffmpeg_install
+
+# Installing kmod-wireguard-ml, wireguard-tools
+# 	sudo dnf install kmod-wireguard-ml wireguard-tools
 
 
 exit 0 ; 
