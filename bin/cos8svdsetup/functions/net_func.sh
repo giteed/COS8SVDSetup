@@ -127,6 +127,7 @@ function check_tor() {
         # Если Tor работает, проверяем, происходит ли через него соединение
         if curl -s --socks5-hostname 127.0.0.1:"${tor_port}" https://check.torproject.org/ | grep -q "Using Tor" ; then
             echo "Соединение через Tor происходит нормально."
+            curl -s --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations'
         else
             echo "Соединение не происходит через Tor."
         fi
@@ -134,6 +135,10 @@ function check_tor() {
         echo "Tor Socks5 не работает."
     fi
 }
+
+
+
+
 
   
 
