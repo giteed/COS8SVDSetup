@@ -90,7 +90,7 @@
 	echo -e " 
  ⎧ Установка дополнительных пакетов завершена!
  ${GREEN}| ${NC}Посмотреть список repo в системе # wis -rl
- ⎩ \"Epel Repository Packages\" installed $(green_tick)\n"
+ ⎩ All packages installed $(green_tick)\n"
 	
   }
 
