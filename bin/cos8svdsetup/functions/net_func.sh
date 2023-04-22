@@ -122,7 +122,7 @@ function test_tor() {
 }
 
 tor_onion_test() {
- ttb=$(test_tor ) && lang=cr && bpal_p_lang ;
+ ttb=$(test_tor ) && lang=cr && bpn_p_lang ;
 }
 
 function check_tor() {
