@@ -122,7 +122,7 @@ function _tor_onion_test() {
     fi
   }
 
-function tor_onion_test() { ttb=$(test_tor ) && lang=cr && bpn_p_lang ; }
+function tor_onion_test() { ttb=$(_tor_onion_test) && lang=cr && bpn_p_lang ; }
   
 
 # Функция: myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
