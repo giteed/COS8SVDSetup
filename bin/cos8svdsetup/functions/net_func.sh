@@ -80,7 +80,8 @@ function tor_check_ip_wget() {
    
 }
   
-  
+# Если запрос завершился успешно с кодом 200, то функция выводит сообщение о том, что прокси работает, 
+# иначе - что прокси не работает, и выводит HTTP-код ответа.
 function check_socks5_proxy() {
     local proxy_address="127.0.0.1:${tor_port}"
     local url="http://example.com"
@@ -96,7 +97,7 @@ function check_socks5_proxy() {
         "%{http_code}"
         "${url}"
     )
-
+    
     local http_code=$(curl "${curl_opts[@]}")
     if [[ "$http_code" == "200" ]]; then
         echo "SOCKS5 proxy $proxy_address is working"
@@ -106,6 +107,20 @@ function check_socks5_proxy() {
 }
 
   
+function test_tor() {
+    # Получаем случайный onion адрес
+    onion_addr=$(curl -s https://onion.danwin1210.me/)
+    
+    # Проверяем доступность onion адреса через Tor
+    if curl --socks5 "127.0.0.1:${tor_port}" -s "$onion_addr" | grep "site_title" >/dev/null; then
+        echo "Tor Socks5 работает нормально"
+    else
+        echo "Tor Socks5 не работает"
+    fi
+}
+
+
+
   
 
 # Функция: myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
