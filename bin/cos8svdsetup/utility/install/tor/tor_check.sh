@@ -141,6 +141,7 @@ function flush_rules_or_start_tor() {
 	check_self_connect ;
 	check_tor_connect ;
 	tor_check_ip_wget ;
+	tor_onion_test ;
 
 exit 0 ;
 
