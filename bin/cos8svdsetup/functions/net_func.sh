@@ -118,7 +118,7 @@ function test_tor() {
         echo -en " $(curl -s --socks5-hostname "127.0.0.1:${tor_port}" https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/  //g')\n"
         
     else
-        echo -e "\n Tor Socks5 не работает!\n Перезапустить: # tor_restart_status"
+        echo -e "\n Tor Socks5 \"127.0.0.1:${tor_port}\" не работает!\n Перезапустить: # tor_restart_status"
     fi
   
 }
