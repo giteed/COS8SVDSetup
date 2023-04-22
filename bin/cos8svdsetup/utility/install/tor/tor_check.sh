@@ -42,29 +42,29 @@ function check_self_ifconfig() {
 
 function check_tor_connect() {
 	
-	function msg_start_tor_if_need() {
-		ttb=$(echo -e "\n\n ⎧ Похоже, TOR Socks5 не работает.\n ⎩ # systemctl start tor") && bpn_p_lang ;
-	}
-
-	URL_TOR_CHECK="http://2ip.ua"
-
-	for i in {0..5}; do
-	
-	if [[ "$r" == "3" ]] ; then msg_start_tor_if_need ; echo ; fi ;
-
-		ip_address=$(curl -s --socks5 127.0.0.1:9050 "${URL_TOR_CHECK}")
-		
-		if [[ "$ip_address" != "" ]] ; then
-			echo -en " $(black_U23A7 )" ; ttb=$(echo -e " Ваш ip через локальный TOR Socks5\n | проверялся через:") && bpn_p_lang ;
-			echo -en " $(black_U23A9 )" ; ttb=$(echo -e " # curl -s --socks5 127.0.0.1:9050 ${URL_TOR_CHECK} ") && bpn_p_lang ; echo ;
-			ttb=$(echo -e "${ip_address}\n") && lang=cr && bpn_p_lang ; echo ;
-			return ;
-			else echo -en "${red} ." && sleep 1 && r=$(( $r + 1 )) ; continue ;
-		fi
-		sleep 1
-	done
-	echo ;
-	ttb=$(echo -e "\n ⎧ Ошибка определения ip адреса через\n ⎩ TOR Socks5 127.0.0.1:9050\n") && bpn_p_lang ;
+		function msg_start_tor_if_need() {
+			ttb=$(echo -e "\n\n ⎧ Похоже, TOR Socks5 не работает.\n ⎩ # systemctl start tor") && bpn_p_lang ;
+		}
+	 
+		URL_TOR_CHECK="http://2ip.ua"
+	 
+		for i in {0..5}; do
+		 
+		 if [[ "$r" == "3" ]] ; then msg_start_tor_if_need ; echo ; fi ;
+	     
+			ip_address=$(curl -s --socks5 127.0.0.1:9050 "${URL_TOR_CHECK}")
+			
+			if [[ "$ip_address" != "" ]] ; then
+				echo -en " $(black_U23A7 )" ; ttb=$(echo -e " Ваш ip через локальный TOR Socks5\n | проверялся через:") && bpn_p_lang ;
+				echo -en " $(black_U23A9 )" ; ttb=$(echo -e " # curl -s --socks5 127.0.0.1:9050 ${URL_TOR_CHECK} ") && bpn_p_lang ; echo ;
+				ttb=$(echo -e "${ip_address}\n") && lang=cr && bpn_p_lang ; echo ;
+				return ;
+				else echo -en "${red} ." && sleep 1 && r=$(( $r + 1 )) ; continue ;
+			fi
+			sleep 1
+		done
+		 echo ;
+		ttb=$(echo -e "\n ⎧ Ошибка определения ip адреса через\n ⎩ TOR Socks5 127.0.0.1:9050\n") && bpn_p_lang ;
 
 }
 
