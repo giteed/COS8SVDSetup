@@ -122,10 +122,10 @@ function test_tor() {
 
 function check_tor() {
     # Сначала проверяем, что Tor запущен и работает как прокси
-    if curl -s -x socks5h://127.0.0.1:"${tor_port}" http://check.torproject.org/ | grep -q "Congratulations" ; then
+    if curl -s -x socks5h://127.0.0.1:"${tor_port}" https://check.torproject.org/ | grep -q "Congratulations" ; then
         echo "Tor Socks5 работает нормально."
         # Если Tor работает, проверяем, происходит ли через него соединение
-        if curl -s --socks5-hostname 127.0.0.1:"${tor_port}" http://check.torproject.org/ | grep -q "Using Tor" ; then
+        if curl -s --socks5-hostname 127.0.0.1:"${tor_port}" https://check.torproject.org/ | grep -q "Using Tor" ; then
             echo "Соединение через Tor происходит нормально."
         else
             echo "Соединение не происходит через Tor."
