@@ -135,7 +135,7 @@ function check_tor() {
         else
             echo " Соединение не происходит через Tor."
             # | sed 's/<[^>]*>//g', чтобы удалить все теги:
-            curl -s --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/  //g'
+            curl -s --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/<[^>]*>//g'
         fi
     else
         echo " Tor Socks5 не работает."
