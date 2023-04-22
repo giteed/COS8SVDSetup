@@ -107,7 +107,7 @@ function check_socks5_proxy() {
 }
 
   
-function test_tor() {
+function _tor_onion_test() {
    
     # Получаем .torproject.org onion адрес
     onion_addr="http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion/"
@@ -120,34 +120,9 @@ function test_tor() {
     else
         echo -e "\n Tor Socks5 \"127.0.0.1:${tor_port}\" не работает!\n Перезапустить: # tor_restart_status"
     fi
-  
-}
+  }
 
 function tor_onion_test() { ttb=$(test_tor ) && lang=cr && bpn_p_lang ; }
-
-
-function check_tor() {
-    # Сначала проверяем, что Tor запущен и работает как прокси
-    if curl -s -x socks5h://127.0.0.1:"${tor_port}" https://check.torproject.org/ | grep -q "Congratulations" ; then
-        echo " Tor Socks5 работает нормально."
-        # Если Tor работает, проверяем, происходит ли через него соединение
-        if curl -s --socks5-hostname 127.0.0.1:"${tor_port}" https://check.torproject.org/ | grep -q "This browser is configured to use Tor" ; then
-            echo " Соединение через Tor происходит нормально."
-            curl -s --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/  //g'
-        else
-            echo " Соединение не происходит через Tor."
-            # | sed 's/<[^>]*>//g', чтобы удалить все теги:
-            curl -s --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/<[^>]*>//g'
-        fi
-    else
-        echo " Tor Socks5 не работает."
-    fi
-}
-
-
-
-
-
   
 
 # Функция: myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
