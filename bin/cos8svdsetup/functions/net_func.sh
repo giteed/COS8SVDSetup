@@ -114,8 +114,8 @@ function test_tor() {
     
     echo -e "\n Проверяем доступность .onion адреса через Tor\n # curl --socks5-hostname "127.0.0.1:${tor_port}" -s "\$onion_addr" "
     if curl --socks5-hostname "127.0.0.1:${tor_port}" -s "$onion_addr" | grep -m 1 -E "Browse Privately" &>/dev/null ; then
-        echo -e " Tor Socks5 работает нормально!\n Сайт в зоне .onion получен через Socks5 успешно.\n You Browse Privately!"
-        echo -en "\n $(curl -s --socks5-hostname "127.0.0.1:${tor_port}" https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/  //g')\n"
+        echo -e "\n Tor Socks5 работает нормально!\n Сайт в зоне .onion получен через Socks5 успешно.\n You Browse Privately!"
+        echo -en " $(curl -s --socks5-hostname "127.0.0.1:${tor_port}" https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/  //g')\n"
         
     else
         echo -e " Tor Socks5 не работает!\n Перезапустить: # tor_restart_status"
