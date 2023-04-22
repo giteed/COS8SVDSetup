@@ -116,14 +116,14 @@ function test_tor() {
         echo -e " Проверяем доступность .onion адреса через Tor\n curl --socks5-hostname "127.0.0.1:${tor_port}" -s "\$onion_addr" "
         if curl --socks5-hostname "127.0.0.1:${tor_port}" -s "$onion_addr" | grep -m 1 -E "Browse Privately" &>/dev/null ; then
             echo -e " Tor Socks5 работает нормально!\n Сайт в зоне .onion получен через Socks5 успешно.\n You Browse Privately!"
-            return
+            exit 1
         else
             echo -e " Tor Socks5 не работает!\n Перезапустить: tor_restart_status"
-            return
+            exit 1
         fi
     }
     
-    (ttb=$(test_tor _test_tor) && lang=cr && bpn_p_lang ;) return
+    (ttb=$(test_tor _test_tor) && lang=cr && bpn_p_lang ;) exit 1
   }
 
 
