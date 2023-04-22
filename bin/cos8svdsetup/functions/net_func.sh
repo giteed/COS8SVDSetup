@@ -112,7 +112,8 @@ function test_tor() {
     onion_addr="http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion/"
     
     # Проверяем доступность onion адреса через Tor
-    if curl --socks5-hostname "127.0.0.1:${tor_port}" -s "$onion_addr" | grep -m 1 -E "Browse Privately" ; then
+    # | sed 's/<[^>]*>//g', чтобы удалить все теги:
+    if curl --socks5-hostname "127.0.0.1:${tor_port}" -s "$onion_addr" | grep -m 1 -E "Browse Privately" | sed 's/<[^>]*>//g' ; then
         echo "Tor Socks5 работает нормально"
     else
         echo "Tor Socks5 не работает"
