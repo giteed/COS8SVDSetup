@@ -57,7 +57,7 @@ function check_tor_connect() {
 		if [[ "$ip_address" != "" ]] ; then
 			echo -en " $(black_U23A7 )" ; ttb=$(echo -e " Ваш ip через локальный TOR Socks5\n | проверялся через:") && bpn_p_lang ;
 			echo -en " $(black_U23A9 )" ; ttb=$(echo -e " # curl -s --socks5 127.0.0.1:9050 ${URL_TOR_CHECK} ") && bpn_p_lang ; echo ;
-			ttb=$(echo -e "${ip_address}\n") && bpn_p_lang ; echo ;
+			ttb=$(echo -e "${ip_address}\n") && lang=cr && bpn_p_lang ; echo ;
 			return ;
 			else echo -en "${red} ." && sleep 1 && r=$(( $r + 1 )) ; continue ;
 		fi
