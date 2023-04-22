@@ -182,6 +182,7 @@ tor_port_ch &>/dev/null ;
 function tor_check_ip() {
    tor_port_ch ;
    /root/vdsetup.2/bin/utility/install/tor/tor_check.sh ;
+   tor_onion_test ;
 }
 
 
