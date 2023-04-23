@@ -18,7 +18,7 @@
 	. /root/vdsetup.2/bin/functions/vsync.sh
 # --> Проверяет или устанавливает проверяемые компоненты.	
 	. /root/vdsetup.2/bin/functions/check_or_install.sh
- # Листинг файлов/папок и их цифровых прав доступа:
+# --> Листинг файлов/папок и их цифровых прав доступа:
 	. /root/vdsetup.2/bin/functions/lk-f.sh
 #  --> Поиски
 	. /root/vdsetup.2/bin/functions/find.sh
@@ -26,9 +26,14 @@
 	. /root/vdsetup.2/bin/functions/net_func.sh
 #  --> netstat -tulanp | head --lines 2 | grep -v "Active Internet"
 	. /root/vdsetup.2/bin/functions/wport.sh
+#  --> tor
+	. /root/vdsetup.2/bin/functions/tor.sh
 #  --> delay таймеры
 	. /root/vdsetup.2/bin/functions/delay.sh
-
+#  --> память и диски
+	. /root/vdsetup.2/bin/functions/mem.sh
+#  --> разные функции
+	. /root/vdsetup.2/bin/functions/other.sh
 
 
 # --> Этот ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
