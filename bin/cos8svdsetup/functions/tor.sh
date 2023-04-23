@@ -10,7 +10,7 @@ function _tor_onion_test() {
   echo -e "\n Проверяем доступность .onion адреса через Tor\n # curl --socks5-hostname "127.0.0.1:${tor_port}" -s "\$onion_addr"\n http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion/ "
   if curl --socks5-hostname "127.0.0.1:${tor_port}" -s "$onion_addr" | grep -m 1 -E "Browse Privately" &>/dev/null ; then
     echo -e "\n Tor Socks5 работает нормально!\n Сайт в зоне .onion получен через Socks5 успешно.\n You Browse Privately!"
-    echo -en " $(curl -s --socks5-hostname "127.0.0.1:${tor_port}" https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/  //g')\n"
+    echo -en " $(curl --insecure -s --socks5-hostname "127.0.0.1:${tor_port}" https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/  //g')\n"
     
   else
     echo -e "\n Tor Socks5 \"127.0.0.1:${tor_port}\" не работает!\n Перезапустить: # tor_restart_status"
@@ -28,7 +28,7 @@ function systemctl_status_tor-service() {
   done
   
   # Run your command here
-  ttb=$(echo -e "\n Bootstrapped 100% (done): Done!") && lang=nix && bpn_p_lang ;
+  ttb=$(echo -e "\n Bootstrapped 100% (done): Done!") && echo && lang=nix && bpn_p_lang && tor_onion_test ;
 }
 
 
@@ -47,13 +47,13 @@ function check_ip_tor_restart_status() {
   echo -en " ";
   wget -qO- --proxy=on https://icanhazip.com) && lang=cr && bpn_p_lang ;
   echo ;
-  ttb=$(echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip:"
+  ttb=$(echo -e " Ответ от curl --insecure -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip:"
   echo -en " ";
-  curl -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip | jq -r '.IP') && lang=cr && bpn_p_lang ;
+  curl --insecure -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip | jq -r '.IP') && lang=cr && bpn_p_lang ;
   echo ;
-  ttb=$(echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com"
+  ttb=$(echo -e " Ответ от curl --insecure -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com"
   echo -en " ";
-  curl -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com) && lang=cr && bpn_p_lang ;
+  curl --insecure -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com) && lang=cr && bpn_p_lang ;
 
   
   unset ip ;
@@ -72,7 +72,8 @@ function check_ip_tor_restart_status() {
   # journalctl -xe или journalctl -xef для непрерывного вывода журнала
   
   # Команды для определения IP Через socks5 Tor с испольльзованием DNS Tor. (на сайте torproject)
-  # curl -s --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/api/ip | jq -r '.IP'
+  # --insecure без проверки сертификата шифрования
+  # curl --insecure -s --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/api/ip | jq -r '.IP'
   # wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP'
   # 
   # wget -qO- --header="Proxy-Agent: socks5://127.0.0.1:9050/" --no-check-certificate https://check.torproject.org/api/ip

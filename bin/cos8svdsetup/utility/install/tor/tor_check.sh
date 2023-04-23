@@ -52,11 +52,11 @@ function check_tor_connect() {
 		 
 		 if [[ "$r" == "3" ]] ; then msg_start_tor_if_need ; echo ; fi ;
 	     
-			ip_address=$(curl -s --socks5 127.0.0.1:9050 "${URL_TOR_CHECK}")
+			ip_address=$(curl --insecure -s --socks5 127.0.0.1:9050 "${URL_TOR_CHECK}")
 			
 			if [[ "$ip_address" != "" ]] ; then
 				echo -en " $(black_U23A7 )" ; ttb=$(echo -e " Ваш ip через локальный TOR Socks5\n | проверялся через:") && bpn_p_lang ;
-				echo -en " $(black_U23A9 )" ; ttb=$(echo -e " # curl -s --socks5 127.0.0.1:9050 ${URL_TOR_CHECK} ") && bpn_p_lang ; echo ;
+				echo -en " $(black_U23A9 )" ; ttb=$(echo -e " # curl --insecure -s --socks5 127.0.0.1:9050 ${URL_TOR_CHECK} ") && bpn_p_lang ; echo ;
 				ttb=$(echo -e "${ip_address}\n") && lang=cr && bpn_p_lang ; echo ;
 				return ;
 				else echo -en "${red} ." && sleep 1 && r=$(( $r + 1 )) ; continue ;
@@ -88,7 +88,7 @@ function check_self_connect() {
 
 	for i in {0..2}; do
 		
-		curl -s "${URL_NO_TOR_CHECK}" > /tmp/ip_tmp.txt ;
+		curl --insecure -s "${URL_NO_TOR_CHECK}" > /tmp/ip_tmp.txt ;
 		
 		ip_address=$( cat /tmp/ip_tmp.txt )
 		
@@ -100,7 +100,7 @@ function check_self_connect() {
 			if [[ "$ip_tmp" == "$(ifconfig_real_ip)" ]] ; then msg_ip=msg_yes ; else msg_ip=msg_no ; fi ;
 			
 			echo -en "\n $(black_U23A7 )" ; ${msg_ip} ;
-			echo -en " $(black_U23A9 )" ; ttb=$(echo -e " # curl -s ${URL_NO_TOR_CHECK} ") && bpn_p_lang ; echo ;
+			echo -en " $(black_U23A9 )" ; ttb=$(echo -e " # curl --insecure -s ${URL_NO_TOR_CHECK} ") && bpn_p_lang ; echo ;
 			
 			ttb=$(echo -e "${ip_address}\n") && bpn_p_lang ; echo ;
 			return ; 
