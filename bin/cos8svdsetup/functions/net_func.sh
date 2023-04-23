@@ -12,12 +12,13 @@ function reload_cash() {
 
 # Функция: cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
 function cash_var_sh_150_start_and_stop() {
-     ( cash_var_sh_150 ) &>/dev/null 
-     
-     ps ax | awk '/[s]leep_kill/ { print $1 }' | xargs kill &>/dev/null 
-     pkill -f "sleep_kill" &>/dev/null
-     screen -wipe &>/dev/null 
-     # ps ax | awk '/[s]nippet/ { print $1 }' | xargs kill (тоже рабочий вариант вместо snippet имя скрипта или программы)
+    ( cash_var_sh_150 ) &>/dev/null 
+    
+    ps ax | awk '/[s]leep_kill/ { print $1 }' | xargs kill &>/dev/null 
+    pkill -f "sleep_kill" &>/dev/null
+    screen -wipe &>/dev/null 
+    # ps ax | awk '/[s]nippet/ { print $1 }' | xargs kill (тоже рабочий вариант вместо snippet имя скрипта или программы)
+    
     ( /usr/bin/screen -dmS sleep_kill /bin/bash /root/vdsetup.2/bin/utility/install/tor/.sleep_kill.sh ) &>/dev/null ; 
     return ; 
   }
@@ -25,16 +26,19 @@ function cash_var_sh_150_start_and_stop() {
 
 # Функция: удаляет юнит кеширования ip адреса Тора и версии vdsetup 
 function remove_unit_stop_cashing() {
-   ${msg9} ;
+    ${msg9} ;
    
-   systemctl disable cash_var.service &>/dev/null || ttb=$(echo -e "\n Error disable Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
-   systemctl stop cash_var.service &>/dev/null || ttb=$(echo -e "\n Error stop Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
-   rm /etc/systemd/system/cash_var.service &>/dev/null || ttb=$(echo -e "\n Error remove Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
-   systemctl daemon-reload &>/dev/null || ttb=$(echo -e "\n Error daemon-reload \n") && bpn_p_lang  ;
- 
-   ttb=$(echo -e "\n Unit /etc/systemd/system/cash_var.service removed \n") && bpn_p_lang  ;
-   #systemctl status -n0 cash_var.service 2>/dev/null;
-   return ;
+    systemctl disable cash_var.service &>/dev/null || ttb=$(echo -e "\n Error disable Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
+   
+    systemctl stop cash_var.service &>/dev/null || ttb=$(echo -e "\n Error stop Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
+   
+    rm /etc/systemd/system/cash_var.service &>/dev/null || ttb=$(echo -e "\n Error remove Unit /etc/systemd/system/cash_var.service could not be found. \n") && bpn_p_lang  ;
+   
+    systemctl daemon-reload &>/dev/null || ttb=$(echo -e "\n Error daemon-reload \n") && bpn_p_lang  ;
+   
+    ttb=$(echo -e "\n Unit /etc/systemd/system/cash_var.service removed \n") && bpn_p_lang  ;
+    #systemctl status -n0 cash_var.service 2>/dev/null;
+    return ;
   }
 
 
@@ -44,43 +48,43 @@ function http() { ttb=$( echo -e "\n $( cat /tmp/nginx_http_ip 2>/dev/null )") &
 
 # Функция: Запускает http Node_js сервер
 function start_http_server() {
-     /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh start ;
+    /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh start ;
   }
 
  
 # Функция: Останавливает http Node_js сервер
 function stop_http_server() {
-     /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh stop ;
+    /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh stop ;
   }
 
  
 # Функция: показывает статус http Node_js сервера
 function status_http_server() {
-     /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh status ;
+    /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh status ;
   }
 
  
 # Функция: Запускает http light Node_js сервер
   function start_light_server() {
-     /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh start ;
+    /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh start ;
   }
 
  
 # Функция: Останавливает http light Node_js сервер
   function stop_light_server() {
-     /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh stop ;
+    /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh stop ;
   }
 
  
 # Функция: Показывает статус http light Node_js сервера
 function status_light_server() {
-     /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh status ;
+    /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh status ;
   }
 
 
 # Функция: 
 function lastf() {
-     /root/vdsetup.2/bin/utility/lastf.sh $1 ;
+    /root/vdsetup.2/bin/utility/lastf.sh $1 ;
   }
 
 
