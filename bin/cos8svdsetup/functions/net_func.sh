@@ -16,6 +16,24 @@ function c() { (clear) }
 function network_restart() { (/etc/init.d/network restart) }
 
 
+function _tor_onion_test() {
+   
+    # Получаем .torproject.org onion адрес
+    onion_addr="http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion/"
+    
+    echo -e "\n Проверяем доступность .onion адреса через Tor\n # curl --socks5-hostname "127.0.0.1:${tor_port}" -s "\$onion_addr" "
+    if curl --socks5-hostname "127.0.0.1:${tor_port}" -s "$onion_addr" | grep -m 1 -E "Browse Privately" &>/dev/null ; then
+        echo -e "\n Tor Socks5 работает нормально!\n Сайт в зоне .onion получен через Socks5 успешно.\n You Browse Privately!"
+        echo -en " $(curl -s --socks5-hostname "127.0.0.1:${tor_port}" https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/  //g')\n"
+        
+    else
+        echo -e "\n Tor Socks5 \"127.0.0.1:${tor_port}\" не работает!\n Перезапустить: # tor_restart_status"
+    fi
+  }
+
+function tor_onion_test() { ttb=$(_tor_onion_test) && lang=cr && bpn_p_lang ; }
+
+
 function systemctl_status_tor-service() {
   
     # Wait for Tor to fully bootstrap
@@ -24,9 +42,8 @@ function systemctl_status_tor-service() {
     done
     
     # Run your command here
-    echo "Tor has fully bootstrapped!"
+    ttb=$(echo " Bootstrapped 100% (done): Done!") && lang=nix && bpn_p_lang ;
 }
-
 
 
 # tor restart && check status 
@@ -36,7 +53,7 @@ function tor_restart_status() { (systemctl restart tor.service && systemctl_stat
 # Функция, которая проверяет, удалось ли получить IP-адрес 
 # с помощью wget --proxy=on и выводит соответствующее сообщение.
 function check_ip_tor_restart_status() {
-    local ip=$(wget -qO- --proxy=on http://ipinfo.io/ip)
+    local ip=$(wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP' ;) ;
     if [ -z "$ip" ]; then
         ttb=$(echo -e "\n Не удалось получить IP-адрес, перезапускаю TOR...\n # tor_restart_status\n") && lang=nix && bpn_p_lang ;
         echo ;
@@ -44,7 +61,42 @@ function check_ip_tor_restart_status() {
     else
         ttb=$(echo -e "\n TOR IP-адрес: $ip") && lang=nix && bpn_p_lang ;
     fi
+    
+    # Команда для просмотра журнала системы с подробными сообщениями об ошибках
+    # systemctl --failed
+    # команда для просмотра подробного журнала системы
+    # journalctl -xe или journalctl -xef для непрерывного вывода журнала
+    
+    # Команды для определения IP Через socks5 Tor с испольльзованием DNS Tor. (на сайте torproject)
+    # curl -s --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/api/ip | jq -r '.IP'
+    # wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP'
+    
 }
+
+# Функция: Проверяет работает ли TOR в связке с wget
+function tor_check_ip_wget() {
+     
+     ttb="$( echo -e "
+    БЕЗ указания прокси socks5 127.0.0.1:"${tor_port}"
+    # wget -qO- http://ipinfo.io/ip
+    "$(wget -qO- http://ipinfo.io/ip)"
+    
+    wget настроен по умолчанию для работы 
+    через socks5 127.0.0.1:"${tor_port}"
+    Вы можете отключить это в файле /etc/wgetrc
+    
+        
+    С ВКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
+    # wget -qO- --proxy=on http://ipinfo.io/ip
+    "$(wget -qO- --proxy=on http://ipinfo.io/ip)"
+     
+    С ВЫКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
+    # wget -qO- --proxy=off http://ipinfo.io/ip
+    "$(wget -qO- --proxy=off http://ipinfo.io/ip)"
+    ")" && lang=cr && bpn_p_lang ;
+   
+}
+
 
 
 
@@ -69,29 +121,7 @@ function mi() { wget -qO- icanhazip.com ; } ;
 function im() { whoami ; } ;
 
 
-# Функция: Проверяет работает ли TOR в связке с wget
-function tor_check_ip_wget() {
-     
-      ttb="$( echo -e "
-  БЕЗ указания прокси socks5 127.0.0.1:"${tor_port}"
-  # wget -qO- http://ipinfo.io/ip
-  "$(wget -qO- http://ipinfo.io/ip)"
-  
-  wget настроен по умолчанию для работы 
-  через socks5 127.0.0.1:"${tor_port}"
-  Вы можете отключить это в файле /etc/wgetrc
-  
-      
-  С ВКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
-  # wget -qO- --proxy=on http://ipinfo.io/ip
-  "$(wget -qO- --proxy=on http://ipinfo.io/ip)"
-   
-  С ВЫКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
-  # wget -qO- --proxy=off http://ipinfo.io/ip
-  "$(wget -qO- --proxy=off http://ipinfo.io/ip)"
-  ")" && lang=cr && bpn_p_lang ;
-   
-}
+
   
 # Если запрос завершился успешно с кодом 200, то функция выводит сообщение о том, что прокси работает, 
 # иначе - что прокси не работает, и выводит HTTP-код ответа.
@@ -120,22 +150,7 @@ function check_socks5_proxy() {
 }
 
   
-function _tor_onion_test() {
-   
-    # Получаем .torproject.org onion адрес
-    onion_addr="http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion/"
-    
-    echo -e "\n Проверяем доступность .onion адреса через Tor\n # curl --socks5-hostname "127.0.0.1:${tor_port}" -s "\$onion_addr" "
-    if curl --socks5-hostname "127.0.0.1:${tor_port}" -s "$onion_addr" | grep -m 1 -E "Browse Privately" &>/dev/null ; then
-        echo -e "\n Tor Socks5 работает нормально!\n Сайт в зоне .onion получен через Socks5 успешно.\n You Browse Privately!"
-        echo -en " $(curl -s --socks5-hostname "127.0.0.1:${tor_port}" https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/  //g')\n"
-        
-    else
-        echo -e "\n Tor Socks5 \"127.0.0.1:${tor_port}\" не работает!\n Перезапустить: # tor_restart_status"
-    fi
-  }
 
-function tor_onion_test() { ttb=$(_tor_onion_test) && lang=cr && bpn_p_lang ; }
   
 
 # Функция: myip() ссылается на другую функцию mi() и показывает ip в цвете с помощью bat
