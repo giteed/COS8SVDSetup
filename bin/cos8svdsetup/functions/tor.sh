@@ -54,7 +54,6 @@ function check_ip_tor_restart_status() {
   ttb=$(echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com"
   echo -en " ";
   curl -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com) && lang=cr && bpn_p_lang ;
-  echo ;
 
   
   unset ip ;
