@@ -26,7 +26,7 @@ function check_ip_tor_restart_status() {
     local ip=$(wget -qO- --proxy=on http://ipinfo.io/ip)
     if [ -z "$ip" ]; then
         ttb=$(echo -e "\n Не удалось получить IP-адрес, перезапускаю TOR...\n # tor_restart_status\n") && lang=nix && bpn_p_lang ;
-        tor_restart_status && sleep 5 && sleep 3 && tor_onion_test ;
+        tor_restart_status && sleep 12 && tor_onion_test ;
     else
         ttb=$(echo -e "\n TOR IP-адрес: $ip\n") && lang=nix && bpn_p_lang ; 
     fi
