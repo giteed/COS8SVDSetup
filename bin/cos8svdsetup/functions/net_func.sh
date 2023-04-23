@@ -54,7 +54,7 @@ function tor_restart_status() { (systemctl restart tor.service && systemctl_stat
 # с помощью wget --proxy=on и выводит соответствующее сообщение.
 function check_ip_tor_restart_status() {
     unset ip ;
-    local ip=$(wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP' ;) ;
+    local ip=$(wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP' ;) 
     if [ -z "$ip" ]; then
         ttb=$(echo -e "\n Не удалось получить IP-адрес, перезапускаю TOR...\n # tor_restart_status\n") && lang=nix && bpn_p_lang ;
         echo ;
