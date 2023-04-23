@@ -53,7 +53,7 @@ function check_ip_tor_restart_status() {
   echo ;
   
   unset ip ;
-  local ip=$(wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP' ;) 
+  local ip=$(wget -qO- --proxy=on http://icanhazip.com/ ;) 
   if [ -z "$ip" ]; then
     ttb=$(echo -e "\n Не удалось получить IP-адрес, перезапускаю TOR...\n # tor_restart_status\n") && lang=nix && bpn_p_lang ;
     echo ;
