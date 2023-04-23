@@ -16,8 +16,21 @@ function c() { (clear) }
 function network_restart() { (/etc/init.d/network restart) }
 
 
-# tor restart && status && tor_check_ip
-function tor_restart_status() { (systemctl restart tor.service && systemctl status tor.service) }
+function systemctl_status_tor-service() {
+  
+    # Wait for Tor to fully bootstrap
+    while ! systemctl status tor.service | grep -q "Bootstrapped 100% (done): Done"; do
+      sleep 1
+    done
+    
+    # Run your command here
+    echo "Tor has fully bootstrapped!"
+}
+
+
+
+# tor restart && check status 
+function tor_restart_status() { (systemctl restart tor.service && systemctl_status_tor-service) }
 
 
 # Функция, которая проверяет, удалось ли получить IP-адрес 
@@ -27,14 +40,13 @@ function check_ip_tor_restart_status() {
     if [ -z "$ip" ]; then
         ttb=$(echo -e "\n Не удалось получить IP-адрес, перезапускаю TOR...\n # tor_restart_status\n") && lang=nix && bpn_p_lang ;
         echo ;
-        ( tor_restart_status && sleep 15 && check_ip_tor_restart_status);
+        ( tor_restart_status && check_ip_tor_restart_status);
     else
         ttb=$(echo -e "\n TOR IP-адрес: $ip") && lang=nix && bpn_p_lang ;
     fi
 }
 
-# Вызываем функцию для проверки IP-адреса.
-#check_ip
+
 
 
 # Функция: информация о памяти системы
