@@ -57,7 +57,8 @@ function check_ip_tor_restart_status() {
   # Команды для определения IP Через socks5 Tor с испольльзованием DNS Tor. (на сайте torproject)
   # curl -s --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/api/ip | jq -r '.IP'
   # wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP'
-  
+  # 
+  # wget -qO- --header="Proxy-Agent: socks5://127.0.0.1:9050/" --no-check-certificate https://check.torproject.org/api/ip
 }
 
 # Функция: Проверяет работает ли TOR в связке с wget
