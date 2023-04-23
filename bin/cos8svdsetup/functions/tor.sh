@@ -1,5 +1,5 @@
-# network restart  
-function network_restart() { (/etc/init.d/network restart) }
+
+#!/bin/bash
 
 
 function _tor_onion_test() {
