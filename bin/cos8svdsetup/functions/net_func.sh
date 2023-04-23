@@ -17,7 +17,7 @@ function network_restart() { (/etc/init.d/network restart) }
 
 
 # tor restart && status && tor_check_ip
-function tor_restart_status() { (systemctl restart tor.service && systemctl status tor.service && tor_check_ip) }
+function tor_restart_status() { (systemctl restart tor.service && systemctl status tor.service) }
 
 
 # Функция, которая проверяет, удалось ли получить IP-адрес 
@@ -64,8 +64,7 @@ function tor_check_ip_wget() {
   # wget -qO- http://ipinfo.io/ip
   "$(wget -qO- http://ipinfo.io/ip)"
   
-  Если ip БЕЗ прокси такой-же как и с включенным 
-  прокси значит wget настроен по умолчанию для работы 
+  wget настроен по умолчанию для работы 
   через socks5 127.0.0.1:"${tor_port}"
   Вы можете отключить это в файле /etc/wgetrc
   
@@ -181,7 +180,7 @@ tor_port_ch &>/dev/null ;
 
 # Функция: Проверка работы TOR и определение ip
 function tor_check_ip() {
-   tor_onion_test ;
+   
    tor_port_ch ;
    /root/vdsetup.2/bin/utility/install/tor/tor_check.sh ;
    
