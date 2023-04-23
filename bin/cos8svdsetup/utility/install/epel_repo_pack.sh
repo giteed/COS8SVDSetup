@@ -127,6 +127,9 @@
 # Installing kmod-wireguard-ml, wireguard-tools
 # 	sudo dnf install kmod-wireguard-ml wireguard-tools
 
+# Redirect connections through socks4 proxy servers 
+# sudo dnf install -y proxychains-ng || ( error_MSG ; ) ; echo ;
+
 
 exit 0 ; 
 

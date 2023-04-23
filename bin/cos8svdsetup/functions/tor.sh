@@ -39,8 +39,8 @@ function tor_restart_status() { (systemctl restart tor.service && systemctl_stat
 # Функция, которая проверяет, удалось ли получить IP-адрес 
 # с помощью wget --proxy=on и выводит соответствующее сообщение.
 function check_ip_tor_restart_status() {
-  echo -e " Ответ от wget  -qO- --proxy=on check.torproject.org/api/ip:" 
-  wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP'
+  echo -e " Ответ от wget  -qO- --proxy=on http://check.torproject.org/api/ip:" 
+  wget -qO- --proxy=on http://check.torproject.org/api/ip | jq -r '.IP'
   echo ;
   echo -e " Ответ от wget  -qO- --proxy=on http://ipinfo.io/ip:" 
   wget -qO- --proxy=on http://ipinfo.io/ip
