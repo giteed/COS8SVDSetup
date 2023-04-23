@@ -28,7 +28,7 @@ function check_ip_tor_restart_status() {
         ttb=$(echo -e "\n Не удалось получить IP-адрес, перезапускаю TOR...\n # tor_restart_status") && lang=nix && bpn_p_lang ;
         tor_restart_status ;
     else
-        ttb=$(echo -e "\n TOR IP-адрес: $ip") && lang=nix && bpn_p_lang ; tor_onion_test ; tor_check_ip_wget ;
+        ttb=$(echo -e "\n TOR IP-адрес: $ip") && lang=nix && bpn_p_lang && delay_1-5_2-7 && tor_check_ip_wget && tor_onion_test ; 
     fi
 }
 
