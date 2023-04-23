@@ -300,6 +300,18 @@ function fw_i_r() {
    ttb=$(get-all-rules) && lang="cr" && bpn_p_lang ;
 }
 
+# Функция: local address
+function lip-f() {
+   
+   echo -e "\n"$green""internal"$NC":" " ;
+   ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
+   echo -e "$cyan""\nexternal"$NC":" ;
+   myip ;
+   
+   echo -e "\n"$green""Privoxy TOR Socks5 127.0.0.1:9050"$NC":" " ;
+   curl --socks5 127.0.0.1:9050 http://2ip.ua
+   
+}
 
 # Функция: Вывод от команды netstat -tupln | grep ssh
 function netstat_i () {
@@ -352,15 +364,3 @@ function memc() {
 function ifc() { ( echo -e "" && ifconfig | bat -p --paging=never -l conf ) || ( echo -e "" && ifconfig ) }
 
 
-# Функция: local address
-function lip-f() {
-   
-   echo -e "\n"$green""internal"$NC":" " ;
-   ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
-   echo -e "$cyan""\nexternal"$NC":" ;
-   myip ;
-   
-   echo -e "\n"$green""Privoxy TOR Socks5 127.0.0.1:9050"$NC":" " ;
-   curl --socks5 127.0.0.1:9050 http://2ip.ua
-   
-}
