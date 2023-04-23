@@ -27,7 +27,7 @@
 		
 		echo -e " $(ellow_1     ) " ;
 		echo -e " $(white_1     ) Имя хоста:"$GREEN" "$hostname"${NC} " ;
-		echo -e " $(blue_1      ) $(wget -qO- ipinfo.io/ip) ${NC}" ;
+		echo -e " $(blue_1      ) $(wget -qO- https://icanhazip.com) ${NC}" ;
 		echo -e " $(blue_1      ) ${NC}" ;
 		echo -e " $(black_U23A9 ) " ;
 		echo ;

@@ -31,13 +31,14 @@
 		if [[ -n $( cat /etc/wgetrc | grep "http_proxy = http://localhost:8118" ) ]] ; then wget_ch_OK_MSG 2>/dev/null ; else wget_ch_NO_MSG ; fi ;
 	}
 	
-	# Функция создает бекап файла /etc/wgetrc_old и добавляет в конец файла "http_proxy = http://localhost:8118"
+	# Функция создает бекап файла /etc/wgetrc_old и добавляет в конец файла http / "https_proxy = http://localhost:8118 и https://localhost:8118"
 	function wgetrc_config_edit_now() {
 		
 		echo -e "\n $(black_U23A7 ) " ;
 		echo -e " $(green_1     ) Внести изменения в /etc/wgetrc ? " ;
 		echo -e " $(white_1     ) wget будет настроен на использование локального proxy" ;
 		echo -e " $(white_1     ) http_proxy = http://localhost:8118" ;
+		echo -e " $(white_1     ) https_proxy = https://localhost:8118" ;
 		echo -e " $(white_1     ) который в свою очеедь будет работать через: " ;
 		echo -e " $(white_1     ) TOR Socks5 127.0.0.1:9050 " ;
 		echo -e " $(white_1     ) Оригинал /etc/wgetrc будет сохранен в /etc/wgetrc_old" ;
@@ -68,11 +69,9 @@
 	
 	
 	
-	# Функция создает бекап файла /etc/privoxy/config.OLD и снимает коммент "#" со строки с паттерном "127.0.0.1:9050 ."
+	# Функция создает бекап файла /etc/privoxy/config.OLD и снимает 
+	# коммент "#" со строки с паттерном "127.0.0.1:9050 ."
 	function privoxy_config_edit_now() {
-		
-		
-		
 		
 		
 		function OK_privoxy_config_edit_now_MSG() {
@@ -81,9 +80,10 @@
 		 echo -e " $(ellow_1     ) Сохранен бекап: /etc/privoxy/config.OLD" ;
 		 echo -e " $(white_1     ) " ;
 		 echo -e " $(ellow_1     ) теперь все обращения на http_proxy = http://localhost:8118 :"
+		 echo -e " $(ellow_1     ) и https_proxy = https://localhost:8118 :"
 		 echo -e " $(ellow_1     ) будут перенаправлены на Socks5 127.0.0.1:9050 " ;
-		 echo -e " $(ellow_1     ) то есть любое приложение использующее http_proxy на этом VDS ${hostname} " ;
-		 echo -e " $(ellow_1     ) http://localhost:8118 будет пропускать трафик через TOR Socks5 127.0.0.1:9050 " ;
+		 echo -e " $(ellow_1     ) то есть любое приложение использующее http / https_proxy на этом VDS ${hostname} " ;
+		 echo -e " $(ellow_1     ) http / https://localhost:8118 будет пропускать трафик через TOR Socks5 127.0.0.1:9050 " ;
 		 echo -e " $(black_U23A9 ) \n" ;
 		}
 		
@@ -129,8 +129,8 @@
 	function wgetrc_already_edited_MSG() {
 		echo -e "\n $(black_U23A7 ) " ;
 		echo -e " $(green_1     ) Необходимые изменения в файл /etc/wgetrc внесены. " ;
-		echo -e " $(green_1     ) Теперь wget по умолчанию работает через http_proxy " ;
-		echo -e " $(green_1     ) http://localhost:8118 " ;
+		echo -e " $(green_1     ) Теперь wget по умолчанию работает через http / https_proxy " ;
+		echo -e " $(green_1     ) http / https://localhost:8118 " ;
 		echo -e " $(green_1     ) который подключен к TOR Socks5 127.0.0.1:9050 " ;
 		echo -e " $(black_U23A9 ) \n" ;
 	}
@@ -168,8 +168,8 @@
 		
 		# проверить TOR соединение и ip  
 		# curl --socks5 127.0.0.1:9050 https://check.torproject.org/ | grep -i 'congratulations\|sorry'
-		# wget -qO- --proxy=on http://ipinfo.io/ip
-		# wget -qO- --proxy=off http://ipinfo.io/ip
+		# wget -qO- --proxy=on https://icanhazip.com
+		# wget -qO- --proxy=off https://icanhazip.com
 		
 		echo -e "\n $(black_U23A9 ) \n" ;
 		
@@ -283,10 +283,10 @@
 		
 		echo -e " $(white_1     ) "
 		echo -e " $(ellow_1     ) Проверить работу ${GREEN}TOR${NC} и присвоенный адрес можно командой:"
-		echo -e " $(white_1     ) $(red_U0023) curl ${green}--socks5 127.0.0.1:9050${NC} http://2ip.ru\n " ;
-		echo -en " Теперь ваш ip определяется как: ${green}" ; ( curl --socks5 127.0.0.1:${tor_port} http://2ip.ru; )
+		echo -e " $(white_1     ) $(red_U0023) curl ${green}--socks5 127.0.0.1:9050${NC} https://2ip.ru\n " ;
+		echo -en " Теперь ваш ip определяется как: ${green}" ; ( curl --socks5 127.0.0.1:${tor_port} https://2ip.ru; )
 		
-		echo -e "\n $(white_1       ) $(red_U0023) curl ${green}--socks5 127.0.0.1:9050${NC} http://2ip.ua \n${green}" ;
+		echo -e "\n $(white_1       ) $(red_U0023) curl ${green}--socks5 127.0.0.1:9050${NC} https://2ip.ua \n${green}" ;
 		curl --socks5 127.0.0.1:${tor_port} 2ip.ua ;
 		
 		
@@ -306,7 +306,7 @@
 		echo -e " $(black_U23A9 )" ;
 		echo -e "\n $(black_U23A7 ) " ;
 		echo -e " $(ellow_1     ) Скачиваем ${green}.onion${NC} ссылки wget'ом " ;
-		echo -e " $(white_1     ) $(red_U0023) wget ${green}--proxy=on${NC} http://site${green}.onion${NC}/file.zip" ;
+		echo -e " $(white_1     ) $(red_U0023) wget ${green}--proxy=on${NC} https://site${green}.onion${NC}/file.zip" ;
 		echo -en " $(ellow_1     ) (будет виден ip ${TOR_or_REAL_IP}): ${green}" ;
 		wget --proxy=on -qO- ipecho.net/plain ; echo ;
 		
@@ -317,15 +317,15 @@
 		wget --proxy=off -qO- ipecho.net/plain ; echo ;
 		echo -e " $(white_1     ) "
 		echo -e " $(ellow_1     ) Скачиваем ссылки curl'ом через socks5 TOR" ;
-		echo -e " $(white_1     ) $(red_U0023) curl ${green}--socks5 127.0.0.1:${tor_port}${NC} http://site.com/ " ;
+		echo -e " $(white_1     ) $(red_U0023) curl ${green}--socks5 127.0.0.1:${tor_port}${NC} https://site.com/ " ;
 		echo -en " $(ellow_1     ) (будет виден ip TOR): ${green}"
-		curl --socks5 127.0.0.1:${tor_port} http://2ip.ru ;
+		curl --socks5 127.0.0.1:${tor_port} https://2ip.ru ;
 		press_enter_to_continue_or_ESC_or_any_key_to_cancel ; 
 		echo -e " $(white_1     ) "
 		echo -e " $(ellow_1     ) Скачиваем ссылки curl'ом без TOR подключения" ;
-		echo -e " $(white_1     ) $(red_U0023) curl ${red} http://site.com/ " ;
+		echo -e " $(white_1     ) $(red_U0023) curl ${red} https://site.com/ " ;
 		echo -en " $(ellow_1     ) (будет виден Ваш ip): ${red}"
-		curl http://2ip.ru ;
+		curl https://2ip.ru ;
 		echo -e " $(white_1     ) "
 		echo -e " $(ellow_1     ) Перезапустить WG, TOR, Privoxy, Firewalld." ;
 		echo -e " $(white_1     ) $(red_U0023) tor-restart " ;

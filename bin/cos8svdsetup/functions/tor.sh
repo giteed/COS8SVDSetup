@@ -5,9 +5,9 @@
 function _tor_onion_test() {
    
   # Получаем .torproject.org onion адрес
-  onion_addr="http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion/"
+  onion_addr="https://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion/"
   
-  echo -e "\n Проверяем доступность .onion адреса через Tor\n # curl --socks5-hostname "127.0.0.1:${tor_port}" -s "\$onion_addr"\n http://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion/ "
+  echo -e "\n Проверяем доступность .onion адреса через Tor\n # curl --socks5-hostname "127.0.0.1:${tor_port}" -s "\$onion_addr"\n https://2gzyxa5ihm7nsggfxnu52rck2vv4rvmdlkiu3zzui5du4xyclen53wid.onion/ "
   if curl --socks5-hostname "127.0.0.1:${tor_port}" -s "$onion_addr" | grep -m 1 -E "Browse Privately" &>/dev/null ; then
     echo -e "\n Tor Socks5 работает нормально!\n Сайт в зоне .onion получен через Socks5 успешно.\n You Browse Privately!"
     echo -en " $(curl -s --socks5-hostname "127.0.0.1:${tor_port}" https://check.torproject.org/ | grep -m 1 -E 'Sorry | Congratulations' | sed 's/  //g')\n"
@@ -43,21 +43,21 @@ function check_ip_tor_restart_status() {
   echo -en " ";
   wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP'
   echo ;
-  echo -e " Ответ от wget -qO- --proxy=on https://ipinfo.io/ip:" 
+  echo -e " Ответ от wget -qO- --proxy=on https://icanhazip.com:" 
   echo -en " ";
-  wget -qO- --proxy=on https://ipinfo.io/ip
+  wget -qO- --proxy=on https://icanhazip.com
   echo ;
   echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip:"
   echo -en " ";
   curl -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip | jq -r '.IP'
   echo ;
-  echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} https://ipinfo.io/ip"
+  echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com"
   echo -en " ";
-  curl -s --socks5-hostname 127.0.0.1:${tor_port} https://ipinfo.io/ip
+  curl -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com
   echo ;
   
   unset ip ;
-  local ip=$(wget -qO- --proxy=on http://icanhazip.com/ ;) 
+  local ip=$(wget -qO- --proxy=on https://icanhazip.com/ ;) 
   if [ -z "$ip" ]; then
     ttb=$(echo -e "\n Не удалось получить IP-адрес, перезапускаю TOR...\n # tor_restart_status\n") && lang=nix && bpn_p_lang ;
     echo ;
@@ -83,8 +83,8 @@ function tor_check_ip_wget() {
    
    ttb="$( echo -e "
   БЕЗ указания прокси socks5 127.0.0.1:"${tor_port}"
-  # wget -qO- http://ipinfo.io/ip
-  "$(wget -qO- http://ipinfo.io/ip)"
+  # wget -qO- https://icanhazip.com
+  "$(wget -qO- https://icanhazip.com)"
   
   wget настроен по умолчанию для работы 
   через socks5 127.0.0.1:"${tor_port}"
@@ -92,12 +92,12 @@ function tor_check_ip_wget() {
   
     
   С ВКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
-  # wget -qO- --proxy=on http://ipinfo.io/ip
-  "$(wget -qO- --proxy=on http://ipinfo.io/ip)"
+  # wget -qO- --proxy=on https://icanhazip.com
+  "$(wget -qO- --proxy=on https://icanhazip.com)"
    
   С ВЫКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
-  # wget -qO- --proxy=off http://ipinfo.io/ip
-  "$(wget -qO- --proxy=off http://ipinfo.io/ip)"
+  # wget -qO- --proxy=off https://icanhazip.com
+  "$(wget -qO- --proxy=off https://icanhazip.com)"
   ")" && lang=cr && bpn_p_lang ;
    
 }
@@ -164,7 +164,7 @@ function tor_check_ip() {
 # иначе - что прокси не работает, и выводит HTTP-код ответа.
 function check_socks5_proxy() {
     local proxy_address="127.0.0.1:${tor_port}"
-    local url="http://example.com"
+    local url="https://example.com"
     local curl_opts=(
         "--socks5"
         "${proxy_address}"
