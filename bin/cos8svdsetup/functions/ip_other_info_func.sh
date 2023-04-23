@@ -25,8 +25,7 @@
    }
    
    # Дополнительные сведения о системе
-	  function ii() 
-	  {
+	  function ii() {
 		 echo -e "\n${cyan}Вы находитесь на ${green}$(hostname)$NC\n"
 		 hostnamectl | bat -l nix -p || hostnamectl ;
 		 echo -e "\nДополнительная информация:$NC " ; 
