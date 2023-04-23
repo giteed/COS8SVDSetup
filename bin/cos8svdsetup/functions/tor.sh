@@ -39,13 +39,13 @@ function tor_restart_status() { (systemctl restart tor.service && systemctl_stat
 # Функция, которая проверяет, удалось ли получить IP-адрес 
 # с помощью wget --proxy=on и выводит соответствующее сообщение.
 function tor_check_ip_or_restart() {
-  ttb=$(echo -e "\n Ответ от wget -qO- --proxy=on https://check.torproject.org/api/ip:" 
+  ttb=$(echo -e "\n Ответ от wget -qO- --no-check-certificate --proxy=on https://check.torproject.org/api/ip:" 
   echo -en " ";
-  wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP') && lang=cr && bpn_p_lang ;
+  wget -qO- --no-check-certificate --proxy=on https://check.torproject.org/api/ip | jq -r '.IP') && lang=cr && bpn_p_lang ;
   echo ;
-  ttb=$(echo -e " Ответ от wget -qO- --proxy=on https://icanhazip.com:" 
+  ttb=$(echo -e " Ответ от wget -qO- --no-check-certificate --proxy=on https://icanhazip.com:" 
   echo -en " ";
-  wget -qO- --proxy=on https://icanhazip.com) && lang=cr && bpn_p_lang ;
+  wget -qO- --no-check-certificate --proxy=on https://icanhazip.com) && lang=cr && bpn_p_lang ;
   echo ;
   ttb=$(echo -e " Ответ от curl --insecure -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip:"
   echo -en " ";
@@ -57,7 +57,7 @@ function tor_check_ip_or_restart() {
 
   
   unset ip ;
-  local ip=$(wget -qO- --proxy=on https://icanhazip.com/ ;) 
+  local ip=$(wget -qO- --no-check-certificate --proxy=on https://icanhazip.com/ ;) 
   if [ -z "$ip" ]; then
     ttb=$(echo -e "\n Не удалось получить IP-адрес, перезапускаю TOR...\n # tor_restart_status\n") && lang=nix && bpn_p_lang ;
     echo ;
@@ -74,9 +74,9 @@ function tor_check_ip_or_restart() {
   # Команды для определения IP Через socks5 Tor с испольльзованием DNS Tor. (на сайте torproject)
   # --insecure без проверки сертификата шифрования
   # curl --insecure -s --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/api/ip | jq -r '.IP'
-  # wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP'
+  # wget -qO- --no-check-certificate --proxy=on https://check.torproject.org/api/ip | jq -r '.IP'
   # 
-  # wget -qO- --header="Proxy-Agent: socks5://127.0.0.1:9050/" --no-check-certificate https://check.torproject.org/api/ip
+  # wget -qO- --no-check-certificate --header="Proxy-Agent: socks5://127.0.0.1:9050/" https://check.torproject.org/api/ip
 }
 
 # Функция: Проверяет работает ли TOR в связке с wget
@@ -84,8 +84,8 @@ function tor_check_ip_wget() {
    
    ttb="$( echo -e "
   БЕЗ указания прокси socks5 127.0.0.1:"${tor_port}"
-  # wget -qO- https://icanhazip.com
-  "$(wget -qO- https://icanhazip.com)"
+  # wget -qO- --no-check-certificate https://icanhazip.com
+  "$(wget -qO- --no-check-certificate https://icanhazip.com)"
   
   wget настроен по умолчанию для работы 
   через socks5 127.0.0.1:"${tor_port}"
@@ -93,12 +93,12 @@ function tor_check_ip_wget() {
   
     
   С ВКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
-  # wget -qO- --proxy=on https://icanhazip.com
-  "$(wget -qO- --proxy=on https://icanhazip.com)"
+  # wget -qO- --no-check-certificate --proxy=on https://icanhazip.com
+  "$(wget -qO- --no-check-certificate --proxy=on https://icanhazip.com)"
    
   С ВЫКЛ-юченным прокси socks5 127.0.0.1:"${tor_port}"
-  # wget -qO- --proxy=off https://icanhazip.com
-  "$(wget -qO- --proxy=off https://icanhazip.com)"
+  # wget -qO- --no-check-certificate --proxy=off https://icanhazip.com
+  "$(wget -qO- --no-check-certificate --proxy=off https://icanhazip.com)"
   ")" && lang=cr && bpn_p_lang ;
    
 }
