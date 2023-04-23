@@ -39,17 +39,21 @@ function tor_restart_status() { (systemctl restart tor.service && systemctl_stat
 # Функция, которая проверяет, удалось ли получить IP-адрес 
 # с помощью wget --proxy=on и выводит соответствующее сообщение.
 function check_ip_tor_restart_status() {
-  echo -e " Ответ от wget  -qO- --proxy=on http://check.torproject.org/api/ip:" 
-  wget -qO- --proxy=on http://check.torproject.org/api/ip | jq -r '.IP'
+  echo -e " Ответ от wget  -qO- --proxy=on https://check.torproject.org/api/ip:" 
+  echo -en " ";
+  wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP'
   echo ;
-  echo -e " Ответ от wget  -qO- --proxy=on http://ipinfo.io/ip:" 
-  wget -qO- --proxy=on http://ipinfo.io/ip
+  echo -e " Ответ от wget -qO- --proxy=on https://ipinfo.io/ip:" 
+  echo -en " ";
+  wget -qO- --proxy=on https://ipinfo.io/ip
   echo ;
-  echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} check.torproject.org/api/ip:"
+  echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip:"
+  echo -en " ";
   curl -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip | jq -r '.IP'
   echo ;
-  echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} http://ipinfo.io/ip"
-  curl -s --socks5-hostname 127.0.0.1:${tor_port} http://ipinfo.io/ip
+  echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} https://ipinfo.io/ip"
+  echo -en " ";
+  curl -s --socks5-hostname 127.0.0.1:${tor_port} https://ipinfo.io/ip
   echo ;
   
   unset ip ;
