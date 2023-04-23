@@ -24,6 +24,8 @@
 	. /root/vdsetup.2/bin/functions/find.sh
 #  --> net_func
 	. /root/vdsetup.2/bin/functions/net_func.sh
+#  --> netstat -tulanp | head --lines 2 | grep -v "Active Internet"
+	. /root/vdsetup.2/bin/functions/wport.sh
 #  --> delay таймеры
 	. /root/vdsetup.2/bin/functions/delay.sh
 
