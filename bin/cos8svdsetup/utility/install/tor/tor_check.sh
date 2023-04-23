@@ -46,7 +46,7 @@ function check_tor_connect() {
 			ttb=$(echo -e "\n\n ⎧ Похоже, TOR Socks5 не работает.\n ⎩ # systemctl start tor") && bpn_p_lang ;
 		}
 	 
-		URL_TOR_CHECK="http://2ip.ua"
+		URL_TOR_CHECK="https://2ip.ua"
 	 
 		for i in {0..5}; do
 		 
@@ -84,7 +84,7 @@ function check_self_connect() {
 		ttb=$(echo -e " Ваш ip \"Напрямую\": $ip_tmp\n | соответствует полученному\n | от \"ifconfig\" ip : $(ifconfig_real_ip)\n |\n | Это значит что анонимайзер или прокси для \n | СИСТЕМЫ В ЦЕЛОМ выключены и роутинг соединений идет \n | без изменений через сеть вашего провайдера.\n |\n | Если хотите включить TOR для ВСЕГО ТРАФФИКА \n ⎩ введите: # toriptables2.py -l\n\n ⎧ Ваш ip \"Напрямую\" проверялся через:") && bpn_p_lang 
 	}
 	
-	URL_NO_TOR_CHECK="http://2ip.ua"
+	URL_NO_TOR_CHECK="https://2ip.ua"
 
 	for i in {0..2}; do
 		

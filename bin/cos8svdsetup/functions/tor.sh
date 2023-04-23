@@ -28,7 +28,7 @@ function systemctl_status_tor-service() {
   done
   
   # Run your command here
-  ttb=$(echo " Bootstrapped 100% (done): Done!") && lang=nix && bpn_p_lang ;
+  ttb=$(echo -e "\n Bootstrapped 100% (done): Done!") && lang=nix && bpn_p_lang ;
 }
 
 

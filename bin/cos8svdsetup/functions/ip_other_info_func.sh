@@ -1,8 +1,6 @@
 #!/bin/bash
 
 
-
-
 # Функция: Мой ip
 function mi() { wget -qO- icanhazip.com ; } ;
   
@@ -48,7 +46,7 @@ function lip-f() {
 	  myip ;
 	  
 	  echo -e "\n"$green""Privoxy TOR Socks5 127.0.0.1:9050"$NC":" " ;
-	  curl --socks5 127.0.0.1:9050 http://2ip.ua
+	  curl --socks5 127.0.0.1:9050 https://2ip.ua
 	  
    }
    
