@@ -342,7 +342,7 @@ function TopRAM25() {
 
 
 # Функция: Выводит ТОП 25 процессов занимающих RAM (окрашивает текст lang="c") 
-function t25r() { TopRAM25 | bat -p -l c }
+function t25r() { ( TopRAM25 | bat -p -l c ) }
 
 
 
