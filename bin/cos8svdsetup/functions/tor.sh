@@ -39,24 +39,23 @@ function tor_restart_status() { (systemctl restart tor.service && systemctl_stat
 # Функция, которая проверяет, удалось ли получить IP-адрес 
 # с помощью wget --proxy=on и выводит соответствующее сообщение.
 function check_ip_tor_restart_status() {
-  ttb=$(
-  echo -e "\n Ответ от wget  -qO- --proxy=on https://check.torproject.org/api/ip:" 
+  ttb=$(echo -e "\n Ответ от wget -qO- --proxy=on https://check.torproject.org/api/ip:" 
   echo -en " ";
-  wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP'
+  wget -qO- --proxy=on https://check.torproject.org/api/ip | jq -r '.IP') && lang=cr && bpn_p_lang ;
   echo ;
-  echo -e " Ответ от wget -qO- --proxy=on https://icanhazip.com:" 
+  ttb=$(echo -e " Ответ от wget -qO- --proxy=on https://icanhazip.com:" 
   echo -en " ";
-  wget -qO- --proxy=on https://icanhazip.com
+  wget -qO- --proxy=on https://icanhazip.com) && lang=cr && bpn_p_lang ;
   echo ;
-  echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip:"
+  ttb=$(echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip:"
   echo -en " ";
-  curl -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip | jq -r '.IP'
+  curl -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip | jq -r '.IP') && lang=cr && bpn_p_lang ;
   echo ;
-  echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com"
+  ttb=$(echo -e " Ответ от curl -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com"
   echo -en " ";
-  curl -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com
+  curl -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com) && lang=cr && bpn_p_lang ;
   echo ;
-) && lang=cr && bpn_p_lang ;
+
   
   unset ip ;
   local ip=$(wget -qO- --proxy=on https://icanhazip.com/ ;) 
