@@ -42,15 +42,12 @@ function tor_check_ip_or_restart() {
   ttb=$(echo -e "\n Ответ от wget -qO- --no-check-certificate --proxy=on https://check.torproject.org/api/ip:" 
   echo -en " ";
   wget -qO- --no-check-certificate --proxy=on https://check.torproject.org/api/ip | jq -r '.IP') && lang=cr && bpn_p_lang ;
-  echo ;
   ttb=$(echo -e " Ответ от wget -qO- --no-check-certificate --proxy=on https://icanhazip.com:" 
   echo -en " ";
   wget -qO- --no-check-certificate --proxy=on https://icanhazip.com) && lang=cr && bpn_p_lang ;
-  echo ;
   ttb=$(echo -e " Ответ от curl --insecure -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip:"
   echo -en " ";
   curl --insecure -s --socks5-hostname 127.0.0.1:${tor_port} https://check.torproject.org/api/ip | jq -r '.IP') && lang=cr && bpn_p_lang ;
-  echo ;
   ttb=$(echo -e " Ответ от curl --insecure -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com"
   echo -en " ";
   curl --insecure -s --socks5-hostname 127.0.0.1:${tor_port} https://icanhazip.com) && lang=cr && bpn_p_lang ;
