@@ -13,4 +13,4 @@ function c() { (clear) }
 function im() { whoami ; } ;
 
 
-function wis() { ('GLIG_ASTRX_ON && wis-f') } ;
+function wis() { (GLIG_ASTRX_ON && wis-f) } ;
