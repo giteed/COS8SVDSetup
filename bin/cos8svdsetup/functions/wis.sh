@@ -51,7 +51,7 @@ function _help() {
  | по базе данных, от / совпадающих 
  | с ключевым словом.
  :
- ⎩ Использование: wis -l [имя] или --locate [имя]") && lang=cr && bpn_p_lang ;	 
+ ⎩ Использование: wis -l [имя] или --locate ") && lang=cr && bpn_p_lang ;	 
 
 	 ttb=$(echo -e "   
  ⎧ yum search позволяет искать пакеты по 
