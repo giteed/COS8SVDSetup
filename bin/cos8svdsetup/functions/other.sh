@@ -12,5 +12,5 @@ function c() { (clear) }
 # Функция: User
 function im() { whoami ; } ;
 
-
+# Поиск программ, по 6 утилитам
 function wis() { (GLIG_ASTRX_ON && wis-f) } ;
