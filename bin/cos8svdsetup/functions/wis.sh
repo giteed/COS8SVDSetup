@@ -19,7 +19,7 @@ function _help() {
  | на этом сервере репозитариях пакетного 
  | менеджера yum/dnf.
  :
- ⎩ Использование: wis -p или --provides [имя]") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: wis -p [имя] или --provides") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ which - Находит исполняемые файлы(x), 
@@ -27,7 +27,7 @@ function _help() {
  | \$PATH на сервере репозиториях пакетного 
  | менеджера yum/dnf
  :
- ⎩ Использование: wis -wh или --which [имя]") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: wis -wh [имя] или --which") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ type - В отличие от which, type НЕ 
@@ -35,7 +35,7 @@ function _help() {
  | окружения \$PATH. type показывает
  | значение искомой команды или алиаса.
  :
- ⎩ Использование: wis -t или --type [имя]") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: wis -t [имя] или --type") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ whereis - Ведет поиск в системных 
@@ -44,21 +44,21 @@ function _help() {
  | (man-страниц) заданной команды 
  | в заданных директориях.
  :
- ⎩ Использование: wis -ws или --whereis [имя]") && lang=cr && bpn_p_lang ;
+ ⎩ Использование: wis -ws [имя] или --whereis") && lang=cr && bpn_p_lang ;
 
 	 ttb=$(echo -e "   
  ⎧ locate - Ведет поиск файлов и папок, 
  | по базе данных, от / совпадающих 
  | с ключевым словом.
  :
- ⎩ Использование: wis -l или --locate [имя]") && lang=cr && bpn_p_lang ;	 
+ ⎩ Использование: wis -l [имя] или --locate [имя]") && lang=cr && bpn_p_lang ;	 
 
 	 ttb=$(echo -e "   
  ⎧ yum search позволяет искать пакеты по 
  | ключевым словам в именах пакетов, 
  | описаниях и дополнительных метаданных.
  :
- ⎩ Использование: wis -s или --search [имя]") && lang=cr && bpn_p_lang ;	
+ ⎩ Использование: wis -s [имя] или --search") && lang=cr && bpn_p_lang ;	
 
 	 ttb=$(echo -e "   
  ⎧ wis -a или --all или запрос без -ключа
