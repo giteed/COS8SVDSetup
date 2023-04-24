@@ -11,3 +11,6 @@ function c() { (clear) }
 
 # Функция: User
 function im() { whoami ; } ;
+
+
+function wis() { ('GLIG_ASTRX_ON && wis-f') } ;
