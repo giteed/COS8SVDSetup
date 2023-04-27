@@ -93,7 +93,7 @@ function cycle_ssl() {
     for (( i=1; i<=$n; i++ ))
       do
         rename_ssl $path $n ;
-        ttb=$(echo -e "Выполнение cycle_ssl номер $i") && lang=cr && bpn_p_lang
+        ttb=$(echo -e " Выполнение cycle_ssl номер $i") && lang=cr && bpn_p_lang
     done
     
   }
