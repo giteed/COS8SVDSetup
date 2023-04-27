@@ -102,7 +102,8 @@ function cycle_ssl() {
 function cycle_zero() {
    
    path=$1
-   n=$2
+   #n=$2
+   n=1
    #ttb=$(echo -e  "cycle_zero n= $n") && lang=cr && bpn_p_lang
    #ttb=$(echo -e  "cycle_zero path $path") && lang=cr && bpn_p_lang
     # Цикл, который выполняется n раз
