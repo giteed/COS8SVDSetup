@@ -20,16 +20,26 @@ cat << EOF > "$unit_file"
 Description=The Linux Desktop Shredders.
 
 [Service]
-Type=oneshot
+Type=simple
 ExecStart=/usr/bin/screen -dmS shredder sudo -u root /bin/bash /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds
 ExecStop=/usr/bin/screen -S shredder -X quit
 
-[Timer]
-OnUnitActiveSec=5m
-Unit=desktop_shredder.service
+# Опция Restart установлена на always, 
+# юнит будет перезапускаться всегда, когда он
+# завершается, независимо от причины.
+Restart=always
+
+# Опция RestartSec указывает задержку 
+# в секундах между перезапусками. 
+RestartSec=150
+
+# Опция StartLimitInterval установлена на 0, 
+# чтобы отключить любые ограничения на перезапуск в случае неудачи.
+StartLimitInterval=0
+
 
 [Install]
-WantedBy=timers.target
+WantedBy=multi-user.target
 EOF
 
 # Перезагрузка конфигурации юнитов
