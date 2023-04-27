@@ -122,7 +122,7 @@ function request_path() {
        if [ ! -d "$path" ]; then
           ttb=$(echo -e " Папка не найдена. Попробуйте еще раз.") && lang=cr && bpn_p_lang
         else
-          echo $path > /tmp/shreder_path.txt
+          echo $path > /tmp/shredder_path.txt
           #ttb=$(echo -e  "request_path n= $n") && lang=cr && bpn_p_lang
           #ttb=$(echo -e  "request_path path $path") && lang=cr && bpn_p_lang
           break
@@ -167,7 +167,7 @@ function shred_request() {
     request_path && request_n 
     
     # Путь до рабочей папки с которой производим действия
-    path=$(cat /tmp/shreder_path.txt)
+    path=$(cat /tmp/shredder_path.txt)
     #ttb=$(echo -e  "shred_request n= $n") && lang=cr && bpn_p_lang
     #ttb=$(echo -e  "shred_request path $path") && lang=cr && bpn_p_lang
     
@@ -178,22 +178,22 @@ function shred_request() {
   }
   
   
-function desktop_shreder() {
+function desktop_shredder() {
     
     mkdir -p ~/temp/shredder
     sleep 20 ;
-    path=$(echo /root/temp/shreder)
+    path=$(echo /root/temp/shredder)
     n=3
-    #ttb=$(echo -e  "desktop_shreder n= $n") && lang=cr && bpn_p_lang
-    #ttb=$(echo -e  "desktop_shreder path $path") && lang=cr && bpn_p_lang
+    #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
+    #ttb=$(echo -e  "desktop_shredder path $path") && lang=cr && bpn_p_lang
     cycle_ssl $path $n && cycle_zero $path $n && shred $path $n && deleting_empty_folders $path $n
     
-    ttb=$(echo -e  "Готово! \"desktop_shreder\" ") && lang=cr && bpn_p_lang
+    ttb=$(echo -e  "Готово! \"desktop_shredder\" ") && lang=cr && bpn_p_lang
     sleep 20 ;
   }
 
   if [[ "$1" == "ds" ]]; then
-      desktop_shreder ;
+      desktop_shredder ;
       
     elif [[ "$1" == "sr" ]]; then
       shred_request ;
