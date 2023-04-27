@@ -208,7 +208,7 @@ function desktop_shredder() {
     timer "10 sec";
     check_empty_folder ;
     path=$(echo /root/temp/shredder/)
-    n=1
+    n=1 # Количество интераций (проходов)
     #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
     #ttb=$(echo -e  "desktop_shredder path $path") && lang=cr && bpn_p_lang
     deleting_empty_zero_folders $path $n ;
