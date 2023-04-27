@@ -122,7 +122,7 @@ function request_path() {
        if [ ! -d "$path" ]; then
           ttb=$(echo -e " Папка не найдена. Попробуйте еще раз.") && lang=cr && bpn_p_lang
         else
-          echo $path > /tmp/shredder_path.txt
+          echo $path > /tmp/shredder_request_path.txt
           #ttb=$(echo -e  "request_path n= $n") && lang=cr && bpn_p_lang
           #ttb=$(echo -e  "request_path path $path") && lang=cr && bpn_p_lang
           break
@@ -167,7 +167,7 @@ function shred_request() {
     request_path && request_n 
     
     # Путь до рабочей папки с которой производим действия
-    path=$(cat /tmp/shredder_path.txt)
+    path=$(cat /tmp/shredder_request_path.txt)
     #ttb=$(echo -e  "shred_request n= $n") && lang=cr && bpn_p_lang
     #ttb=$(echo -e  "shred_request path $path") && lang=cr && bpn_p_lang
     
@@ -182,7 +182,7 @@ function desktop_shredder() {
     
     mkdir -p /root/temp/shredder
     sleep 20 ;
-    path=$(echo /root/temp/shredder)
+    path=$(echo /root/temp/shredder/)
     n=3
     #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
     #ttb=$(echo -e  "desktop_shredder path $path") && lang=cr && bpn_p_lang
