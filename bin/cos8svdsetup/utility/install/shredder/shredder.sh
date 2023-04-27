@@ -156,7 +156,8 @@ function deleting_empty_zero_folders() {
     #ttb=$(echo -e  "deleting_empty_zero_folders n= $n") && lang=cr && bpn_p_lang
     #ttb=$(echo -e  "deleting_empty_zero_folders path $path") && lang=cr && bpn_p_lang
     # команда find будет искать папки в указанном пути ($path), фильтровать папки, в названии которых содержатся только нули (-regex '.*/0+$'), и выбирать только пустые папки (-empty). Затем найденные папки будут удалены (-delete).
-    find "$path" -mindepth 1 -type d -regex '.*/0+$' -empty -delete
+    find "$path" -mindepth 1 -type d -regex '.*/0+$' -empty -delete ;
+    tree -aC -L 2 $path ;
   }
   
 function deleting_empty_folders() {
@@ -167,7 +168,7 @@ function deleting_empty_folders() {
     #ttb=$(echo -e  "deleting_empty_folders path $path") && lang=cr && bpn_p_lang
     # Удаляем пустые директории кроме родительской папки
     rm -rf $(find "$path" -mindepth 1 -type d | awk -F/ 'NF{print NF-1,$0}' | sort -nr | cut -d" " -f2-)
-    
+    tree -aC -L 2 $path ;
     #find "$path" -mindepth 1 -type d -regex '.*/0+$' -empty -delete
   }
 
@@ -180,8 +181,10 @@ function shred_request() {
     path=$(cat /tmp/shredder_request_path.txt)
     #ttb=$(echo -e  "shred_request n= $n") && lang=cr && bpn_p_lang
     #ttb=$(echo -e  "shred_request path $path") && lang=cr && bpn_p_lang
-    
-    cycle_ssl $path $n && cycle_zero $path $n && shred $path $n && deleting_empty_folders $path $n ;
+    echo ;
+    tree -aC -L 2 $path ; echo ; timer 15 sec ; tstart
+    deleting_empty_zero_folders $path $n ;
+    shred $path $n && cycle_ssl $path $n && cycle_zero $path $n && deleting_empty_folders $path $n ;
     
     ttb=$(echo -e  " Готово \"shred_request\" !") && lang=cr && bpn_p_lang
     
