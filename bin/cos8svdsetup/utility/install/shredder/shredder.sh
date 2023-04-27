@@ -196,7 +196,8 @@ function desktop_shredder() {
       shredder_folder="$path"
      
       if [ -z "$(ls -A "$shredder_folder")" ]; then
-        echo -en "\n Папка Desktop Shredder, пуста.\n Нечего мельчить!\n Выход."
+        echo -en "\n Папка Desktop Shredder, пуста.\n Нечего мельчить!\n Выход.\n"
+        tendl
         exit 1
       fi
     }
@@ -218,6 +219,8 @@ function desktop_shredder() {
     
   }
 
+tstart
+
   if [[ "$1" == "ds" ]]; then
       desktop_shredder ;
       
@@ -228,6 +231,7 @@ function desktop_shredder() {
       ttb=$(echo -e  "\n Используйте с ключем sr или ds") && lang=cr && bpn_p_lang
   fi
 
+tendl
 
 exit 0
 
