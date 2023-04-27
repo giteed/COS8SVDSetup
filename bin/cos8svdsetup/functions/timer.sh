@@ -56,7 +56,7 @@ ttb=$( echo -e "
     
   }
 
-function timer() {
+function timerZZ() {
    function timer_help() {
 ttb=$( echo -e "
  Функция timer позволяет назначать время таймера в р
@@ -77,6 +77,39 @@ ttb=$( echo -e "
  Форматы времени должны быть согласованы с командой date 
  и поддерживаться в вашей операционной системе.
  ") && lang=nix && bpn_p_lang ;
+    }
+  
+    if [ -z "$1" ]; then
+      timer_help
+      return 1
+    fi
+  
+    if ! duration=$(date -ud "$1" +%s 2>/dev/null); then
+      timer_help
+      return 1
+    fi
+  
+    end_time=$((SECONDS + duration))
+  
+    while true; do
+      current_time=$SECONDS
+      remaining=$((end_time - current_time))
+  
+      if ((remaining <= 0)); then
+        break
+      fi
+  
+      printf "\rTime remaining: %02d:%02d:%02d" \
+        $((remaining/3600)) $((remaining%3600/60)) $((remaining%60))
+      sleep 1
+    done
+  
+    printf "\nTimer completed!\n"
+  }
+
+function timer() {
+    timer_help() {
+      echo "help"
     }
   
     if [ -z "$1" ]; then
