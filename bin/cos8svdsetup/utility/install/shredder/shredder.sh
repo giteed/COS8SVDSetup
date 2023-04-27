@@ -4,6 +4,15 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
+function deleting_empty_zero_folders() {
+    path=$1
+    n=$2
+    #ttb=$(echo -e  "deleting_empty_zero_folders n= $n") && lang=cr && bpn_p_lang
+    #ttb=$(echo -e  "deleting_empty_zero_folders path $path") && lang=cr && bpn_p_lang
+    # команда find будет искать папки в указанном пути ($path), фильтровать папки, в названии которых содержатся только нули (-regex '.*/0+$'), и выбирать только пустые папки (-empty). Затем найденные папки будут удалены (-delete).
+    find "$path" -mindepth 1 -type d -regex '.*/0+$' -empty -delete ;
+    tree -aC -L 2 $path ;
+  }
 
 function check_screen_process() {
     local process_name="*.shredder"
@@ -16,6 +25,7 @@ function check_screen_process() {
 }
 
 # Проверяем наличие процесса с помощью screen -list
+deleting_empty_zero_folders ;
 check_screen_process ;
 
 
@@ -164,15 +174,6 @@ function request_n() {
     
   }
 
-function deleting_empty_zero_folders() {
-    path=$1
-    n=$2
-    #ttb=$(echo -e  "deleting_empty_zero_folders n= $n") && lang=cr && bpn_p_lang
-    #ttb=$(echo -e  "deleting_empty_zero_folders path $path") && lang=cr && bpn_p_lang
-    # команда find будет искать папки в указанном пути ($path), фильтровать папки, в названии которых содержатся только нули (-regex '.*/0+$'), и выбирать только пустые папки (-empty). Затем найденные папки будут удалены (-delete).
-    find "$path" -mindepth 1 -type d -regex '.*/0+$' -empty -delete ;
-    tree -aC -L 2 $path ;
-  }
   
 function deleting_empty_folders() {
     
