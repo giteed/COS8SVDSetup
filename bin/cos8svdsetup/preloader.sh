@@ -18,6 +18,12 @@
 	 ( echo -e "${ttb}" | bat --paging=never -l ${lang} -p 2>/dev/null || echo -e "$ttb" ) 
 	  ttb="" ;
 	}
+	
+	function bpn_lang() {
+	  
+	 ( echo -e "${ttb}" | bat --paging=never -l ${lang} 2>/dev/null || echo -e "$ttb" ) 
+	  ttb="" ;
+	}
 
    function bpal_p_lang() {
 	 
