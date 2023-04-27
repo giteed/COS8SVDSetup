@@ -173,7 +173,7 @@ function shred_request() {
     
     cycle_ssl $path $n && cycle_zero $path $n && shred $path $n && deleting_empty_folders $path $n ;
     
-    ttb=$(echo -e  "Готово \"shred_request\" !") && lang=cr && bpn_p_lang
+    ttb=$(echo -e  " Готово \"shred_request\" !") && lang=cr && bpn_p_lang
     
   }
   
@@ -188,7 +188,7 @@ function desktop_shredder() {
     #ttb=$(echo -e  "desktop_shredder path $path") && lang=cr && bpn_p_lang
     cycle_ssl $path $n && cycle_zero $path $n && shred $path $n && deleting_empty_folders $path $n
     
-    ttb=$(echo -e  "Готово! \"desktop_shredder\" ") && lang=cr && bpn_p_lang
+    ttb=$(echo -e  " Готово! \"desktop_shredder\" ") && lang=cr && bpn_p_lang
     timer "5 sec";
   }
 
