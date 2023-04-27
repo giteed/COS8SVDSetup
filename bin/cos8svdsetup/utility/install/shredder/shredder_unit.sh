@@ -30,7 +30,7 @@ Description=The Linux Desktop Shredders.
 [Service]
 Type=simple
 User=root
-ExecStart=sudo screen -dmS shredder /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds > /root/temp/shredder/log.txt
+ExecStart=sudo screen -dmS shredder /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds 
 #ExecStop=screen -S shredder -X quit
 
 # Опция Restart установлена на always, 
@@ -58,6 +58,7 @@ systemctl daemon-reload
 systemctl enable desktop_shredder.service ;
 systemctl start desktop_shredder.service ;
 systemctl status -n0 --no-pager desktop_shredder.service ;
+ttb=$(cat /etc/systemd/system/desktop_shredder.service)&& lang=nix && bpn_p_lang ;
 
 ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started." ) && lang=cr && bpn_p_lang ;
 
