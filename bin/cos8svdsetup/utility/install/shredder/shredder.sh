@@ -196,7 +196,7 @@ function desktop_shredder() {
       shredder_folder="$path"
      
       if [ -z "$(ls -A "$shredder_folder")" ]; then
-        echo -n " Desktop Shredder папка, пуста.\n Нечего мельчить, выход."
+        echo -en " Desktop Shredder папка, пуста.\n Нечего мельчить, выход."
         exit 1
       fi
     }
