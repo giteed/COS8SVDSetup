@@ -189,7 +189,7 @@ function desktop_shredder() {
     cycle_ssl $path $n && cycle_zero $path $n && shred $path $n && deleting_empty_folders $path $n
     
     ttb=$(echo -e  "Готово! \"desktop_shredder\" ") && lang=cr && bpn_p_lang
-    sleep 20 ;
+   timer "5 sec";
   }
 
   if [[ "$1" == "ds" ]]; then

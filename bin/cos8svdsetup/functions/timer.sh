@@ -53,7 +53,7 @@ ttb=$( echo -e "
       sleep 1
     done
    
-    printf "\nTimer completed!\n"
+    printf "\n"
     
   }
 
