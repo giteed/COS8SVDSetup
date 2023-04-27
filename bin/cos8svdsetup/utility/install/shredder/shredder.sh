@@ -183,7 +183,7 @@ function desktop_shredder() {
     mkdir -p /root/temp/shredder
     path=$(echo /root/temp/shredder/)
     ttb=$(echo -e  "\n \"Desktop Shredder\" скоро начнет очистку\n папки: $path") && lang=cr && bpn_p_lang ; echo ;
-    timer "5 sec";
+    timer "8 sec";
     path=$(echo /root/temp/shredder/)
     n=3
     #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
