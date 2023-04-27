@@ -54,7 +54,7 @@ function shred() {
     #ttb=$(echo -e  "shred n= $n") && lang=cr && bpn_p_lang
     #ttb=$(echo -e  "shred path $path") && lang=cr && bpn_p_lang
     # Удаляем все файлы в указанной директории и ее поддиректориях
-    find "$path" -type f -exec shred -n 3 -f -u -v -z {} \;
+    find "$path" -type f -exec shred -n 2 -f -u -v -z {} \;
   }
 
 
@@ -69,7 +69,7 @@ function rename_ssl() {
      find "$path" -mindepth 1 -type d | awk -F/ 'NF{print NF-1,$0}' | sort -nr | cut -d" " -f2- | while read folder; 
       do
         # Генерируем случайное имя для новой папки утилитой openssl
-        new_name="${folder%/*}/$(openssl rand -hex 1)"
+        new_name="${folder%/*}/$(openssl rand -hex 3)"
        
         # Получаем новое имя папки, проверяем что мы не перемещаем папку внутрь себя
         # Если новое имя папки не существует, переименовываем
@@ -183,7 +183,7 @@ function desktop_shredder() {
     mkdir -p /root/temp/shredder
     path=$(echo /root/temp/shredder/)
     ttb=$(echo -e  "\n \"Desktop Shredder\" скоро начнет очистку\n папки: $path") && lang=cr && bpn_p_lang ; echo ;
-    timer "8 sec";
+    timer "10 sec";
     path=$(echo /root/temp/shredder/)
     n=3
     #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
