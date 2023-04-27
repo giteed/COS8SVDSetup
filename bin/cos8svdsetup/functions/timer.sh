@@ -10,7 +10,7 @@ function show_current_time() {
 # timer "00:05:00"
 function timer() {
   duration=$1
-  end_time=$(date -ud "+$duration" +%s)
+  end_time=$(date -ud "1970-01-01 $duration" +%s)
 
   while true; do
     current_time=$(date -u +%s)
@@ -27,3 +27,4 @@ function timer() {
 
   printf "\nTimer completed!\n"
 }
+
