@@ -21,7 +21,7 @@ Description=The Linux Desktop Shredders.
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/screen -dmS shredder sudo -u root /bin/bash /root/vdsetup.2/bin/utility/install/shredder/shredder.sh
+ExecStart=/usr/bin/screen -dmS shredder sudo -u root /bin/bash /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds
 ExecStop=/usr/bin/screen -S shredder -X quit
 
 [Timer]

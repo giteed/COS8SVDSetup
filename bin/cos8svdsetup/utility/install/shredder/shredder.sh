@@ -179,7 +179,9 @@ function shred_request() {
   
   
 function desktop_shreder() {
-   
+    
+    mkdir -p ~/temp/shredder
+    sleep 20 ;
     path=$(echo /root/temp/shreder)
     n=3
     #ttb=$(echo -e  "desktop_shreder n= $n") && lang=cr && bpn_p_lang
@@ -187,7 +189,7 @@ function desktop_shreder() {
     cycle_ssl $path $n && cycle_zero $path $n && shred $path $n && deleting_empty_folders $path $n
     
     ttb=$(echo -e  "Готово! \"desktop_shreder\" ") && lang=cr && bpn_p_lang
-    
+    sleep 20 ;
   }
 
   if [[ "$1" == "ds" ]]; then
