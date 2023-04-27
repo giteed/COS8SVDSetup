@@ -54,7 +54,7 @@ function shred() {
     #ttb=$(echo -e  "shred n= $n") && lang=cr && bpn_p_lang
     #ttb=$(echo -e  "shred path $path") && lang=cr && bpn_p_lang
     # Удаляем все файлы в указанной директории и ее поддиректориях
-    find "$path" -type f -exec shred -n 2 -f -u -v -z {} \;
+    find "$path" -type f -exec shred -n 1 -f -u -v -z {} \;
   }
 
 
