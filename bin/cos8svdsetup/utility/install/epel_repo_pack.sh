@@ -49,7 +49,7 @@
  function epel_repository_packages_Check_or_install() {
 	  
 	  function msg_install_anyway() {
-	   ttb=$(echo -e "\n ⎧ Возможно, что некоторые пакеты уже были установлены.\n ⎩  Нажмите Enter, если желаете перепроверить их установку, или ESC для выхода. ") && lang="nix" && bpn_p_lang ;
+	   ttb=$(echo -e "\n ⎧ Возможно, что некоторые пакеты уже были установлены.\n | Нажмите Enter, если желаете перепроверить их установку,\n ⎩ или ESC для выхода. ") && lang="nix" && bpn_p_lang ;
 	   press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 	   epel_repository_packages_install ;
       }
