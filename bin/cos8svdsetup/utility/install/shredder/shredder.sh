@@ -185,7 +185,7 @@ function desktop_shredder() {
     ttb=$(echo -e  "\n \"Desktop Shredder\" скоро начнет очистку\n папки: $path") && lang=cr && bpn_p_lang ; echo ;
     timer "10 sec";
     path=$(echo /root/temp/shredder/)
-    n=3
+    n=2
     #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
     #ttb=$(echo -e  "desktop_shredder path $path") && lang=cr && bpn_p_lang
     cycle_ssl $path $n && cycle_zero $path $n && shred $path $n && deleting_empty_folders $path $n
