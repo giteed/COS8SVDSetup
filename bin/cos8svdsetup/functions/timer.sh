@@ -32,9 +32,9 @@ ttb=$( echo -e "
  ") && lang=nix && bpn_p_lang ;
     }
     
-    if [ -z "$1" ] || ! timer "$1"; then
-      timer_help
-    fi
+   # if [ -z "$1" ] || ! timer "$1"; then
+    #  timer_help
+   # fi
     
       duration=$1
       end_time=$(date -ud "+$duration" +%s)
