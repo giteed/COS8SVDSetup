@@ -196,13 +196,13 @@ function desktop_shredder() {
       shredder_folder="$path"
      
       if [ -z "$(ls -A "$shredder_folder")" ]; then
-        echo -en " Папка Desktop Shredder, пуста.\n Нечего мельчить!\n Выход."
+        echo -en "\n Папка Desktop Shredder, пуста.\n Нечего мельчить!\n Выход."
         exit 1
       fi
     }
     
     
-    ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку папки: ") && lang=cr && bpn_p_lang ; 
+    ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку папки: \n") && lang=cr && bpn_p_lang ; 
     tree -aC -L 2 $path ;
     echo ;
     timer "10 sec";
