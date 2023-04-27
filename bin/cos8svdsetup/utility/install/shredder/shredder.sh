@@ -180,7 +180,7 @@ function shred_request() {
   
 function desktop_shredder() {
     
-    mkdir -p ~/temp/shredder
+    mkdir -p /root/temp/shredder
     sleep 20 ;
     path=$(echo /root/temp/shredder)
     n=3
