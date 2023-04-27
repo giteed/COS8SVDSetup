@@ -23,7 +23,7 @@ Description=The Linux Desktop Shredders.
 Type=simple
 User=root
 ExecStart=(screen -dmS shredder /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds)
-ExecStop=/usr/bin/screen -S shredder -X quit
+ExecStop=screen -S shredder -X quit
 
 # Опция Restart установлена на always, 
 # юнит будет перезапускаться всегда, когда он
