@@ -40,7 +40,7 @@ function replace_with_zeros() {
         if [[ "$new_name" != "$folder_name"/* ]]; then
          mv -- "$folder_name" "$new_name" 
         fi
-        ttb=$(echo -e "Переименована папка: $folder_name -> $new_name") && lang=cr && bpn_p_lang
+        ttb=$(echo -e " Переименована папка: $folder_name -> $new_name") && lang=cr && bpn_p_lang
       fi
       
     done
@@ -77,7 +77,7 @@ function rename_ssl() {
           if [[ "$new_name" != "$folder"/* ]]; then
             mv -- "$folder" "$new_name"
           fi
-          ttb=$(echo -e "Переименована папка: $folder -> $new_name") && lang=cr && bpn_p_lang
+          ttb=$(echo -e " Переименована папка: $folder -> $new_name") && lang=cr && bpn_p_lang
         fi
     done
   }
@@ -181,7 +181,7 @@ function shred_request() {
 function desktop_shredder() {
     
     mkdir -p /root/temp/shredder
-    timer "20 sec";
+    timer "5 sec";
     path=$(echo /root/temp/shredder/)
     n=3
     #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
@@ -189,7 +189,7 @@ function desktop_shredder() {
     cycle_ssl $path $n && cycle_zero $path $n && shred $path $n && deleting_empty_folders $path $n
     
     ttb=$(echo -e  " Готово! \"desktop_shredder\" ") && lang=cr && bpn_p_lang
-    timer "5 sec";
+    
   }
 
   if [[ "$1" == "ds" ]]; then
