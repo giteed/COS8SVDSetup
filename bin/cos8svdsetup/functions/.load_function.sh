@@ -30,6 +30,8 @@
 	. /root/vdsetup.2/bin/functions/tor.sh
 #  --> delay таймеры
 	. /root/vdsetup.2/bin/functions/delay.sh
+#  --> часы таймеры
+	. /root/vdsetup.2/bin/functions/timer.sh
 #  --> память и диски
 	. /root/vdsetup.2/bin/functions/mem.sh
 #  --> разные функции
