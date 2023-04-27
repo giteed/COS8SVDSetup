@@ -9,11 +9,6 @@ function show_current_time() {
 # Вызов функции-таймера на 5 минут, пример вызова ниже:
 # timer "00:05:00"
 function timer() {
-    
-    if [ -z "$1" ] || ! timer "$1"; then
-      timer_help
-    fi
-    
    
    function timer_help() {
       ttb=$( echo -e "
@@ -27,6 +22,10 @@ function timer() {
       Пожалуйста, обратите внимание, что форматы времени должны быть согласованы с командой date и поддерживаться в вашей операционной системе.
       ") && lang=help && bpn_p_lang ;
     }
+    
+    if [ -z "$1" ] || ! timer "$1"; then
+      timer_help
+    fi
     
       duration=$1
       end_time=$(date -ud "+$duration" +%s)
