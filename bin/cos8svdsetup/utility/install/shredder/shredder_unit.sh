@@ -30,7 +30,7 @@ Description=The Linux Desktop Shredders.
 [Service]
 Type=simple
 User=root
-ExecStart=sudo screen -dmS shredder sudo source /root/.bashrc && /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds
+ExecStart=sudo screen -dmS shredder (source /root/.bashrc && /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds)
 #ExecStop=screen -S shredder -X quit
 
 # Опция Restart установлена на always, 
