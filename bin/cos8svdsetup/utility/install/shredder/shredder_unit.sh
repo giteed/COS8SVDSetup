@@ -33,7 +33,7 @@ User=root
 # Запуск Shredder в ручном режиме: /root/vdsetup.2/bin/utility/install/shredder/shredder.sh sr
 # Для контроля работы Desktop Shredder: # screen -r shredder
 ExecStart=sudo screen -dmS shredder /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds 
-ExecStop=sudo screen -S shredder -X quit
+#ExecStop=sudo screen -S shredder -X quit
 
 # Опция Restart установлена на always, 
 # юнит будет перезапускаться всегда, когда он
