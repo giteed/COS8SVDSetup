@@ -202,7 +202,7 @@ function desktop_shredder() {
     }
     
     
-    ttb=$(echo -e  "\n \"Desktop Shredder\" скоро начнет очистку\n папки: $path") && lang=cr && bpn_p_lang ; 
+    ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет очистку\n папки: ") && lang=cr && bpn_p_lang ; 
     tree -aC -L 2 $path ;
     echo ;
     timer "10 sec";
