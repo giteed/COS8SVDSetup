@@ -181,7 +181,7 @@ function shred_request() {
 function desktop_shredder() {
     
     mkdir -p /root/temp/shredder
-    sleep 20 ;
+    timer "20 sec";
     path=$(echo /root/temp/shredder/)
     n=3
     #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
