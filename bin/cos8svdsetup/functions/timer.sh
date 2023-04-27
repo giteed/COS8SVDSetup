@@ -48,7 +48,7 @@ ttb=$( echo -e "
         break
       fi
      
-      printf "\rTime remaining: %02d:%02d:%02d" \
+      printf "\r Time remaining: %02d:%02d:%02d" \
         $((remaining/3600)) $((remaining%3600/60)) $((remaining%60))
       sleep 1
     done
