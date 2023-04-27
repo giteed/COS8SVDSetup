@@ -149,7 +149,15 @@ function request_n() {
     
   }
 
-
+function deleting_empty_zero_folders() {
+    path=$1
+    n=$2
+    #ttb=$(echo -e  "deleting_empty_zero_folders n= $n") && lang=cr && bpn_p_lang
+    #ttb=$(echo -e  "deleting_empty_zero_folders path $path") && lang=cr && bpn_p_lang
+    # команда find будет искать папки в указанном пути ($path), фильтровать папки, в названии которых содержатся только нули (-regex '.*/0+$'), и выбирать только пустые папки (-empty). Затем найденные папки будут удалены (-delete).
+    find "$path" -mindepth 1 -type d -regex '.*/0+$' -empty -delete
+  }
+  
 function deleting_empty_folders() {
     
     path=$1
@@ -159,6 +167,7 @@ function deleting_empty_folders() {
     # Удаляем пустые директории кроме родительской папки
     rm -rf $(find "$path" -mindepth 1 -type d | awk -F/ 'NF{print NF-1,$0}' | sort -nr | cut -d" " -f2-)
     
+    #find "$path" -mindepth 1 -type d -regex '.*/0+$' -empty -delete
   }
 
 # Старт с запросом папки и количества интераций
@@ -182,13 +191,27 @@ function desktop_shredder() {
     
     mkdir -p /root/temp/shredder
     path=$(echo /root/temp/shredder/)
-    ttb=$(echo -e  "\n \"Desktop Shredder\" скоро начнет очистку\n папки: $path") && lang=cr && bpn_p_lang ; echo ;
+    check_empty_folder() {
+      shredder_folder="$path"
+     
+      if [ -z "$(ls -A "$shredder_folder")" ]; then
+        echo -n " Desktop Shredder папка, пуста.\n Нечего мельчить, выход."
+        exit 1
+      fi
+    }
+    
+    
+    ttb=$(echo -e  "\n \"Desktop Shredder\" скоро начнет очистку\n папки: $path") && lang=cr && bpn_p_lang ; 
+    tree -aC -L 2 $path ;
+    echo ;
     timer "10 sec";
+    check_empty_folder ;
     path=$(echo /root/temp/shredder/)
     n=2
     #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
     #ttb=$(echo -e  "desktop_shredder path $path") && lang=cr && bpn_p_lang
-    cycle_ssl $path $n && cycle_zero $path $n && shred $path $n && deleting_empty_folders $path $n
+    deleting_empty_zero_folders $path $n ;
+    shred $path $n && cycle_ssl $path $n && cycle_zero $path $n && deleting_empty_folders $path $n
     
     ttb=$(echo -e  "\n \"Desktop Shredder\" старательно измельчил\n все содержимое папки: $path") && lang=cr && bpn_p_lang ; echo ;
     
