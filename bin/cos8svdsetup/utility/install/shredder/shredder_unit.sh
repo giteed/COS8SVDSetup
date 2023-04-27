@@ -25,7 +25,7 @@ fi
 # Создание юнита
 cat << EOF > "$unit_file"
 [Unit]
-Description=The Linux Desktop Shredders.
+Description=The Linux Desktop Shredders 90 sec auto-start.
 
 [Service]
 Type=simple
@@ -41,7 +41,7 @@ Restart=always
 
 # Опция RestartSec указывает задержку 
 # в секундах между перезапусками. 
-RestartSec=45
+RestartSec=90
 
 # Опция StartLimitInterval установлена на 0
 # чтобы отключить любые ограничения на перезапуск в случае неудачи.
