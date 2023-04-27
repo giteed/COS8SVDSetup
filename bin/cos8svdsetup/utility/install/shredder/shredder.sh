@@ -5,6 +5,20 @@
 . /root/.bashrc
 
 
+function check_screen_process() {
+    local process_name="*.shredder"
+    
+    # Проверяем наличие процесса с помощью screen -list
+    if screen -list | grep -q "$process_name"; then
+        ttb=$(echo -e "\n Процесс $process_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $process_name") && lang=cr && bpn_p_lang
+        exit 0
+    fi
+}
+
+# Проверяем наличие процесса с помощью screen -list
+check_screen_process ;
+
+
 function replace_with_zeros() {
     
     path=$1
