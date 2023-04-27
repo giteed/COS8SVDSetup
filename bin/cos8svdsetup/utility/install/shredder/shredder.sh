@@ -181,6 +181,8 @@ function shred_request() {
 function desktop_shredder() {
     
     mkdir -p /root/temp/shredder
+    path=$(echo /root/temp/shredder/)
+    ttb=$(echo -e  " \"Desktop Shredder\" скоро начнет очистку\n папки $path") && lang=cr && bpn_p_lang
     timer "5 sec";
     path=$(echo /root/temp/shredder/)
     n=3
@@ -188,7 +190,7 @@ function desktop_shredder() {
     #ttb=$(echo -e  "desktop_shredder path $path") && lang=cr && bpn_p_lang
     cycle_ssl $path $n && cycle_zero $path $n && shred $path $n && deleting_empty_folders $path $n
     
-    ttb=$(echo -e  " Готово! \"desktop_shredder\" ") && lang=cr && bpn_p_lang
+    ttb=$(echo -e  " \"Desktop Shredder\" старательно измельчил\n все содержимое папки $path") && lang=cr && bpn_p_lang
     
   }
 
