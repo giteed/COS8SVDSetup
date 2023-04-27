@@ -48,9 +48,9 @@ ttb=$( echo -e "
         break
       fi
      
-      ttb=$(printf "\rTime remaining: %02d:%02d:%02d" \
+      ttb=$(printf "\rTime remaining: %02d:%02d:%02d" \) && lang=cr && bpn_p_lang
         $((remaining/3600)) $((remaining%3600/60)) $((remaining%60))
-      sleep 1) && lang=cr && bpn_p_lang
+      sleep 1
     done
    
     printf "\nTimer completed!\n"
