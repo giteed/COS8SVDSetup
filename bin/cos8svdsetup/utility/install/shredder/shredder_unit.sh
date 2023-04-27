@@ -48,7 +48,7 @@ systemctl daemon-reload
 # Включение и запуск юнита
 systemctl enable desktop_shredder.service ;
 systemctl start desktop_shredder.service ;
-systemctl status desktop_shredder.service ;
+systemctl status -n0 --no-pager desktop_shredder.service ;
 
 ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started." ) && lang=cr && bpn_p_lang ;
 
