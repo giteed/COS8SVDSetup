@@ -18,25 +18,29 @@ function deleting_empty_zero_folders() {
     sleep 7
     path=$1
     # Получаем имя текущего процесса
-    local process_name="d_s_h_r_e_d_d_e_r"
+    local screen_name="d_s_h_r_e_d_d_e_r"
+    local process_name="shredder.sh"
+    local iskl1="$$"
+    local iskl2="grep"
+    local iskl3="pgrep"
     
     echo -e "\n "$$" "
     echo -e "\n $(ps aux | pgrep "$process_name" | grep -v "grep") "
-    ps aux | grep d_s_h_r_e_d_d_e_r
-    
-    ttb=$(echo -e "\n Проверяем наличие процесса d_s_h_r_e_d_d_e_r $(ps aux | pgrep "$process_name" | grep -v "grep" ) с помощью pgrep \n") && lang=cr && bpn_p_lang
+    ps aux | grep "$screen_name"
+    ps aux | grep "$process_name"
+    ttb=$(echo -e "\n Проверяем наличие процесса shredder.sh $(ps aux | pgrep "$process_name" | pgrep -v "$iskl1" | pgrep -v "$iskl2" | pgrep -v "$iskl3" ) с помощью pgrep \n") && lang=cr && bpn_p_lang
     
     
     
     # Проверяем наличие процесса с помощью pgrep
-    if ps aux | pgrep "$process_name" | pgrep -v "grep" | pgrep -v "$$" >/dev/null; 
+    if ps aux | pgrep "$process_name" | pgrep -v "$iskl1" | pgrep -v "$iskl2" | pgrep -v "$iskl3" >/dev/null; 
       then
         ttb=$(echo -e "\n Процесс $process_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $process_name") && lang=cr && bpn_p_lang
         deleting_empty_zero_folders $path $n ;
         timer "10 sec"
         exit 1
       else
-        ttb=$(echo -e "\n Процесс shredder $process_name не найден в памяти\n можно запускать.\n Проверить процесс: # screen -r ") && lang=cr && bpn_p_lang
+        ttb=$(echo -e "\n Процесс shredder $process_name не найден в памяти\n можно запускать.\n Проверить процесс: # screen -r d_s_h_r_e_d_d_e_r") && lang=cr && bpn_p_lang
            
         echo ;
         timer "10 sec";
