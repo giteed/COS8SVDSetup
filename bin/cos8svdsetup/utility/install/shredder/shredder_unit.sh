@@ -30,9 +30,11 @@ Description=The Linux Desktop Shredders 90 sec auto-start.
 [Service]
 Type=simple
 User=root
+# Запуск Shredder в автоматическом режиме: /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds
 # Запуск Shredder в ручном режиме: /root/vdsetup.2/bin/utility/install/shredder/shredder.sh sr
+# Helper Shreder проверка занятости /root/vdsetup.2/bin/utility/install/shredder/help-shr.sh 
 # Для контроля работы Desktop Shredder: # screen -r shredder
-ExecStart=sudo screen -dmS shredder /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds 
+ExecStart=sudo screen -dmS helper-shred-der /root/vdsetup.2/bin/utility/install/shredder/help-shr.sh 
 
 # Опция Restart установлена на always, 
 # Unit будет перезапускаться всегда, когда он
