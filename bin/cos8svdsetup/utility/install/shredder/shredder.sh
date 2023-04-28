@@ -233,6 +233,7 @@ function desktop_shredder() {
       if [ -z "$(ls -A "$shredder_folder")" ]; then
         echo -en "\n Папка Desktop Shredder, пуста.\n Нечего мельчить!\n Выход.\n"
         tendl
+        timer "10 sec"
         exit 1
       fi
     }
@@ -243,7 +244,7 @@ function desktop_shredder() {
     tree -aC -L 2 $path ;
     echo ;
     check_screen_process $path $n ;
-    check_empty_folder ;
+    check_empty_folder $path $n;
     
     deleting_empty_zero_folders $path $n ;
     shred $path $n && cycle_ssl $path $n && cycle_zero $path $n && deleting_empty_folders $path $n
