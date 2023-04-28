@@ -9,7 +9,7 @@
     path=$1
     # Получаем PID текущего процесса
 
-    local process_name="-dmS shredder"
+    local process_name="dmS shredder"
     
     echo -e " "shredder-\$process_name :" "$process_name" "
     
@@ -23,7 +23,7 @@
         ttb=$(echo -e "\n Процесс $process_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $process_name") && lang=cr && bpn_p_lang
         exit 1
       else
-        ttb=$(echo -e "\n Процесс shredder $process_name не найден в памяти\n можно запускать.\n Проверить процесс: # screen -r $process_name") && lang=cr && bpn_p_lang
+        ttb=$(echo -e "\n Процесс shredder $process_name не найден в памяти\n можно запускать.\n Проверить процесс: # screen -r ") && lang=cr && bpn_p_lang
            
         echo 
         timer "30 sec";
