@@ -16,8 +16,7 @@ function deleting_empty_zero_folders() {
 
   function check_screen_process() {
     path=$1
-    # Получаем PID текущего процесса
-  
+    # Получаем имя текущего процесса
     local process_name="d_s_h_r_e_d_d_e_r"
     
     echo -e "\n "\$process_name d_s_h_r_e_d_d_e_r:" "$process_name" "
@@ -37,7 +36,7 @@ function deleting_empty_zero_folders() {
         echo 
         timer "10 sec";
         press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
-        
+        return ;
     fi
   }
   
@@ -243,7 +242,7 @@ function desktop_shredder() {
     ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку папки: \n") && lang=cr && bpn_p_lang ; 
     tree -aC -L 2 $path ;
     echo ;
-    check_screen_process ;
+    check_screen_process $path $n ;
     check_empty_folder ;
     
     deleting_empty_zero_folders $path $n ;
