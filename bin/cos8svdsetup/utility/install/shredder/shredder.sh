@@ -220,7 +220,7 @@ function shred_request() {
   
   
 function desktop_shredder() {
-    
+    timer "10 sec"
     mkdir -p /root/temp/shredder
     path="/root/temp/shredder/"
     n=1 # Количество интераций (проходов)
