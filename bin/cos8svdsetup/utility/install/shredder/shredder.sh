@@ -7,8 +7,6 @@
 function deleting_empty_zero_folders() {
     path=$1
     n=$2
-    #ttb=$(echo -e  "deleting_empty_zero_folders n= $n") && lang=cr && bpn_p_lang
-    #ttb=$(echo -e  "deleting_empty_zero_folders path $path") && lang=cr && bpn_p_lang
     # команда find будет искать папки в указанном пути ($path), фильтровать папки, в названии которых содержатся только нули (-regex '.*/0+$'), и выбирать только пустые папки (-empty). Затем найденные папки будут удалены (-delete).
     find "$path" -mindepth 1 -type d -regex '.*/0+$' -empty -delete ;
     
@@ -37,7 +35,7 @@ function deleting_empty_zero_folders() {
         #timer "10 sec"
         exit 1
       else
-        ttb=$(echo -e "\n Процесс \"Desktop Shredder\" не найден в памяти\n Проверить процесс: # screen -r $screen_name") && lang=cr && bpn_p_lang
+        ttb=$(echo -e "\n Процесс \"Desktop Shredder\" не найден\n Проверить процесс: # screen -r $screen_name") && lang=cr && bpn_p_lang
            
         echo ;
         #timer "10 sec";
@@ -47,13 +45,10 @@ function deleting_empty_zero_folders() {
     fi
   }
   
-
 function replace_with_zeros() {
     
     path=$1
     n=$2
-    #ttb=$(echo -e  "replace_with_zeros n= $n") && lang=cr && bpn_p_lang
-    #ttb=$(echo -e  "replace_with_zeros path $path") && lang=cr && bpn_p_lang
     # Считает количество символов в названии переданной на вход папки 
     # от переменной folder_name и отдает столько-же нулей на выход
    function _replace_with_zeros() {
@@ -89,24 +84,18 @@ function replace_with_zeros() {
     done
   }
 
-
 function shred() {
     
     path=$1
     n=$2
-    #ttb=$(echo -e  "shred n= $n") && lang=cr && bpn_p_lang
-    #ttb=$(echo -e  "shred path $path") && lang=cr && bpn_p_lang
     # Удаляем все файлы в указанной директории и ее поддиректориях
     find "$path" -type f -exec shred -n 1 -f -u -v -z {} \;
   }
-
 
 function rename_ssl() {
     
     path=$1
     n=$2
-    #ttb=$(echo -e  "rename_ssl n= $n") && lang=cr && bpn_p_lang
-    #ttb=$(echo -e  "rename_ssl path $path") && lang=cr && bpn_p_lang
      # Получаем список папок внутри заданного пути, отсортированных по глубине вложенности
      # Передаем список папок через конвейер в awk для обработки
      find "$path" -mindepth 1 -type d | awk -F/ 'NF{print NF-1,$0}' | sort -nr | cut -d" " -f2- | while read folder; 
@@ -125,13 +114,10 @@ function rename_ssl() {
     done
   }
 
-
 function cycle_ssl() {
     
     path=$1
     n=$2
-    #ttb=$(echo -e  "cycle_ssl n= $n") && lang=cr && bpn_p_lang
-    #ttb=$(echo -e  "cycle_ssl path $path") && lang=cr && bpn_p_lang
     # Цикл, который выполняется n раз
     for (( i=1; i<=$n; i++ ))
       do
@@ -141,14 +127,11 @@ function cycle_ssl() {
     
   }
 
-
 function cycle_zero() {
    
    path=$1
    #n=$2
    n=1
-   #ttb=$(echo -e  "cycle_zero n= $n") && lang=cr && bpn_p_lang
-   #ttb=$(echo -e  "cycle_zero path $path") && lang=cr && bpn_p_lang
     # Цикл, который выполняется n раз
     for (( i=1; i<=$n; i++ ))
       do
@@ -158,7 +141,6 @@ function cycle_zero() {
     
   }
 
-
 function request_path() {
     
     while true; do
@@ -167,14 +149,11 @@ function request_path() {
           ttb=$(echo -e " Папка не найдена. Попробуйте еще раз.") && lang=cr && bpn_p_lang
         else
           echo $path > /tmp/shredder_request_path.txt
-          #ttb=$(echo -e  "request_path n= $n") && lang=cr && bpn_p_lang
-          #ttb=$(echo -e  "request_path path $path") && lang=cr && bpn_p_lang
           break
        fi
     done
     
   }
-
 
 function request_n() {
     
@@ -185,21 +164,16 @@ function request_n() {
         elif [ "$n" -eq 0 ]; then
           ttb=$(echo -e " Количество выполнений должно быть больше 0.") && lang=cr && bpn_p_lang
         else
-          #ttb=$(echo -e  "request_n n= $n") && lang=cr && bpn_p_lang
-          #ttb=$(echo -e  "request_n path $path") && lang=cr && bpn_p_lang
           break
         fi
     done
     
   }
 
-  
 function deleting_empty_folders() {
     
     path=$1
     n=$2
-    #ttb=$(echo -e  "deleting_empty_folders n= $n") && lang=cr && bpn_p_lang
-    #ttb=$(echo -e  "deleting_empty_folders path $path") && lang=cr && bpn_p_lang
     # Удаляем пустые директории кроме родительской папки
     rm -rf $(find "$path" -mindepth 1 -type d | awk -F/ 'NF{print NF-1,$0}' | sort -nr | cut -d" " -f2-)
     tree -aC -L 2 $path ;
@@ -214,8 +188,6 @@ function shred_request() {
     
     # Путь до рабочей папки с которой производим действия
     path=$(cat /tmp/shredder_request_path.txt)
-    #ttb=$(echo -e  "shred_request n= $n") && lang=cr && bpn_p_lang
-    #ttb=$(echo -e  "shred_request path $path") && lang=cr && bpn_p_lang
     echo ;
     tree -aC -L 2 $path ; echo ; timer 5 sec ; tstart
     deleting_empty_zero_folders $path $n ;
@@ -225,14 +197,11 @@ function shred_request() {
     tendl ;
   }
   
-  
 function desktop_shredder() {
     
     mkdir -p /root/temp/shredder
     path="/root/temp/shredder/"
     n=1 # Количество интераций (проходов)
-    #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
-    #ttb=$(echo -e  "desktop_shredder path $path") && lang=cr && bpn_p_lang
     
     check_empty_folder() {
       shredder_folder="$path"
@@ -260,7 +229,6 @@ function desktop_shredder() {
   }
 
 
-
   if [[ "$1" == "ds" ]]; then
       desktop_shredder ;
       
@@ -268,7 +236,7 @@ function desktop_shredder() {
       shred_request ;
       
     else
-      ttb=$(echo -e  "\n Используйте с ключем sr или ds") && lang=cr && bpn_p_lang
+      ttb=$(echo -e  "\n Используйте $0 с ключем sr или ds") && lang=cr && bpn_p_lang
   fi
 
 
