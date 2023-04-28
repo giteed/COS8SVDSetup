@@ -22,7 +22,7 @@ function deleting_empty_zero_folders() {
     
     echo -e "\n "$$" "
     echo -e "\n $(ps aux | pgrep "$process_name" | grep -v "grep") "
-    echo $(ps aux | grep d_s_h_r_e_d_d_e_r)
+    ps aux | grep d_s_h_r_e_d_d_e_r
     
     ttb=$(echo -e "\n Проверяем наличие процесса d_s_h_r_e_d_d_e_r $(ps aux | pgrep "$process_name" | grep -v "grep" ) с помощью pgrep \n") && lang=cr && bpn_p_lang
     
