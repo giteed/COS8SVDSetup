@@ -21,7 +21,7 @@ function deleting_empty_zero_folders() {
     local process_name="d_s_h_r_e_d_d_e_r"
     
     echo -e "\n "$$" "
-    echo -e "\n "$(ps aux | pgrep "$process_name" | grep -v "grep"") "
+    echo -e "\n "$(ps aux | pgrep "$process_name" | grep -v "grep") "
         
     
     ttb=$(echo -e "\n Проверяем наличие процесса d_s_h_r_e_d_d_e_r $(ps aux | pgrep "$process_name" | grep -v "grep" ) с помощью pgrep \n") && lang=cr && bpn_p_lang
