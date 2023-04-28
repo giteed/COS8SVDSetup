@@ -15,7 +15,7 @@ function deleting_empty_zero_folders() {
   }
 
   function check_screen_process() {
-    sleep 7
+    #sleep 7
     path=$1
     # Получаем имя текущего процесса
     local screen_name="d_s_h_r_e_d_d_e_r"
@@ -34,7 +34,7 @@ function deleting_empty_zero_folders() {
       then
         ttb=$(echo -e "\n Процесс $screen_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $screen_name") && lang=cr && bpn_p_lang
         deleting_empty_zero_folders $path $n ;
-        timer "10 sec"
+        #timer "10 sec"
         exit 1
       else
         ttb=$(echo -e "\n Процесс \"Desktop Shredder\" не найден в памяти\n Проверить процесс: # screen -r $screen_name") && lang=cr && bpn_p_lang
