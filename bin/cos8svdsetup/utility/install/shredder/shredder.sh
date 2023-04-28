@@ -24,9 +24,10 @@ function deleting_empty_zero_folders() {
     local iskl2="grep"
     local iskl3="pgrep"
     
-    echo -e "\n "$$" "
-    echo -e "\n $(ps aux | pgrep "$process_name" | grep -v "grep") "
+    echo -e "\n Свой UID "$$" "
+    
     ps aux | grep "$screen_name"
+    echo ;
     ps aux | grep "$process_name"
     ttb=$(echo -e "\n Проверяем наличие процесса shredder.sh $(ps aux | pgrep "$process_name" | pgrep -v "$iskl1" | pgrep -v "$iskl2" | pgrep -v "$iskl3" ) с помощью pgrep \n") && lang=cr && bpn_p_lang
     
