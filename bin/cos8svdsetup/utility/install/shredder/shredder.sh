@@ -26,9 +26,7 @@ function check_screen_process() {
     fi
   }
 
-# Проверяем наличие процесса с помощью screen -list
-deleting_empty_zero_folders $path $n ; 
-check_screen_process $path $n;
+
 
 
 function replace_with_zeros() {
@@ -212,6 +210,10 @@ function desktop_shredder() {
     
     mkdir -p /root/temp/shredder
     path=$(echo /root/temp/shredder/)
+    n=1 # Количество интераций (проходов)
+    #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
+    #ttb=$(echo -e  "desktop_shredder path $path") && lang=cr && bpn_p_lang
+    
     check_empty_folder() {
       shredder_folder="$path"
      
@@ -222,16 +224,16 @@ function desktop_shredder() {
       fi
     }
     
+    # Проверяем наличие процесса с помощью screen -list
+    deleting_empty_zero_folders $path $n ; 
+    check_screen_process $path $n ;
     
     ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку папки: \n") && lang=cr && bpn_p_lang ; 
     tree -aC -L 2 $path ;
     echo ;
     timer "10 sec";
     check_empty_folder ;
-    path=$(echo /root/temp/shredder/)
-    n=1 # Количество интераций (проходов)
-    #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
-    #ttb=$(echo -e  "desktop_shredder path $path") && lang=cr && bpn_p_lang
+    
     deleting_empty_zero_folders $path $n ;
     shred $path $n && cycle_ssl $path $n && cycle_zero $path $n && deleting_empty_folders $path $n
     
