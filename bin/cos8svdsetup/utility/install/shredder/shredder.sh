@@ -11,7 +11,7 @@ function deleting_empty_zero_folders() {
     #ttb=$(echo -e  "deleting_empty_zero_folders path $path") && lang=cr && bpn_p_lang
     # команда find будет искать папки в указанном пути ($path), фильтровать папки, в названии которых содержатся только нули (-regex '.*/0+$'), и выбирать только пустые папки (-empty). Затем найденные папки будут удалены (-delete).
     find "$path" -mindepth 1 -type d -regex '.*/0+$' -empty -delete ;
-    tree -aC -L 2 $path ;
+    
   }
 
 function check_screen_process() {
