@@ -29,12 +29,15 @@ function deleting_empty_zero_folders() {
     if ps aux | grep "$process_name" | grep -v "grep" | grep -v "$$" >/dev/null; 
       then
         ttb=$(echo -e "\n Процесс $process_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $process_name") && lang=cr && bpn_p_lang
+        deleting_empty_zero_folders $path $n ;
+        timer "10 sec"
         exit 1
       else
         ttb=$(echo -e "\n Процесс shredder $process_name не найден в памяти\n можно запускать.\n Проверить процесс: # screen -r ") && lang=cr && bpn_p_lang
            
-        echo 
+        echo ;
         timer "10 sec";
+        deleting_empty_zero_folders $path $n ;
         press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
         return ;
     fi
@@ -201,7 +204,7 @@ function deleting_empty_folders() {
 
 # Старт с запросом папки и количества интераций
 function shred_request() {
-    
+    tstart ;
     check_screen_process ;
     request_path && request_n 
     
@@ -215,12 +218,12 @@ function shred_request() {
     shred $path $n && cycle_ssl $path $n && cycle_zero $path $n && deleting_empty_folders $path $n ;
     
     ttb=$(echo -e  " Готово \"shred_request\" !") && lang=cr && bpn_p_lang
-    
+    tendl ;
   }
   
   
 function desktop_shredder() {
-    timer "10 sec"
+    
     mkdir -p /root/temp/shredder
     path="/root/temp/shredder/"
     n=1 # Количество интераций (проходов)
@@ -232,28 +235,27 @@ function desktop_shredder() {
      
       if [ -z "$(ls -A "$shredder_folder")" ]; then
         echo -en "\n Папка Desktop Shredder, пуста.\n Нечего мельчить!\n Выход.\n"
-        tendl
-        timer "10 sec"
         exit 1
       fi
     }
     
-    deleting_empty_zero_folders $path $n ; 
+     
     
     ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку папки: \n") && lang=cr && bpn_p_lang ; 
     #tree -aC -L 2 $path ;
     echo ;
     check_screen_process $path $n ;
+    tstart ;
     check_empty_folder $path $n;
     
     deleting_empty_zero_folders $path $n ;
     shred $path $n && cycle_ssl $path $n && cycle_zero $path $n && deleting_empty_folders $path $n
     
-    ttb=$(echo -e  "\n \"Desktop Shredder\" старательно измельчил\n все содержимое папки: $path") && lang=cr && bpn_p_lang ; echo ;
+    ttb=$(echo -e  "\n \"Desktop Shredder\" старательно измельчил\n все содержимое папки: $path") && lang=cr && bpn_p_lang ; echo ; tendl ;
     
   }
 
-tstart
+
 
   if [[ "$1" == "ds" ]]; then
       desktop_shredder ;
@@ -265,7 +267,7 @@ tstart
       ttb=$(echo -e  "\n Используйте с ключем sr или ds") && lang=cr && bpn_p_lang
   fi
 
-tendl
+
 
 exit 0
 
