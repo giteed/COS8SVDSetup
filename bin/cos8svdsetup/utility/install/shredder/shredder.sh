@@ -37,7 +37,7 @@ function deleting_empty_zero_folders() {
         timer "10 sec"
         exit 1
       else
-        ttb=$(echo -e "\n Процесс Desctop Shredder не найден в памяти\n Проверить процесс: # screen -r $screen_name") && lang=cr && bpn_p_lang
+        ttb=$(echo -e "\n Процесс \"Desktop Shredder\" не найден в памяти\n Проверить процесс: # screen -r $screen_name") && lang=cr && bpn_p_lang
            
         echo ;
         timer "10 sec";
