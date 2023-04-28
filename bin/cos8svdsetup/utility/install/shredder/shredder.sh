@@ -18,8 +18,10 @@ function check_screen_process() {
       path=$1
       current_pid=$2
       local process_name='shredder'
+      echo ;
       echo "$current_pid"
       echo "$$"
+      echo ;
       ttb=$(echo -e "\n Проверяем наличие процесса $(pgrep -f "$process_name" | grep -v "$$" | grep -v "$current_pid") с помощью pgrep, исключая текущий процесс "$$" \n") && lang=cr && bpn_p_lang
       timer "30 sec";
       # Проверяем наличие процесса с помощью pgrep, исключая текущий процесс
