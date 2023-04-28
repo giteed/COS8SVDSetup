@@ -222,7 +222,7 @@ function shred_request() {
 function desktop_shredder() {
     
     mkdir -p /root/temp/shredder
-    path=$(echo /root/temp/shredder/)
+    path="/root/temp/shredder/"
     n=1 # Количество интераций (проходов)
     #ttb=$(echo -e  "desktop_shredder n= $n") && lang=cr && bpn_p_lang
     #ttb=$(echo -e  "desktop_shredder path $path") && lang=cr && bpn_p_lang
