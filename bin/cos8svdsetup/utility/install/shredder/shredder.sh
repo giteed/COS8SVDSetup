@@ -197,7 +197,7 @@ function shred_request() {
     #ttb=$(echo -e  "shred_request n= $n") && lang=cr && bpn_p_lang
     #ttb=$(echo -e  "shred_request path $path") && lang=cr && bpn_p_lang
     echo ;
-    tree -aC -L 2 $path ; echo ; timer 15 sec ; tstart
+    tree -aC -L 2 $path ; echo ; timer 5 sec ; tstart
     deleting_empty_zero_folders $path $n ;
     shred $path $n && cycle_ssl $path $n && cycle_zero $path $n && deleting_empty_folders $path $n ;
     
@@ -231,7 +231,7 @@ function desktop_shredder() {
     ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку папки: \n") && lang=cr && bpn_p_lang ; 
     tree -aC -L 2 $path ;
     echo ;
-    timer "10 sec";
+    timer "15 sec";
     check_empty_folder ;
     
     deleting_empty_zero_folders $path $n ;
