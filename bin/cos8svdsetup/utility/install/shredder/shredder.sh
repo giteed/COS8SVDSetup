@@ -19,7 +19,7 @@ function deleting_empty_zero_folders() {
     path=$1
     # Получаем имя текущего процесса
     local screen_name="d_s_h_r_e_d_d_e_r"
-    local process_name=" shred "
+    local process_name="shred"
     local iskl1="$$"
     local iskl2="grep"
     local iskl3="pgrep"
@@ -30,12 +30,12 @@ function deleting_empty_zero_folders() {
     echo ;
     ps aux | grep "$process_name"
     echo ;
-    ttb=$(echo -e "\n Проверяем наличие процесса shredder.sh $(ps aux | pgrep "$process_name" | grep -v "$iskl1" | grep -v "$iskl2" | grep -v "$iskl3" ) с помощью pgrep \n") && lang=cr && bpn_p_lang
+    ttb=$(echo -e "\n Проверяем наличие процесса shredder.sh $(ps aux | pgrep -x "$process_name" | grep -v "$iskl1" | grep -v "$iskl2" | grep -v "$iskl3" ) с помощью pgrep \n") && lang=cr && bpn_p_lang
     
     
     
     # Проверяем наличие процесса с помощью pgrep
-    if ps aux | pgrep "$process_name" | grep -v "$iskl1" | grep -v "$iskl2" | grep -v "$iskl3" >/dev/null; 
+    if ps aux | pgrep -x "$process_name" | grep -v "$iskl1" | grep -v "$iskl2" | grep -v "$iskl3" >/dev/null; 
       then
         ttb=$(echo -e "\n Процесс $process_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $process_name") && lang=cr && bpn_p_lang
         deleting_empty_zero_folders $path $n ;
