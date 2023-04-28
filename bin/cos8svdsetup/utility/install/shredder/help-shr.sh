@@ -13,7 +13,7 @@
     
     echo -e " "shredder-\$process_name :" "$process_name" "
     
-    ttb=$(echo -e "\n Проверяем наличие процесса $(pgrep -f "$process_name" ) с помощью pgre \n") && lang=cr && bpn_p_lang
+    ttb=$(echo -e "\n Проверяем наличие процесса $(pgrep -f "$process_name" ) с помощью pgrep \n") && lang=cr && bpn_p_lang
     
     
     
