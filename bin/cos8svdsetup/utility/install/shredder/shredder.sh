@@ -15,6 +15,7 @@ function deleting_empty_zero_folders() {
   }
 
   function check_screen_process() {
+    sleep 7
     path=$1
     # Получаем имя текущего процесса
     local process_name="d_s_h_r_e_d_d_e_r"
