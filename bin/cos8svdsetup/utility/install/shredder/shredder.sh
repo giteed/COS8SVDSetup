@@ -241,7 +241,7 @@ function desktop_shredder() {
     deleting_empty_zero_folders $path $n ; 
     
     ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку папки: \n") && lang=cr && bpn_p_lang ; 
-    tree -aC -L 2 $path ;
+    #tree -aC -L 2 $path ;
     echo ;
     check_screen_process $path $n ;
     check_empty_folder $path $n;
