@@ -15,19 +15,18 @@ function deleting_empty_zero_folders() {
   }
 
 function check_screen_process() {
-    path=$1
-    n=$2
-    #ttb=$(echo -e  "check_screen_process n= $n") && lang=cr && bpn_p_lang
-    #ttb=$(echo -e  "check_screen_process path $path") && lang=cr && bpn_p_lang
-    local process_name='SCREEN -dmS shredder'
-    
-    # Проверяем наличие процесса с помощью screen -list
-    if ps aux | grep -E '$process_name' | grep -v 'grep'; then
-        ttb=$(echo -e "\n Процесс $process_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $process_name") && lang=cr && bpn_p_lang
-        exit 1 ;
-    fi
-    
-}
+      path=$1
+      n=$2
+      #ttb=$(echo -e  "check_screen_process n= $n") && lang=cr && bpn_p_lang
+      #ttb=$(echo -e  "check_screen_process path $path") && lang=cr && bpn_p_lang
+      local process_name='shredder'
+      
+      # Проверяем наличие процесса с помощью screen -list
+      if ps aux | grep -E "$process_name" | grep -v 'grep'; then
+          ttb=$(echo -e "\n Процесс $process_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $process_name") && lang=cr && bpn_p_lang
+          exit 1 ;
+      fi
+  }
 
 # Проверяем наличие процесса с помощью screen -list
 deleting_empty_zero_folders $path $n ; ;
