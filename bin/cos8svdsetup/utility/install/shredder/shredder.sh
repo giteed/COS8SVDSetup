@@ -29,12 +29,13 @@ function deleting_empty_zero_folders() {
     ps aux | grep "$screen_name"
     echo ;
     ps aux | grep "$process_name"
-    ttb=$(echo -e "\n Проверяем наличие процесса shredder.sh $(ps aux | pgrep "$process_name" | pgrep -v "$iskl1" | pgrep -v "$iskl2" | pgrep -v "$iskl3" ) с помощью pgrep \n") && lang=cr && bpn_p_lang
+    echo ;
+    ttb=$(echo -e "\n Проверяем наличие процесса shredder.sh $(ps aux | pgrep "$process_name" | grep -v "$iskl1" | grep -v "$iskl2" | grep -v "$iskl3" ) с помощью pgrep \n") && lang=cr && bpn_p_lang
     
     
     
     # Проверяем наличие процесса с помощью pgrep
-    if ps aux | pgrep "$process_name" | pgrep -v "$iskl1" | pgrep -v "$iskl2" | pgrep -v "$iskl3" >/dev/null; 
+    if ps aux | pgrep "$process_name" | grep -v "$iskl1" | grep -v "$iskl2" | grep -v "$iskl3" >/dev/null; 
       then
         ttb=$(echo -e "\n Процесс $process_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $process_name") && lang=cr && bpn_p_lang
         deleting_empty_zero_folders $path $n ;
