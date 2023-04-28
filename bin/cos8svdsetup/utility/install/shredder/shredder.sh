@@ -14,27 +14,6 @@ function deleting_empty_zero_folders() {
     
   }
 
-function check_screen_process() {
-      path=$1
-      current_pid=$2
-      local process_name='shredder'
-      echo ;
-      echo "$current_pid"
-      echo "$$"
-      echo ;
-      ttb=$(echo -e "\n Проверяем наличие процесса $(pgrep -f "$process_name" | grep -v "$$" | grep -v "$current_pid") с помощью pgrep, исключая текущий процесс "$$" \n") && lang=cr && bpn_p_lang
-      timer "30 sec";
-      # Проверяем наличие процесса с помощью pgrep, исключая текущий процесс
-      if pgrep -f "$process_name" | grep -v "$current_pid" >/dev/null; then
-          ttb=$(echo -e "\n Процесс $process_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $process_name") && lang=cr && bpn_p_lang
-          exit 1
-      fi
-  }
-  
-
-
-
-
 
 
 function replace_with_zeros() {
@@ -232,16 +211,7 @@ function desktop_shredder() {
       fi
     }
     
-    # Проверяем наличие процесса с помощью screen -list
     deleting_empty_zero_folders $path $n ; 
-    #check_screen_process $path $n ;
-    # Получаем PID текущего процесса
-    current_pid=$$
-    
-    # Вызываем функцию check_screen_process с передачей пути и текущего PID
-    check_screen_process "$path" "$current_pid"
-    
-    
     
     ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку папки: \n") && lang=cr && bpn_p_lang ; 
     tree -aC -L 2 $path ;
