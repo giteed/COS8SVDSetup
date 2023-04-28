@@ -32,9 +32,8 @@ Type=simple
 User=root
 # Запуск Shredder в автоматическом режиме: /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds
 # Запуск Shredder в ручном режиме: /root/vdsetup.2/bin/utility/install/shredder/shredder.sh sr
-# Helper Shreder проверка занятости /root/vdsetup.2/bin/utility/install/shredder/help-shr.sh 
-# Для контроля работы Desktop Shredder: # screen -r shredder
-ExecStart=sudo screen -dmS helper-shred-der /root/vdsetup.2/bin/utility/install/shredder/help-shr.sh 
+# Для контроля работы Desktop Shredder: # screen -r d_s_h_r_e_d_d_e_r
+ExecStart=sudo screen -dmS d_s_h_r_e_d_d_e_r /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds
 
 # Опция Restart установлена на always, 
 # Unit будет перезапускаться всегда, когда он

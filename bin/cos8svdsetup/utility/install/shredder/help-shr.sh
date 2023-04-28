@@ -11,7 +11,7 @@
 
     local process_name="dmS shredder"
     
-    echo -e " "shredder-\$process_name :" "$process_name" "
+    echo -e "\n "shredder-\$process_name :" "$process_name" "
     
     ttb=$(echo -e "\n Проверяем наличие процесса shredder $(ps aux | grep "$process_name" | grep -v grep ) с помощью grep \n") && lang=cr && bpn_p_lang
     
