@@ -25,7 +25,7 @@ fi
 # Создание юнита
 cat << EOF > "$unit_file"
 [Unit]
-Description=The Linux Desktop Shredders 90 sec auto-start.
+Description=The Linux Desktop Shredders 120 sec auto-start.
 
 [Service]
 Type=simple
