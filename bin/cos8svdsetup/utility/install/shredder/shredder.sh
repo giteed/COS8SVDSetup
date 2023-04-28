@@ -18,7 +18,7 @@ function check_screen_process() {
     path=$1
     n=$2
     local process_name='shredder'
-    timer 7 sec ;
+    #timer "10 sec";
     # Проверяем наличие процесса с помощью pgrep, исключая текущий процесс
     if pgrep -f "$process_name" | grep -v "$$" >/dev/null; then
       ttb=$(echo -e "\n Процесс $process_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $process_name") && lang=cr && bpn_p_lang
