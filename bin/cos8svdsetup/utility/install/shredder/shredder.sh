@@ -27,7 +27,7 @@ function check_screen_process() {
   }
 
 # Проверяем наличие процесса с помощью screen -list
-deleting_empty_zero_folders $path $n ; ;
+deleting_empty_zero_folders $path $n ; 
 check_screen_process $path $n;
 
 
