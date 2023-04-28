@@ -40,9 +40,9 @@ function deleting_empty_zero_folders() {
         ttb=$(echo -e "\n Процесс \"Desktop Shredder\" не найден в памяти\n Проверить процесс: # screen -r $screen_name") && lang=cr && bpn_p_lang
            
         echo ;
-        timer "10 sec";
+        #timer "10 sec";
         deleting_empty_zero_folders $path $n ;
-        press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
+        #press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
         return ;
     fi
   }
