@@ -19,7 +19,7 @@ function deleting_empty_zero_folders() {
     path=$1
     # Получаем имя текущего процесса
     local screen_name="d_s_h_r_e_d_d_e_r"
-    local process_name="shredder.sh"
+    local process_name=" shred "
     local iskl1="$$"
     local iskl2="grep"
     local iskl3="pgrep"
