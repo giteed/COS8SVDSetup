@@ -20,6 +20,34 @@ function wis() { (GLIG_ASTRX_ON && wis-f $1 $2) } ;
 function mvds() {
 		
 		function _mvds() {
+			
+			function check_valid_path() {
+				local path=$1
+				
+				# Проверяем наличие пути
+				if [[ -z "$path" ]]; then
+					echo "Ошибка: Путь не указан."
+					return 1
+				fi
+				
+				# Проверяем существование пути
+				if [[ ! -e "$path" ]]; then
+					echo "Ошибка: Путь не существует."
+					return 1
+				fi
+				
+				# Проверяем доступность для чтения
+				if [[ ! -r "$path" ]]; then
+					echo "Ошибка: Путь не доступен для чтения."
+					return 1
+				fi
+				
+				# Если все проверки пройдены, возвращаем успешный статус
+				return 0
+			}
+			
+			check_valid_path $1
+			
 			# Путь до рабочей папки с которой производим действия
 			ds_path=$(cat /tmp/Desktop_Shredder_path.txt)
 			# Перемещение выбранной файла или папки в папку Desktop Shredder для последующего измельчения
