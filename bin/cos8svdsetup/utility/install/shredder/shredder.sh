@@ -26,12 +26,10 @@ function check_screen_process() {
     local check_3="rm"
     local check_4="mv"
     
-    echo ;
-    ttb=$(echo -e "\n Проверяем наличие процессов с помощью pgrep") && lang=cr && bpn_p_lang ; echo ;
+    ttb=$(echo -e "\n Проверяем наличие процессов с помощью pgrep") && lang=cr && bpn_p_lang ;
     
     ps aux | (pgrep -x "$check_1" || pgrep -x "$check_2"|| pgrep -x "$check_3"|| pgrep -x "$check_4")
     
-    echo ;
     # Проверяем наличие процессов shredder.sh с помощью pgrep
     if ps aux | (pgrep -x "$check_1" || pgrep -x "$check_2"|| pgrep -x "$check_3"|| pgrep -x "$check_4") >/dev/null; 
       then
@@ -43,8 +41,9 @@ function check_screen_process() {
       else
         ttb=$(echo -e "\n Процесс \"Desktop Shredder\" не найден\n Проверить процесс: # screen -r $screen_name") && lang=cr && bpn_p_lang
            
-        echo ;
-        #timer "10 sec"; # таймер для отладки
+        tree -aC -L 2 $sw_path ; echo ;
+        ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку этой папки: $sw_path\n") && lang=cr && bpn_p_lang ;
+        timer "5 sec"; # таймер для отладки
         # Удаляет пустые папки с именем в котом только нули
         deleting_empty_zero_folders $sw_path $iteration_n ;
         #press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
@@ -243,12 +242,7 @@ function desktop_shredder() {
         exit 1
       fi
     }
-    
      
-    
-    ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку папки: \n") && lang=cr && bpn_p_lang ; 
-    #tree -aC -L 2 $sw_path ;
-    echo ;
     # Проверяем что shredder не запущен и уже не работает
     check_screen_process $sw_path $iteration_n ;
     # Засекаем время начала работы скрипта
