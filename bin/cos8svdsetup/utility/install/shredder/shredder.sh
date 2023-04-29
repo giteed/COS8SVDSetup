@@ -35,7 +35,7 @@ function check_screen_process() {
     # Проверяем наличие процессов shredder.sh с помощью pgrep
     if ps aux | (pgrep -x "$check_1" || pgrep -x "$check_2"|| pgrep -x "$check_3"|| pgrep -x "$check_4") >/dev/null; 
       then
-        ttb=$(echo -e "\n Процесс $screen_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $screen_name") && lang=cr && bpn_p_lang
+        ttb=$(echo -e "\n Процесс $screen_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $screen_name\n Или: systemctl status -n0 --no-pager desktop_shredder.service") && lang=cr && bpn_p_lang
         # Удаляет пустые папки с именем в котом только нули
         deleting_empty_zero_folders $sw_path $iteration_n ;
         #timer "10 sec"; # таймер для отладки
