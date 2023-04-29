@@ -68,5 +68,5 @@ ttb=$(cat /etc/systemd/system/desktop_shredder.service)&& lang=nix && bpn_lang ;
 ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started." ) && lang=cr && bpn_p_lang ;
 
 
-exit 0
+	exit 0
 
