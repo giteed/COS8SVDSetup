@@ -158,7 +158,7 @@ function cycle_zero() {
 function request_sw_path() {
     
     while true; do
-      echo -en " " 
+      echo -en "\n " 
       read -p " Введите путь до папки: " sw_path
        if [ ! -d "$sw_path" ]; then
           ttb=$(echo -e " Папка не найдена. Попробуйте еще раз.") && lang=cr && bpn_p_lang
@@ -174,7 +174,7 @@ function request_sw_path() {
 function request_iteration_n() {
     
     while true; do
-      echo -en " " 
+      echo -en "\n " 
       read -p " Введите количество выполнений цикла: " iteration_n
        if [[ ! "$iteration_n" =~ ^[0-9]+$ ]]; then
           ttb=$(echo -e " Неверный формат. Введите только цифры.") && lang=cr && bpn_p_lang
