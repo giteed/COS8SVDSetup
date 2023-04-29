@@ -30,7 +30,7 @@ function mvds() {
 				)
 				
 				while true; do
-					read -p "Введите путь: " path
+					read -p " Введите путь: " path
 					
 					if [[ "$path" == "/" || "$path" == "~/" || " ${forbidden_paths[@]} " =~ " ${path} " ]]; then
 						echo " Неверный путь. Пожалуйста, введите другой путь."
@@ -49,7 +49,7 @@ function mvds() {
 				read -p "Введите путь до директории или файла: " path
 			done
 			
-			echo "Путь прошел проверку: $path"
+			echo " Путь прошел проверку: $path"
 			
 			check_valid_path $1
 			
