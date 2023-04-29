@@ -133,8 +133,7 @@ function cycle_openssl_hex() {
 function cycle_zero() {
    
    sw_path=$1
-   #iteration_n=$2
-   iteration_n=1
+   iteration_n=1 # ручное определение количества интераций
     # Цикл, который выполняется iteration_n раз
     for (( i=1; i<=$iteration_n; i++ ))
       do
@@ -145,7 +144,7 @@ function cycle_zero() {
   }
 
 function request_sw_path() {
-    
+    # Запрос рабочей папки для измельчения файлов Shredder-ом (в ручном режиме)
     while true; do
       read -p " Введите путь до папки: " sw_path
        if [ ! -d "$sw_path" ]; then
@@ -159,7 +158,7 @@ function request_sw_path() {
   }
 
 function request_iteration_n() {
-    
+    # Запрос количества интераций (повторений действий с файлами/папками)
     while true; do
       read -p " Введите количество выполнений цикла: " iteration_n
        if [[ ! "$iteration_n" =~ ^[0-9]+$ ]]; then
@@ -185,18 +184,20 @@ function deleting_empty_folders() {
 
 # Старт с запросом папки и количества интераций
 function shred_request() {
-    tstart ;
-    check_screen_process ;
-    request_sw_path && request_iteration_n 
+    
+    tstart ; # засекаем время начала работы скрипта
+    check_screen_process ; # проверяем что shredder не запущен и уже не работает
+    request_sw_path && request_iteration_n # получаем путь и количество повторений операции с файлами/папками
     
     # Путь до рабочей папки с которой производим действия
     sw_path=$(cat /tmp/shredder_request_sw_path.txt)
     echo ;
     tree -aC -L 2 $sw_path ; echo ; timer 5 sec ; tstart
-    deleting_empty_zero_folders $sw_path $iteration_n ;
-    shred_files $sw_path $iteration_n && cycle_openssl_hex $sw_path $iteration_n && cycle_zero $sw_path $iteration_n && deleting_empty_folders $sw_path $iteration_n ;
+    deleting_empty_zero_folders $sw_path $iteration_n ; # удаляет пустые папки с именем в котом только нули
+    # запускает по очереди все функции Shredder для очистки
+    shred_files $sw_path $iteration_n && cycle_openssl_hex $sw_path $iteration_n && cycle_zero $sw_path $iteration_n && deleting_empty_folders $sw_path $iteration_n ; 
     
-    ttb=$(echo -e  " Готово \"shred_request\" !") && lang=cr && bpn_p_lang
+    ttb=$(echo -e  " Готово! \"Очистка вручную\" папки $sw_path завершена\n Количество сделанных повторений $iteration_n !") && lang=cr && bpn_p_lang
     tendl ;
   }
   
@@ -204,7 +205,7 @@ function desktop_shredder() {
     
     mkdir -p /root/temp/shredder
     sw_path="/root/temp/shredder/"
-    iteration_n=1 # Количество интераций (проходов)
+    iteration_n=1 # Количество интераций (повторений)
     
     check_empty_folder() {
       shredder_folder="$sw_path"
@@ -227,7 +228,7 @@ function desktop_shredder() {
     deleting_empty_zero_folders $sw_path $iteration_n ;
     shred_files $sw_path $iteration_n && cycle_openssl_hex $sw_path $iteration_n && cycle_zero $sw_path $iteration_n && deleting_empty_folders $sw_path $iteration_n
     
-    ttb=$(echo -e  "\n \"Desktop Shredder\" старательно измельчил\n все содержимое папки: $sw_path") && lang=cr && bpn_p_lang ; echo ; tendl ;
+    ttb=$(echo -e  "\n \"Desktop Shredder\" старательно измельчил\n все содержимое папки: $sw_path\n $iteration_n раз(а) подряд.") && lang=cr && bpn_p_lang ; echo ; tendl ;
     
   }
 
@@ -239,7 +240,7 @@ function desktop_shredder() {
       shred_request ;
       
     else
-      ttb=$(echo -e  "\n Используйте $0 с ключем sr или ds") && lang=cr && bpn_p_lang
+      ttb=$(echo -e  "\n Используйте скрипт $0 с ключем sr или ds") && lang=cr && bpn_p_lang
   fi
 
 
