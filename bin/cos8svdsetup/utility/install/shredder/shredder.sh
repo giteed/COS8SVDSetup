@@ -232,7 +232,7 @@ function desktop_shredder() {
     # Создаем рабочую папку для "Desktop Shredder", если ее нет.
     mkdir -p $ds_path
     # записываем путь в файл для функции mvds() (перемещение папки или файла в папку Desktop Shredder)
-    ds_path=$(echo $ds_path > /tmp/Desktop_Shredder_path.txt)
+    echo $ds_path > /tmp/Desktop_Shredder_path.txt
     # Количество интераций (повторений) выставленное вручную 
     iteration_n=1 
     
