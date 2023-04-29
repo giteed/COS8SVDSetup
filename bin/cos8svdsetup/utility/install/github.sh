@@ -2,7 +2,7 @@
 
 # Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-source /root/.bashrc
+. /root/.bashrc
 
 # --> Загрузка функции из этого файла проверяет, запущен ли скрипт с правами суперпользователя (root) в Linux.
 . /root/vdsetup.2/bin/functions/run_as_root.sh 2>/dev/null ;

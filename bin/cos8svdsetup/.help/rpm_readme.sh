@@ -2,7 +2,7 @@
 
 # Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-source /root/.bashrc
+. /root/.bashrc
 
 # --> Прочитать настройки:
 . /root/bin/utility/.varfunc.sh &>/dev/null ;

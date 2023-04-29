@@ -715,7 +715,7 @@
       
     }
         mkdir -p /root/temp/ ;
-        ( source /root/.bashrc ; echo 1 > /root/temp/.debug.txt ; ) && source /root/.bashrc && css && msg_d_on || echo error_msg_d_on ;
+        ( . /root/.bashrc ; echo 1 > /root/temp/.debug.txt ; ) && . /root/.bashrc && css && msg_d_on || echo error_msg_d_on ;
         
         ;;
         
@@ -728,7 +728,7 @@
       #echo -e " $(black_U23A9) $(green_tick) run: $0 -d1 to enabled Debug.\n" ; 
     }
         mkdir -p /root/temp/ ;
-        ( source /root/.bashrc ; echo 0 > /root/temp/.debug.txt ; ) && source /root/.bashrc && css && msg_d_off || echo error_msg_d_off ;
+        ( . /root/.bashrc ; echo 0 > /root/temp/.debug.txt ; ) && . /root/.bashrc && css && msg_d_off || echo error_msg_d_off ;
         
         ;;
         

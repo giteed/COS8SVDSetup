@@ -2,7 +2,7 @@
 
 # Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-source /root/.bashrc
+. /root/.bashrc
 echo ;
 
  function check_old_if_0() {

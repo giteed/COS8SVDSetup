@@ -39,7 +39,7 @@
    
    function GREEN_VER()
    {
-      source /root/.bashrc ;
+      . /root/.bashrc ;
       echo -e "${green}$(Version_vdsetup) $(red_U0023) vdsetup sync" ;
       
    }
@@ -123,7 +123,7 @@ function css()
    { 
       
       Version_vdsetup &>/dev/null ;
-      echo -en "$( clear && source /root/.bashrc && hip )\n ${RED}-${ellow}=---${ELLOW}=${ellow}-${GREEN}-${green}-${NC}-------------------------------------------------------------------------\n ${NC}$(green_tick) ${BLACK}VDSetup ${GREEN}version${NC}: $(Version_vdsetup_Ver_RED_or_GREEN)${NC}" ;  echo -e " ${msg_debug_stat}" ; 
+      echo -en "$( clear && . /root/.bashrc && hip )\n ${RED}-${ellow}=---${ELLOW}=${ellow}-${GREEN}-${green}-${NC}-------------------------------------------------------------------------\n ${NC}$(green_tick) ${BLACK}VDSetup ${GREEN}version${NC}: $(Version_vdsetup_Ver_RED_or_GREEN)${NC}" ;  echo -e " ${msg_debug_stat}" ; 
    }
    
    

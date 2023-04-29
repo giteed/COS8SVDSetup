@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # --> Прочитать настройки из /root/.bashrc
-source /root/.bashrc
+. /root/.bashrc
 
 # --> Этот ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
 	. /root/vdsetup.2/bin/functions/run_as_root.sh
@@ -120,7 +120,7 @@ function vnc-swap-CH() {
 	echo -e " $(black_U23A9 )\n" 
   }
   
-  source /root/.bashrc ;
+  . /root/.bashrc ;
   ( ls /usr/bin/vncserver ; lk /usr/bin/vncserver ) #&>/dev/null ;  ;
   ( [[ -z $( vncserver -list ) ]] 2>/dev/null ) && vnc_not_found || swap_CH_and_warn_msg
   

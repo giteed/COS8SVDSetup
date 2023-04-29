@@ -43,7 +43,7 @@ function vsync() {
         sudo cp -a /root/COS8SVDSetup/VERSION /root/vdsetup.2/bin/ ;
         cd ~
 # --> Наконец, запускается алиас чтения .bashrc для применения изменений alias urc='source /root/.bashrc'
-        source /root/.bashrc
+        . /root/.bashrc
         urc ;
         
         ttb=$(echo -e "  VDSetup $(cat /root/vdsetup.2/bin/VERSION)\n\n  If you need to completely remove,\n  and reinstall vdsetup from GitHub,  type: # rm_clone \n  If you only need to remove vdsetup, type: # rm_vdsetup \n  Alias 'urc' For update .bashrc, or  type: # source /root/.bashrc") && lang_cr ; bpn_p_lang ; 

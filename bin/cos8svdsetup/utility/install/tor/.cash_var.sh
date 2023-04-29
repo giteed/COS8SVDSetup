@@ -2,7 +2,7 @@
 
 # Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-source /root/.bashrc
+. /root/.bashrc
 
 
 debug_stat=0 # дебаг выключен, чтобы включить измените на 1

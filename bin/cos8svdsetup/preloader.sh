@@ -2,7 +2,7 @@
 
 # --> Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-source /root/.bashrc 2>/dev/null ;
+. /root/.bashrc 2>/dev/null ;
 
 
 # --> функции работы с текстовым процессором bat для подсветки синтаксиса терминала.
@@ -135,7 +135,7 @@ function preloader() {
 # --> вызвать функцию чтения настроек стилей и функций
 	#read_sty_func 2>/dev/null ;
 # --> перезагружаем файл настроек bash
-	source /root/.bashrc ;
+	. /root/.bashrc ;
 # --> удалить временные файлы
 	#rm -rf /root/COS8SVDSetup ;	
 }

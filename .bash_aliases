@@ -18,15 +18,14 @@ alias who='echo -e "\n/usr/bin/who -H\n" &&  who -H | bat  --paging=never -l c -
 
 ### clear , update /root/.bashrc , ls , cd , tree
 
-alias urc='source /root/.bashrc'
-alias vcc='vsync && sleep 2 && source /root/.bashrc && clear && clear && ttb=$(echo -e "\n VDSetup $(cat /root/vdsetup.2/bin/VERSION) # vsync - for update (or rm_clone)\n") && lang_cr ; bpn_p_lang'
+alias urc='. /root/.bashrc'
+alias vcc='vsync && sleep 2 && . /root/.bashrc && clear && clear && ttb=$(echo -e "\n VDSetup $(cat /root/vdsetup.2/bin/VERSION) # vsync - for update (or rm_clone)\n") && lang_cr ; bpn_p_lang'
 alias l.='ls -lhd --color=auto .*'
 alias l..='ls -lhd --color=auto .* *'
 alias ll='ls -lh --color=auto'
 alias lll='tree -Csuh | more' 
 alias ls='ls -h --color=auto'
 alias ff='GLIG_ASTRX_ON && ff-f'
-alias lk='GLIG_ASTRX_OF && lk-f'
 alias ..='cd ..'
 alias path='echo -e ${PATH//:/\\n}'
 
