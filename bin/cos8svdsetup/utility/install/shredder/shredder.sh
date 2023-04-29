@@ -39,7 +39,7 @@ function check_screen_process() {
         #timer "10 sec"; # таймер для отладки
         exit 1
       else
-        ttb=$(echo -e "\n Процесс \"Desktop Shredder\" не найден\n роверить процесс: # screen -r $screen_name\n Или: systemctl status -n0 --no-pager desktop_shredder.service") && lang=cr && bpn_p_lang ; echo ;
+        ttb=$(echo -e "\n Процесс \"Desktop Shredder\" не найден\n Проверить процесс: # screen -r $screen_name\n Или: systemctl status -n0 --no-pager desktop_shredder.service") && lang=cr && bpn_p_lang ; echo ;
            
         tree -aC -L 2 $sw_path ; echo ;
         ttb=$(echo -e  "\n \"Desktop Shredder\" скоро начнет очистку этой папки: $sw_path\n  Ctrl+C для отмены.") && lang=cr && bpn_p_lang ; echo ;
