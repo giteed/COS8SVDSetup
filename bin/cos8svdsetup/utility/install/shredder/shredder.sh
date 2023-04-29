@@ -43,7 +43,7 @@ function check_screen_process() {
            
         tree -aC -L 2 $sw_path ; echo ;
         ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку этой папки: $sw_path\n") && lang=cr && bpn_p_lang ;
-        timer "5 sec"; # таймер для отладки
+        timer "10 sec"; # таймер для отладки
         # Удаляет пустые папки с именем в котом только нули
         deleting_empty_zero_folders $sw_path $iteration_n ;
         #press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
