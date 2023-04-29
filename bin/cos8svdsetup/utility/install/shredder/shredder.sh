@@ -42,7 +42,7 @@ function check_screen_process() {
         ttb=$(echo -e "\n Процесс \"Desktop Shredder\" не найден\n Проверить процесс: # screen -r $screen_name") && lang=cr && bpn_p_lang
            
         tree -aC -L 2 $sw_path ; echo ;
-        ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку этой папки: $sw_path\n") && lang=cr && bpn_p_lang ;
+        ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет очистку этой папки: $sw_path\n") && lang=cr && bpn_p_lang ;
         timer "10 sec"; # таймер для отладки
         # Удаляет пустые папки с именем в котом только нули
         deleting_empty_zero_folders $sw_path $iteration_n ;
