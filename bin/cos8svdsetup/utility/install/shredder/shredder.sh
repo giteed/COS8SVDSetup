@@ -201,14 +201,13 @@ function shred_request() {
     
     # Засекаем время начала работы скрипта
     tstart ; 
-    # Проверяем что shredder не запущен и уже не работает
-    check_screen_process ; 
     # Получаем путь и количество повторений операции с файлами/папками
     request_sw_path && request_iteration_n 
-    
     # Путь до рабочей папки с которой производим действия
     sw_path=$(cat /tmp/shredder_request_sw_path.txt)
     echo ;
+    # Проверяем что shredder не запущен и уже не работает
+    check_screen_process $sw_path $iteration_n ; 
     tree -aC -L 2 $sw_path ; echo ; timer 5 sec ; tstart
     # Удаляет пустые папки с именем в котом только нули
     deleting_empty_zero_folders $sw_path $iteration_n ; 
