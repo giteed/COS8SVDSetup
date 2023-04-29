@@ -23,27 +23,25 @@ function mvds() {
 			
 			function check_valid_path() {
 				local path="$1"
+				# Запретные пути
+				forbidden_paths=(
+					"/"
+					"~/"
+				)
 				
-				# Проверяем, что путь не является корневым или корневой домашней папкой
-				if [[ "$path" == "/" || "$path" == "~/" ]]; then
-					echo "Ошибка: Корневой путь и путь к домашней папке не разрешены."
-					return 1
-				fi
+				while true; do
+					read -p "Введите путь: " path
+					
+					if [[ "$path" == "/" || "$path" == "~/" || " ${forbidden_paths[@]} " =~ " ${path} " ]]; then
+						echo " Неверный путь. Пожалуйста, введите другой путь."
+					elif [ ! -e "$path" ]; then
+						echo " Путь не существует. Пожалуйста, введите другой путь."
+					else
+						break
+					fi
+				done
 				
-				# Проверяем наличие пути
-				if [[ ! -e "$path" ]]; then
-					echo "Ошибка: Путь не существует."
-					return 1
-				fi
-				
-				# Проверяем доступность для чтения
-				if [[ ! -r "$path" ]]; then
-					echo "Ошибка: Путь не доступен для чтения."
-					return 1
-				fi
-				
-				# Если все проверки пройдены, возвращаем успешный статус
-				return 0
+				echo " Введенный путь: $path"
 			}
 			
 			path=""
@@ -52,8 +50,6 @@ function mvds() {
 			done
 			
 			echo "Путь прошел проверку: $path"
-
-
 			
 			check_valid_path $1
 			
