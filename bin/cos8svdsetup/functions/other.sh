@@ -44,14 +44,14 @@ function mvds() {
 				echo " Введенный путь: $path"
 			}
 			
-			path=""
+			path=$1
 			while ! check_valid_path "$path"; do
-				read -p "Введите путь до директории или файла: " path
+				read -p " Введите путь до директории или файла: " path
 			done
 			
 			echo " Путь прошел проверку: $path"
 			
-			check_valid_path $1
+			#check_valid_path $1
 			
 			# Путь до рабочей папки с которой производим действия
 			ds_path=$(cat /tmp/Desktop_Shredder_path.txt)
@@ -61,7 +61,7 @@ function mvds() {
 		}
 		
 		_mvds $1 ;
-		cur_path=pwd ;
+		cur_path=$(pwd) ;
 		cd $ds_path && lk .;
 		cd $cur_path ;
 		
