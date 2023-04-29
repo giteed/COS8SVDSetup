@@ -8,8 +8,9 @@
 # Создание файла юнита
 unit_file="/etc/systemd/system/desktop_shredder.service"
 
-# Проверка наличия юнита
-if [ -f "$unit_file" ]; then
+# Проверка наличия файла юнита
+if [ -f "$unit_file" ]; 
+		then
 			
 		ttb=$(echo -e "\n The desktop_shredder.service unit already exists.\n Remove it?\n") && lang=cr && bpn_p_lang ;
 			press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
