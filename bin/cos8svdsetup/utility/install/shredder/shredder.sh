@@ -2,7 +2,7 @@
 
 # --> Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-sudo source /root/.bashrc
+source /root/.bashrc
 
 # Удаляет пустые папки с именем в котом только нули
 function deleting_empty_zero_folders() {
