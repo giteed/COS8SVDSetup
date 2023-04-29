@@ -133,7 +133,7 @@ function cycle_openssl_hex() {
 function cycle_zero() {
    
    sw_path=$1
-   iteration_n=1 # ручное определение количества интераций
+   iteration_n=$2 # Количества интераций заданное в функции desktop_shredder
     # Цикл, который выполняется iteration_n раз
     for (( i=1; i<=$iteration_n; i++ ))
       do
@@ -205,7 +205,7 @@ function desktop_shredder() {
     
     mkdir -p /root/temp/shredder
     sw_path="/root/temp/shredder/"
-    iteration_n=1 # Количество интераций (повторений)
+    iteration_n=1 # Количество интераций (повторений) выставленное вручную 
     
     check_empty_folder() {
       shredder_folder="$sw_path"
