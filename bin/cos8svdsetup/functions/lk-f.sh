@@ -1,8 +1,7 @@
 #!/bin/bash
 
-   # Листинг файлов/папок и их цифровых прав доступа:
-function lk-f() 
-{ 
+# Листинг файлов/папок и их цифровых прав доступа:
+function lk-f() { 
    # Convert KB To MB using Bash
    # https://stackoverflow.com/questions/19059944/convert-kb-to-mb-using-bash	
    # man numfmt
@@ -29,3 +28,7 @@ function lk-f()
 }
 
  #ttb=$(echo -e "\n $(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) 2>/dev/null | column -t ;)\n") && lang=cr && bpn_p_lang ;
+ 
+ function lk() {
+    ('GLIG_ASTRX_OF && lk-f')
+   }

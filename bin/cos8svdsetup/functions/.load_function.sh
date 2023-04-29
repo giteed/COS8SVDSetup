@@ -19,7 +19,7 @@
 # --> Проверяет или устанавливает проверяемые компоненты.	
 	source /root/vdsetup.2/bin/functions/check_or_install.sh
 # --> Листинг файлов/папок и их цифровых прав доступа:
-	source /root/vdsetup.2/bin/functions/lk-f.sh
+	. /root/vdsetup.2/bin/functions/lk-f.sh
 #  --> Поиски
 	source /root/vdsetup.2/bin/functions/find.sh
 #  --> net_func
