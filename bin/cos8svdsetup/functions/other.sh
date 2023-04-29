@@ -27,6 +27,11 @@ function mvds() {
 			
 		}
 		
-		_mvds $1
-		lk $ds_path ;
+		_mvds $1 ;
+		cur_path=pwd ;
+		cd $ds_path && lk ;
+		cd cur_path ;
+		
+		ttb=$(echo -e  "\n \"Desktop Shredder\" \n скоро начнет очистку этой папки: $ds_path\n  \n systemctl stop desktop_shredder.service для отмены.") && lang=cr && bpn_p_lang ; echo ;
+		
 	}
