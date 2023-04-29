@@ -2,7 +2,7 @@
 
 # Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-. /root/.bashrc
+source /root/.bashrc
 echo ;
 
 function msg_stop_npx_http_server() {

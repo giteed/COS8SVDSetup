@@ -3,7 +3,7 @@
 # Get the aliases and functions
 # --> Импортируем алиасы и функции из файла .bashrc, если такой файл существует
 if [ -f /root/.bashrc ]; then
-	. /root/.bashrc
+	source /root/.bashrc
 fi
 
 # Use ~/.bash_aliases

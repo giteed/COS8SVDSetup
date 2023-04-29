@@ -2,7 +2,7 @@
 
 # Source global definitions
 # --> Прочитать настройки из /root/.bashrc
-. /root/.bashrc
+source /root/.bashrc
 
 
 # https://losst.pro/kak-ubit-protsess-linux?ysclid=lay4xo7gzk993626029
