@@ -9,7 +9,7 @@
 # --> Этот код, запрашивает пользователя подтверждение для продолжения.
 	source /root/vdsetup.2/bin/functions/press_enter.sh
 # --> Поиск программы/файла локально и в repository по 7 командам.
-	source /root/vdsetup.2/bin/functions/wis.sh
+	. /root/vdsetup.2/bin/functions/wis.sh
 # --> Поиск информации о программе сразу по 11 командам.
 	source /root/vdsetup.2/bin/functions/ww.sh
 # --> Информация о ip адресах и некоторые другие информационные функции о системе.
