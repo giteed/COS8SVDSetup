@@ -216,7 +216,7 @@ function shred_request() {
     # Запускает по очереди все функции Shredder для очистки
     shred_files $sw_path $iteration_n && cycle_openssl_hex $sw_path $iteration_n && cycle_zero $sw_path $iteration_n && deleting_empty_folders $sw_path $iteration_n ; 
     
-    ttb=$(echo -e  "\n Готово! Очистка папки $sw_path завершена\n Количество сделанных повторений $iteration_n !\n Теперь удалите вручную пустую папку: rm -rf $sw_path") && lang=cr && bpn_p_lang
+    ttb=$(echo -e  "\n Готово! Очистка папки $sw_path завершена.\n Количество сделанных повторений $iteration_n\n Теперь удалите вручную пустую папку: rm -rf $sw_path") && lang=cr && bpn_p_lang
     tendl ;
   }
 
