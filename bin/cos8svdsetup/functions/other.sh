@@ -21,33 +21,54 @@ function mvds() {
 		
 		function _mvds() {
 			
-			function check_valid_path() {
-				local path="$1"
-				# Запретные пути
-				forbidden_paths=(
-					"/"
-					"~/"
-				)
-				
-				while true; do
-					read -p " Введите путь: " path
-					
-					if [[ "$path" == "/" || "$path" == "~/" || " ${forbidden_paths[@]} " =~ " ${path} " ]]; then
-						echo " Неверный путь. Пожалуйста, введите другой путь."
-					elif [ ! -e "$path" ]; then
-						echo " Путь не существует. Пожалуйста, введите другой путь."
-					else
-						break
-					fi
-				done
-				
-				echo " Введенный путь: $path"
-			}
+#100% рабочий вариант
+		function check_valid_path() {
+			local path="$1"
+			# Запретные пути
+			local forbidden_paths=(
+			  "/"
+			  "~/"
+			)
+			
+			if [ -n "$path" ]; then
+			  # Проверка запрещенных путей
+			  if [[ " ${forbidden_paths[@]} " =~ " $path " ]]; then
+				echo "Запретный путь."
+				return 1
+			  fi
+			  
+			  # Проверка существования пути
+			  if [ -e "$path" ]; then
+				echo "Введенный путь: $path"
+				return 0
+			  else
+				echo "Несуществующий путь."
+				return 1
+			  fi
+			else
+			  # Запрос ввода пути от пользователя
+			  while true; do
+				read -p "Введите путь до директории или файла: " path
+				# Проверка запрещенных путей
+				if [[ " ${forbidden_paths[@]} " =~ " $path " ]]; then
+				  echo "Запрещенный путь. Пожалуйста, введите другой путь."
+				# Проверка существования пути
+				elif [ -e "$path" ]; then
+				  echo "Введенный путь: $path"
+				  break
+				else
+				  echo "Несуществующий путь. Пожалуйста, введите верный путь."
+				fi
+			  done
+			fi
+		}
+		
+		check_valid_path "$1"
 			
 			path=$1
-			while ! check_valid_path "$path"; do
-				read -p " Введите путь до директории или файла: " path
-			done
+			#while ! check_valid_path "$path"; do
+			#	read -p " Введите путь до директории или файла: " path
+			#done
 			
 			echo " Путь прошел проверку: $path"
 			
