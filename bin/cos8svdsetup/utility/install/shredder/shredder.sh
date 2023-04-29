@@ -238,7 +238,7 @@ function desktop_shredder() {
       shredder_folder="$sw_path"
      
       if [ -z "$(ls -A "$shredder_folder")" ]; then
-        echo -en "\n Папка Desktop Shredder, пуста.\n Нечего мельчить!\n Выход.\n"
+        ttb=$(echo -e "\n Папка Desktop Shredder, пуста.\n Нечего мельчить!\n Выход.\n") && lang=nix && bpn_p_lang
         exit 1
       fi
     }
