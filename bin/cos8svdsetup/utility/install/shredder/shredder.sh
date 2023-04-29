@@ -4,6 +4,7 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
+# Удаляет пустые папки с именем в котом только нули
 function deleting_empty_zero_folders() {
     sw_path=$1
     iteration_n=$2
@@ -14,8 +15,9 @@ function deleting_empty_zero_folders() {
     
   }
 
-  function check_screen_process() {
-    #sleep 7
+# Проверяем что shredder не запущен и уже не работает
+function check_screen_process() {
+    #timer "10 sec"; # таймер для отладки
     sw_path=$1
     # Получаем имя текущего процесса
     local screen_name="d_s_h_r_e_d_d_e_r"
@@ -30,24 +32,27 @@ function deleting_empty_zero_folders() {
     ps aux | (pgrep -x "$check_1" || pgrep -x "$check_2"|| pgrep -x "$check_3"|| pgrep -x "$check_4")
     
     echo ;
-    # Проверяем наличие процесса с помощью pgrep
+    # Проверяем наличие процессов shredder.sh с помощью pgrep
     if ps aux | (pgrep -x "$check_1" || pgrep -x "$check_2"|| pgrep -x "$check_3"|| pgrep -x "$check_4") >/dev/null; 
       then
         ttb=$(echo -e "\n Процесс $screen_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $screen_name") && lang=cr && bpn_p_lang
+        # Удаляет пустые папки с именем в котом только нули
         deleting_empty_zero_folders $sw_path $iteration_n ;
-        #timer "10 sec"
+        #timer "10 sec"; # таймер для отладки
         exit 1
       else
         ttb=$(echo -e "\n Процесс \"Desktop Shredder\" не найден\n Проверить процесс: # screen -r $screen_name") && lang=cr && bpn_p_lang
            
         echo ;
-        #timer "10 sec";
+        #timer "10 sec"; # таймер для отладки
+        # Удаляет пустые папки с именем в котом только нули
         deleting_empty_zero_folders $sw_path $iteration_n ;
         #press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
         return ;
     fi
   }
-  
+
+# Перезапись имен дирректорий нулями, включая вложенные папки
 function replace_folder_name_with_zeros() {
     
     sw_path=$1
@@ -87,6 +92,7 @@ function replace_folder_name_with_zeros() {
     done
   }
 
+# Функция вызова утилиты shred в указанной директории и ее поддиректориях
 function shred_files() {
     
     sw_path=$1
@@ -95,6 +101,8 @@ function shred_files() {
     find "$sw_path" -type f -exec shred -n 1 -f -u -v -z {} \;
   }
 
+# Функция перезаписи имен файлов генерируемых утилитой 
+# openssl rand -hex который выполняется iteration_n раз
 function rename_folder_name_with_openssl_hex() {
     
     sw_path=$1
@@ -117,6 +125,8 @@ function rename_folder_name_with_openssl_hex() {
     done
   }
 
+# Цикл, перезаписи имен файлов генерируемых утилитой 
+# openssl rand -hex который выполняется iteration_n раз
 function cycle_openssl_hex() {
     
     sw_path=$1
@@ -130,10 +140,12 @@ function cycle_openssl_hex() {
     
   }
 
+# Цикл, перезаписи имен файлов/папок который выполняется iteration_n раз
 function cycle_zero() {
    
    sw_path=$1
-   iteration_n=$2 # Количества интераций заданное в функции desktop_shredder
+   # Количества интераций заданное в функции desktop_shredder
+   iteration_n=$2 
     # Цикл, который выполняется iteration_n раз
     for (( i=1; i<=$iteration_n; i++ ))
       do
@@ -143,8 +155,9 @@ function cycle_zero() {
     
   }
 
+# Запрос рабочей папки для измельчения файлов Shredder-ом (в ручном режиме)
 function request_sw_path() {
-    # Запрос рабочей папки для измельчения файлов Shredder-ом (в ручном режиме)
+    
     while true; do
       read -p " Введите путь до папки: " sw_path
        if [ ! -d "$sw_path" ]; then
@@ -157,8 +170,9 @@ function request_sw_path() {
     
   }
 
+# Запрос количества интераций (повторений действий с файлами/папками)
 function request_iteration_n() {
-    # Запрос количества интераций (повторений действий с файлами/папками)
+    
     while true; do
       read -p " Введите количество выполнений цикла: " iteration_n
        if [[ ! "$iteration_n" =~ ^[0-9]+$ ]]; then
@@ -172,6 +186,7 @@ function request_iteration_n() {
     
   }
 
+# Удаляем пустые директории кроме родительской папки
 function deleting_empty_folders() {
     
     sw_path=$1
@@ -185,28 +200,41 @@ function deleting_empty_folders() {
 # Старт с запросом папки и количества интераций
 function shred_request() {
     
-    tstart ; # засекаем время начала работы скрипта
-    check_screen_process ; # проверяем что shredder не запущен и уже не работает
-    request_sw_path && request_iteration_n # получаем путь и количество повторений операции с файлами/папками
+    # Засекаем время начала работы скрипта
+    tstart ; 
+    # Проверяем что shredder не запущен и уже не работает
+    check_screen_process ; 
+    # Получаем путь и количество повторений операции с файлами/папками
+    request_sw_path && request_iteration_n 
     
     # Путь до рабочей папки с которой производим действия
     sw_path=$(cat /tmp/shredder_request_sw_path.txt)
     echo ;
     tree -aC -L 2 $sw_path ; echo ; timer 5 sec ; tstart
-    deleting_empty_zero_folders $sw_path $iteration_n ; # удаляет пустые папки с именем в котом только нули
-    # запускает по очереди все функции Shredder для очистки
+    # Удаляет пустые папки с именем в котом только нули
+    deleting_empty_zero_folders $sw_path $iteration_n ; 
+    # Запускает по очереди все функции Shredder для очистки
     shred_files $sw_path $iteration_n && cycle_openssl_hex $sw_path $iteration_n && cycle_zero $sw_path $iteration_n && deleting_empty_folders $sw_path $iteration_n ; 
     
     ttb=$(echo -e  " Готово! \"Очистка вручную\" папки $sw_path завершена\n Количество сделанных повторений $iteration_n !") && lang=cr && bpn_p_lang
     tendl ;
   }
-  
+
+# Автоматически чистим папку "Desktop Shredder"
+# Время очистки регулируется в секундах в файле /etc/systemd/system/desktop_shredder.service
+# в строке RestartSec=120
+# Чтобы быстро изменить время и перезапустить [Unit] измените файл ./shredder/shredder_unit.sh
+# и после сохранения запустите его. Он создаст новый юнит и правильно перезапустит [Unit].
 function desktop_shredder() {
     
+    # Создаем рабочую папку для "Desktop Shredder", если ее нет.
     mkdir -p /root/temp/shredder
+    # Путь до рабочей папки "Desktop Shredder"
     sw_path="/root/temp/shredder/"
-    iteration_n=1 # Количество интераций (повторений) выставленное вручную 
+    # Количество интераций (повторений) выставленное вручную 
+    iteration_n=1 
     
+    # Проверяем содержимое папки "Desktop Shredder" и если пуста выходим.
     check_empty_folder() {
       shredder_folder="$sw_path"
      
@@ -221,11 +249,15 @@ function desktop_shredder() {
     ttb=$(echo -en  "\n \"Desktop Shredder\" скоро начнет\n очистку папки: \n") && lang=cr && bpn_p_lang ; 
     #tree -aC -L 2 $sw_path ;
     echo ;
+    # Проверяем что shredder не запущен и уже не работает
     check_screen_process $sw_path $iteration_n ;
+    # Засекаем время начала работы скрипта
     tstart ;
+    # Проверяем содержимое папки "Desktop Shredder" и если пуста выходим.
     check_empty_folder $sw_path $iteration_n;
-    
+    # Удаляет пустые папки с именем в котом только нули
     deleting_empty_zero_folders $sw_path $iteration_n ;
+    # Запускает по очереди все функции Shredder для очистки
     shred_files $sw_path $iteration_n && cycle_openssl_hex $sw_path $iteration_n && cycle_zero $sw_path $iteration_n && deleting_empty_folders $sw_path $iteration_n
     
     ttb=$(echo -e  "\n \"Desktop Shredder\" старательно измельчил\n все содержимое папки: $sw_path\n $iteration_n раз(а) подряд.") && lang=cr && bpn_p_lang ; echo ; tendl ;
