@@ -7,7 +7,9 @@
 function deleting_empty_zero_folders() {
     sw_path=$1
     iteration_n=$2
-    # команда find будет искать папки в указанном пути ($sw_path), фильтровать папки, в названии которых содержатся только нули (-regex '.*/0+$'), и выбирать только пустые папки (-empty). Затем найденные папки будут удалены (-delete).
+    # Команда find будет искать папки в указанном пути ($sw_path), фильтровать папки,
+    # в названии которых содержатся только нули (-regex '.*/0+$'), и выбирать 
+    # только пустые папки (-empty). Затем найденные папки будут удалены (-delete).
     find "$sw_path" -mindepth 1 -type d -regex '.*/0+$' -empty -delete ;
     
   }
@@ -119,7 +121,7 @@ function cycle_openssl_hex() {
     
     sw_path=$1
     iteration_n=$2
-    # Цикл, который выполняется n раз
+    # Цикл, который выполняется iteration_n раз
     for (( i=1; i<=$iteration_n; i++ ))
       do
         rename_folder_name_with_openssl_hex $sw_path $iteration_n ;
@@ -133,7 +135,7 @@ function cycle_zero() {
    sw_path=$1
    #iteration_n=$2
    iteration_n=1
-    # Цикл, который выполняется n раз
+    # Цикл, который выполняется iteration_n раз
     for (( i=1; i<=$iteration_n; i++ ))
       do
         replace_folder_name_with_zeros $sw_path $iteration_n ;
@@ -247,3 +249,4 @@ exit 0
 # Функции отсчета времени начала и конца выполнения скрипта
 # tstart # начало 
 # tendl # конец
+#
