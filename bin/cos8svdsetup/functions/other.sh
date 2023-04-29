@@ -22,15 +22,15 @@ function mvds() {
 		function _mvds() {
 			
 			function check_valid_path() {
-				local path=$1
+				local path="$1"
 				
-				# Проверяем наличие пути
-				if [[ -z "$path" ]]; then
-					echo "Ошибка: Путь не указан."
+				# Проверяем, что путь не является корневым или корневой домашней папкой
+				if [[ "$path" == "/" || "$path" == "~/" ]]; then
+					echo "Ошибка: Корневой путь и путь к домашней папке не разрешены."
 					return 1
 				fi
 				
-				# Проверяем существование пути
+				# Проверяем наличие пути
 				if [[ ! -e "$path" ]]; then
 					echo "Ошибка: Путь не существует."
 					return 1
@@ -45,6 +45,15 @@ function mvds() {
 				# Если все проверки пройдены, возвращаем успешный статус
 				return 0
 			}
+			
+			path=""
+			while ! check_valid_path "$path"; do
+				read -p "Введите путь до директории или файла: " path
+			done
+			
+			echo "Путь прошел проверку: $path"
+
+
 			
 			check_valid_path $1
 			
