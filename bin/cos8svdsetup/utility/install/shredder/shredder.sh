@@ -45,13 +45,13 @@ function deleting_empty_zero_folders() {
     fi
   }
   
-function replace_with_zeros() {
+function replace_folder_name_with_zeros() {
     
     path=$1
     n=$2
     # Считает количество символов в названии переданной на вход папки 
     # от переменной folder_name и отдает столько-же нулей на выход
-   function _replace_with_zeros() {
+   function _replace_folder_name_with_zeros() {
      path=$1
      name=$(basename "$path")
      num_chars=${#name}
@@ -65,11 +65,11 @@ function replace_with_zeros() {
     do
       
       # Генерируем новое имя для папки из нулей
-      new_name="${folder_name%/*}/$(_replace_with_zeros "$(basename "$folder_name")")"
+      new_name="${folder_name%/*}/$(_replace_folder_name_with_zeros "$(basename "$folder_name")")"
      
       # Если новое имя папки уже существует, добавляем один нолик в конец имени
       while [[ -e "$new_name" ]]; do
-        new_name="${new_name%/*}/$(_replace_with_zeros "${new_name##*/}0")"
+        new_name="${new_name%/*}/$(_replace_folder_name_with_zeros "${new_name##*/}0")"
       done
       
       # Получаем новое имя папки, проверяем что мы не перемещаем папку внутрь себя
@@ -135,7 +135,7 @@ function cycle_zero() {
     # Цикл, который выполняется n раз
     for (( i=1; i<=$n; i++ ))
       do
-        replace_with_zeros $path $n ;
+        replace_folder_name_with_zeros $path $n ;
         ttb=$(echo -e " Выполнение cycle_zero номер $i") && lang=cr && bpn_p_lang
     done
     
