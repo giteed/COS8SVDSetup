@@ -29,6 +29,4 @@ function lk-f() {
 
  #ttb=$(echo -e "\n $(stat -c '%a:%A %U %G %n' $( (locate "/$arg_2") | (rg "/$arg_2" | rg "/$arg_2") ) 2>/dev/null | column -t ;)\n") && lang=cr && bpn_p_lang ;
  
- function lk() {
-    GLIG_ASTRX_OF && lk-f $1 
-   }
+ function lk() { GLIG_ASTRX_OF && lk-f $1 }
