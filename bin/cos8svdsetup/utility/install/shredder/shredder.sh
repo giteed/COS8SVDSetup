@@ -84,7 +84,7 @@ function replace_folder_name_with_zeros() {
     done
   }
 
-function shred() {
+function shred_files() {
     
     path=$1
     n=$2
@@ -92,7 +92,7 @@ function shred() {
     find "$path" -type f -exec shred -n 1 -f -u -v -z {} \;
   }
 
-function rename_ssl() {
+function rename_folder_name_with_openssl_hex() {
     
     path=$1
     n=$2
@@ -114,15 +114,15 @@ function rename_ssl() {
     done
   }
 
-function cycle_ssl() {
+function cycle_openssl_hex() {
     
     path=$1
     n=$2
     # Цикл, который выполняется n раз
     for (( i=1; i<=$n; i++ ))
       do
-        rename_ssl $path $n ;
-        ttb=$(echo -e " Выполнение cycle_ssl  номер $i") && lang=cr && bpn_p_lang
+        rename_folder_name_with_openssl_hex $path $n ;
+        ttb=$(echo -e " Выполнение cycle_openssl_hex  номер $i") && lang=cr && bpn_p_lang
     done
     
   }
@@ -191,7 +191,7 @@ function shred_request() {
     echo ;
     tree -aC -L 2 $path ; echo ; timer 5 sec ; tstart
     deleting_empty_zero_folders $path $n ;
-    shred $path $n && cycle_ssl $path $n && cycle_zero $path $n && deleting_empty_folders $path $n ;
+    shred_files $path $n && cycle_openssl_hex $path $n && cycle_zero $path $n && deleting_empty_folders $path $n ;
     
     ttb=$(echo -e  " Готово \"shred_request\" !") && lang=cr && bpn_p_lang
     tendl ;
@@ -222,7 +222,7 @@ function desktop_shredder() {
     check_empty_folder $path $n;
     
     deleting_empty_zero_folders $path $n ;
-    shred $path $n && cycle_ssl $path $n && cycle_zero $path $n && deleting_empty_folders $path $n
+    shred_files $path $n && cycle_openssl_hex $path $n && cycle_zero $path $n && deleting_empty_folders $path $n
     
     ttb=$(echo -e  "\n \"Desktop Shredder\" старательно измельчил\n все содержимое папки: $path") && lang=cr && bpn_p_lang ; echo ; tendl ;
     
