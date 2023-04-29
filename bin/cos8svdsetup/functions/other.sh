@@ -13,4 +13,4 @@ function c() { (clear) }
 function im() { whoami ; } ;
 
 # Поиск программ, по 6 утилитам
-function wis() { (GLIG_ASTRX_ON && wis-f) } ;
+function wis() { (GLIG_ASTRX_ON && wis-f $1 $2) } ;
