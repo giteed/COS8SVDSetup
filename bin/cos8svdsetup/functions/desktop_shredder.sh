@@ -3,11 +3,11 @@
 
 function desktop_shredder_status() {
     local status_output=$(systemctl status desktop_shredder.service)
-    local auto_restart=$(echo "$status_output" | grep -oE '[0-9]+' | head -n 1)
+    local _auto_restart=$(echo "$status_output" | grep -oE '[0-9]+' | head -n 1)
     local last_start_time=$(echo "$status_output" | grep -oE '[A-Za-z]{3} [0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}' | tail -n 1)
     local current_time=$(date +%H:%M:%S) # только время
     local current_d_time=$(date +"%b %d %H:%M:%S") # дата время
-    local next_start_time=$(date -d "+$auto_restart seconds $last_start_time" +%H:%M:%S)
+    local next_start_time=$(date -d "+$_auto_restart seconds $last_start_time" +%H:%M:%S)
     local next_start_will_be_in=$(($(date -d "$next_start_time" +%s) - $(date -d "$current_time" +%s)))
 
     # Обработка случая, когда юнит остановлен
@@ -39,7 +39,7 @@ function desktop_shredder_status() {
     echo "├───────────────────────────────────────────────────────────────────────────────┤"
     echo "│ Время последнего старта              │ $last_start_time                        "
     echo "├───────────────────────────────────────────────────────────────────────────────┤"
-    echo "│ Авто рестарт каждые                  │ $auto_restart сек.                      "
+    echo "│ Авто рестарт каждые                  │ $_auto_restart сек.                      "
     echo "├───────────────────────────────────────────────────────────────────────────────┤"
     echo "│ Прошло времени с последнего старта   │ $elapsed_time                           "
     echo "├───────────────────────────────────────────────────────────────────────────────┤"
