@@ -48,7 +48,7 @@ function desktop_shredder_status() {
     echo "│ Следующий старт через минут:секунд   │ $next_start_will_be_in                  "
     echo "└──────────────────────────────────────┴────────────────────────────────────────┘"
 
-    echo -e " To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\n For example: # dsunit_reinstall 600\n View Status of Desktop Shredders # dsus"
+    echo -e "\n To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\n For example: # dsunit_reinstall 600\n View Status of Desktop Shredders # dsus"
 # Показать статус Desktop Shredder
 # ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
 }
