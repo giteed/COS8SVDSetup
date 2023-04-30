@@ -51,8 +51,8 @@ function desktop_shredder_status() {
     echo -e "\n To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\n For example: # dsunit_reinstall 600\n View Status of Desktop Shredders # dsus"
 # Показать статус Desktop Shredder
 # ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
-push_next_start_will_be_in_DS=$next_start_will_be_in
-return $push_next_start_will_be_in_DS
+push_next_start_will_be_in_DS="$next_start_will_be_in"
+return "$push_next_start_will_be_in_DS"
 
 }
 
@@ -167,8 +167,9 @@ function mvds() {
     
     ttb=$(echo -e  "\n \"Desktop Shredder\" \n скоро начнет очистку этой папки: $ds_path\n  \n systemctl stop desktop_shredder.service для отмены.") && lang=cr && bpn_p_lang ; echo ;
     
-    local push_next_start_will_be_in_DS=$(desktop_shredder_status)
-    ttb=$(echo -e " Очистка начнется через: $push_next_start_will_be_in_DS\n View Status of Desktop Shredders # dsus") && lang=cr && bpn_p_lang ; 
+    local push_next_start_will_be_in_DS="$(desktop_shredder_status)"
+    
+    ttb=$(echo -e " Очистка начнется через: "$push_next_start_will_be_in_DS"\n View Status of Desktop Shredders # dsus") && lang=cr && bpn_p_lang ; 
     
   }
   
