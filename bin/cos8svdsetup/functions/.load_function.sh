@@ -36,7 +36,7 @@
 	. /root/vdsetup.2/bin/functions/mem.sh
 #  --> разные функции
 	. /root/vdsetup.2/bin/functions/other.sh
-#  --> Desktop Shredder status
+#  --> Desktop Shredder status и управление функциями
 	. /root/vdsetup.2/bin/functions/desktop_shredder.sh
 
 
