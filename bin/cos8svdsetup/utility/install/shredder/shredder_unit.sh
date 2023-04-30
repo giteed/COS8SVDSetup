@@ -51,7 +51,7 @@ Restart=always
 
 # Опция RestartSec указывает задержку 
 # в секундах между перезапусками. 
-RestartSec=120
+RestartSec=$auto_restart
 
 # Опция StartLimitInterval установлена на 0
 # чтобы отключить любые ограничения на перезапуск в случае неудачи.
