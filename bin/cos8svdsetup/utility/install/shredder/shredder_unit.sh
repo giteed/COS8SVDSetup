@@ -5,7 +5,7 @@
 . /root/.bashrc
 
 auto_restart="$1"
-echo "$auto_restart"
+echo -e " Auto-Restart = $auto_restart"
 
 if [ -z "$auto_restart" ]; then
 	auto_restart=120
