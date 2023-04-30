@@ -4,7 +4,7 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-auto_restart="$1"
+
 echo -e " Auto-Restart unit до условия = $auto_restart"
 
 if [ -z "$auto_restart" ]; then
@@ -32,6 +32,7 @@ if [ -f "$unit_file" ];
 	 exit 1
 fi
 
+auto_restart="$1"
 # Создание юнита
 cat << EOF > "$unit_file"
 [Unit]
