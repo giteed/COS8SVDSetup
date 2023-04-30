@@ -106,16 +106,16 @@ function mvds() {
         if [ -n "$path" ]; then
         # Проверка запрещенных путей
           if [[ " ${forbidden_paths[@]} " =~ " $path " ]]; then
-            echo " Запретный путь."
+            ttb=$(echo -e " Запретный путь.") && lang=cr && bpn_p_lang 
             return 1
           fi
           
           # Проверка существования пути
           if [ -e "$path" ]; then
-            echo " Введенный путь: $path"
+            ttb=$(echo -e " Введенный путь: $path") && lang=cr && bpn_p_lang 
             return 0
           else
-            echo " Несуществующий путь."
+            ttb=$(echo " Несуществующий путь.") && lang=cr && bpn_p_lang 
             return 1
           fi
         else
@@ -126,13 +126,13 @@ function mvds() {
             if [[ " ${forbidden_paths[@]} " =~ " $path " ]]; 
               
             then
-              echo " Запрещенный путь. Пожалуйста, введите другой путь."
+              ttb=$(echo -e " Запрещенный путь. Пожалуйста, введите другой путь.") && lang=cr && bpn_p_lang 
               # Проверка существования пути
             elif [ -e "$path" ]; then
-              echo " Введенный путь: $path"
+              ttb=$(echo -e " Введенный путь: $path") && lang=cr && bpn_p_lang 
               break
             else
-              echo " Несуществующий путь. Пожалуйста, введите верный путь."
+              ttb=$(echo -e " Несуществующий путь. Пожалуйста, введите верный путь.") && lang=cr && bpn_p_lang 
             fi
           done
         fi
@@ -172,7 +172,7 @@ function mvds() {
     # Вызов функции desktop_shredder_status и передача аргумента для возврата значения
      desktop_shredder_status next_start_will_be_in_value  &>/dev/null
      
-    ttb=$(echo -e  "\n \"Desktop Shredder\" начнет очистку через $next_start_will_be_in_value \n Для отмены: # systemctl stop desktop_shredder.service.\n Посмотреть статус: # dsus") && lang=cr && bpn_p_lang ; echo ;
+    ttb=$(echo -e  "\n Desktop Shredder начнет очистку через $next_start_will_be_in_value \n Для отмены: # systemctl stop desktop_shredder.service.\n Посмотреть статус: # dsus") && lang=cr && bpn_p_lang ; echo ;
     
    
 
