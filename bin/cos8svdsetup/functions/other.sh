@@ -101,11 +101,16 @@ function mvds() {
 			#check_valid_path $1
 			
 			# Путь до рабочей папки с которой производим действия
-			ds_path=$(cat /tmp/Desktop_Shredder_path.txt)
+			ds_path="$(cat /tmp/Desktop_Shredder_path.txt)"
 			# Перемещение выбранной файла или папки в папку Desktop Shredder для последующего измельчения
-			mv $1 $ds_path ;
+			for file in "$@"; do
+			  mv "$file" "$ds_path"
+			done
+			
+			#mv $1 $ds_path ;
 			
 		}
+		
 		
 		_mvds $1 ;
 		cur_path=$(pwd) ;
