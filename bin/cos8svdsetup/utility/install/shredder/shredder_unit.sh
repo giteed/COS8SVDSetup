@@ -73,7 +73,7 @@ systemctl start desktop_shredder.service ;
 systemctl status -n0 --no-pager desktop_shredder.service ;
 ttb=$(cat /etc/systemd/system/desktop_shredder.service)&& lang=nix && bpn_lang ;
 
-ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started.\n To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\ For example: # dsunit_reinstall 600" ) && lang=cr && bpn_p_lang ;
+ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started.\n To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\ For example: # dsunit_reinstall 600\n View Status of Desktop Shredders # dsus" ) && lang=cr && bpn_p_lang ;
 echo ;
 ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
 
