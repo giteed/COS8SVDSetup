@@ -4,7 +4,8 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-auto_restart=$1
+auto_restart="$1"
+echo "$auto_restart"
 
 if [ -z "$auto_restart" ]; then
 	auto_restart=120
