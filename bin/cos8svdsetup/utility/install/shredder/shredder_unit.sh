@@ -5,12 +5,12 @@
 . /root/.bashrc
 
 auto_restart="$1"
-echo -e " Auto-Restart = $auto_restart"
+echo -e " Auto-Restart unit до условия = $auto_restart"
 
 if [ -z "$auto_restart" ]; then
 	auto_restart=120
 fi
-
+echo -e " Auto-Restart unit после условия = $auto_restart"
 
 # Создание файла юнита
 unit_file="/etc/systemd/system/desktop_shredder.service"
