@@ -14,7 +14,7 @@ echo -e " Auto-Restart unit после условия = $auto_restart"
 
 # Создание файла юнита
 unit_file="/etc/systemd/system/desktop_shredder.service"
-#auto_restart="$1"
+
 # Проверка наличия файла юнита
 if [ -f "$unit_file" ]; 
 		then
