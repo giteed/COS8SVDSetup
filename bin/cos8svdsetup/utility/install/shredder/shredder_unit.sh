@@ -36,7 +36,7 @@ auto_restart="$1"
 # Создание юнита
 cat << EOF > "$unit_file"
 [Unit]
-Description=The Linux Desktop Shredders "$auto_restart" sec auto-start.
+Description=The Linux Desktop Shredders $auto_restart sec auto-start.
 
 [Service]
 Type=simple
@@ -53,7 +53,7 @@ Restart=always
 
 # Опция RestartSec указывает задержку 
 # в секундах между перезапусками. 
-RestartSec="$auto_restart"
+RestartSec=$auto_restart
 
 # Опция StartLimitInterval установлена на 0
 # чтобы отключить любые ограничения на перезапуск в случае неудачи.
