@@ -28,7 +28,7 @@ if [ -f "$unit_file" ];
 			systemctl daemon-reload
 		# Удаление файла старого юнита
 			rm /etc/systemd/system/desktop_shredder.service ;
-		$0 $auto_restart
+		$0 "$auto_restart"
 	 exit 1
 fi
 
