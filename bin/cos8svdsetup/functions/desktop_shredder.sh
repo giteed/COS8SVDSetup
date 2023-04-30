@@ -156,7 +156,7 @@ function mvds() {
       
       ttb=$(echo -e " Перемещаю в Shredder: $@") && lang=cr && bpn_p_lang ;
       for file in "$@"; do
-        mv "$file" "$ds_path"
+      \mv -- "$file" "$ds_path"
       done
       
      
