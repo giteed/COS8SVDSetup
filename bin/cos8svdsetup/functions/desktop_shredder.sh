@@ -169,14 +169,15 @@ function mvds() {
     cd $ds_path && lk .;
     cd $cur_path ;
     
-    ttb=$(echo -e  "\n \"Desktop Shredder\" \n скоро начнет очистку этой папки: $ds_path\n  \n systemctl stop desktop_shredder.service для отмены.") && lang=cr && bpn_p_lang ; echo ;
+    # Вызов функции desktop_shredder_status и передача аргумента для возврата значения
+     desktop_shredder_status next_start_will_be_in_value  &>/dev/null
+     
+    ttb=$(echo -e  "\n \"Desktop Shredder\" начнет очистку этой папки: $ds_path\n Через: $next_start_will_be_in_value \n systemctl stop desktop_shredder.service для отмены.") && lang=cr && bpn_p_lang ; echo ;
     
    
-   # Вызов функции desktop_shredder_status и передача аргумента для возврата значения
-   desktop_shredder_status next_start_will_be_in_value  &>/dev/null
+
    
    # Использование возвращенного значения
-   echo "Значение next_start_will_be_in: $next_start_will_be_in_value"
 
     
     #ttb=$(echo -e " Очистка начнется через: $next_start_will_be_in \n View Status of Desktop Shredders # dsus") && lang=cr && bpn_p_lang ; 
