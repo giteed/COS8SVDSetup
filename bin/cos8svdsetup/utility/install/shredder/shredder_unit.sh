@@ -4,6 +4,12 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
+auto_restart=$1
+
+if [ -z "$auto_restart" ]; then
+	auto_restart=120
+fi
+
 
 # Создание файла юнита
 unit_file="/etc/systemd/system/desktop_shredder.service"
@@ -28,7 +34,7 @@ fi
 # Создание юнита
 cat << EOF > "$unit_file"
 [Unit]
-Description=The Linux Desktop Shredders 120 sec auto-start.
+Description=The Linux Desktop Shredders $auto_restart sec auto-start.
 
 [Service]
 Type=simple
