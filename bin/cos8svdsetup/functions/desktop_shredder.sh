@@ -150,7 +150,7 @@ function mvds() {
       ds_path="$(cat /tmp/Desktop_Shredder_path.txt)"
       # Перемещение выбранной файла или папки в папку Desktop Shredder для последующего измельчения
       
-      ttb=$(echo -e" Перемещаю в Shredder: $@") && lang=cr && bpn_p_lang ;
+      ttb=$(echo -e " Перемещаю в Shredder: $@") && lang=cr && bpn_p_lang ;
       for file in "$@"; do
         mv "$file" "$ds_path"
       done
@@ -166,6 +166,7 @@ function mvds() {
     cd $cur_path ;
     
     ttb=$(echo -e  "\n \"Desktop Shredder\" \n скоро начнет очистку этой папки: $ds_path\n  \n systemctl stop desktop_shredder.service для отмены.") && lang=cr && bpn_p_lang ; echo ;
+    
     local push_next_start_will_be_in_DS=$(desktop_shredder_status)
     ttb=$(echo -e " Очистка начнется через: $push_next_start_will_be_in_DS\n View Status of Desktop Shredders # dsus") && lang=cr && bpn_p_lang ; 
     
