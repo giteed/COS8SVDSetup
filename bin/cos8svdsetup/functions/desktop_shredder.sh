@@ -48,10 +48,15 @@ function desktop_shredder_status() {
     echo "│ Следующий старт через минут:секунд   │ $next_start_will_be_in                  "
     echo "└──────────────────────────────────────┴────────────────────────────────────────┘"
 
+    echo -e " To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\ For example: # dsunit_reinstall 600"
 # Показать статус Desktop Shredder
 # ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
 }
 
+# desktop_shredder_status in bat
+function dsus() {
+    ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
+}
 
 # перемещение папки или файла в папку Desktop Shredder
 function mvds() {
@@ -163,6 +168,6 @@ function mvds() {
   
   function dsunit_reinstall() {
     auto_restart="$1"
-    echo -e " Auto-Restart function dsunit_reinstall = $auto_restart"
+    #echo -e " Auto-Restart function dsunit_reinstall = $auto_restart"
       /root/vdsetup.2/bin/utility/install/shredder/shredder_unit.sh $1
   }
