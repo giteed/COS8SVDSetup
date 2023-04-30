@@ -162,5 +162,7 @@ function mvds() {
   
   
   function dsunit_reinstall() {
+    auto_restart="$1"
+    echo -e " Auto-Restart = $auto_restart"
       /root/vdsetup.2/bin/utility/install/shredder/shredder_unit.sh $1
   }
