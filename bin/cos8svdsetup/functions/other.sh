@@ -26,42 +26,66 @@ function mvds() {
 				local path="$1"
 				# Запретные пути
 				local forbidden_paths=(
-				"/"
-				"~/"
+				  "."
+				  ".."
+				  "../."
+				  "/"
+				  "~/"
+				  "/bin/"
+				  "/boot/"
+				  "/dev/"
+				  "/etc/"
+				  "/home/"
+				  "/lib/"
+				  "/lib64/"
+				  "/lost+found/"
+				  "/media/"
+				  "/mnt/"
+				  "/opt/"
+				  "/proc/"
+				  "/root/"
+				  "/run/"
+				  "/sbin/"
+				  "/snap/"
+				  "/srv/"
+				  "/sys/"
+				  "/tmp/"
+				  "/usr/"
+				  "/var/"
 				)
 				
 				if [ -n "$path" ]; then
 				# Проверка запрещенных путей
 					if [[ " ${forbidden_paths[@]} " =~ " $path " ]]; then
-						echo "Запретный путь."
+						echo " Запретный путь."
 						return 1
 					fi
 					
-				# Проверка существования пути
-				if [ -e "$path" ]; then
-					echo "Введенный путь: $path"
-					return 0
-				else
-					echo "Несуществующий путь."
-					return 1
-				fi
-				else
-				# Запрос ввода пути от пользователя
-				while true; do
-					read -p "Введите путь до директории или файла: " path
-					# Проверка запрещенных путей
-					if [[ " ${forbidden_paths[@]} " =~ " $path " ]]; 
-						
-					then
-						echo "Запрещенный путь. Пожалуйста, введите другой путь."
-						# Проверка существования пути
-					elif [ -e "$path" ]; then
-						echo "Введенный путь: $path"
-						break
+					# Проверка существования пути
+					if [ -e "$path" ]; then
+						echo " Введенный путь: $path"
+						return 0
 					else
-						echo "Несуществующий путь. Пожалуйста, введите верный путь."
+						echo " Несуществующий путь."
+						return 1
 					fi
-				done
+				else
+					# Запрос ввода пути от пользователя
+					while true; do
+						read -p " Введите путь до директории или файла: " path
+						# Проверка запрещенных путей
+						if [[ " ${forbidden_paths[@]} " =~ " $path " ]]; 
+							
+						then
+							echo " Запрещенный путь. Пожалуйста, введите другой путь."
+							# Проверка существования пути
+						elif [ -e "$path" ]; then
+							echo " Введенный путь: $path"
+							break
+						else
+							echo " Несуществующий путь. Пожалуйста, введите верный путь."
+						fi
+					done
 				fi
 			}
 			
