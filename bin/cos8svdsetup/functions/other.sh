@@ -21,11 +21,11 @@ function mvds() {
 		
 		function _mvds() {
 			shopt -s nullglob
-			
+			unset GLOBIGNORE
 			#100% рабочий вариант
 			function check_valid_path() {
 				shopt -s nullglob
-				
+				unset GLOBIGNORE
 				local path="$1"
 				# Запретные пути
 				local forbidden_paths=(
@@ -106,7 +106,7 @@ function mvds() {
 			# Путь до рабочей папки с которой производим действия
 			ds_path="$(cat /tmp/Desktop_Shredder_path.txt)"
 			# Перемещение выбранной файла или папки в папку Desktop Shredder для последующего измельчения
-			
+			unset GLOBIGNORE
 			echo "Перемещение файлов: $@"
 			for file in "$@"; do
 			  mv "$file" "$ds_path"
@@ -116,6 +116,7 @@ function mvds() {
 			
 		}
 		
+		unset GLOBIGNORE
 		shopt -s nullglob
 		_mvds $1 ;
 		cur_path=$(pwd) ;
