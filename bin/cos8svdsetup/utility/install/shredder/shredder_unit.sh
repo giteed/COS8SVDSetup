@@ -11,8 +11,8 @@ unit_file="/etc/systemd/system/desktop_shredder.service"
 # Проверка наличия файла юнита
 if [ -f "$unit_file" ]; 
 		then
-			
-		ttb=$(echo -e "\n The desktop_shredder.service unit already exists.\n Remove it?\n") && lang=cr && bpn_p_lang ;
+			ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
+			ttb=$(echo -e "\n The desktop_shredder.service unit already exists.\n Remove it?\n") && lang=cr && bpn_p_lang ;
 			press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 		# Вsключение и удаление старого юнита
 			systemctl disable desktop_shredder.service 2>/dev/null ;
@@ -66,7 +66,8 @@ systemctl status -n0 --no-pager desktop_shredder.service ;
 ttb=$(cat /etc/systemd/system/desktop_shredder.service)&& lang=nix && bpn_lang ;
 
 ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started." ) && lang=cr && bpn_p_lang ;
-
+echo ;
+ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
 
 	exit 0
 
