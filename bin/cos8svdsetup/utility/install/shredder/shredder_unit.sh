@@ -4,7 +4,7 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-
+auto_restart="$1"
 echo -e " Auto-Restart unit до условия = $auto_restart"
 
 if [ -z "$auto_restart" ]; then
