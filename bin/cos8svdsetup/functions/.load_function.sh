@@ -36,6 +36,8 @@
 	. /root/vdsetup.2/bin/functions/mem.sh
 #  --> разные функции
 	. /root/vdsetup.2/bin/functions/other.sh
+#  --> Desktop Shredder status
+	. /root/vdsetup.2/bin/functions/desktop_shredder.sh
 
 
 # --> Этот ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
