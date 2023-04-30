@@ -103,6 +103,7 @@ function mvds() {
 			# Путь до рабочей папки с которой производим действия
 			ds_path="$(cat /tmp/Desktop_Shredder_path.txt)"
 			# Перемещение выбранной файла или папки в папку Desktop Shredder для последующего измельчения
+			echo "Перемещение файлов: $@"
 			for file in "$@"; do
 			  mv "$file" "$ds_path"
 			done
