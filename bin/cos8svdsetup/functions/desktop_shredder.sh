@@ -172,7 +172,7 @@ function mvds() {
     # Вызов функции desktop_shredder_status и передача аргумента для возврата значения
      desktop_shredder_status next_start_will_be_in_value  &>/dev/null
      
-    ttb=$(echo -e  "\n Desktop Shredder начнет очистку через $next_start_will_be_in_value \n Для отмены: # systemctl stop desktop_shredder.service.\n Посмотреть статус: # dsus") && lang=cr && bpn_p_lang ; echo ;
+    ttb=$(echo -e  "\n Desktop Shredder начнет очистку через $next_start_will_be_in_value (min:sec) \n Для отмены: # systemctl stop desktop_shredder.service.\n Посмотреть статус: # dsus") && lang=cr && bpn_p_lang ; echo ;
     
    
 
