@@ -170,8 +170,8 @@ function mvds() {
     
    #local next_start_will_be_in=$(desktop_shredder_status)
    
-   result=$(desktop_shredder_status)
-   echo "Значение next_start_will_be_in: $result"
+   desktop_shredder_status &>/dev/null
+   echo "Значение next_start_will_be_in: $next_start_will_be_in "
     
     #ttb=$(echo -e " Очистка начнется через: $next_start_will_be_in \n View Status of Desktop Shredders # dsus") && lang=cr && bpn_p_lang ; 
     
