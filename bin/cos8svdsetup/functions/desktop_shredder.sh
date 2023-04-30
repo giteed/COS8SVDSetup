@@ -53,7 +53,10 @@ function desktop_shredder_status() {
 # ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
 
 
-return $next_start_will_be_in
+#return $next_start_will_be_in
+# Возвращение значения через аргумент функции
+eval "$1='$next_start_will_be_in'"
+
 
 }
 
@@ -168,10 +171,13 @@ function mvds() {
     
     ttb=$(echo -e  "\n \"Desktop Shredder\" \n скоро начнет очистку этой папки: $ds_path\n  \n systemctl stop desktop_shredder.service для отмены.") && lang=cr && bpn_p_lang ; echo ;
     
-   #local next_start_will_be_in=$(desktop_shredder_status)
    
-   desktop_shredder_status &>/dev/null
-   echo "Значение next_start_will_be_in: $next_start_will_be_in "
+   # Вызов функции desktop_shredder_status и передача аргумента для возврата значения
+   desktop_shredder_status next_start_will_be_in_value  &>/dev/null
+   
+   # Использование возвращенного значения
+   echo "Значение next_start_will_be_in: $next_start_will_be_in_value"
+
     
     #ttb=$(echo -e " Очистка начнется через: $next_start_will_be_in \n View Status of Desktop Shredders # dsus") && lang=cr && bpn_p_lang ; 
     
