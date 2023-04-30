@@ -20,16 +20,12 @@ function wis() { (GLIG_ASTRX_ON && wis-f $1 $2) } ;
 function mvds() {
 		
 		function _mvds() {
-			shopt -s nullglob
-			unset GLOBIGNORE
-			GLIG_ASTRX_OFF
 			#100% рабочий вариант
 			function check_valid_path() {
-				shopt -s nullglob
-				unset GLOBIGNORE
-				local path="$1"
-				# Запретные пути
-				local forbidden_paths=(
+					
+				 local path="$1"
+				 # Запретные пути
+				 local forbidden_paths=(
 				  "."
 				  ".."
 				  "../."
@@ -107,8 +103,7 @@ function mvds() {
 			# Путь до рабочей папки с которой производим действия
 			ds_path="$(cat /tmp/Desktop_Shredder_path.txt)"
 			# Перемещение выбранной файла или папки в папку Desktop Shredder для последующего измельчения
-			unset GLOBIGNORE
-			GLIG_ASTRX_OFF
+			
 			echo "Перемещение файлов: $@"
 			for file in "$@"; do
 			  mv "$file" "$ds_path"
@@ -118,9 +113,7 @@ function mvds() {
 			
 		}
 		
-		GLIG_ASTRX_OFF
-		unset GLOBIGNORE
-		shopt -s nullglob
+		
 		_mvds $1 ;
 		cur_path=$(pwd) ;
 		cd $ds_path && lk .;
