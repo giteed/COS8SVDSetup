@@ -4,7 +4,7 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-auto_restart="$1"
+auto_restart=$1
 echo -e " Auto-Restart unit до условия = $auto_restart"
 
 if [ -z "$auto_restart" ]; then
@@ -14,7 +14,7 @@ echo -e " Auto-Restart unit после условия = $auto_restart"
 
 # Создание файла юнита
 unit_file="/etc/systemd/system/desktop_shredder.service"
-auto_restart="$1"
+auto_restart=$1
 # Проверка наличия файла юнита
 if [ -f "$unit_file" ]; 
 		then
@@ -32,7 +32,7 @@ if [ -f "$unit_file" ];
 	 exit 1
 fi
 
-auto_restart="$1"
+auto_restart=$1
 # Создание юнита
 cat << EOF > "$unit_file"
 [Unit]
