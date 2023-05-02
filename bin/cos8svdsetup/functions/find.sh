@@ -212,30 +212,25 @@ function etc_passwd_all() {
       
    }
    
-# Поиск текста в файлах скриптов в указанной папке
 sis() {
-      
-      function help_sis() {
-         
-          if [ $# -eq 0 ]; then
-              echo -e "\n Использование: sis <паттерн> [<директория>]"
-              echo -e "  <паттерн>     - Строка для поиска"
-              echo -e "  <директория>  - Путь к директории, в которой выполняется поиск (по умолчанию: /)"
-              echo -e " Используемая для поиска команда:"
-              echo -e " grep -rl "$pattern" --include "$filetype" "$directory" "
-              break
-          fi
+      help_sis() {
+         if [ $# -eq 0 ]; then
+             echo -e "\n Использование: sis <паттерн> [<директория>]"
+             echo -e "  <паттерн>     - Строка для поиска"
+             echo -e "  <директория>  - Путь к директории, в которой выполняется поиск (по умолчанию: /)"
+             echo -e " Используемая для поиска команда:"
+             echo -e " grep -rl \"\$pattern\" --include \"\$filetype\" \"\$directory\" "
+         fi
       }
-      
-         #ttb=$(help_sis) && lang=cr && bpn_p_lang
-         help_sis
-        
-         pattern="$1"
-         directory="${2:-/}"  # Если путь не указан, то используется корневая директория /
-         filetype="*.sh"
-         
-         
-         grep -rl "$pattern" --include "$filetype" "$directory"
-  }
+   
+      help_sis
+   
+      pattern="$1"
+      directory="${2:-/}"  # Если путь не указан, то используется корневая директория /
+      filetype="*.sh"
+   
+      grep -rl "$pattern" --include "$filetype" "$directory"
+   }
+
 
 
