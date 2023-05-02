@@ -211,3 +211,13 @@ function etc_passwd_all() {
       fi	
       
    }
+   
+   
+sis() {
+       pattern="$1"
+       directory="${2:-/}"  # Если путь не указан, то используется корневая директория /
+       filetype="*.sh"
+   
+       grep -rl "$pattern" --include "$filetype" "$directory"
+   }
+
