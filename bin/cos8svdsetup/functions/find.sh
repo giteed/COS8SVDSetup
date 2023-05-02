@@ -226,7 +226,7 @@ sis() {
        fi
    }
    
-   ttb=$((help_sis) && lang=cr && bpn_p_lang
+   ttb=$(help_sis) && lang=cr && bpn_p_lang
   
       pattern="$1"
       directory="${2:-/}"  # Если путь не указан, то используется корневая директория /
