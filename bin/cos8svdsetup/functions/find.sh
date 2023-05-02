@@ -220,7 +220,7 @@ sis() {
              echo -e "  <директория>  - Путь к директории, в которой выполняется поиск (по умолчанию: /)"
              echo -e " Используемая для поиска команда:"
              echo -e " grep -rl \"\$pattern\" --include \"\$filetype\" \"\$directory\" "
-             exit 0
+             return
          fi
       }
    
@@ -232,6 +232,7 @@ sis() {
    
       grep -rl "$pattern" --include "$filetype" "$directory"
    }
+
 
 
 
