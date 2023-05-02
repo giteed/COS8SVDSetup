@@ -226,12 +226,14 @@ sis() {
        fi
    }
    
-   
+   ttb=$(help_sis) && lang=cr && bpn_p_lang
+   help_sis
   
       pattern="$1"
       directory="${2:-/}"  # Если путь не указан, то используется корневая директория /
       filetype="*.sh"
-  ttb=$(help_sis) && lang=cr && bpn_p_lang
+      
+
       grep -rl "$pattern" --include "$filetype" "$directory"
   }
 
