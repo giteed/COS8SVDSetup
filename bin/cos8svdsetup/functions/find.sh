@@ -212,12 +212,20 @@ function etc_passwd_all() {
       
    }
    
-   
+  # Поиск текста в файлах скриптов в указанной папке
 sis() {
-       pattern="$1"
-       directory="${2:-/}"  # Если путь не указан, то используется корневая директория /
-       filetype="*.sh"
-   
-       grep -rl "$pattern" --include "$filetype" "$directory"
-   }
+      if [ $# -eq 0 ]; then
+          echo "Использование: sis <паттерн> [<директория>]"
+          echo "  <паттерн>     - Строка для поиска"
+          echo "  <директория>  - Путь к директории, в которой выполняется поиск (по умолчанию: /)"
+          return 1
+      fi
+  
+      pattern="$1"
+      directory="${2:-/}"  # Если путь не указан, то используется корневая директория /
+      filetype="*.sh"
+  
+      grep -rl "$pattern" --include "$filetype" "$directory"
+  }
+
 
