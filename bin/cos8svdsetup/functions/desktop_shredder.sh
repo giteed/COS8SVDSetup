@@ -48,7 +48,7 @@ function desktop_shredder_status() {
     echo "│ Следующий старт через минут:секунд   │ $next_start_will_be_in                  "
     echo "└──────────────────────────────────────┴────────────────────────────────────────┘"
 
-    echo -e "\n To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\n For example: # dsunit_reinstall 600\n View Status of Desktop Shredders # dsus"
+    echo -e "\n To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\n For example: # dsunit_reinstall 600\n View Status of Desktop Shredders # dsus\n Начать очистку немедленно # dsnow\n"
 # Показать статус Desktop Shredder
 # ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
 
@@ -65,7 +65,11 @@ function dsus() {
     ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
 }
 
-# перемещение папки или файла в папку Desktop Shredder
+function dsnow() {
+    /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds
+}
+
+# Перемещение папки или файла в папку Desktop Shredder
 function mvds() {
     
     function _mvds() {
@@ -172,7 +176,7 @@ function mvds() {
     # Вызов функции desktop_shredder_status и передача аргумента для возврата значения
      desktop_shredder_status next_start_will_be_in_value  &>/dev/null
      
-    ttb=$(echo -e  "\n Desktop Shredder начнет очистку через $next_start_will_be_in_value (min:sec) \n Для отмены: # systemctl stop desktop_shredder.service.\n Посмотреть статус: # dsus") && lang=cr && bpn_p_lang ; echo ;
+    ttb=$(echo -e  "\n Desktop Shredder начнет очистку через $next_start_will_be_in_value (min:sec) \n Для отмены: # systemctl stop desktop_shredder.service.\n Посмотреть статус: # dsus\n Начать очистку немедленно # dsnow\n" ) && lang=cr && bpn_p_lang ; echo ;
     
    
 
