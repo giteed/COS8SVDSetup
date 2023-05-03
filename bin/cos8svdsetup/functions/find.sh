@@ -242,7 +242,7 @@ sis() {
      filetype="$3"
      
      if [ -z "$3" ]; then
-       filetype='"*.sh","*.txt"'
+       filetype=("*.sh","*.txt")
      fi
      
      # Выполнение поиска
