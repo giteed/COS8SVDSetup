@@ -234,7 +234,7 @@ sis() {
      #fi
      
      # Проверка на пустой ввод
-     if [ $1 -eq 0 ]; then
+     if [ "$1" -eq 0 ]; then
         ttb=$(help_sis) && lang=cr && bpn_p_lang ;
        return 1
      fi
