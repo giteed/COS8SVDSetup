@@ -213,35 +213,33 @@ function etc_passwd_all() {
    }
 
 
-# Поиск по ключевику в скриптах (или файлах) по указанному пути или в /   
 sis() {
-      help_sis() {
-         if [ $# -eq 0 ]; then
-             echo -e "\n Использование: sis <паттерн> [<директория>]"
-             echo -e "  <паттерн>     - Строка для поиска"
-             echo -e "  <директория>  - Путь к директории, в которой выполняется поиск (по умолчанию: /)"
-             echo -e "\n Используемая для поиска команда:"
-             echo -e " grep -rl \"\$pattern\" --include \"\$filetype\" \"\$directory\" "
-             return 0
-         fi
-      }
-   
-      ttb=$(help_sis) && lang=cr && bpn_p_lang ;
-   
-      #if [ $# -eq 0 ]; then
-       #  return 1
-      #fi
-      
-      # Проверка на пустой ввод
-        if [ -z "$1" ]; then
-          help_sis
-          return 1
-        fi
-   
-      pattern="$1"
-      directory="${2:-/}"  # Если путь не указан, то используется корневая директория /
-      filetype="*.sh"
-   
-      grep -rl "$pattern" --include "$filetype" "$directory"
+     # Функция справки
+     function help_sis() {
+       echo -e "\n Использование: sis <паттерн> [<директория>]"
+       echo -e "  <паттерн>     - Строка для поиска"
+       echo -e "  <директория>  - Путь к директории, в которой выполняется поиск (по умолчанию: /)"
+       echo -e " Используемая для поиска команда:"
+       echo -e " grep -rl \"\$pattern\" --include \"\$filetype\" \"\$directory\" "
+     }
+     
+     # Проверка на пустой ввод
+     if [ -z "$1" ]; then
+       ttb=$(help_sis) && lang=cr && bpn_p_lang ;
+       return 1
+     fi
+     
+     #if [ $# -eq 0 ]; then
+      #  return 1
+     #fi
+     
+     # Получение аргументов
+     pattern="$1"
+     directory="${2:-/}"  # Если путь не указан, то используется корневая директория /
+     filetype="*.sh"
+     
+     # Выполнение поиска
+     grep -rl "$pattern" --include "$filetype" "$directory"
    }
+
 
