@@ -242,11 +242,11 @@ sis() {
      filetype="$3"
      
      if [ -z "$3" ]; then
-       filetype="*.sh,*.txt"
+       filetypes=("*.sh" "*.txt")
      fi
      
      # Выполнение поиска
-     echo ; ttb=$(grep -rl "$pattern" "$directory" --include "$filetype") && lang=c && bpn_p_lang  ; 
+     echo ; ttb=$(grep -rl "$pattern" "$directory" --include "${filetypes[@]}") && lang=c && bpn_p_lang  ; 
      
      
      
