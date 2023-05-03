@@ -228,9 +228,9 @@ sis() {
    
       ttb=$(help_sis) && lang=cr && bpn_p_lang ;
    
-      if [ $# -eq 0 ]; then
-         return 1
-      fi
+      #if [ $# -eq 0 ]; then
+       #  return 1
+      #fi
       
       # Проверка на пустой ввод
         if [ -z "$1" ]; then
@@ -244,8 +244,4 @@ sis() {
    
       grep -rl "$pattern" --include "$filetype" "$directory"
    }
-
-
-
-
 
