@@ -244,10 +244,40 @@ sis() {
      filetype="${2:-"*.sh"}" # Если тип файла не указан то используется "*.sh"
      
      # Выполнение поиска с выводом только путей  ; 
-     #echo ; ttb=$(grep -rl "$pattern" "$directory" --include "$filetype") && lang=c && bpn_p_lang
+     echo ; ttb=$(grep -rl "$pattern" "$directory" --include "$filetype") && lang=c && bpn_p_lang
      
-     # Выполнение поиска с выводом только найденного текста в файле содержащим паттерн - 5 строк от найденного  ; 
-     #echo ; ttb=$(grep -rh -A 5 "$pattern" "$directory" --include "$filetype") && lang=sh && bpn_p_lang
+     
+   }
+
+sis5() {
+     # Функция справки
+     function help_sis5() {
+       echo -e "\n Выполнение поиска текста с выводом 5 строк в теле скриптов. По умолчанию расширение файлов *.sh, а путь \"/\"\n Поиском можно искать текст в обычных текстовых файлах указав тип файла в команде.\n "
+       echo -e " Примеры          sis \"получите постоянную скидку\" *.md   (ищет текст в *.md файлах) " 
+       echo -e " для поиска:      sis \"получите постоянную скидку\" *.md . (ищет текст в *.md файлах в текущей папке) "
+       echo -e "                  sis \"получите постоянную скидку\"        (ищет текст в *.sh файлах от корня /) "
+       echo -e "                  sis sis                                 (ищет текст в *.sh файлах от корня /) "
+   
+       echo -e "\n Использование: sis <паттерн> [<тип_файла>] [<директория>]  "
+       echo -e "  <паттерн>     - Строка для поиска (\"заключайте паттерн в кавычки\" если есть пробелы и спец символы)"
+       echo -e "  <тип_файла>   - Тип файла (по умолчанию: \"*.sh\" если не указан другой)"
+       echo -e "  <директория>  - Путь к директории поиска (по умолчанию: \"/\" если не указан другой)"
+       
+       echo -e "\n Используемая для поиска команда:"
+       
+       echo -e " grep -rl -m 1 \"$pattern\" \"$directory\" --include \"$filetype\" | while read -r file; do echo -e \"\n$file\"; echo ; grep -h -A 5 \"$pattern\" \"$file\"; echo -e "\n --" ; done "
+     }
+     
+     # Проверка на пустой ввод
+     if [ -z "$1" ]; then
+       ttb=$(help_sis5) && lang=cr && bpn_p_lang ;
+       return 1
+     fi
+     
+     # Получение аргументов
+     pattern="$1"
+     directory="${3:-/}"  # Если путь не указан, то используется корневая директория /
+     filetype="${2:-"*.sh"}" # Если тип файла не указан то используется "*.sh"
      
      # Выполнение поиска с выводом пути и найденного текста в файле содержащим паттерн - 5 строк от найденного, с подсветкой синтаксиса в тексе пути  ; 
      grep -rl -m 1 "$pattern" "$directory" --include "$filetype" | while read -r file; do ttb=$(echo -e "\n$file") && lang=nix && bpn_p_lang; echo ; grep -h -A 5 "$pattern" "$file"; echo -e "\n ${green}--${nc}" ; done
@@ -256,6 +286,4 @@ sis() {
      #grep -rl -m 1 "$pattern" "$directory" --include "$filetype" | while read -r file; do echo -e "\n$file"; echo ; grep -h -A 5 "$pattern" "$file"; echo -e "\n --" ; done
      
    }
-
-
 
