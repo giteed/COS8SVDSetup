@@ -245,15 +245,14 @@ sis() {
        filetypes=("*.sh" "*.txt")
      fi
      
+     echo "${filetypes[@]}"
      echo $filetypes
-     echo $filetypes
-     echo $filetypes
+
  
      # Выполнение поиска
      echo ; ttb=$(grep -rl "$pattern" "$directory" --include "${filetypes[@]}") && lang=c && bpn_p_lang  ; 
      
-     echo $filetypes
-     echo $filetypes
+     echo "${filetypes[@]}"
      echo $filetypes
       
      
