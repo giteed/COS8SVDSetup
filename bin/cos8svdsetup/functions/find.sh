@@ -246,11 +246,12 @@ sis() {
      # Выполнение поиска с выводом только найденного текста в файле содержащим паттерн - 5 строк от найденного  ; 
      #echo ; ttb=$(grep -rh -A 5 "$pattern" "$directory" --include "$filetype") && lang=sh && bpn_p_lang
      
+     # Выполнение поиска с выводом пути и найденного текста в файле содержащим паттерн - 5 строк от найденного, с подсветкой синтаксиса в тексе пути  ; 
      grep -rl -m 1 "$pattern" "$directory" --include "$filetype" | while read -r file; do ttb=$(echo -e "\n$file") && lang=nix && bpn_p_lang; echo ; grep -h -A 5 "$pattern" "$file"; echo -e "\n ${green}--${nc}" ; done
      
-     #grep -rl "$pattern" "$directory" --include "$filetype"
-     #grep -r -m 1 -l "$pattern" "$directory" --include "$filetype"
-     #grep -rl -m 1 "получите постоянную скидку" . --include "*.sh"
+     # То-же что и выше без окраски синтаксиса в пути.
+     #grep -rl -m 1 "$pattern" "$directory" --include "$filetype" | while read -r file; do echo -e "\n$file"; echo ; grep -h -A 5 "$pattern" "$file"; echo -e "\n --" ; done
+     
    }
 
 
