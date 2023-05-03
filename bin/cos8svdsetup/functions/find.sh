@@ -267,7 +267,7 @@ sis5() {
        
        echo -e "\n Используемая для поиска команда:"
        
-       echo -e " grep -rl -m 1 \"$pattern\" \"$directory\" --include \"$filetype\" | while read -r file; do echo -e \"\n$file\"; echo ; grep -h -A 5 \"$pattern\" \"$file\"; echo -e "\n --" ; done "
+       echo -e " # grep -rl -m 1 \"$pattern\" \"$directory\" --include \"$filetype\" | while read -r file; do echo -e \"\n$file\"; echo ; grep -h -A 5 \"$pattern\" \"$file\"; echo -e "\n --" ; done "
      }
      
      # Проверка на пустой ввод
