@@ -224,7 +224,7 @@ sis() {
        echo -e "  <паттерн>     - Строка для поиска"
        echo -e "  <директория>  - Путь к директории, в которой выполняется поиск (по умолчанию: \"/\")"
        echo -e "\n Используемая для поиска команда:"
-       echo -e " grep -rl \"\$pattern\" --include \"\$filetype\" \"\$directory\" "
+       echo -e " grep -rl \"\$pattern\" \"\$directory\" --include \"\$filetype\" "
      }
      
      # Проверка на пустой ввод
