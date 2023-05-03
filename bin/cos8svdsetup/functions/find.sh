@@ -242,10 +242,11 @@ sis() {
      
      # Выполнение поиска с выводом только путей  ; 
      #echo ; ttb=$(grep -rl "$pattern" "$directory" --include "$filetype") && lang=c && bpn_p_lang
-     # Выполнение поиска с выводом только найденного текста в файле содержащим паттерн - 5 строк от найденного  ; 
-     echo ; ttb=$(grep -rh -A 5 "$pattern" "$directory" --include "$filetype") && lang=sh && bpn_p_lang
      
-     #grep -rl -m 1 "$pattern" "$directory" --include "$filetype" | while read -r file; do ttb=$(echo -e "\n$file") && lang=nix && bpn_p_lang; grep -h -A 5 "$pattern" "$file"; done
+     # Выполнение поиска с выводом только найденного текста в файле содержащим паттерн - 5 строк от найденного  ; 
+     #echo ; ttb=$(grep -rh -A 5 "$pattern" "$directory" --include "$filetype") && lang=sh && bpn_p_lang
+     
+     grep -rl -m 1 "$pattern" "$directory" --include "$filetype" | while read -r file; do ttb=$(echo -e "\n$file") && lang=nix && bpn_p_lang; grep -h -A 5 "$pattern" "$file"; done
      
      #grep -rl "$pattern" "$directory" --include "$filetype"
      #grep -r -m 1 -l "$pattern" "$directory" --include "$filetype"
