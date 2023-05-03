@@ -238,23 +238,12 @@ sis() {
      # Получение аргументов
      pattern="$1"
      directory="${2:-/}"  # Если путь не указан, то используется корневая директория /
-     #filetype="${3:-"*.sh"}" # Если тип файла не указан то используется "*.sh"
-     filetype="$3"
+     filetype="${3:-"*.sh"}" # Если тип файла не указан то используется "*.sh"
      
-     if [ -z "$3" ]; then
-       filetypes=("--include *.sh" "--include *.txt")
-     fi
-     
-     echo "${filetypes[@]}"
-     echo $filetypes
-
- 
      # Выполнение поиска
-     echo ; ttb=$(grep -rl "$pattern" "$directory" "${filetypes[@]}") && lang=c && bpn_p_lang  ; 
+     echo ; ttb=$(grep -rl "$pattern" "$directory" --include "$filetype") && lang=c && bpn_p_lang  ; 
+     ttb=$(grep -rh -A 5 "sis()" --include "$filetype") && lang=c && bpn_p_lang  ; 
      
-     echo "${filetypes[@]}"
-     echo $filetypes
-      
      
      
    }
