@@ -228,14 +228,16 @@ sis() {
      }
      
      # Проверка на пустой ввод
-     if [ -z "$1" ]; then
-       ttb=$(help_sis) && lang=cr && bpn_p_lang ;
+     #if [ -z "$1" ]; then
+     #  ttb=$(help_sis) && lang=cr && bpn_p_lang ;
+     #  return 1
+     #fi
+     
+     # Проверка на пустой ввод
+     if [ $1 -eq 0 ]; then
+        ttb=$(help_sis) && lang=cr && bpn_p_lang ;
        return 1
      fi
-     
-     #if [ $# -eq 0 ]; then
-      #  return 1
-     #fi
      
      # Получение аргументов
      pattern="$1"
