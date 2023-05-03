@@ -252,7 +252,10 @@ sis() {
      # Выполнение поиска
      echo ; ttb=$(grep -rl "$pattern" "$directory" --include "${filetypes[@]}") && lang=c && bpn_p_lang  ; 
      
-     
+     echo $filetypes
+     echo $filetypes
+     echo $filetypes
+      
      
      
    }
