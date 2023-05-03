@@ -226,7 +226,7 @@ sis() {
          fi
       }
    
-      help_sis
+      ttb=$(help_sis) && lang=cr && bpn_p_lang ;
    
       if [ $# -eq 0 ]; then
          return 1
