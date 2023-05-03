@@ -244,7 +244,7 @@ sis() {
      #grep -rl "$pattern" "$directory" --include "$filetype"
      #grep -rh -A 5 "$pattern" "$directory" --include "$filetype"
      
-     grep -r -m 1 -l "$pattern" "$directory" --include "$filetype" | while read -r file; do echo -e "\n$file"; grep -h -A 5 "$pattern" "$file"; done
+     grep -r -m 1 -l "$pattern" "$directory" --include "$filetype" | while read -r file; do ttb=$(echo -e "\n$file") && lang=c && bpn_p_lang; grep -h -A 5 "$pattern" "$file"; done
 
      
    }
