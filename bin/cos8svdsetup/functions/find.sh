@@ -239,7 +239,7 @@ sis() {
      filetype="*.sh"
      
      # Выполнение поиска
-     grep -rl "$pattern" --include "$filetype" "$directory"
+     grep -rl "$pattern" --include "$filetype" "$directory" ; echo ;
    }
 
 
