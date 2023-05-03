@@ -240,9 +240,10 @@ sis() {
      directory="${3:-/}"  # Если путь не указан, то используется корневая директория /
      filetype="${2:-"*.sh"}" # Если тип файла не указан то используется "*.sh"
      
-     # Выполнение поиска echo ; ttb=$() && lang=c && bpn_p_lang  ; 
-     echo ; ttb=$(grep -rl "$pattern" "$directory" --include "$filetype") && lang=c && bpn_p_lang
-     #grep -rh -A 5 "$pattern" "$directory" --include "$filetype"
+     # Выполнение поиска с выводом только путей  ; 
+     #echo ; ttb=$(grep -rl "$pattern" "$directory" --include "$filetype") && lang=c && bpn_p_lang
+     # Выполнение поиска с выводом только путей  ; 
+     grep -rh -A 5 "$pattern" "$directory" --include "$filetype"
      
      #grep -rl -m 1 "$pattern" "$directory" --include "$filetype" | while read -r file; do ttb=$(echo -e "\n$file") && lang=nix && bpn_p_lang; grep -h -A 5 "$pattern" "$file"; done
      
