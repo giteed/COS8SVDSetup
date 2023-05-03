@@ -212,7 +212,7 @@ function etc_passwd_all() {
       
    }
 
-
+# search in script
 sis() {
      # Функция справки
      function help_sis() {
@@ -249,7 +249,8 @@ sis() {
      
      
    }
-
+   
+# search in script
 sis5() {
      # Функция справки
      function help_sis5() {
