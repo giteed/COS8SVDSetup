@@ -231,6 +231,12 @@ sis() {
       if [ $# -eq 0 ]; then
          return 1
       fi
+      
+      # Проверка на пустой ввод
+        if [ -z "$1" ]; then
+          help_sis
+          return 1
+        fi
    
       pattern="$1"
       directory="${2:-/}"  # Если путь не указан, то используется корневая директория /
