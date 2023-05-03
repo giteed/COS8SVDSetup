@@ -236,10 +236,11 @@ sis() {
      # Получение аргументов
      pattern="$1"
      directory="${2:-/}"  # Если путь не указан, то используется корневая директория /
-     filetype="*.sh"
+     filetype="${3:-"*.sh"}"
+     #filetype="*.sh"
      
      # Выполнение поиска
      echo ; ttb=$(grep -rl "$pattern" --include "$filetype" "$directory") && lang=c && bpn_p_lang  ; 
    }
 
-
+   
