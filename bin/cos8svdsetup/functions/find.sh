@@ -242,7 +242,7 @@ sis() {
      filetype="$3"
      
      if [ -z "$3" ]; then
-       filetypes=("*.sh" "*.txt")
+       filetypes=("--include *.sh" "--include *.txt")
      fi
      
      echo "${filetypes[@]}"
@@ -250,7 +250,7 @@ sis() {
 
  
      # Выполнение поиска
-     echo ; ttb=$(grep -rl "$pattern" "$directory" --include "${filetypes[@]}") && lang=c && bpn_p_lang  ; 
+     echo ; ttb=$(grep -rl "$pattern" "$directory" "${filetypes[@]}") && lang=c && bpn_p_lang  ; 
      
      echo "${filetypes[@]}"
      echo $filetypes
