@@ -241,10 +241,10 @@ sis() {
      filetype="${3:-"*.sh"}" # Если тип файла не указан то используется "*.sh"
      
      # Выполнение поиска echo ; ttb=$() && lang=c && bpn_p_lang  ; 
-     #grep -rl "$pattern" "$directory" --include "$filetype"
+     grep -rl "$pattern" "$directory" --include "$filetype"
      #grep -rh -A 5 "$pattern" "$directory" --include "$filetype"
      
-     grep -rl -m 1 "$pattern" "$directory" --include "$filetype" | while read -r file; do ttb=$(echo -e "\n$file") && lang=nix && bpn_p_lang; grep -h -A 5 "$pattern" "$file"; done
+     #grep -rl -m 1 "$pattern" "$directory" --include "$filetype" | while read -r file; do ttb=$(echo -e "\n$file") && lang=nix && bpn_p_lang; grep -h -A 5 "$pattern" "$file"; done
      
      #grep -rl "$pattern" "$directory" --include "$filetype"
      #grep -r -m 1 -l "$pattern" "$directory" --include "$filetype"
