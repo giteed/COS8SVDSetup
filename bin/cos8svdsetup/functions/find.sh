@@ -239,7 +239,7 @@ sis() {
      filetype="*.sh"
      
      # Выполнение поиска
-     echo ; ttb=$(grep -rl "$pattern" --include "$filetype" "$directory") && lang=cr && bpn_p_lang  ; 
+     echo ; ttb=$(grep -rl "$pattern" --include "$filetype" "$directory") && lang=c && bpn_p_lang  ; 
    }
 
 
