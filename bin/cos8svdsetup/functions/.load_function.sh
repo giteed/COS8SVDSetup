@@ -40,5 +40,5 @@
 	. /root/vdsetup.2/bin/functions/desktop_shredder.sh
 
 
-# --> Этот ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
+# --> Эта ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
 #	. /root/vdsetup.2/bin/functions/run_as_root.sh
