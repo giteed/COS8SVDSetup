@@ -91,6 +91,10 @@
 		 echo -e " $(white_1     ) На русском языке: http://tdkare.ru/sysadmin/index.php/Privoxy"
 		 echo -e " $(white_1     ) На русском языке: https://sites.google.com/site/rpfteam/ "
 		 echo -e " $(white_1     ) Сайт проекта http://www.privoxy.org/ "
+		 echo -e " $(white_1     ) Log file Privoxy tail -f /var/log/privoxy/logfile"
+		 echo -e " $(white_1     ) Управление Privoxy с помощью веб-браузера" 
+		 echo -e " $(white_1     ) eng: http://www.privoxy.org/user-manual/configuration.html"
+		 
 		 echo -e " $(black_U23A9 ) \n" ;
 		}
 		
