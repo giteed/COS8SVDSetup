@@ -65,8 +65,14 @@ function dsus() {
     ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
 }
 
+#
 function dsnow() {
     /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds
+}
+
+# Выбор папки/файла для ручного удаления в указанной локации 
+function dsman() {
+    /root/vdsetup.2/bin/utility/install/shredder/shredder.sh sr
 }
 
 # Перемещение папки или файла в папку Desktop Shredder

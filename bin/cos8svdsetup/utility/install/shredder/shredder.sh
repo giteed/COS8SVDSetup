@@ -265,11 +265,11 @@ function desktop_shredder() {
   if [[ "$1" == "ds" ]]; then
       desktop_shredder ;
       
-    elif [[ "$1" == "sr" ]]; then
+    elif [[ "$1" == "man" ]]; then
       shred_request ;
       
     else
-      ttb=$(echo -e  "\n Используйте скрипт $0 с ключем sr или ds") && lang=cr && bpn_p_lang
+      ttb=$(echo -e  "\n Используйте скрипт $0 с ключем man или ds") && lang=cr && bpn_p_lang
   fi
 
 

@@ -15,4 +15,7 @@ function im() { whoami ; } ;
 # Поиск программ, по 6 утилитам
 function wis() { (GLIG_ASTRX_ON && wis-f $1 $2) } ;
 
-
+# Запуск инсталляции/удаления/управления пользователями wireguard
+function wg_ins() {
+	/root/vdsetup.2/bin/utility/install/vpn/wireguard-install.sh
+}
