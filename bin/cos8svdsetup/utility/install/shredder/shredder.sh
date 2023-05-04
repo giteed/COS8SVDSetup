@@ -257,7 +257,7 @@ function desktop_shredder() {
     # Запускает по очереди все функции Shredder для очистки
     shred_files $ds_path $iteration_n && cycle_openssl_hex $ds_path $iteration_n && cycle_zero $ds_path $iteration_n && deleting_empty_folders $ds_path $iteration_n
     
-    ttb=$(echo -e  "\n \"Desktop Shredder\" старательно измельчил\n все содержимое папки: $ds_path\n $iteration_n раз(а) подряд.\n Установить другое время между очистками # dsunit_reinstall [время в сек]. ") && lang=cr && bpn_p_lang ; echo ; tendl ;
+    ttb=$(echo -e  "\n \"Desktop Shredder\" старательно измельчил\n все содержимое папки: $ds_path\n $iteration_n раз(а) подряд.\n Установить другое время между очистками\n # dsunit_reinstall [время в сек]. ") && lang=cr && bpn_p_lang ; echo ; tendl ;
     
   }
 
