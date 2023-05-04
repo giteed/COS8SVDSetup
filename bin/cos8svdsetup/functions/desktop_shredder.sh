@@ -72,7 +72,7 @@ function dsnow() {
 
 # Выбор папки/файла для ручного удаления в указанной локации 
 function dsman() {
-    /root/vdsetup.2/bin/utility/install/shredder/shredder.sh sr
+    /root/vdsetup.2/bin/utility/install/shredder/shredder.sh man
 }
 
 # Перемещение папки или файла в папку Desktop Shredder
