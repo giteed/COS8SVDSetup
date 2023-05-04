@@ -84,6 +84,13 @@
 		 echo -e " $(ellow_1     ) будут перенаправлены на Socks5 127.0.0.1:9050 " ;
 		 echo -e " $(ellow_1     ) то есть любое приложение использующее http / https_proxy на этом VDS ${hostname} " ;
 		 echo -e " $(ellow_1     ) http / https://localhost:8118 будет пропускать трафик через TOR Socks5 127.0.0.1:9050 " ;
+		 echo -e " $(black_1     ) "
+		 echo -e " $(white_1     ) Подробнее о Privoxy"
+		 echo -e " $(white_1     ) Privoxy это некэширующий HTTP прокси-сервер с поддержкой HTTPS"
+		 echo -e " $(white_1     ) и мощной системой фильтрации доступа и модернизации контента."
+		 echo -e " $(white_1     ) На русском языке: http://tdkare.ru/sysadmin/index.php/Privoxy"
+		 echo -e " $(white_1     ) На русском языке: https://sites.google.com/site/rpfteam/ "
+		 echo -e " $(white_1     ) Сайт проекта http://www.privoxy.org/ "
 		 echo -e " $(black_U23A9 ) \n" ;
 		}
 		
