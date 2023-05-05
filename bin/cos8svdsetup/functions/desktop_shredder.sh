@@ -1,6 +1,7 @@
 
 #!/bin/bash
 
+# Просмотр подробного статуса Unit Desktop Shredder
 function desktop_shredder_status() {
     local status_output=$(systemctl status desktop_shredder.service)
     local _auto_restart=$(echo "$status_output" | grep -oE '[0-9]+' | head -n 1)
@@ -10,7 +11,7 @@ function desktop_shredder_status() {
     local next_start_time=$(date -d "+$_auto_restart seconds $last_start_time" +%H:%M:%S)
     local next_start_will_be_in=$(($(date -d "$next_start_time" +%s) - $(date -d "$current_time" +%s)))
     
-    # Обработка случая, когда юнит остановлен
+    # Обработка случая, когда Unit остановлен
     if [ $next_start_will_be_in -lt 0 ]; then
         next_start_will_be_in="Unit stopped"
     else
@@ -67,7 +68,7 @@ function dsus() {
     ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
   }
 
-#
+# Очистить папку Desktop Shredder немедленно.
 function dsnow() {
     /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds
   }
