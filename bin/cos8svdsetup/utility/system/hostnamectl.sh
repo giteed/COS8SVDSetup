@@ -19,7 +19,7 @@ function _set_hostname() {
   	echo -en " $(blue_1      ) ${NC}: " ; read hostname ;
   	
   	if [[ -z "$hostname" ]]; then
-  		echo -e "$(ellow_1     ) Имя хоста НЕ будет изменено."; 
+  		echo -e " $(ellow_1     ) Имя хоста НЕ будет изменено."; 
   		hostname=$(cat hostname.txt);
   	else
   		echo -e " $(blue_1      ) Имя хоста будет изменено на:$GREEN $hostname${NC}";
