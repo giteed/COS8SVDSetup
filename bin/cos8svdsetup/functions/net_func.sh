@@ -131,6 +131,6 @@ function fw_i_r() {
    ttb=$(get-all-rules) && lang="cr" && bpn_p_lang ;
   }
 
-function set_hostname() {
+function hostname_set() {
       /root/vdsetup.2/bin/utility/system/hostnamectl.sh ;
   }
