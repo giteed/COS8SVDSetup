@@ -194,7 +194,7 @@ function mvds() {
       
       # Вызов функции desktop_shredder_status и передача аргумента для возврата значения
       desktop_shredder_status next_start_will_be_in_value  &>/dev/null
-      ttb=$(echo -e " Очистка начнется через: $next_start_will_be_in \n View Status of Desktop Shredders # dsus") && lang=cr && bpn_p_lang ;
+      ttb=$(echo -e " Очистка начнется через: $next_start_will_be_in_value \n View Status of Desktop Shredders # dsus") && lang=cr && bpn_p_lang ;
   }
   
   function dsunit_reinstall() {
