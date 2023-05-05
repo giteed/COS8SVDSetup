@@ -9,7 +9,7 @@ function desktop_shredder_status() {
     local current_d_time=$(date +"%b %d %H:%M:%S") # дата время
     local next_start_time=$(date -d "+$_auto_restart seconds $last_start_time" +%H:%M:%S)
     local next_start_will_be_in=$(($(date -d "$next_start_time" +%s) - $(date -d "$current_time" +%s)))
-
+    
     # Обработка случая, когда юнит остановлен
     if [ $next_start_will_be_in -lt 0 ]; then
         next_start_will_be_in="Unit stopped"
@@ -31,7 +31,7 @@ function desktop_shredder_status() {
     
     
     systemctl status desktop_shredder.service ;
-
+    
     echo "┌───────────────────────────────────────────────────────────────────────────────┐"
     echo "│                      Информация о состоянии Desktop Shredder                   "
     echo "├───────────────────────────────────────────────────────────────────────────────┤"
@@ -47,33 +47,35 @@ function desktop_shredder_status() {
     echo "├───────────────────────────────────────────────────────────────────────────────┤"
     echo "│ Следующий старт через минут:секунд   │ $next_start_will_be_in                  "
     echo "└──────────────────────────────────────┴────────────────────────────────────────┘"
-
+    
     echo -e "\n To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\n For example: # dsunit_reinstall 600\n View Status of Desktop Shredders # dsus\n Начать очистку немедленно # dsnow\n"
-# Показать статус Desktop Shredder
-# ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
-
-
-#return $next_start_will_be_in
-# Возвращение значения через аргумент функции
-eval "$1='$next_start_will_be_in'"
-
-
-}
+    
+    # Показать статус Desktop Shredder
+    # ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
+    
+    # Возвращение значения "Следующий старт через минут:секунд " через аргумент функции для других функций которые находятся ниже и которым нужно значение next_start_will_be_in.
+    # Если вы хотите использовать функцию desktop_shredder_status самостоятельно и она не предназначена только для возврата значения переменной, нужно передать аргумент, куда будет записано значение. 
+    # В случае, если вы вызываете desktop_shredder_status без аргумента, она будет выполняться без ошибок, и вы можете использовать ее в нужных местах. Для этого нужно следующее условие:
+    
+      if [[ -n $1 ]]; then
+        eval "$1='$next_start_will_be_in'"
+      fi
+  }
 
 # desktop_shredder_status in bat
 function dsus() {
     ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
-}
+  }
 
 #
 function dsnow() {
     /root/vdsetup.2/bin/utility/install/shredder/shredder.sh ds
-}
+  }
 
 # Выбор папки/файла для ручного удаления в указанной локации 
 function dsman() {
     /root/vdsetup.2/bin/utility/install/shredder/shredder.sh man
-}
+  }
 
 # Перемещение папки или файла в папку Desktop Shredder
 function mvds() {
@@ -185,10 +187,10 @@ function mvds() {
     ttb=$(echo -e  "\n Desktop Shredder начнет очистку через $next_start_will_be_in_value (min:sec) \n Для отмены: # systemctl stop desktop_shredder.service.\n Посмотреть статус: # dsus\n Начать очистку немедленно # dsnow\n" ) && lang=cr && bpn_p_lang ; echo ;
     
    
-
+   
    
    # Использование возвращенного значения
-
+   
     
     #ttb=$(echo -e " Очистка начнется через: $next_start_will_be_in \n View Status of Desktop Shredders # dsus") && lang=cr && bpn_p_lang ; 
     
