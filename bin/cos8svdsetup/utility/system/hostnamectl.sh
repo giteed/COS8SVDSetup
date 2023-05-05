@@ -9,7 +9,7 @@
 
   
 # Назначение/изменение имени хоста
-function set_hostname() {
+function _set_hostname() {
   	
   	echo ;
   	echo -e " $(black_U23A7 ) " ;
@@ -40,6 +40,6 @@ function set_hostname() {
   	( hostnamectl | bat -l nix -p )2>/dev/null || hostnamectl ; 
   	
   }
-	
+	_set_hostname ;
 	exit 0 ;
 
