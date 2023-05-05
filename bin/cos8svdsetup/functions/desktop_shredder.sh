@@ -186,16 +186,16 @@ function mvds() {
      
     ttb=$(echo -e  "\n Desktop Shredder начнет очистку через $next_start_will_be_in_value (min:sec) \n Для отмены: # systemctl stop desktop_shredder.service.\n Посмотреть статус: # dsus\n Начать очистку немедленно # dsnow\n" ) && lang=cr && bpn_p_lang ; echo ;
     
-   
-   
-   
-   # Использование возвращенного значения
-   
-    
-    #ttb=$(echo -e " Очистка начнется через: $next_start_will_be_in \n View Status of Desktop Shredders # dsus") && lang=cr && bpn_p_lang ; 
     
   }
   
+  function next_start_ds() {
+      # Использование возвращенного значения
+      
+      # Вызов функции desktop_shredder_status и передача аргумента для возврата значения
+      desktop_shredder_status next_start_will_be_in_value  &>/dev/null
+      ttb=$(echo -e " Очистка начнется через: $next_start_will_be_in \n View Status of Desktop Shredders # dsus") && lang=cr && bpn_p_lang ;
+  }
   
   function dsunit_reinstall() {
     auto_restart="$1"
