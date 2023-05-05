@@ -22,7 +22,7 @@ function _set_hostname() {
   		echo -e "$(ellow_1     ) Имя хоста НЕ будет изменено."; 
   		hostname=$(cat hostname.txt);
   	else
-  		echo -e "$(blue_1      ) Имя хоста будет изменено на:$GREEN $hostname${NC}";
+  		echo -e " $(blue_1      ) Имя хоста будет изменено на:$GREEN $hostname${NC}";
   		hostnamectl set-hostname "$hostname";
   	fi
   	
