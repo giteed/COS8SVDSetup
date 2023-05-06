@@ -72,3 +72,5 @@ EOF
     status_tor_service ;
     
   }
+  
+  create_tor0_service $intrface_name ;
