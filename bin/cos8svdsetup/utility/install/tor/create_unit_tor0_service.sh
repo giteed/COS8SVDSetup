@@ -27,7 +27,7 @@ fi
 
 
 # Создание файла юнита
-unit_file="/etc/systemd/system/${intrface_name}.service"
+unit_file="/etc/systemd/system/"${intrface_name}".service"
 
 # Проверка наличия файла юнита
 if [ -f "$unit_file" ]; 
