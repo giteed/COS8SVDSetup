@@ -57,7 +57,7 @@ intrface_name="$1"
 
 # Создание юнита
 create_intrface_name_service() {
-  cat <<EOF > /etc/systemd/system/"$intrface_name".service
+  cat <<EOF > /etc/systemd/system/$intrface_name.service
 [Unit]
   # Описание сервиса, отображается при запуске системы
   Description=Tor network interface  
@@ -72,14 +72,14 @@ create_intrface_name_service() {
   RemainAfterExit=yes
   # Указывает, что сервис зависит от сетевого подключения
   Requires=network-online.target
-  # Создает виртуальный сетевой мост "$intrface_name" типа bridge перед запуском сервиса
-  ExecStartPre=/usr/sbin/ip link add "$intrface_name" type bridge
-  # Добавляет IP-адрес "$ip_mask" в интерфейс "$intrface_name"
-  ExecStart=/usr/sbin/ip addr add "$ip_mask" dev "$intrface_name"
-  # Включает интерфейс "$intrface_name"
-  ExecStart=/usr/sbin/ip link set "$intrface_name" up
-  # Удаляет интерфейс "$intrface_name" при остановке сервиса
-  ExecStop=/usr/sbin/ip link del "$intrface_name"
+  # Создает виртуальный сетевой мост $intrface_name типа bridge перед запуском сервиса
+  ExecStartPre=/usr/sbin/ip link add $intrface_name type bridge
+  # Добавляет IP-адрес $ip_mask в интерфейс $intrface_name
+  ExecStart=/usr/sbin/ip addr add $ip_mask dev $intrface_name
+  # Включает интерфейс $intrface_name
+  ExecStart=/usr/sbin/ip link set $intrface_name up
+  # Удаляет интерфейс $intrface_name при остановке сервиса
+  ExecStop=/usr/sbin/ip link del $intrface_name
   
   # Определяет, когда и каким образом сервис должен быть запущен
   [Install]
