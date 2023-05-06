@@ -101,6 +101,9 @@ function open_port_and_services_firewall() {
     ttb=$(services-ports) && lang="passwd" && bpn_p_lang ;
   }
 
+function firewalld_add_remove_port() {
+      /root/vdsetup.2/bin/utility/system/firewalld/firewalld-add-remove-port.sh ;
+  }
 
 # Функция: Показывает открытые порты и сервисы на firewalld (окрашивает текст lang="cr")
 function fw_i() {
