@@ -20,14 +20,14 @@ echo -e " Отладка: Interface Name unit после условия = $intrf
 # Получение $ip_mask с $intrface_name или значение по умолчанию 10.0.0.1/24
 (ip_mask="$(ip -o -f inet addr show | grep "$intrface_name" | awk '{print $4}')") || $ip_mask="10.0.0.1/24"
 
-# Если переменная $1 на вход не передана то назначается intrface_name="tor0"
+# Если переменная $2 на вход не передана то назначается ip_mask="10.0.0.1/24"
 if [ -z $ip_mask ]; then
     ip_mask="10.0.0.1/24"
 fi
 
 
 # Создание файла юнита
-unit_file="/etc/systemd/system/$intrface_name.service"
+unit_file="/etc/systemd/system/${intrface_name}.service"
 
 # Проверка наличия файла юнита
 if [ -f "$unit_file" ]; 
