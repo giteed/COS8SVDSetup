@@ -46,6 +46,11 @@ if [ -f "$unit_file" ];
 fi
 
 intrface_name="$1"
+# Если переменная $1 на вход не передана то назначается intrface_name="tor0"
+if [ -z $intrface_name ]; then
+  intrface_name="tor0"
+fi
+
 
 # Создание юнита
 create_tor0_service() {
@@ -92,7 +97,7 @@ EOF
       ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started.\n\n To set a different Interface Name for a unit,\n enter # tor_Interface_unit_reinstall [intrface_name]\n For example: # tor_Interface_unit_reinstall tor1\n View Status of TOR service unit # status_tor_service" ) && lang=cr && bpn_p_lang ;
       echo ;
       
-      status_tor_service $intrface_name ; echo ;
+      status_tor_service ; echo ;
       ttb=$(echo -e "$(ifconfig tor0)") && lang=cr && bpn_p_lang ;
     
   }
