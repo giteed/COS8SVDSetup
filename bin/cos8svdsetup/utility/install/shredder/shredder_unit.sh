@@ -4,13 +4,16 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
+# --> Эта ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
+. /root/vdsetup.2/bin/functions/run_as_root.sh ;
+
 auto_restart="$1"
 #echo -e " Auto-Restart unit до условия = $auto_restart"
 
 if [ -z $auto_restart ]; then
 	auto_restart=180
 fi
-#echo -e " Auto-Restart unit после условия = $auto_restart"
+#echo -e " Отладка: Auto-Restart unit после условия = $auto_restart"
 
 # Создание файла юнита
 unit_file="/etc/systemd/system/desktop_shredder.service"

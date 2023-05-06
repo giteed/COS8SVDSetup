@@ -157,6 +157,10 @@ function tor_check_ip() {
    
 }
 
+function status_tor_service() {
+    ttb=$(echo -e "$(systemctl status -n0 --no-pager tor0.service)") && lang=cr && bpn_p_lang ;
+}
+
   
 # Если запрос завершился успешно с кодом 200, то функция выводит сообщение о том, что прокси работает, 
 # иначе - что прокси не работает, и выводит HTTP-код ответа.
