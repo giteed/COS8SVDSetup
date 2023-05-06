@@ -15,6 +15,8 @@ if [ -z $intrface_name ]; then
     intrface_name="tor0"
 fi
 #echo -e " Отладка: Interface Name unit после условия = $intrface_name"
+# Получение $ip_mask с $intrface_name
+ip_mask="$(ip -o -f inet addr show | grep "$intrface_name" | awk '{print $4}')"
 
 # Создание файла юнита
 unit_file="/etc/systemd/system/tor0.service"
@@ -23,8 +25,14 @@ unit_file="/etc/systemd/system/tor0.service"
 if [ -f "$unit_file" ]; 
         then
             echo ;
-            ttb=$(echo -e "$(ifconfig tor0)") && lang=cr && bpn_p_lang ;
-            ttb=$(echo -e "\n The tor0.service unit already exists.\n Remove it?\n") && lang=cr && bpn_p_lang ;
+            ttb=$(echo -e "$(ifconfig "$intrface_name")") && lang=cr && bpn_p_lang ;
+            
+            ttb=$(echo -e "\n The "$intrface_name".service unit already exists.\n Remove it?\n") && lang=cr && bpn_p_lang ;
+            ttb=$(echo -e " This command will remove the "$intrface_name" interface from the system: # sudo ip link delete "$intrface_name" ") && lang=cr && bpn_p_lang ;
+            ttb=$(echo -e " This command will turn off the "$intrface_name" interface in the system: # sudo ip link set dev $intrface_name down ") && lang=cr && bpn_p_lang ;
+            ttb=$(echo -e " You can delete the current IP address of the "$intrface_name" interface using the command: # sudo ip addr del "$ip_mask" dev "$intrface_name" ") && lang=cr && bpn_p_lang ;
+            
+            
             press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
         # Вsключение и удаление старого юнита
             systemctl disable tor0.service 2>/dev/null ;
