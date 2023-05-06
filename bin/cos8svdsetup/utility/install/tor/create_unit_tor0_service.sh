@@ -18,7 +18,7 @@ fi
 echo -e " Отладка: Interface Name unit после условия = $intrface_name"
 
 # Получение $ip_mask с $intrface_name или значение по умолчанию 10.0.0.1/24
-(ip_mask="$(ip -o -f inet addr show | grep "$intrface_name" | awk '{print $4}')") || $ip_mask="10.0.0.1/24"
+ip_mask="$(ip -o -f inet addr show | grep "$intrface_name" | awk '{print $4}')"
 
 # Если переменная $2 на вход не передана то назначается ip_mask="10.0.0.1/24"
 if [ -z $ip_mask ]; then
