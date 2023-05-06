@@ -11,23 +11,15 @@
 intrface_name="$1"
 #echo -e " Interface Name unit до условия = $intrface_name"
 
-# Если переменная $1 на вход не передана то назначается intrface_name="tor0"
 if [ -z $intrface_name ]; then
     intrface_name="tor0"
 fi
-echo -e " --> Отладка: Interface Name unit после условия = $intrface_name"
-
+#echo -e " Отладка: Interface Name unit после условия = $intrface_name"
 # Получение $ip_mask с $intrface_name
 ip_mask="$(ip -o -f inet addr show | grep "$intrface_name" | awk '{print $4}')"
 
-# Если переменная $2 на вход не передана то назначается ip_mask="10.0.0.1/24"
-if [ -z $ip_mask ]; then
-    ip_mask="10.0.0.1/24"
-fi
-
-
 # Создание файла юнита
-unit_file="/etc/systemd/system/"${intrface_name}".service"
+unit_file="/etc/systemd/system/tor0.service"
 
 # Проверка наличия файла юнита
 if [ -f "$unit_file" ]; 
@@ -43,32 +35,21 @@ if [ -f "$unit_file" ];
             
             press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
         # Вsключение и удаление старого юнита
-            systemctl disable "$intrface_name".service 2>/dev/null ;
-            systemctl stop "$intrface_name".service ;
+            systemctl disable tor0.service 2>/dev/null ;
+            systemctl stop tor0.service ;
         # Перезагрузка конфигурации юнитов
             systemctl daemon-reload
         # Удаление файла старого юнита
-            rm /etc/systemd/system/"$intrface_name".service ;
-        $0 "$intrface_name" "$ip_mask"
+            rm /etc/systemd/system/tor0.service ;
+        $0 "$intrface_name"
      exit 1
 fi
 
 intrface_name="$1"
-# Если переменная $1 на вход не передана то назначается intrface_name="tor0"
-if [ -z $intrface_name ]; then
-    intrface_name="tor0"
-fi
-
-ip_mask="$2"
-
-# Если переменная $2 на вход не передана то назначается ip_mask="10.0.0.1/24"
-if [ -z $ip_mask ]; then
-    ip_mask="10.0.0.1/24"
-fi
 
 # Создание юнита
-create_intrface_name_service() {
-  cat <<EOF > /etc/systemd/system/$intrface_name.service
+create_tor0_service() {
+  cat <<EOF > /etc/systemd/system/tor0.service
 [Unit]
   # Описание сервиса, отображается при запуске системы
   Description=Tor network interface  
@@ -83,14 +64,14 @@ create_intrface_name_service() {
   RemainAfterExit=yes
   # Указывает, что сервис зависит от сетевого подключения
   Requires=network-online.target
-  # Создает виртуальный сетевой мост $intrface_name типа bridge перед запуском сервиса
-  ExecStartPre=/usr/sbin/ip link add $intrface_name type bridge
-  # Добавляет IP-адрес $ip_mask в интерфейс $intrface_name
-  ExecStart=/usr/sbin/ip addr add $ip_mask dev $intrface_name
-  # Включает интерфейс $intrface_name
-  ExecStart=/usr/sbin/ip link set $intrface_name up
-  # Удаляет интерфейс $intrface_name при остановке сервиса
-  ExecStop=/usr/sbin/ip link del $intrface_name
+  # Создает виртуальный сетевой мост tor0 типа bridge перед запуском сервиса
+  ExecStartPre=/usr/sbin/ip link add tor0 type bridge
+  # Добавляет IP-адрес 10.0.0.1/24 в интерфейс tor0
+  ExecStart=/usr/sbin/ip addr add 10.0.0.1/24 dev tor0
+  # Включает интерфейс tor0
+  ExecStart=/usr/sbin/ip link set tor0 up
+  # Удаляет интерфейс tor0 при остановке сервиса
+  ExecStop=/usr/sbin/ip link del tor0
   
   # Определяет, когда и каким образом сервис должен быть запущен
   [Install]
@@ -103,17 +84,17 @@ EOF
       systemctl daemon-reload
       
       # Включение и запуск юнита
-      systemctl enable "$intrface_name".service ;
-      systemctl start "$intrface_name".service ;
-      systemctl status -n0 --no-pager "$intrface_name".service ;
-      ttb=$(cat /etc/systemd/system/"$intrface_name".service)&& lang=nix && bpn_lang ;
+      systemctl enable tor0.service ;
+      systemctl start tor0.service ;
+      systemctl status -n0 --no-pager tor0.service ;
+      ttb=$(cat /etc/systemd/system/tor0.service)&& lang=nix && bpn_lang ;
       
       ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started.\n\n To set a different Interface Name for a unit,\n enter # tor_Interface_unit_reinstall [intrface_name]\n For example: # tor_Interface_unit_reinstall tor1\n View Status of TOR service unit # status_tor_service" ) && lang=cr && bpn_p_lang ;
       echo ;
       
-      status_tor_service ; echo ; sleep 1 ;
-      ttb=$(echo -e "$(ifconfig "$intrface_name")") && lang=cr && bpn_p_lang ;
+      status_tor_service $intrface_name ; echo ;
+      ttb=$(echo -e "$(ifconfig tor0)") && lang=cr && bpn_p_lang ;
     
   }
   
-  create_intrface_name_service $intrface_name $ip_mask;
+  create_tor0_service $intrface_name ;
