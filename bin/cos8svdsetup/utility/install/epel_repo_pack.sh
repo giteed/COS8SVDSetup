@@ -31,7 +31,7 @@
 	 
 	 
 	 sudo dnf install -y epel-release yum-utils npm || ( error_MSG ; ) ; echo ;
-	 sudo dnf install -y net-tools bind-utils network-scripts iptables socat dnstracer || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y net-tools bind-utils network-scripts iptables socat dnstracer nyx || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y dialog mlocate ncdu ranger tldr || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y git tar curl wget jq || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y whois || ( error_MSG ; ) ; echo ;
@@ -76,7 +76,7 @@
 	ttb=$( echo -e "
  ⎧ Установка дополнительных пакетов:: 
  | 
- | epel-release, iptables, python3, ruby, npm, unzip, 
+ | epel-release, iptables, nyx, python3, ruby, npm, unzip, 
  | hstr, lsof, screen, tar, p7zip, mc, nano, whois, Webmin,
  | wget, curl, jq, atop, htop, nethogs, bpytop, iftop, bat,
  | stacer, yum-utils, net-tools, network-scripts, git, tree,
