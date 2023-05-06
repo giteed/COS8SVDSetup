@@ -50,7 +50,7 @@ fi
 intrface_name="$1"
 
 # Создание юнита
-create_"$intrface_name"_service() {
+create_intrface_name_service() {
   cat <<EOF > /etc/systemd/system/"$intrface_name".service
 [Unit]
   # Описание сервиса, отображается при запуске системы
@@ -99,4 +99,4 @@ EOF
     
   }
   
-  create_"$intrface_name"_service $intrface_name ;
+  create_intrface_name_service $intrface_name ;
