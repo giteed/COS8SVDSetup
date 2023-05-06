@@ -49,7 +49,7 @@ if [ -f "$unit_file" ];
             systemctl daemon-reload
         # Удаление файла старого юнита
             rm /etc/systemd/system/"$intrface_name".service ;
-        $0 "$intrface_name"
+        $0 "$intrface_name" "$ip_mask"
      exit 1
 fi
 
@@ -59,6 +59,12 @@ if [ -z $intrface_name ]; then
     intrface_name="tor0"
 fi
 
+ip_mask="$2"
+
+# Если переменная $2 на вход не передана то назначается ip_mask="10.0.0.1/24"
+if [ -z $ip_mask ]; then
+    ip_mask="10.0.0.1/24"
+fi
 
 # Создание юнита
 create_intrface_name_service() {
@@ -110,4 +116,4 @@ EOF
     
   }
   
-  create_intrface_name_service $intrface_name ;
+  create_intrface_name_service $intrface_name $ip_mask;
