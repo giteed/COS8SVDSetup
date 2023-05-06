@@ -40,22 +40,22 @@ intrface_name="$1"
 
 # Создание юнита
 create_tor0_service() {
-    cat <<EOF > /etc/systemd/system/tor0.service
-    [Unit]
-    Description=Tor network interface
-    
-    [Service]
-    Type=simple
-    ExecStart=/sbin/ip link add name tor0 type bridge
-    ExecStart=/sbin/ip addr add 10.0.0.1/24 dev tor0
-    ExecStart=/sbin/ip link set tor0 up
-    ExecStop=/sbin/ip link set tor0 down
-    ExecStop=/sbin/ip link delete tor0
-    RemainAfterExit=yes
-    
-    [Install]
-    WantedBy=multi-user.target
-    EOF
+  cat <<EOF > /etc/systemd/system/tor0.service
+[Unit]
+Description=Tor network interface
+
+[Service]
+Type=simple
+ExecStart=/sbin/ip link add name tor0 type bridge
+ExecStart=/sbin/ip addr add 10.0.0.1/24 dev tor0
+ExecStart=/sbin/ip link set tor0 up
+ExecStop=/sbin/ip link set tor0 down
+ExecStop=/sbin/ip link delete tor0
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+EOF
     
     # Перезагрузка конфигурации юнитов
     systemctl daemon-reload
@@ -70,6 +70,5 @@ create_tor0_service() {
     echo ;
     
     status_tor_service ;
-  
     
-}
+  }
