@@ -15,9 +15,9 @@ intrface_name="$1"
 if [ -z $intrface_name ]; then
     intrface_name="tor0"
 fi
-echo -e " Отладка: Interface Name unit после условия = $intrface_name"
+echo -e " --> Отладка: Interface Name unit после условия = $intrface_name"
 
-# Получение $ip_mask с $intrface_name или значение по умолчанию 10.0.0.1/24
+# Получение $ip_mask с $intrface_name
 ip_mask="$(ip -o -f inet addr show | grep "$intrface_name" | awk '{print $4}')"
 
 # Если переменная $2 на вход не передана то назначается ip_mask="10.0.0.1/24"
@@ -54,6 +54,11 @@ if [ -f "$unit_file" ];
 fi
 
 intrface_name="$1"
+# Если переменная $1 на вход не передана то назначается intrface_name="tor0"
+if [ -z $intrface_name ]; then
+    intrface_name="tor0"
+fi
+
 
 # Создание юнита
 create_intrface_name_service() {
