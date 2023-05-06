@@ -59,19 +59,20 @@ create_tor0_service() {
 
 EOF
     
-    # Перезагрузка конфигурации юнитов
-    systemctl daemon-reload
-    
-    # Включение и запуск юнита
-    systemctl enable tor0.service ;
-    systemctl start tor0.service ;
-    systemctl status -n0 --no-pager tor0.service ;
-    ttb=$(cat /etc/systemd/system/tor0.service)&& lang=nix && bpn_lang ;
-    
-    ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started.\n\n To set a different Interface Name for a unit,\n enter # tor_Interface_unit_reinstall [intrface_name]\ For example: # tor_Interface_unit_reinstall tor1\n View Status of TOR service unit # status_tor_service" ) && lang=cr && bpn_p_lang ;
-    echo ;
-    
-    status_tor_service ;
+      # Перезагрузка конфигурации юнитов
+      systemctl daemon-reload
+      
+      # Включение и запуск юнита
+      systemctl enable tor0.service ;
+      systemctl start tor0.service ;
+      systemctl status -n0 --no-pager tor0.service ;
+      ttb=$(cat /etc/systemd/system/tor0.service)&& lang=nix && bpn_lang ;
+      
+      ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started.\n\n To set a different Interface Name for a unit,\n enter # tor_Interface_unit_reinstall [intrface_name]\ For example: # tor_Interface_unit_reinstall tor1\n View Status of TOR service unit # status_tor_service" ) && lang=cr && bpn_p_lang ;
+      echo ;
+      
+      status_tor_service ; 
+      ttb=$(echo -e "$(ifconfig tor0)") && lang=cr && bpn_p_lang ;
     
   }
   

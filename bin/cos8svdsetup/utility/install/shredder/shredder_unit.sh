@@ -37,6 +37,9 @@ fi
 
 auto_restart="$1"
 # Создание юнита
+
+function create_desktop_shredder_service() {
+	 
 cat << EOF > "$unit_file"
 [Unit]
 Description=The Linux Desktop Shredders $auto_restart sec auto-start.
@@ -66,19 +69,22 @@ StartLimitInterval=0
 [Install]
 WantedBy=multi-user.target
 EOF
+      
+     	# Перезагрузка конфигурации юнитов
+	 	systemctl daemon-reload ;
+	 	
+	 	# Включение и запуск юнита
+	 	systemctl enable desktop_shredder.service ;
+	 	systemctl start desktop_shredder.service ;
+	 	systemctl status -n0 --no-pager desktop_shredder.service ; 
+	 	ttb=$(cat /etc/systemd/system/desktop_shredder.service) && lang=nix && bpn_lang ;
+	 	ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started.\n\n To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\ For example: # dsunit_reinstall 600\n View Status of Desktop Shredders # dsus" ) && lang=cr && bpn_p_lang ;
+	 	echo ; 
+	 	ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
+	 
+	}
 
-# Перезагрузка конфигурации юнитов
-systemctl daemon-reload
-
-# Включение и запуск юнита
-systemctl enable desktop_shredder.service ;
-systemctl start desktop_shredder.service ;
-systemctl status -n0 --no-pager desktop_shredder.service ;
-ttb=$(cat /etc/systemd/system/desktop_shredder.service)&& lang=nix && bpn_lang ;
-
-ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started.\n\n To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\ For example: # dsunit_reinstall 600\n View Status of Desktop Shredders # dsus" ) && lang=cr && bpn_p_lang ;
-echo ;
-ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
-
+	create_desktop_shredder_service $auto_restart ;
+	
 	exit 0
 
