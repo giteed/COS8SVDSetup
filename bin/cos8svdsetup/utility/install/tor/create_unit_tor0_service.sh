@@ -48,8 +48,9 @@ create_tor0_service() {
   [Service]
   Type=oneshot
   RemainAfterExit=yes
+  Requires=network-online.target
   ExecStartPre=/usr/sbin/ip link add tor0 type bridge
-  ExecStart=/usr/bin/ip addr add 10.0.0.1/24 dev tor0
+  ExecStart=/usr/sbin/ip addr add 10.0.0.1/24 dev tor0
   ExecStart=/usr/sbin/ip link set tor0 up
   ExecStop=/usr/sbin/ip link del tor0
   
