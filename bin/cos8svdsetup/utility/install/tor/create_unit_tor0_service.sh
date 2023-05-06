@@ -80,7 +80,7 @@ EOF
       ttb=$(echo -e "\n The desktop_shredder.service unit was successfully created and started.\n\n To set a different Interface Name for a unit,\n enter # tor_Interface_unit_reinstall [intrface_name]\ For example: # tor_Interface_unit_reinstall tor1\n View Status of TOR service unit # status_tor_service" ) && lang=cr && bpn_p_lang ;
       echo ;
       
-      status_tor_service ; 
+      status_tor_service ; echo ;
       ttb=$(echo -e "$(ifconfig tor0)") && lang=cr && bpn_p_lang ;
     
   }
