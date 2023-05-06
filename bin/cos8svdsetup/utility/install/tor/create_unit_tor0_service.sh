@@ -22,6 +22,7 @@ unit_file="/etc/systemd/system/tor0.service"
 # Проверка наличия файла юнита
 if [ -f "$unit_file" ]; 
         then
+            echo ;
             ttb=$(echo -e "$(ifconfig tor0)") && lang=cr && bpn_p_lang ;
             ttb=$(echo -e "\n The tor0.service unit already exists.\n Remove it?\n") && lang=cr && bpn_p_lang ;
             press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
