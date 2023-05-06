@@ -165,7 +165,7 @@ function tor_Interface_unit_reinstall() {
 
 
 function status_tor_service() {
-    ttb=$(echo -e "$(systemctl status -n0 --no-pager tor0.service)") && lang=cr && bpn_p_lang ;
+    ttb=$(echo -e "$(systemctl status -n0 --no-pager $1.service)") && lang=cr && bpn_p_lang ;
   }
 
   
