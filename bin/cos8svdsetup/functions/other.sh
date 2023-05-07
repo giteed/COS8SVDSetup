@@ -4,10 +4,8 @@
 # Функция: Очистка ( полная, включая промотку вверх ) экрана терминала 
 function cv() { (clear && clear) }
 
-
 # Очистка ( не полная, не включая промотку вверх ) экрана терминала 
 function c() { (clear) }
-
 
 # Функция: User
 function im() { whoami ; } ;
@@ -18,4 +16,9 @@ function wis() { (GLIG_ASTRX_ON && wis-f $1 $2) } ;
 # Запуск инсталляции/удаления/управления пользователями wireguard
 function wg_ins() {
 	/root/vdsetup.2/bin/utility/install/vpn/wireguard-install.sh
+}
+
+# Исправление ошибки "Failed to set locale, defaulting to C.UTF-8" 
+function locale_fix() 
+	/root/vdsetup.2/bin/utility/system/locale.sh ;
 }
