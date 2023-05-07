@@ -114,8 +114,7 @@ EOF
       ttb=$(echo -e "\n The tor0.service unit was successfully created and started.\n\n To set a different Interface Name for a unit, enter:\n # tor_Interface_unit_reinstall [intrface_name]\n For example:\n # tor_Interface_unit_reinstall tor5\n View Status of TOR service unit:\n # status_tor_service" ) && lang=cr && bpn_p_lang ;
       echo ;
       
-      status_tor_service ; echo ;
-      ttb=$(echo -e "$(ifconfig tor0)") && lang=cr && bpn_p_lang ;
+      status_tor_service ;
     
   }
   
