@@ -193,7 +193,7 @@ function deleting_empty_folders() {
     ds_path=$1
     iteration_n=$2
     # Удаляем пустые директории кроме родительской папки
-    rm -rf $(find "$ds_path" -mindepth 1 -type d | awk -F/ 'NF{print NF-1,$0}' | sort -nr | cut -d" " -f2-)
+    rm -rf $(find "$ds_path" -mindepth 1 -type d | awk -F/ 'NF{print NF-1,$0}' | sort -nr | cut -d" " -f2-) ; echo ;
     tree -aC -L 2 $ds_path ;
     #find "$ds_path" -mindepth 1 -type d -regex '.*/0+$' -empty -delete
   }
@@ -209,7 +209,7 @@ function shred_request() {
     ds_path=$(cat /tmp/shredder_request_ds_path.txt)
     echo ;
     # Проверяем что shredder не запущен и уже не работает
-    check_screen_process $ds_path $iteration_n ; 
+    check_screen_process $ds_path $iteration_n ; echo ;
     tree -aC -L 2 $ds_path ; echo ; timer 5 sec ; tstart
     # Удаляет пустые папки с именем в котом только нули
     deleting_empty_zero_folders $ds_path $iteration_n ; 
