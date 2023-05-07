@@ -114,7 +114,7 @@ ttb=$( echo -e "
         echo -en " "
       else
         # Измените на countdown_1 или countdown_2 чтобы получить другую разновидность отображения
-        countdown_2
+        countdown_1
       fi
       ((i--))
       sleep 0.1
