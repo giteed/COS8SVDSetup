@@ -119,7 +119,7 @@ ttb=$( echo -e "
       ((i--))
       sleep 0.1
       echo -en " "
-      printf "\r"
+      printf "\r "
     done
     
     # Show cursor (показать курсор в терминале)
