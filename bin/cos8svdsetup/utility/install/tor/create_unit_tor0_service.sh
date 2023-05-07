@@ -17,7 +17,7 @@ fi
 
 
 function stop_disable_remove_unit() {
-    press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
+    
     # Выключение и удаление старого юнита из systemd
         systemctl disable tor0.service 2>/dev/null ;
         systemctl stop tor0.service 2>/dev/null ;
