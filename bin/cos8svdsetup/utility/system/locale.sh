@@ -13,7 +13,7 @@
  Если вы хотите исправить ошибку: 
  \"Failed to set locale, defaulting to C.UTF-8\" 
  для только вашей учетной записи и установить
- locale: LANG=en_US.utf-8,введите команды приведенные ниже:
+ locale: LANG=en_US.utf-8, введите команды приведенные ниже:
  
  # echo \"export LC_ALL=en_US.utf-8\" >> /root/.bashrc
  # echo \"export LANG=en_US.utf-8\" >> /root/.bashrc
