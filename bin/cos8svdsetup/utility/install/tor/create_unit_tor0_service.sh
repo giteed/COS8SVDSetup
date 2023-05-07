@@ -43,10 +43,10 @@ if [ -f "$unit_file" ];
             
             ttb=$(echo -e "\n The "$intrface_name".service unit already exists.\n Remove it?") && lang=cr && bpn_p_lang ;
              echo ;
-            ttb=$(echo -e " This command will remove the "$intrface_name" interface from the system: # sudo ip link delete "$intrface_name" ") && lang=cr && bpn_p_lang ;
-            ttb=$(echo -e " This command will turn off the "$intrface_name" interface in the system: # sudo ip link set dev $intrface_name down ") && lang=cr && bpn_p_lang ;
-            ttb=$(echo -e " You can delete the current IP address of the "$intrface_name" interface using the command: # sudo ip addr del "$ip_mask" dev "$intrface_name" ") && lang=cr && bpn_p_lang ;
-            ttb=$(echo -e " And then add another new IP address using the command: # sudo ip addr add 10.0.1.1/24 dev tor0 ") && lang=cr && bpn_p_lang ;
+            ttb=$(echo -e " This command will remove the "$intrface_name" interface from the system:\n # sudo ip link delete "$intrface_name" ") && lang=cr && bpn_p_lang ;
+            ttb=$(echo -e " This command will turn off the "$intrface_name" interface in the system:\n # sudo ip link set dev $intrface_name down ") && lang=cr && bpn_p_lang ;
+            ttb=$(echo -e " You can delete the current IP address of the "$intrface_name" interface using the command:\n # sudo ip addr del "$ip_mask" dev "$intrface_name" ") && lang=cr && bpn_p_lang ;
+            ttb=$(echo -e " And then add another new IP address using the command:\n # sudo ip addr add 10.0.1.1/24 dev tor0 ") && lang=cr && bpn_p_lang ;
             ttb=$(echo -e "  ") && lang=cr && bpn_p_lang ;
             
             press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
