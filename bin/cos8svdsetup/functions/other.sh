@@ -19,6 +19,6 @@ function wg_ins() {
 }
 
 # Исправление ошибки "Failed to set locale, defaulting to C.UTF-8" 
-function locale_fix() 
+function locale_fix() {
 	/root/vdsetup.2/bin/utility/system/locale.sh ;
 }
