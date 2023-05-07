@@ -39,10 +39,10 @@ function check_screen_process() {
         #timer "10 sec"; # таймер для отладки
         exit 1
       else
-        ttb=$(echo -e "\n | Процесс \"Desktop Shredder\" не найден\n | Проверить процесс: # screen -r $screen_name\n | Или: # systemctl status -n0 --no-pager desktop_shredder.service") && lang=cr && bpn_p_lang ; echo ;
+        ttb=$(echo -e "\n Процесс \"Desktop Shredder\" не найден\n Проверить процесс: # screen -r $screen_name\n Или: # systemctl status -n0 --no-pager desktop_shredder.service") && lang=cr && bpn_p_lang ; echo ;
            
         tree -aC -L 2 $ds_path ; echo ;
-        ttb=$(echo -e  "\n \ | "Desktop Shredder\" \n | скоро начнет очистку этой папки: $ds_path\n  \n | Ctrl+C для отмены.") && lang=cr && bpn_p_lang ; echo ;
+        ttb=$(echo -e  "\n | \"Desktop Shredder\" \n | скоро начнет очистку этой папки: $ds_path\n  \n | Ctrl+C для отмены.") && lang=cr && bpn_p_lang ; echo ;
         timer "10 sec"; # таймер для отладки
         # Удаляет пустые папки с именем в котом только нули
         deleting_empty_zero_folders $ds_path $iteration_n ;
@@ -241,7 +241,7 @@ function desktop_shredder() {
       shredder_folder="$ds_path"
      
       if [ -z "$(ls -A "$shredder_folder")" ]; then
-        ttb=$(echo -e "\n Папка Desktop Shredder, пуста.\n Нечего мельчить!\n Переместить файл или папку в Shredder:\n # mvds [папка/файл]\n Выход.\n") && lang=nix && bpn_p_lang
+        ttb=$(echo -e "\n | Папка Desktop Shredder, пуста.\n Нечего мельчить!\n | Переместить файл или папку в Shredder:\n | # mvds [папка/файл]\n\n | Выход.\n") && lang=nix && bpn_p_lang
         exit 1
       fi
     }
