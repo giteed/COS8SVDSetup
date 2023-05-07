@@ -241,7 +241,7 @@ function desktop_shredder() {
       shredder_folder="$ds_path"
      
       if [ -z "$(ls -A "$shredder_folder")" ]; then
-        ttb=$(echo -e "\n | Папка Desktop Shredder, пуста.\n Нечего мельчить!\n | Переместить файл или папку в Shredder:\n | # mvds [папка/файл]\n\n | Выход.\n") && lang=nix && bpn_p_lang
+        ttb=$(echo -e "\n | Папка Desktop Shredder, пуста.\n | Нечего мельчить!\n | Переместить файл или папку в Shredder:\n | # mvds [папка/файл]\n\n | Выход.\n") && lang=nix && bpn_p_lang
         exit 1
       fi
     }
