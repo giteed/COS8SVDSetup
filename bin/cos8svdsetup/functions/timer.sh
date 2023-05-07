@@ -62,10 +62,7 @@ ttb=$( echo -e "
     
   }
 
-#!/bin/bash
-  . /root/.bashrc
-  tstart
-  
+
   function countdown() {
     
     # Цифры в счетчике убавляются по мене уменьшения самого числа в счетчике
