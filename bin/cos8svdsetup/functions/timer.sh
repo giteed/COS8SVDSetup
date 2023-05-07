@@ -126,7 +126,7 @@ ttb=$( echo -e "
     tput cnorm
     
     printf "\n"
-    tendl_f
+    tendl
     # вызвать countdown $1 (число 1900 = примерно 10 сек выполнения на слабом VDS)
   }
   
