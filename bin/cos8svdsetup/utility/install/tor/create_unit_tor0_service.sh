@@ -20,12 +20,12 @@ function stop_disable_remove_unit() {
     press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
     # Выключение и удаление старого юнита из systemd
         systemctl disable tor0.service 2>/dev/null ;
-        systemctl stop tor0.service ;
+        systemctl stop tor0.service 2>/dev/null ;
     # Перезагрузка конфигурации юнитов
         systemctl daemon-reload
 }
 
-ifconfig tor0 >/dev/null 2>&1 || stop_disable_remove_unit
+ifconfig tor0 >/dev/null 2>&1 || stop_disable_remove_unit 2>/dev/null ;
 
 
 #echo -e " Отладка: Interface Name unit после условия = $intrface_name"
