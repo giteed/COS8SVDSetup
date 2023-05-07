@@ -24,5 +24,6 @@ function locale_fix() {
 }
 
 function ssh_port_change() {
-	/vdsetup.2/bin/utility/system/ssh_port_ch.sh ;
+	
+	/root/vdsetup.2/bin/utility/system/ssh_port_ch.sh ;
 }
