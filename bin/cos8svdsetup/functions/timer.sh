@@ -62,3 +62,73 @@ ttb=$( echo -e "
     
   }
 
+#!/bin/bash
+  . /root/.bashrc
+  tstart
+  
+  function countdown() {
+    
+    # Цифры в счетчике убавляются по мене уменьшения самого числа в счетчике
+    function countdown_1() {
+        for digit in $(echo $i | grep -o .); do
+          case $digit in
+            1) printf "\e[37;1m%s\e[0m" "$digit";;
+            2) printf "\e[36;1m%s\e[0m" "$digit";;
+            3) printf "\e[35;1m%s\e[0m" "$digit";;
+            4) printf "\e[34;1m%s\e[0m" "$digit";;
+            5) printf "\e[33;1m%s\e[0m" "$digit";;
+            6) printf "\e[32;1m%s\e[0m" "$digit";;
+            7) printf "\e[32;0m%s\e[0m" "$digit";;
+            8) printf "\e[31;1m%s\e[0m" "$digit";;
+            9) printf "\e[32;1m%s\e[0m" "$digit";;
+            0) printf "\e[31;1m%s\e[0m" "$digit";;
+          esac
+        done
+    }
+    
+    # Цифры в счетчике стоят через пробел и не убавляются
+    function countdown_2() {
+        for digit in $(echo $i | grep -o .); do
+          case $digit in
+            1) printf "\e[37;1m%s\e[0m" " $digit";;
+            2) printf "\e[36;1m%s\e[0m" " $digit";;
+            3) printf "\e[35;1m%s\e[0m" " $digit";;
+            4) printf "\e[34;1m%s\e[0m" " $digit";;
+            5) printf "\e[33;1m%s\e[0m" " $digit";;
+            6) printf "\e[32;1m%s\e[0m" " $digit";;
+            7) printf "\e[32;1m%s\e[0m" " $digit";;
+            8) printf "\e[31;1m%s\e[0m" " $digit";;
+            9) printf "\e[32;1m%s\e[0m" " $digit";;
+            0) printf "\e[31;1m%s\e[0m" " $digit";;
+          esac
+        done
+    }
+    
+    
+    # Hide cursor (спрятать курсор в терминале)
+    tput civis
+    echo -e " "
+    local i=$1
+    while (( i >= 0 )); do
+      # Если число меньше чем указано ниже то выполняется условие после else:
+      if (( i >= 2000 )); then
+        
+        printf "\r \e[37;1m%3d${nc}" "$i"
+        echo -en " "
+      else
+        # Измените на countdown_1 или countdown_2 чтобы получить другую разновидность отображения
+        countdown_1
+      fi
+      ((i--))
+      sleep 0.01
+      echo -en " "
+      printf "\r"
+    done
+    
+    # Show cursor (показать курсор в терминале)
+    tput cnorm
+    
+    printf "\n"
+    # вызвать countdown $1 (число 1900 = примерно 10 сек выполнения на слабом VDS)
+  }
+  
