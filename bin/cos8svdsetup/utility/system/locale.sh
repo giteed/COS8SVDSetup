@@ -34,7 +34,7 @@
  установки глобальных переменных среды, которые 
  могут быть доступны для всех пользователей в с
  истеме и не зависят от логина.
- ") && lang=help && bpn_p_lang ;
+ ") && lang=d && bpn_p_lang ;
 press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 
  # --> создаю копию файла перед внесением изменений /etc/environment_$(date '+%Y-%m-%d_%H-%M-%S').bak
