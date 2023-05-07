@@ -64,7 +64,7 @@ ttb=$( echo -e "
 
 
   function countdown() {
-    
+    tstart
     # Цифры в счетчике убавляются по мене уменьшения самого числа в счетчике
     function countdown_1() {
         for digit in $(echo $i | grep -o .); do
@@ -126,6 +126,7 @@ ttb=$( echo -e "
     tput cnorm
     
     printf "\n"
+    tendl_f
     # вызвать countdown $1 (число 1900 = примерно 10 сек выполнения на слабом VDS)
   }
   
