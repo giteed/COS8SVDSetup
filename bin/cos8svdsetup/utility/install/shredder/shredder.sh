@@ -85,7 +85,7 @@ function replace_folder_name_with_zeros() {
         if [[ "$new_name" != "$folder_name"/* ]]; then
          mv -- "$folder_name" "$new_name" 
         fi
-        ttb=$(echo -e " Переименована папка: $folder_name -> $new_name") && lang=cr && bpn_p_lang
+        ttb=$(echo -e "\n Переименована папка: $folder_name -> $new_name") && lang=cr && bpn_p_lang
       fi
       
     done
@@ -119,7 +119,7 @@ function rename_folder_name_with_openssl_hex() {
           if [[ "$new_name" != "$folder"/* ]]; then
             mv -- "$folder" "$new_name"
           fi
-          ttb=$(echo -e " Переименована папка: $folder -> $new_name") && lang=cr && bpn_p_lang
+          ttb=$(echo -e "\n Переименована папка: $folder -> $new_name") && lang=cr && bpn_p_lang
         fi
     done
   }
@@ -134,7 +134,7 @@ function cycle_openssl_hex() {
     for (( i=1; i<=$iteration_n; i++ ))
       do
         rename_folder_name_with_openssl_hex $ds_path $iteration_n ;
-        ttb=$(echo -e " Выполнение cycle_openssl_hex  номер $i") && lang=cr && bpn_p_lang
+        ttb=$(echo -e "\n Выполнение cycle_openssl_hex  номер $i") && lang=cr && bpn_p_lang
     done
     
   }
@@ -149,7 +149,7 @@ function cycle_zero() {
     for (( i=1; i<=$iteration_n; i++ ))
       do
         replace_folder_name_with_zeros $ds_path $iteration_n ;
-        ttb=$(echo -e " Выполнение cycle_zero номер $i") && lang=cr && bpn_p_lang
+        ttb=$(echo -e "\n Выполнение cycle_zero номер $i") && lang=cr && bpn_p_lang
     done
     
   }
