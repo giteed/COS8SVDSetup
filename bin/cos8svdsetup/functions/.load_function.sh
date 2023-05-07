@@ -30,15 +30,12 @@
 	. /root/vdsetup.2/bin/functions/tor.sh
 #  --> delay таймеры
 	. /root/vdsetup.2/bin/functions/delay.sh
-#  --> часы таймеры
+#  --> Часы таймеры
 	. /root/vdsetup.2/bin/functions/timer.sh
-#  --> память и диски
+#  --> Память и диски
 	. /root/vdsetup.2/bin/functions/mem.sh
-#  --> разные функции
+#  --> Разные функции
 	. /root/vdsetup.2/bin/functions/other.sh
 #  --> Desktop Shredder status и управление функциями
 	. /root/vdsetup.2/bin/functions/desktop_shredder.sh
 
-
-# --> Эта ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
-#	. /root/vdsetup.2/bin/functions/run_as_root.sh
