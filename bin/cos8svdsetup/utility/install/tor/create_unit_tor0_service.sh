@@ -39,7 +39,7 @@ unit_file="/etc/systemd/system/tor0.service"
 if [ -f "$unit_file" ]; 
         then
             echo ;
-            ttb=$(echo -e "$(ifconfig "$intrface_name")") && lang=cr && bpn_p_lang ;
+            (ttb=$(echo -e "$(ifconfig "$intrface_name")") && lang=cr && bpn_p_lang ;) 2>/dev/null ;
             
             ttb=$(echo -e "\n The "$intrface_name".service unit already exists.\n Remove it?\n") && lang=cr && bpn_p_lang ;
             ttb=$(echo -e " This command will remove the "$intrface_name" interface from the system: # sudo ip link delete "$intrface_name" ") && lang=cr && bpn_p_lang ;
