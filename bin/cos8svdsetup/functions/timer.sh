@@ -117,7 +117,7 @@ ttb=$( echo -e "
         countdown_1
       fi
       ((i--))
-      sleep 0.2
+      sleep 0.1
       echo -en " "
       printf "\r "
     done
