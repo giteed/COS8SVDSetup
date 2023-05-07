@@ -26,23 +26,23 @@ function check_screen_process() {
     local check_3="rm"
     local check_4="mv"
     
-    ttb=$(echo -e "\n Проверяем наличие процессов с помощью pgrep") && lang=cr && bpn_p_lang ;
+    ttb=$(echo -e "\n | Проверяем наличие процессов с помощью pgrep") && lang=cr && bpn_p_lang ;
     
     ps aux | (pgrep -x "$check_1" || pgrep -x "$check_2"|| pgrep -x "$check_3"|| pgrep -x "$check_4")
     
     # Проверяем наличие процессов shredder.sh с помощью pgrep
     if ps aux | (pgrep -x "$check_1" || pgrep -x "$check_2"|| pgrep -x "$check_3"|| pgrep -x "$check_4") >/dev/null; 
       then
-        ttb=$(echo -e "\n Процесс $screen_name уже запущен.\n Дождитесь завершения работы Shredder.\n Проверить процесс: # screen -r $screen_name\n Или: # systemctl status -n0 --no-pager desktop_shredder.service") && lang=cr && bpn_p_lang; echo ;
+        ttb=$(echo -e "\n | Процесс $screen_name уже запущен.\n | Дождитесь завершения работы Shredder.\n | Проверить процесс: # screen -r $screen_name\n | Или: # systemctl status -n0 --no-pager desktop_shredder.service") && lang=cr && bpn_p_lang; echo ;
         # Удаляет пустые папки с именем в котом только нули
         deleting_empty_zero_folders $ds_path $iteration_n ;
         #timer "10 sec"; # таймер для отладки
         exit 1
       else
-        ttb=$(echo -e "\n Процесс \"Desktop Shredder\" не найден\n Проверить процесс: # screen -r $screen_name\n Или: # systemctl status -n0 --no-pager desktop_shredder.service") && lang=cr && bpn_p_lang ; echo ;
+        ttb=$(echo -e "\n | Процесс \"Desktop Shredder\" не найден\n | Проверить процесс: # screen -r $screen_name\n | Или: # systemctl status -n0 --no-pager desktop_shredder.service") && lang=cr && bpn_p_lang ; echo ;
            
         tree -aC -L 2 $ds_path ; echo ;
-        ttb=$(echo -e  "\n \"Desktop Shredder\" \n скоро начнет очистку этой папки: $ds_path\n  \n Ctrl+C для отмены.") && lang=cr && bpn_p_lang ; echo ;
+        ttb=$(echo -e  "\n \ | "Desktop Shredder\" \n | скоро начнет очистку этой папки: $ds_path\n  \n | Ctrl+C для отмены.") && lang=cr && bpn_p_lang ; echo ;
         timer "10 sec"; # таймер для отладки
         # Удаляет пустые папки с именем в котом только нули
         deleting_empty_zero_folders $ds_path $iteration_n ;
