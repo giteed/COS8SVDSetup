@@ -27,3 +27,7 @@ function ssh_port_change() {
 	
 	/root/vdsetup.2/bin/utility/system/ssh_port_ch.sh ;
 }
+
+function info_vds() {
+	/root/vdsetup.2/bin/.temp_vdsetup/ii.sh ;
+}
