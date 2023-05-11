@@ -1,17 +1,34 @@
-#!/bin/bash
-
-# Source global definitions
-# --> Прочитать настройки из /root/.bashrc
-. /root/.bashrc 
 
 #!/bin/bash
 . /root/.bashrc
 tstart
 
-rm /tmp/find_domains.txt
-rm /tmp/all_find_hosts.txt
-rm /tmp/clean_ip_list.txt
-rm /tmp/clean_domains_list.txt
+function del_temp_files() {
+    rm /tmp/find_domains.txt
+    rm /tmp/all_find_hosts.txt
+    rm /tmp/clean_ip_list.txt
+    rm /tmp/clean_domains_list.txt
+}
+
+del_temp_files 2>/dev/null ;
+
+
+  function nmapp_help() {
+    echo -e "
+ Использование: nmapp [ДОМЕН/АДРЕС IP]
+ 
+ Описание: Этот скрипт использует утилиту nmap для 
+ сканирования портов на заданном домене или адресе IP.
+ 
+ Аргументы:
+   ДОМЕН/АДРЕС IP  Доменное имя или адрес IP для сканирования портов.
+ 
+ Примеры использования:
+   nmapp google.com  Сканирование портов на домене google.com
+   nmapp 8.8.8.8     Сканирование портов на адресе IP 8.8.8.8 "
+   
+   
+  }
 
   function nmap_help_min() {
     echo -e "
@@ -113,8 +130,13 @@ function extract_host() {
       # Извлекаем домен из входной строки
       domain_ip2=$(echo "$input" | awk -F/ '{print $3}')
       domain_ip=$(echo "$input" | awk -F/ '{print $3}' | sed 's/^www\.//' | sed 's/^ftp\.//')
+      
+      # ttb=$(echo -e "\n отладка then "$domain_ip" "$domain_ip2"") && lang=cr && bpn_p_lang ;
       return 
     else
+      domain_ip=$1
+      domain_ip2=$1
+        #ttb=$(echo -e "\n отладка else "$domain_ip" "$domain_ip2"") && lang=cr && bpn_p_lang ;
       return 
     fi
   }
@@ -131,7 +153,7 @@ function check_domains_list() {
 function check_ip_list() {
     # Очищаем список ip от дубликатов, ipv6 и лишних символов, оставляем только ip адреса
     # сортировка и проверка списка ip адресов, очистка от всего лишнего, на выходе только уникальные ip в столбик
-    local all_find_hosts="$(cat /tmp/all_find_hosts.txt)"
+    local all_find_hosts="$(cat /tmp/all_find_hosts.txt 2>/dev/null)"
     local clean_ip_list=$(echo "$all_find_hosts" |  tr '\n' ' ' | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}' | grep -v "0.0.0.0" |  sort -u )
      echo "$clean_ip_list"
   }
@@ -159,19 +181,26 @@ function _nslookup() {
 
 # Функция поиска хостов
 find_hosts() {
-    extract_host "$1"
-    echo ; echo -e " "$domain_ip" "$domain_ip2""
+    
+    
+    if [[ -n "$1" ]]; then
+        extract_host "$1";
+    else 
+        nmapp_help ;
+        exit 0;
+    fi
+    
     # Получаем список IP-адресов хоста
-    local ips=$(nmap -sn "$domain_ip" | grep -E '^Nmap scan report for' | awk -F ' ' '{print $(NF-1), $NF}')
-    ips1=$(nmap -sL "$domain_ip" | grep -E '^Nmap scan report for' | awk '{print $NF}' | sed 's/[()]//g')
+    local ips=$(nmap -sn "$domain_ip" | grep -E '^Nmap scan report for' | awk -F ' ' '{print $(NF-1), $NF}') 
+    ips1=$(nmap -sL "$domain_ip" | grep -E '^Nmap scan report for' | awk '{print $NF}' | sed 's/[()]//g') 
     ips2=$(nmap -sL $ips1 | grep -E '^Nmap scan report for' | awk -F ' ' '{print $(NF-1), $NF}' | sed 's/[()]//g')
-    ips3=$(nmap -sL $domain_ip2 | grep -E '^Nmap scan report for' | awk -F ' ' '{print $(NF-1), $NF}' | sed 's/[()]//g')
+    ips3=$(nmap -sL $domain_ip2 | grep -E '^Nmap scan report for' | awk -F ' ' '{print $(NF-1), $NF}' | sed 's/[()]//g') 
     ips4="$ips"$'\n'"$ips1"$'\n'"$ips2"$'\n'"$ips3"'\n'"$domain_ip"
     ips4=$(echo -e "$ips4" | sort -u)
     
     # Проверяем, нужно ли добавить локальные адреса
     read -p $'\n \033[32m> Добавить локальные IP-адреса? \033[0m(y/n): ' -e -i "y" local_ips
-    #wait=$(echo | tee /dev/tty >&2 )
+    #wait=$(echo | tee /dev/tty >&2 ) # не удалять!
     if [[ "$local_ips" =~ ^[Yy]$ ]]; then
       # Получаем локальные IP-адреса
       local local_ips=$(hostname -I)
@@ -194,12 +223,12 @@ find_hosts() {
 
 
   # Вызываем функцию поиска хостов с переданным аргументом
-  ttb=$(find_hosts "$1") && lang=cr && bpn_p_lang ;
+  ttb=$(find_hosts "$1") && lang=help && bpn_p_lang ;
 
 
 function sort_host_ip() {
     
-    local all_find_hosts="$(cat /tmp/all_find_hosts.txt)"
+    local all_find_hosts="$(cat /tmp/all_find_hosts.txt 2>/dev/null)"
     
     # Если в списке $ips были домены, то кладем их в переменную $find_domains
     local find_domains=$(echo -e "$all_find_hosts" | grep -vE '([0-9]{1,3}\.){3}[0-9]{1,3}' | grep -v "localhost" | tr ' ' '\n' | sort )
@@ -267,7 +296,6 @@ function sort_host_ip() {
   }
 
 
-
 function menu_select_host() {
     
     # Считываем список хостов и IP адресов из файлов
@@ -294,13 +322,9 @@ function menu_select_host() {
 
 menu_select_host
 
-rm /tmp/find_domains.txt
-rm /tmp/all_find_hosts.txt
-rm /tmp/clean_ip_list.txt
-rm /tmp/clean_domains_list.txt
+del_temp_files 2>/dev/null ;
 
-        exit 0 ;
-        
+exit 0 ;
 
 Вот некоторые управляющие последовательности ANSI, которые используются в командной строке:
 
