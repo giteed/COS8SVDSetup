@@ -1,5 +1,12 @@
 #!/bin/bash
 
+
+# nmap helper
+function nmapp() {
+    /root/vdsetup.2/bin/utility/system/nmap_helprer.sh "$1";
+}
+
+
 # network restart  
 function network_restart() { (/etc/init.d/network restart) }
 
