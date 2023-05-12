@@ -1,0 +1,129 @@
+#!/bin/bash 
+
+## Source global definitions
+# --> Прочитать настройки из /etc/bashrc
+. ~/.bashrc
+# --> Прочитать настройки из ~/bin/.varfunc.sh
+. ~/bin/utility/.varfunc.sh
+# --> Использовать ~/.bash_aliases
+. ~/.bash_aliases ;
+# --> Использовать . ~/bin/utility/.root (требует для скрипта права root)
+. ~/bin/utility/.root
+
+	tpntarg=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | grep -m1 "" );
+	#GLIG_ASTRX_OF ; 
+	
+	case $1 in
+	 
+	  h | -h | --h | -help | --help | help | hel | he | -hel | --hel | -he | --he | '')
+	  
+		echo -e "\n Запрос "$cyan"tpn" $NC"\""$cyan"-my"$NC"\" - сканирует внешний ip: "$GRAY"(или ip vpn подключения): "$cyan""$mi"$NC"" " ;
+		echo -e " Запрос "$cyan"tpn" $NC"\""$cyan"-a"$NC"\" - покажет все ip хоста:"$cyan" "$(hostname)"$NC"" " ;
+		echo -e " Запрос "$cyan"tpn" $NC"\""$cyan"."$NC"\" - сканирует собственный локальный ip: "$cyan""$tpntarg""$NC", хоста:"$cyan" "$(hostname)"$NC"" " ;
+		echo -e " Запрос "$cyan"tpn" $NC"\""$cyan"host.name"$NC"\" или "$NC"\""$cyan"ip.address"$NC"\" - сканирует указанную цель." ;
+		echo -e "\n Запрос вводить БЕЗ кавычек!" ;
+		;;
+		
+	  '.')
+	  echo -e "\n Трассировка, PING, Nmap.\n "$cyan"# "$cyan"tpn" $NC"\""$cyan"$tpntarg"$NC"\"" ;
+	  echo -e "$green""\n***"$NC" Трассировка "$tpntarg" "$green"***"$NC" " ;
+	  traceroute $tpntarg | bat  --paging=never -l log -p ;
+	  echo -e "$green""\n***"$NC" PING "$tpntarg" "$green"***"$NC" " ;
+	  ping -c 3 $tpntarg | bat  --paging=never -l log -p ;
+	  echo -e "$green""\n***"$NC" Nmap "$tpntarg" "$green"***"$NC" " ;
+	  nmap $tpntarg | bat  --paging=never -l log -p ;
+	 	;;
+	  
+	  '-a')
+	  echo -e "\n Все ip:"$cyan" "$(hostname)"$NC""." ;
+	  echo -e "\n"$green""internal"$NC":" " ;
+	  ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'
+	  echo -e "$cyan""\nexternal"$NC":" ;
+	  echo $mi ;
+		;;
+		
+	  '-my')
+	  echo -e "\n Трассировка, PING, Nmap.\n "$cyan"# "$cyan"tpn" $NC"\""$cyan"$mi"$NC"\"" ;
+	  echo -e "$green""\n***"$NC" Трассировка "$mi" "$green"***"$NC" " ;
+	  traceroute $mi | bat  --paging=never -l log -p ;
+	  echo -e "$green""\n***"$NC" PING "$mi" "$green"***"$NC" " ;
+	  ping -c 3 $mi | bat  --paging=never -l log -p ;
+	  echo -e "$green""\n***"$NC" Nmap "$mi" "$green"***"$NC" " ;
+	  nmap $mi | bat  --paging=never -l log -p ;
+	  ;;
+	  
+	  *)
+		echo -e "\n Трассировка, PING, Nmap.\n "$cyan"# "$cyan"tpn" $NC"\""$cyan"$1"$NC"\"" ;
+		echo -e "$green""\n***"$NC" Трассировка "$1" "$green"***"$NC" " ;
+		traceroute $1 | bat  --paging=never -l log -p ;
+		echo -e "$green""\n***"$NC" PING "$1" "$green"***"$NC" " ;
+		ping -c 3 $1 | bat  --paging=never -l log -p ;
+		echo -e "$green""\n***"$NC" Nmap "$1" "$green"***"$NC" " ;
+		nmap $1 | bat  --paging=never -l log -p ;
+		;;
+		
+	esac
+	
+
+
+
+
+
+
+
+
+
+exit 0
+
+
+
+
+
+
+
+
+
+
+function tpn-f() # traceroute , ping -c 10 host , Nmap
+{ 
+	tpntarg=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | grep -m1 "" );
+	GLIG_ASTRX_OF ; 
+	
+	case $1 in
+	 
+	  h | -h | --h | -help | --help | help | hel | he | -hel | --hel | -he | --he | '')
+	  
+		echo -e "\n Запрос "$cyan"tpn" $NC"\""$cyan"my"$NC"\" - сканирует внешний ip: "$GRAY"(или ip vpn подключения): "$cyan""$(myip)"$NC"" " ;
+		echo -e " Запрос "$cyan"tpn" $NC"\""$cyan"*"$NC"\" - покажет все ip хоста:"$cyan" "$(hostname)"$NC"" " ;
+		echo -e " Запрос "$cyan"tpn" $NC"\""$cyan"."$NC"\" - сканирует собственный локальный ip: "$cyan""$tpntarg""$NC", хоста:"$cyan" "$(hostname)"$NC"" " ;
+		echo -e " Запрос "$cyan"tpn" $NC"\""$cyan"host.name"$NC"\" или "$NC"\""$cyan"ip.address"$NC"\" - сканирует указанную цель." ;
+		echo -e "\n Запрос вводить БЕЗ кавычек!" ;
+		;;
+		
+	  '.')
+	  tpn $tpntarg ;
+	  ;;
+	  
+	  '*')
+	  echo -e "\n Все ip:"$cyan" "$(hostname)"$NC""." ;
+	  lip-f ;
+		;;
+		
+		'my')
+	  tpn $(mi)
+	  ;;
+	  
+	  *)
+		
+		echo -e "\n Трассировка, PING, Nmap.\n "$cyan"# "$cyan"tpn" $NC"\""$cyan"$1"$NC"\"" ;
+		echo -e "$green""\n***"$NC" Трассировка "$1" "$green"***"$NC" " ;
+		traceroute $1 | bat  --paging=never -l log -p ;
+		echo -e "$green""\n***"$NC" PING "$1" "$green"***"$NC" " ;
+		ping -c 3 $1 | bat  --paging=never -l log -p ;
+		echo -e "$green""\n***"$NC" Nmap "$1" "$green"***"$NC" " ;
+		nmap $1 | bat  --paging=never -l log -p ;
+		;;
+		
+	esac
+	
+}
