@@ -8,7 +8,7 @@ function del_temp_files() {
     rm /tmp/all_find_hosts.txt
     rm /tmp/clean_ip_list.txt
     rm /tmp/clean_domains_list.txt
-}
+  }
 
 del_temp_files 2>/dev/null ;
 
@@ -41,9 +41,9 @@ del_temp_files 2>/dev/null ;
  7) "-sF" # FIN сканирование
  8) "-sX" # XMAS сканирование
  9) "-p-" # Сканирование всех портов
- 10 "-T5" # Наивысший уровень скорости сканирования"
+ 10 "-T5" # Наивысший уровень скорости сканирования" 
+    
   }
-
 
 function nmap_help() {
     echo -e "
@@ -99,8 +99,8 @@ function nmap_help() {
     Это только некоторые из множества ключей, которые можно использовать в nmap.
     Cуществует большое количество других ключей nmap, но эти наиболее часто 
     используются в повседневной работе.     $ nmap --help Справка на английском.
-"
-}
+    "
+  }
 
 # СКАНИРОВАНИЕ nmap ДОМЕНОВ И IP АДРЕСОВ
 
@@ -140,7 +140,6 @@ function extract_host() {
       return 
     fi
   }
-
 
 function check_domains_list() {
     # сортировка и проверка списка доменов, очистка от всего лишнего, на выходе только уникальные домены в столбик 
@@ -221,10 +220,8 @@ find_hosts() {
     echo -e "$all_find_hosts" > /tmp/all_find_hosts.txt
   }
 
-
   # Вызываем функцию поиска хостов с переданным аргументом
   ttb=$(find_hosts "$1") && lang=help && bpn_p_lang ;
-
 
 function sort_host_ip() {
     
@@ -250,7 +247,6 @@ function sort_host_ip() {
   }
 
   ttb=$(sort_host_ip) && lang=cr && bpn_p_lang ;
-
 
   function menu_param() {
       selected_host="$1"
@@ -325,6 +321,10 @@ menu_select_host
 del_temp_files 2>/dev/null ;
 
 exit 0 ;
+
+
+
+
 
 Вот некоторые управляющие последовательности ANSI, которые используются в командной строке:
 
