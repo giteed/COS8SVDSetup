@@ -109,10 +109,9 @@ function _nmap_scan() {
     param_nmap="$2"
     
     echo ;
-    ttb="$(echo -e " Вы выбрали "$selected_host" с параметрами "$param_nmap"\n ")" && lang_cr && bpn_p_lang ;
+    ttb="$(echo -e " Вы выбрали "$selected_host" с параметрами "$param_nmap" | grep -vE "closed"\n ")" && lang_cr && bpn_p_lang ;
     
-    scan=$(nmap "$selected_host" "$param_nmap")
-    #scan=$(nmap -sV -p 53,5353,9040,9050,10000,22919,1194,62310,22,80 -T5 "$selected_host" | grep -vE "closed")
+    scan=$(nmap "$selected_host" "$param_nmap" | grep -vE "closed")
     nmap_scan "$scan"
   }
 
