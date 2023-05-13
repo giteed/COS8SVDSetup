@@ -33,6 +33,7 @@
 	 sudo dnf install -y epel-release yum-utils npm || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y network-scripts iptables socat dnstracer nyx || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y net-tools tcpdump  bind-utils traceroute nmap || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y hydra || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y dialog mlocate ncdu ranger tldr || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y git tar curl wget jq nc || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y whois || ( error_MSG ; ) ; echo ;
@@ -79,7 +80,7 @@
  | 
  | epel-release, iptables, nyx, python3, ruby, npm, unzip, 
  | hstr, lsof, screen, tar, p7zip, mc, nano, whois, Webmin, traceroute,
- | wget, curl, jq, nc, atop, htop, nethogs, bpytop, iftop, bat,
+ | wget, curl, jq, nc, atop, htop, nethogs, bpytop, iftop, bat, hydra,
  | stacer, yum-utils, net-tools, network-scripts, git, tree, nmap,
  | dialog, mlocate qrencode, tcpdump, ncdu, ranger, tldr, whois, 
  ⎩ youtube-dl, ffmpeg. \n" ) && bpn_p_lang ; echo ;

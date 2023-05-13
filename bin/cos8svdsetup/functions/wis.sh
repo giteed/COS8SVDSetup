@@ -97,6 +97,8 @@ function _provides() {
   $(yum info $arg_2 2>/dev/null )") && lang=nix && bpn_p_lang ;
  
 	 _more $arg_2 ;
+   _repo_list ;
+   echo - e " : Удалить repo: dnf config-manager --disable <reponame*>\n"
 	 
 }
 
@@ -204,9 +206,9 @@ function _repo_list() {
  | репозитории установленные
  | на этом сервере.
  :
- ⎩ # yum repolist
+ ⎩ # dnf repolist
 	 
-	 $(yum repolist) 
+	 $(dnf repolist) 
  
  | Содержимое папки:
  | /etc/yum.repos.d/
