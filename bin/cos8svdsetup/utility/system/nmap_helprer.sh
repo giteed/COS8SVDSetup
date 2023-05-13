@@ -151,10 +151,10 @@ split_ip_list() {
     local all_ips="$1"
     local_ip_addr=$(echo "$(check_ip_list)" | grep -E "^127\.|^10\.|^192\.168\.|^172\.(1[6-9]|2[0-9]|3[01])\.|^169\.254\." | sort -u)
     internet_ip_addr=$(echo "$(check_ip_list)" | grep -Ev "^127\.|^10\.|^192\.168\.|^172\.(1[6-9]|2[0-9]|3[01])\.|^169\.254\." | sort -u)
-     echo -e "\n Local IPs:"
-     echo -e  "$local_ip_addr"
-     echo -e "\n Internet IPs:"
-     echo -e "$internet_ip_addr"
+     #echo -e "\n Local IPs:"
+     #echo -e  "$local_ip_addr"
+     #echo -e "\n Internet IPs:"
+     #echo -e "$internet_ip_addr" ; echo ;
       return 
   }
 
