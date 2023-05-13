@@ -32,16 +32,23 @@ del_temp_files 2>/dev/null ;
 
   function nmap_help_min() {
     echo -e "
- 1) "-sS" # SYN сканирование
- 2) "-sV" # Версионное сканирование
- 3) "-O"  # Определение ОС
- 4) "-A"  # Агрессивный сканинг
- 5) "-sU" # UDP сканирование
- 6) "-sN" # Null сканирование
- 7) "-sF" # FIN сканирование
- 8) "-sX" # XMAS сканирование
- 9) "-p-" # Сканирование всех портов
- 10 "-T5" # Наивысший уровень скорости сканирования" 
+ 1)  "-sS" # SYN сканирование
+ 2)  "-sV" # Версионное сканирование
+ 3)  "-sA" # Порт Открыт/закрыт/Защищён фаерволом.
+ 4)  "-sO" # Какие протоколы используются на целевой машине
+ 5)  "-sU" # UDP сканирование
+ 6)  "-sN" # Null сканирование
+ 7)  "-sF" # FIN сканирование
+ 8)  "-sX" # XMAS сканирование
+ 9)  "-sW" # Какой размер окна используется для TCP на хосте
+ 10) "-sM" # TCP Maimon, откр-ли порт, посыл пустого TCP-пакета 
+ 11) "-O"  # Определение ОС
+ 12) "-A"  # Агрессивный сканинг
+ 13) "-p-" # Сканирование всех портов
+ 14) "-T5" # Наивысший уровень скорости сканирования
+ 15) "-sT -sU -p-" # Сканировать все TCP, UDP порт
+ 16) "--top-ports 65000 " # 65000 частых портов :)
+ 17) "--system-dns" # Системный DNS-сервера вместо встроенного в Nmap"
     
   }
 
@@ -102,23 +109,7 @@ function nmap_help() {
     "
   }
 
-# СКАНИРОВАНИЕ nmap ДОМЕНОВ И IP АДРЕСОВ
 
-function _nmap_scan() {
-    selected_host="$1"
-    param_nmap="$2"
-    
-    echo ;
-    ttb="$(echo -e " Вы выбрали "$selected_host" с параметрами "$param_nmap" | grep -vE "closed"\n ")" && lang_cr && bpn_p_lang ;
-    
-    scan=$(nmap "$selected_host" "$param_nmap" | grep -vE "closed")
-    nmap_scan "$scan"
-  }
-
-nmap_scan() {
-    text="$1"
-    ttb="$(echo -e "$text" | grep -vE 'Please report' | grep -vE 'Starting Nmap' )" && lang_cr && bpn_p_lang ;
-  }
 
 # ДОПОЛНИТЕЛЬНЫЕ ПРОВЕРКИ ДОМЕНОВ И IP АДРЕСОВ
 
@@ -156,22 +147,23 @@ function check_ip_list() {
      echo "$clean_ip_list"
   }
 
-# Функция для разделения списка на локальные и интернет адреса
 split_ip_list() {
     local all_ips="$1"
-    local local_ip_addr=$(echo "$(check_ip_list)" | grep -E "^127\.|^10\.|^192\.168\.|^172\.(1[6-9]|2[0-9]|3[01])\." | sort -u)
-    local internet_ip_addr=$(echo "$(check_ip_list)" | grep -Ev "^127\.|^10\.|^192\.168\.|^172\.(1[6-9]|2[0-9]|3[01])\." | sort -u)
-     echo "Local IPs:"
-     echo "$local_ip_addr"
-     echo "Internet IPs:"
-     echo "$internet_ip_addr"
+    local_ip_addr=$(echo "$(check_ip_list)" | grep -E "^127\.|^10\.|^192\.168\.|^172\.(1[6-9]|2[0-9]|3[01])\.|^169\.254\." | sort -u)
+    internet_ip_addr=$(echo "$(check_ip_list)" | grep -Ev "^127\.|^10\.|^192\.168\.|^172\.(1[6-9]|2[0-9]|3[01])\.|^169\.254\." | sort -u)
+     echo -e "\n Local IPs:"
+     echo -e  "$local_ip_addr"
+     echo -e "\n Internet IPs:"
+     echo -e "$internet_ip_addr"
+      return 
   }
+
 
 function _nslookup() {
     
-    wait=$( printf "${ellow} Пожалуйста подождите...                   ${NC}\r" | tee /dev/tty >&2 && sleep 1 )
+    wait=$( printf "${ellow}   Пожалуйста подождите...                   ${NC}\r" | tee /dev/tty >&2 && sleep 1 )
     function _nslookup_() {
-        local local_check_ip=$(ip addr show | grep "inet " | awk '{print $2}' | cut -d/ -f1 | while read IP; do echo -ne "\r Идет запрос nslookup для $IP... "; nslookup $IP | grep 'name =' | awk '{print $4}'; done | tee /dev/tty >&2)
+        local local_check_ip=$(ip addr show | grep "inet " | awk '{print $2}' | cut -d/ -f1 | while read IP; do echo -ne "\r   Идет запрос nslookup для $IP... "; nslookup $IP | grep 'name =' | awk '{print $4}'; done | tee /dev/tty >&2)
     }
     _nslookup_
     return $local_check_ip
@@ -205,7 +197,7 @@ find_hosts() {
       _nslookup ;
       local local_check_ip=$1
       
-      echo -en "\n Спасибо за ожидание.                \r" ;
+      echo -en "\n\n   Спасибо за ожидание.                \r" ;
       
       local etc_networks=$(cat /etc/networks)
       local etc_hosts=$(cat /etc/hosts)
@@ -217,6 +209,7 @@ find_hosts() {
     
     local all_find_hosts="$ips4"$'\n'"$local_ips"$'\n'"$local_check_ip"'\n'"$etc_networks"'\n'"$etc_hosts"'\n'"$etc_sysconfig_networks" 
     echo -e "$all_find_hosts" > /tmp/all_find_hosts.txt
+    
   }
 
   # Вызываем функцию поиска хостов с переданным аргументом
@@ -237,7 +230,7 @@ function sort_host_ip() {
     local clean_ip_list=$(check_ip_list)
     
     # Сортируем список ip адресов и кладем в переменную $clean_ip_list
-    local clean_ip_list=$(echo "$clean_ip_list" | sort) && lang=cr && bpn_p_lang ;
+    local clean_ip_list=$(echo "$clean_ip_list" | sort)
     
     echo -e "$find_domains" > /tmp/find_domains.txt
     echo -e "$clean_ip_list" > /tmp/clean_ip_list.txt
@@ -247,20 +240,49 @@ function sort_host_ip() {
 
   ttb=$(sort_host_ip) && lang=cr && bpn_p_lang ;
 
+# СКАНИРОВАНИЕ nmap ДОМЕНОВ И IP АДРЕСОВ
+  
+  function _nmap_scan() {
+    selected_host="$1"
+    param_nmap="$2"
+    
+    ttb=$(echo -e "\n (Отладка) Команда:  nmap "$param_nmap" "$selected_host" \n ") && lang=cr && bpn_p_lang ;
+    echo -e " Вы выбрали с параметрами "$param_nmap" "$selected_host"\n "
+    
+    #scan=$(nmap $param_nmap $selected_host | grep -vE 'tcp\s+closed|udp\s+closed')
+    scan=$(nmap $param_nmap $selected_host)
+    #nmap $param_nmap $selected_host
+     
+    nmap_scan "$scan"
+  }
+  
+  nmap_scan() {
+    out_from_nmap="$1"
+    ttb="$(echo -e "$out_from_nmap")" && lang_cr && bpn_p_lang ;
+  }
+
   function menu_param() {
-      selected_host="$1"
-    # Массив с параметрами для сканирования
-    declare -a nmap_params=(
-      "-sS" # SYN сканирование
-      "-sV" # Версионное сканирование
-      "-O"  # Определение ОС
-      "-A"  # Агрессивный сканинг
-      "-sU" # UDP сканирование
-      "-sN" # Null сканирование
-      "-sF" # FIN сканирование
-      "-sX" # XMAS сканирование
-      "-p-" # Сканирование всех портов
-      "-T5" # Наивысший уровень скорости сканирования
+    
+    selected_host="$1"
+     # Массив с параметрами для сканирования
+     declare -a nmap_params=(
+     "-sS" # SYN сканирование
+     "-sV" # Версионное сканирование
+     "-sA" # Порт Открыт/закрыт/Защищён фаерволом.
+     "-sO" # Какие протоколы используются на целевой машине
+     "-sU" # UDP сканирование
+     "-sN" # Null сканирование
+     "-sF" # FIN сканирование
+     "-sX" # XMAS сканирование
+     "-sW" # Какой размер окна используется для TCP на хосте
+     "-sM" # TCP Maimon, откр-ли порт, посыл пустого TCP-пакета 
+     "-O"  # Определение ОС
+     "-A"  # Агрессивный сканинг
+     "-p-" # Сканирование всех портов
+     "-T5" # Наивысший уровень скорости сканирования
+     "-sT -sU -p-" # Сканировать все TCP, UDP порт
+     "--top-ports 65000 " # 65000 частых портов :)
+     "--system-dns" # Системный DNS-сервера вместо встроенного в Nmap
     )
     
     PS3=$(echo -e "\n${green} Введите номер параметра >${NC} \c")
@@ -268,13 +290,13 @@ function sort_host_ip() {
     # Выводим меню выбора параметров сканирования
     ttb=$(nmap_help_min) && lang=cr && bpn_p_lang ;
     echo -e "\n Выберите параметр для сканирования адреса "$selected_host":\n -----------------------------------------------------------------------"
-    select param_nmap in "${nmap_params[@]}" "Хосты" "Ключи" "Выход"; do
+    select param_nmap in "${nmap_params[@]}" "Назад в Хосты" "Все Ключи nmap" "Выход из утилиты"; do
       # Проверяем, был ли сделан выбор
-      if [[ "$param_nmap" == "Выход" ]]; then
+      if [[ "$param_nmap" == "Выход из утилиты" ]]; then
         exit
-      elif [[ "$param_nmap" == "Хосты" ]]; then
+      elif [[ "$param_nmap" == "Назад в Хосты" ]]; then
         menu_select_host
-      elif [[ "$param_nmap" == "Ключи" ]]; then
+      elif [[ "$param_nmap" == "Все Ключи nmap" ]]; then
         ttb=$(nmap_help) && lang=cr && bpn_p_lang ;
       elif [[ -n "$param_nmap" ]]; then
         # Запускаем функцию для сканирования выбранного хоста с выбранным параметром Nmap
@@ -295,10 +317,15 @@ function menu_select_host() {
     
     # Считываем список хостов и IP адресов из файлов
     clean_ip_list="$(cat /tmp/clean_ip_list.txt)"
+    split_ip_list "$clean_ip_list"
+    #local_ip_addr=
+    #internet_ip_addr=
     clean_domains_list="$(cat /tmp/clean_domains_list.txt)"
     
+    
     # Объединяем список хостов и IP адресов
-    ip_hosts_list="$clean_domains_list $clean_ip_list"
+    #ip_hosts_list="$clean_domains_list $clean_ip_list"
+    ip_hosts_list="$clean_domains_list $internet_ip_addr $local_ip_addr"
     
     PS3=$(echo -e "\n${green} Введите номер строки >${NC} \c")
     
@@ -337,3 +364,7 @@ exit 0 ;
 Каждый из этих символов имеет свое назначение и может использоваться в различных сценариях. Например, \n и \r используются для форматирования текста в консоли, а \t может использоваться для добавления отступов между выводом. Символ \b может быть полезен, если нужно удалить символ перед курсором, а \c может использоваться для остановки вывода без перевода строки. Символ \e используется для вставки управляющей последовательности ANSI, которая может использоваться для изменения цвета текста или других аспектов вывода.
 
 
+nmap -p 22919 --script=/usr/share/nmap/scripts/ --script-args='ssh.user=root' 10.66.66.1
+запуск скриптов
+https://networkguru.ru/nmap-scripting-engine-rukovodstvo/
+https://xakep.ru/2016/02/25/pimp-my-nmap/
