@@ -97,8 +97,9 @@ function _provides() {
   $(yum info $arg_2 2>/dev/null )") && lang=nix && bpn_p_lang ;
  
 	 _more $arg_2 ;
+   ttb=$(echo -e " : Удалить repo: dnf config-manager --disable <reponame*>\n") 2>/dev/null && lang=cr && bpn_p_lang
    _repo_list ;
-   echo - e " : Удалить repo: dnf config-manager --disable <reponame*>\n"
+   
 	 
 }
 
