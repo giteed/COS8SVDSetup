@@ -36,18 +36,18 @@ ttb=$(echo -e "
  | Вы получите спискок доступных для загрузки ядер операционной системы, которые 
  ⎩ находятся в директории /boot/
  
-  Пример вывода:  
-  -rwxr-xr-x 1 root root 11M Mar 25 17:07 /boot/vmlinuz-0-rescue-9cddb2dbf6a7307ba28d6565b5d02f0a
-  -rwxr-xr-x 1 root root 11M Jul 18  2022 /boot/vmlinuz-4.18.0-408.el8.x86_64
-  -rwxr-xr-x 1 root root 11M Jan 18 18:12 /boot/vmlinuz-4.18.0-448.el8.x86_64
-  -rwxr-xr-x 1 root root 11M Mar 31 16:31 /boot/vmlinuz-4.18.0-483.el8.x86_64
-  -rwxr-xr-x 1 root root 11M Apr  4 21:30 /boot/vmlinuz-6.2.10-1.el8.elrepo.x86_64
+  Пример вывода:")  && lang_nix && bpn_p_lang ; ttb="" ; echo ;
   
+  ls -l /boot/vmlinuz-*
+core6=$(ls -l /boot/vmlinuz-* | grep -e 6.2 | awk '{print $9}')
+
+echo ;
+  ttb=$(echo -e " 
  ⎧ Каждая строка списка содержит информацию об одном ядре, включая права доступа,
  | владельца и группу, размер, дату изменения и имя файла. 
  | 
  | Обычно, каждый образ ядра имеет уникальное имя, которое включает в себя номер
- | версии ядра, например /boot/vmlinuz-6.2.10-1.el8.elrepo.x86_64. Это позволяет
+ | версии ядра, например "$core6". Это позволяет
  | пользователю выбирать, какое ядро загрузить при запуске операционной системы, 
  ⎩ если на компьютере установлено несколько ядер.
  
@@ -58,9 +58,9 @@ ttb=$(echo -e "
  | ядра [kernel-filename].
  | 
  | Пример ввода:
- ⎩ # grubby --info /boot/vmlinuz-6.2.11-1.el8.elrepo.x86_64 | grep index") && lang_nix && bpn_p_lang ; ttb="" ;
+ ⎩ # grubby --info "$core6" | grep index") && lang_nix && bpn_p_lang ; ttb="" ;
 
- index=$(grubby --info /boot/vmlinuz-6.2.11-1.el8.elrepo.x86_64 | grep index)
+ index=$(grubby --info "$core6" | grep index)
 
 echo ;
   ttb=$(echo -en " Пример вывода: "$index"  ") && lang_nix && bpn_p_lang ; ttb="" ;
@@ -78,7 +78,7 @@ ttb=$(echo -e "
  ⎩ # grubby --set-default-"$index"
  
   Пример вывода: 
-  The default is /boot/loader/entries/9cddb2dbf6a7307ba28d6565b5d02f0a-6.2.10-1.el8.elrepo.x86_64.conf with index 0 and kernel /boot/vmlinuz-6.2.10-1.el8.elrepo.x86_64
+  The default is /boot/loader/entries/9cddb2dbf6a7307ba28d6565b5d02f0a-6.2.11-1.el8.elrepo.x86_64.conf with index 0 and kernel "$core6"
  
  ⎧ Еще раз посмотрите версию ядра перед перезагрузкой.
  ⎩ # uname -r
