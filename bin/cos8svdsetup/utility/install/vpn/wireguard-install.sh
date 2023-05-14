@@ -86,7 +86,7 @@ function installQuestions() {
  The git repository is available at: https://github.com/angristan/wireguard-install
  
  I need to ask you a few questions before starting the setup.
- You can leave the default options and just press enter if you are ok with them.`"
+ You can leave the default options and just press enter if you are ok with them."
  ) && lang=d && bpn_p_lang && ttb=""
 
 	# Detect public IPv4 or IPv6 address and pre-fill for the user
