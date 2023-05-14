@@ -369,7 +369,7 @@ function listClient() {
 		else
 		echo ;
 			
-			read -rp "$(echo -e "${green} Select one client [1-${NUMBER_OF_CLIENTS}]:${nc} ")" CLIENT_NUMBER
+			read -rp "$(echo -e "${green} Select one client ${nc} [1-${NUMBER_OF_CLIENTS}]:")" CLIENT_NUMBER
 		fi
 	done
 
@@ -485,7 +485,7 @@ function manageMenu() {
 	ttb=$(echo -e "	   1) Add a new user") && lang=cr && bpn_p_lang && ttb=""
 	ttb=$(echo -e "	   2) Revoke existing user") && lang=cr && bpn_p_lang && ttb=""
 
-	ttb=$(echo -e "	   3) List active users\n") && lang=cr && bpn_p_lang && ttb=""
+	ttb=$(echo -e "	   3) List active users\n ") && lang=cr && bpn_p_lang && ttb=""
 	ttb=$(echo -e "	   0) Exit\n") && lang=cr && bpn_p_lang && ttb=""
 	ttb=$(echo -e "\n		5) Uninstall WireGuard\n ") && lang=d && bpn_p_lang && ttb=""
 	until [[ ${MENU_OPTION} =~ ^[0-5]$ ]]; do
