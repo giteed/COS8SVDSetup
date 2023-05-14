@@ -245,16 +245,16 @@ function newClient() {
 	ENDPOINT="${SERVER_PUB_IP}:${SERVER_PORT}"
 
 	echo " "
-	ttb=$(echo -e " Tell me a name for the client.") && lang=d && bpn_p_lang && ttb=""
-	ttb=$(echo -e " The name must consist of alphanumeric character. It may also include an underscore or a dash and can't exceed 15 chars.") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e " Tell me a name for the client.") && lang=nix && bpn_p_lang && ttb=""
+	ttb=$(echo -e " The name must consist of alphanumeric character.\n It may also include an underscore or a dash and can't exceed 15 chars.\n ") && lang=nix && bpn_p_lang && ttb=""
 
 	until [[ ${CLIENT_NAME} =~ ^[a-zA-Z0-9_-]+$ && ${CLIENT_EXISTS} == '0' && ${#CLIENT_NAME} -lt 16 ]]; do
-		read -rp "Client name: " -e CLIENT_NAME
+		read -rp " Client name: " -e CLIENT_NAME
 		CLIENT_EXISTS=$(grep -c -E "^### Client ${CLIENT_NAME}\$" "/etc/wireguard/${SERVER_WG_NIC}.conf")
 
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
 			echo " "
-			ttb=$(echo -e " A client with the specified name was already created, please choose another name.") && lang=d && bpn_p_lang && ttb=""
+			ttb=$(echo -e " A client with the specified name was already created, please choose another name.\n ") && lang=nix && bpn_p_lang && ttb=""
 			echo " "
 		fi
 	done
@@ -268,7 +268,7 @@ function newClient() {
 
 	if [[ ${DOT_EXISTS} == '1' ]]; then
 		echo " "
-		ttb=$(echo -e " The subnet configured supports only 253 clients.") && lang=d && bpn_p_lang && ttb=""
+		ttb=$(echo -e " The subnet configured supports only 253 clients.\n ") && lang=nix && bpn_p_lang && ttb=""
 		exit 1
 	fi
 
@@ -280,7 +280,7 @@ function newClient() {
 
 		if [[ ${IPV4_EXISTS} == '1' ]]; then
 			echo " "
-			ttb=$(echo -e " A client with the specified IPv4 was already created, please choose another IPv4.") && lang=d && bpn_p_lang && ttb=""
+			ttb=$(echo -e " A client with the specified IPv4 was already created, please choose another IPv4.\n ") && lang=nix && bpn_p_lang && ttb=""
 			echo " "
 		fi
 	done
@@ -293,7 +293,7 @@ function newClient() {
 
 		if [[ ${IPV6_EXISTS} == '1' ]]; then
 			echo " "
-			ttb=$(echo -e " A client with the specified IPv6 was already created, please choose another IPv6.") && lang=d && bpn_p_lang && ttb=""
+			ttb=$(echo -e " A client with the specified IPv6 was already created, please choose another IPv6.\n ") && lang=nix && bpn_p_lang && ttb=""
 			echo " "
 		fi
 	done
@@ -345,7 +345,7 @@ AllowedIPs = ${CLIENT_WG_IPV4}/32,${CLIENT_WG_IPV6}/128" >>"/etc/wireguard/${SER
 
 	qrencode -t ansiutf8 -l L <"${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf"
 
-	ttb=$(echo -e " It is also available in ${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf\n To add new/remove old clients, enter wg_ins again!") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e " It is also available in ${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf\n To add new/remove old clients, enter wg_ins again!\n ") && lang=nix && bpn_p_lang && ttb=""
 }
 
 
@@ -354,7 +354,7 @@ function listClient() {
 	NUMBER_OF_CLIENTS=$(grep -c -E "^### Client" "/etc/wireguard/${SERVER_WG_NIC}.conf")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		echo " "
-		ttb=$(echo -e " You have no existing clients!") && lang=d && bpn_p_lang && ttb=""
+		ttb=$(echo -e " You have no existing clients!\n ") && lang=nix && bpn_p_lang && ttb=""
 		
 		exit 1
 		
@@ -391,7 +391,7 @@ function revokeClient() {
 	NUMBER_OF_CLIENTS=$(grep -c -E "^### Client" "/etc/wireguard/${SERVER_WG_NIC}.conf")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		echo " "
-		ttb=$(echo -e " You have no existing clients!") && lang=d && bpn_p_lang && ttb=""
+		ttb=$(echo -e " You have no existing clients!\n ") && lang=nix && bpn_p_lang && ttb=""
 		exit 1
 	fi
 
@@ -473,12 +473,12 @@ function uninstallWg() {
 			echo " WireGuard failed to uninstall properly."
 			exit 1
 		else
-			ttb=$(echo -en "\n WireGuard uninstalled successfully.\n Type wg_ins for install Wireguard.") && lang=d && bpn_p_lang && ttb=""
+			ttb=$(echo -en "\n WireGuard uninstalled successfully.\n Type wg_ins for install Wireguard.") && lang=nix && bpn_p_lang && ttb=""
 			exit 0
 		fi
 	else
 		echo " "
-		ttb=$(echo -e " Removal aborted!") && lang=d && bpn_p_lang && ttb=""
+		ttb=$(echo -e " Removal aborted!") && lang=nix && bpn_p_lang && ttb=""
 	fi
 }
 
