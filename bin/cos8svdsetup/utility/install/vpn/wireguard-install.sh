@@ -484,7 +484,7 @@ function manageMenu() {
 
 	ttb=$(echo -e "	   3) List active users\n") && lang=d && bpn_p_lang && ttb=""
 	ttb=$(echo -e "	   0) Exit\n") && lang=d && bpn_p_lang && ttb=""
-	ttb=$(echo -e "\n		5) ${RED}Uninstall${NC} WireGuard\n") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e "\n		5) Uninstall WireGuard\n") && lang=d && bpn_p_lang && ttb=""
 	until [[ ${MENU_OPTION} =~ ^[0-5]$ ]]; do
 		read -rp " Select an option [0-5]: " MENU_OPTION
 	done
