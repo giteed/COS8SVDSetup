@@ -62,8 +62,9 @@ ttb=$(echo -e "
 
  index=$(grubby --info /boot/vmlinuz-6.2.11-1.el8.elrepo.x86_64 | grep index)
 
-
-  echo -en " Пример вывода: "$index"  "
+echo ;
+  ttb=$(echo -en " Пример вывода: "$index"  ") && lang_nix && bpn_p_lang ; ttb="" ;
+echo ;
 
 ttb=$(echo -e "
  ⎧ 3) Теперь, когда вы знаете индекс ядра, с которого хотите загрузиться, 
