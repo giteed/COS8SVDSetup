@@ -147,7 +147,7 @@ function installWireGuard() {
 	  then
 		echo -e "\n Ошибге"
 		core_grubby_help ;
-	  return 1 ;
+	  exit 1 ;
 	  fi
 	# Run setup questions first
 	installQuestions
