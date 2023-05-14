@@ -17,7 +17,10 @@
 # --> Эта ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
 . /root/vdsetup.2/bin/functions/run_as_root.sh ;
 
-
+	if [ $? -ne 0 ]; then
+	echo "my_function wg_ins exited with an error"
+	exit 1
+fi
 
 RED='\033[0;31m'
 ORANGE='\033[0;33m'
