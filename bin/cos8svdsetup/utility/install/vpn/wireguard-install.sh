@@ -513,7 +513,7 @@ initialCheck
 # Check if WireGuard is already installed and load params
 if [[ -e /etc/wireguard/params ]]; then
 	source /etc/wireguard/params
-	#core_ch_for_WireGuard ;
+	core_ch_for_WireGuard ;
 	
 	
 	  # Если в выводе ls -l /boot/vmlinuz-* присутствует ядро '6.' и uname -r выводит ядро меньше чем 6.,

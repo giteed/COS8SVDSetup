@@ -41,7 +41,7 @@ then
   if [ "$(uname -r | cut -d'.' -f1)" -lt 6 ]
   then
 	echo -e "\n Kernel version is less than 6, running core_grubby_help"
-	core_grubby_help ;
+	#core_grubby_help ;
   return 1 ;
   fi
 else
