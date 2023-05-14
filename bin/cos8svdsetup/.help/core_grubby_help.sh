@@ -58,7 +58,9 @@ ttb=$(echo -e "
  | ядра [kernel-filename].
  | 
  | Пример ввода:
- ⎩ # grubby --info /boot/vmlinuz-6.2.10-1.el8.elrepo.x86_64 | grep index
+ ⎩ # grubby --info /boot/vmlinuz-6.2.11-1.el8.elrepo.x86_64 | grep index
+
+ "$(grubby --info /boot/vmlinuz-6.2.11-1.el8.elrepo.x86_64 | grep index)"
 
   Пример вывода: 
   index=1
