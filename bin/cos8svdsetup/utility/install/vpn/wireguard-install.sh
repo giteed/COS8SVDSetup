@@ -361,14 +361,14 @@ function listClient() {
 	fi
 
 	echo " "
-	echo -e "  Select the existing client you want to view\n"
+	ttb=$(echo -e "  Select the existing client you want to view\n ") && lang=nix && bpn_p_lang && ttb=""
 	grep -E "^### Client" "/etc/wireguard/${SERVER_WG_NIC}.conf" | cut -d ' ' -f 3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
 			read -rp "Select one client [1]: " CLIENT_NUMBER
 		else
 		echo ;
-			read -rp " Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+			read -rp "${green}Select one client [1-${NUMBER_OF_CLIENTS}]:${nc} " CLIENT_NUMBER
 		fi
 	done
 
