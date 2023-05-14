@@ -400,7 +400,7 @@ function revokeClient() {
 	grep -E "^### Client" "/etc/wireguard/${SERVER_WG_NIC}.conf" | cut -d ' ' -f 3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "$(echo -e "${green}Select one client ${nc} [1]: ")" CLIENT_NUMBER
+			read -rp "$(echo -e "${green}Select one client ${nc} [1]:")" CLIENT_NUMBER
 			
 		else
 			echo ;
