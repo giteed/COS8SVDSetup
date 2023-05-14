@@ -369,7 +369,7 @@ function listClient() {
 		else
 		echo ;
 			
-			read -rp "$(echo -e "${green}Select one client [1-${NUMBER_OF_CLIENTS}]:${nc} ")" CLIENT_NUMBER
+			read -rp "$(echo -e "${green} Select one client [1-${NUMBER_OF_CLIENTS}]:${nc} ")" CLIENT_NUMBER
 		fi
 	done
 
@@ -400,7 +400,8 @@ function revokeClient() {
 	grep -E "^### Client" "/etc/wireguard/${SERVER_WG_NIC}.conf" | cut -d ' ' -f 3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
-			read -rp "Select one client [1]: " CLIENT_NUMBER
+			read -rp "$(echo -e "${green}Select one client [1]: ${nc} ")" CLIENT_NUMBER
+			
 		else
 			echo ;
 			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
