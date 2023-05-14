@@ -502,7 +502,7 @@ function manageMenu() {
 		;;
 		
 	0)
-		echo -e "\n	The git repository is available at:\n https://github.com/angristan/wireguard-install\n To add/remove clients, enter wg_ins again!" ; exit 0
+		ttb=$(echo -e "\n	The git repository is available at:\n https://github.com/angristan/wireguard-install\n To add/remove clients, enter wg_ins again!") && lang=d && bpn_p_lang && ttb="" && core_up ; echo ; exit 0
 		;;
 	esac
 }
