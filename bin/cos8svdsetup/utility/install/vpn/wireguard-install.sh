@@ -478,7 +478,7 @@ function manageMenu() {
 	echo -e "	"
 	ttb=$(echo -e "	It looks like WireGuard is already installed.") && lang=d && bpn_p_lang && ttb=""
 	echo -e "	"
-	ttb=$(echo -e " What do you want to do?\n") && lang=cr && bpn_p_lang && ttb=""
+	ttb=$(echo -e " What do you want to do?\n ") && lang=cr && bpn_p_lang && ttb=""
 	ttb=$(echo -e "	   1) Add a new user") && lang=cr && bpn_p_lang && ttb=""
 	ttb=$(echo -e "	   2) Revoke existing user") && lang=cr && bpn_p_lang && ttb=""
 
