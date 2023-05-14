@@ -62,10 +62,10 @@ ttb=$(echo -e "
 
  index=$(grubby --info /boot/vmlinuz-6.2.11-1.el8.elrepo.x86_64 | grep index)
 
-ttb=$(echo -e "
-  Пример вывода: 
-  "$("$(echo -en "  ")" && "$index")"
 
+  echo -en " Пример вывода: "$index"  "
+
+ttb=$(echo -e "
  ⎧ 3) Теперь, когда вы знаете индекс ядра, с которого хотите загрузиться, 
  | используйте команду: 
  | # grubby --set-default-index=[kernel-entry-index]
