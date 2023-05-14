@@ -368,7 +368,8 @@ function listClient() {
 			read -rp "Select one client [1]: " CLIENT_NUMBER
 		else
 		echo ;
-			read -rp "${green}Select one client [1-${NUMBER_OF_CLIENTS}]:${nc} " CLIENT_NUMBER
+			
+			read -rp "$(echo -e "${green}Select one client [1-${NUMBER_OF_CLIENTS}]:${nc} ")" CLIENT_NUMBER
 		fi
 	done
 
