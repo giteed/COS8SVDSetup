@@ -16,6 +16,10 @@ function wis() { (GLIG_ASTRX_ON && wis-f $1 $2) } ;
 # Запуск инсталляции/удаления/управления пользователями wireguard
 function wg_ins() {
 	/root/vdsetup.2/bin/utility/install/vpn/wireguard-install.sh
+	if [ $? -ne 0 ]; then
+		echo "my_function wg_ins exited with an error"
+		exit 1
+	fi
 }
 
 # Исправление ошибки "Failed to set locale, defaulting to C.UTF-8" 
