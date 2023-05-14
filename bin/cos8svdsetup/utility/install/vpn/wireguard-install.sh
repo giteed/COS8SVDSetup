@@ -140,10 +140,15 @@ function installQuestions() {
 function installWireGuard() {
 	# Check Linux core
 	core_ch_for_WireGuard ;
-	if [ $? -ne 0 ]; then
-		echo "my_function wg_ins exited with an error"
-		exit 1
-	fi
+
+	  # Если в выводе ls -l /boot/vmlinuz-* присутствует ядро '6.' и uname -r выводит ядро меньше чем 6.,
+	  # то выполняем команду fix.sh
+	  if [ "$(uname -r | cut -d'.' -f1)" -lt 6 ]
+	  then
+		echo -e "\n Ошибге"
+		core_grubby_help ;
+	  return 1 ;
+	  fi
 	# Run setup questions first
 	installQuestions
 
