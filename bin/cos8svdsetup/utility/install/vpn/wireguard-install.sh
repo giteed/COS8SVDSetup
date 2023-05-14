@@ -479,12 +479,12 @@ function manageMenu() {
 	ttb=$(echo -e "	It looks like WireGuard is already installed.") && lang=d && bpn_p_lang && ttb=""
 	echo -e "	"
 	ttb=$(echo -e " What do you want to do?\n") && lang=d && bpn_p_lang && ttb=""
-	ttb=$(echo -e "	   $(green_n1)) Add a new user") && lang=d && bpn_p_lang && ttb=""
-	ttb=$(echo -e "	   $(red_n2)) Revoke existing user") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e "	   1) Add a new user") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e "	   2) Revoke existing user") && lang=d && bpn_p_lang && ttb=""
 
-	ttb=$(echo -e "	   $(green_n3)) List active users\n") && lang=d && bpn_p_lang && ttb=""
-	ttb=$(echo -e "	   $(green_n0)) Exit\n") && lang=d && bpn_p_lang && ttb=""
-	ttb=$(echo -e "\n		$(red_n5)) ${RED}Uninstall${NC} WireGuard\n") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e "	   3) List active users\n") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e "	   0) Exit\n") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e "\n		5) ${RED}Uninstall${NC} WireGuard\n") && lang=d && bpn_p_lang && ttb=""
 	until [[ ${MENU_OPTION} =~ ^[0-5]$ ]]; do
 		read -rp " Select an option [0-5]: " MENU_OPTION
 	done
