@@ -37,7 +37,7 @@ then
   then
 	echo -e "\n Kernel version is less than 6, running core_grubby_help"
 	core_grubby_help ;
-  exit 0 ;
+  return 1 ;
   fi
 else
   # Если в выводе ls -l /boot/vmlinuz-* не присутствует ядро '6.' и uname -r выводит ядро меньше чем 6.,
@@ -50,6 +50,11 @@ else
 fi
 
 echo -e "\n All OK\n"
+
+if [ $? -ne 0 ]; then
+    echo "my_function exited with an error"
+    exit 1
+fi
 
 exit 0
 
