@@ -60,7 +60,7 @@ ttb=$(echo -e "
  | Пример ввода:
  ⎩ # grubby --info /boot/vmlinuz-6.2.11-1.el8.elrepo.x86_64 | grep index
 
- "$(echo -e "($grubby --info /boot/vmlinuz-6.2.11-1.el8.elrepo.x86_64 | grep index)")"
+ "$(echo -e $(grubby --info /boot/vmlinuz-6.2.11-1.el8.elrepo.x86_64 | grep index))"
 
   Пример вывода: 
   index=1
