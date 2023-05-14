@@ -74,7 +74,7 @@ ttb=$(echo -e "
  | с индексом 1 в списке доступных ядер на компьютере.
  |
  | Пример ввода: 
- ⎩ # grubby --set-default-index=1
+ ⎩ # grubby --set-default-$index
  
   Пример вывода: 
   The default is /boot/loader/entries/9cddb2dbf6a7307ba28d6565b5d02f0a-6.2.10-1.el8.elrepo.x86_64.conf with index 0 and kernel /boot/vmlinuz-6.2.10-1.el8.elrepo.x86_64
