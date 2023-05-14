@@ -31,7 +31,7 @@ function core_up() {
 #echo -e "\n Output of 'ls -l /boot/vmlinuz-*':"
 
 # Выводим результат команды ls -l /boot/vmlinuz-*
-ls -l /boot/vmlinuz-*
+#ls -l /boot/vmlinuz-*
 
 # Ищем в выводе ls -l /boot/vmlinuz-* строку с ядром '6.'
 if ls -l /boot/vmlinuz-* | grep -q "vmlinuz-6\."
