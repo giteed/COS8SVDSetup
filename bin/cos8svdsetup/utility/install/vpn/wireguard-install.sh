@@ -428,8 +428,8 @@ function revokeClient() {
 	# restart wireguard to apply changes
 	wg syncconf "${SERVER_WG_NIC}" <(wg-quick strip "${SERVER_WG_NIC}")
 	
-	unset CLIENT_NUMBER
-	manageMenu ;
+	
+    initialCheck ;
 }
 
 function uninstallWg() {
