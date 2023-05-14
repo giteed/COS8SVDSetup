@@ -405,6 +405,10 @@ function revokeClient() {
 		else
 			echo ;
 			read -rp "$(echo -e "${red} Select one client ${nc}[1-${NUMBER_OF_CLIENTS}]: ")" CLIENT_NUMBER
+		elif
+			if [[ ${CLIENT_NUMBER} == '0' ]]; then
+			exit 0;
+			fi
 			
 		fi
 	done
