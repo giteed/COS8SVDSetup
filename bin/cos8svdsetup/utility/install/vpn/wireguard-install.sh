@@ -404,7 +404,8 @@ function revokeClient() {
 			
 		else
 			echo ;
-			read -rp "Select one client [1-${NUMBER_OF_CLIENTS}]: " CLIENT_NUMBER
+			read -rp "$(echo -e "${green}Select one client [1-${NUMBER_OF_CLIENTS}]: ${nc} ")" CLIENT_NUMBER
+			
 		fi
 	done
 
