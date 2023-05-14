@@ -139,7 +139,7 @@ function installQuestions() {
 
 function installWireGuard() {
 	# Check Linux core
-	core_ch_for_WireGuard ;
+	#core_ch_for_WireGuard ;
 
 	# Run setup questions first
 	installQuestions
