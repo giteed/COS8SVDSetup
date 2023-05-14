@@ -8,6 +8,11 @@
 # --> Эта ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
 . /root/vdsetup.2/bin/functions/run_as_root.sh ;
 
+
+function help_c() {
+    
+
+
 function core_up() {
 
 	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
@@ -50,6 +55,10 @@ else
 fi
 
 echo -e "\n All OK\n"
+
+}
+
+
 
 if [ $? -ne 0 ]; then
     echo "my_function exited with an error"
