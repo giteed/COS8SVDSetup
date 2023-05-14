@@ -22,10 +22,10 @@ function core_up() {
 
 
 # Выводим описание вывода uname -r
-echo -en "\n Output of 'uname -r': "
+#echo -en "\n Output of 'uname -r': "
 
 # Выводим результат команды uname -r
-uname -r
+#uname -r
 
 # Выводим описание вывода ls -l /boot/vmlinuz-*
 echo -e "\n Output of 'ls -l /boot/vmlinuz-*':"
