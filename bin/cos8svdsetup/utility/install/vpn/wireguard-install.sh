@@ -520,7 +520,7 @@ if [[ -e /etc/wireguard/params ]]; then
 	  # то выполняем команду fix.sh
 	  if [ "$(uname -r | cut -d'.' -f1)" -lt 6 ]
 	  then
-		echo -e "\n WireGuard не будет нормально работать с ядром "$(uname -r)""
+		echo -e "\n Версия ядра "$(uname -r)" не поддерживает WireGuard\n Перед установкой WireGuard вам нужно обновить ядро Linux CentOS."
 		core_grubby_help ;
 	  exit 1 ;
 	  fi
