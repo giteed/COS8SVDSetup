@@ -396,7 +396,7 @@ function revokeClient() {
 	fi
 
 	echo " "
-	ttb=$(echo -e " Select the existing client you want to revoke\n") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e " Select the existing client you want to revoke\n ") && lang=nix && bpn_p_lang && ttb=""
 	grep -E "^### Client" "/etc/wireguard/${SERVER_WG_NIC}.conf" | cut -d ' ' -f 3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
