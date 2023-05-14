@@ -28,7 +28,7 @@ function core_up() {
 #uname -r
 
 # Выводим описание вывода ls -l /boot/vmlinuz-*
-echo -e "\n Output of 'ls -l /boot/vmlinuz-*':"
+#echo -e "\n Output of 'ls -l /boot/vmlinuz-*':"
 
 # Выводим результат команды ls -l /boot/vmlinuz-*
 ls -l /boot/vmlinuz-*
