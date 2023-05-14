@@ -95,6 +95,6 @@ ttb=$(echo -e "
  
  " ) && lang_nix && bpn_p_lang ; ttb="" ;
  
-
+exit 1
 
 }
