@@ -54,7 +54,7 @@ else
   fi
 fi
 
-echo -e "\n All OK\n"
+ttb=$(echo -e "\n Версия ядра CentOS: "$(uname -r)"\n ") && lang_nix && bpn_p_lang ; ttb="" ;
 
 
 }
