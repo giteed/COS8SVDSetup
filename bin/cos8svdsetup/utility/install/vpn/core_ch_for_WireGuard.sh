@@ -50,7 +50,7 @@ else
   if [ "$(uname -r | cut -d'.' -f1)" -lt 6 ]
   then
 	echo -e "\n Kernel version is less than 6 and vmlinuz-6.* is not found, running core_up"
-	ttb=$(echo -e " Версия ядра "$(uname -r)" не поддерживает WireGuard\n Перед установкой WireGuard вам нужно обновить ядро Linux CentOS." ) && lang=d && bpn_p_lang && ttb="" && core_up ; echo ;
+	ttb=$(echo -e " Версия ядра "$(uname -r)" не поддерживает WireGuard\n Перед установкой WireGuard вам нужно обновить ядро Linux CentOS.\n После установки нового ядра запустите wg_ins повторно!" ) && lang=d && bpn_p_lang && ttb="" && core_up ; echo ;
   fi
 fi
 

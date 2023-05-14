@@ -343,7 +343,7 @@ AllowedIPs = ${CLIENT_WG_IPV4}/32,${CLIENT_WG_IPV6}/128" >>"/etc/wireguard/${SER
 
 	qrencode -t ansiutf8 -l L <"${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf"
 
-	echo " It is also available in ${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf"
+	echo -e " It is also available in ${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf\n To add new/remove old clients, enter wg_ins again!"
 }
 
 
@@ -461,7 +461,7 @@ function uninstallWg() {
 			echo " WireGuard failed to uninstall properly."
 			exit 1
 		else
-			echo " WireGuard uninstalled successfully."
+			echo -n "\n WireGuard uninstalled successfully.\n Type wg_ins for install Wireguard."
 			exit 0
 		fi
 	else
