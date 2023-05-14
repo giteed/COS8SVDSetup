@@ -141,14 +141,6 @@ function installWireGuard() {
 	# Check Linux core
 	core_ch_for_WireGuard ;
 
-	  # Если в выводе ls -l /boot/vmlinuz-* присутствует ядро '6.' и uname -r выводит ядро меньше чем 6.,
-	  # то выполняем команду fix.sh
-	  if [ "$(uname -r | cut -d'.' -f1)" -lt 6 ]
-	  then
-		echo -e "\n Ошибге"
-		core_grubby_help ;
-	  exit 1 ;
-	  fi
 	# Run setup questions first
 	installQuestions
 
@@ -522,6 +514,17 @@ initialCheck
 if [[ -e /etc/wireguard/params ]]; then
 	source /etc/wireguard/params
 	core_ch_for_WireGuard ;
+	
+	
+	  # Если в выводе ls -l /boot/vmlinuz-* присутствует ядро '6.' и uname -r выводит ядро меньше чем 6.,
+	  # то выполняем команду fix.sh
+	  if [ "$(uname -r | cut -d'.' -f1)" -lt 6 ]
+	  then
+		echo -e "\n Ошибге"
+		core_grubby_help ;
+	  exit 1 ;
+	  fi
+	
 	manageMenu
 else
 	installWireGuard
