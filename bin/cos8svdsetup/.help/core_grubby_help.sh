@@ -60,7 +60,7 @@ ttb=$(echo -e "
  | Пример ввода:
  ⎩ # grubby --info /boot/vmlinuz-6.2.11-1.el8.elrepo.x86_64 | grep index") && lang_nix && bpn_p_lang ; ttb="" ;
 
- grubby --info /boot/vmlinuz-6.2.11-1.el8.elrepo.x86_64 | grep index
+ echo -en "  "; grubby --info /boot/vmlinuz-6.2.11-1.el8.elrepo.x86_64 | grep index
 
 ttb=$(echo -e "
   Пример вывода: 
