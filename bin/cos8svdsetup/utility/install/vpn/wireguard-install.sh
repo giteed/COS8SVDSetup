@@ -81,12 +81,13 @@ function initialCheck() {
 }
 
 function installQuestions() {
-	echo " Welcome to the WireGuard installer!"
-	echo " The git repository is available at: https://github.com/angristan/wireguard-install"
-	echo " "
-	echo " I need to ask you a few questions before starting the setup."
-	echo " You can leave the default options and just press enter if you are ok with them."
-	echo " "
+	ttb=$(echo -e "
+ Welcome to the WireGuard installer!
+ The git repository is available at: https://github.com/angristan/wireguard-install
+ 
+ I need to ask you a few questions before starting the setup.
+ You can leave the default options and just press enter if you are ok with them.`"
+ ) && lang=d && bpn_p_lang && ttb=""
 
 	# Detect public IPv4 or IPv6 address and pre-fill for the user
 	SERVER_PUB_IP=$(ip -4 addr | sed -ne 's|^.* inet \([^/]*\)/.* scope global.*$|\1|p' | awk '{print $1}' | head -1)
@@ -130,11 +131,11 @@ function installQuestions() {
 			CLIENT_DNS_2="${CLIENT_DNS_1}"
 		fi
 	done
-
+	
 	echo " "
-	echo " Okay, that was all I needed. We are ready to setup your WireGuard server now."
-	echo " You will be able to generate a client at the end of the installation."
-	read -n1 -r -p "Press any key to continue..."
+	ttb=$(echo " Okay, that was all I needed. We are ready to setup your WireGuard server now.") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo " You will be able to generate a client at the end of the installation.") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(read -n1 -r -p "Press any key to continue...") && lang=d && bpn_p_lang && ttb=""
 }
 
 function installWireGuard() {
@@ -225,7 +226,7 @@ net.ipv6.conf.all.forwarding = 1" >/etc/sysctl.d/wg.conf
 	systemctl enable "wg-quick@${SERVER_WG_NIC}"
 
 	newClient
-	echo " If you want to add more clients, you simply need to run this script another time!"
+	ttb=$(echo -e " If you want to add more clients, you simply need to run wg_ins (this script) another time!") && lang=d && bpn_p_lang && ttb=""
 
 	# Check if WireGuard is running
 	systemctl is-active --quiet "wg-quick@${SERVER_WG_NIC}"
@@ -233,9 +234,10 @@ net.ipv6.conf.all.forwarding = 1" >/etc/sysctl.d/wg.conf
 
 	# WireGuard might not work if we updated the kernel. Tell the user to reboot
 	if [[ ${WG_RUNNING} -ne 0 ]]; then
-		echo -e "\n${RED}WARNING: WireGuard does not seem to be running.${NC}"
-		echo -e "${ORANGE}You can check if WireGuard is running with: systemctl status wg-quick@${SERVER_WG_NIC}${NC}"
-		echo -e "${ORANGE}If you get something like \"Cannot find device ${SERVER_WG_NIC}\", please reboot!${NC}"
+		
+		ttb=$(echo -e "\n${RED}WARNING: WireGuard does not seem to be running.${NC}") && lang=d && bpn_p_lang && ttb=""
+		ttb=$(echo -e "${ORANGE}You can check if WireGuard is running with: systemctl status wg-quick@${SERVER_WG_NIC}${NC}") && lang=d && bpn_p_lang && ttb=""
+		ttb=$(echo -e "${ORANGE}If you get something like \"Cannot find device ${SERVER_WG_NIC}\", please reboot!${NC}") && lang=d && bpn_p_lang && ttb=""
 	fi
 }
 
@@ -243,8 +245,8 @@ function newClient() {
 	ENDPOINT="${SERVER_PUB_IP}:${SERVER_PORT}"
 
 	echo " "
-	echo " Tell me a name for the client."
-	echo " The name must consist of alphanumeric character. It may also include an underscore or a dash and can't exceed 15 chars."
+	ttb=$(echo -e " Tell me a name for the client.") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e " The name must consist of alphanumeric character. It may also include an underscore or a dash and can't exceed 15 chars.") && lang=d && bpn_p_lang && ttb=""
 
 	until [[ ${CLIENT_NAME} =~ ^[a-zA-Z0-9_-]+$ && ${CLIENT_EXISTS} == '0' && ${#CLIENT_NAME} -lt 16 ]]; do
 		read -rp "Client name: " -e CLIENT_NAME
@@ -252,7 +254,7 @@ function newClient() {
 
 		if [[ ${CLIENT_EXISTS} == '1' ]]; then
 			echo " "
-			echo " A client with the specified name was already created, please choose another name."
+			ttb=$(echo -e " A client with the specified name was already created, please choose another name.") && lang=d && bpn_p_lang && ttb=""
 			echo " "
 		fi
 	done
@@ -266,7 +268,7 @@ function newClient() {
 
 	if [[ ${DOT_EXISTS} == '1' ]]; then
 		echo " "
-		echo " The subnet configured supports only 253 clients."
+		ttb=$(echo -e " The subnet configured supports only 253 clients.") && lang=d && bpn_p_lang && ttb=""
 		exit 1
 	fi
 
@@ -278,7 +280,7 @@ function newClient() {
 
 		if [[ ${IPV4_EXISTS} == '1' ]]; then
 			echo " "
-			echo " A client with the specified IPv4 was already created, please choose another IPv4."
+			ttb=$(echo -e " A client with the specified IPv4 was already created, please choose another IPv4.") && lang=d && bpn_p_lang && ttb=""
 			echo " "
 		fi
 	done
@@ -291,7 +293,7 @@ function newClient() {
 
 		if [[ ${IPV6_EXISTS} == '1' ]]; then
 			echo " "
-			echo " A client with the specified IPv6 was already created, please choose another IPv6."
+			ttb=$(echo -e " A client with the specified IPv6 was already created, please choose another IPv6.") && lang=d && bpn_p_lang && ttb=""
 			echo " "
 		fi
 	done
@@ -343,7 +345,7 @@ AllowedIPs = ${CLIENT_WG_IPV4}/32,${CLIENT_WG_IPV6}/128" >>"/etc/wireguard/${SER
 
 	qrencode -t ansiutf8 -l L <"${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf"
 
-	echo -e " It is also available in ${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf\n To add new/remove old clients, enter wg_ins again!"
+	ttb=$(echo -e " It is also available in ${HOME_DIR}/${SERVER_WG_NIC}-client-${CLIENT_NAME}.conf\n To add new/remove old clients, enter wg_ins again!") && lang=d && bpn_p_lang && ttb=""
 }
 
 
@@ -352,7 +354,7 @@ function listClient() {
 	NUMBER_OF_CLIENTS=$(grep -c -E "^### Client" "/etc/wireguard/${SERVER_WG_NIC}.conf")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		echo " "
-		echo " You have no existing clients!"
+		ttb=$(echo -e " You have no existing clients!") && lang=d && bpn_p_lang && ttb=""
 		
 		exit 1
 		
@@ -388,12 +390,12 @@ function revokeClient() {
 	NUMBER_OF_CLIENTS=$(grep -c -E "^### Client" "/etc/wireguard/${SERVER_WG_NIC}.conf")
 	if [[ ${NUMBER_OF_CLIENTS} == '0' ]]; then
 		echo " "
-		echo " You have no existing clients!"
+		ttb=$(echo -e " You have no existing clients!") && lang=d && bpn_p_lang && ttb=""
 		exit 1
 	fi
 
 	echo " "
-	echo -e " Select the existing client you want to revoke\n"
+	ttb=$(echo -e " Select the existing client you want to revoke\n") && lang=d && bpn_p_lang && ttb=""
 	grep -E "^### Client" "/etc/wireguard/${SERVER_WG_NIC}.conf" | cut -d ' ' -f 3 | nl -s ') '
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
@@ -461,28 +463,28 @@ function uninstallWg() {
 			echo " WireGuard failed to uninstall properly."
 			exit 1
 		else
-			echo -n "\n WireGuard uninstalled successfully.\n Type wg_ins for install Wireguard."
+			ttb=$(echo -en "\n WireGuard uninstalled successfully.\n Type wg_ins for install Wireguard.") && lang=d && bpn_p_lang && ttb=""
 			exit 0
 		fi
 	else
 		echo " "
-		echo " Removal aborted!"
+		ttb=$(echo -e " Removal aborted!") && lang=d && bpn_p_lang && ttb=""
 	fi
 }
 
 function manageMenu() {
-	echo " Welcome to WireGuard-install!"
+	ttb=$(echo " Welcome to WireGuard-install!") && lang=d && bpn_p_lang && ttb=""
 	
 	echo -e "	"
-	echo -e "	It looks like WireGuard is already installed."
+	ttb=$(echo -e "	It looks like WireGuard is already installed.") && lang=d && bpn_p_lang && ttb=""
 	echo -e "	"
-	echo -e " What do you want to do?\n"
-	echo -e "	   $(green_n1)) Add a new user"
-	echo -e "	   $(red_n2)) Revoke existing user"
+	ttb=$(echo -e " What do you want to do?\n") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e "	   $(green_n1)) Add a new user") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e "	   $(red_n2)) Revoke existing user") && lang=d && bpn_p_lang && ttb=""
 
-	echo -e "	   $(green_n3)) List active users\n"
-	echo -e "	   $(green_n0)) Exit\n"
-	echo -e "\n		$(red_n5)) ${RED}Uninstall${NC} WireGuard\n"
+	ttb=$(echo -e "	   $(green_n3)) List active users\n") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e "	   $(green_n0)) Exit\n") && lang=d && bpn_p_lang && ttb=""
+	ttb=$(echo -e "\n		$(red_n5)) ${RED}Uninstall${NC} WireGuard\n") && lang=d && bpn_p_lang && ttb=""
 	until [[ ${MENU_OPTION} =~ ^[0-5]$ ]]; do
 		read -rp " Select an option [0-5]: " MENU_OPTION
 	done
