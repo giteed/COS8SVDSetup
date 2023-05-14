@@ -520,7 +520,7 @@ if [[ -e /etc/wireguard/params ]]; then
 	  # то выполняем команду fix.sh
 	  if [ "$(uname -r | cut -d'.' -f1)" -lt 6 ]
 	  then
-		echo -e "\n Версия ядра "$(uname -r)" не поддерживает WireGuard\n Перед установкой WireGuard вам нужно загрузить\n ядро: "$(ls -l /boot/vmlinuz-* | grep -e 6.2 | awk '{print $9}')" Linux CentOS."
+		ttb=$(echo -e "\n Версия ядра "$(uname -r)" не поддерживает WireGuard\n Перед установкой WireGuard вам нужно загрузить\n ядро: "$(ls -l /boot/vmlinuz-* | grep -e 6.2 | awk '{print $9}')" Linux CentOS.") && lang=d && bpn_p_lang && ttb="" ;
 		core_grubby_help ;
 	  exit 1 ;
 	  fi
