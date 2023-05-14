@@ -94,5 +94,7 @@ ttb=$(echo -e "
  ⎩ # uname -r
  
  " ) && lang_nix && bpn_p_lang ; ttb="" ;
+ 
+ exit 0 ;
 
 }
