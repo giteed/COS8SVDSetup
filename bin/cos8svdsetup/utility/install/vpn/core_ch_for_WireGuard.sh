@@ -56,10 +56,6 @@ fi
 
 echo -e "\n All OK\n"
 
-if [ $? -ne 0 ]; then
-    echo "my_function exited with an error"
-    return 1
-fi
 
 }
 
