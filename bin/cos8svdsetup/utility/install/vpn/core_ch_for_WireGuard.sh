@@ -58,7 +58,7 @@ echo -e "\n All OK\n"
 
 }
 
-
+help_c
 
 if [ $? -ne 0 ]; then
     echo "my_function exited with an error"
