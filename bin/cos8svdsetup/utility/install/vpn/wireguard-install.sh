@@ -401,7 +401,7 @@ function revokeClient() {
 	until [[ ${CLIENT_NUMBER} -ge 1 && ${CLIENT_NUMBER} -le ${NUMBER_OF_CLIENTS} ]]; do
 		if [[ ${CLIENT_NUMBER} == '1' ]]; then
 			read -rp "$(echo -e "${red} Select one client ${nc} [1]: ")" CLIENT_NUMBER
-	if [[ ${CLIENT_NUMBER} == '0' ]]; then
+	if [[ ${CLIENT_NUMBER} == '' ]]; then
 		exit 0
 	fi
 
