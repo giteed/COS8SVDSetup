@@ -161,7 +161,7 @@ split_ip_list() {
 
 function _nslookup() {
     
-    wait=$( printf "${ellow}   Пожалуйста подождите...                   ${NC}\r" | tee /dev/tty >&2 && sleep 1 )
+    wait=$( printf "${ellow}   Пожалуйста подождите...                   ${NC}\r" | tee /dev/tty >&2 && sleep 0.5 )
     function _nslookup_() {
         local local_check_ip=$(ip addr show | grep "inet " | awk '{print $2}' | cut -d/ -f1 | while read IP; do echo -ne "\r   Идет запрос nslookup для $IP... "; nslookup $IP | grep 'name =' | awk '{print $4}'; done | tee /dev/tty >&2)
     }
