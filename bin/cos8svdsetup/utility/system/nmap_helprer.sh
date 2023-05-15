@@ -168,6 +168,30 @@ function _nslookup() {
     _nslookup_
     return $local_check_ip
   }
+  
+  function ping_c_102() {
+    selected_host="$1"
+    wait=$( printf "${ellow}   Пожалуйста подождите...                   ${NC}\r" | tee /dev/tty >&2 && sleep 0.5 )
+    function _ping_c_10_() {
+        
+        ping_host=$( "$selected_host" | while read HOST; do echo -ne "\r   Идет ping для $HOST... "; ping -c 10 $HOST | grep 'ttl' | awk '{print $4, $5, $6, $8}'; done | tee /dev/tty >&2)
+    }
+    _ping_c_10_
+    return $local_check_ip
+  }
+
+function ping_c_10() {
+      selected_host="$1"
+      wait=$( printf "${ellow}   Пожалуйста подождите...                   ${NC}\r" | tee /dev/tty >&2 && sleep 0.5 )
+      function _ping_c_10_() {
+        ping_host=$( "$selected_host" | while read HOST; do echo -ne "\r   Идет ping для $HOST... "; ping -c 10 $HOST | grep 'ttl' | awk '{print $4, $5, $6, $8}'; done | tee /dev/tty >&2)
+      }
+      _ping_c_10_
+      echo "$ping_host"
+      
+  }
+
+
 
 # Функция поиска хостов
 find_hosts() {
@@ -198,7 +222,7 @@ find_hosts() {
       local local_check_ip=$1
       
       echo -en "\n\n   Спасибо за ожидание.                \r" ;
-      
+      ping_c_10
       local etc_networks=$(cat /etc/networks)
       local etc_hosts=$(cat /etc/hosts)
       local etc_sysconfig_networks=$(cat /etc/sysconfig/network)
