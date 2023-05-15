@@ -223,7 +223,7 @@ find_hosts() {
       local local_check_ip=$1
       
       echo -en "\n\n   Спасибо за ожидание.                \r" ;
-      ping_c_10
+      ping_c_10 $selected_host
       local etc_networks=$(cat /etc/networks)
       local etc_hosts=$(cat /etc/hosts)
       local etc_sysconfig_networks=$(cat /etc/sysconfig/network)
