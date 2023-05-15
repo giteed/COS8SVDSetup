@@ -185,9 +185,9 @@ function ping_c_10() {
       echo "$selected_host"
       wait=$( printf "${ellow}   Пожалуйста подождите...                   ${NC}\r" | tee /dev/tty >&2 && sleep 0.5 )
       function _ping_c_10_() {
-        ping_host=$( "$selected_host" | while read HOST; do echo -ne "\r   Идет ping для $HOST... "; ping -c 10 $HOST | grep 'ttl' | awk '{print $4, $5, $6, $8}'; done | tee /dev/tty >&2)
+        ping_host=$( echo -e "$selected_host" | while read HOST; do echo -ne "\r   Идет ping для $HOST... "; ping -c 10 $HOST | grep 'ttl' | awk '{print $4, $5, $6, $8}'; done | tee /dev/tty >&2)
       }
-      _ping_c_10_
+      _ping_c_10_ $selected_host
       echo "$ping_host"
       
   }
