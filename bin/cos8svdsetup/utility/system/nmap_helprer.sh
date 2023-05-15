@@ -223,7 +223,7 @@ find_hosts() {
       local local_check_ip=$1
       
       echo -en "\n\n   Спасибо за ожидание.                \r" ;
-      ping_c_10 $selected_host
+      
       local etc_networks=$(cat /etc/networks)
       local etc_hosts=$(cat /etc/hosts)
       local etc_sysconfig_networks=$(cat /etc/sysconfig/network)
@@ -235,6 +235,7 @@ find_hosts() {
     local all_find_hosts="$ips4"$'\n'"$local_ips"$'\n'"$local_check_ip"'\n'"$etc_networks"'\n'"$etc_hosts"'\n'"$etc_sysconfig_networks" 
     echo -e "$all_find_hosts" > /tmp/all_find_hosts.txt
     
+    ping_c_10 $local_ips
   }
 
   # Вызываем функцию поиска хостов с переданным аргументом
