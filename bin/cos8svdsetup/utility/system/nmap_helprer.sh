@@ -168,30 +168,6 @@ function _nslookup() {
     _nslookup_
     return $local_check_ip
   }
-  
-  function ping_c_102() {
-    selected_host="$1"
-    wait=$( printf "${ellow}   Пожалуйста подождите...                   ${NC}\r" | tee /dev/tty >&2 && sleep 0.5 )
-    function _ping_c_10_() {
-        
-        ping_host=$( "$selected_host" | while read HOST; do echo -ne "\r   Идет ping для $HOST... "; ping -c 10 $HOST | grep 'ttl' | awk '{print $4, $5, $6, $8}'; done | tee /dev/tty >&2)
-    }
-    _ping_c_10_
-    return $local_check_ip
-  }
-
-function ping_c_10() {
-      selected_host="$1"
-      echo "$selected_host"
-      wait=$( printf "${ellow}   Пожалуйста подождите...                   ${NC}\r" | tee /dev/tty >&2 && sleep 0.5 )
-      function _ping_c_10_() {
-        ping_host=$( echo -e "$selected_host" | while read HOST; do echo -ne "\r   Идет ping для $HOST... "; ping -c 10 $HOST ; done | tee /dev/tty >&2)
-      }
-      _ping_c_10_ $selected_host
-      #echo "$ping_host"
-      
-  }
-
 
 
 # Функция поиска хостов
@@ -235,7 +211,6 @@ find_hosts() {
     local all_find_hosts="$ips4"$'\n'"$local_ips"$'\n'"$local_check_ip"'\n'"$etc_networks"'\n'"$etc_hosts"'\n'"$etc_sysconfig_networks" 
     echo -e "$all_find_hosts" > /tmp/all_find_hosts.txt
     
-    ping_c_10 $local_ips
   }
 
   # Вызываем функцию поиска хостов с переданным аргументом
