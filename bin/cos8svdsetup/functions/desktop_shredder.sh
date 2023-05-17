@@ -32,7 +32,7 @@ function desktop_shredder_status() {
     
     
     systemctl status desktop_shredder.service ;
-    
+    echo 
     echo "┌───────────────────────────────────────────────────────────────────────────────┐"
     echo "│                      Информация о состоянии Desktop Shredder                   "
     echo "├───────────────────────────────────────────────────────────────────────────────┤"
@@ -51,6 +51,18 @@ function desktop_shredder_status() {
     
     echo -e "\n To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\n For example: # dsunit_reinstall 600\n View Status of Desktop Shredders # dsus\n Начать очистку немедленно # dsnow\n"
     
+    ttb=$(echo -e "
+    ___  ____ ____ _  _ ___ ____ ___  
+    |  \ |___ [__  |_/   |  |  | |__] 
+    |__/ |___ ___] | \_  |  |__| |    
+                                      
+    ____ _  _ ____ ____ ___  ___  ____ ____ 
+    [__  |__| |__/ |___ |  \ |  \ |___ |__/ 
+    ___] |  | |  \ |___ |__/ |__/ |___ |  \ 
+                                            
+    
+    ") && lang=cr && bpn_p_lang ;
+
     # Показать статус Desktop Shredder
     # ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
     
@@ -176,8 +188,6 @@ function mvds() {
       folder_name="${prefix}${random_number}"
       
       mkdir -p "${ds_path}${folder_name}"
-      
-      
       \mv "$file" "${ds_path}${folder_name}"
       done
       
