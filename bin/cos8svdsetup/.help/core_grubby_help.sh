@@ -99,12 +99,20 @@ function core_grubby_help() {
      
        "$(press_enter_to_continue_or_ESC_or_any_key_to_cancel)"
     
-      Устанавливаю ядро по умолчанию, обновляю конфигурацию загрузчика GRUB 
+      Устанавливаю для загрузки ядро "$core6" по умолчанию,
+      обновляю конфигурацию загрузчика GRUB 
    
    " ) && lang_nix && bpn_p_lang ; ttb="" ;
    
    grubby --set-default-"$index"
    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+   
+   ttb=$(echo -e "
+     Готово!
+     
+     Перезагрузите сервер чтобы изменения вступили в силу!
+     # reboot
+     ") && lang_nix && bpn_p_lang ; ttb="" ;
    
   exit 0
   
