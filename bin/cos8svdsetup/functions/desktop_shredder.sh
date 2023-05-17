@@ -178,7 +178,7 @@ function mvds() {
       mkdir -p "${ds_path}${folder_name}"
       
       
-      \mv "$file" "$ds_path"
+      \mv "$file" "${ds_path}${folder_name}"
       done
       
      
