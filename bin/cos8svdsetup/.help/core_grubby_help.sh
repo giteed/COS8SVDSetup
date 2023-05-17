@@ -106,6 +106,6 @@ function core_grubby_help() {
    grubby --set-default-"$index"
    sudo grub2-mkconfig -o /boot/grub2/grub.cfg
    
-  #exit 0
+  exit 0
   
 }
