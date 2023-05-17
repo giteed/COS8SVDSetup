@@ -96,7 +96,9 @@ ttb=$(echo -e "
  ⎩ # uname -r
  
     Хотите автоматически произвести изменения в загрузчик с ядром "$core6"?
+   
      "$(press_enter_to_continue_or_ESC_or_any_key_to_cancel)"
+  
     Устанавливаю ядро по умолчанию, обновляю конфигурацию загрузчика GRUB 
  
  " ) && lang_nix && bpn_p_lang ; ttb="" ;
@@ -104,6 +106,6 @@ ttb=$(echo -e "
  grubby --set-default-"$index"
  sudo grub2-mkconfig -o /boot/grub2/grub.cfg
  
-exit 0
+#exit 0
 
 }
