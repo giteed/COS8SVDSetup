@@ -242,6 +242,17 @@ function desktop_shredder() {
      
       if [ -z "$(ls -A "$shredder_folder")" ]; then
         ttb=$(echo -e "\n | Папка Desktop Shredder, пуста.\n | Нечего мельчить!\n | Переместить файл или папку в Shredder:\n | # mvds [папка/файл]\n\n Выход.\n") && lang=nix && bpn_p_lang
+        ttb=$(echo -e "
+        ___  ____ ____ _  _ ___ ____ ___  
+        |  \ |___ [__  |_/   |  |  | |__] 
+        |__/ |___ ___] | \_  |  |__| |    
+                                          
+        ____ _  _ ____ ____ ___  ___  ____ ____ 
+        [__  |__| |__/ |___ |  \ |  \ |___ |__/ 
+        ___] |  | |  \ |___ |__/ |__/ |___ |  \ 
+                                                
+        
+        ") && lang=cr && bpn_p_lang ;
         exit 1
       fi
     }
@@ -260,7 +271,6 @@ function desktop_shredder() {
     ttb=$(echo -e  "\n | \"Desktop Shredder\" старательно измельчил\n | все содержимое папки: $ds_path\n | $iteration_n раз(а) подряд.\n | Установить другое время между очистками\n | # dsunit_reinstall [время в сек]. ") && lang=cr && bpn_p_lang ; tendl ;
     
     ttb=$(echo -e "
-    
     ___  ____ ____ _  _ ___ ____ ___  
     |  \ |___ [__  |_/   |  |  | |__] 
     |__/ |___ ___] | \_  |  |__| |    
@@ -269,8 +279,6 @@ function desktop_shredder() {
     [__  |__| |__/ |___ |  \ |  \ |___ |__/ 
     ___] |  | |  \ |___ |__/ |__/ |___ |  \ 
                                             
-
-    
     ") && lang=cr && bpn_p_lang ;
     
     
