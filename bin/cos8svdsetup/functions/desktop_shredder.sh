@@ -169,6 +169,15 @@ function mvds() {
       
       ttb=$(echo -e " Перемещаю в Shredder: $@") && lang=cr && bpn_p_lang ;
       for file in "$@"; do
+      
+      
+      prefix="DS_REMOVE_"
+      random_number=$(shuf -i 100-999 -n 1)
+      folder_name="${prefix}${random_number}"
+      
+      mkdir -p "${ds_path}${folder_name}"
+      
+      
       \mv "$file" "$ds_path"
       done
       
