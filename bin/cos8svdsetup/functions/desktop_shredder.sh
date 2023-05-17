@@ -184,7 +184,11 @@ function mvds() {
       
       
       prefix="DS_REMOVE_"
-      random_number=$(shuf -i 100-999 -n 1)
+      # Для 3x-значных чисел
+      #random_number=$(shuf -i 100-999 -n 1)
+      # Аналогично, для 5-значных чисел:
+      random_number=$(shuf -i 10000-99999 -n 1)
+
       folder_name="${prefix}${random_number}"
       
       mkdir -p "${ds_path}${folder_name}"
