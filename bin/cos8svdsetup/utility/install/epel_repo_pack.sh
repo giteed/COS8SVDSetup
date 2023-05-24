@@ -40,7 +40,7 @@
 	 sudo dnf install -y git tar curl wget jq nc || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y whois || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y tree atop htop bpytop iftop stacer lsof nethogs ripgrep || ( error_MSG ; ) ; echo ;
-	 sudo dnf install -y python3 ruby  || ( error_MSG ; ) ; echo ;
+	 sudo dnf install -y ruby #python3  || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y mc nano hstr ncdu || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y unzip p7zip || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y screen qrencode || ( error_MSG ; ) ; echo ;

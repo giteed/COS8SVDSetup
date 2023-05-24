@@ -67,7 +67,8 @@
 		
 	}
 	
-	
+	#Privoxy 3.0.34 Руководство пользователя (через Хром с переводом)
+	#http://www.privoxy.org/user-manual/configuration.html
 	
 	# Функция создает бекап файла /etc/privoxy/config.OLD и снимает 
 	# коммент "#" со строки с паттерном "127.0.0.1:9050 ."
