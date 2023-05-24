@@ -48,7 +48,7 @@
 	 
 	 wireguard_tools ;
 	 
- }
+ 	}
  
  function epel_repository_packages_Check_or_install() {
 	  
@@ -73,7 +73,7 @@
 	  
 	  
 	   [[ -z $(cat /etc/yum.repos.d/epel.repo 2>/dev/null) ]]  && ( sudo dnf install -y epel-release 2>/dev/null && msg_in1 || msg_in2 ) || msg_in3 ;
-   }
+    }
 
   function epel_repository_packages()
   {
