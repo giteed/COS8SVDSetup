@@ -15,9 +15,10 @@ fi
 
 # User specific environment and startup programs
 # --> Настройки окружения и запуск пользовательских программ
-PATH=$PATH:$HOME/bin
 
-export PATH
+PATH=$PATH:$HOME/bin
+export PATH="/usr/local/bin:$PATH"
+
 
 
 # source /root/.bash_profile
