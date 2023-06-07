@@ -55,37 +55,37 @@ function http() { ttb=$( echo -e "\n $( cat /tmp/nginx_http_ip 2>/dev/null )") &
 
 # Функция: Запускает http Node_js сервер
 function start_http_server() {
-    /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh start ;
+    /root/vdsetup.2/bin/utility/install/torrent/file_to_http_start_stop.sh start ;
   }
 
  
 # Функция: Останавливает http Node_js сервер
 function stop_http_server() {
-    /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh stop ;
+    /root/vdsetup.2/bin/utility/install/torrent/file_to_http_start_stop.sh stop ;
   }
 
  
 # Функция: показывает статус http Node_js сервера
 function status_http_server() {
-    /root/vdsetup.2/bin/utility/torrent/file_to_http_start_stop.sh status ;
+    /root/vdsetup.2/bin/utility/install/torrent/file_to_http_start_stop.sh status ;
   }
 
  
 # Функция: Запускает http light Node_js сервер
   function start_light_server() {
-    /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh start ;
+    /root/vdsetup.2/bin/utility/install/torrent/file_to_light_server_start_stop.sh start ;
   }
 
  
 # Функция: Останавливает http light Node_js сервер
   function stop_light_server() {
-    /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh stop ;
+    /root/vdsetup.2/bin/utility/install/torrent/file_to_light_server_start_stop.sh stop ;
   }
 
  
 # Функция: Показывает статус http light Node_js сервера
 function status_light_server() {
-    /root/vdsetup.2/bin/utility/torrent/file_to_light_server_start_stop.sh status ;
+    /root/vdsetup.2/bin/utility/install/torrent/file_to_light_server_start_stop.sh status ;
   }
 
 
