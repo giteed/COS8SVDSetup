@@ -87,6 +87,15 @@ function status_http_server() {
 function status_light_server() {
     /root/vdsetup.2/bin/utility/install/torrent/file_to_light_server_start_stop.sh status ;
   }
+# Функция: Install transmission
+  function transmission() {
+      /root/vdsetup.2/bin/utility/install/torrent/trans.sh ;
+    }
+
+# Функция: remove transmission
+    function tr_rm() {
+        /root/vdsetup.2/bin/utility/install/torrent/trans.sh --transmission-remove ;
+      }
 
 
 # Функция: 
