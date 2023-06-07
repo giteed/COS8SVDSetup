@@ -62,7 +62,7 @@ ttb=$(echo -e " ⎧ Похоже, Transmission уже был
  ⎩ # stop_light_server
  
  ⎧ Удалить Transmission:
- ⎩ # vdsetup tr_rm") && lang="nix" && bpn_p_lang ;
+ ⎩ # tr_rm") && lang="nix" && bpn_p_lang ;
 
 	 
 ttb=$(echo -e "
@@ -459,7 +459,7 @@ ttb=$(echo -e "
  ⎩ # stop_http_server
  
  ⎧ Удалить Transmission:
- ⎩ # vdsetup tr_rm") && lang="nix" && bpn_p_lang ;
+ ⎩ # tr_rm") && lang="nix" && bpn_p_lang ;
  }
  
 
