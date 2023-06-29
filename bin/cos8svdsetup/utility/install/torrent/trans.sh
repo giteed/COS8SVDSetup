@@ -280,11 +280,7 @@ echo -e "\n ⎩" ; sleep 1 ;
 		  ttb=$(firewall-cmd --permanent --zone=public --add-port=9091/tcp) && lang="nix" && bpn_p_lang
 		  ttb=$(firewall-cmd --complete-reload) && lang="nix" && bpn_p_lang
 		  ttb=$(firewall-cmd --list-all) && lang="nix" && bpn_p_lang
-<<<<<<< HEAD
 		  echo -e " wg-quick так-же был перезапущен, переподключитесь к VPN WG если вы были подключены к нему на этом сервере."
-=======
-		  echo -e " wg-quick так-же был перезапущен, переподключитесь к VPN WG если вы были подключены к нему на этом сервере"
->>>>>>> main
 		  systemctl restart wg-quick@*.service ;
 		  echo -e "\n ⎩ \n"
 	  }
@@ -295,11 +291,7 @@ function remove_port_9091_and_reload_firewalld() {
 		  ttb=$(firewall-cmd --permanent --zone=public --remove-port=9091/tcp) && lang="nix" && bpn_p_lang
 		  ttb=$(firewall-cmd --complete-reload) && lang="nix" && bpn_p_lang
 		  ttb=$(firewall-cmd --list-all) && lang="nix" && bpn_p_lang
-<<<<<<< HEAD
 		  echo -e " wg-quick так-же был перезапущен, переподключитесь к VPN WG если вы были подключены к нему на этом сервере."
-=======
-		  echo -e " wg-quick так-же был перезапущен, переподключитесь к VPN WG если вы были подключены к нему на этом сервере"
->>>>>>> main
 		  systemctl restart wg-quick@*.service ;
 		  echo -e "\n ⎩ \n"
 		  return ;
