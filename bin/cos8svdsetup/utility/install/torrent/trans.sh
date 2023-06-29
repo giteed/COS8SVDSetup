@@ -289,7 +289,7 @@ function remove_port_9091_and_reload_firewalld() {
 		  ttb=$(firewall-cmd --permanent --zone=public --remove-port=9091/tcp) && lang="nix" && bpn_p_lang
 		  ttb=$(firewall-cmd --complete-reload) && lang="nix" && bpn_p_lang
 		  ttb=$(firewall-cmd --list-all) && lang="nix" && bpn_p_lang
-		  systemctl restart wg-quick@wg0.service ;
+		  systemctl restart wg-quick@wg0.service  ;
 		  echo -e "\n ⎩ \n"
 		  return ;
 	  }
