@@ -228,7 +228,7 @@ return ;
 	}
 	
 	function systemctl_restart_transmission_daemon_msg() {
-		css ;
+		
 ttb=$(echo -e "\n ⎧ 
  | Перезагружаем Transmission:
  |
