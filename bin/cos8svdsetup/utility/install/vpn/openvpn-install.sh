@@ -69,7 +69,7 @@
   if [[ -e /etc/openvpn/server/server.conf ]]; then
     while :
     do
-      css ;
+ 
       function oi_1()
       {
         echo -e "\n Похоже, OpenVPN уже установлен."  ;
