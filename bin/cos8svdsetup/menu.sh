@@ -15,8 +15,8 @@ print_menu() {
 	echo " Выберите опцию:"
 	echo " 1. Пакет программ и репозиториев для удобства работы с сервером"
 	echo " 2. Создание shredder_unit (автоматический запуск / Посмотреть статус: # dsus)"	
-	echo " 3. wireguard-install"
-	echo " 4. openvpn-install"
+	echo " 3. Установка и управление WireGuard"
+	echo " 4. Установка и управление OpenVPN"
 	echo " 5. Опция 3"
 	echo " 6. Опция 3"
 	echo " 7. Опция 3"
@@ -44,12 +44,12 @@ handle_option() {
 			;;
 		3)
 			echo -e " Вы выбрали Опцию 3"
-			echo " 3. wireguard-install"
+			echo " 3. Установка и управление WireGuard"
 			/root/vdsetup.2/bin/utility/install/vpn/wireguard-install.sh ;
 			;;
 		4)
 			echo -e " Вы выбрали Опцию 4"
-			echo " 4. openvpn-install"
+			echo " 4. Установка и управление OpenVPN"
 			/root/vdsetup.2/bin/utility/install/vpn/openvpn-install.sh ;
 			;;
 		5)
