@@ -17,6 +17,7 @@ print_menu() {
 	echo " 2. Создание shredder_unit (автоматический запуск / Посмотреть статус: # dsus)"
 	echo " 3. Опция 3"
 	echo " 4. Выход"
+	echo
 }
 
 # Функция для обработки выбранной опции
@@ -52,7 +53,7 @@ handle_option() {
 # Основной цикл меню
 while true; do
 	print_menu
-	read -p "Введите номер опции: " option
+	read -p " Введите номер опции: " option
 	handle_option $option
 	echo # Добавим пустую строку для улучшения читаемости
 done
