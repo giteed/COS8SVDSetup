@@ -8,7 +8,7 @@
 . /root/vdsetup.2/bin/functions/run_as_root.sh ;
 echo 
 echo -e " Перед установкой рекомендуется обновить ПО сервера "
-echo -e "# dnf update\n"
+echo -e " # dnf update\n"
 
 # Функция для печати меню
 print_menu() {
