@@ -24,7 +24,7 @@ if [ -f "$unit_file" ];
 			ttb=$(echo -e "$(desktop_shredder_status)") && lang=cr && bpn_p_lang ;
 			ttb=$(echo -e "\n The desktop_shredder.service unit already exists.\n Remove it?\n") && lang=cr && bpn_p_lang ;
 			press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
-		# Вsключение и удаление старого юнита
+		# Выключение и удаление старого юнита
 			systemctl disable desktop_shredder.service 2>/dev/null ;
 			systemctl stop desktop_shredder.service ;
 		# Перезагрузка конфигурации юнитов
@@ -42,7 +42,7 @@ function create_desktop_shredder_service() {
 	 
 cat << EOF > "$unit_file"
 [Unit]
-Description=The Linux Desktop Shredders $auto_restart sec auto-start.
+Description=The Linux Desktop Shredder $auto_restart sec auto-start.
 
 [Service]
 Type=simple
