@@ -20,7 +20,7 @@ print_menu() {
 	echo " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
 	echo " -- Забрать загруженные файлы с торрентов # start_light_server"
 	echo " -- Остановить HTTP доступ к папке Downloads # stop_light_server"
-	echo " 6. Опция 3"
+	echo " 6. Проверка обновление или установка GitHub"
 	echo " 7. Опция 3"
 	echo " 8. Опция 3"
 	echo " 9. Опция 3"
@@ -63,7 +63,8 @@ handle_option() {
 			;;
 		6)
 			echo -e " Вы выбрали Опцию 6"
-			# Здесь можете добавить код для выполнения действий для Опции 3
+			echo " 6. Проверка обновление или установка GitHub"
+			/root/vdsetup.2/bin/utility/install/github.sh ;
 			;;
 		7)
 			echo -e " Вы выбрали Опцию 7"
