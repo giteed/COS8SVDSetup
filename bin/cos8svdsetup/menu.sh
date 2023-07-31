@@ -14,12 +14,12 @@ echo -e " # dnf update\n"
 print_menu() {
 	echo " Выберите опцию:"
 	echo " 1. Пакет программ и репозиториев для удобства работы с сервером"
-	echo " 2. Создание shredder_unit (автоматический запуск / Посмотреть статус: # dsus)"	
+	echo " 2. Создание unit для Shredder Desktop, автоматический запуск. (Посмотреть статус: # dsus)"
 	echo " 3. Установка и управление WireGuard"
 	echo " 4. Установка и управление OpenVPN"
 	echo " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
-	echo " 	Забрать загруженные файлы с торрентов # start_light_server"
-	echo " 	Остановить HTTP доступ к папке Downloads # stop_light_server"
+	echo "	Забрать загруженные файлы с торрентов # start_light_server"
+	echo "	Остановить HTTP доступ к папке Downloads # stop_light_server"
 	echo " 6. Опция 3"
 	echo " 7. Опция 3"
 	echo " 8. Опция 3"
@@ -40,8 +40,8 @@ handle_option() {
 			;;
 		2)
 			echo -e " Вы выбрали Опцию 2"
-			echo " 2. Создание shredder_unit (автоматический запуск / Посмотреть статус: # dsus)"\n
-			# Здесь можете добавить код для выполнения действий для Опции 2
+			echo " 2. Создание unit для Shredder Desktop, автоматический запуск. (Посмотреть статус: # dsus)"\n
+			
 			/root/vdsetup.2/bin/utility/install/shredder/shredder_unit.sh ;
 			;;
 		3)
@@ -57,8 +57,8 @@ handle_option() {
 		5)
 			echo -e " Вы выбрали Опцию 5"
 			echo " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
-			echo " 	Забрать загруженные файлы с торрентов # start_light_server"
-			echo " 	Остановить HTTP доступ к папке Downloads # stop_light_server"
+			echo "	Забрать загруженные файлы с торрентов # start_light_server"
+			echo "	Остановить HTTP доступ к папке Downloads # stop_light_server"
 			transmission ;
 			;;
 		6)
