@@ -18,8 +18,8 @@ print_menu() {
 	echo " 3. Установка и управление WireGuard"
 	echo " 4. Установка и управление OpenVPN"
 	echo " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
-	echo " -	Забрать загруженные файлы с торрентов # start_light_server"
-	echo " -	Остановить HTTP доступ к папке Downloads # stop_light_server"
+	echo " - Забрать загруженные файлы с торрентов # start_light_server"
+	echo " - Остановить HTTP доступ к папке Downloads # stop_light_server"
 	echo " 6. Опция 3"
 	echo " 7. Опция 3"
 	echo " 8. Опция 3"
@@ -57,8 +57,8 @@ handle_option() {
 		5)
 			echo -e " Вы выбрали Опцию 5"
 			echo " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
-			echo " -	Забрать загруженные файлы с торрентов # start_light_server"
-			echo " -	Остановить HTTP доступ к папке Downloads # stop_light_server"
+			echo " - Забрать загруженные файлы с торрентов # start_light_server"
+			echo " - Остановить HTTP доступ к папке Downloads # stop_light_server"
 			transmission ;
 			;;
 		6)
