@@ -3,6 +3,6 @@
 
 # vdsetup вызов меню утилиты
 
-function vdsetup() {
+function vdsetup-f() {
     . /root/vdsetup.2/bin/menu.sh ;
 }
