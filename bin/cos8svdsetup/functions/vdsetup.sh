@@ -5,4 +5,5 @@
 
 function vdsetup() {
     . /root/vdsetup.2/bin/menu.sh
+    return
 }
