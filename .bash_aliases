@@ -12,6 +12,9 @@
 ### Команда pwd (от англ. "print working directory") 
 ### в Linux используется для отображения текущей рабочей директории.
 
+
+alias vdsetup='vdsetup-f'
+
 alias lip='lip-f'
 alias who='echo -e "\n/usr/bin/who -H\n" &&  who -H | bat  --paging=never -l c -p && wport ssh && ( ttb=$( echo -e "\n ⎧ Убить Процесс по PID: # killl \"PID\" \n ⎩ Справка: # killl -h" ) && lang="nix" && bpn_p_lang) && etc_passwd ;'
 
