@@ -81,7 +81,7 @@ handle_option() {
 
 		0)
 			echo " До свидания!"
-			exit 0
+			return 0
 			;;
 		*)
 			echo " Недопустимая опция"
