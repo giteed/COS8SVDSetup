@@ -2,6 +2,9 @@
 
 # --> Прочитать настройки из файла с функциями:
 
+#  --> vdsetup вызов меню утилиты
+. /root/vdsetup.2/bin/functions/vdsetup.sh
+
 # --> Загрузка функций с HELP
 	. /root/vdsetup.2/bin/.help/.load_help_func.sh
 # --> Работа с текстовым процессором bat для подсветки синтаксиса терминала.
