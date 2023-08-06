@@ -102,7 +102,7 @@ print_menu() {
 	echo -e
 	echo -e "  9. Смена ssh порта"
 	echo -e
-	echo -e " 10. xxx"
+	echo -e " 10. Назначение имени хоста"
 	echo -e
 	echo -e " 11. xxx"
 	echo -e
@@ -299,7 +299,8 @@ handle_option() {
 			;;
 		10)
 			echo -e " Вы выбрали Опцию 10"
-			# Здесь можете добавить код для выполнения действий для Опции 10
+			echo -e " 10. Назначение имени хоста"
+			/root/vdsetup.2/bin/utility/system/hostnamectl.sh
 			echo -e 
 			;;
 		11)
