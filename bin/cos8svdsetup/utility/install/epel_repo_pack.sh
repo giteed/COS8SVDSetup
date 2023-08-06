@@ -85,7 +85,7 @@
  | hstr, lsof, screen, tar, p7zip, mc, nano, whois, Webmin, traceroute,
  | wget, curl, jq, nc, atop, htop, nethogs, bpytop, iftop, bat, hydra,
  | stacer, yum-utils, net-tools, network-scripts, git, tree, nmap, lua,
- | dialog, mlocate qrencode, tcpdump, ncdu, ranger, tldr, whois, bzip2,
+ | dialog, mlocate, qrencode, tcpdump, ncdu, ranger, tldr, whois, bzip2,
  ⎩ youtube-dl, ffmpeg. \n" ) && bpn_p_lang ; echo ;
 	
 	press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
