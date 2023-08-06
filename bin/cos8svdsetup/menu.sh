@@ -103,8 +103,7 @@ print_menu() {
 	echo -e "  9. Смена ssh порта"
 	echo -e " 10. Назначение имени хоста"
 	echo -e " 11. Создание/изменение SWAP без перезагрузки сервера"
-	echo -e
-	echo -e " 12. xxx"
+	echo -e " 12. Исправление ошибки \"Failed to set locale, defaulting to C.UTF-8\"  "
 	echo -e
 	echo -e " 13. xxx"
 	echo -e
@@ -309,12 +308,13 @@ handle_option() {
 			;;
 		12)
 			echo -e " Вы выбрали Опцию 12"
-			# Здесь можете добавить код для выполнения действий для Опции 10
+			echo -e " 12. Исправление ошибки \"Failed to set locale, defaulting to C.UTF-8\"  "
+			/root/vdsetup.2/bin/utility/system/locale.sh
 			echo -e 
 			;;
 		13)
 			echo -e " Вы выбрали Опцию 13"
-			# Здесь можете добавить код для выполнения действий для Опции 10
+			
 			echo -e 
 			;;
 		0)
