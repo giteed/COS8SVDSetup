@@ -49,7 +49,7 @@ function desktop_shredder_status() {
     echo "│ Следующий старт через минут:секунд   │ $next_start_will_be_in                  "
     echo "└──────────────────────────────────────┴────────────────────────────────────────┘"
     
-    echo -e "\n To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\n For example: # dsunit_reinstall 600\n View Status of Desktop Shredders # dsus\n Начать очистку немедленно # dsnow\n"
+    echo -e "\n To set a different auto restart time for a unit,\n enter # dsunit_reinstall [time in seconds]\n For example: # dsunit_reinstall 600\n View Status of Desktop Shredder # dsus\n Начать очистку немедленно # dsnow\n"
     
     ttb=$(echo -e "
     ___  ____ ____ _  _ ___ ____ ___  
@@ -224,7 +224,7 @@ function mvds() {
       
       # Вызов функции desktop_shredder_status и передача аргумента для возврата значения
       desktop_shredder_status next_start_will_be_in_value  &>/dev/null
-      ttb=$(echo -e " Очистка начнется через: $next_start_will_be_in_value \n View Status of Desktop Shredders # dsus") && lang=cr && bpn_p_lang ;
+      ttb=$(echo -e " Очистка начнется через: $next_start_will_be_in_value \n View Status of Desktop Shredder # dsus") && lang=cr && bpn_p_lang ;
   }
   
   function dsunit_reinstall() {
