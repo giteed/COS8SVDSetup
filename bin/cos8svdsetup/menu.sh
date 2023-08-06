@@ -32,6 +32,7 @@ print_menu() {
 	echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
 	echo -e " -- 5a Забрать загруженные файлы с торрентов # start_light_server"
 	echo -e " -- 5b Остановить HTTP доступ к папке Downloads # stop_light_server"
+	echo -e " -- 5c Удаление Transmission # tr_rm"
 	echo -e
 	echo -e " 6. Проверка обновлений или установка GitHub."
 	echo -e
@@ -120,6 +121,13 @@ handle_option() {
 			echo -e 
 			stop_light_server ;
 			;;
+		5c)
+			echo -e " Вы выбрали Опцию 5c"
+			echo -e " -- 5c Удаление Transmission # tr_rm"\n
+			echo -e 
+			tr_rm ;
+			;;
+
 		6)
 			echo -e " Вы выбрали Опцию 6"
 			echo -e " 6. Проверка обновлений или установка GitHub."\n
