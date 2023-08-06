@@ -7,8 +7,6 @@
 # --> Эта ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
 . /root/vdsetup.2/bin/functions/run_as_root.sh ;
 
-#!/bin/bash
-
 check_os_compatibility() {
 	expected_os="CentOS Stream"
 	expected_version="9"
@@ -16,17 +14,17 @@ check_os_compatibility() {
 	current_os=$(cat /etc/centos-release | awk '{print $1}')
 	current_version=$(cat /etc/centos-release | awk '{print $4}')
 
-	echo "Ожидаемая ОС: $expected_os"
-	echo "Ожидаемая версия: $expected_version"
-	echo "Текущая ОС: $current_os"
-	echo "Текущая версия: $current_version"
+	echo " Ожидаемая ОС: $expected_os"
+	echo " Ожидаемая версия: $expected_version"
+	echo " Текущая ОС: $current_os"
+	echo " Текущая версия: $current_version"
 
 	if [[ "$current_os" == "$expected_os" || "$current_os" == "CentOS" ]] && [[ "$current_version" == "$expected_version" ]]; then
-		echo "Данный скрипт был написан и тестировался с CentOS Stream release 8"
-		echo "Версия вашей ОС: $current_os $current_version"
+		echo " Данный скрипт был написан и тестировался с CentOS Stream release 8"
+		echo " Версия вашей ОС: $current_os $current_version"
 	else
-		echo "Ваша операционная система не соответствует требованиям скрипта"
-		echo "Продолжаете на свой риск"
+		echo " Ваша операционная система не соответствует требованиям скрипта"
+		echo " Продолжаете на свой риск"
 		press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 	fi
 }
