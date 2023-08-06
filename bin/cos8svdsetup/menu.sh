@@ -59,27 +59,27 @@ function menu_vdsetup() {
 print_menu() {
 	
 	echo -e
-	echo -e " Выберите опцию (цифра или цифра с буквой):"
+	echo -e "  Выберите опцию (цифра или цифра с буквой):"
 	echo -e
-	echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером."
+	echo -e "  1. Пакет программ и репозиториев для удобства работы с сервером."
 	echo -e
-	echo -e " 2. Создание Unit для Desktop Shredder, автоматический запуск. "
+	echo -e "  2. Создание Unit для Desktop Shredder, автоматический запуск. "
 	echo -e " -- 2a Посмотреть статус Unit Desktop Shredder: # dsus"
 	echo -e " -- 2b Начать очистку немедленно # dsnow"
 	echo -e " -- Стереть файл или папку с помощью Desktop Shredder: # mvds [путь/папка/файл]"
 	echo -e
-	echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."
+	echo -e "  3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."
 	echo -e
-	echo -e " 4. Установка и управление VPN OpenVPN."
+	echo -e "  4. Установка и управление VPN OpenVPN."
 	echo -e
-	echo -e " 5. Установка и управление Transmission # transmission / удаление # tr_rm"
+	echo -e "  5. Установка и управление Transmission # transmission / удаление # tr_rm"
 	echo -e " -- 5a Забрать загруженные файлы с торрентов # start_light_server"
 	echo -e " -- 5b Остановить HTTP доступ к папке Downloads # stop_light_server"
 	echo -e " -- 5c Удаление Transmission # tr_rm"
 	echo -e
-	echo -e " 6. Проверка обновлений или установка GitHub."
+	echo -e "  6. Проверка обновлений или установка GitHub."
 	echo -e
-	echo -e " 7. Установка TOR и Privoxy."
+	echo -e "  7. Установка TOR и Privoxy."
 	echo -e " -- 7a Установить/Включить/отключить TOR для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"
 	echo -e " -- 7b Отключит TOR для всей системы, но оставит рабочим TOR Socks5 127.0.0.1:9050 # toriptables2.py -f (выкл)"
 	echo -e " -- 7c Полностью отключит TOR в системе # tor-stop"
@@ -94,15 +94,21 @@ print_menu() {
 	echo -e "    (без необходимости не использовать), перезапускает:"
 	echo -e "    tor, privoxy, firewalld, wg-quick, network - сервисы."
 	echo -e
-	echo -e " 8. Обновление vdsetup # vsync"
+	echo -e "  8. Обновление vdsetup # vsync"
 	echo -e " -- 8a Обновляет скрипты из repo GitHub (требуется API ключ) # vsync"
 	echo -e " -- 8b Переустановка скриптов из repo GitHub (не требуется API ключ) # rm_clone"
 	echo -e " -- 8c Удаление vdsetup (не удаляет программы установленные скриптом) # rm_vdsetup"
 	echo -e " -- 8d Обновление настроек из .bashrc, или введите: # source /root/.bashrc или # urc"
 	echo -e
-	echo -e " 9. Смена ssh порта"
+	echo -e "  9. Смена ssh порта"
 	echo -e
-	echo -e " 9. Смена ssh порта"
+	echo -e " 10. xxx"
+	echo -e
+	echo -e " 11. xxx"
+	echo -e
+	echo -e " 12. xxx"
+	echo -e
+	echo -e " 13. xxx"
 	echo -e
 	echo -e " 0. Выход"
 	echo -e 
@@ -293,6 +299,21 @@ handle_option() {
 			;;
 		10)
 			echo -e " Вы выбрали Опцию 10"
+			# Здесь можете добавить код для выполнения действий для Опции 10
+			echo -e 
+			;;
+		11)
+			echo -e " Вы выбрали Опцию 11"
+			# Здесь можете добавить код для выполнения действий для Опции 10
+			echo -e 
+			;;
+		12)
+			echo -e " Вы выбрали Опцию 12"
+			# Здесь можете добавить код для выполнения действий для Опции 10
+			echo -e 
+			;;
+		13)
+			echo -e " Вы выбрали Опцию 13"
 			# Здесь можете добавить код для выполнения действий для Опции 10
 			echo -e 
 			;;
