@@ -295,7 +295,7 @@ handle_option() {
 			exit 0 ;
 			;;
 		*)
-			ttb=$(echo -e " Недопустимая опция") && lang="cr" && bpn_p_lang 
+			ttb=$(echo -e " -- Недопустимая опция!") && lang="cr" && bpn_p_lang 
 			;;
 	esac
 }
