@@ -27,10 +27,7 @@ check_os_compatibility() {
 	else
 		echo "Ваша операционная система не соответствует требованиям скрипта"
 		echo "Продолжаете на свой риск"
-		read -p "Нажмите 'esq' для выхода, 'enter' для продолжения: " choice
-		if [[ "$choice" == "esq" ]]; then
-			exit 0
-		fi
+		press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 	fi
 }
 
