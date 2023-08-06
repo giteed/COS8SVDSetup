@@ -279,7 +279,7 @@ while true; do
 	read -p " Введите номер опции (цифра или цифра с буквой): " option
 	handle_option $option
 	echo # Добавим пустую строку для улучшения читаемости
-	countdown 20 ;
+	echo -en "Возврат в меню через: " && countdown 20 ;
 done
 
 	
