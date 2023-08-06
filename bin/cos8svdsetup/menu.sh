@@ -21,7 +21,8 @@ print_menu() {
 	echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером."
 	echo -e
 	echo -e " 2. Создание Unit для Desktop Shredder, автоматический запуск. "
-	echo -e " -- 2x Посмотреть статус Unit Desktop Shredder: # dsus"
+	echo -e " -- 2a Посмотреть статус Unit Desktop Shredder: # dsus"
+	echo -e " -- 2b Начать очистку немедленно # dsnow"
 	echo -e " -- Стереть файл или папку с помощью Unit Desktop Shredder: # mvds [путь/папка/файл]"
 	echo -e
 	echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."
@@ -75,12 +76,20 @@ handle_option() {
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/shredder/shredder_unit.sh ;
 			;;
-		2x)
-			echo -e " Вы выбрали Опцию 2x"
+		2a)
+			echo -e " Вы выбрали Опцию 2a"
 			echo -e " -- 2x Посмотреть статус Unit Desktop Shredder: # dsus"\n
 			echo -e 
 			dsus ;
 			;;
+		2b)
+			echo -e " Вы выбрали Опцию 2b"
+			echo -e " -- 2b Начать очистку немедленно # dsnow"\n
+			echo -e 
+			dsnow ;
+			;;
+			
+			
 		3)
 			echo -e " Вы выбрали Опцию 3"
 			echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."\n
