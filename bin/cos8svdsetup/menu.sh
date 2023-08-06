@@ -16,7 +16,8 @@ function menu_vdsetup() {
 print_menu() {
 	
 	echo -e
-	echo -e " Выберите опцию:"\n
+	echo -e " Выберите опцию:"
+	echo -e
 	echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером."
 	echo -e
 	echo -e " 2. Создание Unit для Shredder Desktop, автоматический запуск. "
