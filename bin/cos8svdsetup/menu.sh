@@ -30,15 +30,12 @@ check_os_compatibility() {
 }
 
 # Вызываем функцию
-check_os_compatibility
-
+check_os_compatibility ;
 
 ttb=$(echo -e "
-
  Перед установкой рекомендуется обновить ПО сервера
  # dnf update
- 
-" ) && lang="cr" && bpn_p_lang 
+" ) && lang="nix" && bpn_p_lang 
 
 function menu_vdsetup() {
 
