@@ -236,7 +236,7 @@ while true; do
 	read -p " Введите номер опции: " option
 	handle_option $option
 	echo # Добавим пустую строку для улучшения читаемости
-	sleep 1 ;
+	sleep 3 ;
 done
 
 	
