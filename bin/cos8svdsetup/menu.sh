@@ -36,8 +36,7 @@ check_os_compatibility() {
 ttb=$(echo -e "$(check_os_compatibility)" ) && lang="nix" && bpn_p_lang  ;
 
 ttb=$(echo -e "
- Перед установкой рекомендуется обновить ПО сервера
- # dnf update
+ Перед установкой рекомендуется обновить ПО сервера: # dnf update
 " ) && lang="nix" && bpn_p_lang 
 
 function menu_vdsetup() {
