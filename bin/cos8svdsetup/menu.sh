@@ -20,13 +20,21 @@ print_menu() {
 	echo -e " Выберите опцию:"
 	echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером"
 	echo -e " 2. Создание unit для Shredder Desktop, автоматический запуск. (Посмотреть статус: # dsus)"
-	echo -e " 3. Установка и управление WireGuard"
+	echo -e " 3. Установка и управление WireGuard устранение проблем с неподходящим ядром"
 	echo -e " 4. Установка и управление OpenVPN"
 	echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
 	echo -e " -- Забрать загруженные файлы с торрентов # start_light_server"
 	echo -e " -- Остановить HTTP доступ к папке Downloads # stop_light_server"
 	echo -e " 6. Проверка обновлений или установка GitHub"
 	echo -e " 7. Установка TOR и Privoxy"
+	echo -e " -- Включить/отключить TOR для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"
+	echo -e " -- Отключит для всей системы но оставит рабочим TOR Socks5 127.0.0.1:9050 # toriptables2.py -f (выкл)"
+	echo -e " -- Полностью отключит TOR в системе # tor-stop"
+	echo -e " -- Проверит работает-ли TOR покажет доп инфо # tor_check_ip"
+	echo -e " -- Перезапустит TOR и проверит его работу # tor_restart_status"
+	echo -e " -- Жестко перезапустит несколько сервисов включая TOR # tor-restart"
+	echo -e "    (без необходимости не использовать, перезапускает: tor, privoxy, firewalld, wg-quick, network )"
+	
 	echo -e " 8. Опция 3"
 	echo -e " 9. Опция 3"
 	echo -e " 0. Выход"
@@ -75,6 +83,7 @@ handle_option() {
 			echo -e " Вы выбрали Опцию 7"
 			echo -e " 7. Установка TOR и Privoxy"
 			/root/vdsetup.2/bin/utility/install/tor/tor_installer.sh ;
+			/root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh ;
 			;;
 		8)
 			echo -e " Вы выбрали Опцию 8"
