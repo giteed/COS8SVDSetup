@@ -23,15 +23,15 @@ print_menu() {
 	echo -e " 2. Создание Unit для Desktop Shredder, автоматический запуск. "
 	echo -e " -- 2a Посмотреть статус Unit Desktop Shredder: # dsus"
 	echo -e " -- 2b Начать очистку немедленно # dsnow"
-	echo -e " -- Стереть файл или папку с помощью Unit Desktop Shredder: # mvds [путь/папка/файл]"
+	echo -e " -- Стереть файл или папку с помощью Desktop Shredder: # mvds [путь/папка/файл]"
 	echo -e
 	echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."
 	echo -e
 	echo -e " 4. Установка и управление VPN OpenVPN."
 	echo -e
 	echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
-	echo -e " -- Забрать загруженные файлы с торрентов # start_light_server"
-	echo -e " -- Остановить HTTP доступ к папке Downloads # stop_light_server"
+	echo -e " -- 5a Забрать загруженные файлы с торрентов # start_light_server"
+	echo -e " -- 5b Остановить HTTP доступ к папке Downloads # stop_light_server"
 	echo -e
 	echo -e " 6. Проверка обновлений или установка GitHub."
 	echo -e
@@ -107,6 +107,18 @@ handle_option() {
 			echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"\n
 			echo -e 
 			transmission ;
+			;;
+		5a)
+			echo -e " Вы выбрали Опцию 5a"
+			echo -e " -- 5a Забрать загруженные файлы с торрентов # start_light_server"\n
+			echo -e 
+			start_light_server ;
+			;;
+		5b)
+			echo -e " Вы выбрали Опцию 5b"
+			echo -e " -- 5b Остановить HTTP доступ к папке Downloads # stop_light_server"\n
+			echo -e 
+			stop_light_server ;
 			;;
 		6)
 			echo -e " Вы выбрали Опцию 6"
