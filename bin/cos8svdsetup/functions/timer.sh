@@ -62,9 +62,9 @@ ttb=$( echo -e "
     
   }
 
-# Таймер цветной красоты неописуемой :)
+# Таймер цветной, красоты неописуемой :)
   function countdown() {
-    #tstart
+   
     # Цифры в счетчике убавляются по мене уменьшения самого числа в счетчике
     function countdown_1() {
         for digit in $(echo $i | grep -o .); do
@@ -126,7 +126,7 @@ ttb=$( echo -e "
     tput cnorm
     
     printf "\n"
-    #tendl
+   
     # вызвать countdown $1 (число 1900 = примерно 10 сек выполнения на слабом VDS)
   }
   

@@ -72,7 +72,7 @@ print_menu() {
 	echo -e
 	echo -e " 4. Установка и управление VPN OpenVPN."
 	echo -e
-	echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
+	echo -e " 5. Установка и управление Transmission # transmission / удаление # tr_rm"
 	echo -e " -- 5a Забрать загруженные файлы с торрентов # start_light_server"
 	echo -e " -- 5b Остановить HTTP доступ к папке Downloads # stop_light_server"
 	echo -e " -- 5c Удаление Transmission # tr_rm"
@@ -147,7 +147,7 @@ handle_option() {
 			;;
 		5)
 			echo -e " Вы выбрали Опцию 5"
-			echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
+			echo -e " 5. Установка и управление Transmission # transmission / удаление # tr_rm"
 			echo -e 
 			transmission ;
 			;;
@@ -185,7 +185,7 @@ handle_option() {
 			;;
 		7a)
 			echo -e " Вы выбрали Опцию 7a"
-			echo -e " -- 7a Установить/Включить/отключить TOR для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"\n
+			echo -e " -- 7a Установить/Включить/отключить TOR для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"
 			echo -e 
 			toriptables2.py -h ;
 			;;
@@ -251,12 +251,12 @@ handle_option() {
 			;;
 		8)
 			echo -e " Вы выбрали Опцию 8"
-			# Здесь можете добавить код для выполнения действий для Опции 3
+			# Здесь можете добавить код для выполнения действий для Опции 8
 			echo -e 
 			;;
 		9)
 			echo -e " Вы выбрали Опцию 9"
-			# Здесь можете добавить код для выполнения действий для Опции 3
+			# Здесь можете добавить код для выполнения действий для Опции 9
 			echo -e 
 			;;
 
@@ -279,7 +279,7 @@ while true; do
 	read -p " Введите номер опции (цифра или цифра с буквой): " option
 	handle_option $option
 	echo # Добавим пустую строку для улучшения читаемости
-	sleep 3 ;
+	countdown 15 ;
 done
 
 	
