@@ -22,10 +22,10 @@ check_os_compatibility() {
 
 	if [[ "$current_os" == "$expected_os" || "$current_os" == "CentOS" ]] && [[ "$current_version" == "$expected_version" ]]; then
 		echo " Данный скрипт был написан и тестировался с CentOS Stream release 8"
-		echo " Версия вашей ОС: $(cat /etc/centos-release)" && echo OK! || echo "$current_os $current_version"
+		echo -en " Версия вашей ОС: $(cat /etc/centos-release)" && echo -e "OK!" || echo -e "$current_os $current_version"
 		
 	else
-		echo -en " Версия вашей ОС: $(cat /etc/centos-release)" && echo "The OS version does not match!" || echo -en "$current_os $current_version"
+		echo -en " Версия вашей ОС: $(cat /etc/centos-release)" && echo "The OS version does not match!" || echo -e "$current_os $current_version"
 		echo " Ваша операционная система не соответствует требованиям скрипта!"
 		echo " Продолжаете на свой риск!"
 		press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
