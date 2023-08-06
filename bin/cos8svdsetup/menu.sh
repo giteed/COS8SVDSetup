@@ -8,13 +8,13 @@
 . /root/vdsetup.2/bin/functions/run_as_root.sh ;
 
 check_os_compatibility() {
-	expected_os="CentOS"
+	expected_os="CentOS Stream"
 	expected_version="8"
 
-	current_os=$(cat /etc/*-release | grep "^ID=" | sed 's/ID=//')
-	current_version=$(cat /etc/*-release | grep "^VERSION_ID=" | sed 's/VERSION_ID=//')
+	current_os=$(cat /etc/centos-release | awk '{print $1, $4}')
+	current_version=$(cat /etc/centos-release | awk '{print $4}')
 
-	if [[ "$current_os" == *"$expected_os"* ]] && [[ "$current_version" == *"$expected_version"* ]]; then
+	if [[ "$current_os" == "$expected_os" ]] && [[ "$current_version" == "$expected_version" ]]; then
 		echo "Данный скрипт был написан и тестировался с CentOS Stream release 8"
 		echo "Версия вашей OS: $current_os $current_version"
 	else
