@@ -13,6 +13,7 @@ check_os_compatibility() {
 
 	current_os=$(cat /etc/centos-release | awk '{print $1}')
 	current_version=$(cat /etc/centos-release | awk '{print $4}')
+	
 	echo
 	echo " Ожидаемая ОС: $expected_os"
 	echo " Ожидаемая версия: $expected_version"
@@ -30,7 +31,7 @@ check_os_compatibility() {
 }
 
 # Вызываем функцию
-check_os_compatibility ;
+ttb=$(echo -e "$(check_os_compatibility)" ) && lang="nix" && bpn_p_lang  ;
 
 ttb=$(echo -e "
  Перед установкой рекомендуется обновить ПО сервера
