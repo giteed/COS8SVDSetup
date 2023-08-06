@@ -75,7 +75,7 @@ print_menu() {
 	echo -e "  5. Установка и управление \"Transmission\" # transmission / удаление # tr_rm"
 	echo -e " -- 5a Забрать загруженные файлы с торрентов # start_light_server"
 	echo -e " -- 5b Остановить \"HTTP\" доступ к папке \"Downloads\" # stop_light_server"
-	echo -e " -- 5c Удаление Transmission # tr_rm"
+	echo -e " -- 5c Удаление \"Transmission\" # tr_rm"
 	echo -e
 	echo -e "  6. Проверка обновлений или установка \"GitHub\"."
 	echo -e
