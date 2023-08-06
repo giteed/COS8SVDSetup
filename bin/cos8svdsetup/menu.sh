@@ -32,10 +32,13 @@ check_os_compatibility() {
 		ttb=$(echo -e "$(msg_os_ok)" ) && lang="nix" && bpn_p_lang  ;
 				
 	else
-		echo -en " Версия вашей ОС: $(cat /etc/centos-release)" && echo -en " - The OS version does not match!" && echo -e " $(uname -r)" || echo -e "$current_os $current_version"
-		echo " Данный скрипт тестировался только с CentOS Stream release 8"
-		echo " Ваша операционная система не соответствует требованиям скрипта!"
-		echo " Продолжаете на свой риск!"
+		function msg_os_not_match() {
+			echo -en " Версия вашей ОС: $(cat /etc/centos-release)" && echo -en " - The OS version does not match!" && echo -e " $(uname -r)" || echo -e "$current_os $current_version"
+			echo " Данный скрипт тестировался только с CentOS Stream release 8"
+			echo " Ваша операционная система не соответствует требованиям скрипта!"
+			echo " Продолжаете на свой риск!"
+		}
+		ttb=$(echo -e "$(msg_os_not_match)" ) && lang="nix" && bpn_p_lang  ;
 		press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 	fi
 }
