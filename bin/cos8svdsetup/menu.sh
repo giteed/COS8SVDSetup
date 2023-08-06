@@ -66,25 +66,25 @@ handle_option() {
 	case $choice in
 		1)
 			echo -e " Вы выбрали Опцию 1"
-			echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером."\n
+			echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером."
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/epel_repo_pack.sh ;
 			;;
 		2)
 			echo -e " Вы выбрали Опцию 2"
-			echo -e " 2. Создание Unit для Desktop Shredder, автоматический запуск. "\n
+			echo -e " 2. Создание Unit для Desktop Shredder, автоматический запуск. "
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/shredder/shredder_unit.sh ;
 			;;
 		2a)
 			echo -e " Вы выбрали Опцию 2a"
-			echo -e " -- 2x Посмотреть статус Unit Desktop Shredder: # dsus"\n
+			echo -e " -- 2x Посмотреть статус Unit Desktop Shredder: # dsus"
 			echo -e 
 			dsus ;
 			;;
 		2b)
 			echo -e " Вы выбрали Опцию 2b"
-			echo -e " -- 2b Начать очистку немедленно # dsnow"\n
+			echo -e " -- 2b Начать очистку немедленно # dsnow"
 			echo -e 
 			dsnow ;
 			;;
@@ -92,50 +92,50 @@ handle_option() {
 			
 		3)
 			echo -e " Вы выбрали Опцию 3"
-			echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."\n
+			echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/vpn/wireguard-install.sh ;
 			;;
 		4)
 			echo -e " Вы выбрали Опцию 4"
-			echo -e " 4. Установка и управление VPN OpenVPN."\n
+			echo -e " 4. Установка и управление VPN OpenVPN."
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/vpn/openvpn-install.sh ;
 			;;
 		5)
 			echo -e " Вы выбрали Опцию 5"
-			echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"\n
+			echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
 			echo -e 
 			transmission ;
 			;;
 		5a)
 			echo -e " Вы выбрали Опцию 5a"
-			echo -e " -- 5a Забрать загруженные файлы с торрентов # start_light_server"\n
+			echo -e " -- 5a Забрать загруженные файлы с торрентов # start_light_server"
 			echo -e 
 			start_light_server ;
 			;;
 		5b)
 			echo -e " Вы выбрали Опцию 5b"
-			echo -e " -- 5b Остановить HTTP доступ к папке Downloads # stop_light_server"\n
+			echo -e " -- 5b Остановить HTTP доступ к папке Downloads # stop_light_server"
 			echo -e 
 			stop_light_server ;
 			;;
 		5c)
 			echo -e " Вы выбрали Опцию 5c"
-			echo -e " -- 5c Удаление Transmission # tr_rm"\n
+			echo -e " -- 5c Удаление Transmission # tr_rm"
 			echo -e 
 			tr_rm ;
 			;;
 
 		6)
 			echo -e " Вы выбрали Опцию 6"
-			echo -e " 6. Проверка обновлений или установка GitHub."\n
+			echo -e " 6. Проверка обновлений или установка GitHub."
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/github.sh ;
 			;;
 		7)
 			echo -e " Вы выбрали Опцию 7"
-			echo -e " 7. Установка TOR и Privoxy."\n
+			echo -e " 7. Установка TOR и Privoxy."
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/tor/tor_installer.sh ;
 			#/root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh ;
@@ -148,61 +148,61 @@ handle_option() {
 			;;
 		7b)
 			echo -e " Вы выбрали Опцию 7b"
-		    echo -e " -- 7b Отключит TOR для всей системы, но оставит рабочим TOR Socks5 127.0.0.1:9050 # toriptables2.py -f (выкл)"\n
+		    echo -e " -- 7b Отключит TOR для всей системы, но оставит рабочим TOR Socks5 127.0.0.1:9050 # toriptables2.py -f (выкл)"
 			echo -e 
 			toriptables2.py -f ;
 			;;
 		7c)
 			echo -e " Вы выбрали Опцию 7c"
-			echo -e " -- 7c Полностью отключит TOR в системе # tor-stop"\n
+			echo -e " -- 7c Полностью отключит TOR в системе # tor-stop"
 			echo -e 
 			tor-stop ;
 			;;
 		7d)
 			echo -e " Вы выбрали Опцию 7d"
-			echo -e " -- 7d Проверит работает-ли TOR покажет доп инфо # tor_check_ip"\n
+			echo -e " -- 7d Проверит работает-ли TOR покажет доп инфо # tor_check_ip"
 			echo -e 
 			tor_check_ip ;
 			;;
 		7e)
 			echo -e " Вы выбрали Опцию 7e"
-			echo -e " -- 7e Проверяет доступность .onion адреса через TOR # tor_onion_test"\n
+			echo -e " -- 7e Проверяет доступность .onion адреса через TOR # tor_onion_test"
 			echo -e 
 			tor_onion_test ;
 			;;
 		7f)
 			echo -e " Вы выбрали Опцию 7f"
-			echo -e " -- 7f Перезапустит TOR и проверит его работу # tor_restart_status"\n
+			echo -e " -- 7f Перезапустит TOR и проверит его работу # tor_restart_status"
 			echo -e 
 			tor_restart_status ;
 			;;
 		7g)
 			echo -e " Вы выбрали Опцию 7g"
-			echo -e " -- 7g Проверит работу и ip или перезапустит если нет ответа от socks5 # tor_check_ip_or_restart"\n
+			echo -e " -- 7g Проверит работу и ip или перезапустит если нет ответа от socks5 # tor_check_ip_or_restart"
 			echo -e 
 			tor_check_ip_or_restart ;
 			;;
 		7h)
 			echo -e " Вы выбрали Опцию 7h"
-			echo -e " -- 7h Проверит работу wget через socks5 # tor_check_ip_wget"\n
+			echo -e " -- 7h Проверит работу wget через socks5 # tor_check_ip_wget"
 			echo -e 
 			tor_check_ip_wget ;
 			;;
 		7i)
 			echo -e " Вы выбрали Опцию 7i"
-			echo -e " -- 7i Создает отдельный интерфейс с именем tor0 # tor_Interface_unit_reinstall [intrface_name] "\n
+			echo -e " -- 7i Создает отдельный интерфейс с именем tor0 # tor_Interface_unit_reinstall [intrface_name] "
 			echo -e 
 			tor_Interface_unit_reinstall ;
 			;;
 		7j)
 			echo -e " Вы выбрали Опцию 7j"
-		    echo -e " -- 7j Показывает статус tor интерфейса # status_tor_service"\n
+		    echo -e " -- 7j Показывает статус tor интерфейса # status_tor_service"
 			echo -e 
 			status_tor_service ;
 			;;
 		7k)
 			echo -e " Вы выбрали Опцию 7k"
-			echo -e " -- 7k Жестко перезапустит несколько сервисов включая TOR # tor-restart"\n
+			echo -e " -- 7k Жестко перезапустит несколько сервисов включая TOR # tor-restart"
 			echo -e 
 			tor-restart ;
 			;;
