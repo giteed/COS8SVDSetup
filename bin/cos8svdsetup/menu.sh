@@ -13,7 +13,7 @@ check_os_compatibility() {
 
 	current_os=$(cat /etc/centos-release | awk '{print $1}')
 	current_version=$(cat /etc/centos-release | awk '{print $4}')
-
+	echo
 	echo " Ожидаемая ОС: $expected_os"
 	echo " Ожидаемая версия: $expected_version"
 	echo " Текущая ОС: $current_os"
