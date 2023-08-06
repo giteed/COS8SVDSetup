@@ -64,50 +64,32 @@ handle_option() {
 			;;
 		2)
 			echo -e " Вы выбрали Опцию 2"
-			echo -e " 2. Создание Unit для Shredder Desktop, автоматический запуск. "
-			echo -e " -- Посмотреть статус Unit Shredder Desktop: # dsus"
-			echo -e " -- Стереть файл или папку с помощью Unit Shredder Desktop: # mvds [путь/папка/файл]"\n
+			echo -e " 2. Создание Unit для Shredder Desktop, автоматический запуск. "\n
 			/root/vdsetup.2/bin/utility/install/shredder/shredder_unit.sh ;
 			;;
 		3)
 			echo -e " Вы выбрали Опцию 3"
-			echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."
+			echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."\n
 			/root/vdsetup.2/bin/utility/install/vpn/wireguard-install.sh ;
 			;;
 		4)
 			echo -e " Вы выбрали Опцию 4"
-			echo -e " 4. Установка и управление VPN OpenVPN."
+			echo -e " 4. Установка и управление VPN OpenVPN."\n
 			/root/vdsetup.2/bin/utility/install/vpn/openvpn-install.sh ;
 			;;
 		5)
 			echo -e " Вы выбрали Опцию 5"
-			echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
-			echo -e " -- Забрать загруженные файлы с торрентов # start_light_server"
-			echo -e " -- Остановить HTTP доступ к папке Downloads # stop_light_server"
+			echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"\n
 			transmission ;
 			;;
 		6)
 			echo -e " Вы выбрали Опцию 6"
-			echo -e " 6. Проверка обновлений или установка GitHub."
+			echo -e " 6. Проверка обновлений или установка GitHub."\n
 			/root/vdsetup.2/bin/utility/install/github.sh ;
 			;;
 		7)
 			echo -e " Вы выбрали Опцию 7"
-			echo -e " 7. Установка TOR и Privoxy."
-			echo -e " -- Включить/отключить TOR для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"
-			echo -e " -- Отключит TOR для всей системы, но оставит рабочим TOR Socks5 127.0.0.1:9050 # toriptables2.py -f (выкл)"
-			echo -e " -- Полностью отключит TOR в системе # tor-stop"
-			echo -e " -- Проверит работает-ли TOR покажет доп инфо # tor_check_ip"
-			echo -e " -- Проверяет доступность .onion адреса через TOR # tor_onion_test"
-			echo -e " -- Перезапустит TOR и проверит его работу # tor_restart_status"
-			echo -e " -- Проверит работу и ip или перезапустит если нет ответа от socks5 # tor_check_ip_or_restart"
-			echo -e " -- Проверит работу wget через socks5 # tor_check_ip_wget"
-			echo -e " -- Создает отдельный интерфейс с именем tor0 # tor_Interface_unit_reinstall [intrface_name] "
-			echo -e " -- Показывает статус tor интерфейса # status_tor_service"
-			echo -e "    (не дописано - в разработке)."
-	        echo -e " -- Жестко перезапустит несколько сервисов включая TOR # tor-restart"
-			echo -e "    (без необходимости не использовать), перезапускает:"
-			echo -e "    tor, privoxy, firewalld, wg-quick, network - сервисы"
+			echo -e " 7. Установка TOR и Privoxy."\n
 			/root/vdsetup.2/bin/utility/install/tor/tor_installer.sh ;
 			#/root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh ;
 			;;
