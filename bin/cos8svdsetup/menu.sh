@@ -21,7 +21,7 @@ print_menu() {
 	echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером."
 	echo -e
 	echo -e " 2. Создание Unit для Desktop Shredder, автоматический запуск. "
-	echo -e " -- Посмотреть статус Unit Desktop Shredder: # dsus"
+	echo -e " -- 2x Посмотреть статус Unit Desktop Shredder: # dsus"
 	echo -e " -- Стереть файл или папку с помощью Unit Desktop Shredder: # mvds [путь/папка/файл]"
 	echo -e
 	echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."
@@ -48,7 +48,7 @@ print_menu() {
 	echo -e "    (не дописано - в разработке)."
 	echo -e " -- Жестко перезапустит несколько сервисов включая TOR # tor-restart"
 	echo -e "    (без необходимости не использовать), перезапускает:"
-	echo -e "    tor, privoxy, firewalld, wg-quick, network - сервисы"
+	echo -e "    tor, privoxy, firewalld, wg-quick, network - сервисы."
 	echo -e
 	echo -e " 8. Опция 8"
 	echo -e
@@ -72,6 +72,11 @@ handle_option() {
 			echo -e " Вы выбрали Опцию 2"
 			echo -e " 2. Создание Unit для Desktop Shredder, автоматический запуск. "\n
 			/root/vdsetup.2/bin/utility/install/shredder/shredder_unit.sh ;
+			;;
+		2x)
+			echo -e " Вы выбрали Опцию 2x"
+			echo -e " -- 2x Посмотреть статус Unit Desktop Shredder: # dsus"\n
+			dsus ;
 			;;
 		3)
 			echo -e " Вы выбрали Опцию 3"
