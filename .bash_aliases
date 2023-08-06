@@ -21,7 +21,7 @@ alias who='echo -e "\n/usr/bin/who -H\n" &&  who -H | bat  --paging=never -l c -
 
 ### clear , update /root/.bashrc , ls , cd , tree
 
-alias urc='. /root/.bashrc || echo " type urc or source /root/.bashrc" '
+alias urc='. /root/.bashrc || urc-f && echo " Type urc or source /root/.bashrc" '
 alias vcc='vsync && sleep 2 && . /root/.bashrc && clear && clear && ttb=$(echo -e "\n VDSetup $(cat /root/vdsetup.2/bin/VERSION) # vsync - for update (or rm_clone)\n") && lang_cr ; bpn_p_lang'
 alias l.='ls -lhd --color=auto .*'
 alias l..='ls -lhd --color=auto .* *'

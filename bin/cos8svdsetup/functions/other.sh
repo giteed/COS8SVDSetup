@@ -31,3 +31,7 @@ function ssh_port_change() {
 function info_vds() {
 	/root/vdsetup.2/bin/utility/system/ii.sh ;
 }
+
+function urc-f() {
+	source /root/.bashrc ;
+}
