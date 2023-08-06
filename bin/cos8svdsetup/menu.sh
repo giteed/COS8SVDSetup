@@ -13,8 +13,6 @@ echo -e " # dnf update\n"
 
 function menu_vdsetup() {
 
-
-
 # Функция для печати меню
 print_menu() {
 	
