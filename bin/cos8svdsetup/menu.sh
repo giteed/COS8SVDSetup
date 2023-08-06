@@ -15,11 +15,14 @@ check_os_compatibility() {
 	current_os=$(cat /etc/centos-release | awk '{print $1}')
 	current_version=$(cat /etc/centos-release | awk '{print $4}')
 	
-	echo
-	echo -en " Ожидаемая ОС: $expected_os"
-	echo " $expected_version"
-	echo -en " Текущая ОС: $current_os"
-	echo " $current_version"
+	function msg_os() {
+		echo
+		echo -en " Ожидаемая ОС: $expected_os"
+		echo " $expected_version"
+		echo -en " Текущая ОС: $current_os"
+		echo " $current_version"
+	}
+	ttb=$(echo -e "$(msg_os)" ) && lang="nix" && bpn_p_lang  ;
 
 	if [[ "$current_os" == "$expected_os" || "$current_os" == "CentOS" ]] && [[ "$current_version" == "$expected_version" ]]; then
 		echo " Данный скрипт тестировался только с CentOS Stream release 8"
