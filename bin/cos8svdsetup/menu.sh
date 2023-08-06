@@ -105,7 +105,7 @@ print_menu() {
 	echo -e " 11. Создание/изменение SWAP без перезагрузки сервера."
 	echo -e " 12. Исправление ошибки \"Failed to set locale, defaulting to C.UTF-8\"  "
 	echo -e
-	echo -e " 13. шаблон"
+	echo -e " 13. Пустой шаблон"
 	echo -e
 	echo -e "  0. Выход"
 	echo -e 
