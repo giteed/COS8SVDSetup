@@ -100,7 +100,9 @@ print_menu() {
 	echo -e " -- 8c Удаление vdsetup (не удаляет программы установленные скриптом) # rm_vdsetup"
 	echo -e " -- 8d Обновление настроек из .bashrc, или введите: # source /root/.bashrc или # urc"
 	echo -e
-	echo -e " 9. Опция 9"
+	echo -e " 9. Смена ssh порта"
+	echo -e
+	echo -e " 9. Смена ssh порта"
 	echo -e
 	echo -e " 0. Выход"
 	echo -e 
@@ -285,10 +287,15 @@ handle_option() {
 			;;
 		9)
 			echo -e " Вы выбрали Опцию 9"
-			# Здесь можете добавить код для выполнения действий для Опции 9
+			echo -e " 9. Смена ssh порта"
+			/root/vdsetup.2/bin/system/ssh_port_ch.sh ;
 			echo -e 
 			;;
-
+		10)
+			echo -e " Вы выбрали Опцию 10"
+			# Здесь можете добавить код для выполнения действий для Опции 10
+			echo -e 
+			;;
 		0)
 			echo -e " До свидания!"
 			echo -e 
