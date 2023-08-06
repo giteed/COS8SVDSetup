@@ -36,6 +36,7 @@ print_menu() {
 	echo -e " -- Отключит TOR для всей системы, но оставит рабочим TOR Socks5 127.0.0.1:9050 # toriptables2.py -f (выкл)"
 	echo -e " -- Полностью отключит TOR в системе # tor-stop"
 	echo -e " -- Проверит работает-ли TOR покажет доп инфо # tor_check_ip"
+	echo -e " -- Проверяет доступность .onion адреса через TOR # tor_onion_test"
 	echo -e " -- Перезапустит TOR и проверит его работу # tor_restart_status"
 	echo -e " -- Проверит работу и ip или перезапустит если нет ответа от socks5 # tor_check_ip_or_restart"
 	echo -e " -- Проверит работу wget через socks5 # tor_check_ip_wget"
@@ -97,6 +98,7 @@ handle_option() {
 			echo -e " -- Отключит TOR для всей системы, но оставит рабочим TOR Socks5 127.0.0.1:9050 # toriptables2.py -f (выкл)"
 			echo -e " -- Полностью отключит TOR в системе # tor-stop"
 			echo -e " -- Проверит работает-ли TOR покажет доп инфо # tor_check_ip"
+			echo -e " -- Проверяет доступность .onion адреса через TOR # tor_onion_test"
 			echo -e " -- Перезапустит TOR и проверит его работу # tor_restart_status"
 			echo -e " -- Проверит работу и ip или перезапустит если нет ответа от socks5 # tor_check_ip_or_restart"
 			echo -e " -- Проверит работу wget через socks5 # tor_check_ip_wget"
@@ -131,7 +133,7 @@ handle_option() {
 # Основной цикл меню
 while true; do
 	#print_menu
-	ttb=$(echo -e "$(print_menu)" ) && lang="nix" && bpn_p_lang 
+	ttb=$(echo -e "$(print_menu)" ) && lang="help" && bpn_p_lang 
 	echo # Добавим пустую строку для улучшения читаемости
 	read -p " Введите номер опции: " option
 	handle_option $option
