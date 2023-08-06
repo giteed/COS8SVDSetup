@@ -15,9 +15,9 @@ check_os_compatibility() {
 	current_version=$(cat /etc/centos-release | awk '{print $4}')
 	
 	echo
-	echo " Ожидаемая ОС: $expected_os"
+	echo -en " Ожидаемая ОС: $expected_os"
 	echo " Ожидаемая версия: $expected_version"
-	echo " Текущая ОС: $current_os"
+	echo -en " Текущая ОС: $current_os"
 	echo " Текущая версия: $current_version"
 
 	if [[ "$current_os" == "$expected_os" || "$current_os" == "CentOS" ]] && [[ "$current_version" == "$expected_version" ]]; then
