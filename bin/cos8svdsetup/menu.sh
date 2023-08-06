@@ -288,7 +288,7 @@ handle_option() {
 		9)
 			echo -e " Вы выбрали Опцию 9"
 			echo -e " 9. Смена ssh порта"
-			/root/vdsetup.2/bin/system/ssh_port_ch.sh ;
+			/root/vdsetup.2/bin/utility/system/ssh_port_ch.sh ;
 			echo -e 
 			;;
 		10)
