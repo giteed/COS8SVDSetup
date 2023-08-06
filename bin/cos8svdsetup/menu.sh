@@ -123,13 +123,13 @@ handle_option() {
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/shredder/shredder_unit.sh ;
 			;;
-		2a)
+		2a | dsus)
 			echo -e " Вы выбрали Опцию 2a"
 			echo -e " -- 2x Посмотреть статус Unit Desktop Shredder: # dsus"
 			echo -e 
 			dsus ;
 			;;
-		2b)
+		2b | dsnow)
 			echo -e " Вы выбрали Опцию 2b"
 			echo -e " -- 2b Начать очистку немедленно # dsnow"
 			echo -e 
@@ -149,25 +149,25 @@ handle_option() {
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/vpn/openvpn-install.sh ;
 			;;
-		5)
+		5 | transmission)
 			echo -e " Вы выбрали Опцию 5"
 			echo -e " 5. Установка и управление Transmission # transmission / удаление # tr_rm"
 			echo -e 
 			transmission ;
 			;;
-		5a)
+		5a | start_light_server)
 			echo -e " Вы выбрали Опцию 5a"
 			echo -e " -- 5a Забрать загруженные файлы с торрентов # start_light_server"
 			echo -e 
 			start_light_server ;
 			;;
-		5b)
+		5b | stop_light_server)
 			echo -e " Вы выбрали Опцию 5b"
 			echo -e " -- 5b Остановить HTTP доступ к папке Downloads # stop_light_server"
 			echo -e 
 			stop_light_server ;
 			;;
-		5c)
+		5c | tr_rm)
 			echo -e " Вы выбрали Опцию 5c"
 			echo -e " -- 5c Удаление Transmission # tr_rm"
 			echo -e 
@@ -199,85 +199,85 @@ handle_option() {
 			echo -e 
 			toriptables2.py -f ;
 			;;
-		7c)
+		7c | tor-stop)
 			echo -e " Вы выбрали Опцию 7c"
 			echo -e " -- 7c Полностью отключит TOR в системе # tor-stop"
 			echo -e 
 			tor-stop ;
 			;;
-		7d)
+		7d | tor_check_ip)
 			echo -e " Вы выбрали Опцию 7d"
 			echo -e " -- 7d Проверит работает-ли TOR покажет доп инфо # tor_check_ip"
 			echo -e 
 			tor_check_ip ;
 			;;
-		7e)
+		7e | tor_onion_test)
 			echo -e " Вы выбрали Опцию 7e"
 			echo -e " -- 7e Проверяет доступность .onion адреса через TOR # tor_onion_test"
 			echo -e 
 			tor_onion_test ;
 			;;
-		7f)
+		7f | tor_restart_status)
 			echo -e " Вы выбрали Опцию 7f"
 			echo -e " -- 7f Перезапустит TOR и проверит его работу # tor_restart_status"
 			echo -e 
 			tor_restart_status ;
 			;;
-		7g)
+		7g | tor_check_ip_or_restart)
 			echo -e " Вы выбрали Опцию 7g"
 			echo -e " -- 7g Проверит работу и ip или перезапустит если нет ответа от socks5 # tor_check_ip_or_restart"
 			echo -e 
 			tor_check_ip_or_restart ;
 			;;
-		7h)
+		7h | tor_check_ip_wget)
 			echo -e " Вы выбрали Опцию 7h"
 			echo -e " -- 7h Проверит работу wget через socks5 # tor_check_ip_wget"
 			echo -e 
 			tor_check_ip_wget ;
 			;;
-		7i)
+		7i | tor_Interface_unit_reinstall)
 			echo -e " Вы выбрали Опцию 7i"
 			echo -e " -- 7i Создает отдельный интерфейс с именем tor0 # tor_Interface_unit_reinstall [intrface_name] "
 			echo -e 
 			tor_Interface_unit_reinstall ;
 			;;
-		7j)
+		7j | status_tor_service)
 			echo -e " Вы выбрали Опцию 7j"
 		    echo -e " -- 7j Показывает статус tor интерфейса # status_tor_service"
 			echo -e 
 			status_tor_service ;
 			;;
-		7k)
+		7k | tor-restart)
 			echo -e " Вы выбрали Опцию 7k"
 			echo -e " -- 7k Жестко перезапустит несколько сервисов включая TOR # tor-restart"
 			echo -e 
 			tor-restart ;
 			;;
-		8)
+		8 | vsync)
 			echo -e " Вы выбрали Опцию 8"
 			echo -e " 8. Обновление vdsetup # vsync"
 			vsync ;
 			echo -e 
 			;;
-		8a)
+		8a | vsync)
 			echo -e " Вы выбрали Опцию 8a"
 			echo -e " -- 8a Обновляет скрипты из repo GitHub (требуется API ключ) # vsync"
 			vsync ;
 			echo -e 
 			;;
-		8b)
+		8b | rm_clone)
 			echo -e " Вы выбрали Опцию 8b"
 			echo -e " -- 8b Переустановка скриптов из repo GitHub (не требуется API ключ) # rm_clone"
 			rm_clone ;
 			echo -e 
 			;;
-		8c)
+		8c | rm_vdsetu)
 			echo -e " Вы выбрали Опцию 8c"
 			echo -e " -- 8c Удаление vdsetup (не удаляет программы установленные скриптом) # rm_vdsetup"
 			rm_vdsetup ;
 			echo -e 
 			;;
-		8d)
+		8d | urc)
 			echo -e " Вы выбрали Опцию 8d"
 			echo -e " -- 8d Обновление настроек из .bashrc, или введите: # source /root/.bashrc или # urc"
 			urc-f 2>/dev/null || echo " Type urc or source /root/.bashrc";
