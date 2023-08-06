@@ -37,7 +37,7 @@ check_os_compatibility() {
 	else
 		function msg_os_not_match() {
 			msg_os ;
-			echo -en " Версия вашей ОС: $(cat /etc/centos-release)" && echo -en " - Ваша операционная система не соответствует требованиям скрипта!" && echo -e " $(uname -r)" || echo -e "$current_os $current_version"
+			echo -en " Версия вашей ОС: $(cat /etc/centos-release)" && echo -en " - не соответствует требованиям скрипта!" && echo -e " $(uname -r)" || echo -e "$current_os $current_version"
 			echo " Данный скрипт тестировался только с CentOS Stream release 8"
 			echo " Вы продолжаете на свой риск!"
 		}
