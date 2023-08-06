@@ -7,23 +7,23 @@
 # --> Эта ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
 . /root/vdsetup.2/bin/functions/run_as_root.sh ;
 
-import platform
+check_os_compatibility() {
+	expected_os="CentOS"
+	expected_version="8"
 
-def check_os_compatibility():
-	expected_os = "CentOS"
-	expected_version = "8"
+	current_os=$(cat /etc/*-release | grep "^ID=" | sed 's/ID=//')
+	current_version=$(cat /etc/*-release | grep "^VERSION_ID=" | sed 's/VERSION_ID=//')
 
-	current_os = platform.system()
-	current_version = platform.release()
-
-	if current_os == expected_os and expected_version in current_version:
-		print("Данный скрипт был написан и тестировался с CentOS Stream release 8")
-		print(f"Версия вашей OS: {current_os} {current_version}")
-	else:
-		print("Ваша операционная система не соответствует требованиям скрипта")
+	if [[ "$current_os" == *"$expected_os"* ]] && [[ "$current_version" == *"$expected_version"* ]]; then
+		echo "Данный скрипт был написан и тестировался с CentOS Stream release 8"
+		echo "Версия вашей OS: $current_os $current_version"
+	else
+		echo "Ваша операционная система не соответствует требованиям скрипта"
+	fi
+}
 
 # Вызываем функцию
-check_os_compatibility()
+check_os_compatibility
 
 
 echo -e " Перед установкой рекомендуется обновить ПО сервера "
