@@ -16,9 +16,9 @@ check_os_compatibility() {
 	
 	echo
 	echo -en " Ожидаемая ОС: $expected_os"
-	echo "  версия: $expected_version"
+	echo " v: $expected_version"
 	echo -en " Текущая ОС: $current_os"
-	echo "  версия: $current_version"
+	echo " v: $current_version"
 
 	if [[ "$current_os" == "$expected_os" || "$current_os" == "CentOS" ]] && [[ "$current_version" == "$expected_version" ]]; then
 		echo " Данный скрипт был написан и тестировался с CentOS Stream release 8"
