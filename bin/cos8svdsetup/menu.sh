@@ -18,17 +18,17 @@ function menu_vdsetup() {
 # Функция для печати меню
 print_menu() {
 	echo -e " Выберите опцию:"
-	echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером"
+	echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером."
 	echo -e " 2. Создание Unit для Shredder Desktop, автоматический запуск. "
 	echo -e " -- Посмотреть статус Unit Shredder Desktop: # dsus"
 	echo -e " -- Стереть файл или папку с помощью Unit Shredder Desktop: # mvds [путь/папка/файл]"
-	echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром"
-	echo -e " 4. Установка и управление VPN OpenVPN"
+	echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."
+	echo -e " 4. Установка и управление VPN OpenVPN."
 	echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
 	echo -e " -- Забрать загруженные файлы с торрентов # start_light_server"
 	echo -e " -- Остановить HTTP доступ к папке Downloads # stop_light_server"
-	echo -e " 6. Проверка обновлений или установка GitHub"
-	echo -e " 7. Установка TOR и Privoxy"
+	echo -e " 6. Проверка обновлений или установка GitHub."
+	echo -e " 7. Установка TOR и Privoxy."
 	echo -e " -- Включить/отключить TOR для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"
 	echo -e " -- Отключит для всей системы но оставит рабочим TOR Socks5 127.0.0.1:9050 # toriptables2.py -f (выкл)"
 	echo -e " -- Полностью отключит TOR в системе # tor-stop"
@@ -38,7 +38,7 @@ print_menu() {
 	echo -e " -- Проверит работу wget через socks5 # tor_check_ip_wget"
 	echo -e " -- Создает отдельный интерфейс с именем tor0 # tor_Interface_unit_reinstall [intrface_name] "
 	echo -e " -- Показывает статус tor интерфейса # status_tor_service"
-	echo -e "    (не дописано - в разработке)"
+	echo -e "    (не дописано - в разработке)."
 	
 	echo -e " -- Жестко перезапустит несколько сервисов включая TOR # tor-restart"
 	echo -e "    (без необходимости не использовать, перезапускает: tor, privoxy, firewalld, wg-quick, network )"
@@ -55,7 +55,7 @@ handle_option() {
 	case $choice in
 		1)
 			echo -e " Вы выбрали Опцию 1"
-			echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером"\n
+			echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером."\n
 			/root/vdsetup.2/bin/utility/install/epel_repo_pack.sh ;
 			;;
 		2)
@@ -67,12 +67,12 @@ handle_option() {
 			;;
 		3)
 			echo -e " Вы выбрали Опцию 3"
-			echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром"
+			echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."
 			/root/vdsetup.2/bin/utility/install/vpn/wireguard-install.sh ;
 			;;
 		4)
 			echo -e " Вы выбрали Опцию 4"
-			echo -e " 4. Установка и управление VPN OpenVPN"
+			echo -e " 4. Установка и управление VPN OpenVPN."
 			/root/vdsetup.2/bin/utility/install/vpn/openvpn-install.sh ;
 			;;
 		5)
@@ -84,12 +84,12 @@ handle_option() {
 			;;
 		6)
 			echo -e " Вы выбрали Опцию 6"
-			echo -e " 6. Проверка обновлений или установка GitHub"
+			echo -e " 6. Проверка обновлений или установка GitHub."
 			/root/vdsetup.2/bin/utility/install/github.sh ;
 			;;
 		7)
 			echo -e " Вы выбрали Опцию 7"
-			echo -e " 7. Установка TOR и Privoxy"
+			echo -e " 7. Установка TOR и Privoxy."
 			echo -e " -- Включить/отключить TOR для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"
 			echo -e " -- Отключит для всей системы но оставит рабочим TOR Socks5 127.0.0.1:9050 # toriptables2.py -f (выкл)"
 			echo -e " -- Полностью отключит TOR в системе # tor-stop"
@@ -99,7 +99,7 @@ handle_option() {
 			echo -e " -- Проверит работу wget через socks5 # tor_check_ip_wget"
 			echo -e " -- Создает отдельный интерфейс с именем tor0 # tor_Interface_unit_reinstall [intrface_name] "
 			echo -e " -- Показывает статус tor интерфейса # status_tor_service"
-			echo -e "    (не дописано - в разработке)"
+			echo -e "    (не дописано - в разработке)."
 			/root/vdsetup.2/bin/utility/install/tor/tor_installer.sh ;
 			#/root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh ;
 			;;
