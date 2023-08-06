@@ -318,8 +318,7 @@ handle_option() {
 			echo -e 
 			;;
 		0)
-			echo -e " До свидания!"
-			echo -e " https://github.com/giteed/COS8SVDSetup"
+			echo -e " До свидания! https://github.com/giteed/COS8SVDSetup"
 			echo -e 
 			exit 0 ;
 			;;
