@@ -18,7 +18,7 @@ function menu_vdsetup() {
 # Функция для печати меню
 print_menu() {
 	
-	#ttb=$(echo -e "
+	ttb=$(echo -e (
 	
 	echo -e " Выберите опцию:"
 	echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером."
@@ -49,7 +49,7 @@ print_menu() {
 	echo -e " 9. Опция 9"
 	echo -e " 0. Выход"
 	echo -e 
-  #  ") && lang="nix" && bpn_p_lang ;
+    ) && lang="nix" && bpn_p_lang 
 }
 
 # Функция для обработки выбранной опции
