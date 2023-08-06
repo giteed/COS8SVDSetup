@@ -100,12 +100,12 @@ print_menu() {
 	echo -e " -- 8c Удаление vdsetup (не удаляет программы установленные скриптом) # rm_vdsetup"
 	echo -e " -- 8d Обновление настроек из .bashrc, или введите: # source /root/.bashrc или # urc"
 	echo -e
-	echo -e "  9. Смена ssh порта"
-	echo -e " 10. Назначение имени хоста"
-	echo -e " 11. Создание/изменение SWAP без перезагрузки сервера"
+	echo -e "  9. Смена ssh порта."
+	echo -e " 10. Назначение имени хоста."
+	echo -e " 11. Создание/изменение SWAP без перезагрузки сервера."
 	echo -e " 12. Исправление ошибки \"Failed to set locale, defaulting to C.UTF-8\"  "
 	echo -e
-	echo -e " 13. xxx"
+	echo -e " 13. шаблон"
 	echo -e
 	echo -e " 0. Выход"
 	echo -e 
@@ -290,19 +290,19 @@ handle_option() {
 			;;
 		9)
 			echo -e " Вы выбрали Опцию 9"
-			echo -e " 9. Смена ssh порта"
+			echo -e " 9. Смена ssh порта."
 			/root/vdsetup.2/bin/utility/system/ssh_port_ch.sh ;
 			echo -e 
 			;;
 		10)
 			echo -e " Вы выбрали Опцию 10"
-			echo -e " 10. Назначение имени хоста"
+			echo -e " 10. Назначение имени хоста."
 			/root/vdsetup.2/bin/utility/system/hostnamectl.sh
 			echo -e 
 			;;
 		11)
 			echo -e " Вы выбрали Опцию 11"
-			echo -e " 11. Создание/изменение SWAP без перезагрузки сервера"
+			echo -e " 11. Создание/изменение SWAP без перезагрузки сервера."
 			/root/vdsetup.2/bin/utility/system/swap_edit.sh
 			echo -e 
 			;;
@@ -314,7 +314,7 @@ handle_option() {
 			;;
 		13)
 			echo -e " Вы выбрали Опцию 13"
-			
+			echo -e " Пустой шаблон"
 			echo -e 
 			;;
 		0)
