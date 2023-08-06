@@ -34,7 +34,7 @@ check_os_compatibility
 
 
 
-
+echo -e
 echo -e " Перед установкой рекомендуется обновить ПО сервера "
 echo -e " # dnf update"
 
