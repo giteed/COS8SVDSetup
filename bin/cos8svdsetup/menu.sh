@@ -29,7 +29,7 @@ check_os_compatibility() {
 			echo 
 			
 			#ttb=$(echo -e "$(msg_os)" ) && lang="nix" && bpn_p_lang  ;
-			echo " Данный скрипт тестировался только с CentOS Stream release 8"
+			echo " Данный скрипт тестировался только с \"CentOS Stream release 8\" "
 			echo -en " Версия вашей ОС: $(cat /etc/centos-release)" && echo -en " - OK!" && echo -e " $(uname -r)" || echo -e "$current_os $current_version"
 		}
 		#ttb=$(echo -e "$(msg_os_ok)" ) && lang="nix" && bpn_p_lang  ;
@@ -38,7 +38,7 @@ check_os_compatibility() {
 		function msg_os_not_match() {
 			msg_os ;
 			echo -en " Версия вашей ОС: $(cat /etc/centos-release)" && echo -en " - не соответствует требованиям скрипта!" && echo -e " $(uname -r)" || echo -e "$current_os $current_version"
-			echo " Данный скрипт тестировался только с CentOS Stream release 8"
+			echo " Данный скрипт тестировался только с \"CentOS Stream release 8\" "
 			echo " Вы продолжаете на свой риск!"
 		}
 		ttb=$(echo -e "$(msg_os_not_match)" ) && lang="nix" && bpn_p_lang  ;
@@ -63,46 +63,46 @@ print_menu() {
 	echo -e
 	echo -e "  1. Пакет программ и репозиториев для удобства работы с сервером."
 	echo -e
-	echo -e "  2. Создание Unit для Desktop Shredder, автоматический запуск. "
-	echo -e " -- 2a Посмотреть статус Unit Desktop Shredder: # dsus"
+	echo -e "  2. Создание Unit для \"Desktop Shredder\", автоматический запуск. "
+	echo -e " -- 2a Посмотреть статус Unit \"Desktop Shredder\": # dsus"
 	echo -e " -- 2b Начать очистку немедленно # dsnow"
-	echo -e " -- Стереть файл или папку с помощью Desktop Shredder: # mvds [путь/папка/файл]"
+	echo -e " -- Стереть файл или папку с помощью \"Desktop Shredder\": # mvds [путь/папка/файл]"
 	echo -e
-	echo -e "  3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."
+	echo -e "  3. Установка и управление VPN \"WireGuard\" устранение проблем с неподходящим ядром."
 	echo -e
-	echo -e "  4. Установка и управление VPN OpenVPN."
+	echo -e "  4. Установка и управление VPN \"OpenVPN\"."
 	echo -e
-	echo -e "  5. Установка и управление Transmission # transmission / удаление # tr_rm"
+	echo -e "  5. Установка и управление \"Transmission\" # transmission / удаление # tr_rm"
 	echo -e " -- 5a Забрать загруженные файлы с торрентов # start_light_server"
-	echo -e " -- 5b Остановить HTTP доступ к папке Downloads # stop_light_server"
+	echo -e " -- 5b Остановить \"HTTP\" доступ к папке \"Downloads\" # stop_light_server"
 	echo -e " -- 5c Удаление Transmission # tr_rm"
 	echo -e
-	echo -e "  6. Проверка обновлений или установка GitHub."
+	echo -e "  6. Проверка обновлений или установка \"GitHub\"."
 	echo -e
-	echo -e "  7. Установка TOR и Privoxy."
-	echo -e " -- 7a Установить/Включить/отключить TOR для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"
-	echo -e " -- 7b Отключит TOR для всей системы, но оставит рабочим TOR Socks5 127.0.0.1:9050 # toriptables2.py -f (выкл)"
-	echo -e " -- 7c Полностью отключит TOR в системе # tor-stop"
-	echo -e " -- 7d Проверит работает-ли TOR покажет доп инфо # tor_check_ip"
-	echo -e " -- 7e Проверяет доступность .onion адреса через TOR # tor_onion_test"
-	echo -e " -- 7f Перезапустит TOR и проверит его работу # tor_restart_status"
-	echo -e " -- 7g Проверит работу и ip или перезапустит если нет ответа от socks5 # tor_check_ip_or_restart"
-	echo -e " -- 7h Проверит работу wget через socks5 # tor_check_ip_wget"
-	echo -e " -- 7i Создает отдельный интерфейс с именем tor0 # tor_Interface_unit_reinstall [intrface_name] (в разработке)"
-	echo -e " -- 7j Показывает статус tor интерфейса # status_tor_service"
-	echo -e " -- 7k Жестко перезапустит несколько сервисов включая TOR # tor-restart"
+	echo -e "  7. Установка \"TOR\" и \"Privoxy\"."
+	echo -e " -- 7a Установить/Включить/отключить \"TOR\" для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"
+	echo -e " -- 7b Отключит \"TOR\" для всей системы, но оставит рабочим \"TOR Socks5 127.0.0.1:9050\" # toriptables2.py -f (выкл)"
+	echo -e " -- 7c Полностью отключит \"TOR\" в системе # tor-stop"
+	echo -e " -- 7d Проверит работает-ли \"TOR\" покажет доп инфо # tor_check_ip"
+	echo -e " -- 7e Проверяет доступность \".onion\" адреса через \"TOR\" # tor_onion_test"
+	echo -e " -- 7f Перезапустит \"TOR\" и проверит его работу # tor_restart_status"
+	echo -e " -- 7g Проверит работу и \"ip\" или перезапустит если нет ответа от \"socks5\" # tor_check_ip_or_restart"
+	echo -e " -- 7h Проверит работу \"wget\" через \"socks5\" # tor_check_ip_wget"
+	echo -e " -- 7i Создает отдельный интерфейс с именем \"tor0\" # tor_Interface_unit_reinstall [intrface_name] (в разработке)"
+	echo -e " -- 7j Показывает статус \"tor\" интерфейса # status_tor_service"
+	echo -e " -- 7k Жестко перезапустит несколько сервисов включая \"TOR\" # tor-restart"
 	echo -e "    (без необходимости не использовать), перезапускает:"
-	echo -e "    tor, privoxy, firewalld, wg-quick, network - сервисы."
+	echo -e "    \"tor\", \"privoxy\", \"firewalld\", \"wg-quick\", \"network\" - сервисы."
 	echo -e
-	echo -e "  8. Обновление vdsetup # vsync"
-	echo -e " -- 8a Обновляет скрипты из repo GitHub (требуется API ключ) # vsync"
-	echo -e " -- 8b Переустановка скриптов из repo GitHub (не требуется API ключ) # rm_clone"
-	echo -e " -- 8c Удаление vdsetup (не удаляет программы установленные скриптом) # rm_vdsetup"
-	echo -e " -- 8d Обновление настроек из .bashrc, или введите: # source /root/.bashrc или # urc"
+	echo -e "  8. Обновление \"vdsetup\" # vsync"
+	echo -e " -- 8a Обновляет скрипты из repo \"GitHub\" (требуется API ключ) # vsync"
+	echo -e " -- 8b Переустановка скриптов из repo \"GitHub\" (не требуется API ключ) # rm_clone"
+	echo -e " -- 8c Удаление \"vdsetup\" (не удаляет программы установленные скриптом) # rm_vdsetup"
+	echo -e " -- 8d Обновление настроек из \".bashrc\", или введите: # source /root/.bashrc или # urc"
 	echo -e
-	echo -e "  9. Смена ssh порта."
+	echo -e "  9. Смена \"ssh\" порта."
 	echo -e " 10. Назначение имени хоста."
-	echo -e " 11. Создание/изменение SWAP без перезагрузки сервера."
+	echo -e " 11. Создание/изменение \"SWAP\" без перезагрузки сервера."
 	echo -e " 12. Исправление ошибки \"Failed to set locale, defaulting to C.UTF-8\"  "
 	echo -e
 	echo -e " 13. Пустой шаблон."
@@ -124,13 +124,13 @@ handle_option() {
 			;;
 		2)
 			echo -e " Вы выбрали Опцию 2"
-			echo -e " 2. Создание Unit для Desktop Shredder, автоматический запуск. "
+			echo -e " 2. Создание Unit для \"Desktop Shredder\", автоматический запуск. "
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/shredder/shredder_unit.sh ;
 			;;
 		2a | dsus)
 			echo -e " Вы выбрали Опцию 2a"
-			echo -e " -- 2x Посмотреть статус Unit Desktop Shredder: # dsus"
+			echo -e " -- 2x Посмотреть статус Unit \"Desktop Shredder\": # dsus"
 			echo -e 
 			dsus ;
 			;;
@@ -144,19 +144,19 @@ handle_option() {
 			
 		3)
 			echo -e " Вы выбрали Опцию 3"
-			echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."
+			echo -e " 3. Установка и управление VPN \"WireGuard\" устранение проблем с неподходящим ядром."
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/vpn/wireguard-install.sh ;
 			;;
 		4)
 			echo -e " Вы выбрали Опцию 4"
-			echo -e " 4. Установка и управление VPN OpenVPN."
+			echo -e " 4. Установка и управление VPN \"OpenVPN\"."
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/vpn/openvpn-install.sh ;
 			;;
 		5 | transmission)
 			echo -e " Вы выбрали Опцию 5"
-			echo -e " 5. Установка и управление Transmission # transmission / удаление # tr_rm"
+			echo -e " 5. Установка и управление \"Transmission\" # transmission / удаление # tr_rm"
 			echo -e 
 			transmission ;
 			;;
@@ -168,129 +168,129 @@ handle_option() {
 			;;
 		5b | stop_light_server)
 			echo -e " Вы выбрали Опцию 5b"
-			echo -e " -- 5b Остановить HTTP доступ к папке Downloads # stop_light_server"
+			echo -e " -- 5b Остановить \"HTTP\" доступ к папке \"Downloads\" # stop_light_server"
 			echo -e 
 			stop_light_server ;
 			;;
 		5c | tr_rm)
 			echo -e " Вы выбрали Опцию 5c"
-			echo -e " -- 5c Удаление Transmission # tr_rm"
+			echo -e " -- 5c Удаление \"Transmission\" # tr_rm"
 			echo -e 
 			tr_rm ;
 			;;
 
 		6)
 			echo -e " Вы выбрали Опцию 6"
-			echo -e " 6. Проверка обновлений или установка GitHub."
+			echo -e " 6. Проверка обновлений или установка \"GitHub\"."
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/github.sh ;
 			;;
 		7)
 			echo -e " Вы выбрали Опцию 7"
-			echo -e " 7. Установка TOR и Privoxy."
+			echo -e " 7. Установка \"TOR\" и \"Privoxy\"."
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/tor/tor_installer.sh ;
 			#/root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh ;
 			;;
 		7a)
 			echo -e " Вы выбрали Опцию 7a"
-			echo -e " -- 7a Установить/Включить/отключить TOR для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"
+			echo -e " -- 7a Установить/Включить/отключить \"TOR\" для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"
 			echo -e 
 			toriptables2.py -h ;
 			;;
 		7b)
 			echo -e " Вы выбрали Опцию 7b"
-		    echo -e " -- 7b Отключит TOR для всей системы, но оставит рабочим TOR Socks5 127.0.0.1:9050 # toriptables2.py -f (выкл)"
+		    echo -e " -- 7b Отключит \"TOR\" для всей системы, но оставит рабочим \"TOR Socks5 127.0.0.1:9050\" # toriptables2.py -f (выкл)"
 			echo -e 
 			toriptables2.py -f ;
 			;;
 		7c | tor-stop)
 			echo -e " Вы выбрали Опцию 7c"
-			echo -e " -- 7c Полностью отключит TOR в системе # tor-stop"
+			echo -e " -- 7c Полностью отключит \"TOR\" в системе # tor-stop"
 			echo -e 
 			tor-stop ;
 			;;
 		7d | tor_check_ip)
 			echo -e " Вы выбрали Опцию 7d"
-			echo -e " -- 7d Проверит работает-ли TOR покажет доп инфо # tor_check_ip"
+			echo -e " -- 7d Проверит работает-ли \"TOR\" покажет доп инфо # tor_check_ip"
 			echo -e 
 			tor_check_ip ;
 			;;
 		7e | tor_onion_test)
 			echo -e " Вы выбрали Опцию 7e"
-			echo -e " -- 7e Проверяет доступность .onion адреса через TOR # tor_onion_test"
+			echo -e " -- 7e Проверяет доступность \".onion\" адреса через \"TOR\" # tor_onion_test"
 			echo -e 
 			tor_onion_test ;
 			;;
 		7f | tor_restart_status)
 			echo -e " Вы выбрали Опцию 7f"
-			echo -e " -- 7f Перезапустит TOR и проверит его работу # tor_restart_status"
+			echo -e " -- 7f Перезапустит \"TOR\" и проверит его работу # tor_restart_status"
 			echo -e 
 			tor_restart_status ;
 			;;
 		7g | tor_check_ip_or_restart)
 			echo -e " Вы выбрали Опцию 7g"
-			echo -e " -- 7g Проверит работу и ip или перезапустит если нет ответа от socks5 # tor_check_ip_or_restart"
+			echo -e " -- 7g Проверит работу и \"ip\" или перезапустит если нет ответа от \"socks5\" # tor_check_ip_or_restart"
 			echo -e 
 			tor_check_ip_or_restart ;
 			;;
 		7h | tor_check_ip_wget)
 			echo -e " Вы выбрали Опцию 7h"
-			echo -e " -- 7h Проверит работу wget через socks5 # tor_check_ip_wget"
+			echo -e " -- 7h Проверит работу \"wget\" через \"socks5\" # tor_check_ip_wget"
 			echo -e 
 			tor_check_ip_wget ;
 			;;
 		7i | tor_Interface_unit_reinstall)
 			echo -e " Вы выбрали Опцию 7i"
-			echo -e " -- 7i Создает отдельный интерфейс с именем tor0 # tor_Interface_unit_reinstall [intrface_name] "
+			echo -e " -- 7i Создает отдельный интерфейс с именем \"tor0\" # tor_Interface_unit_reinstall [intrface_name] "
 			echo -e 
 			tor_Interface_unit_reinstall ;
 			;;
 		7j | status_tor_service)
 			echo -e " Вы выбрали Опцию 7j"
-		    echo -e " -- 7j Показывает статус tor интерфейса # status_tor_service"
+		    echo -e " -- 7j Показывает статус \"tor\" интерфейса # status_tor_service"
 			echo -e 
 			status_tor_service ;
 			;;
 		7k | tor-restart)
 			echo -e " Вы выбрали Опцию 7k"
-			echo -e " -- 7k Жестко перезапустит несколько сервисов включая TOR # tor-restart"
+			echo -e " -- 7k Жестко перезапустит несколько сервисов включая \"TOR\" # tor-restart"
 			echo -e 
 			tor-restart ;
 			;;
 		8 | vsync)
 			echo -e " Вы выбрали Опцию 8"
-			echo -e " 8. Обновление vdsetup # vsync"
+			echo -e " 8. Обновление \"vdsetup\" # vsync"
 			vsync ;
 			echo -e 
 			;;
 		8a | vsync)
 			echo -e " Вы выбрали Опцию 8a"
-			echo -e " -- 8a Обновляет скрипты из repo GitHub (требуется API ключ) # vsync"
+			echo -e " -- 8a Обновляет скрипты из repo \"GitHub\" (требуется API ключ) # vsync"
 			vsync ;
 			echo -e 
 			;;
 		8b | rm_clone)
 			echo -e " Вы выбрали Опцию 8b"
-			echo -e " -- 8b Переустановка скриптов из repo GitHub (не требуется API ключ) # rm_clone"
+			echo -e " -- 8b Переустановка скриптов из repo \"GitHub\" (не требуется API ключ) # rm_clone"
 			rm_clone ;
 			echo -e 
 			;;
 		8c | rm_vdsetu)
 			echo -e " Вы выбрали Опцию 8c"
-			echo -e " -- 8c Удаление vdsetup (не удаляет программы установленные скриптом) # rm_vdsetup"
+			echo -e " -- 8c Удаление \"vdsetup\" (не удаляет программы установленные скриптом) # rm_vdsetup"
 			rm_vdsetup ;
 			echo -e 
 			;;
 		8d | urc)
 			echo -e " Вы выбрали Опцию 8d"
-			echo -e " -- 8d Обновление настроек из .bashrc, или введите: # source /root/.bashrc или # urc"
+			echo -e " -- 8d Обновление настроек из \".bashrc\", или введите: # source /root/.bashrc или # urc"
 			urc-f 2>/dev/null || echo " Type urc or source /root/.bashrc";
 			echo -e 
 			;;
 		9)
 			echo -e " Вы выбрали Опцию 9"
-			echo -e " 9. Смена ssh порта."
+			echo -e " 9. Смена \"ssh\" порта."
 			/root/vdsetup.2/bin/utility/system/ssh_port_ch.sh ;
 			echo -e 
 			;;
@@ -302,7 +302,7 @@ handle_option() {
 			;;
 		11)
 			echo -e " Вы выбрали Опцию 11"
-			echo -e " 11. Создание/изменение SWAP без перезагрузки сервера."
+			echo -e " 11. Создание/изменение \"SWAP\" без перезагрузки сервера."
 			/root/vdsetup.2/bin/utility/system/swap_edit.sh
 			echo -e 
 			;;
