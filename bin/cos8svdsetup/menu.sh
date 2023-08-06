@@ -22,7 +22,7 @@ check_os_compatibility() {
 		echo -en " Текущая ОС: $current_os"
 		echo " $current_version"
 	}
-	ttb=$(echo -e "$(msg_os)" ) && lang="nix" && bpn_p_lang  ;
+	#ttb=$(echo -e "$(msg_os)" ) && lang="nix" && bpn_p_lang  ;
 
 	if [[ "$current_os" == "$expected_os" || "$current_os" == "CentOS" ]] && [[ "$current_version" == "$expected_version" ]]; then
 		function msg_os_ok() {
