@@ -22,15 +22,21 @@ print_menu() {
 	
 	echo -e " Выберите опцию:"
 	echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером."
+	echo -e
 	echo -e " 2. Создание Unit для Shredder Desktop, автоматический запуск. "
 	echo -e " -- Посмотреть статус Unit Shredder Desktop: # dsus"
 	echo -e " -- Стереть файл или папку с помощью Unit Shredder Desktop: # mvds [путь/папка/файл]"
+	echo -e
 	echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."
+	echo -e
 	echo -e " 4. Установка и управление VPN OpenVPN."
+	echo -e
 	echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"
 	echo -e " -- Забрать загруженные файлы с торрентов # start_light_server"
 	echo -e " -- Остановить HTTP доступ к папке Downloads # stop_light_server"
+	echo -e
 	echo -e " 6. Проверка обновлений или установка GitHub."
+	echo -e
 	echo -e " 7. Установка TOR и Privoxy."
 	echo -e " -- Включить/отключить TOR для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"
 	echo -e " -- Отключит TOR для всей системы, но оставит рабочим TOR Socks5 127.0.0.1:9050 # toriptables2.py -f (выкл)"
@@ -46,8 +52,11 @@ print_menu() {
 	echo -e " -- Жестко перезапустит несколько сервисов включая TOR # tor-restart"
 	echo -e "    (без необходимости не использовать), перезапускает:"
 	echo -e "    tor, privoxy, firewalld, wg-quick, network - сервисы"
+	echo -e
 	echo -e " 8. Опция 8"
+	echo -e
 	echo -e " 9. Опция 9"
+	echo -e
 	echo -e " 0. Выход"
 	echo -e 
    
