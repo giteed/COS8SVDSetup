@@ -59,7 +59,7 @@ function menu_vdsetup() {
 print_menu() {
 	
 	echo -e
-	echo -e " Выберите опцию:(цифра или цифра с буквой)"
+	echo -e " Выберите опцию (цифра или цифра с буквой):"
 	echo -e
 	echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером."
 	echo -e
@@ -276,7 +276,7 @@ while true; do
 	#print_menu
 	ttb=$(echo -e "$(print_menu)" ) && lang="cr" && bpn_p_lang 
 	echo # Добавим пустую строку для улучшения читаемости
-	read -p " Введите номер опции: " option
+	read -p " Введите номер опции (цифра или цифра с буквой): " option
 	handle_option $option
 	echo # Добавим пустую строку для улучшения читаемости
 	sleep 3 ;
