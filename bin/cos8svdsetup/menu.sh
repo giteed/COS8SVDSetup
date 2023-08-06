@@ -133,7 +133,7 @@ handle_option() {
 # Основной цикл меню
 while true; do
 	#print_menu
-	ttb=$(echo -e "$(print_menu)" ) && lang="help" && bpn_p_lang 
+	ttb=$(echo -e "$(print_menu)" ) && lang="cr" && bpn_p_lang 
 	echo # Добавим пустую строку для улучшения читаемости
 	read -p " Введите номер опции: " option
 	handle_option $option
