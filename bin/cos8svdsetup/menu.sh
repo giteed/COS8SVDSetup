@@ -107,7 +107,7 @@ print_menu() {
 	echo -e
 	echo -e " 13. шаблон"
 	echo -e
-	echo -e " 0. Выход"
+	echo -e "  0. Выход"
 	echo -e 
    
 }
