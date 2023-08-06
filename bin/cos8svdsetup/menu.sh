@@ -280,7 +280,7 @@ handle_option() {
 		8d)
 			echo -e " Вы выбрали Опцию 8d"
 			echo -e " -- 8d Обновление настроек из .bashrc, или введите: # source /root/.bashrc или # urc"
-			urc ;
+			urc 2>/dev/null || echo " type urc or source /root/.bashrc";
 			echo -e 
 			;;
 		9)
