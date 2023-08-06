@@ -7,7 +7,7 @@
 sshPort=$((grep "Port" /etc/ssh/sshd_config) | head -n 1 );
 echo -e "${NC}	----------------------------------------"
 echo -e "${CYAN}	Записи о портах в файле конфигурации${NC}:\n	$(find /etc/ -name "sshd_config")"
-echo -e "${CYAN}	${GREEN}$(grep "Port " /etc/ssh/sshd_config)${NC}"
+echo -e "${CYAN}	\n${GREEN}$(grep "Port " /etc/ssh/sshd_config)${NC}"
 echo -e "${NC}	----------------------------------------"
 echo -e "${GRAY}	
    
