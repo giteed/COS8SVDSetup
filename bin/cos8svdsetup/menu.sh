@@ -25,7 +25,7 @@ check_os_compatibility() {
 		echo " Версия вашей ОС: $(cat /etc/centos-release)" && echo OK! || echo "$current_os $current_version"
 		
 	else
-		echo " Версия вашей ОС: $(cat /etc/centos-release)" echo "The OS version does not match!" || echo "$current_os $current_version"
+		echo -en " Версия вашей ОС: $(cat /etc/centos-release)" && echo "The OS version does not match!" || echo -en "$current_os $current_version"
 		echo " Ваша операционная система не соответствует требованиям скрипта!"
 		echo " Продолжаете на свой риск!"
 		press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
