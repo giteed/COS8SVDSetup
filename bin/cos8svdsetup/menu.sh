@@ -69,7 +69,6 @@ print_menu() {
 	echo -e " -- Стереть файл или папку с помощью \"Desktop Shredder\": # mvds [путь/папка/файл]"
 	echo -e
 	echo -e "  3. Установка и управление VPN \"WireGuard\" устранение проблем с неподходящим ядром."
-	echo -e
 	echo -e "  4. Установка и управление VPN \"OpenVPN\"."
 	echo -e
 	echo -e "  5. Установка и управление \"Transmission\" # transmission / удаление # tr_rm"
