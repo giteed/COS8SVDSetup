@@ -66,55 +66,66 @@ handle_option() {
 		1)
 			echo -e " Вы выбрали Опцию 1"
 			echo -e " 1. Пакет программ и репозиториев для удобства работы с сервером."\n
+			echo -e 
 			/root/vdsetup.2/bin/utility/install/epel_repo_pack.sh ;
 			;;
 		2)
 			echo -e " Вы выбрали Опцию 2"
 			echo -e " 2. Создание Unit для Desktop Shredder, автоматический запуск. "\n
+			echo -e 
 			/root/vdsetup.2/bin/utility/install/shredder/shredder_unit.sh ;
 			;;
 		2x)
 			echo -e " Вы выбрали Опцию 2x"
 			echo -e " -- 2x Посмотреть статус Unit Desktop Shredder: # dsus"\n
+			echo -e 
 			dsus ;
 			;;
 		3)
 			echo -e " Вы выбрали Опцию 3"
 			echo -e " 3. Установка и управление VPN WireGuard устранение проблем с неподходящим ядром."\n
+			echo -e 
 			/root/vdsetup.2/bin/utility/install/vpn/wireguard-install.sh ;
 			;;
 		4)
 			echo -e " Вы выбрали Опцию 4"
 			echo -e " 4. Установка и управление VPN OpenVPN."\n
+			echo -e 
 			/root/vdsetup.2/bin/utility/install/vpn/openvpn-install.sh ;
 			;;
 		5)
 			echo -e " Вы выбрали Опцию 5"
 			echo -e " 5. Установка и управление Transmission (# transmission / удаление # tr_rm)"\n
+			echo -e 
 			transmission ;
 			;;
 		6)
 			echo -e " Вы выбрали Опцию 6"
 			echo -e " 6. Проверка обновлений или установка GitHub."\n
+			echo -e 
 			/root/vdsetup.2/bin/utility/install/github.sh ;
 			;;
 		7)
 			echo -e " Вы выбрали Опцию 7"
 			echo -e " 7. Установка TOR и Privoxy."\n
+			echo -e 
 			/root/vdsetup.2/bin/utility/install/tor/tor_installer.sh ;
 			#/root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh ;
 			;;
 		8)
 			echo -e " Вы выбрали Опцию 8"
 			# Здесь можете добавить код для выполнения действий для Опции 3
+			echo -e 
 			;;
 		9)
 			echo -e " Вы выбрали Опцию 9"
 			# Здесь можете добавить код для выполнения действий для Опции 3
+			echo -e 
 			;;
 
 		0)
 			echo -e " До свидания!"
+			echo -e 
 			exit 0 ;
 			;;
 		*)
@@ -131,6 +142,7 @@ while true; do
 	read -p " Введите номер опции: " option
 	handle_option $option
 	echo # Добавим пустую строку для улучшения читаемости
+	sleep 1 ;
 done
 
 	
