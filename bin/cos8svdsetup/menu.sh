@@ -23,8 +23,8 @@ check_os_compatibility() {
 		echo " Данный скрипт был написан и тестировался с CentOS Stream release 8"
 		echo " Версия вашей ОС: $current_os $current_version"
 	else
-		echo " Ваша операционная система не соответствует требованиям скрипта"
-		echo " Продолжаете на свой риск"
+		echo " Ваша операционная система не соответствует требованиям скрипта!"
+		echo " Продолжаете на свой риск!"
 		press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
 	fi
 }
