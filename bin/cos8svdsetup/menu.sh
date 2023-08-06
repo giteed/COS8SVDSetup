@@ -101,10 +101,8 @@ print_menu() {
 	echo -e " -- 8d Обновление настроек из .bashrc, или введите: # source /root/.bashrc или # urc"
 	echo -e
 	echo -e "  9. Смена ssh порта"
-	echo -e
 	echo -e " 10. Назначение имени хоста"
-	echo -e
-	echo -e " 11. xxx"
+	echo -e " 11. Создание/изменение SWAP без перезагрузки сервера"
 	echo -e
 	echo -e " 12. xxx"
 	echo -e
@@ -305,7 +303,8 @@ handle_option() {
 			;;
 		11)
 			echo -e " Вы выбрали Опцию 11"
-			# Здесь можете добавить код для выполнения действий для Опции 10
+			echo -e " 11. Создание/изменение SWAP без перезагрузки сервера"
+			/root/vdsetup.2/bin/utility/system/swap_edit.sh
 			echo -e 
 			;;
 		12)
