@@ -10,7 +10,7 @@
 
 check_os_compatibility() {
 	expected_os="CentOS Stream"
-	expected_version="9"
+	expected_version="8"
 
 	current_os=$(cat /etc/centos-release | awk '{print $1}')
 	current_version=$(cat /etc/centos-release | awk '{print $4}')
@@ -36,7 +36,7 @@ check_os_compatibility() {
 			echo -en " Версия вашей ОС: $(cat /etc/centos-release)" && echo -en " - The OS version does not match!" && echo -e " $(uname -r)" || echo -e "$current_os $current_version"
 			echo " Данный скрипт тестировался только с CentOS Stream release 8"
 			echo " Ваша операционная система не соответствует требованиям скрипта!"
-			echo " Продолжаете на свой риск!"
+			echo " Вы продолжаете на свой риск!"
 		}
 		ttb=$(echo -e "$(msg_os_not_match)" ) && lang="nix" && bpn_p_lang  ;
 		press_enter_to_continue_or_ESC_or_any_key_to_cancel ;
