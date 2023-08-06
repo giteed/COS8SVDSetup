@@ -18,7 +18,7 @@ check_os_compatibility() {
 	function msg_os() {
 		echo
 		echo -en " Ожидаемая ОС: $expected_os"
-		echo " $expected_version"
+		echo -en " $expected_version"
 		echo -en " Текущая ОС: $current_os"
 		echo " $current_version"
 	}
