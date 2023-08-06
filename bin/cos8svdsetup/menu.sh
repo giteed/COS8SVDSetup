@@ -39,12 +39,11 @@ print_menu() {
 	echo -e " -- Создает отдельный интерфейс с именем tor0 # tor_Interface_unit_reinstall [intrface_name] "
 	echo -e " -- Показывает статус tor интерфейса # status_tor_service"
 	echo -e "    (не дописано - в разработке)."
-	
 	echo -e " -- Жестко перезапустит несколько сервисов включая TOR # tor-restart"
-	echo -e "    (без необходимости не использовать, перезапускает: tor, privoxy, firewalld, wg-quick, network )"
-	
-	echo -e " 8. Опция 3"
-	echo -e " 9. Опция 3"
+	echo -e "    без необходимости не использовать, перезапускает:"
+	echo -e "    tor, privoxy, firewalld, wg-quick, network - сервисы"
+	echo -e " 8. Опция 8"
+	echo -e " 9. Опция 9"
 	echo -e " 0. Выход"
 	echo -e 
 }
@@ -100,6 +99,9 @@ handle_option() {
 			echo -e " -- Создает отдельный интерфейс с именем tor0 # tor_Interface_unit_reinstall [intrface_name] "
 			echo -e " -- Показывает статус tor интерфейса # status_tor_service"
 			echo -e "    (не дописано - в разработке)."
+	        echo -e " -- Жестко перезапустит несколько сервисов включая TOR # tor-restart"
+			echo -e "    без необходимости не использовать, перезапускает:"
+			echo -e "    tor, privoxy, firewalld, wg-quick, network - сервисы"
 			/root/vdsetup.2/bin/utility/install/tor/tor_installer.sh ;
 			#/root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh ;
 			;;
