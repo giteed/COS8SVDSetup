@@ -9,7 +9,7 @@
 
 check_os_compatibility() {
 	expected_os="CentOS Stream"
-	expected_version="9"
+	expected_version="8"
 
 	current_os=$(cat /etc/centos-release | awk '{print $1}')
 	current_version=$(cat /etc/centos-release | awk '{print $4}')
