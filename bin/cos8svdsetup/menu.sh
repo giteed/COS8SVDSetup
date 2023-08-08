@@ -78,7 +78,7 @@ print_menu() {
 	echo -e
 	echo -e "  6. Проверка обновлений или установка \"GitHub\"."
 	echo -e
-	echo -e "  7. Установка \"TOR\" и \"Privoxy\"."
+	echo -e "  7. Установка \"TOR\" и \"Privoxy\". Установка автоматическая настройка и добавление в автозапуск."
 	echo -e " -- 7a Установить/Включить/отключить \"TOR\" для всей системы # toriptables2.py -h (help)/ -l (вкл)/ -f (выкл)"
 	echo -e " -- 7b Отключит \"TOR\" для всей системы, но оставит рабочим \"TOR Socks5 127.0.0.1:9050\" # toriptables2.py -f (выкл)"
 	echo -e " -- 7c Полностью отключит \"TOR\" в системе # tor-stop"
@@ -186,7 +186,7 @@ handle_option() {
 			;;
 		7)
 			echo -e " Вы выбрали Опцию 7"
-			echo -e " 7. Установка \"TOR\" и \"Privoxy\"."
+			echo -e "  7. Установка \"TOR\" и \"Privoxy\". Установка автоматическая настройка и добавление в автозапуск."
 			echo -e 
 			/root/vdsetup.2/bin/utility/install/tor/tor_installer.sh ;
 			#/root/vdsetup.2/bin/utility/install/tor/tor-for-all-sys-app.sh ;
