@@ -251,7 +251,7 @@ function wgetrc_config_revert() {
   function full_port_scan() {
     local host="127.0.0.1"
     local start_port=1
-    local end_port=65535
+    local end_port=8118
     local output_file="/tmp/full_port_scan-tcp.txt"
   
     echo "Начался процесс сканирования..."
