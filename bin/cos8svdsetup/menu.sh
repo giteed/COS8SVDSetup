@@ -112,7 +112,7 @@ print_menu() {
 	echo -e
 	echo -e " 15. Пустой шаблон."
 	echo -e
-	full_tcp_port_scan
+	#full_tcp_port_scan
 	echo -e "  0. Выход"
 	echo -e 
    
