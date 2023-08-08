@@ -263,8 +263,8 @@ for port in $(seq "$start_port" "$end_port"); do
         echo -ne "\rПорт: $port ($result)"
         if [ "$result" == "open" ]; then
           
-          sleep 10
-          echo "$port" >> "$output_file"
+          sleep 10 ;
+          echo "$port" >> "$output_file" ;
           
         fi
       }
