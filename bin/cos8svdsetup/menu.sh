@@ -105,8 +105,14 @@ print_menu() {
 	echo -e " 11. Создание/изменение \"SWAP\" без перезагрузки сервера."
 	echo -e " 12. Исправление ошибки \"Failed to set locale, defaulting to C.UTF-8\"  "
 	echo -e
-	echo -e " 13. Пустой шаблон."
+	echo -e " 13. Простое сканирование всех локальных TCP 65535 портов с выводом во временный файл. # full_tcp_port_scan"
+	echo -e " --  13a NMAP helper с примерами и небольшой справкой подсказок. # nmapp"
 	echo -e
+	echo -e " 14. Пустой шаблон."
+	echo -e
+	echo -e " 15. Пустой шаблон."
+	echo -e
+	full_tcp_port_scan
 	echo -e "  0. Выход"
 	echo -e 
    
@@ -312,8 +318,25 @@ handle_option() {
 			/root/vdsetup.2/bin/utility/system/locale.sh
 			echo -e 
 			;;
-		13)
+		13 | full_tcp_port_scan)
 			echo -e " Вы выбрали Опцию 13"
+			echo -e " 13. Простое сканирование всех локальных TCP 65535 портов с выводом во временный файл. # full_tcp_port_scan"
+			full_tcp_port_scan ;
+			echo -e 
+			;;
+		13a | nmapp)
+			echo -e " Вы выбрали Опцию 13a"
+			echo -e " --  13a NMAP helper с примерами и небольшой справкой подсказок. # nmapp"
+			echo -e 
+			;;
+
+		14)
+			echo -e " Вы выбрали Опцию 14"
+			echo -e " Пустой шаблон."
+			echo -e 
+			;;
+		15)
+			echo -e " Вы выбрали Опцию 15"
 			echo -e " Пустой шаблон."
 			echo -e 
 			;;

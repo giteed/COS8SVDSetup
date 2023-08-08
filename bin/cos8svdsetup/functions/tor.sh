@@ -247,7 +247,7 @@ function wgetrc_config_revert() {
   
 
   
-  function full_port_scan() {
+  function full_tcp_port_scan() {
     rm /tmp/full_port_scan-tcp.txt 2>/dev/null ;
     local host="127.0.0.1"
     local start_port=1
