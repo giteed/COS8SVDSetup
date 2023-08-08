@@ -269,6 +269,7 @@ for port in $(seq "$start_port" "$end_port"); do
     done
     
     echo -e "\n\nПолное сканирование завершено. Открытые порты сохранены в файл: $output_file"
+    cat $output_file
   }
   
   
