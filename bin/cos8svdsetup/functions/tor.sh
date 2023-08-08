@@ -55,6 +55,7 @@ function tor_check_ip_or_restart() {
     
     
     unset ip ;
+    tor_port_ch ;
     local ip=$(wget -qO- --no-check-certificate --proxy=on https://icanhazip.com/ ;) 
     if [ -z "$ip" ]; then
       ttb=$(echo -e "\n Не удалось получить IP-адрес, перезапускаю TOR...\n # tor_restart_status\n") && lang=nix && bpn_p_lang ;
