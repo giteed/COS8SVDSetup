@@ -248,6 +248,7 @@ function wgetrc_config_revert() {
 
   
   function full_tcp_port_scan() {
+    tstart ;
     rm /tmp/full_port_scan-tcp.txt 2>/dev/null ;
     local host="localhost"
     local start_port=1
@@ -272,9 +273,9 @@ function wgetrc_config_revert() {
     done
   
     echo -e "${cr}\n\n Полное сканирование завершено.\n Открытые порты сохранены в файл: $output_file\n"
-    ttb=$(echo "$(cat $output_file)") && lang="nix" && bpn_lang
+    ttb=$(echo "$(cat $output_file)") && lang="nix" && bpn_lang ;
+    ttb=$(echo "$(nmap localhost -sT -sU -p-)") && lang="nix" && bpn_lang ;
+    fw_i_r ;
     
-    ttb=$(echo "$(nmap localhost -sT -sU -p-)") && lang="nix" && bpn_lang
-    
-    
+    tend ;
   }
