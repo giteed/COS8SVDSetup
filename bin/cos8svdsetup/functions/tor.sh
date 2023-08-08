@@ -273,4 +273,8 @@ function wgetrc_config_revert() {
   
     echo -e "${cr}\n\n Полное сканирование завершено.\n Открытые порты сохранены в файл: $output_file\n"
     ttb=$(echo "$(cat $output_file)") && lang="nix" && bpn_lang
+    
+    ttb=$(echo "$(nmap localhost -sT -sU -p-)") && lang="nix" && bpn_lang
+    
+    
   }
