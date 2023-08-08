@@ -262,6 +262,7 @@ function wgetrc_config_revert() {
         echo -ne "\r   Порт: $port ($result)     "
         if [ "$result" == "open" ]; then
           echo "$port" >> "$output_file"
+          bat $output_file
           sleep 3 ;
         fi
       }
