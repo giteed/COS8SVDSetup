@@ -105,8 +105,8 @@ print_menu() {
 	echo -e " 11. Создание/изменение \"SWAP\" без перезагрузки сервера."
 	echo -e " 12. Исправление ошибки \"Failed to set locale, defaulting to C.UTF-8\"  "
 	echo -e
-	echo -e " 13. Простое сканирование всех локальных TCP 65535 портов с выводом во временный файл. # full_tcp_port_scan"
-	echo -e " --  13a NMAP helper с примерами и небольшой справкой подсказок. # nmapp"
+	echo -e " 13. Простое сканирование всех localhost TCP/UDP 65535 портов с выводом во временный файл. # full_tcp_port_scan и # fw_i_r"
+	echo -e " --  13a NMAP helper с примерами и небольшой справкой подсказок. # nmapp [localhost]"
 	echo -e
 	echo -e " 14. Пустой шаблон."
 	echo -e
@@ -319,13 +319,13 @@ handle_option() {
 			;;
 		13 | full_tcp_port_scan)
 			echo -e " Вы выбрали Опцию 13"
-			echo -e " 13. Простое сканирование всех локальных TCP 65535 портов с выводом во временный файл. # full_tcp_port_scan"
+			echo -e " 13. Простое сканирование всех localhost TCP/UDP 65535 портов с выводом во временный файл. # full_tcp_port_scan и # fw_i_r"
 			full_tcp_port_scan ;
 			echo -e 
 			;;
 		13a | nmapp)
 			echo -e " Вы выбрали Опцию 13a"
-			echo -e " --  13a NMAP helper с примерами и небольшой справкой подсказок. # nmapp [домен/ip]"
+			echo -e " --  13a NMAP helper с примерами и небольшой справкой подсказок. # nmapp [localhost]"
 			nmapp localhost ;
 			echo -e 
 			;;
