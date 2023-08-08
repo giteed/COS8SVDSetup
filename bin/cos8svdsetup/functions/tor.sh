@@ -246,21 +246,21 @@ function wgetrc_config_revert() {
   }
   
   
-function full_port_scan() {
+#!/bin/bash
+  
+  function full_port_scan() {
     local host="127.0.0.1"
     local start_port=1
     local end_port=65535
     local total_ports=$((end_port - start_port + 1))
   
     echo "Начался процесс сканирования..."
+    echo -n "Порт: "
   
     for port in $(seq "$start_port" "$end_port"); do
       {
-        echo >/dev/tcp/"$host"/"$port" &>/dev/null
-      } || {
-        local progress=$((port * 100 / total_ports))
-        local progress_bar=$(seq -s "█" "$progress" | tr -d '[:digit:]')
-        printf "\rПорт %d: [%-100s] %d%%" "$port" "$progress_bar" "$progress"
+        (echo >/dev/tcp/"$host"/"$port") &>/dev/null && result="open" || result="closed"
+        echo -ne "\rПорт: $port ($result)"
       }
     done
   
@@ -268,13 +268,16 @@ function full_port_scan() {
   
     for port in $(seq "$start_port" "$end_port"); do
       {
-        echo >/dev/tcp/"$host"/"$port" &>/dev/null
-      } || {
-        echo "Найден порт: $port"
+        (echo >/dev/tcp/"$host"/"$port") &>/dev/null && result="open" || result="closed"
+        if [ "$result" == "open" ]; then
+          echo "Найден порт: $port ($result)"
+        fi
       }
     done
   }
   
+ 
+
   
 
   
