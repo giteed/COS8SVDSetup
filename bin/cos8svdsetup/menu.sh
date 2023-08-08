@@ -7,7 +7,7 @@
 # --> Эта ссылка на функцию проверяет, запущен-ли скрипт с правами суперпользователя (root) в Linux.
 . /root/vdsetup.2/bin/functions/run_as_root.sh ;
 
-#tor_port_ch ;
+tor_port_ch ;
  
 check_os_compatibility() {
 	expected_os="CentOS Stream"
@@ -48,7 +48,7 @@ check_os_compatibility() {
 }
 
 # Вызываем функцию
-#check_os_compatibility ;
+check_os_compatibility ;
 
 ttb=$(echo -e "
  Перед установкой рекомендуется обновить ПО сервера: # dnf update
@@ -112,7 +112,6 @@ print_menu() {
 	echo -e
 	echo -e " 15. Пустой шаблон."
 	echo -e
-	#full_tcp_port_scan
 	echo -e "  0. Выход"
 	echo -e 
    

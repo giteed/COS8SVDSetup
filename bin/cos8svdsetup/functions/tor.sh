@@ -255,7 +255,7 @@ function wgetrc_config_revert() {
     local output_file="/tmp/full_port_scan-tcp.txt"
     echo -e "\n Процесс сканирования 65535 tcp портов занимает полторы минуты, начать?\n Прервать процесс без закрытия активной сессии shell будет затруднительно!"
     press_enter_to_continue_or_ESC_or_any_key_to_cancel;
-    echo -e " Начался процесс сканирования...\n Ctr + C в этом случае не поможет!"
+    echo -e " Начался процесс сканирования...\n Ctr + C в этом случае не поможет!\n"
     echo -n "   Порт: "
   
     for port in $(seq "$start_port" "$end_port"); do
