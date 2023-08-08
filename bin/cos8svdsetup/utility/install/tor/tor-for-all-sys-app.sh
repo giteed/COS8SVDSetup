@@ -25,19 +25,19 @@ function lang_def() {
 function msg7() {
 #
 echo ;
-ttb=$(echo -e "$( python2 /root/vdsetup.2/bin/utility/toriptables2.py -h 2>/dev/null)"  ) && lang="help" && bpn_p_lang && return ; } ; msg7=(msg7)	
+ttb=$(echo -e "$( python2 /root/vdsetup.2/bin/utility/install/tor/toriptables2.py -h 2>/dev/null)"  ) && lang="help" && bpn_p_lang && return ; } ; msg7=(msg7)	
 
 
 function msg8() {
 #echo ;
-ttb=$(echo -e "$( python2 /root/vdsetup.2/bin/utility/toriptables2.py -f 2>/dev/null )") && lang=".git" && bpn_p_lang && tor_check_ip && return ; } ; msg8=(msg8)	
+ttb=$(echo -e "$( python2 /root/vdsetup.2/bin/utility/install/tor/toriptables2.py -f 2>/dev/null )") && lang=".git" && bpn_p_lang && tor_check_ip && return ; } ; msg8=(msg8)	
 
 
 function msg9() {
 	#echo ;
 	tor_check_ip ;
 	
-	#ttb=$(echo -e "$( python2 /root/vdsetup.2/bin/utility/toriptables2.py -i 2>/dev/null )") && lang=".git" && bpn_p_lang && echo && ( ttb=$(echo -e " # curl -s 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s 2ip.ua ) && lang_nix && bpn_p_lang ; ) && (echo) ; ( ttb=$(echo -e " # curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua ) && lang_nix && bpn_p_lang ; ) && return ; 
+	#ttb=$(echo -e "$( python2 /root/vdsetup.2/bin/utility/install/tor/toriptables2.py -i 2>/dev/null )") && lang=".git" && bpn_p_lang && echo && ( ttb=$(echo -e " # curl -s 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s 2ip.ua ) && lang_nix && bpn_p_lang ; ) && (echo) ; ( ttb=$(echo -e " # curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua ) && lang_nix && bpn_p_lang ; ) && return ; 
 	} ; msg9=(msg9)	
 
 function msg10() {
@@ -47,7 +47,7 @@ function msg10() {
 		
 		
 		#echo ;
-		#( python2 /root/vdsetup.2/bin/utility/toriptables2.py -r ) ; (echo) ; ( ttb=$(echo -e " # curl -s 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s 2ip.ua ) && lang_nix && bpn_p_lang ; ) && (echo) ; ( ttb=$(echo -e " # curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua ) && lang_nix && bpn_p_lang ; )
+		#( python2 /root/vdsetup.2/bin/utility/install/tor/toriptables2.py -r ) ; (echo) ; ( ttb=$(echo -e " # curl -s 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s 2ip.ua ) && lang_nix && bpn_p_lang ; ) && (echo) ; ( ttb=$(echo -e " # curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua ) && lang_nix && bpn_p_lang ; )
 	} ; msg10=(msg10)
 
 
@@ -93,18 +93,18 @@ function msg6() {
 
 function msg7() {
 	#echo ;
-	ttb=$(echo -e "$( python2 /root/vdsetup.2/bin/utility/toriptables2.py -h 2>/dev/null )") && lang="help" && bpn_p_lang && return ; } ; msg7=(msg7)	
+	ttb=$(echo -e "$( python2 /root/vdsetup.2/bin/utility/install/tor/toriptables2.py -h 2>/dev/null )") && lang="help" && bpn_p_lang && return ; } ; msg7=(msg7)	
 
 
 function msg8() {
 	#echo ;
-	ttb=$(echo -e "$( python2 /root/vdsetup.2/bin/utility/toriptables2.py -f 2>/dev/null )") && lang=".git" && bpn_p_lang && tor_check_ip && return ; } ; msg8=(msg8)	
+	ttb=$(echo -e "$( python2 /root/vdsetup.2/bin/utility/install/tor/toriptables2.py -f 2>/dev/null )") && lang=".git" && bpn_p_lang && tor_check_ip && return ; } ; msg8=(msg8)	
 
 function msg9() {
 	#echo ;
 	tor_check_ip ;
 	
-	#ttb=$(echo -e "$( python2 /root/vdsetup.2/bin/utility/toriptables2.py -i 2>/dev/null )") && lang=".git" && bpn_p_lang && echo && ( ttb=$(echo -e " # curl -s 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s 2ip.ua ) && lang_nix && bpn_p_lang ; ) && (echo) ; ( ttb=$(echo -e " # curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua ) && lang_nix && bpn_p_lang ; ) && return ; 
+	#ttb=$(echo -e "$( python2 /root/vdsetup.2/bin/utility/install/tor/toriptables2.py -i 2>/dev/null )") && lang=".git" && bpn_p_lang && echo && ( ttb=$(echo -e " # curl -s 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s 2ip.ua ) && lang_nix && bpn_p_lang ; ) && (echo) ; ( ttb=$(echo -e " # curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua ) && lang_nix && bpn_p_lang ; ) && return ; 
 	} ; msg9=(msg9)	
 
 function msg10() {
@@ -114,7 +114,7 @@ function msg10() {
 		
 		
 		#echo ;
-		#( python2 /root/vdsetup.2/bin/utility/toriptables2.py -r ) ; (echo) ; ( ttb=$(echo -e " # curl -s 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s 2ip.ua ) && lang_nix && bpn_p_lang ; ) && (echo) ; ( ttb=$(echo -e " # curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua ) && lang_nix && bpn_p_lang ; )
+		#( python2 /root/vdsetup.2/bin/utility/install/tor/toriptables2.py -r ) ; (echo) ; ( ttb=$(echo -e " # curl -s 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s 2ip.ua ) && lang_nix && bpn_p_lang ; ) && (echo) ; ( ttb=$(echo -e " # curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua\n" ) && lang_nix && bpn_p_lang ; ) && ( ttb=$( curl -s --socks5 127.0.0.1:${tor_port} 2ip.ua ) && lang_nix && bpn_p_lang ; )
 	} ; msg10=(msg10)
 
 
@@ -128,7 +128,7 @@ function enable_tor_for_all_app_in_this_system() {
 	
 	${msg1} ; echo ;
 	
-	( ( python2 /root/vdsetup.2/bin/utility/toriptables2.py -l 2>/dev/null ) && echo && ttb=$( curl -s 2ip.ua ) && lang_nix && bpn_p_lang ) && ${msg4}  || return ;
+	( ( python2 /root/vdsetup.2/bin/utility/install/tor/toriptables2.py -l 2>/dev/null ) && echo && ttb=$( curl -s 2ip.ua ) && lang_nix && bpn_p_lang ) && ${msg4}  || return ;
 }
 
 # 2.0
@@ -136,15 +136,17 @@ function install_toriptables2_py() {
 	
 	${msg2} ;
 	
-	[[ -z $( ls /root/vdsetup.2/bin/utility/toriptables2.py ) ]] 2>/dev/null && cd /root/vdsetup.2/bin/utility/ && wget -q https://www.dropbox.com/s/14x9ggq5pzj679o/toriptables2.py && chmod +x toriptables2.py && ${msg6} && enable_tor_for_all_app_in_this_system ; 
+	[[ -z $( ls /root/vdsetup.2/bin/utility/install/tor/toriptables2.py ) ]] 2>/dev/null && cd /root/vdsetup.2/bin/utility/install/tor/ && wget -q https://www.dropbox.com/s/14x9ggq5pzj679o/toriptables2.py && chmod +x toriptables2.py && ${msg6} && enable_tor_for_all_app_in_this_system ; 
 }
+
+
 
 function l_load() {
-	( ${msg5} ; python2 /root/vdsetup.2/bin/utility/toriptables2.py -f &>/dev/null ) && (${msg7} ; echo ) && ( enable_tor_for_all_app_in_this_system ) || ( ${msg3} ; echo ; install_toriptables2_py ; )
+	( ${msg5} ; python2 /root/vdsetup.2/bin/utility/install/tor/toriptables2.py -f &>/dev/null ) && (${msg7} ; echo ) && ( enable_tor_for_all_app_in_this_system ) || ( ${msg3} ; echo ; install_toriptables2_py ; )
 }
 
 
-[[ -z $( ls /root/vdsetup.2/bin/utility/toriptables2.py ) ]] 2>/dev/null && install_toriptables2_py ;
+[[ -z $( ls /root/vdsetup.2/bin/utility/install/tor/toriptables2.py ) ]] 2>/dev/null && install_toriptables2_py ;
 [[ -z $( ls /usr/bin/python2 ) ]] 2>/dev/null && dnf install -y python2 &>/dev/null ; 
 
 
@@ -161,3 +163,4 @@ exit 0 ;
 
 # https://hackware.ru/?p=3138
 # toriptables2.py
+# https://kali.tools/?p=3278
