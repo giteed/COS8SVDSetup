@@ -276,6 +276,5 @@ function wgetrc_config_revert() {
     ttb=$(echo "$(cat $output_file)") && lang="nix" && bpn_lang ;
     ttb=$(echo "$(nmap localhost -sT -sU -p-)") && lang="nix" && bpn_lang ;
     fw_i_r ;
-    who ;
     tend ;
   }
