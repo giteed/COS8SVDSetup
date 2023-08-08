@@ -247,7 +247,6 @@ function wgetrc_config_revert() {
   
   
 
-#!/bin/bash
   
   function full_port_scan() {
     local host="127.0.0.1"
@@ -260,16 +259,20 @@ function wgetrc_config_revert() {
   
     for port in $(seq "$start_port" "$end_port"); do
       {
-        (echo >/dev/tcp/"$host"/"$port") &>/dev/null && result="open" || result="closed"
+        (echo >/dev/tcp/"$host"/"$port") &>/dev/null && result="\e[1;32mopen\e[0m" || result="\e[0mclosed\e[0m"
         echo -ne "\rПорт: $port ($result)"
         if [ "$result" == "open" ]; then
           echo "$port" >> "$output_file"
+          sleep 2
         fi
       }
     done
   
     echo -e "\n\nПолное сканирование завершено. Открытые порты сохранены в файл: $output_file"
   }
+  
+  
+
   
  
 
