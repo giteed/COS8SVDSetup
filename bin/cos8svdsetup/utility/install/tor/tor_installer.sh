@@ -278,7 +278,7 @@
 	function tor_already_installed_MSG() {
 		
 		# Функция cash_var_sh_150_start_and_stop включает и отключает кеширование ip адреса тора и версии vdsetup на 150 секунд.
-		cash_var_sh_150_start_and_stop ;
+		#cash_var_sh_150_start_and_stop ;
 		
 		echo -e "\n $(black_U23A7 ) " ;
 		echo -e " $(green_1     )${GREEN} TOR Socks5 ${NC}и${GREEN} Privoxy ${NC}INSTALLER "
