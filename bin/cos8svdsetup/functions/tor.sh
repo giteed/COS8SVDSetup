@@ -255,12 +255,12 @@ function wgetrc_config_revert() {
     local output_file="/tmp/full_port_scan-tcp.txt"
     echo 
     echo " Начался процесс сканирования..."
-    echo -n "   Порт: "${green}""
+    echo -n "   Порт: "
   
     for port in $(seq "$start_port" "$end_port"); do
       {
           (echo >/dev/tcp/"$host"/"$port") &>/dev/null && result="open" || result="closed"
-          echo -ne "\r   Порт: $port ($result)     "
+          echo -ne "\r   Порт: $port ($result)             "
         if [ "$result" == "open" ]; then
           echo "$port" >> "$output_file"
           cat $output_file 
