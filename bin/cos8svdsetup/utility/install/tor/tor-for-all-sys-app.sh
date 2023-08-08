@@ -5,7 +5,7 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-echo test 123;
+echo "";
 
 debug_stat=0 # дебаг выключен, чтобы включить измените на 1
 
