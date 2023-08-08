@@ -259,20 +259,23 @@ function wgetrc_config_revert() {
   
     for port in $(seq "$start_port" "$end_port"); do
       {
-        (echo >/dev/tcp/"$host"/"$port") &>/dev/null && result="open" || result="closed"
-        echo -ne "\r   Порт: $port ($result)     "
+          (echo >/dev/tcp/"$host"/"$port") &>/dev/null && result="open" || result="closed"
+          echo -ne "\r   Порт: $port ($result)     "
         if [ "$result" == "open" ]; then
           echo "$port" >> "$output_file"
-          bat $output_file
+          echo "${green}";
+          cat $output_file 
           #sleep 3 ;
+        else 
+          echo "${red}"
         fi
       }
     done
   
-    echo -e "\n\n Полное сканирование завершено. Открытые порты сохранены в файл: $output_file"
-    bat $output_file
+    echo -e "${cr}\n\n Полное сканирование завершено. Открытые порты сохранены в файл: $output_file\n"
+    ttb=$(echo "$(cat $output_file)") && lang="nix" && bpn_lang
   }
-  
+ 
  
 
   
