@@ -249,7 +249,7 @@ function wgetrc_config_revert() {
 function full_port_scan() {
     local host="127.0.0.1"
     local start_port=1
-    local end_port=65535
+    local end_port=92000
     local total_ports=$((end_port - start_port + 1))
     local step=$((total_ports / 50))  # Количество портов для каждого символа в прогресс-баре
     
