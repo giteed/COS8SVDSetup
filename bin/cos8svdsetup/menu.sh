@@ -325,7 +325,8 @@ handle_option() {
 			;;
 		13a | nmapp)
 			echo -e " Вы выбрали Опцию 13a"
-			echo -e " --  13a NMAP helper с примерами и небольшой справкой подсказок. # nmapp"
+			echo -e " --  13a NMAP helper с примерами и небольшой справкой подсказок. # nmapp [домен/ip]"
+			nmapp localhost ;
 			echo -e 
 			;;
 
