@@ -251,20 +251,32 @@ function full_port_scan() {
     local start_port=1
     local end_port=65535
     local total_ports=$((end_port - start_port + 1))
-    local progress_chars="▁▂▃▄▅▆▇█"
   
-    echo -ne "Начинается полное сканирование портов на $host... [                    ]\r"
-    
+    echo "Начался процесс сканирования..."
+  
     for port in $(seq "$start_port" "$end_port"); do
       {
         echo >/dev/tcp/"$host"/"$port" &>/dev/null
       } || {
-        echo -ne "[${progress_chars:((port * 8 / total_ports))}] Порт $port    \r"
+        local progress=$((port * 100 / total_ports))
+        local progress_bar=$(seq -s "█" "$progress" | tr -d '[:digit:]')
+        printf "\rПорт %d: [%-100s] %d%%" "$port" "$progress_bar" "$progress"
       }
     done
-    
-    echo -e "\nПолное сканирование завершено."
+  
+    echo -e "\n\nПолное сканирование завершено.\n"
+  
+    for port in $(seq "$start_port" "$end_port"); do
+      {
+        echo >/dev/tcp/"$host"/"$port" &>/dev/null
+      } || {
+        echo "Найден порт: $port"
+      }
+    done
   }
+  
+  
+
   
   
 
