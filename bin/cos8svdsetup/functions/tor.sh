@@ -268,6 +268,7 @@ function wgetrc_config_revert() {
     done
   
     echo -e "\n\n Полное сканирование завершено. Открытые порты сохранены в файл: $output_file"
+    bat $output_file
   }
   
  
