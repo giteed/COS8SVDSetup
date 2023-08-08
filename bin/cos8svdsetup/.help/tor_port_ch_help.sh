@@ -6,7 +6,7 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-echo -e "
+ttb=$(echo -e "
 
 Эта функция, предназначена для определения доступных портов Tor на локальной машине и сохранения этой информации в переменной tor_port. 
 1. function tor_port_ch() {: Это объявление функции с именем tor_port_ch.
@@ -24,11 +24,11 @@ function tor_port_ch() {
 
 	for test in 9150 9050 ''; do
 	  { >/dev/tcp/127.0.0.1/$test; } 2>/dev/null && { tor_port="$test"; break; }
-	  [ -z "$test" ] && echo -e "\n Нет открытого Tor порта (9150 9050).\n"
+	  [ -z \"$test\" ] && echo -e \"\n Нет открытого Tor порта (9150 9050).\n\"
 	done
   }
 
 tor_port_ch
 
 
-"
+") && lang=bash && bpn_p_lang ;
