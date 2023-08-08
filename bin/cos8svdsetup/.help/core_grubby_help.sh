@@ -67,7 +67,7 @@ function core_grubby_help() {
       ttb=$(echo -en " Пример вывода: "$index"  ") && lang_nix && bpn_p_lang ; ttb="" ;
     echo ;
     
-  ttb=$(echo -e "
+   ttb=$(echo -e "
    ⎧ 3) Теперь, когда вы знаете индекс ядра, с которого хотите загрузиться, 
    | используйте команду: 
    | # grubby --set-default-index=[kernel-entry-index]
@@ -113,6 +113,6 @@ function core_grubby_help() {
      # reboot
      ") && lang_nix && bpn_p_lang ; ttb="" ;
    
-  exit 0
-  
-}
+   exit 0
+   
+  }
