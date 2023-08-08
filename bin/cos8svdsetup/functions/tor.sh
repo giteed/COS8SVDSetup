@@ -262,8 +262,10 @@ for port in $(seq "$start_port" "$end_port"); do
         (echo >/dev/tcp/"$host"/"$port") &>/dev/null && result="\e[1;32mopen\e[0m" || result="\e[0mclosed\e[0m"
         echo -ne "\rПорт: $port ($result)"
         if [ "$result" == "open" ]; then
+          
+          sleep 10
           echo "$port" >> "$output_file"
-          sleep 2
+          
         fi
       }
     done
