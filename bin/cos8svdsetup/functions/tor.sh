@@ -265,8 +265,6 @@ function wgetrc_config_revert() {
           echo "$port" >> "$output_file"
           cat $output_file 
           #sleep 3 ;
-        else 
-          "${red}"
         fi
       }
     done
