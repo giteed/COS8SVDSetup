@@ -320,7 +320,7 @@ handle_option() {
 		13 | full_tcp_port_scan)
 			echo -e " Вы выбрали Опцию 13"
 			echo -e " 13. Простое сканирование всех localhost TCP/UDP 65535 портов\n с выводом во временный файл. # full_tcp_port_scan и # fw_i_r"
-			full_tcp_port_scan && who ;
+			full_tcp_port_scan ;
 			echo -e 
 			;;
 		13a | nmapp)
