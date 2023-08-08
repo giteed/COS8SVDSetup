@@ -249,18 +249,25 @@ function wgetrc_config_revert() {
 function full_port_scan() {
     local host="127.0.0.1"
     local start_port=1
-    local end_port=92000
+    local end_port=65535
     local total_ports=$((end_port - start_port + 1))
-    local step=$((total_ports / 50))  # Количество портов для каждого символа в прогресс-баре
-    
+    local progress_chars="▁▂▃▄▅▆▇█"
+  
     echo "Начинается полное сканирование портов на $host..."
     
-    # Используем pv для отображения прогресс-бара
-    seq "$start_port" "$end_port" | pv -l -s "$total_ports" | \
-      xargs -I {} bash -c 'echo >/dev/tcp/"'"$host"'"/"{}" &>/dev/null && echo "Порт {} открыт"'
+    for port in $(seq "$start_port" "$end_port"); do
+      {
+        echo >/dev/tcp/"$host"/"$port" &>/dev/null && echo "Порт $port открыт"
+      } || {
+        echo -n "${progress_chars:((port * 8 / total_ports))}"  # Выводим символ прогресса
+      }
+    done
     
     echo "Полное сканирование завершено."
   }
+  
+  
+
   
   
 
