@@ -38,15 +38,15 @@ tor_port будет присвоено значение этого порта. �
 
 
 
-# function tor_port_ch() {
-#
-#	for test in 9150 9050 ''; do
-#	  { >/dev/tcp/127.0.0.1/$test; } 2>/dev/null && { tor_port="$test"; break; }
-#	  [ -z \"$test\" ] && echo -e \"\n Нет открытого Tor порта (9150 9050).\n\"
-#	done
-#  }
+: function tor_port_ch() {
+:
+:	for test in 9150 9050 ''; do
+:	  { >/dev/tcp/127.0.0.1/$test; } 2>/dev/null && { tor_port="$test"; break; }
+:	  [ -z \"$test\" ] && echo -e \"\n Нет открытого Tor порта (9150 9050).\n\"
+:	done
+:  }
 
-# tor_port_ch
+: tor_port_ch
 
 
 ") && lang=bash && bpn_p_lang ;
