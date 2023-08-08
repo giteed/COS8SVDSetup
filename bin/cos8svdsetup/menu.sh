@@ -48,7 +48,7 @@ check_os_compatibility() {
 }
 
 # Вызываем функцию
-check_os_compatibility ;
+#check_os_compatibility ;
 
 ttb=$(echo -e "
  Перед установкой рекомендуется обновить ПО сервера: # dnf update
