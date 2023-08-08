@@ -3,12 +3,11 @@
 
 
 function core_grubby_help() {
-	  
-	  
-	ttb=$(echo -e "\n Список доступных в системе ядер:" ) && lang=d && bpn_p_lang ; ttb="" ; echo ;
-	  ls -l /boot/vmlinuz-* | grep -Po "(?<=vmlinuz-)[^-]+(-\S+)?"
-	  
-  ttb=$(echo -e " 
+    
+   ttb=$(echo -e "\n Список доступных в системе ядер:" ) && lang=d && bpn_p_lang ; ttb="" ; echo ;
+   ls -l /boot/vmlinuz-* | grep -Po "(?<=vmlinuz-)[^-]+(-\S+)?"
+   
+   ttb=$(echo -e " 
    ⎧ Если ядро уже обновлялось и WireGuard уже был установлен 
    | и работал нормально, а теперь перестал, возможно, что 
    | загрузка системы снова переключилась на старое ядро.
@@ -19,10 +18,10 @@ function core_grubby_help() {
      " ) && lang=d && bpn_p_lang ; ttb="" ;
      
    
- 	  press_anykey ;
-	  
-	ttb=$(echo -e " 
-	  
+    press_anykey ;
+   
+  	ttb=$(echo -e " 
+    
    ⎧ Чтобы переключить загрузку ядра на более свежее выполните 
    | следующие действия вручную:
    |
@@ -43,7 +42,7 @@ function core_grubby_help() {
     ls -l /boot/vmlinuz-*
     core6=$(ls -l /boot/vmlinuz-* | grep -e 6.2 | awk '{print $9}')
     
-  echo ;
+    echo ;
     ttb=$(echo -e " 
    ⎧ Каждая строка списка содержит информацию об одном ядре, включая права доступа,
    | владельца и группу, размер, дату изменения и имя файла. 
