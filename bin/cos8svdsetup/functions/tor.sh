@@ -244,3 +244,28 @@ function wgetrc_config_revert() {
     cp -a /etc/wgetrc_old /etc/wgetrc && OK_wgetrc_old || not_found_wgetrc_old_MSG ;
    
   }
+  
+  
+  function full_port_scan() {
+    local host="127.0.0.1"
+    local start_port=1
+    local end_port=65535
+    local progress="["       # Строка для графического статусбара
+    local total_ports=$((end_port - start_port + 1))
+    local step=$((total_ports / 50))  # Количество портов для каждого символа в статусбаре
+    
+    echo "Начинается полное сканирование портов на $host..."
+    
+    for ((port = start_port; port <= end_port; port++)); do
+      (echo >/dev/tcp/"$host"/"$port") > /dev/null 2>&1 && echo -n "." || echo -n " "
+      
+      if ((port % step == 0)); then
+        progress+="="
+      fi
+    done
+    
+    echo -e "\nПолное сканирование завершено."
+    echo "Прогресс: $progress]"
+  }
+  
+  
