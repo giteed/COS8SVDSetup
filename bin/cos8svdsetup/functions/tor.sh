@@ -276,5 +276,8 @@ function wgetrc_config_revert() {
     ttb=$(echo "$(cat $output_file)") && lang="nix" && bpn_lang ;
     ttb=$(echo "$(nmap localhost -sT -sU -p-)") && lang="nix" && bpn_lang ;
     fw_i_r ;
+    
+    echo -e "\n/usr/bin/who -H\n" &&  who -H | bat  --paging=never -l c -p && wport ssh && ( ttb=$( echo -e "\n ⎧ Убить Процесс по PID: # killl \"PID\" \n ⎩ Справка: # killl -h" ) && lang="nix" && bpn_p_lang) && etc_passwd ;
+    
     tend ;
   }
