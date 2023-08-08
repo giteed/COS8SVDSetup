@@ -253,18 +253,21 @@ function full_port_scan() {
     local total_ports=$((end_port - start_port + 1))
     local progress_chars="▁▂▃▄▅▆▇█"
   
-    echo "Начинается полное сканирование портов на $host..."
+    echo -ne "Начинается полное сканирование портов на $host... [                    ]\r"
     
     for port in $(seq "$start_port" "$end_port"); do
       {
-        echo >/dev/tcp/"$host"/"$port" &>/dev/null && echo "Порт $port открыт"
+        echo >/dev/tcp/"$host"/"$port" &>/dev/null
       } || {
-        echo -n "${progress_chars:((port * 8 / total_ports))}"  # Выводим символ прогресса
+        echo -ne "[${progress_chars:((port * 8 / total_ports))}] Порт $port    \r"
       }
     done
     
-    echo "Полное сканирование завершено."
+    echo -e "\nПолное сканирование завершено."
   }
+  
+  
+
   
   
 
