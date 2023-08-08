@@ -266,7 +266,7 @@ function wgetrc_config_revert() {
           cat $output_file 
           #sleep 3 ;
         else 
-          echo "${red}"
+          "${red}"
         fi
       }
     done
