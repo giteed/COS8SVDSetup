@@ -1,7 +1,6 @@
 #!/bin/bash
 
 function dtfex_help() {
-
 lang=cr ;
 ttb=$(echo -e "
 \"dtfex\" - \"качалка файлов\" с файлообменников
