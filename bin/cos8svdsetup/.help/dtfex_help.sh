@@ -4,7 +4,6 @@ function dtfex_help() {
 
 lang=cr ;
 ttb=$(echo -e "
-
   После запуска срипта data_processing.sh в дирректории /root/ 
   будет создана папка /temp (если она не существует), а в ней 
   будет создан файл input.txt - в этот файл нужно поместить URL 
