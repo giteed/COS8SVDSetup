@@ -1,8 +1,10 @@
 #!/bin/bash
 
-# --> Проверка существования файла репозитория /etc/yum.repos.d/epel.repo, 
-# --> который является индикатором его наличия. 
+
 function epel_repository_Check_or_install() {
+  # --> Проверка существования файла репозитория /etc/yum.repos.d/epel.repo, 
+  # --> который является индикатором его наличия. 
+    
 # Определяется название репозитория и помещается в переменную yum_epel
       yum_epel=epel.repo 
       
@@ -31,9 +33,11 @@ function epel_repository_Check_or_install() {
 }
 
 
-# --> Проверка существования файла bat, 
-# --> который является индикатором его наличия. 
+
 function bat_Check_or_install() {
+  # --> Проверка существования файла bat, 
+  # --> который является индикатором его наличия. 
+    
 # Определяется название репозитория и помещается в переменную bat
       bat=bat 
       
@@ -63,10 +67,12 @@ function bat_Check_or_install() {
 }
 
 
-# Проверяет файл .screenrc на существование, а так же
-# на присутствие в нем записи необходимой для работы колеса мышки в окне терминала. 
-# После добавления этой записи в .screenrc проматывать содержимое экрана в screen станет гораздо удобнее.
+
 function ch_screen() {
+  # -->  Проверяет файл .screenrc на существование, а так же
+  # -->  на присутствие в нем записи необходимой для работы колеса мышки в окне терминала. 
+  # -->  После добавления этой записи в .screenrc проматывать содержимое экрана в screen станет гораздо удобнее.
+    
   ttb=$(echo -e "\n ⎧ Проверяем файл /root/.screenrc на существование, а так же на присутствие\n | в нем записи необходимой для работы колеса мышки в окне терминала.\n | После добавления этой записи в .screenrc проматывать содержимое экрана\n ⎩ в screen станет удобнее! \n" ) && lang=cr && bpn_p_lang ; 
   
   if 
@@ -80,15 +86,17 @@ function ch_screen() {
 }
 
 
-# Nano (syntax):
-# Выводит NanoSyntaxOK, так как cat нашел и открыл /root/.nanorc
+
 function NanoSyntaxOK() {
+  # -->  Nano (syntax):
+  # -->  Выводит NanoSyntaxOK, так как cat нашел и открыл /root/.nanorc
       echo -e " ($( green_tick )) - Nano syntax ${RED}    | $( green_OK )" ;
 }
 
 
-# Установка из дропбокса архива nano-syntax, так как cat получает пустое значение, потому что /root/.nanorc нет или он пуст
+
 function NanoSyntaxIN() {
+  # -->  Установка из дропбокса архива nano-syntax, так как cat получает пустое значение, потому что /root/.nanorc нет или он пуст
     ttb=$(echo -e "\n ⎧ Скачиваю / распаковываю и копирую содержимое архива:\n | nano-syntax.tar.gz в /usr/share/ \n | Копирую /tmp/installer/nano-syntax/.nanorc \n ⎩ в: /root/ \n") && lang="nix" && bpn_p_lang ;
     
       ( ( mkdir -p /tmp/installer && cd /tmp/installer && wget https://www.dropbox.com/s/f6hceijljbprvny/nano-syntax.tar.gz &>/dev/null && tar -xzvf nano-syntax.tar.gz &>/dev/null && rm -f nano-syntax.tar.gz && cd /tmp/installer/nano-syntax/ && rm -rf /usr/share/nano/ && cp -r --force /tmp/installer/nano-syntax/nano/ /usr/share/ && cp -n /tmp/installer/nano-syntax/.nanorc /root/ ) && ttb=$(echo -e "\n ⎧ Настройка nano-syntax завершена\n ⎩ ($( green_tick )) - Nano syntax $( green_OK )") && lang=help && bpn_p_lang ) || ttb=$(echo -en "\n Функция NanoSyntaxIN завешилась с ошибкой: " && error_MSG ; ) && lang=help && bpn_p_lang ;
@@ -96,28 +104,32 @@ function NanoSyntaxIN() {
 }
 
 
-# Проверка или установка Nano (syntax)
+
 function NanoSyntaxCH(){
+  # -->  Проверка или установка Nano (syntax)
     [[ -z $( cat /root/.nanorc ) ]] 2>/dev/null && NanoSyntaxIN || NanoSyntaxOK ;
 }
 
 
-# Установка fzf
+
 function fzfIN() { 
+  # -->  Установка fzf
     ttb=$(echo -e "\n |  Установка fzf. ") && lang=nix && bpn_p_lang ;
     
     ( ( git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install --all ) ) && ( echo -e "\n ⎧ ${GREEN}Установка fzf завершена${NC}" && echo -e " | ($( green_tick )) - fzf version $($HOME/.fzf/bin/fzf --version)" && ( echo -e " | Для обновления настроек введите:\n ⎩ ${RED}#${NC} source ${CYAN}~/.bashrc\n${NC}" ) ) || ttb=$(echo -en " | Функция fzfIN завешилась с ошибкой: " && error_MSG ) && lang=help && bpn_p_lang ;
     
 }  
 
-# Проверка на наличие fzf или установка fzf     
+    
 function fzfCH() {
+  # -->  Проверка на наличие fzf или установка fzf 
     (( [[ -z $(fzf --version) ]] ) &>/dev/null && fzfIN ) || ( ttb=$(echo -e "\n | (fzf version $(fzf --version)" && lang=cr && bpn_p_lang )) ;
  }
 
 
-# Проверяет или устанавливает nginx repo
+
 function nginx_repo_Check_or_install() {
+  # -->  Проверяет или устанавливает nginx repo
     
     yum_nginx=nginx.repo
     
@@ -139,28 +151,31 @@ function nginx_repo_Check_or_install() {
    
 
 function ramfetch_install() {
+  # -->  Установка ramfetch
      /root/vdsetup.2/bin/utility/install/ramfetch.sh install ;
 }
    
 function ramfetch_remove() {
+  # -->  Удаление ramfetch
      /root/vdsetup.2/bin/utility/install/ramfetch.sh remove ;
 }
 
 function snap_install() {
-  # Installing snapd
+  # -->  Установка snapd
       /root/vdsetup.2/bin/utility/install/snap_install.sh ;
 }
 
 function core_ch_for_WireGuard() {
+  # -->  Помощь по исправлению ошибки с ядром ОС для работы VPN WireGuard
       /root/vdsetup.2/bin/utility/install/vpn/core_ch_for_WireGuard.sh ;
 }
 
 function webmin_install() {
-    # Webmin install
+    # -->  Установка/проверка Webmin
      /root/vdsetup.2/bin/utility/install/web-panels/webmin_install.sh ;
 }
 
 function bat_install() {
-    # bat install
+    # -->  Установка/проверка Bat
      /root/vdsetup.2/bin/utility/install/bat_install.sh ;
 }
