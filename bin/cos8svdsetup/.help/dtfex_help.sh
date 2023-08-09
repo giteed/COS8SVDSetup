@@ -35,7 +35,7 @@ ttb=$(echo -e "
   Вот их список он будет дополняться в файле:
   /utility/install/downloader_tor_fex/scriptsd/list_fex.txt
   
-") && bpn_p_lang ;
+" ) && lang="nix" && bpn_p_lang  ;
 
 press_anykey ;
 dtfex;
