@@ -38,6 +38,7 @@ ttb=$(echo -e "
 ") && bpn_p_lang ;
 
 press_anykey ;
+dtfex;
 
 }
 

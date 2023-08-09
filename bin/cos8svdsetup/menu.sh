@@ -433,7 +433,6 @@ handle_option() {
 			echo -e " -- u5 \"dtfex\" - \"качалка файлов\" с файлообменников\n    Основным достоинством которой является скачивание этих файлов через сеть TOR.\n    # dtfex и # dtfex_help"
 			echo -e 
 			dtfex_help ;
-			dtfex ;
 			;;
 		0)
 			echo -e " До свидания! https://github.com/giteed/COS8SVDSetup"
