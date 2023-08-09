@@ -147,9 +147,20 @@ function ramfetch_remove() {
 }
 
 function snap_install() {
+  # Installing snapd
       /root/vdsetup.2/bin/utility/install/snap_install.sh ;
 }
 
 function core_ch_for_WireGuard() {
       /root/vdsetup.2/bin/utility/install/vpn/core_ch_for_WireGuard.sh ;
+}
+
+function webmin_install() {
+    # Webmin install
+     /root/vdsetup.2/bin/utility/install/web-panels/webmin_install.sh ;
+}
+
+function bat_install() {
+    # bat install
+     /root/vdsetup.2/bin/utility/install/bat_install.sh ;
 }
