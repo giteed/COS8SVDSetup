@@ -1,5 +1,4 @@
 #!/bin/bash
-# Source global definitions
 
 
 function core_grubby_help() {

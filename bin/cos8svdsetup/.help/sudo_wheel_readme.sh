@@ -1,10 +1,4 @@
-
-
 #!/bin/bash
-
-# Source global definitions
-# --> Прочитать настройки из /root/.bashrc
-. /root/.bashrc
 
 #lang_x ;
 lang=$1 ;

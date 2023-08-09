@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Source global definitions
-# --> Прочитать настройки из /root/.bashrc
-. /root/.bashrc
-
 function rpm_readme() {
 
 lang=$1 ;
