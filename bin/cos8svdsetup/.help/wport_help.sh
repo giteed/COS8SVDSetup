@@ -4,7 +4,6 @@ function wport_help() {
 
 lang=cr ;
 ttb=$(echo -e "
-
  Используйте так:
   wport \"keyword\" or \":port\"
   
