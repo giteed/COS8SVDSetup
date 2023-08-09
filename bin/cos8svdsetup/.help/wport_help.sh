@@ -4,6 +4,22 @@ function wport_help() {
 
 lang=cr ;
 ttb=$(echo -e "
+
+ Используйте так:
+  wport \"keyword\" or \":port\"
+  
+ Примеры:
+  wport all or \".\"
+  wport :22
+  wport :80
+  wport tcp
+  wport udp
+  wport LISTEN
+  wport ESTABLISHED
+  wport 127.0.0.1
+  
+ Пояснение команды которую использует утилита wport:
+  
  netstat -tulanp | grep [keyword]
 
  Эта команда выполняет поиск в выводе команды netstat -tulanp с использованием
@@ -32,18 +48,7 @@ ttb=$(echo -e "
  указанный аргумент. То есть, она будет искать строки, связанные с портами и процессами, 
  в которых встречается переданное значение.
 
- Используйте так:
-  wport \"keyword\" or \":port\"
-  
- Примеры:
-  wport all or \".\"
-  wport :22
-  wport :80
-  wport tcp
-  wport udp
-  wport LISTEN
-  wport ESTABLISHED
-  wport 127.0.0.1
+
   
 
 ") && bpn_p_lang ;
