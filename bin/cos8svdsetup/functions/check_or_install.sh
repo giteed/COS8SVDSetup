@@ -180,7 +180,7 @@ function bat_install() {
      /root/vdsetup.2/bin/utility/install/bat_install.sh ;
 }
 
-function dtfex() {
+function dtfex_help() {
     # -->   Качалка файлов с файло-обменников через сеть TOR
     /root/vdsetup.2/bin/.help/dtfex_help.sh ;
 }
