@@ -1,0 +1,19 @@
+
+Файлообменники с которыми предположительно может работать скрипт на скачивание файло (список будет дополняться новыми)
+
+https://anonfiles.com/
+https://bayfiles.com/
+https://myfile.is/
+https://myfile.is/
+https://megaupload.nz/
+https://zippysha.re/
+https://upvid.cc/
+https://rapidshare.nu/
+https://hotfile.io/
+https://vshare.is/
+https://filechan.org/
+https://letsupload.cc/
+https://share-online.is/
+https://openload.cc/
+
+https://tmpfiles.org/api
