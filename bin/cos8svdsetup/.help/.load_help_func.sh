@@ -12,3 +12,5 @@
 	. /root/vdsetup.2/bin/.help/wport_help.sh
 # --> Про менеджер пакетов Snapd - система управления приложениями для OS систем на базе Linux.
 	. /root/vdsetup.2/bin/.help/snap_install_help.sh
+# --> Качалка файлов с файло-обменников через сеть TOR
+	. /root/vdsetup.2/bin/.help/dtfex_help.sh
