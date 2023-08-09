@@ -2,7 +2,7 @@
 
 function rpm_readme() {
 
-lang=$1 ;
+lang=cr ;
 ttb=$(echo -e "
  ⎧ Установка и удаление репозиториев/пакетов (packages) на CentOS
  | 

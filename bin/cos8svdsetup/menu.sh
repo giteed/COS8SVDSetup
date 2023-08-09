@@ -364,7 +364,7 @@ handle_option() {
 		h2)
 			echo -e " Вы выбрали Опцию h2"
 			echo -e " -- h2 Установка и удаление репозиториев/пакетов (packages) на CentOS."
-			rpm_readme ;
+			rpm_readme cr;
 			echo -e 
 			;;
 		h3)
