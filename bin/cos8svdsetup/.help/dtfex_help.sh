@@ -34,10 +34,8 @@ input.txt, по этому храните ваши  URL в другом мест
 На момент написания скрипты было обнаружено несколько файлообменников 
 которые поддерживают данныый скрипт, по всей видимости начинка их ПО одинаковая.
 Вот их список он будет дополняться в файле:
-
-echo -e "$(cat /root/vdsetup.2/bin/cos8svdsetup/utility/install/downloader_tor_fex/scriptsd/list_fex.txt)"
-
   " ) && lang="nix" && bpn_p_lang
+echo -e "$(cat /root/vdsetup.2/bin/cos8svdsetup/utility/install/downloader_tor_fex/scriptsd/list_fex.txt)"
 
 press_anykey ;
 dtfex;
