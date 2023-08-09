@@ -166,7 +166,7 @@ function snap_install() {
 }
 
 function core_ch_for_WireGuard() {
-  # -->  Помощь по исправлению ошибки с ядром ОС для работы VPN WireGuard
+  # -->  Помощь и возможность автоматического исправлению ошибки с ядром ОС для работы VPN WireGuard
       /root/vdsetup.2/bin/utility/install/vpn/core_ch_for_WireGuard.sh ;
 }
 
