@@ -10,3 +10,5 @@
 	. /root/vdsetup.2/bin/.help/tor_port_ch_help
 # --> Про функцию, wport.
 	. /root/vdsetup.2/bin/.help/wport_help.sh
+# --> Про менеджер пакетов Snapd - система управления приложениями для OS систем на базе Linux.
+	. /root/vdsetup.2/bin/.help/snap_install_help.sh
