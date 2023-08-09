@@ -401,6 +401,7 @@ handle_option() {
 			echo -e " Вы выбрали Опцию u4"
 			echo -e " wport."
 			wport ;
+			wport .;
 			echo -e 
 			;;
 		0)
