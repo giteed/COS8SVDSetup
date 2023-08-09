@@ -114,7 +114,7 @@ print_menu() {
 	echo -e " -- u1 sis."
 	echo -e " -- u2 wis."
 	echo -e " -- u3 ww."
-	echo -e " -- u2 wport."
+	echo -e " -- u4 wport."
 	echo -e
 	echo -e "  h. Заметки."
 	echo -e " -- h1 Добавление пользователя в группу \"sudo (wheel)\"."
@@ -379,25 +379,25 @@ handle_option() {
 			echo -e " Пустой шаблон."
 			echo -e 
 			;;
-		u1)
+		u1 | sis )
 			echo -e " Вы выбрали Опцию u1"
 			echo -e " sis."
 			sis ;
 			echo -e 
 			;;
-		u2)
+		u2 | wis)
 			echo -e " Вы выбрали Опцию u2"
 			echo -e " wis."
 			wis ;
 			echo -e 
 			;;
-		u3)
+		u3 | ww)
 			echo -e " Вы выбрали Опцию u3"
 			echo -e " ww."
 			ww ;
 			echo -e 
 			;;
-		u4)
+		u4 | wport)
 			echo -e " Вы выбрали Опцию u4"
 			echo -e " wport."
 			wport ;
