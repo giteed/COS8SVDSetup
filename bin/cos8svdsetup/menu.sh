@@ -90,7 +90,7 @@ print_menu() {
 	echo -e " -- 7d Проверит работает-ли \"TOR\" покажет доп инфо # tor_check_ip"
 	echo -e " -- 7e Проверяет доступность \".onion\" адреса через \"TOR\" # tor_onion_test"
 	echo -e " -- 7f Перезапустит \"TOR\" и проверит его работу # tor_restart_status"
-	echo -e " -- 7g Проверит работу и \"ip\" или перезапустит если нет ответа от \"socks5\" # tor_check_ip_or_restart"
+	echo -e " -- 7g Проверит работу \"TOR\" и \"ip\" соединения или перезапустит если нет ответа от \"socks5\" # tor_check_ip_or_restart"
 	echo -e " -- 7h Проверит работу \"wget\" через \"socks5\" # tor_check_ip_wget"
 	echo -e " -- 7i Создает отдельный интерфейс с именем \"tor0\" # tor_Interface_unit_reinstall [intrface_name] (в разработке)"
 	echo -e " -- 7j Показывает статус \"tor\" интерфейса # status_tor_service"
@@ -270,7 +270,7 @@ handle_option() {
 			;;
 		7g | tor_check_ip_or_restart)
 			echo -e " Вы выбрали Опцию 7g"
-			echo -e " -- 7g Проверит работу и \"ip\" или перезапустит если нет ответа от \"socks5\" # tor_check_ip_or_restart"
+			echo -e " -- 7g Проверит работу \"TOR\" и \"ip\" соединения или перезапустит если нет ответа от \"socks5\" # tor_check_ip_or_restart"
 			echo -e 
 			tor_check_ip_or_restart ;
 			;;
