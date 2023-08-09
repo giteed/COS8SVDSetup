@@ -119,6 +119,8 @@ print_menu() {
 	echo -e "  h. Заметки."
 	echo -e " -- h1 Добавление пользователя в группу \"sudo (wheel)\"."
 	echo -e " -- h2 Установка и удаление репозиториев/пакетов (packages) на \"CentOS\"."
+	echo -e " -- h3 Про Файл \"/etc/passwd\" в \"Linux\""
+	
 	echo -e
 	echo -e "  0. Выход"
 	echo -e 
@@ -365,6 +367,13 @@ handle_option() {
 			rpm_readme ;
 			echo -e 
 			;;
+		h3)
+			echo -e " Вы выбрали Опцию h3"
+			echo -e " -- h3 Про Файл \"/etc/passwd\" в \"Linux\""
+			etc_passwd_help ;
+			echo -e 
+			;;
+
 		u)
 			echo -e " Вы выбрали Опцию u"
 			echo -e " Пустой шаблон."
