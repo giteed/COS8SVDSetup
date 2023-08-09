@@ -104,7 +104,7 @@ print_menu() {
 	echo -e " -- 8c Удаление \"vdsetup\" (не удаляет программы установленные скриптом vdsetup) # rm_vdsetup"
 	echo -e " -- 8d Обновление настроек из \".bashrc\", или введите: # source /root/.bashrc или # urc"
 	echo -e
-	echo -e "  9. Смена \"ssh\" порта."
+	echo -e "  9. Смена \"ssh\" порта на этом сервере для предотвращения брут атак."
 	echo -e " 10. Назначение имени хоста для этого сервера."
 	echo -e " 11. Создание/изменение \"SWAP\" без перезагрузки сервера."
 	echo -e " 12. Исправление ошибки \"Failed to set locale, defaulting to C.UTF-8\"  "
@@ -330,7 +330,7 @@ handle_option() {
 			;;
 		9)
 			echo -e " Вы выбрали Опцию 9"
-			echo -e " 9. Смена \"ssh\" порта."
+			echo -e " 9. Смена \"ssh\" порта на этом сервере для предотвращения брут атак."
 			/root/vdsetup.2/bin/utility/system/ssh_port_ch.sh ;
 			echo -e 
 			;;
