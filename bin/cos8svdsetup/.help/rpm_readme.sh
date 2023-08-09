@@ -4,13 +4,7 @@
 # --> Прочитать настройки из /root/.bashrc
 . /root/.bashrc
 
-# --> Прочитать настройки:
-. /root/bin/utility/.varfunc.sh &>/dev/null ;
-. /root/bin/utility/.css.sh &>/dev/null ;
-
-debug_message ;
-
-
+function rpm_readme() {
 
 lang=$1 ;
 ttb=$(echo -e "
@@ -81,18 +75,7 @@ ttb=$(echo -e "
  ⎩ На этом пока все, всем удачного адиминистрирования!
 ") && bpn_p_lang ;
 
-
-
-
-
-
-
-
-
-
-
-	
-	exit  0;
+}
 
 # https://github.com/http-party/http-server
 

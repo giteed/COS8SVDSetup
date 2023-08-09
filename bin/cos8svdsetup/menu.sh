@@ -106,11 +106,19 @@ print_menu() {
 	echo -e " 12. Исправление ошибки \"Failed to set locale, defaulting to C.UTF-8\"  "
 	echo -e
 	echo -e " 13. Простое сканирование всех localhost TCP/UDP 65535 портов с выводом во временный файл. # full_tcp_port_scan и # fw_i_r"
-	echo -e " --  13a NMAP helper с примерами и небольшой справкой подсказок. # nmapp [localhost]"
+	echo -e " -- 13a NMAP helper с примерами и небольшой справкой подсказок. # nmapp [localhost]"
 	echo -e
 	echo -e " 14. Пустой шаблон."
+    echo -e
+	echo -e "  u. Утилиты."
+	echo -e " -- u1 sis."
+	echo -e " -- u2 wis."
+	echo -e " -- u3 ww."
+	echo -e " -- u2 wport."
 	echo -e
-	echo -e " 15. Пустой шаблон."
+	echo -e "  h. Заметки."
+	echo -e " -- h1 Добавление пользователя в группу \"sudo (wheel)\"."
+	echo -e " -- h2 Установка и удаление репозиториев/пакетов (packages) на \"CentOS\"."
 	echo -e
 	echo -e "  0. Выход"
 	echo -e 
@@ -338,6 +346,52 @@ handle_option() {
 		15)
 			echo -e " Вы выбрали Опцию 15"
 			echo -e " Пустой шаблон."
+			echo -e 
+			;;
+		h)
+			echo -e " Вы выбрали Опцию h"
+			echo -e " Заметки."
+			echo -e 
+			;;
+		h1)
+			echo -e " Вы выбрали Опцию h1"
+			echo -e " -- h1 Добавление пользователя в группу sudo (wheel)."
+			sudo_wheel_readme ;
+			echo -e 
+			;;
+		h2)
+			echo -e " Вы выбрали Опцию h2"
+			echo -e " -- h2 Установка и удаление репозиториев/пакетов (packages) на CentOS."
+			rpm_readme ;
+			echo -e 
+			;;
+		u)
+			echo -e " Вы выбрали Опцию u"
+			echo -e " Пустой шаблон."
+			echo -e 
+			;;
+		u1)
+			echo -e " Вы выбрали Опцию u1"
+			echo -e " sis."
+			sis ;
+			echo -e 
+			;;
+		u2)
+			echo -e " Вы выбрали Опцию u2"
+			echo -e " wis."
+			wis ;
+			echo -e 
+			;;
+		u3)
+			echo -e " Вы выбрали Опцию u3"
+			echo -e " ww."
+			ww ;
+			echo -e 
+			;;
+		u4)
+			echo -e " Вы выбрали Опцию u4"
+			echo -e " wport."
+			wport ;
 			echo -e 
 			;;
 		0)
