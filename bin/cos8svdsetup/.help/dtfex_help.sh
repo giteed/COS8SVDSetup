@@ -4,7 +4,6 @@ function dtfex_help() {
 
 lang=cr ;
 ttb=$(echo -e "
-
  \"dtfex\" - \"качалка файлов\" с файлообменников\n    Основным достоинством которой является скачивание этих файлов через сеть TOR.\n    # dtfex и # dtfex_help"
 
   После запуска срипта data_processing.sh в дирректории /root/ 
@@ -34,8 +33,7 @@ ttb=$(echo -e "
   которые поддерживают данныый скрипт, по всей видимости начинка их ПО одинаковая.
   Вот их список он будет дополняться в файле:
   /utility/install/downloader_tor_fex/scriptsd/list_fex.txt
-  
-" ) && lang="nix" && bpn_p_lang  ;
+  " ) && lang="nix" && bpn_p_lang
 
 press_anykey ;
 dtfex;
