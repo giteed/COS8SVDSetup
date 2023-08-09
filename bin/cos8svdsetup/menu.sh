@@ -99,8 +99,8 @@ print_menu() {
 	echo -e "    \"tor\", \"privoxy\", \"firewalld\", \"wg-quick\", \"network\" - сервисы."
 	echo -e
 	echo -e "  8. Обновление \"vdsetup\" # vsync"
-	echo -e " -- 8a Обновляет скрипты из repo \"GitHub\" (требуется API ключ) # vsync"
-	echo -e " -- 8b Переустановка скриптов из repo \"GitHub\" (не требуется API ключ) # rm_clone"
+	echo -e " -- 8a Обновляет скрипты из repo \"GitHub\" (требуется API токен) # vsync"
+	echo -e " -- 8b Переустановка скриптов из repo \"GitHub\" (не требуется API токен) # rm_clone"
 	echo -e " -- 8c Удаление \"vdsetup\" (не удаляет программы установленные скриптом) # rm_vdsetup"
 	echo -e " -- 8d Обновление настроек из \".bashrc\", или введите: # source /root/.bashrc или # urc"
 	echo -e
@@ -306,13 +306,13 @@ handle_option() {
 			;;
 		8a | vsync)
 			echo -e " Вы выбрали Опцию 8a"
-			echo -e " -- 8a Обновляет скрипты из repo \"GitHub\" (требуется API ключ) # vsync"
+			echo -e " -- 8a Обновляет скрипты из repo \"GitHub\" (требуется API токен) # vsync"
 			vsync ;
 			echo -e 
 			;;
 		8b | rm_clone)
 			echo -e " Вы выбрали Опцию 8b"
-			echo -e " -- 8b Переустановка скриптов из repo \"GitHub\" (не требуется API ключ) # rm_clone"
+			echo -e " -- 8b Переустановка скриптов из repo \"GitHub\" (не требуется API токен) # rm_clone"
 			rm_clone ;
 			echo -e 
 			;;
