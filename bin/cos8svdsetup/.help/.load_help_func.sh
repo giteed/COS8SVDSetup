@@ -8,3 +8,5 @@
 	. /root/vdsetup.2/bin/.help/rpm_readme.sh
 # --> Про функцию, предназначенную для определения доступных портов Tor на локальной машине и сохранения этой информации в переменной tor_port
 	. /root/vdsetup.2/bin/.help/tor_port_ch_help
+# --> Про функцию, wport.
+	. /root/vdsetup.2/bin/.help/wport_help.sh
