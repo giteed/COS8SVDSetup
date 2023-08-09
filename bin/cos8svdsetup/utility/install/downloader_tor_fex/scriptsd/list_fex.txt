@@ -1,10 +1,8 @@
-
 Файлообменники с которыми предположительно может работать скрипт 
 на скачивание файлов (список будет дополняться новыми)
 
 https://anonfiles.com/
 https://bayfiles.com/
-https://myfile.is/
 https://myfile.is/
 https://megaupload.nz/
 https://zippysha.re/
@@ -19,4 +17,3 @@ https://openload.cc/
 
 https://tmpfiles.org/api
 
-.
