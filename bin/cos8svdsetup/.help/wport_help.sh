@@ -4,7 +4,7 @@ function wport_help() {
 
 lang=cr ;
 ttb=$(echo -e "
-netstat -tulanp | grep "$1"
+netstat -tulanp | grep [keyword or \".\"]
 
 Эта команда выполняет поиск в выводе команды netstat -tulanp с использованием
 фильтрации на основе переданного аргумента (переменной $1). 
