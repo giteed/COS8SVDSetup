@@ -12,7 +12,7 @@ ttb=$(echo -e " \"dtfex\" - \"качалка файлов\" с файло-обм
 Список файло-обменников, которые поддерживает скрипт находятся 
 в файле /utility/install/downloader_tor_fex/scriptsd/list_fex.txt
 - список будет дополняться. Эти URL будут проверены на валидность
-и затем поступят в обработку скрипту 
+и затем поступят в обработку скрипту: 
 /utility/install/downloader_tor_fex/scriptsd/download.sh
 
 Скаченные файлы можно будет забрать из папки /root/temp/download_cdn/
