@@ -105,7 +105,7 @@ print_menu() {
 	echo -e " -- 8d Обновление настроек из \".bashrc\", или введите: # source /root/.bashrc или # urc"
 	echo -e
 	echo -e "  9. Смена \"ssh\" порта."
-	echo -e " 10. Назначение имени хоста."
+	echo -e " 10. Назначение имени хоста для этого сервера."
 	echo -e " 11. Создание/изменение \"SWAP\" без перезагрузки сервера."
 	echo -e " 12. Исправление ошибки \"Failed to set locale, defaulting to C.UTF-8\"  "
 	echo -e
@@ -336,7 +336,7 @@ handle_option() {
 			;;
 		10)
 			echo -e " Вы выбрали Опцию 10"
-			echo -e " 10. Назначение имени хоста."
+			echo -e " 10. Назначение имени хоста для этого сервера."
 			/root/vdsetup.2/bin/utility/system/hostnamectl.sh
 			echo -e 
 			;;
