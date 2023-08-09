@@ -35,7 +35,7 @@ input.txt, по этому храните ваши  URL в другом мест
 которые поддерживают данныый скрипт, по всей видимости начинка их ПО одинаковая.
 Вот их список он будет дополняться в файле:
   " ) && lang="nix" && bpn_p_lang
-echo -e "$(cat /root/vdsetup.2/bin/cos8svdsetup/utility/install/downloader_tor_fex/scriptsd/list_fex.txt)"
+echo -e "$(cat /root/vdsetup.2/bin/utility/install/downloader_tor_fex/scriptsd/list_fex.txt)"
 
 press_anykey ;
 dtfex;
