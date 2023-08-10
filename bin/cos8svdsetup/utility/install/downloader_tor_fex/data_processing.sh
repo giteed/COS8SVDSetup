@@ -47,7 +47,7 @@ function check_input_file() {
 function file_empty() {
 	if [ ! -s "${WORK_DIR}/${INPUT_FILE}" ]; then
 	  ttb=$(echo "\n Файл: "${WORK_DIR}/${INPUT_FILE}" пуст!\n Наполните файл списком URL для обработки!") && lang_nix && bpn_p_lang ; ttb="" ; tendl ;
-	  
+	  done_cleared ;
 	  exit 1
 	fi
   }
