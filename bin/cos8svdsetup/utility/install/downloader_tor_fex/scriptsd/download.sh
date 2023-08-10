@@ -152,7 +152,7 @@ function start() {
 
 	tstart_f ; make_download_list_for_domain tendl_f  && tstart_f ; start || echo -e " Global ERROR..."
 
-
+done_cleared ;
 
 
 exit 0 ;
