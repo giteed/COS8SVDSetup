@@ -28,6 +28,32 @@ done
 var_domain=$(echo "$domain" | tr '.' '_')
 
 
+# Эту функцию можно отключить, если бекапы и отчеты о загрузках нужны для отладки после загрузки файлов.
+# Функция очистки ВКЛЮЧЕНА по умолчанию, чтобы не засорять диск временными файлами.
+function done_cleared() {
+   
+	mvds "*_urls.txt" && ttb=$(echo -e "\n Временные файлы *_urls.txt удалены!\n Чтобы сохранять временные файлы закомментируйте функцию:\n done_cleared, в конце скрипта $0") && lang_nix && bpn_p_lang ; ttb="" ;
+	
+	# Очищаю содержимое файла
+	echo > "$INPUT_FILE" && ttb=$(echo -e "\n Done. "$INPUT_FILE" очищен!") && lang_nix && bpn_p_lang ; ttb="" ;
+	
+	# Удаляю файл "${WORK_DIR}/${INPUT_FILE}"
+	mvds "${WORK_DIR}/${INPUT_FILE}"
+	
+	# Создаю чистый файл "${WORK_DIR}/${INPUT_FILE}"
+	touch "${WORK_DIR}/${INPUT_FILE}"
+	
+	# Удаляю папку для бекапа исходного файла input.txt
+	mvds "${WORK_DIR}"/"backup_input*" ;
+	
+	# Удаляю список скаченного
+	mvds "downloaded_from_cdn.txt"  2>/dev/null
+	  
+	 # Удаляю копию скрипта
+	 mvds "${WORK_DIR}"/scriptsd 2>/dev/null ;
+  }
+
+
 function make_download_list_for_domain() {
 		
 			mkdir -p "${WORK_DIR}"/
@@ -83,6 +109,7 @@ function make_wget_url_for_html_with_cdn_url() {
 			
 			mkdir -p "${WORK_DIR}"/downloaded_cdn/ && mv "$output_cdn_download_file" "${WORK_DIR}"/downloaded_cdn/one_url_with_cdn_download.sh && chmod +x "${WORK_DIR}"/downloaded_cdn/one_url_with_cdn_download.sh ;
 			rm -rf "${WORK_DIR}"/temp_download_dir/ ;
+			done_cleared ;
 	}
 
 
