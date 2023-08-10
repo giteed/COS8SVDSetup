@@ -11,6 +11,9 @@
   # Путь до рабочей папки
   WORK_DIR=$WDIR
   
+  mkdir -p "${WORK_DIR}"/scriptsd/ ;
+  cp -a /root/vdsetup.2/bin/utility/install/downloader_tor_fex/scriptsd/download.sh "${WORK_DIR}"/scriptsd/download.sh
+  
   # Имя файла
   INPUT_FILE="input.txt"
   INPUT_FILE_3="$INPUT_FILE"
