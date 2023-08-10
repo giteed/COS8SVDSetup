@@ -31,24 +31,23 @@ var_domain=$(echo "$domain" | tr '.' '_')
 # Эту функцию можно отключить, если бекапы и отчеты о загрузках нужны для отладки после загрузки файлов.
 # Функция очистки ВКЛЮЧЕНА по умолчанию, чтобы не засорять диск временными файлами.
 function done_cleared() {
-   
-	mvds "*_urls.txt" && ttb=$(echo -e "\n Временные файлы *_urls.txt удалены!\n Чтобы сохранять временные файлы закомментируйте функцию:\n done_cleared, в конце скрипта $0") && lang_nix && bpn_p_lang ; ttb="" ;
+
+   # Удаляю список скаченного
+    mvds "${WORK_DIR}"/"downloaded_from_cdn.txt" 2>/dev/null
+	mvds "${WORK_DIR}"/"*_urls.txt" && ttb=$(echo -e "\n Временные файлы *_urls.txt удалены!\n Чтобы сохранять временные файлы закомментируйте функцию:\n done_cleared, в конце скрипта $0") && lang_nix && bpn_p_lang ; ttb="" ;
 	
 	# Очищаю содержимое файла
 	echo > "$INPUT_FILE" && ttb=$(echo -e "\n Done. "$INPUT_FILE" очищен!") && lang_nix && bpn_p_lang ; ttb="" ;
 	
 	# Удаляю файл "${WORK_DIR}/${INPUT_FILE}"
-	mvds "${WORK_DIR}/${INPUT_FILE}"
+	mvds "${WORK_DIR}/${INPUT_FILE}" 2>/dev/null
 	
 	# Создаю чистый файл "${WORK_DIR}/${INPUT_FILE}"
-	touch "${WORK_DIR}/${INPUT_FILE}"
+	touch "${WORK_DIR}/${INPUT_FILE}" 2>/dev/null
 	
 	# Удаляю папку для бекапа исходного файла input.txt
-	mvds "${WORK_DIR}"/"backup_input*" ;
-	
-	# Удаляю список скаченного
-	mvds "downloaded_from_cdn.txt"  2>/dev/null
-	  
+	mvds "${WORK_DIR}"/"backup_input*" 2>/dev/null ;
+
 	 # Удаляю копию скрипта
 	 mvds "${WORK_DIR}"/scriptsd 2>/dev/null ;
   }
@@ -136,7 +135,7 @@ function start() {
 		then
 			# Если файл пуст, удаляем его и завершаем скрипт
 			rm "${WORK_DIR}"/temp_list_for_download_from_"$domain"_all_urls.txt
-			done_cleared ;
+			
 			exit
 		else
 			# Если файл не пуст, вызываем функции:
