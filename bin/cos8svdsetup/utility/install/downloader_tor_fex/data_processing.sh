@@ -11,8 +11,10 @@
   # Путь до рабочей папки
   WORK_DIR=$WDIR
   
+  # Создаем папку /scriptsd/ для скрипта /download.sh в рабочей папке "${WORK_DIR}"
   mkdir -p "${WORK_DIR}"/scriptsd/ ;
-  cp -a /root/vdsetup.2/bin/utility/install/downloader_tor_fex/scriptsd/download.sh "${WORK_DIR}"/scriptsd/download.sh
+  # Копируем в эту папку скрипт /download.sh
+  cp -a /root/vdsetup.2/bin/utility/install/downloader_tor_fex/scriptsd/download.sh "${WORK_DIR}"/scriptsd/download.sh ;
   
   # Имя файла
   INPUT_FILE="input.txt"
@@ -218,6 +220,9 @@ function done_cleared() {
 	
 	# Удаляю список скаченного
 	mvds "downloaded_from_cdn.txt"  2>/dev/null
+      
+     # Удаляю копию скрипта
+     mvds "${WORK_DIR}"/scriptsd 2>/dev/null ;
   }
 
   # Команды запускающие функции выше для проверки TOR соединения, проверки input.txt файла с URL, проверка списка URL на ошибки и запуск download скрипта с передачей ему доменов по списку. Download скрипт получает домены и готовый список input.txt с которым начинает работать в соответствии с очередью переданных ему доменов от этого скрипта. По сути этот скрипт управляет download скриптом, - какие домены брать из списка input.txt. (если download скрипт не получит домен от этого скрипта (function push_domain_in_download_script), то он проигнорирует его в списке input.txt)
