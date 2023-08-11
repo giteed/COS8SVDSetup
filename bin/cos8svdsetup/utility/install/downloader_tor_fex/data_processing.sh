@@ -203,7 +203,7 @@ function push_domain_in_download_script() {
 # Эту функцию можно отключить, если бекапы и отчеты о загрузках нужны для отладки после загрузки файлов.
 # Функция очистки ВКЛЮЧЕНА по умолчанию, чтобы не засорять диск временными файлами.
 function done_cleared() {
-   cd "${WORK_DIR}/
+   cd "${WORK_DIR}/"
    
 	mvds "*_urls.txt" && ttb=$(echo -e "\n Временные файлы *_urls.txt удалены!\n Чтобы сохранять временные файлы закомментируйте функцию:\n done_cleared, в конце скрипта $0") && lang_nix && bpn_p_lang ; ttb="" ;
 	
@@ -233,7 +233,7 @@ function done_cleared() {
    ( cd $WORK_DIR/downloaded_cdn && (lk-f .) ) 2>/dev/null ;
   }  
 
-  (tor_check_ip_or_restart && clear ) && ( check_input_file && file_empty && (ttb=$(in_input_file_fixes) && lang=nix && bpn_p_lang) && (ttb=$(tstart_f ; files_processing ; tendl_f) && lang=cr && bpn_p_lang) && (push_domain_in_download_script) && (view_d_content) && (done_cleared) || (echo -e " Ошибка выполнения функции push_domain_in_download_script ") && (done_cleared) ; )
+  (tor_check_ip_or_restart && clear ) && ( check_input_file && file_empty && (ttb=$(in_input_file_fixes) && lang=nix && bpn_p_lang) && (ttb=$(tstart_f ; files_processing ; tendl_f) && lang=cr && bpn_p_lang) && (push_domain_in_download_script) && (view_d_content) && (done_cleared &>/dev/null) || (echo -e " Ошибка выполнения функции push_domain_in_download_script ") && (done_cleared &>/dev/null) ; )
   
   # отчет о времени завершения работы скрипта
   tendl ;   
