@@ -129,8 +129,32 @@ function start() {
 
 
 	tstart_f ; make_download_list_for_domain tendl_f  && tstart_f ; start || echo -e " Global ERROR..."
+	
+	function done_cleared() {
+	   cd "${WORK_DIR}/"
+	   
+		mvds "*_urls.txt" && ttb=$(echo -e "\n Временные файлы *_urls.txt удалены!\n Чтобы сохранять временные файлы закомментируйте функцию:\n done_cleared, в конце скрипта $0") && lang_nix && bpn_p_lang ; ttb="" ;
+		
+		# Очищаю содержимое файла
+		echo > "$INPUT_FILE" && ttb=$(echo -e "\n Done. "$INPUT_FILE" очищен!") && lang_nix && bpn_p_lang ; ttb="" ;
+		
+		# Удаляю файл "${WORK_DIR}/${INPUT_FILE}"
+		mvds "${WORK_DIR}/${INPUT_FILE}"
+		
+		# Создаю чистый файл "${WORK_DIR}/${INPUT_FILE}"
+		touch "${WORK_DIR}/${INPUT_FILE}"
+		
+		# Удаляю папку для бекапа исходного файла input.txt
+		mvds "${WORK_DIR}"/"backup_input*" ;
+		
+		# Удаляю список скаченного
+		mvds "downloaded_from_cdn.txt"  2>/dev/null
+		  
+		 # Удаляю копию скрипта
+		 mvds "${WORK_DIR}"/scriptsd 2>/dev/null ;
+	  }
 
-#done_cleared ;
+done_cleared &>/dev/null ;
 
 
 exit 0 ;
