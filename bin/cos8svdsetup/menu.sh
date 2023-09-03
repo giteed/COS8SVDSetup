@@ -435,7 +435,7 @@ handle_option() {
 			echo -e 
 			dtfex_help ;
 			;;
-		0)
+		0 | q)
 			echo -e " До свидания! https://github.com/giteed/COS8SVDSetup"
 			echo -e 
 			exit 0 ;
