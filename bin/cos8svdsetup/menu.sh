@@ -33,7 +33,7 @@ check_os_compatibility() {
 			echo " Данный скрипт тестировался только с \"CentOS Stream release 8\" "
 			echo -en " Версия вашей ОС: $(cat /etc/centos-release)" && echo -en " - OK!" && echo -e " $(uname -r)" || echo -e "$current_os $current_version"
 		}
-		#ttb=$(echo -e "$(msg_os_ok)" ) && lang="nix" && bpn_p_lang  ;
+		ttb=$(echo -e "$(msg_os_ok)" ) && lang="nix" && bpn_p_lang  ;
 				
 	else
 		function msg_os_not_match() {
