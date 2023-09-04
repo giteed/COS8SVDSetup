@@ -34,7 +34,7 @@
 	 sudo dnf install -y network-scripts iptables socat dnstracer nyx || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y net-tools tcpdump  bind-utils traceroute || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y hydra libssh2-devel nmap lua || ( error_MSG ; ) ; echo ;
-	 #sudo dnf install -y 
+	 sudo dnf install -y tree || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y gcc openssl-devel bzip2-devel libffi-devel zlib-devel
 	 sudo dnf install -y dialog mlocate ncdu ranger tldr || ( error_MSG ; ) ; echo ;
 	 sudo dnf install -y git tar curl wget jq nc || ( error_MSG ; ) ; echo ;
