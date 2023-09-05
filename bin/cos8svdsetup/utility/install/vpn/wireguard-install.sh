@@ -235,9 +235,9 @@ net.ipv6.conf.all.forwarding = 1" >/etc/sysctl.d/wg.conf
 	# WireGuard might not work if we updated the kernel. Tell the user to reboot
 	if [[ ${WG_RUNNING} -ne 0 ]]; then
 		
-		ttb=$(echo -e "\n${RED}WARNING: WireGuard does not seem to be running.${NC}") && lang=d && bpn_p_lang && ttb=""
-		ttb=$(echo -e "${ORANGE}You can check if WireGuard is running with: systemctl status wg-quick@${SERVER_WG_NIC}${NC}") && lang=d && bpn_p_lang && ttb=""
-		ttb=$(echo -e "${ORANGE}If you get something like \"Cannot find device ${SERVER_WG_NIC}\", please reboot!${NC}") && lang=d && bpn_p_lang && ttb=""
+		ttb=$(echo -e "\n${RED}WARNING: WireGuard does not seem to be running.${NC}") && lang=help && bpn_p_lang && ttb=""
+		ttb=$(echo -e "${ORANGE}You can check if WireGuard is running with: systemctl status wg-quick@${SERVER_WG_NIC}${NC}") && lang=help && bpn_p_lang && ttb=""
+		ttb=$(echo -e "${ORANGE}If you get something like \"Cannot find device ${SERVER_WG_NIC}\", please reboot!${NC}") && lang=help && bpn_p_lang && ttb=""
 	fi
 }
 
